@@ -1,6 +1,6 @@
 # Research roadmap
 
-## Closed Qwen-based line: Vision QEV 0.1.0
+## Closed Qwen-based line: Qwen3.5 Classification 0.1.0
 
 Freeze the evaluated Qwen3.5-2B adaptation, publish the custom runtime, licensed dataset
 snapshots, exact evidence and known failures. Future bug fixes must preserve or explicitly
@@ -16,7 +16,7 @@ decision network. Its name and results will be separate from this checkpoint.
 2. Prototype image tokens retaining spatial coordinates, text/criterion encoders, candidate-
    conditioned evidence attention and one shared candidate scorer. Include typed ordinal and
    binary outputs; test candidate permutation and paraphrase invariance.
-3. Compare against the frozen Vision QEV baseline at equal data and hardware budgets. Use Qwen
+3. Compare against the frozen Qwen3.5 Classification baseline at equal data and hardware budgets. Use Qwen
    representations or teachers only where a measured benefit justifies them; backbone choice
    is open. Separate perception, evidence binding, decision logic and probability errors.
 4. Study supervised proper scoring, distillation and RL only after perception works. Select

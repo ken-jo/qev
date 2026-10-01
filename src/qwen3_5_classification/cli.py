@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 def main():
-    parser = argparse.ArgumentParser(prog="vision-qev")
+    parser = argparse.ArgumentParser(prog="qwen3.5-classification")
     commands = parser.add_subparsers(dest="command", required=True)
     download = commands.add_parser("download", help="Download the pinned Qwen3.5-2B backbone")
     download.add_argument("--cache-dir", default=".cache/huggingface")
@@ -38,11 +38,11 @@ def main():
         return
     import torch
 
-    from vision_qev import DecisionRequest, VisionQEV
+    from qwen3_5_classification import DecisionRequest, QwenClassification
 
     torch.set_num_threads(4)
     if args.command == "predict":
-        model = VisionQEV.load(
+        model = QwenClassification.load(
             args.checkpoint,
             device=args.device,
             cache_dir=args.cache_dir,
@@ -56,7 +56,7 @@ def main():
 
         from veyra.server import create_app
 
-        model = VisionQEV.load(
+        model = QwenClassification.load(
             args.checkpoint,
             device=args.device,
             cache_dir=args.cache_dir,

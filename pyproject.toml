@@ -3,7 +3,7 @@ requires = ["hatchling>=1.27"]
 build-backend = "hatchling.build"
 
 [project]
-name = "vision-qev"
+name = "qwen3.5-classification"
 version = "0.1.0"
 description = "Dynamic typed decisions over images and text with Qwen3.5-2B"
 readme = "README.md"
@@ -23,14 +23,14 @@ dependencies = [
 ]
 
 [project.scripts]
-vision-qev = "vision_qev.cli:main"
+"qwen3.5-classification" = "qwen3_5_classification.cli:main"
 veyra = "veyra.cli:main"
 
 [dependency-groups]
 dev = ["pytest==9.1.1", "httpx>=0.28,<1", "ruff>=0.15,<1"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/veyra", "src/vision_qev"]
+packages = ["src/veyra", "src/qwen3_5_classification"]
 
 [[tool.uv.index]]
 name = "pytorch-cu128"

@@ -13,7 +13,7 @@ tags:
 - calibrated-decisions
 - custom-runtime
 datasets:
-- ken-jo/vision-qev-data
+- ken-jo/qwen3.5-classification-data
 - LocalLLaMA/typed-decisions
 - stanfordnlp/snli
 - PolyAI/banking77
@@ -22,10 +22,10 @@ datasets:
 inference: false
 ---
 
-# Vision QEV — Qwen3.5-2B typed decisions
+# Qwen3.5 Classification — Qwen3.5-2B typed decisions
 
-[Source code](https://github.com/ken-jo/vision-qev) ·
-[Training data](https://huggingface.co/datasets/ken-jo/vision-qev-data)
+[Source code](https://github.com/ken-jo/qwen3.5-classification) ·
+[Training data](https://huggingface.co/datasets/ken-jo/qwen3.5-classification-data)
 
 Maintainer: [GitHub](https://github.com/ken-jo) ·
 [LinkedIn](https://www.linkedin.com/in/ik-chan-jo).
@@ -126,8 +126,8 @@ redistribution rights. Read the repository's data and training documentation.
 
 The package contains a calibrated manifest, adaptation weights and a custom runtime wheel.
 Qwen backbone weights must be downloaded separately at the pinned revision. Install the
-wheel from `runtime/`, run `vision-qev download`, then use `load_vision_qev.py` or the Python
-API in the [repository](https://github.com/ken-jo/vision-qev). A standard Transformers
+wheel from `runtime/`, run `qwen3.5-classification download`, then use `load_qwen3_5_classification.py` or the Python
+API in the [repository](https://github.com/ken-jo/qwen3.5-classification). A standard Transformers
 auto-model loader cannot directly load this custom adapter/head layout.
 
 Historical stage flags in the unchanged manifest record when those stages were run.

@@ -1,10 +1,14 @@
 # Public dataset
 
-`vision-qev-data` packages 15 historical corpus configurations, not 15 disjoint datasets.
+`qwen3.5-classification-data` packages 15 historical corpus configurations, not 15 disjoint datasets.
 Each archive contains original eligible JSONL records, referenced image bytes and a
 publication manifest. Viewer JSONL exposes the same requests and targets as JSON strings
 to avoid incompatible nested candidate schemas. Original train/dev/calibration/test values
 are preserved. The release manifest records each original and exported file checksum.
+
+Public corpus files use `qwen3.5-classification-<stage>.zip`. Their extracted stage
+folders and original record/source IDs preserve the recorded training provenance.
+For example, `qwen3.5-classification-starter-v2.zip` extracts to `starter-v2/`.
 
 ## Attribution and licenses
 
@@ -36,7 +40,7 @@ These are checks within each corpus. They do not establish cross-stage disjointn
 real objects, or absence from Qwen pretraining.
 
 ```sh
-python scripts/package_public_data.py --source /path/to/original-workspace --output dist/vision-qev-data
+python scripts/package_public_data.py --source /path/to/original-workspace --output dist/qwen3.5-classification-data
 ```
 
 This maintainer command requires the recorded source snapshots. Users can download the

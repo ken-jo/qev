@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
-  <meta name="description" content="Vision QEV 텍스트·이미지 동적 판단 플레이그라운드">
-  <title>Vision QEV · Playground</title>
+  <meta name="description" content="Qwen3.5 Classification 텍스트·이미지 동적 판단 플레이그라운드">
+  <title>Qwen3.5 Classification · Playground</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="/static/style.css">
   <script src="/static/app.js" defer></script>
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="/" aria-label="Vision QEV 플레이그라운드"><span class="brand-mark">v.</span>vision-qev<span class="brand-divider"></span><span class="brand-page">Playground</span></a>
+    <a class="brand" href="/" aria-label="Qwen3.5 Classification 플레이그라운드"><span class="brand-mark">q.</span>qwen3.5-classification<span class="brand-divider"></span><span class="brand-page">Playground</span></a>
     <div class="header-actions">
       <a class="text-button" href="/2048">이미지 2048</a>
       <button class="text-button" id="guide-open">지표 읽는 법</button>
@@ -107,7 +107,7 @@
       <div class="comparison-scroll"><table class="comparison-table"><caption class="sr-only">해상도별 모델 판단과 처리 시간</caption><thead><tr><th scope="col">사진 크기</th><th scope="col">모델 입력 예상</th><th scope="col">판단 · 최상위 후보 확률</th><th scope="col">원본과 후보 비교</th><th scope="col">모델 처리</th><th scope="col">브라우저 왕복</th><th scope="col">전체 입력 토큰</th><th scope="col">상세</th></tr></thead><tbody id="comparison-rows"></tbody></table></div>
       <p class="comparison-footnote">크기별 예열 1회 후 3회 측정의 중앙값입니다. 사진 준비·업로드 시간은 제외합니다. 원본과 같은 후보를 골라도 정답이라는 뜻은 아니며, 후보 확률도 정답률이 아닙니다.</p>
     </section>
-    <footer class="page-footer"><span>Vision QEV · 요청마다 달라지는 기준, 하나의 네트워크.</span><span>사진 1장 · 질문 최대 4개 · 후보 최대 16개</span></footer>
+    <footer class="page-footer"><span>Qwen3.5 Classification · 요청마다 달라지는 기준, 하나의 네트워크.</span><span>사진 1장 · 질문 최대 4개 · 후보 최대 16개</span></footer>
   </main>
   <dialog id="metrics-dialog" aria-labelledby="metrics-title"><div class="dialog-header"><div><p class="eyebrow">METRIC GUIDE</p><h2 id="metrics-title">이 네 지표는 낮을수록 좋습니다.</h2></div><button class="text-button" id="guide-close" aria-label="지표 설명 닫기">닫기</button></div><p class="dialog-intro">정답이 있는 평가 데이터에서 계산하는 지표입니다. 일반 플레이그라운드 요청에는 정답이 없어 자동으로 계산하지 않습니다.</p><dl class="metric-guide"><div><dt>Brier <span>확률 오차 ↓</span></dt><dd>예측한 확률 분포와 정답 분포가 얼마나 다른지 나타냅니다. 분포가 같으면 0입니다.</dd></div><div><dt>NLL <span>확률 손실 ↓</span></dt><dd>정답에 낮은 확률을 줄수록 커집니다. 정답이 확률 분포라면 최솟값이 꼭 0인 것은 아닙니다.</dd></div><div><dt>ECE <span>확률 보정 오차 ↓</span></dt><dd>예를 들어 80%라고 확신한 답변들이 실제로 약 80% 맞는지 봅니다. 단일 답변의 정답 확률을 뜻하지 않습니다.</dd></div><div><dt>MAE <span>기대 등급 오차 ↓</span></dt><dd>예측한 기대 등급이 정답의 기대 등급에서 얼마나 벗어났는지 나타냅니다. 작을수록 가깝습니다.</dd></div></dl><p class="guide-footer">정확도는 높을수록, 오류·손실은 낮을수록 좋습니다. 지표는 같은 데이터와 조건에서 비교하세요.</p></dialog>
   <div class="toast" id="toast" role="status" hidden></div>

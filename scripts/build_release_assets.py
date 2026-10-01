@@ -16,8 +16,8 @@ def main():
     args.output.mkdir(parents=True, exist_ok=True)
     outputs = {}
     for kind, folder, name in (
-        ("model", args.model, "vision-qev"),
-        ("dataset", args.data, "vision-qev-data"),
+        ("model", args.model, "qwen3.5-classification"),
+        ("dataset", args.data, "qwen3.5-classification-data"),
     ):
         checks = json.loads((folder / "checksums.json").read_text("utf-8"))
         destination = args.output / f"{name}-0.1.0.zip"

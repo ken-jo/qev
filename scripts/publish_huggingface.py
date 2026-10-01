@@ -20,6 +20,9 @@ def main():
     parser.add_argument("--data", type=Path, required=True)
     parser.add_argument("--owner", required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--previous-model", type=Path)
+    parser.add_argument("--previous-data", type=Path)
+    parser.add_argument("--previous-publication", type=Path)
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     audit = json.loads((root / "release/verification.json").read_text("utf-8"))
@@ -29,10 +32,20 @@ def main():
     identity = api.whoami()
     if identity["name"] != args.owner:
         raise ValueError("Authenticated account differs from the explicit owner")
+    replacement_args = (args.previous_model, args.previous_data, args.previous_publication)
+    if any(replacement_args) and not all(replacement_args):
+        raise ValueError(
+            "A replacement requires both previous packages and their publication report"
+        )
+    prior_publication = (
+        json.loads(args.previous_publication.read_text("utf-8"))
+        if args.previous_publication
+        else {}
+    )
     published = {}
     for kind, name, folder in (
-        ("model", "vision-qev", args.model),
-        ("dataset", "vision-qev-data", args.data),
+        ("model", "qwen3.5-classification", args.model),
+        ("dataset", "qwen3.5-classification-data", args.data),
     ):
         check_key = "model_checksums_sha256" if kind == "model" else "data_checksums_sha256"
         if sha(folder / "checksums.json") != audit[check_key]:
@@ -43,16 +56,41 @@ def main():
             if not target.is_relative_to(folder.resolve()) or sha(target) != expected:
                 raise ValueError("Payload checksum mismatch")
         repo = args.owner + "/" + name
+        parent_commit = None
+        deletions = []
         try:
             info = api.repo_info(repo, repo_type=kind)
+            parent_commit = info.sha
             existing = api.list_repo_files(repo, repo_type=kind)
             allowed = set(checks) | {"checksums.json", ".gitattributes"}
+            if "checksums.json" in existing:
+                previous = Path(
+                    hf_hub_download(
+                        repo,
+                        "checksums.json",
+                        repo_type=kind,
+                        revision=info.sha,
+                        cache_dir=root / ".cache/public-download-verification",
+                    )
+                )
+                previous_checks = json.loads(previous.read_text("utf-8"))
+                if previous_checks != checks:
+                    prior_folder = args.previous_model if kind == "model" else args.previous_data
+                    if (
+                        not prior_folder
+                        or prior_publication.get(kind, {}).get("revision") != info.sha
+                    ):
+                        raise ValueError("Different release requires its exact prior publication")
+                    recorded = json.loads((prior_folder / "checksums.json").read_text("utf-8"))
+                    if previous_checks != recorded:
+                        raise ValueError("Remote checksums differ from the recorded prior package")
+                    previous_files = set(recorded) | {"checksums.json", ".gitattributes"}
+                    if set(existing) != previous_files:
+                        raise ValueError("Previous repository contains missing or unrelated files")
+                    allowed |= set(recorded)
+                    deletions = sorted(set(recorded) - set(checks))
             if set(existing) - allowed:
                 raise ValueError("Existing repository has unrelated files; refusing overwrite")
-            if "checksums.json" in existing:
-                previous = Path(hf_hub_download(repo, "checksums.json", repo_type=kind))
-                if json.loads(previous.read_text("utf-8")) != checks:
-                    raise ValueError("Existing repository contains a different release")
             if info.private:
                 raise ValueError("Existing repo is private; review visibility before publication")
         except RepositoryNotFoundError:
@@ -62,7 +100,9 @@ def main():
             repo_type=kind,
             folder_path=folder,
             allow_patterns=[*checks, "checksums.json"],
-            commit_message="Release Vision QEV 0.1.0: Qwen3.5-2B typed decisions",
+            delete_patterns=deletions or None,
+            parent_commit=parent_commit,
+            commit_message="Release Qwen3.5 Classification 0.1.0: Qwen3.5-2B typed decisions",
             commit_description=(
                 "Audited English release with exact runtime/weight provenance, "
                 "source-specific data licenses and published limitations."
@@ -74,6 +114,8 @@ def main():
             for entry in api.list_repo_tree(repo, repo_type=kind, revision=revision, recursive=True)
             if hasattr(entry, "blob_id")
         }
+        if set(remote) != set(checks) | {"checksums.json", ".gitattributes"}:
+            raise ValueError("Published repository has missing or obsolete files")
         for name_in_repo in [*checks, "checksums.json"]:
             raw = (folder / name_in_repo).read_bytes()
             entry = remote[name_in_repo]

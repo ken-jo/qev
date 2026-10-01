@@ -1,6 +1,6 @@
 # Suggested release announcement
 
-Introducing **Vision QEV**, an open research checkpoint for dynamic decisions over text and
+Introducing **Qwen3.5 Classification**, an open research checkpoint for dynamic decisions over text and
 images, built on **Qwen3.5-2B**.
 
 Supply your own candidates and criteria; get `choice`, ordinal `score` or binary `noul`
@@ -13,7 +13,7 @@ evidence. It is a research milestone: fresh procedural-workflow accuracy is 69.3
 OCR/spatial reasoning and uncertainty handling remain limited. The failed 2048 experiments
 are documented openly.
 
-Project: https://github.com/ken-jo/vision-qev
+Project: https://github.com/ken-jo/qwen3.5-classification
 
 We are closing this Qwen-based line and using its lessons to investigate a separate
 multimodal decision network. No JEV-equivalence claim is made.

@@ -25,7 +25,7 @@ def main():
     for name, sha in expected.items():
         if digest(args.prepared / name) != sha:
             raise ValueError("Original prepared package changed: " + name)
-    wheel = root / "dist/runtime/vision_qev-0.1.0-py3-none-any.whl"
+    wheel = root / "dist/runtime/qwen3_5_classification-0.1.0-py3-none-any.whl"
     with zipfile.ZipFile(wheel) as archive:
         modules = sorted((root / "src/veyra").glob("*.py"))
         for module in modules:
@@ -60,21 +60,21 @@ def main():
     for name in ("pyproject.toml", "uv.lock"):
         shutil.copy2(root / name, args.output / "reproducibility" / name)
     shutil.copy2(root / "examples/request.json", args.output / "sample_request.json")
-    (args.output / "load_vision_qev.py").write_text(
+    (args.output / "load_qwen3_5_classification.py").write_text(
         '"""Run the packaged example after installing runtime/*.whl and the pinned base."""\n'
         "import json\nfrom pathlib import Path\nimport torch\n"
-        "from vision_qev import VisionQEV, DecisionRequest\n\n"
+        "from qwen3_5_classification import QwenClassification, DecisionRequest\n\n"
         "root = Path(__file__).resolve().parent\n"
         "torch.set_num_threads(4)\n"
-        "model = VisionQEV.load(root, local_files_only=True, merge=True)\n"
+        "model = QwenClassification.load(root, local_files_only=True, merge=True)\n"
         'request = DecisionRequest.from_json((root / "sample_request.json").read_text("utf-8"))\n'
         "print(json.dumps(model.predict(request, root), indent=2))\n",
         encoding="utf-8",
     )
     publication = {
-        "project": "vision-qev",
+        "project": "qwen3.5-classification",
         "version": "0.1.0",
-        "source_repository": "https://github.com/ken-jo/vision-qev",
+        "source_repository": "https://github.com/ken-jo/qwen3.5-classification",
         "backbone": "Qwen/Qwen3.5-2B",
         "base_revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
         "weights_sha256": digest(args.output / "head.safetensors"),

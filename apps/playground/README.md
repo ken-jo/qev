@@ -1,4 +1,4 @@
-# Vision QEV playground
+# Qwen3.5 Classification playground
 
 The local playground uses the released Qwen3.5-2B-based checkpoint and keeps it resident
 on the GPU. It includes a Korean interface, uploaded or preset photos, choice/score/noul
@@ -8,7 +8,7 @@ The examples are demonstrations, not additional evaluation data.
 From the repository root, after the main README's installation and checkpoint download:
 
 ```sh
-uv run python apps/playground/server.py --checkpoint checkpoints/vision-qev --host 127.0.0.1 --port 8765
+uv run python apps/playground/server.py --checkpoint checkpoints/qwen3.5-classification --host 127.0.0.1 --port 8765
 ```
 
 Open `http://127.0.0.1:8765`. Use `--host 0.0.0.0` for a trusted network and open
@@ -22,7 +22,7 @@ powershell -ExecutionPolicy Bypass -File apps/playground/start.ps1 -NoBrowser
 powershell -ExecutionPolicy Bypass -File apps/playground/stop.ps1
 ```
 
-The default checkpoint path is `checkpoints/vision-qev`. Tailscale helpers can configure a
+The default checkpoint path is `checkpoints/qwen3.5-classification`. Tailscale helpers can configure a
 private HTTPS proxy with an exact peer allowlist. They must run under the user's own account;
 no saved device identity or peer configuration is distributed.
 

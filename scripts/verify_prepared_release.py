@@ -35,16 +35,16 @@ def main():
     sys.path.insert(0, str(wheel))
     import torch
 
+    import qwen3_5_classification
     import veyra
-    import vision_qev
     from veyra.option_model import OptionModel
     from veyra.schema import DecisionRequest
 
     if not str(veyra.__file__).startswith(str(wheel)):
         raise RuntimeError("Veyra was imported from outside the bundled wheel")
-    if not str(vision_qev.__file__).startswith(str(wheel)):
-        raise RuntimeError("Vision QEV facade was imported outside the bundled wheel")
-    if vision_qev.VisionQEV is not OptionModel:
+    if not str(qwen3_5_classification.__file__).startswith(str(wheel)):
+        raise RuntimeError("Qwen3.5 Classification facade was imported outside the bundled wheel")
+    if qwen3_5_classification.QwenClassification is not OptionModel:
         raise RuntimeError("Public facade changed the evaluated model class")
     records = [
         json.loads(line)
@@ -71,7 +71,9 @@ def main():
         ),
     }
     torch.set_num_threads(4)
-    model = vision_qev.VisionQEV.load(folder, local_files_only=True, merge=True)
+    model = qwen3_5_classification.QwenClassification.load(
+        folder, local_files_only=True, merge=True
+    )
     forwards = []
     hook = model.encoder.model.register_forward_hook(lambda *_: forwards.append(1))
     results = {}
@@ -108,7 +110,7 @@ def main():
         "verified_files": len(checksums),
         "wheel_sha256": digest(wheel),
         "veyra_version": veyra.__version__,
-        "vision_qev_version": vision_qev.__version__,
+        "qwen3_5_classification_version": qwen3_5_classification.__version__,
         "public_facade_preserves_model_class": True,
         "python_isolated": True,
         "modules_from_bundled_wheel": modules,

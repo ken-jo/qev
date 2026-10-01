@@ -114,11 +114,16 @@ def main():
             if not (path.parent / link.split("#")[0]).exists():
                 raise ValueError("Broken active documentation link: " + str(path) + ": " + link)
     inference = json.loads((root / "release/model-inference.json").read_text("utf-8"))
-    if inference.get("passed") is not True or inference.get("vision_qev_version") != "0.1.0":
+    if (
+        inference.get("passed") is not True
+        or inference.get("qwen3_5_classification_version") != "0.1.0"
+    ):
         raise ValueError("Real packaged model inference has not passed")
+    if inference.get("checksums_sha256") != digest((args.model / "checksums.json").read_bytes()):
+        raise ValueError("Inference report belongs to a different model package")
     report = {
         "passed": True,
-        "project": "vision-qev",
+        "project": "qwen3.5-classification",
         "version": "0.1.0",
         "package_files": counts,
         "dataset_configurations": len(corpora),

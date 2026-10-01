@@ -1,17 +1,17 @@
-# Vision QEV
+# Qwen3.5 Classification
 
 **Dynamic decisions over text and images, built on Qwen3.5-2B.**
 
-[Model on Hugging Face](https://huggingface.co/ken-jo/vision-qev) ·
-[Dataset](https://huggingface.co/datasets/ken-jo/vision-qev-data) ·
-[GitHub release](https://github.com/ken-jo/vision-qev/releases/tag/v0.1.0)
+[Model on Hugging Face](https://huggingface.co/ken-jo/qwen3.5-classification) ·
+[Dataset](https://huggingface.co/datasets/ken-jo/qwen3.5-classification-data) ·
+[GitHub release](https://github.com/ken-jo/qwen3.5-classification/releases/tag/v0.1.0)
 
-Provide evidence, a question and your own candidate descriptions. Vision QEV returns a
+Provide evidence, a question and your own candidate descriptions. Qwen3.5 Classification returns a
 probability distribution, a typed result and an abstention signal in one batched backbone
 forward, with zero generated answer tokens.
 
 This is the final research release of the Qwen-based Veyra experiments, now named
-**vision-qev**. It uses **[Qwen/Qwen3.5-2B](https://huggingface.co/Qwen/Qwen3.5-2B)**,
+**qwen3.5-classification**. It uses **[Qwen/Qwen3.5-2B](https://huggingface.co/Qwen/Qwen3.5-2B)**,
 learned language adapters, an option readout and a condition-modulated binding head.
 The Qwen vision encoder is frozen. It is not a model trained from scratch or an
 implementation of proprietary JEV weights.
@@ -62,12 +62,12 @@ Measured environment: Python 3.12, Windows, CUDA 12.8 wheels and RTX 4060 Ti 8 G
 Other platforms and fresh dependency installation are not yet validated.
 
 ```sh
-git clone https://github.com/ken-jo/vision-qev.git
-cd vision-qev
+git clone https://github.com/ken-jo/qwen3.5-classification.git
+cd qwen3.5-classification
 uv sync --frozen
-uv run vision-qev download
+uv run qwen3.5-classification download
 uv run python scripts/download_checkpoint.py
-uv run vision-qev predict --checkpoint checkpoints/vision-qev --request examples/request.json
+uv run qwen3.5-classification predict --checkpoint checkpoints/qwen3.5-classification --request examples/request.json
 ```
 
 The primary checkpoint contains 32 MB of adaptation/readout tensors. The complete download
@@ -77,22 +77,22 @@ this adapter package with `AutoModel.from_pretrained` alone is not supported.
 
 ```python
 from pathlib import Path
-from vision_qev import DecisionRequest, VisionQEV
+from qwen3_5_classification import DecisionRequest, QwenClassification
 
-model = VisionQEV.load(Path("checkpoints/vision-qev"), local_files_only=True, merge=True)
+model = QwenClassification.load(Path("checkpoints/qwen3.5-classification"), local_files_only=True, merge=True)
 request = DecisionRequest.from_json(Path("examples/request.json").read_text("utf-8"))
 result = model.predict(request, Path("examples").resolve())
 print(result["answers"])
 ```
 
 The facade preserves the evaluated `veyra` Python modules and internal prompt markers.
-The distribution is `vision-qev==0.1.0`; the frozen internal runtime identifies as `0.3.0a4`.
+The distribution is `qwen3.5-classification==0.1.0`; the frozen internal runtime identifies as `0.3.0a4`.
 See [architecture and compatibility](docs/ARCHITECTURE.md).
 
 ## Playground and API
 
 ```sh
-uv run python apps/playground/server.py --checkpoint checkpoints/vision-qev --host 127.0.0.1 --port 8765
+uv run python apps/playground/server.py --checkpoint checkpoints/qwen3.5-classification --host 127.0.0.1 --port 8765
 ```
 
 Open `http://127.0.0.1:8765`. The inherited Korean playground includes sample photographs,
@@ -104,7 +104,7 @@ public multi-tenant authentication or per-user image isolation.
 For the resident JSON API:
 
 ```sh
-uv run vision-qev serve --checkpoint checkpoints/vision-qev --image-root examples --host 127.0.0.1 --port 8000
+uv run qwen3.5-classification serve --checkpoint checkpoints/qwen3.5-classification --image-root examples --host 127.0.0.1 --port 8000
 ```
 
 Send requests to `POST /v1/systemone`. Image paths are relative to the specified image root.

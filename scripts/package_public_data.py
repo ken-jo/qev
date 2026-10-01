@@ -142,7 +142,8 @@ def main():
             "within_corpus_group_and_image_split_checks": True,
             "split_assignments_modified": False,
         }
-        zip_path = output / "corpora" / f"{corpus}.zip"
+        archive_name = f"qwen3.5-classification-{corpus}.zip"
+        zip_path = output / "corpora" / archive_name
         with zipfile.ZipFile(zip_path, "x", compression=zipfile.ZIP_DEFLATED) as archive:
             project = Path(__file__).resolve().parents[1]
             for notice in sorted((project / "docs/data-licenses").glob("*.txt")):
@@ -166,7 +167,7 @@ def main():
             )
         summary = {k: v for k, v in manifest.items() if k != "images"}
         summary.update(
-            archive=f"corpora/{corpus}.zip",
+            archive=f"corpora/{archive_name}",
             archive_sha256=digest(zip_path),
             archive_bytes=zip_path.stat().st_size,
             image_files=len(images),
@@ -188,7 +189,7 @@ def main():
         output / "dataset-manifest.json",
         {
             "format_version": 1,
-            "project": "vision-qev",
+            "project": "qwen3.5-classification",
             "corpora": summaries,
             "sources": list(sources.values()),
             "licenses_per_record": True,
