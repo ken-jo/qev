@@ -1,0 +1,9 @@
+{
+  "stage": "acceptance",
+  "status": "failed",
+  "updated_at_utc": "2026-09-30T22:28:08.793187+00:00",
+  "release_allowed": false,
+  "final_predictions_started": true,
+  "exit_code": 1,
+  "log": "runs\\workflow-v12-cohort-policy-release\\acceptance.log"
+}

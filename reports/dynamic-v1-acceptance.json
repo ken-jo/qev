@@ -1,0 +1,45 @@
+{
+  "passed": false,
+  "checks": {
+    "trained_selected_checkpoint": true,
+    "checkpoint_weights_verified": true,
+    "independent_final_role": false,
+    "frozen_final_dataset": true,
+    "each_modality_at_least_90_before_abstention": false,
+    "same_final_checkpoint": true,
+    "calibration_separate_from_final": true,
+    "same_integration_checkpoint": true,
+    "uncached_serial_rtx4060ti_measurement": true,
+    "one_image_four_candidates_p95_at_most_300_ms": true,
+    "actual_http_p95_at_most_300_ms": true,
+    "dynamic_api_protocol": true,
+    "same_checkpoint_legacy_and_uncertainty_report": true,
+    "type_and_language_slices_reported": true
+  },
+  "checkpoint_weights_sha256": "5c86e81173ac5b5c8b508509df326112d30b02386fda3506875523274ed68157",
+  "checkpoint_manifest_sha256": "f5be13a91834bc23af0469c558322443790dcd09da9a125c1af3f21c3d72e9c1",
+  "scope": "Frozen controlled policy final set, legacy regression and resident serial API",
+  "limitations": "A passing audit does not establish general real-world policy accuracy, fully Korean policy understanding, concurrent-load latency or OOD calibration.",
+  "evidence": {
+    "quality": {
+      "path": "reports\\dynamic-v1-final.json",
+      "sha256": "cc37a125c1249ff6f43dfe042ddfc843e1bf2abbe7fee2b3b4e295b4bb76ad77"
+    },
+    "calibration": {
+      "path": "reports\\dynamic-v1-calibration.json",
+      "sha256": "45e7782ca95a63abe75a5f383c6e54014e5abb3068f650de8352523bda491ffb"
+    },
+    "integration": {
+      "path": "reports\\dynamic-v1-integration.json",
+      "sha256": "09d186e68782cae6bfbbec985e211a9bad898a71f71361c7d6a7b8a5753ba064"
+    },
+    "regression": {
+      "path": "reports\\dynamic-v1-legacy-regression.json",
+      "sha256": "df50ea58f4bc78efe0e89b9887c242d6e8441fd4b98c2077c5f99c4c6c048747"
+    },
+    "protocol": {
+      "path": "reports\\policy-v3-protocol.json",
+      "sha256": "2bfb767254bbbb9fb5e861185524d447ec883d3dd33dddd6864388cc44fd4fea"
+    }
+  }
+}

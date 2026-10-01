@@ -1,0 +1,3224 @@
+{
+  "schema": "veyra.text-2048.prompt-study.v1",
+  "selection": {
+    "selected_profile": "corner",
+    "definitions_sha256": "1dfd15cc4326779400a653dce1febeedb48044b95fea409eb6db27f836dd2b52",
+    "steps": 2000,
+    "development_seeds": [
+      11,
+      29,
+      47,
+      83
+    ],
+    "evaluation_seeds": [
+      101,
+      211,
+      307,
+      401,
+      503,
+      601,
+      701,
+      809
+    ],
+    "selection_order": "wins, mean log2(max tile), mean score; earlier profile on exact ties",
+    "frozen_utc": "2026-10-01T11:05:07.603003+00:00"
+  },
+  "phases": {
+    "development": {
+      "protocol": {
+        "phase": "development",
+        "seeds": [
+          11,
+          29,
+          47,
+          83
+        ],
+        "steps": 2000,
+        "checkpoint": "veyra-backbone-recovery-v13",
+        "runtime": "0.3.0a4",
+        "device": "NVIDIA GeForce RTX 4060 Ti",
+        "weights_sha256": "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee",
+        "script_sha256": "fda412c3a82bc16a1d6042b0c999b6bcc57bdb8a8e2e87dcad4b09af0f31d0f2",
+        "engine_sha256": "5c650bd1e66edc6fcd63c115038147f812b122aa4d256cdf77e69c9529e32e31",
+        "definitions_sha256": "1dfd15cc4326779400a653dce1febeedb48044b95fea409eb6db27f836dd2b52",
+        "profiles": {
+          "baseline": {
+            "instructions": "Which arrow-key move is best for this board? Choose one direction.",
+            "history": true,
+            "feedback": false
+          },
+          "rules": {
+            "instructions": "You control a 4 by 4 game of 2048. Select exactly one next arrow-key move. The objective is to create a tile with value 2048 and avoid getting stuck. Rows in the evidence are ordered top to bottom; columns are ordered left to right. Zero is empty. For LEFT or RIGHT, process each row. For UP or DOWN, process each column. First slide tiles through empty cells toward the selected edge, then merge adjacent equal values into their sum, once per original tile, then close the gaps. Unequal values cannot merge, and a newly merged tile cannot merge again in that move. Reject a direction whose slide and merges leave every cell unchanged. Among changing moves, favor equal-tile merges and positions with empty cells. Do not repeat a direction merely because it appears in recent arrow history. Read the current board anew. Return only the selected direction.",
+            "history": true,
+            "feedback": false
+          },
+          "corner": {
+            "instructions": "You control a 4 by 4 game of 2048. Select exactly one next arrow-key move. The objective is to create a tile with value 2048 and avoid getting stuck. Rows in the evidence are ordered top to bottom; columns are ordered left to right. Zero is empty. For LEFT or RIGHT, process each row. For UP or DOWN, process each column. First slide tiles through empty cells toward the selected edge, then merge adjacent equal values into their sum, once per original tile, then close the gaps. Unequal values cannot merge, and a newly merged tile cannot merge again in that move. Reject a direction whose slide and merges leave every cell unchanged. Among changing moves, favor equal-tile merges and positions with empty cells. Do not repeat a direction merely because it appears in recent arrow history. Read the current board anew. Return only the selected direction. Use a stable corner strategy: prefer keeping the largest tile at the bottom-left. Build a descending row along the bottom, with the next row descending in the opposite direction. Preserve that arrangement when possible, but never select an unchanged move. Avoid splitting equal-valued tiles behind larger tiles. Keep empty cells available. A changing move is preferable to preserving a corner with a move that does nothing. Use UP or RIGHT when needed to create space or enable a future merge; the corner preference is not a command to repeatedly press LEFT or DOWN.",
+            "history": true,
+            "feedback": false
+          },
+          "examples": {
+            "instructions": "You control a 4 by 4 game of 2048. Select exactly one next arrow-key move. The objective is to create a tile with value 2048 and avoid getting stuck. Rows in the evidence are ordered top to bottom; columns are ordered left to right. Zero is empty. For LEFT or RIGHT, process each row. For UP or DOWN, process each column. First slide tiles through empty cells toward the selected edge, then merge adjacent equal values into their sum, once per original tile, then close the gaps. Unequal values cannot merge, and a newly merged tile cannot merge again in that move. Reject a direction whose slide and merges leave every cell unchanged. Among changing moves, favor equal-tile merges and positions with empty cells. Do not repeat a direction merely because it appears in recent arrow history. Read the current board anew. Return only the selected direction. Use a stable corner strategy: prefer keeping the largest tile at the bottom-left. Build a descending row along the bottom, with the next row descending in the opposite direction. Preserve that arrangement when possible, but never select an unchanged move. Avoid splitting equal-valued tiles behind larger tiles. Keep empty cells available. A changing move is preferable to preserving a corner with a move that does nothing. Use UP or RIGHT when needed to create space or enable a future merge; the corner preference is not a command to repeatedly press LEFT or DOWN. Exact rule examples for a row moving LEFT: [2,0,2,2] becomes [4,2,0,0]; [2,2,2,2] becomes [4,4,0,0], not [8,0,0,0]; [4,2,4,0] becomes [4,2,4,0] and is unchanged. For RIGHT, [2,0,2,2] becomes [0,0,2,4]. Apply these same rules to columns for vertical moves. These examples explain rules; the board to play is the current board in the evidence, not an example.",
+            "history": true,
+            "feedback": false
+          },
+          "examples_no_history": {
+            "instructions": "You control a 4 by 4 game of 2048. Select exactly one next arrow-key move. The objective is to create a tile with value 2048 and avoid getting stuck. Rows in the evidence are ordered top to bottom; columns are ordered left to right. Zero is empty. For LEFT or RIGHT, process each row. For UP or DOWN, process each column. First slide tiles through empty cells toward the selected edge, then merge adjacent equal values into their sum, once per original tile, then close the gaps. Unequal values cannot merge, and a newly merged tile cannot merge again in that move. Reject a direction whose slide and merges leave every cell unchanged. Among changing moves, favor equal-tile merges and positions with empty cells. Do not repeat a direction merely because it appears in recent arrow history. Read the current board anew. Return only the selected direction. Use a stable corner strategy: prefer keeping the largest tile at the bottom-left. Build a descending row along the bottom, with the next row descending in the opposite direction. Preserve that arrangement when possible, but never select an unchanged move. Avoid splitting equal-valued tiles behind larger tiles. Keep empty cells available. A changing move is preferable to preserving a corner with a move that does nothing. Use UP or RIGHT when needed to create space or enable a future merge; the corner preference is not a command to repeatedly press LEFT or DOWN. Exact rule examples for a row moving LEFT: [2,0,2,2] becomes [4,2,0,0]; [2,2,2,2] becomes [4,4,0,0], not [8,0,0,0]; [4,2,4,0] becomes [4,2,4,0] and is unchanged. For RIGHT, [2,0,2,2] becomes [0,0,2,4]. Apply these same rules to columns for vertical moves. These examples explain rules; the board to play is the current board in the evidence, not an example.",
+            "history": false,
+            "feedback": false
+          },
+          "examples_feedback": {
+            "instructions": "You control a 4 by 4 game of 2048. Select exactly one next arrow-key move. The objective is to create a tile with value 2048 and avoid getting stuck. Rows in the evidence are ordered top to bottom; columns are ordered left to right. Zero is empty. For LEFT or RIGHT, process each row. For UP or DOWN, process each column. First slide tiles through empty cells toward the selected edge, then merge adjacent equal values into their sum, once per original tile, then close the gaps. Unequal values cannot merge, and a newly merged tile cannot merge again in that move. Reject a direction whose slide and merges leave every cell unchanged. Among changing moves, favor equal-tile merges and positions with empty cells. Do not repeat a direction merely because it appears in recent arrow history. Read the current board anew. Return only the selected direction. Use a stable corner strategy: prefer keeping the largest tile at the bottom-left. Build a descending row along the bottom, with the next row descending in the opposite direction. Preserve that arrangement when possible, but never select an unchanged move. Avoid splitting equal-valued tiles behind larger tiles. Keep empty cells available. A changing move is preferable to preserving a corner with a move that does nothing. Use UP or RIGHT when needed to create space or enable a future merge; the corner preference is not a command to repeatedly press LEFT or DOWN. Exact rule examples for a row moving LEFT: [2,0,2,2] becomes [4,2,0,0]; [2,2,2,2] becomes [4,4,0,0], not [8,0,0,0]; [4,2,4,0] becomes [4,2,4,0] and is unchanged. For RIGHT, [2,0,2,2] becomes [0,0,2,4]. Apply these same rules to columns for vertical moves. These examples explain rules; the board to play is the current board in the evidence, not an example. Recent executed actions include the actual observed outcome. If a direction just left this same board unchanged, choose a different direction. A failed action is feedback to change the next choice, not a plan to repeat.",
+            "history": false,
+            "feedback": true
+          }
+        },
+        "selection": null,
+        "selection_order": "wins, mean log2(max tile), mean score; earlier profile on exact ties",
+        "all_four_directions_always_offered": true,
+        "legal_move_filter": false,
+        "solver_or_lookahead": false,
+        "training_performed": false,
+        "warmups_discarded": 0,
+        "execution_policy": "Execute returned directions even if abstained; preserve all flags",
+        "stops": [
+          "2048",
+          "game over",
+          "four unchanged actions",
+          "step budget"
+        ],
+        "budget_note": "The offline runner can exceed the UI session's 500-event cap. Its own 2000-step default permits enough tile mass to reach 2048."
+      },
+      "finished_utc": "2026-10-01T11:05:07.604009+00:00",
+      "results": {
+        "baseline": {
+          "games": 4,
+          "wins": 0,
+          "mean_score": 26,
+          "mean_log2_max_tile": 2.5,
+          "max_tile": 8,
+          "decisions": 56,
+          "valid_moves": 38,
+          "abstained": 56,
+          "model_median_ms": 68.37,
+          "directions": {
+            "down": 53,
+            "up": 1,
+            "left": 2
+          },
+          "max_input_tokens": 348,
+          "errors": [],
+          "noops": 18,
+          "unabstained_noops": 0
+        },
+        "rules": {
+          "games": 4,
+          "wins": 0,
+          "mean_score": 8,
+          "mean_log2_max_tile": 2.0,
+          "max_tile": 8,
+          "decisions": 32,
+          "valid_moves": 16,
+          "abstained": 3,
+          "model_median_ms": 91.195,
+          "directions": {
+            "left": 28,
+            "right": 4
+          },
+          "max_input_tokens": 517,
+          "errors": [],
+          "noops": 16,
+          "unabstained_noops": 15
+        },
+        "corner": {
+          "games": 4,
+          "wins": 0,
+          "mean_score": 11,
+          "mean_log2_max_tile": 2.25,
+          "max_tile": 8,
+          "decisions": 36,
+          "valid_moves": 20,
+          "abstained": 3,
+          "model_median_ms": 102.255,
+          "directions": {
+            "right": 36
+          },
+          "max_input_tokens": 624,
+          "errors": [],
+          "noops": 16,
+          "unabstained_noops": 16
+        },
+        "examples": {
+          "games": 4,
+          "wins": 0,
+          "mean_score": 11,
+          "mean_log2_max_tile": 2.25,
+          "max_tile": 8,
+          "decisions": 36,
+          "valid_moves": 20,
+          "abstained": 3,
+          "model_median_ms": 122.185,
+          "directions": {
+            "right": 36
+          },
+          "max_input_tokens": 757,
+          "errors": [],
+          "noops": 16,
+          "unabstained_noops": 16
+        },
+        "examples_no_history": {
+          "games": 4,
+          "wins": 0,
+          "mean_score": 11,
+          "mean_log2_max_tile": 2.25,
+          "max_tile": 8,
+          "decisions": 36,
+          "valid_moves": 20,
+          "abstained": 28,
+          "model_median_ms": 121.675,
+          "directions": {
+            "right": 36
+          },
+          "max_input_tokens": 737,
+          "errors": [],
+          "noops": 16,
+          "unabstained_noops": 4
+        },
+        "examples_feedback": {
+          "games": 4,
+          "wins": 0,
+          "mean_score": 11,
+          "mean_log2_max_tile": 2.25,
+          "max_tile": 8,
+          "decisions": 36,
+          "valid_moves": 20,
+          "abstained": 6,
+          "model_median_ms": 135.89999999999998,
+          "directions": {
+            "right": 36
+          },
+          "max_input_tokens": 836,
+          "errors": [],
+          "noops": 16,
+          "unabstained_noops": 13
+        }
+      },
+      "runs": {
+        "baseline": [
+          {
+            "profile": "baseline",
+            "seed": 11,
+            "score": 0,
+            "max_tile": 4,
+            "won": false,
+            "steps": 4,
+            "stats": {
+              "attempts": 4,
+              "valid_moves": 0,
+              "model_decisions": 4,
+              "abstained": 4,
+              "no_progress_streak": 4,
+              "model_median_ms": 77.72,
+              "model_total_ms": 552.03
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 634.867100045085,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                4,
+                2,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                4,
+                2,
+                0
+              ]
+            ]
+          },
+          {
+            "profile": "baseline",
+            "seed": 29,
+            "score": 40,
+            "max_tile": 8,
+            "won": false,
+            "steps": 20,
+            "stats": {
+              "attempts": 20,
+              "valid_moves": 14,
+              "model_decisions": 20,
+              "abstained": 20,
+              "no_progress_streak": 4,
+              "model_median_ms": 69.7,
+              "model_total_ms": 1430.71
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 1730.4348999168724,
+            "initial_board": [
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                4,
+                2,
+                2
+              ],
+              [
+                4,
+                8,
+                8,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "baseline",
+            "seed": 47,
+            "score": 16,
+            "max_tile": 4,
+            "won": false,
+            "steps": 14,
+            "stats": {
+              "attempts": 14,
+              "valid_moves": 10,
+              "model_decisions": 14,
+              "abstained": 14,
+              "no_progress_streak": 4,
+              "model_median_ms": 67.95,
+              "model_total_ms": 964.5
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 1144.9177999747917,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                4,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                2,
+                2
+              ],
+              [
+                4,
+                4,
+                4,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "baseline",
+            "seed": 83,
+            "score": 48,
+            "max_tile": 8,
+            "won": false,
+            "steps": 18,
+            "stats": {
+              "attempts": 18,
+              "valid_moves": 14,
+              "model_decisions": 18,
+              "abstained": 18,
+              "no_progress_streak": 4,
+              "model_median_ms": 66.31,
+              "model_total_ms": 1245.44
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 1579.8807000974193,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                2,
+                2
+              ],
+              [
+                8,
+                4,
+                8,
+                8
+              ]
+            ]
+          }
+        ],
+        "rules": [
+          {
+            "profile": "rules",
+            "seed": 11,
+            "score": 8,
+            "max_tile": 4,
+            "won": false,
+            "steps": 11,
+            "stats": {
+              "attempts": 11,
+              "valid_moves": 7,
+              "model_decisions": 11,
+              "abstained": 1,
+              "no_progress_streak": 4,
+              "model_median_ms": 94.6,
+              "model_total_ms": 1007.89
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 1188.811199972406,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                4,
+                2,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                4,
+                2,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                0
+              ],
+              [
+                4,
+                2,
+                0,
+                0
+              ],
+              [
+                4,
+                2,
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "profile": "rules",
+            "seed": 29,
+            "score": 16,
+            "max_tile": 8,
+            "won": false,
+            "steps": 10,
+            "stats": {
+              "attempts": 10,
+              "valid_moves": 6,
+              "model_decisions": 10,
+              "abstained": 1,
+              "no_progress_streak": 4,
+              "model_median_ms": 94.61,
+              "model_total_ms": 910.1
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 1064.2173000378534,
+            "initial_board": [
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                8,
+                2,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                0
+              ],
+              [
+                4,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "profile": "rules",
+            "seed": 47,
+            "score": 8,
+            "max_tile": 4,
+            "won": false,
+            "steps": 7,
+            "stats": {
+              "attempts": 7,
+              "valid_moves": 3,
+              "model_decisions": 7,
+              "abstained": 0,
+              "no_progress_streak": 4,
+              "model_median_ms": 87.14,
+              "model_total_ms": 621.62
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 723.487599985674,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                2,
+                0,
+                0,
+                0
+              ],
+              [
+                4,
+                0,
+                0,
+                0
+              ],
+              [
+                4,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "profile": "rules",
+            "seed": 83,
+            "score": 0,
+            "max_tile": 2,
+            "won": false,
+            "steps": 4,
+            "stats": {
+              "attempts": 4,
+              "valid_moves": 0,
+              "model_decisions": 4,
+              "abstained": 1,
+              "no_progress_streak": 4,
+              "model_median_ms": 84.69,
+              "model_total_ms": 339.07
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 388.4172000689432,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ]
+          }
+        ],
+        "corner": [
+          {
+            "profile": "corner",
+            "seed": 11,
+            "score": 0,
+            "max_tile": 4,
+            "won": false,
+            "steps": 5,
+            "stats": {
+              "attempts": 5,
+              "valid_moves": 1,
+              "model_decisions": 5,
+              "abstained": 1,
+              "no_progress_streak": 4,
+              "model_median_ms": 101.8,
+              "model_total_ms": 521.74
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 606.0432000085711,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                4,
+                2,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                4,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "corner",
+            "seed": 29,
+            "score": 24,
+            "max_tile": 8,
+            "won": false,
+            "steps": 15,
+            "stats": {
+              "attempts": 15,
+              "valid_moves": 11,
+              "model_decisions": 15,
+              "abstained": 1,
+              "no_progress_streak": 4,
+              "model_median_ms": 101.64,
+              "model_total_ms": 1537.84
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 1738.2375000743195,
+            "initial_board": [
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                2,
+                8
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "corner",
+            "seed": 47,
+            "score": 20,
+            "max_tile": 8,
+            "won": false,
+            "steps": 12,
+            "stats": {
+              "attempts": 12,
+              "valid_moves": 8,
+              "model_decisions": 12,
+              "abstained": 1,
+              "no_progress_streak": 4,
+              "model_median_ms": 102.69,
+              "model_total_ms": 1237.91
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 1432.5788000132889,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                8
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "corner",
+            "seed": 83,
+            "score": 0,
+            "max_tile": 2,
+            "won": false,
+            "steps": 4,
+            "stats": {
+              "attempts": 4,
+              "valid_moves": 0,
+              "model_decisions": 4,
+              "abstained": 0,
+              "no_progress_streak": 4,
+              "model_median_ms": 102.45,
+              "model_total_ms": 410.38
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 420.70100002456456,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "profile": "examples",
+            "seed": 11,
+            "score": 0,
+            "max_tile": 4,
+            "won": false,
+            "steps": 5,
+            "stats": {
+              "attempts": 5,
+              "valid_moves": 1,
+              "model_decisions": 5,
+              "abstained": 1,
+              "no_progress_streak": 4,
+              "model_median_ms": 121.51,
+              "model_total_ms": 604.67
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 677.6720000198111,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                4,
+                2,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                4,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "examples",
+            "seed": 29,
+            "score": 24,
+            "max_tile": 8,
+            "won": false,
+            "steps": 15,
+            "stats": {
+              "attempts": 15,
+              "valid_moves": 11,
+              "model_decisions": 15,
+              "abstained": 1,
+              "no_progress_streak": 4,
+              "model_median_ms": 122.12,
+              "model_total_ms": 1825.77
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 2006.3028000295162,
+            "initial_board": [
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                2,
+                8
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "examples",
+            "seed": 47,
+            "score": 20,
+            "max_tile": 8,
+            "won": false,
+            "steps": 12,
+            "stats": {
+              "attempts": 12,
+              "valid_moves": 8,
+              "model_decisions": 12,
+              "abstained": 1,
+              "no_progress_streak": 4,
+              "model_median_ms": 122.5,
+              "model_total_ms": 1481.11
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 1589.535600040108,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                8
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "examples",
+            "seed": 83,
+            "score": 0,
+            "max_tile": 2,
+            "won": false,
+            "steps": 4,
+            "stats": {
+              "attempts": 4,
+              "valid_moves": 0,
+              "model_decisions": 4,
+              "abstained": 0,
+              "no_progress_streak": 4,
+              "model_median_ms": 121.97,
+              "model_total_ms": 489.51
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 515.9414999652654,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ]
+          }
+        ],
+        "examples_no_history": [
+          {
+            "profile": "examples_no_history",
+            "seed": 11,
+            "score": 0,
+            "max_tile": 4,
+            "won": false,
+            "steps": 5,
+            "stats": {
+              "attempts": 5,
+              "valid_moves": 1,
+              "model_decisions": 5,
+              "abstained": 5,
+              "no_progress_streak": 4,
+              "model_median_ms": 119.63,
+              "model_total_ms": 605.33
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 671.3825000915676,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                4,
+                2,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                4,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "examples_no_history",
+            "seed": 29,
+            "score": 24,
+            "max_tile": 8,
+            "won": false,
+            "steps": 15,
+            "stats": {
+              "attempts": 15,
+              "valid_moves": 11,
+              "model_decisions": 15,
+              "abstained": 13,
+              "no_progress_streak": 4,
+              "model_median_ms": 121.77,
+              "model_total_ms": 1825.76
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 2024.094899999909,
+            "initial_board": [
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                2,
+                8
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "examples_no_history",
+            "seed": 47,
+            "score": 20,
+            "max_tile": 8,
+            "won": false,
+            "steps": 12,
+            "stats": {
+              "attempts": 12,
+              "valid_moves": 8,
+              "model_decisions": 12,
+              "abstained": 10,
+              "no_progress_streak": 4,
+              "model_median_ms": 121.4,
+              "model_total_ms": 1454.55
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 1575.8844000520185,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                8
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "examples_no_history",
+            "seed": 83,
+            "score": 0,
+            "max_tile": 2,
+            "won": false,
+            "steps": 4,
+            "stats": {
+              "attempts": 4,
+              "valid_moves": 0,
+              "model_decisions": 4,
+              "abstained": 0,
+              "no_progress_streak": 4,
+              "model_median_ms": 122.58,
+              "model_total_ms": 490.21
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 540.1793000055477,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ]
+          }
+        ],
+        "examples_feedback": [
+          {
+            "profile": "examples_feedback",
+            "seed": 11,
+            "score": 0,
+            "max_tile": 4,
+            "won": false,
+            "steps": 5,
+            "stats": {
+              "attempts": 5,
+              "valid_moves": 1,
+              "model_decisions": 5,
+              "abstained": 1,
+              "no_progress_streak": 4,
+              "model_median_ms": 134.52,
+              "model_total_ms": 675.23
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 753.6805999698117,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                4,
+                2,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                4,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "examples_feedback",
+            "seed": 29,
+            "score": 24,
+            "max_tile": 8,
+            "won": false,
+            "steps": 15,
+            "stats": {
+              "attempts": 15,
+              "valid_moves": 11,
+              "model_decisions": 15,
+              "abstained": 2,
+              "no_progress_streak": 4,
+              "model_median_ms": 134.64,
+              "model_total_ms": 2032.01
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 2228.29510003794,
+            "initial_board": [
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                2,
+                8
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "examples_feedback",
+            "seed": 47,
+            "score": 20,
+            "max_tile": 8,
+            "won": false,
+            "steps": 12,
+            "stats": {
+              "attempts": 12,
+              "valid_moves": 8,
+              "model_decisions": 12,
+              "abstained": 1,
+              "no_progress_streak": 4,
+              "model_median_ms": 136.56,
+              "model_total_ms": 1641.76
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 1752.7277999324724,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                8
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "examples_feedback",
+            "seed": 83,
+            "score": 0,
+            "max_tile": 2,
+            "won": false,
+            "steps": 4,
+            "stats": {
+              "attempts": 4,
+              "valid_moves": 0,
+              "model_decisions": 4,
+              "abstained": 2,
+              "no_progress_streak": 4,
+              "model_median_ms": 135.44,
+              "model_total_ms": 542.12
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 602.3404999868944,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "evaluation": {
+      "protocol": {
+        "phase": "evaluation",
+        "seeds": [
+          101,
+          211,
+          307,
+          401,
+          503,
+          601,
+          701,
+          809
+        ],
+        "steps": 2000,
+        "checkpoint": "veyra-backbone-recovery-v13",
+        "runtime": "0.3.0a4",
+        "device": "NVIDIA GeForce RTX 4060 Ti",
+        "weights_sha256": "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee",
+        "script_sha256": "fda412c3a82bc16a1d6042b0c999b6bcc57bdb8a8e2e87dcad4b09af0f31d0f2",
+        "engine_sha256": "5c650bd1e66edc6fcd63c115038147f812b122aa4d256cdf77e69c9529e32e31",
+        "definitions_sha256": "1dfd15cc4326779400a653dce1febeedb48044b95fea409eb6db27f836dd2b52",
+        "profiles": {
+          "baseline": {
+            "instructions": "Which arrow-key move is best for this board? Choose one direction.",
+            "history": true,
+            "feedback": false
+          },
+          "corner": {
+            "instructions": "You control a 4 by 4 game of 2048. Select exactly one next arrow-key move. The objective is to create a tile with value 2048 and avoid getting stuck. Rows in the evidence are ordered top to bottom; columns are ordered left to right. Zero is empty. For LEFT or RIGHT, process each row. For UP or DOWN, process each column. First slide tiles through empty cells toward the selected edge, then merge adjacent equal values into their sum, once per original tile, then close the gaps. Unequal values cannot merge, and a newly merged tile cannot merge again in that move. Reject a direction whose slide and merges leave every cell unchanged. Among changing moves, favor equal-tile merges and positions with empty cells. Do not repeat a direction merely because it appears in recent arrow history. Read the current board anew. Return only the selected direction. Use a stable corner strategy: prefer keeping the largest tile at the bottom-left. Build a descending row along the bottom, with the next row descending in the opposite direction. Preserve that arrangement when possible, but never select an unchanged move. Avoid splitting equal-valued tiles behind larger tiles. Keep empty cells available. A changing move is preferable to preserving a corner with a move that does nothing. Use UP or RIGHT when needed to create space or enable a future merge; the corner preference is not a command to repeatedly press LEFT or DOWN.",
+            "history": true,
+            "feedback": false
+          }
+        },
+        "selection": {
+          "selected_profile": "corner",
+          "definitions_sha256": "1dfd15cc4326779400a653dce1febeedb48044b95fea409eb6db27f836dd2b52",
+          "steps": 2000,
+          "development_seeds": [
+            11,
+            29,
+            47,
+            83
+          ],
+          "evaluation_seeds": [
+            101,
+            211,
+            307,
+            401,
+            503,
+            601,
+            701,
+            809
+          ],
+          "selection_order": "wins, mean log2(max tile), mean score; earlier profile on exact ties",
+          "frozen_utc": "2026-10-01T11:05:07.603003+00:00"
+        },
+        "selection_order": "wins, mean log2(max tile), mean score; earlier profile on exact ties",
+        "all_four_directions_always_offered": true,
+        "legal_move_filter": false,
+        "solver_or_lookahead": false,
+        "training_performed": false,
+        "warmups_discarded": 0,
+        "execution_policy": "Execute returned directions even if abstained; preserve all flags",
+        "stops": [
+          "2048",
+          "game over",
+          "four unchanged actions",
+          "step budget"
+        ],
+        "budget_note": "The offline runner can exceed the UI session's 500-event cap. Its own 2000-step default permits enough tile mass to reach 2048."
+      },
+      "finished_utc": "2026-10-01T11:06:02.755376+00:00",
+      "results": {
+        "baseline": {
+          "games": 8,
+          "wins": 0,
+          "mean_score": 13,
+          "mean_log2_max_tile": 2.5,
+          "max_tile": 8,
+          "decisions": 80,
+          "valid_moves": 48,
+          "abstained": 69,
+          "model_median_ms": 64.9,
+          "directions": {
+            "down": 44,
+            "up": 2,
+            "left": 34
+          },
+          "max_input_tokens": 348,
+          "errors": [],
+          "noops": 32,
+          "unabstained_noops": 4
+        },
+        "corner": {
+          "games": 8,
+          "wins": 0,
+          "mean_score": 17.5,
+          "mean_log2_max_tile": 2.5,
+          "max_tile": 16,
+          "decisions": 80,
+          "valid_moves": 48,
+          "abstained": 10,
+          "model_median_ms": 101.205,
+          "directions": {
+            "right": 69,
+            "left": 11
+          },
+          "max_input_tokens": 625,
+          "errors": [],
+          "noops": 32,
+          "unabstained_noops": 32
+        }
+      },
+      "runs": {
+        "baseline": [
+          {
+            "profile": "baseline",
+            "seed": 101,
+            "score": 0,
+            "max_tile": 4,
+            "won": false,
+            "steps": 8,
+            "stats": {
+              "attempts": 8,
+              "valid_moves": 4,
+              "model_decisions": 8,
+              "abstained": 8,
+              "no_progress_streak": 4,
+              "model_median_ms": 65.67,
+              "model_total_ms": 537.63
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 610.8861999819055,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                4,
+                0
+              ],
+              [
+                0,
+                4,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                4
+              ],
+              [
+                2,
+                4,
+                4,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "baseline",
+            "seed": 211,
+            "score": 8,
+            "max_tile": 4,
+            "won": false,
+            "steps": 10,
+            "stats": {
+              "attempts": 10,
+              "valid_moves": 6,
+              "model_decisions": 10,
+              "abstained": 10,
+              "no_progress_streak": 4,
+              "model_median_ms": 64.43,
+              "model_total_ms": 657.21
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 791.6500000283122,
+            "initial_board": [
+              [
+                2,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                2,
+                4,
+                4,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "baseline",
+            "seed": 307,
+            "score": 20,
+            "max_tile": 8,
+            "won": false,
+            "steps": 12,
+            "stats": {
+              "attempts": 12,
+              "valid_moves": 8,
+              "model_decisions": 12,
+              "abstained": 12,
+              "no_progress_streak": 4,
+              "model_median_ms": 64.42,
+              "model_total_ms": 802.26
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 987.3677000869066,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                4,
+                2
+              ],
+              [
+                2,
+                4,
+                8,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "baseline",
+            "seed": 401,
+            "score": 32,
+            "max_tile": 8,
+            "won": false,
+            "steps": 17,
+            "stats": {
+              "attempts": 17,
+              "valid_moves": 13,
+              "model_decisions": 17,
+              "abstained": 13,
+              "no_progress_streak": 4,
+              "model_median_ms": 64.49,
+              "model_total_ms": 1130.1
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 1373.7590999808162,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                2
+              ]
+            ],
+            "final_board": [
+              [
+                8,
+                0,
+                0,
+                0
+              ],
+              [
+                4,
+                2,
+                4,
+                0
+              ],
+              [
+                2,
+                4,
+                0,
+                0
+              ],
+              [
+                2,
+                8,
+                2,
+                0
+              ]
+            ]
+          },
+          {
+            "profile": "baseline",
+            "seed": 503,
+            "score": 4,
+            "max_tile": 4,
+            "won": false,
+            "steps": 7,
+            "stats": {
+              "attempts": 7,
+              "valid_moves": 3,
+              "model_decisions": 7,
+              "abstained": 7,
+              "no_progress_streak": 4,
+              "model_median_ms": 65.49,
+              "model_total_ms": 491.06
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 610.4342000326142,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                4,
+                2,
+                2,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "baseline",
+            "seed": 601,
+            "score": 8,
+            "max_tile": 4,
+            "won": false,
+            "steps": 7,
+            "stats": {
+              "attempts": 7,
+              "valid_moves": 3,
+              "model_decisions": 7,
+              "abstained": 7,
+              "no_progress_streak": 4,
+              "model_median_ms": 66.34,
+              "model_total_ms": 471.98
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 570.4207000089809,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                4,
+                4,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "baseline",
+            "seed": 701,
+            "score": 20,
+            "max_tile": 8,
+            "won": false,
+            "steps": 11,
+            "stats": {
+              "attempts": 11,
+              "valid_moves": 7,
+              "model_decisions": 11,
+              "abstained": 9,
+              "no_progress_streak": 4,
+              "model_median_ms": 64.22,
+              "model_total_ms": 712.25
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 896.3439000071958,
+            "initial_board": [
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                4,
+                2,
+                4,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                8,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "profile": "baseline",
+            "seed": 809,
+            "score": 12,
+            "max_tile": 8,
+            "won": false,
+            "steps": 8,
+            "stats": {
+              "attempts": 8,
+              "valid_moves": 4,
+              "model_decisions": 8,
+              "abstained": 3,
+              "no_progress_streak": 4,
+              "model_median_ms": 65.5,
+              "model_total_ms": 534.98
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 624.3624000344425,
+            "initial_board": [
+              [
+                0,
+                4,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                8,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                0
+              ],
+              [
+                4,
+                2,
+                0,
+                0
+              ]
+            ]
+          }
+        ],
+        "corner": [
+          {
+            "profile": "corner",
+            "seed": 101,
+            "score": 28,
+            "max_tile": 8,
+            "won": false,
+            "steps": 13,
+            "stats": {
+              "attempts": 13,
+              "valid_moves": 9,
+              "model_decisions": 13,
+              "abstained": 1,
+              "no_progress_streak": 4,
+              "model_median_ms": 100.48,
+              "model_total_ms": 1307.62
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 1492.353800102137,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                4,
+                0
+              ],
+              [
+                0,
+                4,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                4
+              ],
+              [
+                0,
+                0,
+                2,
+                8
+              ],
+              [
+                0,
+                0,
+                2,
+                8
+              ],
+              [
+                0,
+                0,
+                0,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "corner",
+            "seed": 211,
+            "score": 52,
+            "max_tile": 16,
+            "won": false,
+            "steps": 15,
+            "stats": {
+              "attempts": 15,
+              "valid_moves": 11,
+              "model_decisions": 15,
+              "abstained": 1,
+              "no_progress_streak": 4,
+              "model_median_ms": 102.05,
+              "model_total_ms": 1530.69
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 1768.685600021854,
+            "initial_board": [
+              [
+                2,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                4
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                4
+              ],
+              [
+                0,
+                2,
+                4,
+                16
+              ]
+            ]
+          },
+          {
+            "profile": "corner",
+            "seed": 307,
+            "score": 8,
+            "max_tile": 4,
+            "won": false,
+            "steps": 9,
+            "stats": {
+              "attempts": 9,
+              "valid_moves": 5,
+              "model_decisions": 9,
+              "abstained": 1,
+              "no_progress_streak": 4,
+              "model_median_ms": 100.99,
+              "model_total_ms": 908.7
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 998.6931000603363,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                4
+              ],
+              [
+                0,
+                0,
+                0,
+                4
+              ],
+              [
+                0,
+                0,
+                4,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "corner",
+            "seed": 401,
+            "score": 8,
+            "max_tile": 4,
+            "won": false,
+            "steps": 8,
+            "stats": {
+              "attempts": 8,
+              "valid_moves": 4,
+              "model_decisions": 8,
+              "abstained": 1,
+              "no_progress_streak": 4,
+              "model_median_ms": 100.25,
+              "model_total_ms": 802.16
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 950.9687999961898,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                2
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                4
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                4,
+                2,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "corner",
+            "seed": 503,
+            "score": 12,
+            "max_tile": 4,
+            "won": false,
+            "steps": 11,
+            "stats": {
+              "attempts": 11,
+              "valid_moves": 7,
+              "model_decisions": 11,
+              "abstained": 3,
+              "no_progress_streak": 4,
+              "model_median_ms": 101.14,
+              "model_total_ms": 1115.9
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 1184.8914000438526,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                4,
+                0,
+                0,
+                0
+              ],
+              [
+                4,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                4,
+                0,
+                0
+              ],
+              [
+                4,
+                2,
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "profile": "corner",
+            "seed": 601,
+            "score": 12,
+            "max_tile": 4,
+            "won": false,
+            "steps": 10,
+            "stats": {
+              "attempts": 10,
+              "valid_moves": 6,
+              "model_decisions": 10,
+              "abstained": 1,
+              "no_progress_streak": 4,
+              "model_median_ms": 102.13,
+              "model_total_ms": 1025.23
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 1076.3051999965683,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                4
+              ],
+              [
+                0,
+                0,
+                0,
+                4
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "corner",
+            "seed": 701,
+            "score": 20,
+            "max_tile": 8,
+            "won": false,
+            "steps": 9,
+            "stats": {
+              "attempts": 9,
+              "valid_moves": 5,
+              "model_decisions": 9,
+              "abstained": 1,
+              "no_progress_streak": 4,
+              "model_median_ms": 102.26,
+              "model_total_ms": 921.14
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 1086.146599962376,
+            "initial_board": [
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                4
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                8
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "profile": "corner",
+            "seed": 809,
+            "score": 0,
+            "max_tile": 4,
+            "won": false,
+            "steps": 5,
+            "stats": {
+              "attempts": 5,
+              "valid_moves": 1,
+              "model_decisions": 5,
+              "abstained": 1,
+              "no_progress_streak": 4,
+              "model_median_ms": 102.61,
+              "model_total_ms": 517.11
+            },
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "loop_wall_ms": 579.077500035055,
+            "initial_board": [
+              [
+                0,
+                4,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                4,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "decisions": 392,
+  "evidence_note": "Each decision contains its exact state_text and full response. Reconstruct questions.move with the profile instructions and unchanged criteria from criteria.json. Nothing else was sent."
+}

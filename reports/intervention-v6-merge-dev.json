@@ -1,0 +1,48 @@
+{
+  "split": "dev",
+  "checkpoint": "runs\\intervention-v6\\checkpoint",
+  "merge_accumulation": {
+    "base": {
+      "questions": 448,
+      "accuracy": 0.9107142857142857,
+      "nll": 0.3310343039348233,
+      "text_accuracy": 0.91015625,
+      "image_accuracy": 0.9114583333333334,
+      "by_family": {
+        "image_color_rule": 0.890625,
+        "image_count_rule": 0.875,
+        "image_shape_rule": 0.96875,
+        "text_conjunction": 0.9375,
+        "text_disjunction": 0.890625,
+        "text_ranges": 0.84375,
+        "text_threshold": 0.96875
+      },
+      "by_type": {
+        "choice": 0.9013157894736842,
+        "noul": 0.8958333333333334,
+        "score": 0.9342105263157895
+      }
+    },
+    "float32": {
+      "questions": 448,
+      "accuracy": 0.9084821428571429,
+      "nll": 0.3307486548635524,
+      "text_accuracy": 0.90625,
+      "image_accuracy": 0.9114583333333334,
+      "by_family": {
+        "image_color_rule": 0.890625,
+        "image_count_rule": 0.875,
+        "image_shape_rule": 0.96875,
+        "text_conjunction": 0.9375,
+        "text_disjunction": 0.875,
+        "text_ranges": 0.84375,
+        "text_threshold": 0.96875
+      },
+      "by_type": {
+        "choice": 0.9013157894736842,
+        "noul": 0.8888888888888888,
+        "score": 0.9342105263157895
+      }
+    }
+  }
+}

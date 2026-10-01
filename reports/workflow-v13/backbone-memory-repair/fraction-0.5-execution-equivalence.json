@@ -1,0 +1,12 @@
+{
+  "fraction": 0.5,
+  "stored_tensors": 307,
+  "all_tensor_values_exactly_equal": true,
+  "weight_bytes_identical": true,
+  "original_weights_sha256": "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee",
+  "retry_weights_sha256": "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee",
+  "processed_questions": 4533,
+  "optimizer_steps": 567,
+  "scope": "Execution equivalence at an existing training boundary; no model selection or accuracy claim.",
+  "release_allowed": false
+}

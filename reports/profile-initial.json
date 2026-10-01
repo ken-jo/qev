@@ -1,0 +1,49 @@
+{
+  "backbone": {
+    "model_id": "Qwen/Qwen3.5-2B",
+    "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+  },
+  "encoding": {
+    "max_total_tokens": 2048,
+    "image_max_pixels": 262144,
+    "image_min_pixels": 65536,
+    "encoding": "packed-v1"
+  },
+  "head_trained": false,
+  "scope": "JSON parsing, image decode, processing, one Qwen prefill, head, typed JSON serialization",
+  "excludes": [
+    "model loading",
+    "HTTP transport"
+  ],
+  "feature_cache": false,
+  "fixture_repeated": true,
+  "input_tokens": 255,
+  "questions": 1,
+  "warmup_requests": 2,
+  "measured_requests": 10,
+  "latency_ms": {
+    "p50": 90.19119996810332,
+    "p95": 97.75208499049768,
+    "min": 86.12280001398176,
+    "max": 99.38049997435883,
+    "samples": [
+      90.25849995668977,
+      88.1727000232786,
+      86.12280001398176,
+      91.61060000769794,
+      90.11109999846667,
+      95.76180001022294,
+      99.38049997435883,
+      94.89539999049157,
+      90.12389997951686,
+      87.02269999776036
+    ]
+  },
+  "target_ms": 300,
+  "p95_target_met": true,
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce RTX 4060 Ti",
+  "peak_allocated_mib": 4277.5029296875,
+  "peak_reserved_mib": 4288.0,
+  "torch_version": "2.10.0+cu128"
+}

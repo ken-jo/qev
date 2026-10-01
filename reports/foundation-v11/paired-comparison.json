@@ -1,0 +1,2101 @@
+{
+  "protocol": {
+    "source_sha256": "03f86cfd6114cc26fc3e0db5f3a439ca47a1faf09371da776066b72f497cea51",
+    "predictions_sha256": {
+      "veyra": "8b5cc8ef83e928d7250f53c1f3d3114b2d91981fd5ff72f2f1ed77a3f9a527a8",
+      "dynamic_v2": "e4345d8adcf2bf84ff306ea17362af29bf3d170ed533ffc68a6e39da1b28ced1",
+      "laya_base": "734d108b4f28fc8853558aefc98a7b212068d58bbee0fe59de5ad445afe6a42e",
+      "laya_specialist": "9f499d238c6865d9363381454391a94ebe76d890cf132e23729b7119b4d6dde4"
+    },
+    "direction": "Veyra Foundation minus the named reference",
+    "bootstrap": "2000 resamples of paired observation groups, seed 20260930",
+    "selection_used": false,
+    "limitation": "Descriptive marginal intervals without multiple-comparison correction; Veyra was adapted on these task families, LAYA checkpoints were not."
+  },
+  "vs_dynamic_v2": {
+    "overall": {
+      "questions": 3866,
+      "groups": 1422,
+      "accuracy": {
+        "new_minus_reference": 0.11212446351931331,
+        "paired_group_bootstrap_95_ci": [
+          0.09884853636896465,
+          0.12513650791507422
+        ],
+        "questions": 3728,
+        "groups": 1299
+      },
+      "nll": {
+        "new_minus_reference": -0.4779322788365356,
+        "paired_group_bootstrap_95_ci": [
+          -0.5210576050828157,
+          -0.43336288454535554
+        ],
+        "questions": 3866,
+        "groups": 1422
+      },
+      "brier": {
+        "new_minus_reference": -0.21142807004400002,
+        "paired_group_bootstrap_95_ci": [
+          -0.23145112761491857,
+          -0.19234915558677643
+        ],
+        "questions": 3866,
+        "groups": 1422
+      }
+    },
+    "by_domain": {
+      "image_leaf": {
+        "questions": 384,
+        "groups": 128,
+        "accuracy": {
+          "new_minus_reference": 0.020833333333333332,
+          "paired_group_bootstrap_95_ci": [
+            -0.0078125,
+            0.049479166666666664
+          ],
+          "questions": 384,
+          "groups": 128
+        },
+        "nll": {
+          "new_minus_reference": -0.044193378435430065,
+          "paired_group_bootstrap_95_ci": [
+            -0.07442221128938883,
+            -0.016509651711882886
+          ],
+          "questions": 384,
+          "groups": 128
+        },
+        "brier": {
+          "new_minus_reference": -0.024788151254621627,
+          "paired_group_bootstrap_95_ci": [
+            -0.04570652708433306,
+            -0.003989647857112834
+          ],
+          "questions": 384,
+          "groups": 128
+        }
+      },
+      "image_waste": {
+        "questions": 1221,
+        "groups": 404,
+        "accuracy": {
+          "new_minus_reference": 0.14086814086814087,
+          "paired_group_bootstrap_95_ci": [
+            0.12001516926496651,
+            0.1638005142283871
+          ],
+          "questions": 1221,
+          "groups": 404
+        },
+        "nll": {
+          "new_minus_reference": -0.6127119976621817,
+          "paired_group_bootstrap_95_ci": [
+            -0.7043482671599749,
+            -0.5303545413196176
+          ],
+          "questions": 1221,
+          "groups": 404
+        },
+        "brier": {
+          "new_minus_reference": -0.26478586861313574,
+          "paired_group_bootstrap_95_ci": [
+            -0.30228903967900084,
+            -0.23193281933420906
+          ],
+          "questions": 1221,
+          "groups": 404
+        }
+      },
+      "retention": {
+        "questions": 280,
+        "groups": 140,
+        "accuracy": {
+          "new_minus_reference": -0.014285714285714285,
+          "paired_group_bootstrap_95_ci": [
+            -0.03571428571428571,
+            0.0035714285714285713
+          ],
+          "questions": 280,
+          "groups": 140
+        },
+        "nll": {
+          "new_minus_reference": 0.07749604830227931,
+          "paired_group_bootstrap_95_ci": [
+            0.04947337882575046,
+            0.10320250217416391
+          ],
+          "questions": 280,
+          "groups": 140
+        },
+        "brier": {
+          "new_minus_reference": 0.04059540028988277,
+          "paired_group_bootstrap_95_ci": [
+            0.023821427121667075,
+            0.05784720747442258
+          ],
+          "questions": 280,
+          "groups": 140
+        }
+      },
+      "text_intent": {
+        "questions": 924,
+        "groups": 308,
+        "accuracy": {
+          "new_minus_reference": 0.02922077922077922,
+          "paired_group_bootstrap_95_ci": [
+            0.00974025974025974,
+            0.048701298701298704
+          ],
+          "questions": 924,
+          "groups": 308
+        },
+        "nll": {
+          "new_minus_reference": -0.1629450644220927,
+          "paired_group_bootstrap_95_ci": [
+            -0.19757168712219045,
+            -0.12737158436586168
+          ],
+          "questions": 924,
+          "groups": 308
+        },
+        "brier": {
+          "new_minus_reference": -0.06810499221924902,
+          "paired_group_bootstrap_95_ci": [
+            -0.08814147498517787,
+            -0.04835292745365956
+          ],
+          "questions": 924,
+          "groups": 308
+        }
+      },
+      "text_nli": {
+        "questions": 900,
+        "groups": 300,
+        "accuracy": {
+          "new_minus_reference": 0.2388888888888889,
+          "paired_group_bootstrap_95_ci": [
+            0.20444444444444446,
+            0.2722222222222222
+          ],
+          "questions": 900,
+          "groups": 300
+        },
+        "nll": {
+          "new_minus_reference": -0.9294915020097674,
+          "paired_group_bootstrap_95_ci": [
+            -1.04247950328917,
+            -0.8114911976234592
+          ],
+          "questions": 900,
+          "groups": 300
+        },
+        "brier": {
+          "new_minus_reference": -0.42098189288027527,
+          "paired_group_bootstrap_95_ci": [
+            -0.4706371153914058,
+            -0.3678688299225934
+          ],
+          "questions": 900,
+          "groups": 300
+        }
+      },
+      "uncertainty": {
+        "questions": 157,
+        "groups": 142,
+        "accuracy": {
+          "new_minus_reference": 0.0,
+          "paired_group_bootstrap_95_ci": [
+            0.0,
+            0.0
+          ],
+          "questions": 19,
+          "groups": 19
+        },
+        "nll": {
+          "new_minus_reference": -0.746432393039183,
+          "paired_group_bootstrap_95_ci": [
+            -0.819334861557078,
+            -0.6758497554156125
+          ],
+          "questions": 157,
+          "groups": 142
+        },
+        "brier": {
+          "new_minus_reference": -0.3446669987899616,
+          "paired_group_bootstrap_95_ci": [
+            -0.38864710214554676,
+            -0.3030966865634116
+          ],
+          "questions": 157,
+          "groups": 142
+        }
+      }
+    },
+    "by_type": {
+      "choice": {
+        "questions": 1238,
+        "groups": 1197,
+        "accuracy": {
+          "new_minus_reference": 0.05331179321486268,
+          "paired_group_bootstrap_95_ci": [
+            0.03762736126911317,
+            0.06980565080986428
+          ],
+          "questions": 1238,
+          "groups": 1197
+        },
+        "nll": {
+          "new_minus_reference": -0.2642035568022235,
+          "paired_group_bootstrap_95_ci": [
+            -0.307621735727288,
+            -0.22287163880818012
+          ],
+          "questions": 1238,
+          "groups": 1197
+        },
+        "brier": {
+          "new_minus_reference": -0.11285162897509257,
+          "paired_group_bootstrap_95_ci": [
+            -0.13435871525233817,
+            -0.09239037013557397
+          ],
+          "questions": 1238,
+          "groups": 1197
+        }
+      },
+      "noul": {
+        "questions": 1381,
+        "groups": 1328,
+        "accuracy": {
+          "new_minus_reference": 0.16090104585679807,
+          "paired_group_bootstrap_95_ci": [
+            0.13687410628019323,
+            0.18503992729656446
+          ],
+          "questions": 1243,
+          "groups": 1190
+        },
+        "nll": {
+          "new_minus_reference": -0.6476731394748724,
+          "paired_group_bootstrap_95_ci": [
+            -0.7257495260729876,
+            -0.5698703490442032
+          ],
+          "questions": 1381,
+          "groups": 1328
+        },
+        "brier": {
+          "new_minus_reference": -0.29760452188767034,
+          "paired_group_bootstrap_95_ci": [
+            -0.33400128463516093,
+            -0.26172910221253987
+          ],
+          "questions": 1381,
+          "groups": 1328
+        }
+      },
+      "score": {
+        "questions": 1247,
+        "groups": 1192,
+        "accuracy": {
+          "new_minus_reference": 0.1218925421010425,
+          "paired_group_bootstrap_95_ci": [
+            0.10007344880439113,
+            0.14377523016135627
+          ],
+          "questions": 1247,
+          "groups": 1192
+        },
+        "nll": {
+          "new_minus_reference": -0.5021375950650322,
+          "paired_group_bootstrap_95_ci": [
+            -0.5754783816008433,
+            -0.4283612449506807
+          ],
+          "questions": 1247,
+          "groups": 1192
+        },
+        "brier": {
+          "new_minus_reference": -0.2138562609399092,
+          "paired_group_bootstrap_95_ci": [
+            -0.24590444893976435,
+            -0.18287829614237672
+          ],
+          "questions": 1247,
+          "groups": 1192
+        }
+      }
+    },
+    "by_modality": {
+      "image": {
+        "questions": 1725,
+        "groups": 592,
+        "accuracy": {
+          "new_minus_reference": 0.1055072463768116,
+          "paired_group_bootstrap_95_ci": [
+            0.08874324566694924,
+            0.12342277741726151
+          ],
+          "questions": 1725,
+          "groups": 592
+        },
+        "nll": {
+          "new_minus_reference": -0.4423937169052033,
+          "paired_group_bootstrap_95_ci": [
+            -0.5072189691674722,
+            -0.37652417898268836
+          ],
+          "questions": 1725,
+          "groups": 592
+        },
+        "brier": {
+          "new_minus_reference": -0.19300554669383463,
+          "paired_group_bootstrap_95_ci": [
+            -0.2198383253204357,
+            -0.16563990870852738
+          ],
+          "questions": 1725,
+          "groups": 592
+        }
+      },
+      "text": {
+        "questions": 2141,
+        "groups": 830,
+        "accuracy": {
+          "new_minus_reference": 0.11782326510234647,
+          "paired_group_bootstrap_95_ci": [
+            0.09815376671893494,
+            0.1377100420888249
+          ],
+          "questions": 2003,
+          "groups": 707
+        },
+        "nll": {
+          "new_minus_reference": -0.5065656367681322,
+          "paired_group_bootstrap_95_ci": [
+            -0.5661461716268502,
+            -0.4496834256605578
+          ],
+          "questions": 2141,
+          "groups": 830
+        },
+        "brier": {
+          "new_minus_reference": -0.22627106527007912,
+          "paired_group_bootstrap_95_ci": [
+            -0.25320552817209696,
+            -0.20072775297626366
+          ],
+          "questions": 2141,
+          "groups": 830
+        }
+      }
+    },
+    "by_scope": {
+      "fresh": {
+        "questions": 3165,
+        "groups": 1132,
+        "accuracy": {
+          "new_minus_reference": 0.13596059113300493,
+          "paired_group_bootstrap_95_ci": [
+            0.12064360991352141,
+            0.1518782367058229
+          ],
+          "questions": 3045,
+          "groups": 1012
+        },
+        "nll": {
+          "new_minus_reference": -0.5760692807537592,
+          "paired_group_bootstrap_95_ci": [
+            -0.630588975946453,
+            -0.5233212158412289
+          ],
+          "questions": 3165,
+          "groups": 1132
+        },
+        "brier": {
+          "new_minus_reference": -0.2562372864851613,
+          "paired_group_bootstrap_95_ci": [
+            -0.279712277594998,
+            -0.2338122562229976
+          ],
+          "questions": 3165,
+          "groups": 1132
+        }
+      },
+      "legacy_regression": {
+        "questions": 701,
+        "groups": 290,
+        "accuracy": {
+          "new_minus_reference": 0.005856515373352855,
+          "paired_group_bootstrap_95_ci": [
+            -0.011922948595324421,
+            0.023532892446919577
+          ],
+          "questions": 683,
+          "groups": 287
+        },
+        "nll": {
+          "new_minus_reference": -0.03484581511611797,
+          "paired_group_bootstrap_95_ci": [
+            -0.06352221940600826,
+            -0.009176551567956432
+          ],
+          "questions": 701,
+          "groups": 290
+        },
+        "brier": {
+          "new_minus_reference": -0.009115416639897842,
+          "paired_group_bootstrap_95_ci": [
+            -0.024082985774873153,
+            0.005498310779826455
+          ],
+          "questions": 701,
+          "groups": 290
+        }
+      }
+    },
+    "by_domain_view": {
+      "image_leaf/legacy": {
+        "questions": 384,
+        "groups": 128,
+        "accuracy": {
+          "new_minus_reference": 0.020833333333333332,
+          "paired_group_bootstrap_95_ci": [
+            -0.0078125,
+            0.049479166666666664
+          ],
+          "questions": 384,
+          "groups": 128
+        },
+        "nll": {
+          "new_minus_reference": -0.044193378435430065,
+          "paired_group_bootstrap_95_ci": [
+            -0.07442221128938883,
+            -0.016509651711882886
+          ],
+          "questions": 384,
+          "groups": 128
+        },
+        "brier": {
+          "new_minus_reference": -0.024788151254621627,
+          "paired_group_bootstrap_95_ci": [
+            -0.04570652708433306,
+            -0.003989647857112834
+          ],
+          "questions": 384,
+          "groups": 128
+        }
+      },
+      "image_waste/policy": {
+        "questions": 407,
+        "groups": 404,
+        "accuracy": {
+          "new_minus_reference": 0.171990171990172,
+          "paired_group_bootstrap_95_ci": [
+            0.13299675627261834,
+            0.21428571428571427
+          ],
+          "questions": 407,
+          "groups": 404
+        },
+        "nll": {
+          "new_minus_reference": -0.7549990992340289,
+          "paired_group_bootstrap_95_ci": [
+            -0.9189549071733255,
+            -0.6094338730057136
+          ],
+          "questions": 407,
+          "groups": 404
+        },
+        "brier": {
+          "new_minus_reference": -0.30916176107662596,
+          "paired_group_bootstrap_95_ci": [
+            -0.37588194037292233,
+            -0.2504983485763443
+          ],
+          "questions": 407,
+          "groups": 404
+        }
+      },
+      "image_waste/proposition": {
+        "questions": 407,
+        "groups": 404,
+        "accuracy": {
+          "new_minus_reference": 0.19656019656019655,
+          "paired_group_bootstrap_95_ci": [
+            0.15196078431372548,
+            0.24324324324324326
+          ],
+          "questions": 407,
+          "groups": 404
+        },
+        "nll": {
+          "new_minus_reference": -0.7521006122312579,
+          "paired_group_bootstrap_95_ci": [
+            -0.9133634236874831,
+            -0.6060998655107652
+          ],
+          "questions": 407,
+          "groups": 404
+        },
+        "brier": {
+          "new_minus_reference": -0.3572579257771586,
+          "paired_group_bootstrap_95_ci": [
+            -0.4312901062087235,
+            -0.2886229839884043
+          ],
+          "questions": 407,
+          "groups": 404
+        }
+      },
+      "image_waste/recognition": {
+        "questions": 407,
+        "groups": 404,
+        "accuracy": {
+          "new_minus_reference": 0.05405405405405406,
+          "paired_group_bootstrap_95_ci": [
+            0.02702702702702703,
+            0.0812807881773399
+          ],
+          "questions": 407,
+          "groups": 404
+        },
+        "nll": {
+          "new_minus_reference": -0.33103628152125814,
+          "paired_group_bootstrap_95_ci": [
+            -0.4144485966176546,
+            -0.2501880378049837
+          ],
+          "questions": 407,
+          "groups": 404
+        },
+        "brier": {
+          "new_minus_reference": -0.12793791898562268,
+          "paired_group_bootstrap_95_ci": [
+            -0.16675709873527889,
+            -0.0898576712407216
+          ],
+          "questions": 407,
+          "groups": 404
+        }
+      },
+      "retention/legacy": {
+        "questions": 280,
+        "groups": 140,
+        "accuracy": {
+          "new_minus_reference": -0.014285714285714285,
+          "paired_group_bootstrap_95_ci": [
+            -0.03571428571428571,
+            0.0035714285714285713
+          ],
+          "questions": 280,
+          "groups": 140
+        },
+        "nll": {
+          "new_minus_reference": 0.07749604830227931,
+          "paired_group_bootstrap_95_ci": [
+            0.04947337882575046,
+            0.10320250217416391
+          ],
+          "questions": 280,
+          "groups": 140
+        },
+        "brier": {
+          "new_minus_reference": 0.04059540028988277,
+          "paired_group_bootstrap_95_ci": [
+            0.023821427121667075,
+            0.05784720747442258
+          ],
+          "questions": 280,
+          "groups": 140
+        }
+      },
+      "text_intent/policy": {
+        "questions": 308,
+        "groups": 308,
+        "accuracy": {
+          "new_minus_reference": 0.045454545454545456,
+          "paired_group_bootstrap_95_ci": [
+            0.016233766233766232,
+            0.07792207792207792
+          ],
+          "questions": 308,
+          "groups": 308
+        },
+        "nll": {
+          "new_minus_reference": -0.13816495947856108,
+          "paired_group_bootstrap_95_ci": [
+            -0.19499329147099378,
+            -0.08478458987788427
+          ],
+          "questions": 308,
+          "groups": 308
+        },
+        "brier": {
+          "new_minus_reference": -0.0641510424016952,
+          "paired_group_bootstrap_95_ci": [
+            -0.09272875412232552,
+            -0.03685413954230489
+          ],
+          "questions": 308,
+          "groups": 308
+        }
+      },
+      "text_intent/proposition": {
+        "questions": 308,
+        "groups": 308,
+        "accuracy": {
+          "new_minus_reference": 0.032467532467532464,
+          "paired_group_bootstrap_95_ci": [
+            -0.00974025974025974,
+            0.06826298701298657
+          ],
+          "questions": 308,
+          "groups": 308
+        },
+        "nll": {
+          "new_minus_reference": -0.12173591671029582,
+          "paired_group_bootstrap_95_ci": [
+            -0.1912600398172908,
+            -0.05334920305104915
+          ],
+          "questions": 308,
+          "groups": 308
+        },
+        "brier": {
+          "new_minus_reference": -0.061022229156749354,
+          "paired_group_bootstrap_95_ci": [
+            -0.10543274659474894,
+            -0.016806570138115054
+          ],
+          "questions": 308,
+          "groups": 308
+        }
+      },
+      "text_intent/recognition": {
+        "questions": 308,
+        "groups": 308,
+        "accuracy": {
+          "new_minus_reference": 0.00974025974025974,
+          "paired_group_bootstrap_95_ci": [
+            -0.013068181818181814,
+            0.03571428571428571
+          ],
+          "questions": 308,
+          "groups": 308
+        },
+        "nll": {
+          "new_minus_reference": -0.22893431707742115,
+          "paired_group_bootstrap_95_ci": [
+            -0.2954943570232938,
+            -0.16142833686918068
+          ],
+          "questions": 308,
+          "groups": 308
+        },
+        "brier": {
+          "new_minus_reference": -0.07914170509930256,
+          "paired_group_bootstrap_95_ci": [
+            -0.10589216118095554,
+            -0.0522015726540697
+          ],
+          "questions": 308,
+          "groups": 308
+        }
+      },
+      "text_nli/policy": {
+        "questions": 300,
+        "groups": 300,
+        "accuracy": {
+          "new_minus_reference": 0.21666666666666667,
+          "paired_group_bootstrap_95_ci": [
+            0.15666666666666668,
+            0.27
+          ],
+          "questions": 300,
+          "groups": 300
+        },
+        "nll": {
+          "new_minus_reference": -0.9106093943547791,
+          "paired_group_bootstrap_95_ci": [
+            -1.09927421707626,
+            -0.7112669162571437
+          ],
+          "questions": 300,
+          "groups": 300
+        },
+        "brier": {
+          "new_minus_reference": -0.3955587852467448,
+          "paired_group_bootstrap_95_ci": [
+            -0.4805905171805998,
+            -0.30691226644396996
+          ],
+          "questions": 300,
+          "groups": 300
+        }
+      },
+      "text_nli/proposition": {
+        "questions": 300,
+        "groups": 300,
+        "accuracy": {
+          "new_minus_reference": 0.36666666666666664,
+          "paired_group_bootstrap_95_ci": [
+            0.30666666666666664,
+            0.4266666666666667
+          ],
+          "questions": 300,
+          "groups": 300
+        },
+        "nll": {
+          "new_minus_reference": -1.478333095942085,
+          "paired_group_bootstrap_95_ci": [
+            -1.7164514617492719,
+            -1.2354190206169358
+          ],
+          "questions": 300,
+          "groups": 300
+        },
+        "brier": {
+          "new_minus_reference": -0.6552531653661267,
+          "paired_group_bootstrap_95_ci": [
+            -0.7535867244722444,
+            -0.5489130232343501
+          ],
+          "questions": 300,
+          "groups": 300
+        }
+      },
+      "text_nli/recognition": {
+        "questions": 300,
+        "groups": 300,
+        "accuracy": {
+          "new_minus_reference": 0.13333333333333333,
+          "paired_group_bootstrap_95_ci": [
+            0.08666666666666667,
+            0.18333333333333332
+          ],
+          "questions": 300,
+          "groups": 300
+        },
+        "nll": {
+          "new_minus_reference": -0.399532015732438,
+          "paired_group_bootstrap_95_ci": [
+            -0.5036732008479362,
+            -0.29724233993664867
+          ],
+          "questions": 300,
+          "groups": 300
+        },
+        "brier": {
+          "new_minus_reference": -0.21213372802795424,
+          "paired_group_bootstrap_95_ci": [
+            -0.2694186946013517,
+            -0.1568014253903454
+          ],
+          "questions": 300,
+          "groups": 300
+        }
+      },
+      "uncertainty/legacy": {
+        "questions": 37,
+        "groups": 22,
+        "accuracy": {
+          "new_minus_reference": 0.0,
+          "paired_group_bootstrap_95_ci": [
+            0.0,
+            0.0
+          ],
+          "questions": 19,
+          "groups": 19
+        },
+        "nll": {
+          "new_minus_reference": -0.7879879081576153,
+          "paired_group_bootstrap_95_ci": [
+            -0.913849187493664,
+            -0.6647350386375613
+          ],
+          "questions": 37,
+          "groups": 22
+        },
+        "brier": {
+          "new_minus_reference": -0.2226478125394826,
+          "paired_group_bootstrap_95_ci": [
+            -0.25527370036383196,
+            -0.18968884305199873
+          ],
+          "questions": 37,
+          "groups": 22
+        }
+      },
+      "uncertainty/partial_evidence": {
+        "questions": 120,
+        "groups": 120,
+        "nll": {
+          "new_minus_reference": -0.733619442544333,
+          "paired_group_bootstrap_95_ci": [
+            -0.8220891826766453,
+            -0.6504211758134224
+          ],
+          "questions": 120,
+          "groups": 120
+        },
+        "brier": {
+          "new_minus_reference": -0.38228958121719264,
+          "paired_group_bootstrap_95_ci": [
+            -0.43310456471403547,
+            -0.33025257692284643
+          ],
+          "questions": 120,
+          "groups": 120
+        }
+      }
+    }
+  },
+  "vs_laya_base_text": {
+    "overall": {
+      "questions": 2141,
+      "groups": 830,
+      "accuracy": {
+        "new_minus_reference": 0.21767348976535197,
+        "paired_group_bootstrap_95_ci": [
+          0.19325416385633562,
+          0.24373455870867483
+        ],
+        "questions": 2003,
+        "groups": 707
+      },
+      "nll": {
+        "new_minus_reference": -0.4403308782828623,
+        "paired_group_bootstrap_95_ci": [
+          -0.487278040756997,
+          -0.3945968009106446
+        ],
+        "questions": 2141,
+        "groups": 830
+      },
+      "brier": {
+        "new_minus_reference": -0.27535718413846555,
+        "paired_group_bootstrap_95_ci": [
+          -0.30345151001399595,
+          -0.2486070263301098
+        ],
+        "questions": 2141,
+        "groups": 830
+      }
+    },
+    "by_domain": {
+      "retention": {
+        "questions": 160,
+        "groups": 80,
+        "accuracy": {
+          "new_minus_reference": 0.44375,
+          "paired_group_bootstrap_95_ci": [
+            0.36875,
+            0.51875
+          ],
+          "questions": 160,
+          "groups": 80
+        },
+        "nll": {
+          "new_minus_reference": -0.6129349020466925,
+          "paired_group_bootstrap_95_ci": [
+            -0.6918285098244362,
+            -0.5377039371365253
+          ],
+          "questions": 160,
+          "groups": 80
+        },
+        "brier": {
+          "new_minus_reference": -0.4628297802738297,
+          "paired_group_bootstrap_95_ci": [
+            -0.521220100974044,
+            -0.4030139342601093
+          ],
+          "questions": 160,
+          "groups": 80
+        }
+      },
+      "text_intent": {
+        "questions": 924,
+        "groups": 308,
+        "accuracy": {
+          "new_minus_reference": 0.1634199134199134,
+          "paired_group_bootstrap_95_ci": [
+            0.1277056277056277,
+            0.19805194805194806
+          ],
+          "questions": 924,
+          "groups": 308
+        },
+        "nll": {
+          "new_minus_reference": -0.3234628784192116,
+          "paired_group_bootstrap_95_ci": [
+            -0.3900230909624505,
+            -0.25236287021578774
+          ],
+          "questions": 924,
+          "groups": 308
+        },
+        "brier": {
+          "new_minus_reference": -0.1965114224844013,
+          "paired_group_bootstrap_95_ci": [
+            -0.23451186721369616,
+            -0.1553229054041753
+          ],
+          "questions": 924,
+          "groups": 308
+        }
+      },
+      "text_nli": {
+        "questions": 900,
+        "groups": 300,
+        "accuracy": {
+          "new_minus_reference": 0.22777777777777777,
+          "paired_group_bootstrap_95_ci": [
+            0.18775,
+            0.26555555555555554
+          ],
+          "questions": 900,
+          "groups": 300
+        },
+        "nll": {
+          "new_minus_reference": -0.5359421792150797,
+          "paired_group_bootstrap_95_ci": [
+            -0.6170915447393358,
+            -0.45515444048782683
+          ],
+          "questions": 900,
+          "groups": 300
+        },
+        "brier": {
+          "new_minus_reference": -0.3203246192090399,
+          "paired_group_bootstrap_95_ci": [
+            -0.36547257270108885,
+            -0.27248361168224694
+          ],
+          "questions": 900,
+          "groups": 300
+        }
+      },
+      "uncertainty": {
+        "questions": 157,
+        "groups": 142,
+        "accuracy": {
+          "new_minus_reference": 0.47368421052631576,
+          "paired_group_bootstrap_95_ci": [
+            0.2631578947368421,
+            0.6842105263157895
+          ],
+          "questions": 19,
+          "groups": 19
+        },
+        "nll": {
+          "new_minus_reference": -0.4041475485555038,
+          "paired_group_bootstrap_95_ci": [
+            -0.468569684084315,
+            -0.3387875771950935
+          ],
+          "questions": 157,
+          "groups": 142
+        },
+        "brier": {
+          "new_minus_reference": -0.2905621320568108,
+          "paired_group_bootstrap_95_ci": [
+            -0.33923518764648514,
+            -0.24196337344709887
+          ],
+          "questions": 157,
+          "groups": 142
+        }
+      }
+    },
+    "by_type": {
+      "choice": {
+        "questions": 671,
+        "groups": 649,
+        "accuracy": {
+          "new_minus_reference": 0.10432190760059612,
+          "paired_group_bootstrap_95_ci": [
+            0.07004470938897168,
+            0.1396404762860929
+          ],
+          "questions": 671,
+          "groups": 649
+        },
+        "nll": {
+          "new_minus_reference": -0.28243500612708183,
+          "paired_group_bootstrap_95_ci": [
+            -0.3448317011636562,
+            -0.22002019574628712
+          ],
+          "questions": 671,
+          "groups": 649
+        },
+        "brier": {
+          "new_minus_reference": -0.15593043867157982,
+          "paired_group_bootstrap_95_ci": [
+            -0.1873805490146129,
+            -0.1222712388257026
+          ],
+          "questions": 671,
+          "groups": 649
+        }
+      },
+      "noul": {
+        "questions": 802,
+        "groups": 774,
+        "accuracy": {
+          "new_minus_reference": 0.19126506024096385,
+          "paired_group_bootstrap_95_ci": [
+            0.15076506024096387,
+            0.2328368431813535
+          ],
+          "questions": 664,
+          "groups": 636
+        },
+        "nll": {
+          "new_minus_reference": -0.4261167726772369,
+          "paired_group_bootstrap_95_ci": [
+            -0.4991062077170431,
+            -0.35421278371676773
+          ],
+          "questions": 802,
+          "groups": 774
+        },
+        "brier": {
+          "new_minus_reference": -0.27360073312346783,
+          "paired_group_bootstrap_95_ci": [
+            -0.3171005811581443,
+            -0.22960475085151136
+          ],
+          "questions": 802,
+          "groups": 774
+        }
+      },
+      "score": {
+        "questions": 668,
+        "groups": 638,
+        "accuracy": {
+          "new_minus_reference": 0.35778443113772457,
+          "paired_group_bootstrap_95_ci": [
+            0.3133361546229852,
+            0.40090831849813885
+          ],
+          "questions": 668,
+          "groups": 638
+        },
+        "nll": {
+          "new_minus_reference": -0.61600130180418,
+          "paired_group_bootstrap_95_ci": [
+            -0.6889502341746226,
+            -0.5432336133713918
+          ],
+          "questions": 668,
+          "groups": 638
+        },
+        "brier": {
+          "new_minus_reference": -0.39742907024970586,
+          "paired_group_bootstrap_95_ci": [
+            -0.44275887612292386,
+            -0.3509947160988661
+          ],
+          "questions": 668,
+          "groups": 638
+        }
+      }
+    },
+    "by_modality": {
+      "text": {
+        "questions": 2141,
+        "groups": 830,
+        "accuracy": {
+          "new_minus_reference": 0.21767348976535197,
+          "paired_group_bootstrap_95_ci": [
+            0.19325416385633562,
+            0.24373455870867483
+          ],
+          "questions": 2003,
+          "groups": 707
+        },
+        "nll": {
+          "new_minus_reference": -0.4403308782828623,
+          "paired_group_bootstrap_95_ci": [
+            -0.487278040756997,
+            -0.3945968009106446
+          ],
+          "questions": 2141,
+          "groups": 830
+        },
+        "brier": {
+          "new_minus_reference": -0.27535718413846555,
+          "paired_group_bootstrap_95_ci": [
+            -0.30345151001399595,
+            -0.2486070263301098
+          ],
+          "questions": 2141,
+          "groups": 830
+        }
+      }
+    },
+    "by_scope": {
+      "fresh": {
+        "questions": 1944,
+        "groups": 728,
+        "accuracy": {
+          "new_minus_reference": 0.19517543859649122,
+          "paired_group_bootstrap_95_ci": [
+            0.16994243421052632,
+            0.2225877192982456
+          ],
+          "questions": 1824,
+          "groups": 608
+        },
+        "nll": {
+          "new_minus_reference": -0.42305654251844277,
+          "paired_group_bootstrap_95_ci": [
+            -0.4741951644791318,
+            -0.3740927418800284
+          ],
+          "questions": 1944,
+          "groups": 728
+        },
+        "brier": {
+          "new_minus_reference": -0.25832139320991654,
+          "paired_group_bootstrap_95_ci": [
+            -0.28910720222835157,
+            -0.230516701082602
+          ],
+          "questions": 1944,
+          "groups": 728
+        }
+      },
+      "legacy_regression": {
+        "questions": 197,
+        "groups": 102,
+        "accuracy": {
+          "new_minus_reference": 0.44692737430167595,
+          "paired_group_bootstrap_95_ci": [
+            0.3722062841530055,
+            0.5195530726256983
+          ],
+          "questions": 179,
+          "groups": 99
+        },
+        "nll": {
+          "new_minus_reference": -0.6107943743540882,
+          "paired_group_bootstrap_95_ci": [
+            -0.6786448519428575,
+            -0.5482810064400435
+          ],
+          "questions": 197,
+          "groups": 102
+        },
+        "brier": {
+          "new_minus_reference": -0.44346671492577167,
+          "paired_group_bootstrap_95_ci": [
+            -0.49410746849675957,
+            -0.3965059146446049
+          ],
+          "questions": 197,
+          "groups": 102
+        }
+      }
+    },
+    "by_domain_view": {
+      "retention/legacy": {
+        "questions": 160,
+        "groups": 80,
+        "accuracy": {
+          "new_minus_reference": 0.44375,
+          "paired_group_bootstrap_95_ci": [
+            0.36875,
+            0.51875
+          ],
+          "questions": 160,
+          "groups": 80
+        },
+        "nll": {
+          "new_minus_reference": -0.6129349020466925,
+          "paired_group_bootstrap_95_ci": [
+            -0.6918285098244362,
+            -0.5377039371365253
+          ],
+          "questions": 160,
+          "groups": 80
+        },
+        "brier": {
+          "new_minus_reference": -0.4628297802738297,
+          "paired_group_bootstrap_95_ci": [
+            -0.521220100974044,
+            -0.4030139342601093
+          ],
+          "questions": 160,
+          "groups": 80
+        }
+      },
+      "text_intent/policy": {
+        "questions": 308,
+        "groups": 308,
+        "accuracy": {
+          "new_minus_reference": 0.3051948051948052,
+          "paired_group_bootstrap_95_ci": [
+            0.24017857142857144,
+            0.37012987012987014
+          ],
+          "questions": 308,
+          "groups": 308
+        },
+        "nll": {
+          "new_minus_reference": -0.5991853995179791,
+          "paired_group_bootstrap_95_ci": [
+            -0.71586153683078,
+            -0.47432290646962544
+          ],
+          "questions": 308,
+          "groups": 308
+        },
+        "brier": {
+          "new_minus_reference": -0.3623114273076408,
+          "paired_group_bootstrap_95_ci": [
+            -0.430108165788108,
+            -0.2930616436545986
+          ],
+          "questions": 308,
+          "groups": 308
+        }
+      },
+      "text_intent/proposition": {
+        "questions": 308,
+        "groups": 308,
+        "accuracy": {
+          "new_minus_reference": 0.08116883116883117,
+          "paired_group_bootstrap_95_ci": [
+            0.02922077922077922,
+            0.1331168831168831
+          ],
+          "questions": 308,
+          "groups": 308
+        },
+        "nll": {
+          "new_minus_reference": -0.11965983944364152,
+          "paired_group_bootstrap_95_ci": [
+            -0.19072366316534414,
+            -0.048295030752115026
+          ],
+          "questions": 308,
+          "groups": 308
+        },
+        "brier": {
+          "new_minus_reference": -0.09358849241288997,
+          "paired_group_bootstrap_95_ci": [
+            -0.14700844109245986,
+            -0.04145991761703795
+          ],
+          "questions": 308,
+          "groups": 308
+        }
+      },
+      "text_intent/recognition": {
+        "questions": 308,
+        "groups": 308,
+        "accuracy": {
+          "new_minus_reference": 0.1038961038961039,
+          "paired_group_bootstrap_95_ci": [
+            0.05844155844155844,
+            0.1525974025974026
+          ],
+          "questions": 308,
+          "groups": 308
+        },
+        "nll": {
+          "new_minus_reference": -0.2515433962960143,
+          "paired_group_bootstrap_95_ci": [
+            -0.3582156646731208,
+            -0.13835266351004158
+          ],
+          "questions": 308,
+          "groups": 308
+        },
+        "brier": {
+          "new_minus_reference": -0.13363434773267308,
+          "paired_group_bootstrap_95_ci": [
+            -0.18388957844406215,
+            -0.08089734830663133
+          ],
+          "questions": 308,
+          "groups": 308
+        }
+      },
+      "text_nli/policy": {
+        "questions": 300,
+        "groups": 300,
+        "accuracy": {
+          "new_minus_reference": 0.41,
+          "paired_group_bootstrap_95_ci": [
+            0.34,
+            0.47333333333333333
+          ],
+          "questions": 300,
+          "groups": 300
+        },
+        "nll": {
+          "new_minus_reference": -0.6440915756019753,
+          "paired_group_bootstrap_95_ci": [
+            -0.7442782159716926,
+            -0.5407239187234271
+          ],
+          "questions": 300,
+          "groups": 300
+        },
+        "brier": {
+          "new_minus_reference": -0.43174803285426644,
+          "paired_group_bootstrap_95_ci": [
+            -0.4977061974285525,
+            -0.3638544854312515
+          ],
+          "questions": 300,
+          "groups": 300
+        }
+      },
+      "text_nli/proposition": {
+        "questions": 300,
+        "groups": 300,
+        "accuracy": {
+          "new_minus_reference": 0.25,
+          "paired_group_bootstrap_95_ci": [
+            0.18666666666666668,
+            0.31333333333333335
+          ],
+          "questions": 300,
+          "groups": 300
+        },
+        "nll": {
+          "new_minus_reference": -0.7321212343134528,
+          "paired_group_bootstrap_95_ci": [
+            -0.9158154215998787,
+            -0.5670377857057867
+          ],
+          "questions": 300,
+          "groups": 300
+        },
+        "brier": {
+          "new_minus_reference": -0.4146913893312371,
+          "paired_group_bootstrap_95_ci": [
+            -0.5087103932584272,
+            -0.31959430390493715
+          ],
+          "questions": 300,
+          "groups": 300
+        }
+      },
+      "text_nli/recognition": {
+        "questions": 300,
+        "groups": 300,
+        "accuracy": {
+          "new_minus_reference": 0.023333333333333334,
+          "paired_group_bootstrap_95_ci": [
+            -0.023333333333333334,
+            0.06666666666666667
+          ],
+          "questions": 300,
+          "groups": 300
+        },
+        "nll": {
+          "new_minus_reference": -0.23161372772981095,
+          "paired_group_bootstrap_95_ci": [
+            -0.3094724148499791,
+            -0.1534466937807829
+          ],
+          "questions": 300,
+          "groups": 300
+        },
+        "brier": {
+          "new_minus_reference": -0.1145344354416162,
+          "paired_group_bootstrap_95_ci": [
+            -0.16136511588848354,
+            -0.06576156318683725
+          ],
+          "questions": 300,
+          "groups": 300
+        }
+      },
+      "uncertainty/legacy": {
+        "questions": 37,
+        "groups": 22,
+        "accuracy": {
+          "new_minus_reference": 0.47368421052631576,
+          "paired_group_bootstrap_95_ci": [
+            0.2631578947368421,
+            0.6842105263157895
+          ],
+          "questions": 19,
+          "groups": 19
+        },
+        "nll": {
+          "new_minus_reference": -0.60153803838607,
+          "paired_group_bootstrap_95_ci": [
+            -0.6811850694007058,
+            -0.516618079864048
+          ],
+          "questions": 37,
+          "groups": 22
+        },
+        "brier": {
+          "new_minus_reference": -0.359734540447683,
+          "paired_group_bootstrap_95_ci": [
+            -0.4132879674734556,
+            -0.30295564325475893
+          ],
+          "questions": 37,
+          "groups": 22
+        }
+      },
+      "uncertainty/partial_evidence": {
+        "questions": 120,
+        "groups": 120,
+        "nll": {
+          "new_minus_reference": -0.34328548085774585,
+          "paired_group_bootstrap_95_ci": [
+            -0.41754689120969307,
+            -0.26886890607480984
+          ],
+          "questions": 120,
+          "groups": 120
+        },
+        "brier": {
+          "new_minus_reference": -0.2692339728029585,
+          "paired_group_bootstrap_95_ci": [
+            -0.32819682193328886,
+            -0.2098377832844268
+          ],
+          "questions": 120,
+          "groups": 120
+        }
+      }
+    }
+  },
+  "vs_laya_specialist_text": {
+    "overall": {
+      "questions": 2141,
+      "groups": 830,
+      "accuracy": {
+        "new_minus_reference": 0.17024463305042437,
+        "paired_group_bootstrap_95_ci": [
+          0.14628057913130305,
+          0.19461320743435745
+        ],
+        "questions": 2003,
+        "groups": 707
+      },
+      "nll": {
+        "new_minus_reference": -0.3548814132141925,
+        "paired_group_bootstrap_95_ci": [
+          -0.392755885324944,
+          -0.3151367779930126
+        ],
+        "questions": 2141,
+        "groups": 830
+      },
+      "brier": {
+        "new_minus_reference": -0.22793799217115301,
+        "paired_group_bootstrap_95_ci": [
+          -0.2520675777257749,
+          -0.20281752325170588
+        ],
+        "questions": 2141,
+        "groups": 830
+      }
+    },
+    "by_domain": {
+      "retention": {
+        "questions": 160,
+        "groups": 80,
+        "accuracy": {
+          "new_minus_reference": 0.45,
+          "paired_group_bootstrap_95_ci": [
+            0.38125,
+            0.51875
+          ],
+          "questions": 160,
+          "groups": 80
+        },
+        "nll": {
+          "new_minus_reference": -0.5688855482347346,
+          "paired_group_bootstrap_95_ci": [
+            -0.6242526708034177,
+            -0.5169072108576253
+          ],
+          "questions": 160,
+          "groups": 80
+        },
+        "brier": {
+          "new_minus_reference": -0.43716167102533776,
+          "paired_group_bootstrap_95_ci": [
+            -0.478937470996945,
+            -0.3954790359105692
+          ],
+          "questions": 160,
+          "groups": 80
+        }
+      },
+      "text_intent": {
+        "questions": 924,
+        "groups": 308,
+        "accuracy": {
+          "new_minus_reference": 0.13852813852813853,
+          "paired_group_bootstrap_95_ci": [
+            0.1038961038961039,
+            0.17207792207792208
+          ],
+          "questions": 924,
+          "groups": 308
+        },
+        "nll": {
+          "new_minus_reference": -0.34640460602387657,
+          "paired_group_bootstrap_95_ci": [
+            -0.40547826645300683,
+            -0.28121029436185624
+          ],
+          "questions": 924,
+          "groups": 308
+        },
+        "brier": {
+          "new_minus_reference": -0.19967871326134992,
+          "paired_group_bootstrap_95_ci": [
+            -0.23278067107915018,
+            -0.16437095510116673
+          ],
+          "questions": 924,
+          "groups": 308
+        }
+      },
+      "text_nli": {
+        "questions": 900,
+        "groups": 300,
+        "accuracy": {
+          "new_minus_reference": 0.15333333333333332,
+          "paired_group_bootstrap_95_ci": [
+            0.11663888888888889,
+            0.19
+          ],
+          "questions": 900,
+          "groups": 300
+        },
+        "nll": {
+          "new_minus_reference": -0.35392641637085487,
+          "paired_group_bootstrap_95_ci": [
+            -0.4185249083662839,
+            -0.2872370094553681
+          ],
+          "questions": 900,
+          "groups": 300
+        },
+        "brier": {
+          "new_minus_reference": -0.23405801500170767,
+          "paired_group_bootstrap_95_ci": [
+            -0.27835481006629165,
+            -0.18939489575861246
+          ],
+          "questions": 900,
+          "groups": 300
+        }
+      },
+      "uncertainty": {
+        "questions": 157,
+        "groups": 142,
+        "accuracy": {
+          "new_minus_reference": 0.15789473684210525,
+          "paired_group_bootstrap_95_ci": [
+            0.0,
+            0.3157894736842105
+          ],
+          "questions": 19,
+          "groups": 19
+        },
+        "nll": {
+          "new_minus_reference": -0.1921515113006191,
+          "paired_group_bootstrap_95_ci": [
+            -0.23211341834304153,
+            -0.15597835883159042
+          ],
+          "questions": 157,
+          "groups": 142
+        },
+        "brier": {
+          "new_minus_reference": -0.14594923133350537,
+          "paired_group_bootstrap_95_ci": [
+            -0.1718352294916309,
+            -0.12189270186133537
+          ],
+          "questions": 157,
+          "groups": 142
+        }
+      }
+    },
+    "by_type": {
+      "choice": {
+        "questions": 671,
+        "groups": 649,
+        "accuracy": {
+          "new_minus_reference": 0.06110283159463487,
+          "paired_group_bootstrap_95_ci": [
+            0.02702601402001702,
+            0.09453471196454949
+          ],
+          "questions": 671,
+          "groups": 649
+        },
+        "nll": {
+          "new_minus_reference": -0.3588102437055382,
+          "paired_group_bootstrap_95_ci": [
+            -0.4135367385691597,
+            -0.30116823503942186
+          ],
+          "questions": 671,
+          "groups": 649
+        },
+        "brier": {
+          "new_minus_reference": -0.18251080594051453,
+          "paired_group_bootstrap_95_ci": [
+            -0.21172875132201005,
+            -0.15219679481839452
+          ],
+          "questions": 671,
+          "groups": 649
+        }
+      },
+      "noul": {
+        "questions": 802,
+        "groups": 774,
+        "accuracy": {
+          "new_minus_reference": 0.1852409638554217,
+          "paired_group_bootstrap_95_ci": [
+            0.14479638009049775,
+            0.22700971135689235
+          ],
+          "questions": 664,
+          "groups": 636
+        },
+        "nll": {
+          "new_minus_reference": -0.26354419740221424,
+          "paired_group_bootstrap_95_ci": [
+            -0.30972018628384534,
+            -0.21556363679092558
+          ],
+          "questions": 802,
+          "groups": 774
+        },
+        "brier": {
+          "new_minus_reference": -0.20865544269461464,
+          "paired_group_bootstrap_95_ci": [
+            -0.24380468975806383,
+            -0.17242104107538178
+          ],
+          "questions": 802,
+          "groups": 774
+        }
+      },
+      "score": {
+        "questions": 668,
+        "groups": 638,
+        "accuracy": {
+          "new_minus_reference": 0.26497005988023953,
+          "paired_group_bootstrap_95_ci": [
+            0.2228744595515535,
+            0.3068918328245174
+          ],
+          "questions": 668,
+          "groups": 638
+        },
+        "nll": {
+          "new_minus_reference": -0.4605942901925063,
+          "paired_group_bootstrap_95_ci": [
+            -0.5131961992928956,
+            -0.4059042805372044
+          ],
+          "questions": 668,
+          "groups": 638
+        },
+        "brier": {
+          "new_minus_reference": -0.2967197985198689,
+          "paired_group_bootstrap_95_ci": [
+            -0.33097681443588645,
+            -0.2610309239843418
+          ],
+          "questions": 668,
+          "groups": 638
+        }
+      }
+    },
+    "by_modality": {
+      "text": {
+        "questions": 2141,
+        "groups": 830,
+        "accuracy": {
+          "new_minus_reference": 0.17024463305042437,
+          "paired_group_bootstrap_95_ci": [
+            0.14628057913130305,
+            0.19461320743435745
+          ],
+          "questions": 2003,
+          "groups": 707
+        },
+        "nll": {
+          "new_minus_reference": -0.3548814132141925,
+          "paired_group_bootstrap_95_ci": [
+            -0.392755885324944,
+            -0.3151367779930126
+          ],
+          "questions": 2141,
+          "groups": 830
+        },
+        "brier": {
+          "new_minus_reference": -0.22793799217115301,
+          "paired_group_bootstrap_95_ci": [
+            -0.2520675777257749,
+            -0.20281752325170588
+          ],
+          "questions": 2141,
+          "groups": 830
+        }
+      }
+    },
+    "by_scope": {
+      "fresh": {
+        "questions": 1944,
+        "groups": 728,
+        "accuracy": {
+          "new_minus_reference": 0.14583333333333334,
+          "paired_group_bootstrap_95_ci": [
+            0.12116228070175439,
+            0.17050438596491227
+          ],
+          "questions": 1824,
+          "groups": 608
+        },
+        "nll": {
+          "new_minus_reference": -0.3355868833245352,
+          "paired_group_bootstrap_95_ci": [
+            -0.3788189106023074,
+            -0.29321756976532865
+          ],
+          "questions": 1944,
+          "groups": 728
+        },
+        "brier": {
+          "new_minus_reference": -0.21001255511699538,
+          "paired_group_bootstrap_95_ci": [
+            -0.23733987743694174,
+            -0.18307136210283032
+          ],
+          "questions": 1944,
+          "groups": 728
+        }
+      },
+      "legacy_regression": {
+        "questions": 197,
+        "groups": 102,
+        "accuracy": {
+          "new_minus_reference": 0.41899441340782123,
+          "paired_group_bootstrap_95_ci": [
+            0.3559322033898305,
+            0.48572226656025536
+          ],
+          "questions": 179,
+          "groups": 99
+        },
+        "nll": {
+          "new_minus_reference": -0.5452802259324355,
+          "paired_group_bootstrap_95_ci": [
+            -0.590531060758274,
+            -0.5003419269523839
+          ],
+          "questions": 197,
+          "groups": 102
+        },
+        "brier": {
+          "new_minus_reference": -0.40482656898984587,
+          "paired_group_bootstrap_95_ci": [
+            -0.44104207686527014,
+            -0.36815358802529824
+          ],
+          "questions": 197,
+          "groups": 102
+        }
+      }
+    },
+    "by_domain_view": {
+      "retention/legacy": {
+        "questions": 160,
+        "groups": 80,
+        "accuracy": {
+          "new_minus_reference": 0.45,
+          "paired_group_bootstrap_95_ci": [
+            0.38125,
+            0.51875
+          ],
+          "questions": 160,
+          "groups": 80
+        },
+        "nll": {
+          "new_minus_reference": -0.5688855482347346,
+          "paired_group_bootstrap_95_ci": [
+            -0.6242526708034177,
+            -0.5169072108576253
+          ],
+          "questions": 160,
+          "groups": 80
+        },
+        "brier": {
+          "new_minus_reference": -0.43716167102533776,
+          "paired_group_bootstrap_95_ci": [
+            -0.478937470996945,
+            -0.3954790359105692
+          ],
+          "questions": 160,
+          "groups": 80
+        }
+      },
+      "text_intent/policy": {
+        "questions": 308,
+        "groups": 308,
+        "accuracy": {
+          "new_minus_reference": 0.275974025974026,
+          "paired_group_bootstrap_95_ci": [
+            0.21103896103896103,
+            0.34415584415584416
+          ],
+          "questions": 308,
+          "groups": 308
+        },
+        "nll": {
+          "new_minus_reference": -0.5139176730735103,
+          "paired_group_bootstrap_95_ci": [
+            -0.5995048267533922,
+            -0.42605824193486186
+          ],
+          "questions": 308,
+          "groups": 308
+        },
+        "brier": {
+          "new_minus_reference": -0.3185509045317644,
+          "paired_group_bootstrap_95_ci": [
+            -0.37301428900834027,
+            -0.26582276938165067
+          ],
+          "questions": 308,
+          "groups": 308
+        }
+      },
+      "text_intent/proposition": {
+        "questions": 308,
+        "groups": 308,
+        "accuracy": {
+          "new_minus_reference": 0.08766233766233766,
+          "paired_group_bootstrap_95_ci": [
+            0.035633116883116885,
+            0.1461038961038961
+          ],
+          "questions": 308,
+          "groups": 308
+        },
+        "nll": {
+          "new_minus_reference": -0.12846096822705436,
+          "paired_group_bootstrap_95_ci": [
+            -0.1928465696584727,
+            -0.059135995329448236
+          ],
+          "questions": 308,
+          "groups": 308
+        },
+        "brier": {
+          "new_minus_reference": -0.09902686208821466,
+          "paired_group_bootstrap_95_ci": [
+            -0.14860481497361688,
+            -0.04814400617098415
+          ],
+          "questions": 308,
+          "groups": 308
+        }
+      },
+      "text_intent/recognition": {
+        "questions": 308,
+        "groups": 308,
+        "accuracy": {
+          "new_minus_reference": 0.05194805194805195,
+          "paired_group_bootstrap_95_ci": [
+            0.00974025974025974,
+            0.09740259740259741
+          ],
+          "questions": 308,
+          "groups": 308
+        },
+        "nll": {
+          "new_minus_reference": -0.396835176771065,
+          "paired_group_bootstrap_95_ci": [
+            -0.4892185189740743,
+            -0.293701444818045
+          ],
+          "questions": 308,
+          "groups": 308
+        },
+        "brier": {
+          "new_minus_reference": -0.18145837316407074,
+          "paired_group_bootstrap_95_ci": [
+            -0.22454018419765617,
+            -0.1372833309471736
+          ],
+          "questions": 308,
+          "groups": 308
+        }
+      },
+      "text_nli/policy": {
+        "questions": 300,
+        "groups": 300,
+        "accuracy": {
+          "new_minus_reference": 0.22333333333333333,
+          "paired_group_bootstrap_95_ci": [
+            0.16333333333333333,
+            0.2833333333333333
+          ],
+          "questions": 300,
+          "groups": 300
+        },
+        "nll": {
+          "new_minus_reference": -0.38896211371095823,
+          "paired_group_bootstrap_95_ci": [
+            -0.4640592814256629,
+            -0.31409810189427284
+          ],
+          "questions": 300,
+          "groups": 300
+        },
+        "brier": {
+          "new_minus_reference": -0.25233487395664944,
+          "paired_group_bootstrap_95_ci": [
+            -0.302136879414642,
+            -0.20258434429546873
+          ],
+          "questions": 300,
+          "groups": 300
+        }
+      },
+      "text_nli/proposition": {
+        "questions": 300,
+        "groups": 300,
+        "accuracy": {
+          "new_minus_reference": 0.24,
+          "paired_group_bootstrap_95_ci": [
+            0.17333333333333334,
+            0.3034166666666662
+          ],
+          "questions": 300,
+          "groups": 300
+        },
+        "nll": {
+          "new_minus_reference": -0.42332082514694025,
+          "paired_group_bootstrap_95_ci": [
+            -0.5270050790719749,
+            -0.3231489109685564
+          ],
+          "questions": 300,
+          "groups": 300
+        },
+        "brier": {
+          "new_minus_reference": -0.3276552639312371,
+          "paired_group_bootstrap_95_ci": [
+            -0.40520676200983075,
+            -0.2524826314160868
+          ],
+          "questions": 300,
+          "groups": 300
+        }
+      },
+      "text_nli/recognition": {
+        "questions": 300,
+        "groups": 300,
+        "accuracy": {
+          "new_minus_reference": -0.0033333333333333335,
+          "paired_group_bootstrap_95_ci": [
+            -0.043416666666666666,
+            0.04
+          ],
+          "questions": 300,
+          "groups": 300
+        },
+        "nll": {
+          "new_minus_reference": -0.2494963102546664,
+          "paired_group_bootstrap_95_ci": [
+            -0.31919877844940464,
+            -0.17443318732107552
+          ],
+          "questions": 300,
+          "groups": 300
+        },
+        "brier": {
+          "new_minus_reference": -0.12218390711723652,
+          "paired_group_bootstrap_95_ci": [
+            -0.1651884057028638,
+            -0.07893966476952964
+          ],
+          "questions": 300,
+          "groups": 300
+        }
+      },
+      "uncertainty/legacy": {
+        "questions": 37,
+        "groups": 22,
+        "accuracy": {
+          "new_minus_reference": 0.15789473684210525,
+          "paired_group_bootstrap_95_ci": [
+            0.0,
+            0.3157894736842105
+          ],
+          "questions": 19,
+          "groups": 19
+        },
+        "nll": {
+          "new_minus_reference": -0.4432031565170881,
+          "paired_group_bootstrap_95_ci": [
+            -0.5032515604795273,
+            -0.3828088519222266
+          ],
+          "questions": 37,
+          "groups": 22
+        },
+        "brier": {
+          "new_minus_reference": -0.264999100728259,
+          "paired_group_bootstrap_95_ci": [
+            -0.3014736516845643,
+            -0.22712826568274885
+          ],
+          "questions": 37,
+          "groups": 22
+        }
+      },
+      "uncertainty/partial_evidence": {
+        "questions": 120,
+        "groups": 120,
+        "nll": {
+          "new_minus_reference": -0.11474392069220786,
+          "paired_group_bootstrap_95_ci": [
+            -0.14146059871513655,
+            -0.08853694433644575
+          ],
+          "questions": 120,
+          "groups": 120
+        },
+        "brier": {
+          "new_minus_reference": -0.10924218827012303,
+          "paired_group_bootstrap_95_ci": [
+            -0.13476924404962304,
+            -0.0846113443224961
+          ],
+          "questions": 120,
+          "groups": 120
+        }
+      }
+    }
+  }
+}

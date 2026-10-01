@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "summary": {
+    "records": 16080,
+    "groups": 1260,
+    "split_counts": {
+      "train": 12480,
+      "dev": 3600,
+      "calibration": 0,
+      "test": 0
+    },
+    "sources": [
+      {
+        "id": "veyra-workflow-prerequisite-curriculum",
+        "revision": "sha256:2d42f953b312eb35f364137344992220f4acd368450403031e50b4d4d562920f",
+        "license": "Apache-2.0"
+      }
+    ]
+  },
+  "questions_by_split_and_skill": {
+    "train/fact": 7680,
+    "train/rule": 4800,
+    "dev/fact": 2400,
+    "dev/rule": 1200
+  },
+  "groups_by_split": {
+    "train": 960,
+    "dev": 300
+  },
+  "state_text_unchanged": true,
+  "diagnostic_questions": 1200,
+  "maximum_roundoff_clamp": 2.220446049250313e-16,
+  "files_sha256": {
+    "annotations.jsonl": "25e32a212f766b0623354afe254be12a8fa324ff25934f56318e9967965bfcec",
+    "dev.jsonl": "1d0ff4706a7842a878a7ccaaab3e06afecc0e68ed22981d61acc56cc96bbcf5c",
+    "diagnostic-ids.json": "4fd857257049a8b2d40466777e95a0a96d699aa2609726626d0d15b8d67b7799",
+    "protocol.json": "41a1de9e3c91d959382bbce786dc5e81fbb7bbc87035c75591f0edccecf2fede",
+    "train.jsonl": "ad6a105a6276b520ee2a91b36481c1a49d72d0a409d180367fffa63a4cdffa51"
+  },
+  "calibration_or_final_used": false,
+  "release_allowed": false
+}

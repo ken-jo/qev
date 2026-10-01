@@ -1,0 +1,8 @@
+{
+  "completed": true,
+  "candidates": [
+    "runs\\workflow-v12-depth-study\\late_control\\epoch-1\\checkpoint",
+    "runs\\workflow-v12-depth-study\\late_control\\epoch-2\\checkpoint"
+  ],
+  "release_allowed": false
+}

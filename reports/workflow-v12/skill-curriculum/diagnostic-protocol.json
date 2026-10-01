@@ -1,0 +1,15 @@
+{
+  "started_at_utc": "2026-09-30T09:34:53.843730+00:00",
+  "checkpoint": "runs\\workflow-v12-workspace-study\\primitive\\epoch-2\\checkpoint",
+  "weights_sha256": "4bb3c3187ec37e6ad7f6634c8aeec9bafbbb90ebea89ebae0d26f7c844a87c72",
+  "manifest_sha256": "0afe95f9ea13945282e4438ee50373d5375c21a55e3235b5f58940ccf1661073",
+  "data_audit_sha256": "9696e22343eb3f395a69a8c8df9d5e88092afd94e378625ccc08ffca655e780a",
+  "source_sha256": {
+    "C:\\tmp\\veyra\\scripts\\diagnose_workflow_skills.py": "f7bb479d8c9ad67e49e5b1f7efd78f331039e42a867c54182aa6ddd1d4874bd2",
+    "scripts\\workflow_skill_common.py": "e3b726d2074292c391b796cbc525c811de494bb941769a121005f595b6cf6991",
+    "scripts\\train_workflow_backbone.py": "c7ade8e49569de63c33a4552c554ab6ac035e90077f8c75cb4a13ca3c3f450cd",
+    "src\\veyra\\option_model.py": "ac15e6e55108fc8ef69b57268bf004c6756305e21293d2a9683dfde9f6e79b48"
+  },
+  "scope": "Exploratory direct prerequisite diagnosis; fixed before training; merged BF16; no policy fitting or final/calibration use.",
+  "release_allowed": false
+}

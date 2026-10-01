@@ -1,0 +1,10 @@
+{
+  "completed": true,
+  "configuration_sha256": "d96024a725b0935dd4b4fd528161adeceffbcd3522f0dfb03f4d743d8eb12380",
+  "completed_at_utc": "2026-09-30T20:25:32.027961+00:00",
+  "arms": [
+    "full_depth",
+    "late_control"
+  ],
+  "release_allowed": false
+}

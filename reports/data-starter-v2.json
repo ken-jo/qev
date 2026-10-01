@@ -1,0 +1,26 @@
+{
+  "records": 8972,
+  "groups": 3242,
+  "split_counts": {
+    "train": 7008,
+    "dev": 771,
+    "calibration": 714,
+    "test": 479
+  },
+  "sources": [
+    {
+      "id": "AI-Lab-Makerere/beans",
+      "revision": "27aa014ce09b193e1a6f58112d4a66e0eddb69c5",
+      "license": "MIT"
+    },
+    {
+      "id": "veyra-original-generator",
+      "revision": "sha256:08b4d436e455ff4156bb51809847487c139f9f9bca85ea803005c4630dd185fc",
+      "license": "Apache-2.0"
+    }
+  ],
+  "augmentation_seed": 20261001,
+  "parent_dataset_sha256": "f4bf5a1856a396441d03376450d0613fbec9b36e9d9634e0b7a0f5c57d458721",
+  "augmentation_code_sha256": "8ebed9f926306c8eaf83f0b1e244d962c670c9320ad7cdca4d677340a531b5aa",
+  "test_usage": "Legacy test is a regression set after v1 diagnostics. Fresh tags were created before v2 training and excluded from training/selection/calibration."
+}

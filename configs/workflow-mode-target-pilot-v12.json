@@ -1,0 +1,29 @@
+{
+  "experiment": "workflow-mode-target-pilot-v12",
+  "status": "declared_before_training",
+  "declared_at_utc": "2026-09-30T07:38:07.234924+00:00",
+  "scope": "Exploratory CPU readout-only train/development study. No added candidate in the primary or active backbone continuation study.",
+  "release_protocol": "configs/workflow-release-v12.json",
+  "parent": "checkpoints/veyra-foundation-v11",
+  "features": "data/features-workflow-v12",
+  "records": "data/workflow-v12/records.jsonl",
+  "control": "runs\\workflow-v12-head\\results.json",
+  "control_sha256": "5b974252fae76fa0b86fcb03f46c2b52eea51b54054dd63429759578730be16d",
+  "training_target_audit_sha256": "82d2405db4d48b42487be754896a36c9173ecda010aedf13744e316dfbfc8e16",
+  "seeds": [
+    131,
+    137,
+    139
+  ],
+  "epochs": 25,
+  "hard_mode_weights": [
+    0.5,
+    1.0
+  ],
+  "objective": "Keep RLOO+CE, source/domain shares, temperatures, batch schedule, optimizer, epochs and replay identical to the existing RLOO control. For teacher_distribution training rows only, replace the target with (1-alpha)*original_distribution + alpha*one_hot(recorded_gold). Conditional-probability and retention targets stay unchanged.",
+  "motivation": "Training/development cache targets are correctly mapped. Public teacher-distribution cases are scored for hard-gold agreement at the release policy gate. This pilot checks whether target semantics contribute to poor confidence ordering; it does not assert teacher argmax labels are real business truth.",
+  "selection": "Same original development eligibility/rank and representative seed 131; compare all three seeds and report per-type error/coverage diagnostics. Do not change either active study selection or any release threshold.",
+  "calibration_or_final_used": false,
+  "inference_modules_added": 0,
+  "publication": "Exploratory evidence only. Any new deployed model requires a separately declared complete cycle and the unchanged release gates."
+}

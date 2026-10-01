@@ -1,0 +1,886 @@
+{
+  "release_allowed": true,
+  "recovery_population_binding": {
+    "preserved_split_questions": {
+      "train": 11212,
+      "dev": 3312
+    },
+    "fresh_final_records": "data\\workflow-v13-final\\records.jsonl",
+    "previous_final_result_preserved": true,
+    "original_numerical_thresholds_unchanged": true
+  },
+  "required_priorities": [
+    1,
+    2
+  ],
+  "checked_at_utc": "2026-10-01T01:22:24.165666+00:00",
+  "source_sha256": "ecb85b9e7fc51b62a7aa5b5a5c75399a4d23ceb5e8e33db0a84c1327d85e84b8",
+  "release_protocol_sha256": "d0e6c454fc10cfa080523cfcc66706dfe73cb32524f4ce74bf87a5d4edde6776",
+  "weights_sha256": "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee",
+  "manifest_sha256": "d83f9910196c6e801658ca3816c3d2bd4a849ba3da6ff059a0edf7c6028e898d",
+  "release_extensions": {
+    "workflow_recovery_v13": {
+      "study_design_sha256": "55aa5eab85903a3f142dcbbff737156c5e59c74135d45262c011ed5b4c849180",
+      "merged_selection_sha256": "56f4ddfd568afa57be5010b41b379ea19e879719ef6f127014fdf5f7c5186c02",
+      "policy_design_sha256": "b1c604e1ea70bf67f5733f940fb6082b745a4325c789845fc86b0b2c907bf98e",
+      "fresh_final_data_design_sha256": "678eb369816e4d47d2ccd553aaa3584e2062caf1acda4f9e9aa2fa608a04a49e"
+    }
+  },
+  "checks": {
+    "workflow_generalization": true,
+    "uncertainty_probability": true,
+    "uncertainty_abstention": true,
+    "retention_development": true,
+    "legacy_text": true,
+    "legacy_image": true,
+    "official_workflow": true,
+    "runtime": true,
+    "single_network": true,
+    "provenance": true,
+    "recovery_study_provenance": true,
+    "fresh_data_provenance": true,
+    "independent_policy_validation": true,
+    "previous_calibration_policy_regression": true
+  },
+  "details": {
+    "workflow_generalization": {
+      "accuracy": {
+        "before": 0.44305555555555554,
+        "after": 0.69375,
+        "delta": 0.25069444444444444,
+        "delta_95_ci": [
+          0.20067708333333334,
+          0.3013888888888889
+        ],
+        "groups": 480,
+        "questions": 1440
+      },
+      "families": {
+        "equipment_reservation": {
+          "before": 0.4666666666666667,
+          "after": 0.6854166666666667,
+          "delta": 0.21875,
+          "delta_95_ci": [
+            0.15416666666666667,
+            0.2833333333333333
+          ],
+          "groups": 160,
+          "questions": 480
+        },
+        "supplier_onboarding": {
+          "before": 0.4479166666666667,
+          "after": 0.6520833333333333,
+          "delta": 0.20416666666666666,
+          "delta_95_ci": [
+            0.12708333333333333,
+            0.2833333333333333
+          ],
+          "groups": 160,
+          "questions": 480
+        },
+        "travel_reimbursement": {
+          "before": 0.41458333333333336,
+          "after": 0.74375,
+          "delta": 0.32916666666666666,
+          "delta_95_ci": [
+            0.22494791666666666,
+            0.43755208333333306
+          ],
+          "groups": 160,
+          "questions": 480
+        }
+      }
+    },
+    "uncertainty_probability": {
+      "nll": {
+        "before": 1.0032852034561321,
+        "after": 0.8990933386979466,
+        "delta": -0.10419186475818557,
+        "delta_95_ci": [
+          -0.15039407746461655,
+          -0.05637557472088959
+        ],
+        "groups": 480,
+        "questions": 480
+      },
+      "brier": {
+        "before": 0.3239183465212667,
+        "after": 0.24512231711450333,
+        "delta": -0.07879602940676339,
+        "delta_95_ci": [
+          -0.10994547169413722,
+          -0.047838987789886406
+        ],
+        "groups": 480,
+        "questions": 480
+      },
+      "matched_coverage_cost": {
+        "coverage": 0.8,
+        "accepted": 384,
+        "before": 1.7865844238013697,
+        "after": 1.0111766983090753,
+        "delta": -0.7754077254922944,
+        "delta_95_ci": [
+          -0.9667000597665165,
+          -0.6029395115631243
+        ]
+      },
+      "condition_groups": {
+        "missing": 160,
+        "shifted_prior": 160,
+        "conflicting": 160
+      },
+      "conditions": {
+        "conflicting": {
+          "nll": {
+            "before": 0.9787370442470271,
+            "after": 0.8678403281026418,
+            "delta": -0.11089671614438537,
+            "delta_95_ci": [
+              -0.16071970759728868,
+              -0.061989609298997696
+            ],
+            "groups": 160,
+            "questions": 160
+          },
+          "brier": {
+            "before": 0.2616300857585789,
+            "after": 0.18361032346086706,
+            "delta": -0.07801976229771183,
+            "delta_95_ci": [
+              -0.11343991010731368,
+              -0.0466451426017512
+            ],
+            "groups": 160,
+            "questions": 160
+          },
+          "matched_coverage_cost": {
+            "coverage": 0.8,
+            "accepted": 128,
+            "before": 1.6297516112478596,
+            "after": 1.1669714463291951,
+            "delta": -0.46278016491866447,
+            "delta_95_ci": [
+              -0.7447016736889981,
+              -0.2364469981967037
+            ]
+          }
+        },
+        "missing": {
+          "nll": {
+            "before": 0.9987471974645695,
+            "after": 0.9027762038844196,
+            "delta": -0.09597099358014986,
+            "delta_95_ci": [
+              -0.15075450741671065,
+              -0.0379082262470786
+            ],
+            "groups": 160,
+            "questions": 160
+          },
+          "brier": {
+            "before": 0.2252735453594139,
+            "after": 0.15290367728152635,
+            "delta": -0.07236986807788756,
+            "delta_95_ci": [
+              -0.1094343854847727,
+              -0.035355349538156555
+            ],
+            "groups": 160,
+            "questions": 160
+          },
+          "matched_coverage_cost": {
+            "coverage": 0.8,
+            "accepted": 128,
+            "before": 1.8766049316406248,
+            "after": 1.1169162597656248,
+            "delta": -0.759688671875,
+            "delta_95_ci": [
+              -1.0380355175781253,
+              -0.5458479296875002
+            ]
+          }
+        },
+        "shifted_prior": {
+          "nll": {
+            "before": 1.0323713686567977,
+            "after": 0.9266634841067789,
+            "delta": -0.10570788455001878,
+            "delta_95_ci": [
+              -0.22659553585041478,
+              0.015616446895963901
+            ],
+            "groups": 160,
+            "questions": 160
+          },
+          "brier": {
+            "before": 0.48485140844580715,
+            "after": 0.39885295060111614,
+            "delta": -0.08599845784469098,
+            "delta_95_ci": [
+              -0.16637859647076583,
+              -0.0010338587695776734
+            ],
+            "groups": 160,
+            "questions": 160
+          },
+          "matched_coverage_cost": {
+            "coverage": 0.8,
+            "accepted": 128,
+            "before": 1.856072509765625,
+            "after": 0.807922216796875,
+            "delta": -1.0481502929687498,
+            "delta_95_ci": [
+              -1.4118163500976564,
+              -0.6626662768554692
+            ]
+          }
+        }
+      }
+    },
+    "uncertainty_abstention": {
+      "calibration": {
+        "choice": {
+          "threshold": 0.505,
+          "accepted": 1762,
+          "questions": 1866,
+          "coverage": 0.9442658092175777,
+          "expected_error": 0.1006952820580598,
+          "by_cohort": {
+            "b": {
+              "questions": 605,
+              "accepted": 579,
+              "coverage": 0.9570247933884297,
+              "expected_error": 0.10099624352331606,
+              "passed": true
+            },
+            "c": {
+              "questions": 613,
+              "accepted": 579,
+              "coverage": 0.9445350734094616,
+              "expected_error": 0.08115051488158612,
+              "passed": true
+            },
+            "d": {
+              "questions": 648,
+              "accepted": 604,
+              "coverage": 0.9320987654320988,
+              "expected_error": 0.11914257263222354,
+              "passed": true
+            }
+          },
+          "always_abstain": false,
+          "passed": true,
+          "policy_fit_expected_error_max": 0.12,
+          "temperature": 2.371373705661655,
+          "temperature_questions": 1926
+        },
+        "score": {
+          "threshold": 0.48,
+          "accepted": 996,
+          "questions": 1066,
+          "coverage": 0.9343339587242027,
+          "expected_error": 0.11670456002090554,
+          "by_cohort": {
+            "b": {
+              "questions": 363,
+              "accepted": 336,
+              "coverage": 0.9256198347107438,
+              "expected_error": 0.11927913863747554,
+              "passed": true
+            },
+            "c": {
+              "questions": 335,
+              "accepted": 317,
+              "coverage": 0.9462686567164179,
+              "expected_error": 0.11221531859038071,
+              "passed": true
+            },
+            "d": {
+              "questions": 368,
+              "accepted": 343,
+              "coverage": 0.9320652173913043,
+              "expected_error": 0.11833147290227244,
+              "passed": true
+            }
+          },
+          "always_abstain": false,
+          "passed": true,
+          "policy_fit_expected_error_max": 0.12,
+          "temperature": 4.46683592150963,
+          "temperature_questions": 1094
+        },
+        "noul": {
+          "threshold": 0.705,
+          "accepted": 742,
+          "questions": 986,
+          "coverage": 0.7525354969574036,
+          "expected_error": 0.09164896867961453,
+          "by_cohort": {
+            "b": {
+              "questions": 326,
+              "accepted": 241,
+              "coverage": 0.7392638036809815,
+              "expected_error": 0.11730186721991702,
+              "passed": true
+            },
+            "c": {
+              "questions": 322,
+              "accepted": 245,
+              "coverage": 0.7608695652173914,
+              "expected_error": 0.07496794800111826,
+              "passed": true
+            },
+            "d": {
+              "questions": 338,
+              "accepted": 256,
+              "coverage": 0.757396449704142,
+              "expected_error": 0.083463427734375,
+              "passed": true
+            }
+          },
+          "always_abstain": false,
+          "passed": true,
+          "policy_fit_expected_error_max": 0.12,
+          "temperature": 7.7179151558501236,
+          "temperature_questions": 994
+        }
+      },
+      "overall_final": {
+        "accepted": 3054,
+        "coverage": 0.8898601398601399,
+        "abstention_rate": 0.1101398601398601,
+        "expected_error": 0.20492451551076066,
+        "expected_cost": 0.43226663621928574
+      },
+      "uncertainty_final": {
+        "accepted": 252,
+        "coverage": 0.525,
+        "abstention_rate": 0.475,
+        "expected_error": 0.4557121840073929,
+        "expected_cost": 0.9569139167210262
+      },
+      "calibration_groups_disjoint": true,
+      "limitation": "Calibration expected error is empirical; it is not a bound on final risk."
+    },
+    "retention_development": {
+      "development": {
+        "photo_guard": {
+          "before": 0.9583333134651184,
+          "after": 0.9683333039283752,
+          "delta": 0.009999990463256836
+        },
+        "text_nli": {
+          "before": 0.8444444537162781,
+          "after": 0.8933333158493042,
+          "delta": 0.04888886213302612
+        },
+        "text_intent": {
+          "before": 0.8398268222808838,
+          "after": 0.8441558480262756,
+          "delta": 0.004329025745391846
+        }
+      },
+      "final": {
+        "photo_guard": {
+          "before": 0.9516666666666667,
+          "after": 0.9583333333333334,
+          "delta": 0.006666666666666667,
+          "delta_95_ci": [
+            -0.0033333333333333335,
+            0.018333333333333333
+          ],
+          "groups": 600,
+          "questions": 600
+        },
+        "text_nli": {
+          "before": 0.86,
+          "after": 0.8777777777777778,
+          "delta": 0.017777777777777778,
+          "delta_95_ci": [
+            -0.0022222222222222222,
+            0.03777777777777778
+          ],
+          "groups": 450,
+          "questions": 450
+        },
+        "text_intent": {
+          "before": 0.841991341991342,
+          "after": 0.854978354978355,
+          "delta": 0.012987012987012988,
+          "delta_95_ci": [
+            -0.004329004329004329,
+            0.030303030303030304
+          ],
+          "groups": 462,
+          "questions": 462
+        }
+      }
+    },
+    "legacy_text": {
+      "questions": 2048,
+      "groups": 1024,
+      "labeled_questions": 2048,
+      "correct": 1867,
+      "accuracy": 0.91162109375,
+      "nll": 0.2584043504505732,
+      "brier_vs_soft": 0.14028330219627477,
+      "coverage": 0.90869140625,
+      "accepted_accuracy": 0.939279957012359,
+      "score_mae": 0.206846722966526,
+      "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+      "ece_15_bins": 0.06243461648409721,
+      "group_bootstrap_accuracy_95_ci": [
+        0.896484375,
+        0.9248168945312499
+      ]
+    },
+    "legacy_image": {
+      "questions": 1528,
+      "groups": 764,
+      "labeled_questions": 1528,
+      "correct": 1494,
+      "accuracy": 0.9777486910994765,
+      "nll": 0.13076292754209473,
+      "brier_vs_soft": 0.05630520782789992,
+      "coverage": 0.9535340314136126,
+      "accepted_accuracy": 0.9849004804392587,
+      "score_mae": 0.09436547523611813,
+      "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+      "ece_15_bins": 0.07878559671771465,
+      "group_bootstrap_accuracy_95_ci": [
+        0.9685863874345549,
+        0.9856020942408377
+      ]
+    },
+    "official_workflow": {
+      "questions": 2000,
+      "groups": 400,
+      "labeled_questions": 2000,
+      "correct": 1540,
+      "accuracy": 0.77,
+      "nll": 0.9089358583961407,
+      "brier_vs_soft": 0.07459714702564531,
+      "coverage": 0.308,
+      "accepted_accuracy": 0.9431818181818182,
+      "score_mae": 0.3036554121706278,
+      "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+      "ece_15_bins": 0.2518875242620706,
+      "group_bootstrap_accuracy_95_ci": [
+        0.749,
+        0.7905
+      ]
+    },
+    "runtime": {
+      "gpu": "NVIDIA GeForce RTX 4060 Ti",
+      "p95_ms": 114.94054006761871,
+      "photos": 40,
+      "feature_cache": false
+    },
+    "single_network": {
+      "text": {
+        "backbone_forwards": 1,
+        "generated_answer_tokens": 0,
+        "valid_probabilities": true,
+        "questions": 1,
+        "types": [
+          "score"
+        ],
+        "input_tokens": 212
+      },
+      "photograph_three_questions": {
+        "backbone_forwards": 1,
+        "generated_answer_tokens": 0,
+        "valid_probabilities": true,
+        "questions": 3,
+        "types": [
+          "choice",
+          "noul",
+          "score"
+        ],
+        "input_tokens": 1103
+      }
+    },
+    "recovery_study_provenance": {
+      "selected": "runs\\backbone-recovery-memory-v13\\fraction-0.5\\checkpoint",
+      "merged_development_questions": 5102,
+      "candidates": 3,
+      "unfrozen_adapter_layers": [
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "supervised_replay_and_parent_distillation": true,
+      "policy_fit_error_max_per_cohort": 0.12
+    },
+    "fresh_data_provenance": {
+      "validation_questions_each": 2644,
+      "final_questions": 3432,
+      "fitting_validation_final_groups_disjoint": true,
+      "procedural_targets_independently_recomputed": true
+    },
+    "independent_policy_validation": {
+      "validation-1": {
+        "choice": {
+          "questions": 1264,
+          "accepted": 1192,
+          "coverage": 0.9430379746835443,
+          "expected_error": 0.1010878325537832,
+          "passed": true
+        },
+        "score": {
+          "questions": 720,
+          "accepted": 648,
+          "coverage": 0.9,
+          "expected_error": 0.10869350583460173,
+          "passed": true
+        },
+        "noul": {
+          "questions": 660,
+          "accepted": 487,
+          "coverage": 0.7378787878787879,
+          "expected_error": 0.08495174537987679,
+          "passed": true
+        }
+      },
+      "validation-2": {
+        "choice": {
+          "questions": 1264,
+          "accepted": 1203,
+          "coverage": 0.9517405063291139,
+          "expected_error": 0.09588877207665768,
+          "passed": true
+        },
+        "score": {
+          "questions": 720,
+          "accepted": 660,
+          "coverage": 0.9166666666666666,
+          "expected_error": 0.12925755448318804,
+          "passed": true
+        },
+        "noul": {
+          "questions": 660,
+          "accepted": 501,
+          "coverage": 0.759090909090909,
+          "expected_error": 0.11569560878243514,
+          "passed": true
+        }
+      }
+    },
+    "previous_calibration_policy_regression": {
+      "choice": {
+        "questions": 666,
+        "accepted": 584,
+        "coverage": 0.8768768768768769,
+        "expected_error": 0.07726185318540063,
+        "passed": true
+      },
+      "score": {
+        "questions": 368,
+        "accepted": 257,
+        "coverage": 0.6983695652173914,
+        "expected_error": 0.08775837508661585,
+        "passed": true
+      },
+      "noul": {
+        "questions": 333,
+        "accepted": 204,
+        "coverage": 0.6126126126126126,
+        "expected_error": 0.026250000000000002,
+        "passed": true
+      }
+    }
+  },
+  "evidence_files": {
+    "configs\\workflow-release-v12.json": "d0e6c454fc10cfa080523cfcc66706dfe73cb32524f4ce74bf87a5d4edde6776",
+    "runs\\backbone-recovery-release-v13\\final-freeze.json": "093acb58e85a7bb75b8747b761e7f071fa68a328cfbfc7dea9b29bc53f12868b",
+    "runs\\backbone-recovery-policy-selection-v13\\selection.json": "dd30915e707292eabd6e5b44e5933172e89ac1a9caa5af24d0233e836904473d",
+    "runs\\workflow-v12-workspace-selection\\merged-baseline-dev.json": "f8c67a1b478ad54cb0344df05804cb94a8dc2e1f591aee0c9f8103ea72c39a8e",
+    "runs\\backbone-recovery-release-v13\\calibration\\evaluation.json": "ed4640081bdca2536aef6363c6a358b9a12b9033241d9184794fb3f80edb849c",
+    "runs\\backbone-recovery-release-v13\\baseline\\evaluation.json": "7cbb308897ddfe5937ced15767749ee4f7f7cebf5df07429c77f3e06dc0416fb",
+    "runs\\backbone-recovery-release-v13\\final\\evaluation.json": "342a460bf453fc5d607d9a86bcbec7a6d81fa33fa831bf7fb666998938cf4346",
+    "runs\\backbone-recovery-release-v13\\paired.json": "38e4d24d165d810f03b8d216084be6296ddf95753338b9b861970898e35a7b81",
+    "runs\\backbone-recovery-release-v13\\official-regression\\evaluation.json": "a27345050205190cdd1119878e3f26e9561758cd9b2d5069b0936f626a25024d",
+    "runs\\backbone-recovery-release-v13\\legacy-regression\\evaluation.json": "7131dd99d01bea2f2a508e084491f9cb975d958928b68bf254bc796d8f39da30",
+    "runs\\backbone-recovery-release-v13\\foundation-regression\\evaluation.json": "e89d5a090cbe70f1e18ae94ae13fbc233baf729bf88add9827f93efa828d93e1",
+    "runs\\backbone-recovery-release-v13\\runtime.json": "3d8d6a2bd9d183b58e5daedf753f240b7f6956acf0062c0a63f34f47b245a0a0",
+    "runs\\backbone-recovery-release-v13\\photo-http.json": "97cce40fdc2964b17f8b8bf2c958cc678d7aa8f3fe7178fe54f918b6b21f87a3",
+    "runs\\backbone-recovery-release-v13\\network-contract.json": "a6f4c8078cd48f997fcf30ff7fa32b4fade90d3b7510b519fde637a8fe176bce",
+    "checkpoints\\veyra-backbone-recovery-v13\\manifest.json": "d83f9910196c6e801658ca3816c3d2bd4a849ba3da6ff059a0edf7c6028e898d",
+    "scripts\\evaluate_recovery_final.py": "71f838be688063e5198046d0b0e2ff830b117230c25d5e493daefdb4a2b67cdd",
+    "scripts\\freeze_recovery_final.py": "3a03292c26b23601a94ac5fd76d766fb46decd5711614353d5740f3dff92a6e9",
+    "scripts\\compare_workflow_final.py": "12fedc9e5c2c2baf0334e7458ba1011ec23fa871bea60d6f2aeeb7d8185aa61d",
+    "scripts\\evaluate_foundation.py": "f48236dc00dc1455c9da9d86ac0ba3f750a5f77d5ae1368b24c088ea1c607005",
+    "scripts\\benchmark_foundation_http.py": "609169f2f978c28403073ec70da9c7360d70b67550193b81e4ed9c45a70e0a93",
+    "scripts\\validate_model.py": "e916e5d20bcb3f347db48ffb0a83a12d666049cce40b2ad4458eb75cec21c95f",
+    "scripts\\verify_workflow_contract.py": "54c56300bbafd8567ab768db81bff6ffdf5f59eb392d751c81ca0c27f3da0e70",
+    "scripts\\audit_recovery_release.py": "ecb85b9e7fc51b62a7aa5b5a5c75399a4d23ceb5e8e33db0a84c1327d85e84b8",
+    "scripts\\prepare_recovery_runtime.py": "1c879ac5936ee334e7c33305a5af39a72bdf21bdc448f34e3c8f8bcd4e0f6c2c",
+    "scripts\\run_recovery_final_release.py": "e4620c84b8930a7abc88366fe168aec1850c77f1608f739b59c8c7f9870c7bd4",
+    "scripts\\prepare_recovery_huggingface.py": "f299d7de1bc4d1ef5015300fd333037c26b451108a1952ef0484ac4c00a7ff87",
+    "scripts\\verify_prepared_release.py": "c2581831678d21597027ef4a15a20de2664c1e46e20f4be403137b5b6ea427f2",
+    "reports\\workflow-v12\\source-snapshots\\build_workflow_v12.py.txt": "5433c424ad7d2bea710c398899840d4a43a3608a9b7529a6cd8cbbe7a32bc4ca",
+    "src\\veyra\\__init__.py": "339378c4f9213c53a53a527236c18f8f8e9f2b0b2994fda21c7ad8e5f4d3d1b0",
+    "src\\veyra\\augment_data.py": "8ebed9f926306c8eaf83f0b1e244d962c670c9320ad7cdca4d677340a531b5aa",
+    "src\\veyra\\average_adapters.py": "318848bb75ce454ae7add6f35d824d9ff67c4e868061292e699b53a49a1d04e4",
+    "src\\veyra\\backbone.py": "b933447977e025f40391082e958f23b1cf74e5fb48dae974cf924a4a1f095baf",
+    "src\\veyra\\benchmark.py": "db02665ab175ca38b169959d0baaf2ae671a9f40dcc5d68a41cd8bff20b9c276",
+    "src\\veyra\\binding_head.py": "c7a2981709d353bceb765efc93749bf03055f7175a615531af41c3eaf4f71462",
+    "src\\veyra\\build_data.py": "08b4d436e455ff4156bb51809847487c139f9f9bca85ea803005c4630dd185fc",
+    "src\\veyra\\calibrate.py": "f0950930e5b5e625419c2428c7180508d8b9fdd836c7ecb10a8b346cbbbfdb4a",
+    "src\\veyra\\candidates.py": "577ea42ad09a0af6a90ce6fcf0654addf9a2fb86c66e4eeb3995f6232ee8f702",
+    "src\\veyra\\checkpoint.py": "8cee69ef2e684c5993fb9f76b7afbfaf68a0a2427e4dca2bc907e54718de3ff8",
+    "src\\veyra\\cli.py": "54bef284437de944abea24f1dada6a2d8addba447601cf3ddd16c12089a4f3a8",
+    "src\\veyra\\constants.py": "18e06525bf43ac024b7ca89783b50ad65000914f21c1f37d1eb993ad76e0d6b8",
+    "src\\veyra\\data.py": "4a826d0ace1ae6736325c520f80237da910de573828bd6101da75c54d03e0a14",
+    "src\\veyra\\decision_metrics.py": "ad5c922d756e5faf85877275885cfb0fdf3f84bf5915b3b4be6bba39b703a5bc",
+    "src\\veyra\\evaluate.py": "b06f6e13dad3d35434340c8866144df4670779cee373f120cae61522594bfa14",
+    "src\\veyra\\evidence_data.py": "83d05a43fec14f1e92bae4ee36a461e275007dd5cf961030006d8bd91f761f7e",
+    "src\\veyra\\features.py": "d3fe8f2776935d9801893483b84f706bda67b14ebf2cae11db677f7666688579",
+    "src\\veyra\\head.py": "dcc1cc481a63788885deff02bd8938c90666a7d2ec61505880e69876573ed1eb",
+    "src\\veyra\\interventions.py": "8539a61982757c6697af844e52ae5265842a451387319bf5353df5a6b61bbd13",
+    "src\\veyra\\model.py": "15fe12c9b2deea34c862966894fe87eb06f5d9667faac9362a3011d1f0c5d90e",
+    "src\\veyra\\option_model.py": "ac15e6e55108fc8ef69b57268bf004c6756305e21293d2a9683dfde9f6e79b48",
+    "src\\veyra\\packing.py": "c80f848ef8f9935664455ddb358054428270da57e78a1c2da20f2205148741b9",
+    "src\\veyra\\policy_data.py": "9590630f175c5d2c59a09ac8feffa3009105e3c6a0c6ba9fd0562f4c402ed635",
+    "src\\veyra\\policy_refresh.py": "b551bc1e88f12738a6379173991d2fed8aa80f7c25c65e899f5504f7c9b283c6",
+    "src\\veyra\\probability.py": "16b682045f37cc561b4fbbb6b9498d2669171cbc03f095dcb29586f27452eea5",
+    "src\\veyra\\proper_learning.py": "edcf97fed0c15b1e0219429a41963c27e6baae3890906d3c4a6829f51b3855a0",
+    "src\\veyra\\reasoning_workspace.py": "53d246b5737be11a70e5c7e8047bc4c3c01aec8cbbace0057650e51921e3546a",
+    "src\\veyra\\release_gate.py": "973233674b8bcf7b8f004d455b3fe942e3ccfe10d87f317e39e0faefe8c6b2e1",
+    "src\\veyra\\replay.py": "7299219b38455e111c16b5130e36e07dbd133fcb3a9ab18f65417869fc180159",
+    "src\\veyra\\schema.py": "9a8f5897bf5ad0d1623d00ba05374a71c6c945760d23f0eb7802991cbc8c229e",
+    "src\\veyra\\server.py": "26306fd821c86de1b079d1a08ec82c5053f27b468344dab4b78fc6df02a9fe7c",
+    "src\\veyra\\synthetic_audit.py": "b3c089f6247b01afa64564da63fe71d6ff97af47d52ad12e338a4b18e88e0bf4",
+    "src\\veyra\\training.py": "35fe236e341df1a567db763a1217a712c14f72d2dab646c838d3ddab4612461a",
+    "src\\veyra\\transfer_learning.py": "e4a8b1e32fb2b1cd558d21c3419a6bc217b696ce39887384bad6f9c4e0cf3528",
+    "src\\veyra\\workflow_consistency.py": "2d5173b7bff68b812258b4b2097f0ad1426e38844d678078856f57faa81e1e0f",
+    "src\\veyra\\workflow_facts.py": "db5f21b92c9e36e2592a1421b343d3341c79b4d8a9056f96de7ddc170a7c2a2f",
+    "src\\veyra\\workflow_learning.py": "37cdb8d9d375938a5ac1a26ef53f1ccad949f141e2406caf232dab4df70a02d7",
+    "src\\veyra\\workflow_release_gate.py": "15f35e7da02e68f4e1b4c82a3974ea95ea53603b9a49e09727d1151f8a71ad5d",
+    "scripts\\recovery_policy_rules.py": "ee4e64cf75619e63b5f22f1e0bcf26e43f39c3835c27bee650a9e08fe1046896",
+    "scripts/evaluate_workflow.py": "36904c25592b66f5745d1eb840eb6547950794e58868094952133887f1c8dcae",
+    "scripts/depth_policy_checks.py": "173a92227f0c46a15e11a1d51a99c3cf69aeb317b9f3d208c06d06129ccae9c8",
+    "scripts/recovery_policy_checks.py": "be870ed8868a12f76efb1821e16e0c4abfe02171bc4013e6980b24b353fff9cb",
+    "scripts/recovery_release_checks.py": "01eb2c1c503458b1ac32af0c8fdef933cebea2928eacf7872d667ecab5c9c946",
+    "scripts/prepare_backbone_recovery_policy.py": "896c8e188548f30362bb00c1a8ef50ad22e2e87f212ab9a2757d8edbf2b7b3a1",
+    "scripts/fit_recovery_policy.py": "44d60a9d5fda9b7d4b723d17f23b3d48bdbb0bf84cf07a0c2929ff513e533d95",
+    "scripts/audit_recovery_policy_population.py": "53e30eb82a603b7d114802fac3b2291f1c87801ac645f6982cd70a2f2c34fb99",
+    "scripts/freeze_recovery_policy.py": "720a67640a10d4a4be899b984327e8004a59cc4b23f4583c061982f5bb530396",
+    "runs\\backbone-recovery-release-v13\\baseline\\predictions.jsonl": "f50aa22867c79fbdd6b86c15a9cfd5d4a386a0843980c8766db9ccf9139cf9a5",
+    "runs\\backbone-recovery-release-v13\\final\\predictions.jsonl": "abf4a2264b9233a2bf6b2e9d0fe06dd5d2f74f8c28d473d6ba477f0c910a8e3e",
+    "runs\\backbone-recovery-release-v13\\official-regression\\predictions.jsonl": "e997ec970f85e17b6f2a877f06c01721a79e43945d78fedcd2f0970eaa9aac47",
+    "runs\\backbone-recovery-release-v13\\legacy-regression\\predictions.jsonl": "5d21d71f2c4d9f8b3a893567474706064b5edc38a7c05d7fc820a8d55db5ce6b",
+    "runs\\backbone-recovery-release-v13\\foundation-regression\\predictions.jsonl": "55dc4e6989e35d8fb230a32d7e4b52a55d2fecaa2d430518ad0fe5e0b6c0b281",
+    "data\\workflow-v12b\\records.jsonl": "e3c3c10301f6c34561cd5281713152b3df4df0d093738c078b3d4fddde2196fb",
+    "data\\workflow-v13-final\\records.jsonl": "4d3e808c3bd803629b058ac2110bd76ada9f1fa7fb897ce03a0d031409ef54b4",
+    "runs\\backbone-recovery-v13\\execution-failure.json": "27bcde19acd37c5410ee45f0cae2501bb6d5c52281244664307f8db375b4cd6d",
+    "runs\\backbone-recovery-v13\\protocol.json": "5cc0bbef3e6e06e208ff70f6efbc586d56b98423ea636a4ec7ce2864e353974e",
+    "runs\\backbone-recovery-v13\\parameter-plan.json": "1b938af51226036d8f7f99d676bc6599c7fe5eb959e5d2ca35e3ae5d094def4b",
+    "runs\\backbone-recovery-v13\\training-checkpoints.json": "4f46f5b1e12e79921a0f18e047a779855868289d7da4f84b525f232c5d3345df",
+    "runs/backbone-recovery-memory-probe-v13.json": "d249ae6cdffc1d797149fc52e7ce30487397273dcef3a6410a7885b1d5c94706",
+    "scripts/run_backbone_recovery.py": "a08b5e2d05d22f8f9a908bd9db16fab090fe7e102b487509d9f601690078d24d",
+    "configs/workflow-backbone-recovery-v13.json": "55aa5eab85903a3f142dcbbff737156c5e59c74135d45262c011ed5b4c849180",
+    "scripts/probe_backbone_recovery_memory.py": "d7833d4f1bba33fd9781cf89076329a490048024b7c6a869d40c27246c0c61bf",
+    "runs\\backbone-recovery-v13\\fraction-0.25\\checkpoint\\head.safetensors": "390ea306d935b7772a26122d95f471501c3d6e9fc8bdba61dc629912ceb64b52",
+    "runs\\backbone-recovery-v13\\fraction-0.25\\checkpoint\\manifest.json": "f7bf3ff3b6aee40f65aa9d3adf86870109b63c5847390b9cd2c4b1bd1223aba3",
+    "runs\\backbone-recovery-v13\\fraction-0.5\\checkpoint\\head.safetensors": "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee",
+    "runs\\backbone-recovery-v13\\fraction-0.5\\checkpoint\\manifest.json": "c114aa49dc969d771ebfaee6cfd621571e8c7000f4586b3449dbbc30447cf1b1",
+    "configs\\workflow-backbone-memory-repair-v13.json": "d16e5615ec2f4618430c53241ea6859007a536d2b9cac973fe6efef5b1426187",
+    "C:\\tmp\\veyra\\scripts\\run_backbone_recovery_memory.py": "c8b48890a1e742a41bf47e0be2dd114089933b7621d1a4bf24191c63dad5b423",
+    "scripts\\study_readout_recovery.py": "66567dae25e50306276773912eb9ed4730c4ce0a8ae6b401adebda35fb633681",
+    "scripts\\train_workflow_backbone.py": "c7ade8e49569de63c33a4552c554ab6ac035e90077f8c75cb4a13ca3c3f450cd",
+    "scripts\\train_workflow_workspace.py": "93dd647080074a3aa0f774d47ca776ed0bf08a4885eb5852b30583ab15bbffe5",
+    "scripts\\workflow_depth_common.py": "3012e4653b7ff66e82ecfce8c7bf5c842bfa2c6143eee58ec2c0cd48cc50ae8a",
+    "reports\\workflow-v13\\runtime-source-snapshots\\0.3.0a3-workflow_release_gate.py.txt": "51a47277eaaab44af5b3fefac2253fb3c17c87f500f684b63ff7b4d4e346f458",
+    "runs\\backbone-recovery-release-v13\\runtime-transition.json": "6f3672e56d4bef52263e11260cb0cc87c5c783ba3831ef7c71beca2b54d4f075",
+    "reports\\workflow-v13\\runtime-source-snapshots\\0.3.0a3-__init__.py.txt": "d03aea767fb63d3b02092daa23ad02d07324d48f745dc6a2dba1a2d1615033f4",
+    "configs\\workflow-backbone-recovery-v13.json": "55aa5eab85903a3f142dcbbff737156c5e59c74135d45262c011ed5b4c849180",
+    "runs\\backbone-recovery-memory-v13\\protocol.json": "70b613e32b4905dcfd6cc1fcdb84debe1e022883d83886d306ae4a1316bfdeb5",
+    "runs\\backbone-recovery-memory-v13\\training-complete.json": "bf4bdfce630a7af995e2f09ac906bd7a2c5611b3a2a9b0e6bbcf8973238b5d15",
+    "runs\\backbone-recovery-memory-v13\\parameter-plan.json": "1b938af51226036d8f7f99d676bc6599c7fe5eb959e5d2ca35e3ae5d094def4b",
+    "runs\\backbone-recovery-memory-v13\\selection.json": "56f4ddfd568afa57be5010b41b379ea19e879719ef6f127014fdf5f7c5186c02",
+    "checkpoints\\veyra-cohort-policy-v12\\head.safetensors": "86ce942f8ef036f2279422a3a2665248b98adcb0effa91bafdf15d9c14c6c83e",
+    "checkpoints\\veyra-cohort-policy-v12\\manifest.json": "0da2b6454441c37d17959a00a3608452a0555128aa693570eb1fd82349fc9af4",
+    "C:\\tmp\\veyra\\scripts\\cache_readout_recovery.py": "343b31993aeb16058f4068d46fe2cced027e5f5e681aea816e08bca9f38bb948",
+    "data\\features-readout-recovery-v13\\train\\features.safetensors": "21a591a8e05cac095ea87140e6f8beecb5799d1fc9b675507a2418c202101e1f",
+    "data\\features-readout-recovery-v13\\train\\records.json": "f215ac0c48d1e8714612ceaf1eeb79c4d5e4ed3ea18ede3d0ecf2abfc25d1292",
+    "data\\features-readout-recovery-v13\\train\\manifest.json": "db81aa33a8825ce1103ea5e9c62476d6293025d09a72aff592150ee4fa8e9254",
+    "data\\features-readout-recovery-v13\\dev\\features.safetensors": "6cc33c81b52258738a792738b5e459a7a2e7a7bda3c7d716547f42a83e680e14",
+    "data\\features-readout-recovery-v13\\dev\\records.json": "557e9fa3892131517565924a2023b77a121da535ecf56f316e4ada46a08b8473",
+    "data\\features-readout-recovery-v13\\dev\\manifest.json": "5eb4dfeda7db90aef420f96652439514814611066a039a00cf775fa994dc995a",
+    "data\\features-readout-recovery-v13\\specification.json": "81a4da6dcfe4a8d794d59b6ce8a2381863393b9a5b8d20cf1ddba8b942d0a220",
+    "data\\features-readout-recovery-v13\\manifest.json": "3ed8e46cae5214b5e9bfabb5dc9301fc2ce3f724adfbff6f67746bab24125c27",
+    "data/workflow-v12/records.jsonl": "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571",
+    "data/policy-v8/records.jsonl": "43d5f8f31d5cfef33fe3721685ad9008209d1b3becb21742ba1ced1ab2557070",
+    "runs\\readout-recovery-v13\\interpolation-protocol.json": "23eacb66d79f267310ca45f5ae86e35df8043a477d6a03ea81cef33322c3c677",
+    "runs\\readout-recovery-v13\\selection.json": "64fc4a87c9808b877b0f89935c972842ce3c2cb1bb2b99f30c696f668f7555bc",
+    "configs\\workflow-readout-recovery-v13.json": "c680b3a57fed4daadbb3d537ac9f9ff7bc0abb0a14ef60fc25725a729da83495",
+    "runs\\backbone-recovery-memory-v13\\fraction-0.25\\checkpoint\\head.safetensors": "390ea306d935b7772a26122d95f471501c3d6e9fc8bdba61dc629912ceb64b52",
+    "runs\\backbone-recovery-memory-v13\\fraction-0.25\\checkpoint\\manifest.json": "7e06a9422d7bb3655b255c950246f7ca11ab24d16ef7a70599ed34ed13f9f43a",
+    "runs\\backbone-recovery-memory-v13\\fraction-0.25\\merged-development.safetensors": "e393f3db1c8b63828e0b585bf0f6f0de8b22d14cdd650cbccfe1d33fb5a2dfc9",
+    "runs\\backbone-recovery-memory-v13\\fraction-0.25\\development.json": "e3683755160f22606cf8adec436e6a3802eb34f7fb48bf4f5740844ee81e75a7",
+    "runs\\backbone-recovery-memory-v13\\fraction-0.5\\checkpoint\\head.safetensors": "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee",
+    "runs\\backbone-recovery-memory-v13\\fraction-0.5\\checkpoint\\manifest.json": "69e91d4818f76b23876f0278259b61d405427fb1bb35a5801ef3ed5c63386662",
+    "runs\\backbone-recovery-memory-v13\\fraction-0.5\\merged-development.safetensors": "b73b64d454618b6dcbec6f21947e471d72dd85157e7d1c6883671224b4485617",
+    "runs\\backbone-recovery-memory-v13\\fraction-0.5\\development.json": "2a05c8997dcffc746b34cce6544c6a9f81095297700deb2c80aa06acaaf24f49",
+    "runs\\backbone-recovery-memory-v13\\fraction-1\\checkpoint\\head.safetensors": "a2d6584e1b5aecf1a0c74c69ecaad996ba36ae1c5a8a8a050e888ce12ceeada0",
+    "runs\\backbone-recovery-memory-v13\\fraction-1\\checkpoint\\manifest.json": "0a3ed0e2f7ce5b02bdaa53166e60bc62b0fd0b3bb561710af112b18deff76fc5",
+    "runs\\backbone-recovery-memory-v13\\fraction-1\\merged-development.safetensors": "eb460d5e402ca23b5ac387c22857950ebc2feb6f7bb6d892d8b251ee508206d9",
+    "runs\\backbone-recovery-memory-v13\\fraction-1\\development.json": "06dcee6fb6193d282b97083827c7e5e4fc068840aa9a78501173c9460b137e32",
+    "configs\\workflow-recovery-release-v13.json": "6abe85061f05096fc99436220bb3b1094ff802cb6a62f47cfb14643a327684ef",
+    "runs\\workflow-recovery-final-data-v13\\complete.json": "b2f7c2ca03f56a87f9aa512059bef0710f969dea1d9ce7921ad420d474712ea6",
+    "data\\workflow-v13g\\records.jsonl": "92dd176e5d5c4fc057f2ec86fc5f877c571549559179491180382f40991c08f7",
+    "data\\workflow-v13g\\protocol.json": "a968f25fc07e0cebd88c51a5312f1c4d4607b02826219926a12c66f4b93e0192",
+    "data\\workflow-v13g\\independent-target-audit.json": "00b85c216b4e767966861666dac544a70fa7dc52413e64d11cc8b84ae6dc81b3",
+    "configs/workflow-recovery-validation-1-data-v13.json": "c53f8f687a5263931db93bc3d9ba13f4124eae7a2118486e3c7c353b1417fc8d",
+    "data\\workflow-v13h\\records.jsonl": "def4d0b9063184f4fdc72ad759e7399c7d5d8e336c57a6634958db7b448f65d7",
+    "data\\workflow-v13h\\protocol.json": "827c412f6718d7e4cdd0622af9a9fc5156e4b559381c1a9491ffb4120dfd03c9",
+    "data\\workflow-v13h\\independent-target-audit.json": "802fb3915865071ed2ee0ae70316721ca90111b1fea9a55e263efb040590dfc1",
+    "configs/workflow-recovery-validation-2-data-v13.json": "ec5cade11e828b72435c5e25c154729e2ce2c574d104365854f2d433db80e94b",
+    "data\\workflow-v13-final\\protocol.json": "c9b6ed927479c1dbd06ba1cb2efb6001aaab16918870e8b961ff5b53ce4b4498",
+    "data\\workflow-v13-final\\independent-target-audit.json": "4f3b858f20e2713fbec3d563a88f6c935f1dfe4de99f8df6fa1d615393b9a4ed",
+    "configs/workflow-recovery-final-data-v13.json": "678eb369816e4d47d2ccd553aaa3584e2062caf1acda4f9e9aa2fa608a04a49e",
+    "data/workflow-v12-cohort/records.jsonl": "c22d9140b3f934de4bb41fe65d73ef6180553202c39bd1e874fd545b2c1c82d2",
+    "configs\\workflow-recovery-final-source-repair-v13.json": "13cb2948fef86ba2a9c60a1c852ed7b71b4b878c5b47a367af61cb30819ce2d6",
+    "scripts/prepare_recovery_final_sources.py": "1b2dfaa9978d6a516c4bc13e579d3cdecc65e88bd4e51da0bd328839569a3d59",
+    "scripts/build_recovery_final_bank_test.py": "4eaba42e59734080cf710ead6edc43c178d8a290be63793a4aa8a23354c08e46",
+    "scripts/verify_recovery_final_data.py": "2fbece4d6ed1025d844460423f3b33540482fc6115851048ea0070f98e2f9251",
+    "configs/workflow-recovery-data-source-repair-v13.json": "2356c6410c222dd35cb52a40bec559f1bad2f4885f01f8918e6272600e7a0959",
+    "scripts/prepare_recovery_calibration_sources.py": "4da55e1bf81f7ae0e721bc2f21d2f078fa58799ef5cfb0332c9ae2dcbf809447",
+    "scripts/build_recovery_validation.py": "65e459fdf8d871b6ac58290bdbc9a445d8850f8db90c100412621204ecccfef7",
+    "scripts/prepare_recovery_release_data_repaired.py": "1208dae5b5a564837cbb14ef63894cbc790a9b1263d9da0777f875278d2eaea6",
+    "configs\\workflow-recovery-policy-v13.json": "b1c604e1ea70bf67f5733f940fb6082b745a4325c789845fc86b0b2c907bf98e",
+    "runs\\backbone-recovery-policy-selection-v13\\admission-audit.json": "40fcc4b6408010da0925b56e4105caa0cb49ce54f1a3ede62ff633de1da797ed",
+    "runs\\backbone-recovery-release-v13\\calibration\\predictions.jsonl": "8fe097a62c4d7e3b346b0345471778225fae7a884eba232ef8843aa59b1ed211",
+    "checkpoints\\veyra-backbone-recovery-v13\\head.safetensors": "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee",
+    "runs\\backbone-recovery-release-v13\\validation-1-policy.json": "2d38199e2cdab861f671e0efe709b32008338cafc5c38888aa511a2a7a4e0a33",
+    "runs\\backbone-recovery-release-v13\\validation-1\\evaluation.json": "b390a2ed2916d59a3fcefb5dfd8e4b25d0f07ce8bb65808de757b81a559af069",
+    "runs\\backbone-recovery-release-v13\\validation-1\\predictions.jsonl": "9de3cf2e8eac93a6e31a02cbc7de283525bf9c5274257884086fae688019df43",
+    "runs\\backbone-recovery-release-v13\\validation-2-policy.json": "013628253e3fa6c0a19f10d5e5642119a8fe69eee839c6787efca854c89c269b",
+    "runs\\backbone-recovery-release-v13\\validation-2\\evaluation.json": "5305b6d217f641d9467f34d51f0e8470282c16c9c083dd25198a5437c5231038",
+    "runs\\backbone-recovery-release-v13\\validation-2\\predictions.jsonl": "cd209a410f7f87f6ab49c7055202c6f813ef493aab23fd44a99579dfcdd357e4",
+    "runs\\backbone-recovery-release-v13\\previous-calibration-policy.json": "db60651c968dd24448cb516f0d6c9159fc4bbe8a15b602e78a5fc2c4302eafd1",
+    "runs\\backbone-recovery-release-v13\\previous-calibration\\evaluation.json": "6a4b5692ab3b51f79fb33d51969fa5b311c96f65a3b62a41bacac49efaca9c58",
+    "runs\\backbone-recovery-release-v13\\previous-calibration\\predictions.jsonl": "fbbcdfc914b87d6158d776e44769b015a8dd23ce05fb3cf3e7923626ea059a08",
+    "runs\\backbone-recovery-release-v13\\policy-freeze.json": "91c456def4110ca74c5448b1d154e7574a15b4021863e48c1740e5ee40e6a728",
+    "runs\\workflow-v12-evaluation\\calibration\\evaluation.json": "051c41d983fb896ae5f831e4ccea58fb1c85de768aaab6c4f8fa78ed9d0d24b5",
+    "C:\\tmp\\veyra\\scripts\\recovery_policy_checks.py": "be870ed8868a12f76efb1821e16e0c4abfe02171bc4013e6980b24b353fff9cb"
+  },
+  "failed_checks": [],
+  "foundation_regression": {
+    "image_leaf": {
+      "questions": 384,
+      "groups": 128,
+      "labeled_questions": 384,
+      "correct": 316,
+      "accuracy": 0.8229166666666666,
+      "nll": 0.47970050891730426,
+      "brier_vs_soft": 0.2773428251119946,
+      "coverage": 0.7526041666666666,
+      "accepted_accuracy": 0.889273356401384,
+      "score_mae": 0.38382804853832164,
+      "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+      "ece_15_bins": 0.12234833378655217,
+      "group_bootstrap_accuracy_95_ci": [
+        0.7682291666666666,
+        0.8723958333333334
+      ]
+    },
+    "image_waste": {
+      "questions": 1221,
+      "groups": 404,
+      "labeled_questions": 1221,
+      "correct": 1088,
+      "accuracy": 0.8910728910728911,
+      "nll": 0.38240229928465025,
+      "brier_vs_soft": 0.1942871041673294,
+      "coverage": 0.8665028665028665,
+      "accepted_accuracy": 0.9234404536862004,
+      "score_mae": 0.3762247328052023,
+      "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+      "ece_15_bins": 0.12642766577996356,
+      "group_bootstrap_accuracy_95_ci": [
+        0.86567991085106,
+        0.91440856291431
+      ]
+    },
+    "retention": {
+      "questions": 280,
+      "groups": 140,
+      "labeled_questions": 280,
+      "correct": 259,
+      "accuracy": 0.925,
+      "nll": 0.2631165285059387,
+      "brier_vs_soft": 0.13576518825610778,
+      "coverage": 0.9285714285714286,
+      "accepted_accuracy": 0.9346153846153846,
+      "score_mae": 0.15945988673494102,
+      "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+      "ece_15_bins": 0.06655998070325171,
+      "group_bootstrap_accuracy_95_ci": [
+        0.8857142857142857,
+        0.9571428571428572
+      ]
+    },
+    "text_intent": {
+      "questions": 924,
+      "groups": 308,
+      "labeled_questions": 924,
+      "correct": 807,
+      "accuracy": 0.8733766233766234,
+      "nll": 0.44074536186815505,
+      "brier_vs_soft": 0.22507451638908843,
+      "coverage": 0.7738095238095238,
+      "accepted_accuracy": 0.9272727272727272,
+      "score_mae": 0.2991209260614515,
+      "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+      "ece_15_bins": 0.13564401432807313,
+      "group_bootstrap_accuracy_95_ci": [
+        0.8441287878787879,
+        0.8982683982683982
+      ]
+    },
+    "text_nli": {
+      "questions": 900,
+      "groups": 300,
+      "labeled_questions": 900,
+      "correct": 793,
+      "accuracy": 0.8811111111111111,
+      "nll": 0.4445332144762387,
+      "brier_vs_soft": 0.2474340758493256,
+      "coverage": 0.7988888888888889,
+      "accepted_accuracy": 0.9054242002781642,
+      "score_mae": 0.44071469659848456,
+      "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+      "ece_15_bins": 0.16045855081743662,
+      "group_bootstrap_accuracy_95_ci": [
+        0.8466666666666667,
+        0.9122222222222223
+      ]
+    },
+    "uncertainty": {
+      "questions": 157,
+      "groups": 142,
+      "labeled_questions": 19,
+      "correct": 19,
+      "accuracy": 1.0,
+      "nll": 0.6113867136357874,
+      "brier_vs_soft": 0.11904089002831253,
+      "coverage": 0.12101910828025478,
+      "accepted_accuracy": 1.0,
+      "score_mae": null,
+      "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+      "ece_15_bins": 0.07025292045191718,
+      "group_bootstrap_accuracy_95_ci": [
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "scope": "Controlled procedural transfer plus public-data regressions; not unrestricted operational reliability.",
+  "published": false
+}

@@ -1,0 +1,17 @@
+{
+  "created_at_utc": "2026-09-30T09:34:50.420013+00:00",
+  "seed": 193,
+  "source_sha256": {
+    "data\\workflow-v12\\records.jsonl": "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571",
+    "data\\workflow-v12-execution-targets\\targets.jsonl": "7cfbbb767c27e37b4de360036fdbf0525dc56ac4eda4aa0a056e9e2137f35867",
+    "C:\\tmp\\veyra\\scripts\\build_workflow_skill_curriculum.py": "2d42f953b312eb35f364137344992220f4acd368450403031e50b4d4d562920f",
+    "src\\veyra\\workflow_facts.py": "db5f21b92c9e36e2592a1421b343d3341c79b4d8a9056f96de7ddc170a7c2a2f"
+  },
+  "scope": "Prospective train/development prerequisite questions; no model training or calibration/final inference.",
+  "data_policy": "Original states are preserved exactly. Every derived view inherits its source group, split and family. Direct fact truth and rule-condition marginals come from the independently audited 16-world execution annotations. No final or calibration state is interpreted.",
+  "question_design": "One question per fact and per rule condition, randomized proposition polarity, caller-defined choice keys, randomized score rubric direction, or noul. Rule truth is independent of first-match priority. No intermediate target enters the input.",
+  "development_diagnostic": "One fact and one rule question per each of 600 development states; fixed before model predictions; not a release criterion.",
+  "calibration_or_final_used": false,
+  "runtime_solver_added": false,
+  "training_protocol_required": true
+}

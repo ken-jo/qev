@@ -1,0 +1,328 @@
+{
+  "completed": true,
+  "strategy_results": {
+    "none": {
+      "strategy": "none",
+      "checkpointed_layers": [],
+      "cases": [
+        {
+          "record_id": "wf12:backup_restore:train:0152:choice",
+          "has_image": false,
+          "completed": true,
+          "input_tokens": 265,
+          "measured_seconds": [
+            0.2782935000723228,
+            0.24922190001234412,
+            0.2521567000076175
+          ],
+          "median_seconds": 0.2521567000076175,
+          "peak_allocated_mib": 6128.1708984375,
+          "peak_reserved_mib": 6222.0,
+          "gradient_artifact_sha256": "0aef11c6aaa057987dcfae032ffcbe2876f8093102b61d8e44b2bf79277d45c5"
+        },
+        {
+          "record_id": "workflow:tr_customer_service_000270:action",
+          "has_image": false,
+          "completed": false,
+          "failure": "allocator_memory_limit",
+          "error": "CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 8.00 GiB of which 0 bytes is free. 6.80 GiB allowed; Of the allocated memory 6.63 GiB is allocated by PyTorch, and 166.26 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)"
+        },
+        {
+          "record_id": "wf12:purchase_return:train:0023:uncertain",
+          "has_image": false,
+          "completed": true,
+          "input_tokens": 383,
+          "measured_seconds": [
+            0.30757720000110567,
+            0.31617909995839,
+            0.2929196999175474
+          ],
+          "median_seconds": 0.30757720000110567,
+          "peak_allocated_mib": 6782.94091796875,
+          "peak_reserved_mib": 6890.0,
+          "gradient_artifact_sha256": "cd5f5018375e1f4eac31c1912ff3e7a44cbf7838c040e6f261e67783762e0998"
+        },
+        {
+          "record_id": "replay:bean-02856dd2f1c50e53c9da425911b19faf:condition",
+          "has_image": true,
+          "completed": true,
+          "input_tokens": 375,
+          "measured_seconds": [
+            0.3415680000325665,
+            0.33935729996301234,
+            0.3520465000765398
+          ],
+          "median_seconds": 0.3415680000325665,
+          "peak_allocated_mib": 6786.6953125,
+          "peak_reserved_mib": 6888.0,
+          "gradient_artifact_sha256": "e3697e2acf51b85823cf69a24b9ad861bd977729877bb170d9c80eea3687fc4b"
+        }
+      ],
+      "parameter_values_unchanged": true,
+      "parameter_order_sha256": "64d66344a91654bbc4809afbb78837a7afff7ac90acde859c7518b8c5b8d8439",
+      "configuration_sha256": "9dde9e737472219dfbf6a143071fbafc2738f32bfe1b21800dc90f00b175b38f",
+      "initial_parameter_sha256": "391b6d361685b2e5db9f6f2a268ce31158579f1c4e494ee7964bcba1063d7bdb",
+      "release_allowed": false
+    },
+    "earlier12": {
+      "strategy": "earlier12",
+      "checkpointed_layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cases": [
+        {
+          "record_id": "wf12:backup_restore:train:0152:choice",
+          "has_image": false,
+          "completed": true,
+          "input_tokens": 265,
+          "measured_seconds": [
+            0.3435839000158012,
+            0.34515940002165735,
+            0.36260110000148416
+          ],
+          "median_seconds": 0.34515940002165735,
+          "peak_allocated_mib": 5253.26318359375,
+          "peak_reserved_mib": 5332.0,
+          "gradient_artifact_sha256": "0aef11c6aaa057987dcfae032ffcbe2876f8093102b61d8e44b2bf79277d45c5"
+        },
+        {
+          "record_id": "workflow:tr_customer_service_000270:action",
+          "has_image": false,
+          "completed": true,
+          "input_tokens": 693,
+          "measured_seconds": [
+            0.5154150000307709,
+            0.4768984999973327,
+            0.5090428000548854
+          ],
+          "median_seconds": 0.5090428000548854,
+          "peak_allocated_mib": 6604.02490234375,
+          "peak_reserved_mib": 6882.0,
+          "gradient_artifact_sha256": "b49c34ace65660da026da8a50fe710eeba20b68249c6ce334054894db6f8efac"
+        },
+        {
+          "record_id": "wf12:purchase_return:train:0023:uncertain",
+          "has_image": false,
+          "completed": true,
+          "input_tokens": 383,
+          "measured_seconds": [
+            0.3871398000046611,
+            0.3549877000041306,
+            0.34922860004007816
+          ],
+          "median_seconds": 0.3549877000041306,
+          "peak_allocated_mib": 5581.3798828125,
+          "peak_reserved_mib": 5666.0,
+          "gradient_artifact_sha256": "cd5f5018375e1f4eac31c1912ff3e7a44cbf7838c040e6f261e67783762e0998"
+        },
+        {
+          "record_id": "replay:bean-02856dd2f1c50e53c9da425911b19faf:condition",
+          "has_image": true,
+          "completed": true,
+          "input_tokens": 375,
+          "measured_seconds": [
+            0.4196349000558257,
+            0.4200760000385344,
+            0.40168980008456856
+          ],
+          "median_seconds": 0.4196349000558257,
+          "peak_allocated_mib": 5589.8193359375,
+          "peak_reserved_mib": 5686.0,
+          "gradient_artifact_sha256": "e3697e2acf51b85823cf69a24b9ad861bd977729877bb170d9c80eea3687fc4b"
+        }
+      ],
+      "parameter_values_unchanged": true,
+      "parameter_order_sha256": "64d66344a91654bbc4809afbb78837a7afff7ac90acde859c7518b8c5b8d8439",
+      "configuration_sha256": "9dde9e737472219dfbf6a143071fbafc2738f32bfe1b21800dc90f00b175b38f",
+      "initial_parameter_sha256": "391b6d361685b2e5db9f6f2a268ce31158579f1c4e494ee7964bcba1063d7bdb",
+      "release_allowed": false
+    },
+    "all24": {
+      "strategy": "all24",
+      "checkpointed_layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "cases": [
+        {
+          "record_id": "wf12:backup_restore:train:0152:choice",
+          "has_image": false,
+          "completed": true,
+          "input_tokens": 265,
+          "measured_seconds": [
+            0.4199086999287829,
+            0.43408909998834133,
+            0.40129359997808933
+          ],
+          "median_seconds": 0.4199086999287829,
+          "peak_allocated_mib": 4457.6591796875,
+          "peak_reserved_mib": 4536.0,
+          "gradient_artifact_sha256": "0aef11c6aaa057987dcfae032ffcbe2876f8093102b61d8e44b2bf79277d45c5"
+        },
+        {
+          "record_id": "workflow:tr_customer_service_000270:action",
+          "has_image": false,
+          "completed": true,
+          "input_tokens": 693,
+          "measured_seconds": [
+            0.6184657999547198,
+            0.5752926000859588,
+            0.605145400040783
+          ],
+          "median_seconds": 0.605145400040783,
+          "peak_allocated_mib": 4627.0400390625,
+          "peak_reserved_mib": 4740.0,
+          "gradient_artifact_sha256": "b49c34ace65660da026da8a50fe710eeba20b68249c6ce334054894db6f8efac"
+        },
+        {
+          "record_id": "wf12:purchase_return:train:0023:uncertain",
+          "has_image": false,
+          "completed": true,
+          "input_tokens": 383,
+          "measured_seconds": [
+            0.4565633999882266,
+            0.4325671000406146,
+            0.46693360002245754
+          ],
+          "median_seconds": 0.4565633999882266,
+          "peak_allocated_mib": 4494.7392578125,
+          "peak_reserved_mib": 4596.0,
+          "gradient_artifact_sha256": "cd5f5018375e1f4eac31c1912ff3e7a44cbf7838c040e6f261e67783762e0998"
+        },
+        {
+          "record_id": "replay:bean-02856dd2f1c50e53c9da425911b19faf:condition",
+          "has_image": true,
+          "completed": true,
+          "input_tokens": 375,
+          "measured_seconds": [
+            0.504901499953121,
+            0.5249409000389278,
+            0.5523340000072494
+          ],
+          "median_seconds": 0.5249409000389278,
+          "peak_allocated_mib": 4497.1748046875,
+          "peak_reserved_mib": 4596.0,
+          "gradient_artifact_sha256": "e3697e2acf51b85823cf69a24b9ad861bd977729877bb170d9c80eea3687fc4b"
+        }
+      ],
+      "parameter_values_unchanged": true,
+      "parameter_order_sha256": "64d66344a91654bbc4809afbb78837a7afff7ac90acde859c7518b8c5b8d8439",
+      "configuration_sha256": "9dde9e737472219dfbf6a143071fbafc2738f32bfe1b21800dc90f00b175b38f",
+      "initial_parameter_sha256": "391b6d361685b2e5db9f6f2a268ce31158579f1c4e494ee7964bcba1063d7bdb",
+      "release_allowed": false
+    }
+  },
+  "gradient_comparisons": [
+    {
+      "record_id": "wf12:backup_restore:train:0152:choice",
+      "reference": "none",
+      "strategy": "earlier12",
+      "logits_maximum_absolute_difference": 0.0,
+      "gradient_maximum_absolute_difference": 0.0,
+      "gradient_relative_l2_difference": 0.0,
+      "passed": true
+    },
+    {
+      "record_id": "wf12:backup_restore:train:0152:choice",
+      "reference": "none",
+      "strategy": "all24",
+      "logits_maximum_absolute_difference": 0.0,
+      "gradient_maximum_absolute_difference": 0.0,
+      "gradient_relative_l2_difference": 0.0,
+      "passed": true
+    },
+    {
+      "record_id": "workflow:tr_customer_service_000270:action",
+      "reference": "earlier12",
+      "strategy": "all24",
+      "logits_maximum_absolute_difference": 0.0,
+      "gradient_maximum_absolute_difference": 0.0,
+      "gradient_relative_l2_difference": 0.0,
+      "passed": true
+    },
+    {
+      "record_id": "wf12:purchase_return:train:0023:uncertain",
+      "reference": "none",
+      "strategy": "earlier12",
+      "logits_maximum_absolute_difference": 0.0,
+      "gradient_maximum_absolute_difference": 0.0,
+      "gradient_relative_l2_difference": 0.0,
+      "passed": true
+    },
+    {
+      "record_id": "wf12:purchase_return:train:0023:uncertain",
+      "reference": "none",
+      "strategy": "all24",
+      "logits_maximum_absolute_difference": 0.0,
+      "gradient_maximum_absolute_difference": 0.0,
+      "gradient_relative_l2_difference": 0.0,
+      "passed": true
+    },
+    {
+      "record_id": "replay:bean-02856dd2f1c50e53c9da425911b19faf:condition",
+      "reference": "none",
+      "strategy": "earlier12",
+      "logits_maximum_absolute_difference": 0.0,
+      "gradient_maximum_absolute_difference": 0.0,
+      "gradient_relative_l2_difference": 0.0,
+      "passed": true
+    },
+    {
+      "record_id": "replay:bean-02856dd2f1c50e53c9da425911b19faf:condition",
+      "reference": "none",
+      "strategy": "all24",
+      "logits_maximum_absolute_difference": 0.0,
+      "gradient_maximum_absolute_difference": 0.0,
+      "gradient_relative_l2_difference": 0.0,
+      "passed": true
+    }
+  ],
+  "recommended_strategy": "earlier12",
+  "selection": "Smallest sum of per-case median measured training-step times among strategies completing all declared cases after parity checks.",
+  "configuration_sha256": "9dde9e737472219dfbf6a143071fbafc2738f32bfe1b21800dc90f00b175b38f",
+  "source_sha256": {
+    "C:\\tmp\\veyra\\scripts\\profile_workflow_depth.py": "30d9ae29d67eb4bfa9db81be4fbb80f6b5cc4dc16ebaea46cc896cbc87304bee",
+    "scripts\\workflow_depth_execution.py": "e72b0e61d6e25f1ed3c56de08d65a7c51c5ca636e09c875d51f735fcbed25b5e",
+    "scripts\\workflow_depth_common.py": "3012e4653b7ff66e82ecfce8c7bf5c842bfa2c6143eee58ec2c0cd48cc50ae8a",
+    "scripts\\probe_workflow_depth.py": "6e6a2c6ab2ed401931430559faa23d5cde19578b234916666e034e6f0ddef044",
+    "scripts\\workflow_skill_common.py": "e3b726d2074292c391b796cbc525c811de494bb941769a121005f595b6cf6991",
+    "src\\veyra\\option_model.py": "ac15e6e55108fc8ef69b57268bf004c6756305e21293d2a9683dfde9f6e79b48",
+    "src\\veyra\\proper_learning.py": "edcf97fed0c15b1e0219429a41963c27e6baae3890906d3c4a6829f51b3855a0"
+  },
+  "parameter_values_unchanged": true,
+  "release_allowed": false,
+  "limitation": "Four training inputs, one warmup and three repetitions per strategy, one device/run. Memory and speed do not bound other shapes; timings measure training steps, not inference. Where the allocator limit prevents an uncheckpointed run, parity is only between the strategies that completed that case."
+}

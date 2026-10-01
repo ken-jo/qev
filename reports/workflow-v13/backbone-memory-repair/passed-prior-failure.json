@@ -1,0 +1,23 @@
+{
+  "observed_at_utc": "2026-10-01T00:03:45.235007+00:00",
+  "passed_original_failure_logging_window": true,
+  "original_last_logged_step": 650,
+  "original_logging_interval": 25,
+  "original_failure_report_sha256": "27bcde19acd37c5410ee45f0cae2501bb6d5c52281244664307f8db375b4cd6d",
+  "retry_verified_progress": {
+    "stage": "training",
+    "processed": 5397,
+    "total": 9129,
+    "steps": 675,
+    "mean_loss": 0.3056096549673413,
+    "elapsed_seconds": 1827.6714704999467,
+    "peak_memory_mib": 7007.0283203125,
+    "release_allowed": false
+  },
+  "training_order_sha256": "602b5f4afaad0f67dcca9c14676af5a704bb1dafd2a9b428390759ac0ce8a707",
+  "identical_mean_losses_at_all_shared_logging_points": true,
+  "shared_logging_points": 26,
+  "original_failure_log_sha256": "91c69a6c6ff2a42e946443fef9387e2a7906d956c85b5e901622b5f5ec729c9b",
+  "meaning": "The retry passed the same ordered training window where the original run failed. This does not prove full-run completion or improved accuracy.",
+  "release_allowed": false
+}

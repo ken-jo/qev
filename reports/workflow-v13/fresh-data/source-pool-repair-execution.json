@@ -1,0 +1,17 @@
+{
+  "declared_at_utc": "2026-09-30T22:50:30.087487+00:00",
+  "release_design_sha256": "6abe85061f05096fc99436220bb3b1094ff802cb6a62f47cfb14643a327684ef",
+  "source_files": {
+    "C:\\tmp\\veyra\\scripts\\prepare_recovery_release_data_repaired.py": "1208dae5b5a564837cbb14ef63894cbc790a9b1263d9da0777f875278d2eaea6",
+    "scripts\\prepare_recovery_calibration_sources.py": "4da55e1bf81f7ae0e721bc2f21d2f078fa58799ef5cfb0332c9ae2dcbf809447",
+    "scripts\\build_recovery_validation.py": "65e459fdf8d871b6ac58290bdbc9a445d8850f8db90c100412621204ecccfef7",
+    "scripts\\verify_followup_calibration_data.py": "9c46ec53c00e12673baf428df8bc2429b62e9f5d0f0703aa0b0e6483abd071fc",
+    "scripts\\build_recovery_final_bank_test.py": "4eaba42e59734080cf710ead6edc43c178d8a290be63793a4aa8a23354c08e46",
+    "scripts\\verify_recovery_final_data.py": "2fbece4d6ed1025d844460423f3b33540482fc6115851048ea0070f98e2f9251",
+    "scripts\\build_workflow_v12.py": "fc0641726c18cf6182d540a00ee4a8ca27e5aa1a593ad42185f096b16f39f4d3",
+    "src\\veyra\\workflow_facts.py": "db5f21b92c9e36e2592a1421b343d3341c79b4d8a9056f96de7ddc170a7c2a2f"
+  },
+  "model_predictions_used": false,
+  "source_repair_design_sha256": "2356c6410c222dd35cb52a40bec559f1bad2f4885f01f8918e6272600e7a0959",
+  "release_allowed": false
+}

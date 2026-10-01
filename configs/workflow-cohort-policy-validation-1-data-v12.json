@@ -1,0 +1,58 @@
+{
+  "protocol": "workflow-cohort-policy-validation-1-v12",
+  "status": "declared_before_generation_and_policy_fitting",
+  "study_protocol": "configs/workflow-cohort-policy-v12.json",
+  "release_protocol": "configs/workflow-release-v12.json",
+  "seed": 233,
+  "old_records": "data/workflow-v12/records.jsonl",
+  "old_records_sha256": "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571",
+  "output": "data/workflow-v12e",
+  "frozen_parts": "Preserve all original train, development and final records byte-for-byte after JSONL parsing/serialization, including their original group identities and image bytes. Replace calibration only. No predictions influence the new sample selection.",
+  "quotas": {
+    "procedural_workflow_groups_per_train_or_dev_family": 40,
+    "known_workflow_groups_per_family": 30,
+    "snli_per_class": 50,
+    "banking77_per_class": 2,
+    "cifar10_per_class": 30
+  },
+  "procedural_workflow_calibration": "Use the same nine train/development family rule definitions and prior/sensor model, with a different seeded group namespace. Three complete typed views and one uncertain view remain grouped. No final-only family enters calibration.",
+  "known_workflow_calibration": {
+    "source_constraint": "All 1200 original public train cases were already partitioned in Veyra v10. The latest repository revision retains exactly the same train Parquet SHA-256. No validation split or unused public case is available.",
+    "pinned_upstream_train_sha256": "46a58d63edfd86e23229c78afe8b72307bb4ca9fb0e8df180cabb3c67ec9dcd5",
+    "replacement": "Author fresh structured cases with caller-supplied explicit policies in the same four workflow families. Retain their five question names and type counts. Compute targets directly from four independently enumerated Boolean conditions derived from random numeric observations and thresholds.",
+    "condition_sampling": "For each family, cycle through all 16 condition assignments in a seeded permutation; create 30 distinct states with independently drawn thresholds/readings. Five related questions share the same state and group.",
+    "question_policy": "Choice and score use four mutually exclusive truth combinations of a rotated pair of conditions. Noul uses a declared conjunction/disjunction with negation. Criteria explicitly define the mapping, so labels are reproducible without a model teacher.",
+    "limitation": "These are newly authored procedural policies in familiar business domains, not new annotations from the original public teacher. Their calibration performance must not be presented as comparable to the old teacher-label calibration population. The extra unchanged-policy regression below is mandatory."
+  },
+  "retention": "Unused SNLI validation premises, BANKING77 training utterances and CIFAR-10 test photographs, excluding every original Foundation/workflow selection. Normalize text identities; reject exact and near-duplicate images using the original pHash/dHash/color rule. Preserve source revisions and licenses. CIFAR is evaluation-only and its upstream license remains unconfirmed.",
+  "expected_calibration_questions": 2644,
+  "expected_calibration_groups": 1084,
+  "expected_type_counts": {
+    "choice": 1264,
+    "score": 720,
+    "noul": 660
+  },
+  "additional_mandatory_gate": {
+    "name": "previous_calibration_policy_regression",
+    "population": "Exactly the original v12 policy-fitting groups for each type, preserved in its immutable failed calibration report.",
+    "action": "After fresh temperature/policy fitting is frozen, apply it unchanged to those old policy groups. Do not refit on old labels or use this regression to rank candidates.",
+    "per_type_expected_error_max": 0.15,
+    "per_type_minimum_coverage": 0.6,
+    "failure": "Stop before independent final evaluation if any type fails. Preserve the failure and original final groups."
+  },
+  "publication": "All original release gates remain mandatory, plus the previous-calibration policy regression. Fresh and previously inspected calibration populations must be reported separately with their actual provenance.",
+  "source_output": "data/workflow-v12e-source",
+  "identity_namespace": "veyra-cohort-policy-validation-1-233",
+  "group_namespace": "wf12e",
+  "exclude_records": [
+    "data/workflow-v12b/records.jsonl",
+    "data/workflow-v12c/records.jsonl",
+    "data/workflow-v12d/records.jsonl"
+  ],
+  "exclude_retention_selections": [
+    "data/workflow-v12b-source/retention-selections.json",
+    "data/workflow-v12c-source/retention-selections.json",
+    "data/workflow-v12d-source/retention-selections.json"
+  ],
+  "purpose": "One of two independent policy-validation populations; both must pass unchanged. No fitting or ranking."
+}

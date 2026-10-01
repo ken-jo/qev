@@ -1,0 +1,309 @@
+"""Create grouped multimodal decision data and freeze holdouts before model use."""
+
+import argparse
+import hashlib
+import io
+import json
+import random
+import shutil
+from collections import Counter, defaultdict
+from pathlib import Path
+from zipfile import ZipFile
+
+import numpy as np
+from PIL import Image, ImageOps
+
+from veyra.data import Source, TrainingRecord, audit_records, read_records
+from veyra.schema import DecisionRequest
+
+LABELS = ["cardboard", "glass", "metal", "paper", "plastic", "trash"]
+RELATIONS = [
+    "The premise entails the hypothesis.",
+    "The premise neither entails nor contradicts the hypothesis.",
+    "The premise contradicts the hypothesis.",
+]
+
+
+def digest(value):
+    return hashlib.sha256(value).hexdigest()
+
+
+def stable(value):
+    return digest(("veyra-foundation-v11-83:" + value).encode())
+
+
+def image_signature(raw):
+    with Image.open(io.BytesIO(raw)) as image:
+        rgb = ImageOps.exif_transpose(image).convert("RGB")
+        pixel = digest(str(rgb.size).encode() + rgb.tobytes())
+        gray = np.asarray(rgb.convert("L").resize((32, 32)), dtype=np.float64)
+        basis = np.cos(np.pi / 32 * (np.arange(32)[None, :] + 0.5) * np.arange(8)[:, None])
+        low = (basis @ gray @ basis.T).flatten()[1:]
+        phash = sum(int(x > np.median(low)) << i for i, x in enumerate(low))
+        small = np.asarray(rgb.convert("L").resize((9, 8)), dtype=np.int16)
+        dhash = sum(int(x) << i for i, x in enumerate((small[:, 1:] > small[:, :-1]).flatten()))
+        color = np.asarray(rgb.resize((1, 1)), dtype=np.float64).flatten()
+        return pixel, phash, dhash, color.tolist()
+
+
+def archive_images(path):
+    result = {}
+    with ZipFile(path) as archive:
+        for name in archive.namelist():
+            parts = Path(name).parts
+            if not name.lower().endswith(".jpg") or any(p.startswith(".") for p in parts):
+                continue
+            label = Path(name).parent.name
+            if label not in LABELS:
+                continue
+            key = label + "/" + Path(name).name
+            raw = archive.read(name)
+            if key in result and result[key] != raw:
+                raise ValueError("conflicting archive image names")
+            result[key] = raw
+    return result
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--source", type=Path, default=Path("data/foundation-v11-source"))
+    parser.add_argument("--output", type=Path, default=Path("data/foundation-v11"))
+    args = parser.parse_args()
+    if args.output.exists() and any(path.is_file() for path in args.output.rglob("*")):
+        raise FileExistsError("corpus output must be empty")
+    args.output.mkdir(parents=True, exist_ok=True)
+    (args.output / "images").mkdir(exist_ok=True)
+    records, manifest_extra = [], {}
+
+    def add(identifier, group, split, family, state, question, target, source, tags=(), image_sha=None):
+        gold = ["gold_key:" + max(target, key=target.get)] if max(target.values()) > 1 - 1e-6 else []
+        records.append(TrainingRecord(
+            id=identifier, group_id=group, split=split, family=family, language="en",
+            request=DecisionRequest.model_validate({"state": state, "questions": {"decision": question}}),
+            targets={"decision": target}, source=source, image_sha256=image_sha,
+            tags=list(tags) + gold,
+        ))
+
+    def three_views(group, split, family, state, meanings, label, source, tags=(), image_sha=None):
+        rng = random.Random(int(stable(group)[:16], 16))
+        keys = [f"c{i}" for i in range(len(meanings))]
+        target = {key: float(i == label) for i, key in enumerate(keys)}
+        parent = group + ":recognition"
+        add(parent, group, split, family, state,
+            {"type": "choice", "instructions": "Which description best matches the evidence?",
+             "criteria": dict(zip(keys, meanings))}, target, source,
+            [*tags, "view:recognition"], image_sha)
+        mapping = list(range(len(meanings)))
+        rng.shuffle(mapping)
+        mapping = [value % 3 for value in mapping]
+        criteria = [
+            f"Priority band {level}: " + " OR ".join(
+                meanings[i] for i in range(len(meanings)) if mapping[i] == level
+            )
+            for level in range(3)
+        ]
+        add(group + ":policy", group, split, family, state,
+            {"type": "score", "instructions": "Apply the supplied priority policy to the evidence. "
+             "The band meanings are specific to this request.", "criteria": criteria},
+            {str(i): float(i == mapping[label]) for i in range(3)}, source,
+            [*tags, "view:policy", "transport_from:" + parent,
+             "transport_map:" + json.dumps({key: str(mapping[i]) for i, key in enumerate(keys)})], image_sha)
+        positive = set(rng.sample(range(len(meanings)), max(1, len(meanings) // 2)))
+        # Balance the truth of the constructed proposition without putting the answer in evidence.
+        wanted = bool(rng.getrandbits(1))
+        if (label in positive) != wanted:
+            if wanted:
+                positive.remove(next(iter(positive)))
+                positive.add(label)
+            else:
+                positive.remove(label)
+                positive.add(next(i for i in range(len(meanings)) if i != label and i not in positive))
+        add(group + ":proposition", group, split, family, state,
+            {"type": "noul", "instructions": "Does the evidence satisfy any of these descriptions? "
+             + " OR ".join(meanings[i] for i in sorted(positive))},
+            {"false": float(label not in positive), "true": float(label in positive)}, source,
+            [*tags, "view:proposition", "transport_from:" + parent,
+             "transport_map:" + json.dumps({key: str(i in positive).lower() for i, key in enumerate(keys)})], image_sha)
+
+    selected = json.loads((args.source / "selected-text.json").read_text(encoding="utf-8"))
+    for row in selected["rows"]:
+        if row["source"] == "snli":
+            source = Source(id="stanfordnlp/snli", revision="cdb5c3d5eed6ead6e5a341c8e56e669bb666725b",
+                            license="CC-BY-SA-4.0", url="https://huggingface.co/datasets/stanfordnlp/snli",
+                            upstream_split=row["upstream_split"])
+            meanings, label, domain = RELATIONS, row["label"], "text_nli"
+            tags = []
+        else:
+            source = Source(id="PolyAI/banking77", revision="57ec275d8078af65b7731c2a98be812d844a6d6b",
+                            license="CC-BY-4.0", url="https://github.com/PolyAI-LDN/task-specific-datasets",
+                            upstream_split=row["upstream_split"])
+            category_groups = selected["banking_categories"]
+            pool = list(category_groups["train"])
+            if row["split"] != "train":
+                pool += category_groups["dev_novel"]
+            if row["split"] == "test":
+                pool += category_groups["test_novel"]
+            rng = random.Random(int(stable(row["id"])[:16], 16))
+            options = sorted([row["label"]] + rng.sample([c for c in pool if c != row["label"]], 7))
+            meanings = ["The customer's request concerns " + value.replace("_", " ") + "." for value in options]
+            label, domain = options.index(row["label"]), "text_intent"
+            tags = ["candidate_subset:8_of_77", "novel_intent" if row["novel_label"] else "seen_intent"]
+        three_views(row["source"] + ":" + row["id"], row["split"], domain,
+                    {"text": row["text"]}, meanings, label, source, ["domain:" + domain, *tags])
+
+    kaggle = json.loads((args.source / "trashnet-kaggle-metadata.json").read_text())
+    if kaggle["licenseName"] != "MIT" or kaggle["currentVersionNumber"] != 1:
+        raise ValueError("Kaggle source version/license changed")
+    images = archive_images(args.source / "trashnet-kaggle.zip")
+    original = archive_images(args.source / "trashnet-original.zip")
+    kaggle_content = Counter((name.split("/")[0], digest(raw)) for name, raw in images.items())
+    original_content = Counter((name.split("/")[0], digest(raw)) for name, raw in original.items())
+    if kaggle_content != original_content:
+        raise ValueError("Kaggle photos differ from the pinned original author archive")
+    signatures = {name: image_signature(raw) for name, raw in images.items()}
+    names = sorted(images)
+    parents = list(range(len(names)))
+
+    def root(index):
+        while parents[index] != index:
+            parents[index] = parents[parents[index]]
+            index = parents[index]
+        return index
+
+    links = 0
+    for i, name in enumerate(names):
+        pixel, phash, dhash, color = signatures[name]
+        for j in range(i):
+            other_pixel, other_phash, other_dhash, other_color = signatures[names[j]]
+            same = pixel == other_pixel
+            similar = (phash ^ other_phash).bit_count() <= 4 and (dhash ^ other_dhash).bit_count() <= 8
+            if same or (similar and max(abs(a - b) for a, b in zip(color, other_color)) <= 35):
+                parents[root(i)] = root(j)
+                links += 1
+    clusters = defaultdict(list)
+    for i, name in enumerate(names):
+        clusters[root(i)].append(name)
+    dropped, seen_pixels = [], set()
+    assignments = []
+    for members in clusters.values():
+        labels = {name.split("/")[0] for name in members}
+        if len(labels) != 1:
+            dropped.extend(members)
+            continue
+        label = labels.pop()
+        group = "trashnet:" + min(digest(images[name]) for name in members)[:24]
+        bucket = int(stable(group)[:8], 16) % 100
+        split = "train" if bucket < 60 else "dev" if bucket < 72 else "calibration" if bucket < 84 else "test"
+        for name in members:
+            pixel = signatures[name][0]
+            if pixel in seen_pixels:
+                dropped.append(name)
+                continue
+            seen_pixels.add(pixel)
+            raw, sha = images[name], digest(images[name])
+            path = "images/" + sha + ".jpg"
+            (args.output / path).write_bytes(raw)
+            source = Source(id="vminhkhoi/trashnet", revision="kaggle-version-1",
+                            license="MIT", url="https://www.kaggle.com/datasets/vminhkhoi/trashnet",
+                            upstream_split="unsplit")
+            # Distinct photographs in a perceptual cluster share a split/group; views retain image IDs.
+            first = len(records)
+            three_views("waste:" + sha[:24], split, "image_waste",
+                        {"text": "Use the photograph as evidence about the visible item.", "images": [{"path": path}]},
+                        [f"The item belongs to the {kind} material category." for kind in LABELS],
+                        LABELS.index(label), source, ["domain:image_waste"], sha)
+            for record in records[first:]:
+                record.group_id = group
+            assignments.append({"file": name, "group": group, "split": split, "sha256": sha, "pixel_sha256": pixel})
+    manifest_extra["trashnet"] = {
+        "kaggle_image_count": len(images), "matches_original_author_bytes": True,
+        "original_revision": "94cd17ebfd6702bf62281d3c89f22ff649815b46",
+        "perceptual_links": links, "clusters": len(clusters), "excluded_files": dropped,
+        "retained_images": len(assignments), "split_images": dict(Counter(x["split"] for x in assignments)),
+        "split_policy": "Stable perceptual-cluster hash: 60/12/12/16 percent train/dev/calibration/test",
+        "similarity": "Exact RGB pixels, or pHash<=4 and dHash<=8 and max mean RGB difference<=35",
+        "limitation": "Object identity unavailable; perceptual grouping cannot establish independence of all physical items",
+    }
+    (args.output / "image-groups.json").write_text(json.dumps(assignments, indent=2) + "\n", encoding="utf-8", newline="\n")
+
+    def copy_record(record, parent_root, domain):
+        for qid, question in record.request.questions.items():
+            one = record.model_copy(deep=True)
+            one.id = "replay:" + record.id + ":" + qid
+            one.request.questions = {qid: question}
+            one.targets = {qid: record.targets[qid]}
+            one.tags = [tag for tag in record.tags if not tag.startswith(("domain:", "gold_key:"))]
+            one.tags += ["domain:" + domain, "legacy_regression" if record.split == "test" else "retention"]
+            if max(one.targets[qid].values()) >= 1 - 1e-6:
+                one.tags += ["gold_key:" + max(one.targets[qid], key=one.targets[qid].get)]
+            for image in one.request.state.images:
+                old = parent_root / image.path
+                image.path = "images/" + one.image_sha256 + old.suffix
+                destination = args.output / image.path
+                if not destination.exists():
+                    shutil.copyfile(old, destination)
+            records.append(one)
+
+    starter_root = Path("data/starter-v2")
+    representative = {}
+    for record in sorted(read_records(starter_root / "records.jsonl"), key=lambda r: (-len(r.request.questions), r.id)):
+        representative.setdefault((record.family, record.group_id), record)
+    leaf = [r for r in representative.values() if r.family == "leaf_photo"]
+    train_leaf = sorted([r for r in leaf if r.split == "train"], key=lambda r: stable(r.group_id))[:300]
+    for record in train_leaf + [r for r in leaf if r.split != "train"]:
+        copy_record(record, starter_root, "image_leaf")
+    for record in representative.values():
+        if record.family == "missing_evidence":
+            copy_record(record, starter_root, "uncertainty")
+    policy_root = Path("data/policy-v8")
+    groups = defaultdict(lambda: defaultdict(list))
+    for record in read_records(policy_root / "records.jsonl"):
+        groups[(record.split, record.family)][record.group_id].append(record)
+    for (split, family), pool in groups.items():
+        size = {"train": 80, "dev": 24, "calibration": 16, "test": 20}[split]
+        for group in sorted(pool, key=stable)[:size]:
+            for record in pool[group]:
+                copy_record(record, policy_root, "retention")
+
+    synthetic = Source(id="veyra/conditional-probability", revision=digest(Path(__file__).read_bytes()),
+                       license="Apache-2.0", url="https://github.com/ken-jo/veyra")
+    for split, count in (("train", 240), ("dev", 60), ("calibration", 60), ("test", 120)):
+        for index in range(count):
+            group = f"probability:{split}:{index}"
+            rng = random.Random(int(stable(group)[:16], 16))
+            total = rng.randint(7, 101)
+            yes = rng.randint(1, total - 1)
+            a, b = f"token_{rng.randrange(10**7)}", f"token_{rng.randrange(10**7)}"
+            add(group, group, split, "conditional_probability", {
+                "text": f"A bag contains {yes} cards marked {a} and {total - yes} cards marked {b}. "
+                "One card is sampled uniformly. The card is hidden; its identity was not observed."
+            }, {"type": "noul", "instructions": f"What is the probability that the sampled card is marked {a}?"},
+                {"false": 1 - yes / total, "true": yes / total}, synthetic,
+                ["domain:uncertainty", "known_conditional_distribution", "view:partial_evidence"])
+
+    records.sort(key=lambda r: r.id)
+    summary = audit_records(records)
+    path = args.output / "records.jsonl"
+    path.write_text("".join(r.model_dump_json() + "\n" for r in records), encoding="utf-8", newline="\n")
+    summary.update({
+        **manifest_extra, "seed": 83, "records_sha256": digest(path.read_bytes()),
+        "generator_sha256": digest(Path(__file__).read_bytes()),
+        "downloads_manifest_sha256": digest((args.source / "downloads.json").read_bytes()),
+        "text_selection_sha256": digest((args.source / "selected-text.json").read_bytes()),
+        "no_typed_decisions_workflow_training": True,
+        "banking_scope": selected["banking_scope"], "banking_category_groups": selected["banking_categories"],
+        "domain_split_questions": {
+            domain: dict(Counter(r.split for r in records if "domain:" + domain in r.tags))
+            for domain in sorted({t[7:] for r in records for t in r.tags if t.startswith("domain:")})
+        },
+        "subset_sha256": {split: digest("".join(r.model_dump_json() + "\n" for r in records if r.split == split).encode())
+                          for split in ("train", "dev", "calibration", "test")},
+        "final_scope": "Fresh TrashNet, SNLI, 8-way BANKING subsets and known probability cases; separately tagged legacy leaf/policy/missing regressions",
+        "pretraining_overlap": "Unknown overlap with the backbone's original pretraining; only Veyra adaptation splits are audited",
+    })
+    (args.output / "protocol.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8", newline="\n")
+    print(json.dumps(summary, indent=2), flush=True)
+
+
+if __name__ == "__main__":
+    main()

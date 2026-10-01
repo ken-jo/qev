@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "created_at_utc": "2026-09-30T21:41:38.868114+00:00",
+  "study_sha256": "ee66ed106d54c72154ab30f4045f171b57b394b1281e4a31a91392ac6f7b7c01",
+  "design_sha256": "0d213c6126456741f213a3343666a8161d3b779d581242686b5681a694576a8d",
+  "source_sha256": "ee48872a523af347200a35d0fdc8e35158df6d76a38bcb20322a82a81d0b22ba",
+  "repair_protocol_sha256": "f13c1eb57ff8dd51f2c0d744dce274ebf29e5025f45e2d807182e4038e0e9aa4",
+  "records_sha256": "c22d9140b3f934de4bb41fe65d73ef6180553202c39bd1e874fd545b2c1c82d2",
+  "cohorts": {
+    "b": 1084,
+    "c": 1084,
+    "d": 1084
+  },
+  "fitting_questions": 7932,
+  "fitting_groups": 3252,
+  "preserved_splits": {
+    "train": "db7805a63da4dd319ac2ffb22368adfbc8ae49c62db9543c12d89a354770f4ff",
+    "dev": "a24385540a89b3d6d9e5cfed11cb10d882b69437704713f309a54e4ab1e7e90c",
+    "test": "4d153723f0745bc98f6e13697182e2560277c382d0f1e8dd945f23e45834f145"
+  },
+  "previous_validation_now_fitting_data": true,
+  "final_predictions_used": false,
+  "release_allowed": false
+}

@@ -1,0 +1,24 @@
+{
+  "purpose": "Memory and gradient feasibility only; zero learning rates and no learned candidate.",
+  "declared_at_utc": "2026-09-30T13:20:07.557849+00:00",
+  "parent": "runs/workflow-v12-curriculum-study/skill_curriculum/epoch-2/checkpoint",
+  "parent_weights_sha256": "a8384ccd73746888526e65b46f95dd531faafcf6d267e131e6205f8199e41342",
+  "parent_manifest_sha256": "548f9dadb2e5daf1359864ccf590f70e06e01129b06cd3e10ffebfbe72d1b138",
+  "selection": "runs/workflow-v12-curriculum-selection/selection.json",
+  "selection_sha256": "a4033c8d7d5316954e2550bf3fe0ce46247e3c3c75aaff09592e930979e0a789",
+  "records": "data/workflow-v12/records.jsonl",
+  "records_sha256": "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571",
+  "seed": 211,
+  "record_ids": [
+    "wf12:backup_restore:train:0152:choice",
+    "workflow:tr_customer_service_000270:action",
+    "wf12:purchase_return:train:0023:uncertain",
+    "replay:bean-02856dd2f1c50e53c9da425911b19faf:condition"
+  ],
+  "case_selection": "Longest serialized original training request in each of workflow_new/workflow_known/uncertainty; first original training photograph by record id. This does not prove the maximum possible token/image shape.",
+  "expanded_layers": 24,
+  "original_adapted_layers": 12,
+  "learning_rate": 0.0,
+  "calibration_or_final_used": false,
+  "release_allowed": false
+}

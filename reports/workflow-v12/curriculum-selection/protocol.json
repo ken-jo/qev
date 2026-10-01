@@ -1,0 +1,45 @@
+{
+  "study_protocol_sha256": "05cbeb6125bdc7c081f7ba3e0dc1caaed52aaeeeccc85360bd0c05b76a621c79",
+  "release_protocol_sha256": "d0e6c454fc10cfa080523cfcc66706dfe73cb32524f4ce74bf87a5d4edde6776",
+  "calibration_design_sha256": "6a1679f72bbab8418d5d35c22712ed37d232675de7f1e14f9e6a3d93bb3e1518",
+  "records_sha256": "e3c3c10301f6c34561cd5281713152b3df4df0d093738c078b3d4fddde2196fb",
+  "data_audit_sha256": "8f401c18d200067981fad80cee217778b1f75e070d113ff9d52b38d5b5980784",
+  "feature_cache": {
+    "complete": true,
+    "rows": 14524,
+    "by_split": {
+      "train": 11212,
+      "dev": 3312
+    },
+    "features_sha256": "10304d3889d09c01c55f05fcba6d48068daed7f1f9a3a56cbeda8a25c9c2aff3",
+    "metadata_sha256": "4a81e5c10d1425ccdd1141fe7bece83609404b6d2d1274a964c84d45a6ae6378",
+    "specification_sha256": "3ff0186b30e46416428ca6acf79640d4a8fac8940182095986429f894375c640",
+    "elapsed_seconds": 964.4121443999466
+  },
+  "candidates": [
+    "runs\\workflow-v12-workspace-study\\primitive\\epoch-2\\checkpoint",
+    "runs\\workflow-v12-curriculum-study\\skill_curriculum\\epoch-1\\checkpoint",
+    "runs\\workflow-v12-curriculum-study\\skill_curriculum\\epoch-2\\checkpoint",
+    "runs\\workflow-v12-curriculum-study\\outcome_replay\\epoch-1\\checkpoint",
+    "runs\\workflow-v12-curriculum-study\\outcome_replay\\epoch-2\\checkpoint"
+  ],
+  "source_files": {
+    "C:\\tmp\\veyra\\scripts\\train_workflow_curriculum.py": "913ece26aac6ab76885af9f8453335e885a56a89e2c9753f3dd65a5942b6ff5e",
+    "scripts\\workflow_skill_common.py": "e3b726d2074292c391b796cbc525c811de494bb941769a121005f595b6cf6991",
+    "scripts\\train_workflow_backbone.py": "c7ade8e49569de63c33a4552c554ab6ac035e90077f8c75cb4a13ca3c3f450cd",
+    "scripts\\train_workflow_workspace.py": "93dd647080074a3aa0f774d47ca776ed0bf08a4885eb5852b30583ab15bbffe5",
+    "src\\veyra\\option_model.py": "ac15e6e55108fc8ef69b57268bf004c6756305e21293d2a9683dfde9f6e79b48",
+    "src\\veyra\\proper_learning.py": "edcf97fed0c15b1e0219429a41963c27e6baae3890906d3c4a6829f51b3855a0",
+    "src\\veyra\\workflow_learning.py": "37cdb8d9d375938a5ac1a26ef53f1ccad949f141e2406caf232dab4df70a02d7",
+    "C:\\tmp\\veyra\\scripts\\select_curriculum_checkpoint.py": "efd75b118ab58a143d8524343417ed3392e07b76966ed308ea192175230dbca8",
+    "scripts\\workspace_development_diagnostics.py": "50410c204b38f051d5653d1dbdff8f5a04bae33828226a88f59da4fa9607b2ad"
+  },
+  "reused_merged_evidence": {
+    "baseline_report_sha256": "f8c67a1b478ad54cb0344df05804cb94a8dc2e1f591aee0c9f8103ea72c39a8e",
+    "prior_selection_sha256": "29f6adea6d407a3844ce849ec54e98c59491c30e8718a7d12151a6e49032ffad",
+    "parent_logits_sha256": "2dbfa31ba1233e31855169c1e6fcfb655d94e627fc9c1f0c38a725af8af8801e",
+    "reason": "Identical data, ordering, weights, manifests and inference sources."
+  },
+  "calibration_or_final_used_for_selection": false,
+  "started_at_utc": "2026-09-30T12:53:07.268160+00:00"
+}

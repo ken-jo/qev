@@ -1,0 +1,35 @@
+[
+  {
+    "epoch": 1,
+    "train_loss": 0.6285937221524485,
+    "dev": {
+      "questions": 448,
+      "accuracy": 0.6763392857142857,
+      "nll": 0.6249264949375564,
+      "text_accuracy": 0.671875,
+      "image_accuracy": 0.6822916666666666
+    }
+  },
+  {
+    "epoch": 2,
+    "train_loss": 0.5863736677449403,
+    "dev": {
+      "questions": 448,
+      "accuracy": 0.6674107142857143,
+      "nll": 0.6284507399612461,
+      "text_accuracy": 0.6328125,
+      "image_accuracy": 0.7135416666666666
+    }
+  },
+  {
+    "epoch": 3,
+    "train_loss": 0.569610802922114,
+    "dev": {
+      "questions": 448,
+      "accuracy": 0.6428571428571429,
+      "nll": 0.6689755240342805,
+      "text_accuracy": 0.60546875,
+      "image_accuracy": 0.6927083333333334
+    }
+  }
+]

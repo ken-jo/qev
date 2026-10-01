@@ -1,0 +1,73 @@
+{
+  "experiment": "workflow-backbone-recovery-v13",
+  "declared_at_utc": "2026-09-30T22:54:38.466199+00:00",
+  "prior_readout_study": "configs/workflow-readout-recovery-v13.json",
+  "prior_readout_study_sha256": "c680b3a57fed4daadbb3d537ac9f9ff7bc0abb0a14ef60fc25725a729da83495",
+  "prior_failure_selection": "runs/readout-recovery-v13/selection.json",
+  "prior_failure_selection_sha256": "64fc4a87c9808b877b0f89935c972842ce3c2cb1bb2b99f30c696f668f7555bc",
+  "trigger": "All eleven head-only candidates failed the fixed development recovery screens. No recovery policy fitting or final inference was performed.",
+  "parent": "checkpoints/veyra-cohort-policy-v12",
+  "parent_weights_sha256": "86ce942f8ef036f2279422a3a2665248b98adcb0effa91bafdf15d9c14c6c83e",
+  "parent_manifest_sha256": "0da2b6454441c37d17959a00a3608452a0555128aa693570eb1fd82349fc9af4",
+  "features": "data/features-readout-recovery-v13",
+  "features_manifest_sha256": "3ed8e46cae5214b5e9bfabb5dc9301fc2ce3f724adfbff6f67746bab24125c27",
+  "source_datasets": {
+    "workflow": {
+      "path": "data/workflow-v12/records.jsonl",
+      "sha256": "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571",
+      "maximum_training_groups_per_family": 96
+    },
+    "legacy": {
+      "path": "data/policy-v8/records.jsonl",
+      "sha256": "43d5f8f31d5cfef33fe3721685ad9008209d1b3becb21742ba1ced1ab2557070",
+      "maximum_training_groups_per_family": 256
+    }
+  },
+  "seed": 271,
+  "epochs": 1,
+  "trainable_adapter_layers": [
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "stored_adapter_layers": 24,
+  "adapter_learning_rate": 1e-05,
+  "readout_learning_rate": 1e-06,
+  "accumulation": 8,
+  "weight_decay": 0.01,
+  "clip_grad_norm": 1.0,
+  "scheduler": "30-step warmup then cosine from full rate to 0.1 of full rate",
+  "checkpoint_group_fractions": [
+    0.25,
+    0.5,
+    1.0
+  ],
+  "training_order": "Shuffle all selected train observation groups with seed 271, retain each group together; checkpoint boundaries are group boundaries. All 9,129 previously declared train questions are used exactly once.",
+  "loss": "Same corpus/family weights and frozen-temperature soft cross entropy as the head study. On workflow replay add 4*KL to the cached merged parent distribution at temperature 2. No teacher-error distillation on legacy rows.",
+  "memory": "Activation checkpointing on trainable last six language layers only, nonreentrant; other adapters, base backbone, vision and condition_readout frozen. Fixed before training.",
+  "selection": {
+    "development_only": true,
+    "legacy_text_accuracy_min": 0.91,
+    "legacy_image_accuracy_min": 0.91,
+    "retention_accuracy_drop_max_from_foundation": 0.01,
+    "workflow_known_and_new_accuracy_drop_max_from_parent": 0.01,
+    "uncertainty_nll_max_increase_from_parent": 0.03,
+    "uncertainty_brier_max_increase_from_parent": 0.01,
+    "uncertainty_cost80_max_increase_from_parent": 0.05,
+    "mandatory_original_development_gates": true,
+    "rank": "Eligible first; then minimum legacy text/image accuracy, workflow known/new macro accuracy, lower uncertainty NLL, smaller parameter movement; fixed candidate order breaks exact ties."
+  },
+  "selection_procedure": "Evaluate all three saved candidates with actual merged BF16 GPU inference on all 5,102 declared development rows; use unchanged readout-study recovery screens and ranking. Parent is a diagnostic reference. No final or new validation predictions enter selection.",
+  "followup_design": "configs/workflow-recovery-release-v13.json",
+  "followup_design_sha256": "6abe85061f05096fc99436220bb3b1094ff802cb6a62f47cfb14643a327684ef",
+  "followup_override": "Replace the failed eleven-head-candidate selection with this prospectively declared three-candidate backbone recovery. Every original numerical release gate, new validation population, unused final family/data definition and no-refit rule stays fixed.",
+  "known_source_pool_repair": "configs/workflow-recovery-data-source-repair-v13.json",
+  "release_protocol": "configs/workflow-release-v12.json",
+  "release_protocol_sha256": "d0e6c454fc10cfa080523cfcc66706dfe73cb32524f4ce74bf87a5d4edde6776",
+  "new_inference_modules": 0,
+  "generated_answer_tokens": 0,
+  "release_allowed": false
+}

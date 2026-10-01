@@ -1,0 +1,5231 @@
+{
+  "status": "local experiment; not committed; game-solving objective remains unmet",
+  "totals": {
+    "games": 72,
+    "actions": 8423,
+    "game_model_calls": 7002,
+    "forced_engine_moves": 5,
+    "readout_model_calls": 56,
+    "wins": 0
+  },
+  "development": {
+    "protocol": {
+      "schema": "veyra.assisted-2048.v1",
+      "phase": "development",
+      "seeds": [
+        11,
+        29,
+        47,
+        83
+      ],
+      "evaluation_seeds": [
+        1009,
+        2003,
+        3001,
+        4001,
+        5003,
+        6007,
+        7001,
+        8009
+      ],
+      "steps": 2000,
+      "profiles": {
+        "unassisted": "Previously selected corner instructions; all four directions offered",
+        "image_detailed": "512px board PNG and corner instructions; all four directions; no matrix",
+        "legal_only": "Current board and only legal arrow candidates",
+        "next_board": "Legal candidates plus pre-spawn result boards and empty-cell counts",
+        "next_board_score": "next_board plus each move's immediate merge points",
+        "random_legal": "No model; uniformly sample a legal move using an independent RNG"
+      },
+      "instructions": "You control a 4 by 4 game of 2048. Select exactly one next arrow-key move. The objective is to create a tile with value 2048 and avoid getting stuck. Rows in the evidence are ordered top to bottom; columns are ordered left to right. Zero is empty. For LEFT or RIGHT, process each row. For UP or DOWN, process each column. First slide tiles through empty cells toward the selected edge, then merge adjacent equal values into their sum, once per original tile, then close the gaps. Unequal values cannot merge, and a newly merged tile cannot merge again in that move. Reject a direction whose slide and merges leave every cell unchanged. Among changing moves, favor equal-tile merges and positions with empty cells. Do not repeat a direction merely because it appears in recent arrow history. Read the current board anew. Return only the selected direction. Use a stable corner strategy: prefer keeping the largest tile at the bottom-left. Build a descending row along the bottom, with the next row descending in the opposite direction. Preserve that arrangement when possible, but never select an unchanged move. Avoid splitting equal-valued tiles behind larger tiles. Keep empty cells available. A changing move is preferable to preserving a corner with a move that does nothing. Use UP or RIGHT when needed to create space or enable a future merge; the corner preference is not a command to repeatedly press LEFT or DOWN. The application has excluded directions that leave this board unchanged. Every supplied candidate is legal. If candidate descriptions include a resulting board, it is the exact result of ONE move BEFORE the random new tile appears. Use those results to compare future merge opportunities and preserve space. Any merge points are immediate game points, not a prediction of winning. Do not maximize immediate points at the expense of a playable board. The next random tile's location and value are unknown.",
+      "checkpoint": "veyra-backbone-recovery-v13",
+      "runtime": "0.3.0a4",
+      "runtime_source": "bundled-wheel",
+      "device": "NVIDIA GeForce RTX 4060 Ti",
+      "checkpoint_files_sha256": {
+        "head.safetensors": "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee",
+        "manifest.json": "d83f9910196c6e801658ca3816c3d2bd4a849ba3da6ff059a0edf7c6028e898d"
+      },
+      "script_sha256": "aa01d802412a548a431a1b6f6e50f56510685c193ed88818f9756b5750c7cbb1",
+      "engine_sha256": "1052d3c4cd727b128ae5eb0c03832768d0ca6e1534cb5a8dfb1025803d1be797",
+      "server_sha256": "24530d6249125fb1403246b4a7c24c93a6aa01babdf548bd0b946132468d65de",
+      "prompt_runner_sha256": "fda412c3a82bc16a1d6042b0c999b6bcc57bdb8a8e2e87dcad4b09af0f31d0f2",
+      "text_runner_sha256": "7411d0b8238e4e45e31f530faec5a10799ad0001e4344796970529b9b6337d82",
+      "definitions_sha256": "4ffab8a6db04a30f7a57cb295070d515696ec2ec3a9de5f8e56236b1103d9511",
+      "all_four_directions_offered_only_for": [
+        "unassisted",
+        "image_detailed"
+      ],
+      "image_policy": "512x512 classic PNG; original image-only observation plus CORNER question",
+      "forced_move_policy": "One legal direction is executed by engine; no model request",
+      "execution_policy": "Execute all returned choices, preserve model abstention flags",
+      "random_control": "Uniform legal choice; separate deterministic policy RNG",
+      "random_spawn": "Engine uses 90% 2, 10% 4; previews never consume its RNG",
+      "previews": "Single slide/merge only, before random spawn; no hidden state/seed sent",
+      "search_or_heuristic_ranking": false,
+      "training_or_calibration_updates": false,
+      "warmups_discarded": 0,
+      "stops": [
+        "2048 tile",
+        "game over",
+        "four unchanged moves",
+        "step budget",
+        "error"
+      ],
+      "success_criteria": {
+        "software": "Tests and replay pass, zero errors; assisted actions all legal",
+        "task": "At least one 2048 tile verified in held-out games; report full win rate",
+        "improvement": "Compare all outcomes to legal-only and random controls"
+      },
+      "started_utc": "2026-10-01T11:40:37.219974+00:00"
+    },
+    "results": {
+      "unassisted": {
+        "aggregate": {
+          "games": 4,
+          "wins": 0,
+          "mean_score": 11,
+          "mean_log2_max_tile": 2.25,
+          "max_tile": 8,
+          "tile_counts": {
+            "4": 1,
+            "8": 2,
+            "2": 1
+          },
+          "actions": 36,
+          "model_decisions": 36,
+          "forced_engine_moves": 0,
+          "valid_moves": 20,
+          "invalid_moves": 16,
+          "model_abstentions_executed": 3,
+          "model_median_ms": 102.66,
+          "http_median_ms": 121.55725003685802,
+          "mean_game_wall_ms": 1132.5222000014037,
+          "directions": {
+            "right": 36
+          },
+          "stop_reasons": {
+            "four_unchanged_actions": 4
+          },
+          "max_input_tokens": 624,
+          "errors": []
+        },
+        "runs": [
+          {
+            "profile": "unassisted",
+            "seed": 11,
+            "score": 0,
+            "max_tile": 4,
+            "won": false,
+            "steps": 5,
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "wall_ms": 889.4397000549361,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                4,
+                2,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                4,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "unassisted",
+            "seed": 29,
+            "score": 24,
+            "max_tile": 8,
+            "won": false,
+            "steps": 15,
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "wall_ms": 1760.761299985461,
+            "initial_board": [
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                2,
+                8
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "unassisted",
+            "seed": 47,
+            "score": 20,
+            "max_tile": 8,
+            "won": false,
+            "steps": 12,
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "wall_ms": 1434.2879999894649,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                8
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "unassisted",
+            "seed": 83,
+            "score": 0,
+            "max_tile": 2,
+            "won": false,
+            "steps": 4,
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "wall_ms": 445.59979997575283,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ]
+          }
+        ]
+      },
+      "image_detailed": {
+        "aggregate": {
+          "games": 4,
+          "wins": 0,
+          "mean_score": 11,
+          "mean_log2_max_tile": 2.25,
+          "max_tile": 8,
+          "tile_counts": {
+            "4": 1,
+            "8": 2,
+            "2": 1
+          },
+          "actions": 36,
+          "model_decisions": 36,
+          "forced_engine_moves": 0,
+          "valid_moves": 20,
+          "invalid_moves": 16,
+          "model_abstentions_executed": 33,
+          "model_median_ms": 177.91,
+          "http_median_ms": 200.81749995006248,
+          "mean_game_wall_ms": 1879.107649991056,
+          "directions": {
+            "right": 36
+          },
+          "stop_reasons": {
+            "four_unchanged_actions": 4
+          },
+          "max_input_tokens": 792,
+          "errors": []
+        },
+        "runs": [
+          {
+            "profile": "image_detailed",
+            "seed": 11,
+            "score": 0,
+            "max_tile": 4,
+            "won": false,
+            "steps": 5,
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "wall_ms": 1092.3493999289349,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                4,
+                2,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                4,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "image_detailed",
+            "seed": 29,
+            "score": 24,
+            "max_tile": 8,
+            "won": false,
+            "steps": 15,
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "wall_ms": 3147.327300044708,
+            "initial_board": [
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                2,
+                8
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "image_detailed",
+            "seed": 47,
+            "score": 20,
+            "max_tile": 8,
+            "won": false,
+            "steps": 12,
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "wall_ms": 2444.693799945526,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                8
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "image_detailed",
+            "seed": 83,
+            "score": 0,
+            "max_tile": 2,
+            "won": false,
+            "steps": 4,
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "wall_ms": 832.0601000450552,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ]
+          }
+        ]
+      },
+      "legal_only": {
+        "aggregate": {
+          "games": 4,
+          "wins": 0,
+          "mean_score": 1508,
+          "mean_log2_max_tile": 7.0,
+          "max_tile": 256,
+          "tile_counts": {
+            "64": 1,
+            "128": 2,
+            "256": 1
+          },
+          "actions": 598,
+          "model_decisions": 597,
+          "forced_engine_moves": 1,
+          "valid_moves": 598,
+          "invalid_moves": 0,
+          "model_abstentions_executed": 501,
+          "model_median_ms": 101.83,
+          "http_median_ms": 120.8541999803856,
+          "mean_game_wall_ms": 17464.85265000956,
+          "directions": {
+            "right": 400,
+            "up": 128,
+            "down": 35,
+            "left": 35
+          },
+          "stop_reasons": {
+            "game_over": 4
+          },
+          "max_input_tokens": 630,
+          "errors": []
+        },
+        "runs": [
+          {
+            "profile": "legal_only",
+            "seed": 11,
+            "score": 648,
+            "max_tile": 64,
+            "won": false,
+            "steps": 86,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 9993.771000066772,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                4,
+                2,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                4,
+                2,
+                32,
+                2
+              ],
+              [
+                2,
+                8,
+                2,
+                64
+              ],
+              [
+                4,
+                32,
+                4,
+                8
+              ],
+              [
+                2,
+                4,
+                16,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "legal_only",
+            "seed": 29,
+            "score": 1740,
+            "max_tile": 128,
+            "won": false,
+            "steps": 175,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 20525.27330000885,
+            "initial_board": [
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                4,
+                8,
+                32,
+                2
+              ],
+              [
+                8,
+                16,
+                128,
+                64
+              ],
+              [
+                4,
+                8,
+                64,
+                4
+              ],
+              [
+                2,
+                16,
+                32,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "legal_only",
+            "seed": 47,
+            "score": 1284,
+            "max_tile": 128,
+            "won": false,
+            "steps": 138,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 16068.033599993214,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                2,
+                16,
+                32,
+                4
+              ],
+              [
+                8,
+                32,
+                16,
+                2
+              ],
+              [
+                4,
+                16,
+                128,
+                4
+              ],
+              [
+                2,
+                8,
+                32,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "legal_only",
+            "seed": 83,
+            "score": 2360,
+            "max_tile": 256,
+            "won": false,
+            "steps": 199,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 23272.33269996941,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ],
+            "final_board": [
+              [
+                2,
+                8,
+                2,
+                64
+              ],
+              [
+                4,
+                16,
+                32,
+                8
+              ],
+              [
+                8,
+                2,
+                256,
+                16
+              ],
+              [
+                2,
+                4,
+                16,
+                2
+              ]
+            ]
+          }
+        ]
+      },
+      "next_board": {
+        "aggregate": {
+          "games": 4,
+          "wins": 0,
+          "mean_score": 1698,
+          "mean_log2_max_tile": 7.0,
+          "max_tile": 256,
+          "tile_counts": {
+            "64": 1,
+            "128": 2,
+            "256": 1
+          },
+          "actions": 669,
+          "model_decisions": 669,
+          "forced_engine_moves": 0,
+          "valid_moves": 669,
+          "invalid_moves": 0,
+          "model_abstentions_executed": 458,
+          "model_median_ms": 155.12,
+          "http_median_ms": 161.21170006226748,
+          "mean_game_wall_ms": 26993.062024994288,
+          "directions": {
+            "right": 104,
+            "up": 301,
+            "left": 261,
+            "down": 3
+          },
+          "stop_reasons": {
+            "game_over": 4
+          },
+          "max_input_tokens": 952,
+          "errors": []
+        },
+        "runs": [
+          {
+            "profile": "next_board",
+            "seed": 11,
+            "score": 932,
+            "max_tile": 64,
+            "won": false,
+            "steps": 114,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 18222.466000006534,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                4,
+                2,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                2,
+                4,
+                64,
+                16
+              ],
+              [
+                64,
+                32,
+                16,
+                8
+              ],
+              [
+                8,
+                16,
+                2,
+                4
+              ],
+              [
+                2,
+                4,
+                8,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "next_board",
+            "seed": 29,
+            "score": 1672,
+            "max_tile": 128,
+            "won": false,
+            "steps": 170,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 27276.177000021562,
+            "initial_board": [
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                32,
+                128,
+                64,
+                16
+              ],
+              [
+                4,
+                64,
+                16,
+                8
+              ],
+              [
+                2,
+                16,
+                8,
+                4
+              ],
+              [
+                4,
+                8,
+                4,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "next_board",
+            "seed": 47,
+            "score": 1632,
+            "max_tile": 128,
+            "won": false,
+            "steps": 165,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 26866.08890001662,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                16,
+                128,
+                64,
+                4
+              ],
+              [
+                8,
+                64,
+                4,
+                8
+              ],
+              [
+                4,
+                32,
+                16,
+                4
+              ],
+              [
+                2,
+                8,
+                4,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "next_board",
+            "seed": 83,
+            "score": 2556,
+            "max_tile": 256,
+            "won": false,
+            "steps": 220,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 35607.516199932434,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ],
+            "final_board": [
+              [
+                256,
+                2,
+                64,
+                32
+              ],
+              [
+                8,
+                32,
+                2,
+                16
+              ],
+              [
+                4,
+                8,
+                32,
+                4
+              ],
+              [
+                2,
+                4,
+                16,
+                2
+              ]
+            ]
+          }
+        ]
+      },
+      "next_board_score": {
+        "aggregate": {
+          "games": 4,
+          "wins": 0,
+          "mean_score": 2851,
+          "mean_log2_max_tile": 8.0,
+          "max_tile": 512,
+          "tile_counts": {
+            "256": 2,
+            "128": 1,
+            "512": 1
+          },
+          "actions": 917,
+          "model_decisions": 917,
+          "forced_engine_moves": 0,
+          "valid_moves": 917,
+          "invalid_moves": 0,
+          "model_abstentions_executed": 630,
+          "model_median_ms": 158.28,
+          "http_median_ms": 164.68360007274896,
+          "mean_game_wall_ms": 38121.47964996984,
+          "directions": {
+            "up": 446,
+            "left": 328,
+            "right": 133,
+            "down": 10
+          },
+          "stop_reasons": {
+            "game_over": 4
+          },
+          "max_input_tokens": 999,
+          "errors": []
+        },
+        "runs": [
+          {
+            "profile": "next_board_score",
+            "seed": 11,
+            "score": 2576,
+            "max_tile": 256,
+            "won": false,
+            "steps": 220,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 36328.07579997461,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                4,
+                2,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                2,
+                8,
+                32,
+                16
+              ],
+              [
+                32,
+                64,
+                256,
+                2
+              ],
+              [
+                8,
+                32,
+                16,
+                4
+              ],
+              [
+                2,
+                16,
+                4,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "next_board_score",
+            "seed": 29,
+            "score": 1540,
+            "max_tile": 128,
+            "won": false,
+            "steps": 159,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 26340.47549997922,
+            "initial_board": [
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                64,
+                128,
+                32,
+                16
+              ],
+              [
+                2,
+                32,
+                16,
+                4
+              ],
+              [
+                32,
+                8,
+                4,
+                2
+              ],
+              [
+                2,
+                4,
+                2,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "next_board_score",
+            "seed": 47,
+            "score": 4932,
+            "max_tile": 512,
+            "won": false,
+            "steps": 343,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 57222.311899997294,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                4,
+                64,
+                32,
+                4
+              ],
+              [
+                64,
+                512,
+                8,
+                32
+              ],
+              [
+                4,
+                8,
+                2,
+                4
+              ],
+              [
+                2,
+                4,
+                8,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "next_board_score",
+            "seed": 83,
+            "score": 2356,
+            "max_tile": 256,
+            "won": false,
+            "steps": 195,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 32595.055399928242,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ],
+            "final_board": [
+              [
+                4,
+                2,
+                8,
+                32
+              ],
+              [
+                64,
+                256,
+                4,
+                8
+              ],
+              [
+                2,
+                8,
+                32,
+                2
+              ],
+              [
+                4,
+                2,
+                8,
+                4
+              ]
+            ]
+          }
+        ]
+      },
+      "random_legal": {
+        "aggregate": {
+          "games": 4,
+          "wins": 0,
+          "mean_score": 1243,
+          "mean_log2_max_tile": 6.5,
+          "max_tile": 256,
+          "tile_counts": {
+            "256": 1,
+            "64": 3
+          },
+          "actions": 505,
+          "model_decisions": 0,
+          "forced_engine_moves": 0,
+          "valid_moves": 505,
+          "invalid_moves": 0,
+          "model_abstentions_executed": 0,
+          "model_median_ms": null,
+          "http_median_ms": null,
+          "mean_game_wall_ms": 9.667774953413755,
+          "directions": {
+            "right": 128,
+            "up": 140,
+            "left": 108,
+            "down": 129
+          },
+          "stop_reasons": {
+            "game_over": 4
+          },
+          "max_input_tokens": 0,
+          "errors": []
+        },
+        "runs": [
+          {
+            "profile": "random_legal",
+            "seed": 11,
+            "score": 3068,
+            "max_tile": 256,
+            "won": false,
+            "steps": 252,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 20.652599981985986,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                4,
+                2,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                4,
+                8,
+                4,
+                2
+              ],
+              [
+                8,
+                16,
+                64,
+                8
+              ],
+              [
+                2,
+                128,
+                256,
+                2
+              ],
+              [
+                16,
+                32,
+                2,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "random_legal",
+            "seed": 29,
+            "score": 596,
+            "max_tile": 64,
+            "won": false,
+            "steps": 82,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 5.275100003927946,
+            "initial_board": [
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                2,
+                4,
+                8,
+                16
+              ],
+              [
+                4,
+                8,
+                64,
+                32
+              ],
+              [
+                8,
+                4,
+                8,
+                4
+              ],
+              [
+                2,
+                16,
+                2,
+                8
+              ]
+            ]
+          },
+          {
+            "profile": "random_legal",
+            "seed": 47,
+            "score": 640,
+            "max_tile": 64,
+            "won": false,
+            "steps": 84,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 7.128899917006493,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                8,
+                2,
+                4,
+                2
+              ],
+              [
+                2,
+                64,
+                32,
+                4
+              ],
+              [
+                16,
+                2,
+                8,
+                2
+              ],
+              [
+                2,
+                4,
+                32,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "random_legal",
+            "seed": 83,
+            "score": 668,
+            "max_tile": 64,
+            "won": false,
+            "steps": 87,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 5.614499910734594,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ],
+            "final_board": [
+              [
+                2,
+                8,
+                2,
+                8
+              ],
+              [
+                32,
+                64,
+                8,
+                4
+              ],
+              [
+                8,
+                16,
+                32,
+                8
+              ],
+              [
+                2,
+                8,
+                2,
+                4
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "complete": true
+  },
+  "evaluation": {
+    "protocol": {
+      "schema": "veyra.assisted-2048.v1",
+      "phase": "evaluation",
+      "seeds": [
+        1009,
+        2003,
+        3001,
+        4001,
+        5003,
+        6007,
+        7001,
+        8009
+      ],
+      "evaluation_seeds": [
+        1009,
+        2003,
+        3001,
+        4001,
+        5003,
+        6007,
+        7001,
+        8009
+      ],
+      "steps": 2000,
+      "profiles": {
+        "unassisted": "Previously selected corner instructions; all four directions offered",
+        "image_detailed": "512px board PNG and corner instructions; all four directions; no matrix",
+        "legal_only": "Current board and only legal arrow candidates",
+        "next_board": "Legal candidates plus pre-spawn result boards and empty-cell counts",
+        "next_board_score": "next_board plus each move's immediate merge points",
+        "random_legal": "No model; uniformly sample a legal move using an independent RNG"
+      },
+      "instructions": "You control a 4 by 4 game of 2048. Select exactly one next arrow-key move. The objective is to create a tile with value 2048 and avoid getting stuck. Rows in the evidence are ordered top to bottom; columns are ordered left to right. Zero is empty. For LEFT or RIGHT, process each row. For UP or DOWN, process each column. First slide tiles through empty cells toward the selected edge, then merge adjacent equal values into their sum, once per original tile, then close the gaps. Unequal values cannot merge, and a newly merged tile cannot merge again in that move. Reject a direction whose slide and merges leave every cell unchanged. Among changing moves, favor equal-tile merges and positions with empty cells. Do not repeat a direction merely because it appears in recent arrow history. Read the current board anew. Return only the selected direction. Use a stable corner strategy: prefer keeping the largest tile at the bottom-left. Build a descending row along the bottom, with the next row descending in the opposite direction. Preserve that arrangement when possible, but never select an unchanged move. Avoid splitting equal-valued tiles behind larger tiles. Keep empty cells available. A changing move is preferable to preserving a corner with a move that does nothing. Use UP or RIGHT when needed to create space or enable a future merge; the corner preference is not a command to repeatedly press LEFT or DOWN. The application has excluded directions that leave this board unchanged. Every supplied candidate is legal. If candidate descriptions include a resulting board, it is the exact result of ONE move BEFORE the random new tile appears. Use those results to compare future merge opportunities and preserve space. Any merge points are immediate game points, not a prediction of winning. Do not maximize immediate points at the expense of a playable board. The next random tile's location and value are unknown.",
+      "checkpoint": "veyra-backbone-recovery-v13",
+      "runtime": "0.3.0a4",
+      "runtime_source": "bundled-wheel",
+      "device": "NVIDIA GeForce RTX 4060 Ti",
+      "checkpoint_files_sha256": {
+        "head.safetensors": "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee",
+        "manifest.json": "d83f9910196c6e801658ca3816c3d2bd4a849ba3da6ff059a0edf7c6028e898d"
+      },
+      "script_sha256": "aa01d802412a548a431a1b6f6e50f56510685c193ed88818f9756b5750c7cbb1",
+      "engine_sha256": "1052d3c4cd727b128ae5eb0c03832768d0ca6e1534cb5a8dfb1025803d1be797",
+      "server_sha256": "24530d6249125fb1403246b4a7c24c93a6aa01babdf548bd0b946132468d65de",
+      "prompt_runner_sha256": "fda412c3a82bc16a1d6042b0c999b6bcc57bdb8a8e2e87dcad4b09af0f31d0f2",
+      "text_runner_sha256": "7411d0b8238e4e45e31f530faec5a10799ad0001e4344796970529b9b6337d82",
+      "definitions_sha256": "4ffab8a6db04a30f7a57cb295070d515696ec2ec3a9de5f8e56236b1103d9511",
+      "all_four_directions_offered_only_for": [
+        "unassisted",
+        "image_detailed"
+      ],
+      "image_policy": "512x512 classic PNG; original image-only observation plus CORNER question",
+      "forced_move_policy": "One legal direction is executed by engine; no model request",
+      "execution_policy": "Execute all returned choices, preserve model abstention flags",
+      "random_control": "Uniform legal choice; separate deterministic policy RNG",
+      "random_spawn": "Engine uses 90% 2, 10% 4; previews never consume its RNG",
+      "previews": "Single slide/merge only, before random spawn; no hidden state/seed sent",
+      "search_or_heuristic_ranking": false,
+      "training_or_calibration_updates": false,
+      "warmups_discarded": 0,
+      "stops": [
+        "2048 tile",
+        "game over",
+        "four unchanged moves",
+        "step budget",
+        "error"
+      ],
+      "success_criteria": {
+        "software": "Tests and replay pass, zero errors; assisted actions all legal",
+        "task": "At least one 2048 tile verified in held-out games; report full win rate",
+        "improvement": "Compare all outcomes to legal-only and random controls"
+      },
+      "frozen_protocol_sha256": "1c9bf761f62277dce6ba3b9a9f60d67d421223c49db0b0e4be20c2d8cf75c128",
+      "started_utc": "2026-10-01T11:47:52.469890+00:00"
+    },
+    "results": {
+      "unassisted": {
+        "aggregate": {
+          "games": 8,
+          "wins": 0,
+          "mean_score": 2.5,
+          "mean_log2_max_tile": 1.875,
+          "max_tile": 4,
+          "tile_counts": {
+            "4": 7,
+            "2": 1
+          },
+          "actions": 49,
+          "model_decisions": 49,
+          "forced_engine_moves": 0,
+          "valid_moves": 17,
+          "invalid_moves": 32,
+          "model_abstentions_executed": 12,
+          "model_median_ms": 100.58,
+          "http_median_ms": 117.29690001811832,
+          "mean_game_wall_ms": 702.444899987313,
+          "directions": {
+            "up": 6,
+            "right": 43
+          },
+          "stop_reasons": {
+            "four_unchanged_actions": 8
+          },
+          "max_input_tokens": 624,
+          "errors": []
+        },
+        "runs": [
+          {
+            "profile": "unassisted",
+            "seed": 1009,
+            "score": 4,
+            "max_tile": 4,
+            "won": false,
+            "steps": 6,
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "wall_ms": 692.3684999346733,
+            "initial_board": [
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                4,
+                4,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "profile": "unassisted",
+            "seed": 2003,
+            "score": 4,
+            "max_tile": 4,
+            "won": false,
+            "steps": 7,
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "wall_ms": 783.6198000004515,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                4
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "unassisted",
+            "seed": 3001,
+            "score": 0,
+            "max_tile": 4,
+            "won": false,
+            "steps": 6,
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "wall_ms": 685.0793999619782,
+            "initial_board": [
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "profile": "unassisted",
+            "seed": 4001,
+            "score": 4,
+            "max_tile": 4,
+            "won": false,
+            "steps": 6,
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "wall_ms": 697.4092000164092,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "unassisted",
+            "seed": 5003,
+            "score": 4,
+            "max_tile": 4,
+            "won": false,
+            "steps": 5,
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "wall_ms": 567.0369999716058,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "profile": "unassisted",
+            "seed": 6007,
+            "score": 4,
+            "max_tile": 4,
+            "won": false,
+            "steps": 8,
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "wall_ms": 911.2468999810517,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "unassisted",
+            "seed": 7001,
+            "score": 0,
+            "max_tile": 2,
+            "won": false,
+            "steps": 4,
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "wall_ms": 468.5603000689298,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "unassisted",
+            "seed": 8009,
+            "score": 0,
+            "max_tile": 4,
+            "won": false,
+            "steps": 7,
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "wall_ms": 814.2380999634042,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                4,
+                2
+              ]
+            ]
+          }
+        ]
+      },
+      "image_detailed": {
+        "aggregate": {
+          "games": 8,
+          "wins": 0,
+          "mean_score": 2.5,
+          "mean_log2_max_tile": 1.875,
+          "max_tile": 4,
+          "tile_counts": {
+            "4": 7,
+            "2": 1
+          },
+          "actions": 50,
+          "model_decisions": 50,
+          "forced_engine_moves": 0,
+          "valid_moves": 18,
+          "invalid_moves": 32,
+          "model_abstentions_executed": 33,
+          "model_median_ms": 174.445,
+          "http_median_ms": 192.66180001432076,
+          "mean_game_wall_ms": 1245.763575003366,
+          "directions": {
+            "right": 50
+          },
+          "stop_reasons": {
+            "four_unchanged_actions": 8
+          },
+          "max_input_tokens": 792,
+          "errors": []
+        },
+        "runs": [
+          {
+            "profile": "image_detailed",
+            "seed": 1009,
+            "score": 4,
+            "max_tile": 4,
+            "won": false,
+            "steps": 7,
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "wall_ms": 1444.5227000396699,
+            "initial_board": [
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                4
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                4
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "image_detailed",
+            "seed": 2003,
+            "score": 4,
+            "max_tile": 4,
+            "won": false,
+            "steps": 7,
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "wall_ms": 1415.6945999711752,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                4
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "image_detailed",
+            "seed": 3001,
+            "score": 0,
+            "max_tile": 4,
+            "won": false,
+            "steps": 6,
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "wall_ms": 1198.3175999484956,
+            "initial_board": [
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "profile": "image_detailed",
+            "seed": 4001,
+            "score": 4,
+            "max_tile": 4,
+            "won": false,
+            "steps": 6,
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "wall_ms": 1180.698600015603,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "image_detailed",
+            "seed": 5003,
+            "score": 4,
+            "max_tile": 4,
+            "won": false,
+            "steps": 5,
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "wall_ms": 966.1493999883533,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "profile": "image_detailed",
+            "seed": 6007,
+            "score": 4,
+            "max_tile": 4,
+            "won": false,
+            "steps": 8,
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "wall_ms": 1563.8017000164837,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ],
+              [
+                0,
+                0,
+                2,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "image_detailed",
+            "seed": 7001,
+            "score": 0,
+            "max_tile": 2,
+            "won": false,
+            "steps": 4,
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "wall_ms": 800.5373000632972,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "image_detailed",
+            "seed": 8009,
+            "score": 0,
+            "max_tile": 4,
+            "won": false,
+            "steps": 7,
+            "stop_reason": "four_unchanged_actions",
+            "error": null,
+            "wall_ms": 1396.3866999838501,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                4,
+                2
+              ]
+            ]
+          }
+        ]
+      },
+      "legal_only": {
+        "aggregate": {
+          "games": 8,
+          "wins": 0,
+          "mean_score": 1526,
+          "mean_log2_max_tile": 6.5,
+          "max_tile": 256,
+          "tile_counts": {
+            "32": 2,
+            "256": 1,
+            "128": 4,
+            "64": 1
+          },
+          "actions": 1230,
+          "model_decisions": 1229,
+          "forced_engine_moves": 1,
+          "valid_moves": 1230,
+          "invalid_moves": 0,
+          "model_abstentions_executed": 1041,
+          "model_median_ms": 101.23,
+          "http_median_ms": 119.4954999955371,
+          "mean_game_wall_ms": 17756.054199984646,
+          "directions": {
+            "up": 222,
+            "left": 106,
+            "right": 839,
+            "down": 63
+          },
+          "stop_reasons": {
+            "game_over": 8
+          },
+          "max_input_tokens": 631,
+          "errors": []
+        },
+        "runs": [
+          {
+            "profile": "legal_only",
+            "seed": 1009,
+            "score": 412,
+            "max_tile": 32,
+            "won": false,
+            "steps": 69,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 7941.333600087091,
+            "initial_board": [
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                2,
+                4,
+                8,
+                16
+              ],
+              [
+                16,
+                2,
+                16,
+                2
+              ],
+              [
+                4,
+                16,
+                32,
+                16
+              ],
+              [
+                2,
+                4,
+                16,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "legal_only",
+            "seed": 2003,
+            "score": 2452,
+            "max_tile": 256,
+            "won": false,
+            "steps": 209,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 24176.719499984756,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                2,
+                4,
+                8,
+                64
+              ],
+              [
+                4,
+                16,
+                32,
+                256
+              ],
+              [
+                2,
+                4,
+                8,
+                16
+              ],
+              [
+                4,
+                8,
+                32,
+                8
+              ]
+            ]
+          },
+          {
+            "profile": "legal_only",
+            "seed": 3001,
+            "score": 1444,
+            "max_tile": 128,
+            "won": false,
+            "steps": 150,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 17296.4507000288,
+            "initial_board": [
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                2,
+                4,
+                32,
+                4
+              ],
+              [
+                8,
+                16,
+                64,
+                128
+              ],
+              [
+                2,
+                4,
+                8,
+                32
+              ],
+              [
+                4,
+                8,
+                16,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "legal_only",
+            "seed": 4001,
+            "score": 680,
+            "max_tile": 64,
+            "won": false,
+            "steps": 89,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 10315.644699963741,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                4,
+                2,
+                32,
+                2
+              ],
+              [
+                2,
+                4,
+                2,
+                4
+              ],
+              [
+                8,
+                16,
+                32,
+                64
+              ],
+              [
+                4,
+                8,
+                16,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "legal_only",
+            "seed": 5003,
+            "score": 2292,
+            "max_tile": 128,
+            "won": false,
+            "steps": 216,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 24815.098999999464,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                4,
+                8,
+                32,
+                64
+              ],
+              [
+                2,
+                16,
+                128,
+                8
+              ],
+              [
+                4,
+                8,
+                32,
+                128
+              ],
+              [
+                2,
+                4,
+                16,
+                32
+              ]
+            ]
+          },
+          {
+            "profile": "legal_only",
+            "seed": 6007,
+            "score": 2020,
+            "max_tile": 128,
+            "won": false,
+            "steps": 192,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 22349.139599944465,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                2,
+                32,
+                128,
+                4
+              ],
+              [
+                8,
+                16,
+                32,
+                128
+              ],
+              [
+                4,
+                8,
+                16,
+                32
+              ],
+              [
+                2,
+                4,
+                8,
+                16
+              ]
+            ]
+          },
+          {
+            "profile": "legal_only",
+            "seed": 7001,
+            "score": 532,
+            "max_tile": 32,
+            "won": false,
+            "steps": 83,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 9502.363699954003,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ],
+            "final_board": [
+              [
+                2,
+                16,
+                32,
+                4
+              ],
+              [
+                4,
+                8,
+                16,
+                32
+              ],
+              [
+                2,
+                4,
+                32,
+                4
+              ],
+              [
+                8,
+                2,
+                4,
+                8
+              ]
+            ]
+          },
+          {
+            "profile": "legal_only",
+            "seed": 8009,
+            "score": 2376,
+            "max_tile": 128,
+            "won": false,
+            "steps": 222,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 25651.68279991485,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                4,
+                64,
+                128,
+                2
+              ],
+              [
+                2,
+                16,
+                64,
+                8
+              ],
+              [
+                8,
+                128,
+                32,
+                2
+              ],
+              [
+                2,
+                4,
+                8,
+                16
+              ]
+            ]
+          }
+        ]
+      },
+      "next_board": {
+        "aggregate": {
+          "games": 8,
+          "wins": 0,
+          "mean_score": 1983,
+          "mean_log2_max_tile": 7.25,
+          "max_tile": 512,
+          "tile_counts": {
+            "128": 5,
+            "64": 1,
+            "256": 1,
+            "512": 1
+          },
+          "actions": 1456,
+          "model_decisions": 1456,
+          "forced_engine_moves": 0,
+          "valid_moves": 1456,
+          "invalid_moves": 0,
+          "model_abstentions_executed": 1036,
+          "model_median_ms": 155.78,
+          "http_median_ms": 161.88805003184825,
+          "mean_game_wall_ms": 29630.64406250487,
+          "directions": {
+            "left": 568,
+            "up": 661,
+            "right": 215,
+            "down": 12
+          },
+          "stop_reasons": {
+            "game_over": 8
+          },
+          "max_input_tokens": 960,
+          "errors": []
+        },
+        "runs": [
+          {
+            "profile": "next_board",
+            "seed": 1009,
+            "score": 1248,
+            "max_tile": 128,
+            "won": false,
+            "steps": 133,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 21790.476099937223,
+            "initial_board": [
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                32,
+                128,
+                32,
+                8
+              ],
+              [
+                16,
+                32,
+                4,
+                2
+              ],
+              [
+                4,
+                8,
+                16,
+                4
+              ],
+              [
+                2,
+                4,
+                8,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "next_board",
+            "seed": 2003,
+            "score": 952,
+            "max_tile": 64,
+            "won": false,
+            "steps": 125,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 20429.221600061283,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                32,
+                8,
+                32,
+                16
+              ],
+              [
+                16,
+                64,
+                16,
+                2
+              ],
+              [
+                4,
+                16,
+                32,
+                16
+              ],
+              [
+                2,
+                8,
+                4,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "next_board",
+            "seed": 3001,
+            "score": 2112,
+            "max_tile": 128,
+            "won": false,
+            "steps": 208,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 33890.88259998243,
+            "initial_board": [
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                64,
+                128,
+                64,
+                32
+              ],
+              [
+                32,
+                64,
+                16,
+                8
+              ],
+              [
+                2,
+                32,
+                2,
+                4
+              ],
+              [
+                4,
+                2,
+                8,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "next_board",
+            "seed": 4001,
+            "score": 1384,
+            "max_tile": 128,
+            "won": false,
+            "steps": 144,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 23893.684900016524,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                128,
+                64,
+                2,
+                16
+              ],
+              [
+                16,
+                32,
+                16,
+                8
+              ],
+              [
+                4,
+                16,
+                4,
+                2
+              ],
+              [
+                2,
+                4,
+                2,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "next_board",
+            "seed": 5003,
+            "score": 2272,
+            "max_tile": 256,
+            "won": false,
+            "steps": 189,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 30280.308000044897,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                32,
+                4,
+                256,
+                2
+              ],
+              [
+                8,
+                32,
+                4,
+                32
+              ],
+              [
+                4,
+                8,
+                32,
+                8
+              ],
+              [
+                2,
+                4,
+                8,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "next_board",
+            "seed": 6007,
+            "score": 1372,
+            "max_tile": 128,
+            "won": false,
+            "steps": 139,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 22750.488299992867,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                16,
+                128,
+                64,
+                16
+              ],
+              [
+                4,
+                32,
+                16,
+                8
+              ],
+              [
+                16,
+                8,
+                2,
+                4
+              ],
+              [
+                2,
+                4,
+                8,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "next_board",
+            "seed": 7001,
+            "score": 1696,
+            "max_tile": 128,
+            "won": false,
+            "steps": 179,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 28715.611599967815,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ],
+            "final_board": [
+              [
+                16,
+                2,
+                32,
+                4
+              ],
+              [
+                32,
+                128,
+                64,
+                32
+              ],
+              [
+                8,
+                32,
+                16,
+                8
+              ],
+              [
+                2,
+                4,
+                8,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "next_board",
+            "seed": 8009,
+            "score": 4828,
+            "max_tile": 512,
+            "won": false,
+            "steps": 339,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 55294.479400035925,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                32,
+                512,
+                64,
+                16
+              ],
+              [
+                16,
+                4,
+                32,
+                8
+              ],
+              [
+                32,
+                8,
+                2,
+                4
+              ],
+              [
+                2,
+                4,
+                8,
+                2
+              ]
+            ]
+          }
+        ]
+      },
+      "next_board_score": {
+        "aggregate": {
+          "games": 8,
+          "wins": 0,
+          "mean_score": 3027,
+          "mean_log2_max_tile": 8.0,
+          "max_tile": 512,
+          "tile_counts": {
+            "256": 6,
+            "512": 1,
+            "128": 1
+          },
+          "actions": 1966,
+          "model_decisions": 1963,
+          "forced_engine_moves": 3,
+          "valid_moves": 1966,
+          "invalid_moves": 0,
+          "model_abstentions_executed": 1294,
+          "model_median_ms": 158.6,
+          "http_median_ms": 164.95170001871884,
+          "mean_game_wall_ms": 40672.58036247222,
+          "directions": {
+            "up": 918,
+            "left": 691,
+            "right": 334,
+            "down": 23
+          },
+          "stop_reasons": {
+            "game_over": 8
+          },
+          "max_input_tokens": 1001,
+          "errors": []
+        },
+        "runs": [
+          {
+            "profile": "next_board_score",
+            "seed": 1009,
+            "score": 3112,
+            "max_tile": 256,
+            "won": false,
+            "steps": 254,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 41587.58759999182,
+            "initial_board": [
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                16,
+                2,
+                32,
+                128
+              ],
+              [
+                4,
+                16,
+                64,
+                16
+              ],
+              [
+                8,
+                256,
+                16,
+                8
+              ],
+              [
+                2,
+                4,
+                2,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "next_board_score",
+            "seed": 2003,
+            "score": 2904,
+            "max_tile": 256,
+            "won": false,
+            "steps": 238,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 39594.738699961454,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                16,
+                32,
+                16,
+                256
+              ],
+              [
+                8,
+                4,
+                128,
+                2
+              ],
+              [
+                4,
+                8,
+                32,
+                16
+              ],
+              [
+                2,
+                4,
+                2,
+                8
+              ]
+            ]
+          },
+          {
+            "profile": "next_board_score",
+            "seed": 3001,
+            "score": 4240,
+            "max_tile": 256,
+            "won": false,
+            "steps": 351,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 58366.97339999955,
+            "initial_board": [
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                32,
+                256,
+                64,
+                128
+              ],
+              [
+                2,
+                128,
+                32,
+                16
+              ],
+              [
+                8,
+                64,
+                16,
+                4
+              ],
+              [
+                2,
+                4,
+                8,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "next_board_score",
+            "seed": 4001,
+            "score": 2496,
+            "max_tile": 256,
+            "won": false,
+            "steps": 209,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 34817.9026999278,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                4,
+                32,
+                256,
+                64
+              ],
+              [
+                32,
+                4,
+                2,
+                8
+              ],
+              [
+                8,
+                32,
+                16,
+                4
+              ],
+              [
+                2,
+                4,
+                8,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "next_board_score",
+            "seed": 5003,
+            "score": 4780,
+            "max_tile": 512,
+            "won": false,
+            "steps": 331,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 54655.46079992782,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                4,
+                8,
+                512,
+                32
+              ],
+              [
+                32,
+                4,
+                32,
+                8
+              ],
+              [
+                8,
+                64,
+                16,
+                4
+              ],
+              [
+                2,
+                4,
+                8,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "next_board_score",
+            "seed": 6007,
+            "score": 2352,
+            "max_tile": 256,
+            "won": false,
+            "steps": 197,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 32942.22680001985,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                16,
+                64,
+                2,
+                256
+              ],
+              [
+                4,
+                16,
+                32,
+                8
+              ],
+              [
+                16,
+                8,
+                4,
+                2
+              ],
+              [
+                2,
+                4,
+                8,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "next_board_score",
+            "seed": 7001,
+            "score": 1352,
+            "max_tile": 128,
+            "won": false,
+            "steps": 140,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 22955.94459993299,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ],
+            "final_board": [
+              [
+                2,
+                32,
+                16,
+                4
+              ],
+              [
+                16,
+                2,
+                128,
+                8
+              ],
+              [
+                4,
+                64,
+                2,
+                4
+              ],
+              [
+                2,
+                4,
+                8,
+                16
+              ]
+            ]
+          },
+          {
+            "profile": "next_board_score",
+            "seed": 8009,
+            "score": 2980,
+            "max_tile": 256,
+            "won": false,
+            "steps": 246,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 40459.80830001645,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                4,
+                32,
+                128,
+                2
+              ],
+              [
+                32,
+                256,
+                4,
+                16
+              ],
+              [
+                8,
+                16,
+                32,
+                8
+              ],
+              [
+                2,
+                4,
+                2,
+                4
+              ]
+            ]
+          }
+        ]
+      },
+      "random_legal": {
+        "aggregate": {
+          "games": 8,
+          "wins": 0,
+          "mean_score": 1037,
+          "mean_log2_max_tile": 6.5,
+          "max_tile": 128,
+          "tile_counts": {
+            "64": 4,
+            "128": 4
+          },
+          "actions": 911,
+          "model_decisions": 0,
+          "forced_engine_moves": 0,
+          "valid_moves": 911,
+          "invalid_moves": 0,
+          "model_abstentions_executed": 0,
+          "model_median_ms": null,
+          "http_median_ms": null,
+          "mean_game_wall_ms": 9.10391248180531,
+          "directions": {
+            "left": 215,
+            "right": 217,
+            "down": 247,
+            "up": 232
+          },
+          "stop_reasons": {
+            "game_over": 8
+          },
+          "max_input_tokens": 0,
+          "errors": []
+        },
+        "runs": [
+          {
+            "profile": "random_legal",
+            "seed": 1009,
+            "score": 700,
+            "max_tile": 64,
+            "won": false,
+            "steps": 93,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 13.914400013163686,
+            "initial_board": [
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                2,
+                32,
+                2,
+                4
+              ],
+              [
+                4,
+                16,
+                8,
+                32
+              ],
+              [
+                2,
+                8,
+                64,
+                4
+              ],
+              [
+                16,
+                2,
+                8,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "random_legal",
+            "seed": 2003,
+            "score": 1120,
+            "max_tile": 128,
+            "won": false,
+            "steps": 119,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 7.73840001784265,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                4,
+                16,
+                4,
+                2
+              ],
+              [
+                8,
+                128,
+                16,
+                4
+              ],
+              [
+                4,
+                32,
+                2,
+                32
+              ],
+              [
+                2,
+                4,
+                8,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "random_legal",
+            "seed": 3001,
+            "score": 440,
+            "max_tile": 64,
+            "won": false,
+            "steps": 63,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 4.18699998408556,
+            "initial_board": [
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                4,
+                8,
+                4,
+                2
+              ],
+              [
+                2,
+                16,
+                2,
+                4
+              ],
+              [
+                16,
+                64,
+                4,
+                2
+              ],
+              [
+                2,
+                4,
+                8,
+                4
+              ]
+            ]
+          },
+          {
+            "profile": "random_legal",
+            "seed": 4001,
+            "score": 840,
+            "max_tile": 64,
+            "won": false,
+            "steps": 99,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 8.469099993817508,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                8,
+                2,
+                8,
+                2
+              ],
+              [
+                32,
+                64,
+                2,
+                8
+              ],
+              [
+                8,
+                16,
+                64,
+                4
+              ],
+              [
+                2,
+                4,
+                8,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "random_legal",
+            "seed": 5003,
+            "score": 1340,
+            "max_tile": 128,
+            "won": false,
+            "steps": 137,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 9.66610002797097,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                2,
+                4,
+                2,
+                4
+              ],
+              [
+                16,
+                64,
+                8,
+                16
+              ],
+              [
+                4,
+                128,
+                16,
+                4
+              ],
+              [
+                2,
+                8,
+                32,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "random_legal",
+            "seed": 6007,
+            "score": 508,
+            "max_tile": 64,
+            "won": false,
+            "steps": 73,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 7.588899927213788,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                8,
+                16,
+                4,
+                2
+              ],
+              [
+                2,
+                8,
+                64,
+                4
+              ],
+              [
+                4,
+                16,
+                8,
+                16
+              ],
+              [
+                2,
+                8,
+                4,
+                2
+              ]
+            ]
+          },
+          {
+            "profile": "random_legal",
+            "seed": 7001,
+            "score": 1264,
+            "max_tile": 128,
+            "won": false,
+            "steps": 130,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 8.462299942038953,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ]
+            ],
+            "final_board": [
+              [
+                2,
+                4,
+                8,
+                2
+              ],
+              [
+                4,
+                32,
+                2,
+                8
+              ],
+              [
+                8,
+                128,
+                64,
+                2
+              ],
+              [
+                4,
+                8,
+                2,
+                8
+              ]
+            ]
+          },
+          {
+            "profile": "random_legal",
+            "seed": 8009,
+            "score": 2084,
+            "max_tile": 128,
+            "won": false,
+            "steps": 197,
+            "stop_reason": "game_over",
+            "error": null,
+            "wall_ms": 12.805099948309362,
+            "initial_board": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                0,
+                0
+              ]
+            ],
+            "final_board": [
+              [
+                2,
+                128,
+                8,
+                2
+              ],
+              [
+                4,
+                8,
+                64,
+                4
+              ],
+              [
+                16,
+                32,
+                128,
+                8
+              ],
+              [
+                8,
+                16,
+                4,
+                2
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "complete": true
+  },
+  "readout": {
+    "results": {
+      "text": {
+        "correct": 21,
+        "total": 28,
+        "accuracy": 0.75,
+        "abstained": 13,
+        "model_median_ms": 70.025,
+        "per_value": {
+          "0": {
+            "correct": 2,
+            "total": 4
+          },
+          "2": {
+            "correct": 3,
+            "total": 4
+          },
+          "4": {
+            "correct": 3,
+            "total": 4
+          },
+          "8": {
+            "correct": 1,
+            "total": 4
+          },
+          "16": {
+            "correct": 4,
+            "total": 4
+          },
+          "32": {
+            "correct": 4,
+            "total": 4
+          },
+          "64": {
+            "correct": 4,
+            "total": 4
+          }
+        }
+      },
+      "image": {
+        "correct": 5,
+        "total": 28,
+        "accuracy": 0.17857142857142858,
+        "abstained": 26,
+        "model_median_ms": 125.265,
+        "per_value": {
+          "0": {
+            "correct": 0,
+            "total": 4
+          },
+          "2": {
+            "correct": 3,
+            "total": 4
+          },
+          "4": {
+            "correct": 1,
+            "total": 4
+          },
+          "8": {
+            "correct": 0,
+            "total": 4
+          },
+          "16": {
+            "correct": 1,
+            "total": 4
+          },
+          "32": {
+            "correct": 0,
+            "total": 4
+          },
+          "64": {
+            "correct": 0,
+            "total": 4
+          }
+        }
+      }
+    },
+    "balanced_majority_baseline": 0.14285714285714285,
+    "complete": true,
+    "cases": 28,
+    "calls": 56
+  },
+  "audit": {
+    "audit_script_sha256": "623ac1067a2e88f315a8b4844f3d7a7c3a4defd500b21c4d3f780e2e8d5dffd2",
+    "phases": [
+      {
+        "phase": "development",
+        "games": 24,
+        "events": 2761,
+        "verified_image_frames": 36,
+        "all_checks_passed": true,
+        "summary_sha256": "8fe4231571351c077e242cfb983de61ddab8869472848ba239dd762a6effc377"
+      },
+      {
+        "phase": "evaluation",
+        "games": 48,
+        "events": 5662,
+        "verified_image_frames": 50,
+        "all_checks_passed": true,
+        "summary_sha256": "27d65c771c53e6e5bb627eb7844732545dd203b401cffe623c35de49c56b9260"
+      }
+    ],
+    "readout": {
+      "cases": 28,
+      "calls": 56,
+      "uploaded_images_verified": 28,
+      "all_checks_passed": true,
+      "summary_sha256": "8217c0aaca636ab97ed578c97613943cf17a15db76d870c21e68d55409ccf258"
+    }
+  }
+}

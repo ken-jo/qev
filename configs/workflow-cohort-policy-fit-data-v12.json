@@ -1,0 +1,16 @@
+{
+  "protocol": "workflow-cohort-policy-fit-data-v12",
+  "study_protocol": "configs/workflow-cohort-policy-v12.json",
+  "output": "data/workflow-v12-cohort",
+  "original_records": "data/workflow-v12/records.jsonl",
+  "original_records_sha256": "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571",
+  "calibration_sources": [
+    "data/workflow-v12b/records.jsonl",
+    "data/workflow-v12c/records.jsonl",
+    "data/workflow-v12d/records.jsonl"
+  ],
+  "preserve_original_noncalibration_records": true,
+  "expected_calibration_questions": 7932,
+  "expected_calibration_groups": 3252,
+  "disclosure": "These are three previously inspected calibration populations. The failed independent validation v12d is now explicitly fitting data; it cannot be reused as independent evidence."
+}

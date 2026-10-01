@@ -1,0 +1,14 @@
+{
+  "release_protocol_sha256": "d0e6c454fc10cfa080523cfcc66706dfe73cb32524f4ce74bf87a5d4edde6776",
+  "records_sha256": "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571",
+  "candidates": [
+    "runs\\workflow-v12-head\\rloo-131\\checkpoint",
+    "runs\\workflow-v12-backbone\\low\\half",
+    "runs\\workflow-v12-backbone\\low\\full",
+    "runs\\workflow-v12-backbone\\high\\half",
+    "runs\\workflow-v12-backbone\\high\\full"
+  ],
+  "source_sha256": "71ddd8bbdc9ce158573a1476c882b92311655c121b60dc68b9f8085a06e744c2",
+  "started_at_utc": "2026-09-30T06:07:11.067157+00:00",
+  "final_or_calibration_used": false
+}

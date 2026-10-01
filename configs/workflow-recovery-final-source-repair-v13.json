@@ -1,0 +1,20 @@
+{
+  "protocol": "workflow-recovery-final-source-count-repair-v13",
+  "declared_at_utc": "2026-09-30T22:58:12.241484+00:00",
+  "original_final_design": "configs/workflow-recovery-final-data-v13.json",
+  "original_final_design_sha256": "678eb369816e4d47d2ccd553aaa3584e2062caf1acda4f9e9aa2fa608a04a49e",
+  "failure_log": "runs/workflow-recovery-data-repaired-v13/final-sources.log",
+  "failure_log_sha256": "f5e6a49774fd41c9c74e2326531f913b693cb901e9c633fe202433139d7162f8",
+  "cause": "The inherited source helper enforced 304 selected text observations (validation quotas). The already declared final quotas require 450 SNLI plus 462 BANKING77 = 912. Selection finished but the metadata file and final records were never written.",
+  "repair": "Calculate source text count from unchanged declared quotas. Preserve all selected image bytes; verify identical pinned bytes before resuming partial output. No source pool, sampling order, seeds, labels, model weights or performance gates change.",
+  "declared_text_observations": 912,
+  "image_candidates": 1000,
+  "repaired_sources": {
+    "scripts/prepare_recovery_final_sources.py": "1b2dfaa9978d6a516c4bc13e579d3cdecc65e88bd4e51da0bd328839569a3d59",
+    "scripts/build_recovery_final_bank_test.py": "4eaba42e59734080cf710ead6edc43c178d8a290be63793a4aa8a23354c08e46",
+    "scripts/verify_recovery_final_data.py": "2fbece4d6ed1025d844460423f3b33540482fc6115851048ea0070f98e2f9251"
+  },
+  "model_inference_used": false,
+  "new_validation_populations_unchanged": true,
+  "release_allowed": false
+}

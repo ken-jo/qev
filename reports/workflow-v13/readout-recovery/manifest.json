@@ -1,0 +1,9 @@
+{
+  "feature-manifest.json": "3ed8e46cae5214b5e9bfabb5dc9301fc2ce3f724adfbff6f67746bab24125c27",
+  "feature-specification.json": "81a4da6dcfe4a8d794d59b6ce8a2381863393b9a5b8d20cf1ddba8b942d0a220",
+  "interpolation-complete.json": "6d2b102312a50cd9d47320f4b84f805c0d31ecb2ea18934d207caa428d07cd8d",
+  "interpolation-protocol.json": "23eacb66d79f267310ca45f5ae86e35df8043a477d6a03ea81cef33322c3c677",
+  "selection.json": "64fc4a87c9808b877b0f89935c972842ce3c2cb1bb2b99f30c696f668f7555bc",
+  "training-complete.json": "a89dba26454ce9923feb055a194dcf2dc56e40b638ffb1bb22903a9b4e4ae76a",
+  "training-protocol.json": "8bb8114ce5e01d8e17b4965d68e5a0bd2bf1ffcf4a44cd9a15b037107b616c09"
+}

@@ -1,0 +1,9 @@
+{
+  "records_sha256": "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571",
+  "parent_weights_sha256": "f13aa3346d7da369a2769eef7fa487747c97d1ba0878ea3af8f713463f463491",
+  "parent_manifest_sha256": "dd4df10eba5880dc1bb0267502fe264eb1c5a730235619db9cd8cd74df87b1a9",
+  "script_sha256": "ec8f1f8febb209e2bc390846fd53ff3534c9a0eada2c31679062ddc51fe74df8",
+  "option_model_sha256": "ac15e6e55108fc8ef69b57268bf004c6756305e21293d2a9683dfde9f6e79b48",
+  "calibration_or_final_encoded": false,
+  "items": 14524
+}

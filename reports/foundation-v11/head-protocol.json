@@ -1,0 +1,58 @@
+{
+  "arguments": {
+    "features": "data\\features-foundation-v11",
+    "parent": "checkpoints\\veyra-dynamic-v2",
+    "output": "runs\\foundation-v11-head",
+    "epochs": 25,
+    "seeds": [
+      83,
+      89,
+      97
+    ],
+    "methods": [
+      "ce",
+      "direct",
+      "direct_noise",
+      "rloo",
+      "cross"
+    ]
+  },
+  "domain_shares": {
+    "text_nli": 0.2,
+    "text_intent": 0.2,
+    "image_waste": 0.25,
+    "image_leaf": 0.1,
+    "retention": 0.2,
+    "uncertainty": 0.05
+  },
+  "cache_specification": {
+    "records_sha256": "8f226fe90fb50e46c6a2e4c53020ed99db81a903f21317a96c66f27b6181d936",
+    "parent_weights_sha256": "e7fd32d74e18c8e95b6155c0fa61bfb9ea5f2e9602a37da5c101f628adadb65a",
+    "parent_manifest_sha256": "c94a745e865782d880a2d94638839b4f7a9270fa23222a20919baabdc140f132",
+    "script_sha256": "ccca6bd847feed1482fd1a471c561e68835d0e35fd733e30da3f6bb90fad86e9",
+    "option_model_sha256": "ac15e6e55108fc8ef69b57268bf004c6756305e21293d2a9683dfde9f6e79b48",
+    "calibration_or_final_encoded": false,
+    "items": 13281
+  },
+  "learning_rates": {
+    "readout": 0.0001,
+    "binding": 0.001
+  },
+  "batch_size": 128,
+  "reward": "log + 0.5 spherical - 0.25 ordinal normalized RPS",
+  "noise": {
+    "sigma": 0.15,
+    "independent_samples": 4,
+    "ce_guidance": 0.5
+  },
+  "cross_weight": 0.1,
+  "retention": "2*KL at temperature 2 on retention only",
+  "selection": "Eligible domain-macro accuracy, then macro NLL; seed-median method selection; first declared seed represents the selected method",
+  "eligibility": "At most 2pp regression per core domain and retention; uncertainty NLL at most baseline+0.02",
+  "source_sha256": {
+    "C:\\tmp\\veyra\\scripts\\train_foundation_head.py": "bf754c04abfcd55503fe51cd8f822c4d97273ea0f190f67e1e2f0df7cade18e2",
+    "src\\veyra\\proper_learning.py": "edcf97fed0c15b1e0219429a41963c27e6baae3890906d3c4a6829f51b3855a0",
+    "src\\veyra\\transfer_learning.py": "e4a8b1e32fb2b1cd558d21c3419a6bc217b696ce39887384bad6f9c4e0cf3528"
+  },
+  "calibration_or_final_used": false
+}

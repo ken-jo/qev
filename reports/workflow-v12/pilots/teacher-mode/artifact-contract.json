@@ -1,0 +1,78 @@
+{
+  "passed": true,
+  "scope": "Static artifact verification for six exploratory CPU readout pilots; not runtime or release acceptance",
+  "protocol_sha256": "8b0584317ebfa39440624e99e8f88245fbfc8084f08e2b07c201dbe7cbe91012",
+  "results_sha256": "a0bb4f04ce09bc54767583fab068671a868f4526843e2fdcef8e7c512db26ee5",
+  "base_weights_sha256": "f13aa3346d7da369a2769eef7fa487747c97d1ba0878ea3af8f713463f463491",
+  "checks": [
+    {
+      "method": "rloo-mode-0.5",
+      "seed": 131,
+      "weights_sha256": "ab03b713a36835c982a766649b872f838f04255dee0dd9871b2c3fe6b2fe7a41",
+      "manifest_sha256": "bcc397da6fae9213be4b711ba91e84716189bf4f8fd18322108413548b59c533",
+      "parameters": 4084800,
+      "same_names_shapes": true,
+      "only_existing_readouts_changed": true,
+      "calibration_unchanged": true,
+      "intermediate": true
+    },
+    {
+      "method": "rloo-mode-0.5",
+      "seed": 137,
+      "weights_sha256": "69c1240b7191a86258adac9e7f9a798e10db5a1994c28e6207b0d0329782b5c2",
+      "manifest_sha256": "a0c0a92746c8a8dfbc8b5dd70f00965c59d9c3265f48b3b889c1f8f0e0036574",
+      "parameters": 4084800,
+      "same_names_shapes": true,
+      "only_existing_readouts_changed": true,
+      "calibration_unchanged": true,
+      "intermediate": true
+    },
+    {
+      "method": "rloo-mode-0.5",
+      "seed": 139,
+      "weights_sha256": "1a016de91b6901c66db2409aafc618d70e36ab31c024f9a845a8624a2e5d8673",
+      "manifest_sha256": "125cd504645c0a4f809b000f0e74702c22ceffafd739c11320d1de5c0688f7ab",
+      "parameters": 4084800,
+      "same_names_shapes": true,
+      "only_existing_readouts_changed": true,
+      "calibration_unchanged": true,
+      "intermediate": true
+    },
+    {
+      "method": "rloo-mode-1.0",
+      "seed": 131,
+      "weights_sha256": "dcf38cae96851ab491035efaed64b1e0261d3a5d52fa0ab22c888fbe622f174a",
+      "manifest_sha256": "7703c14b3c5eb54d4a2b3e4db25b1aed19f6eafada0bb386c5c91ba80c2326de",
+      "parameters": 4084800,
+      "same_names_shapes": true,
+      "only_existing_readouts_changed": true,
+      "calibration_unchanged": true,
+      "intermediate": true
+    },
+    {
+      "method": "rloo-mode-1.0",
+      "seed": 137,
+      "weights_sha256": "9459f2a3408a82f30c8dcbad6504d04353d37e17b4490288e996ced461bdd544",
+      "manifest_sha256": "7c0f748543c94422ce0b01edbf8b5ed7389c9ffc1c07a57c83a00b31e089caa9",
+      "parameters": 4084800,
+      "same_names_shapes": true,
+      "only_existing_readouts_changed": true,
+      "calibration_unchanged": true,
+      "intermediate": true
+    },
+    {
+      "method": "rloo-mode-1.0",
+      "seed": 139,
+      "weights_sha256": "18fe500eafcb12e232e5998dfbf2e3e15cc367984dbd7527b8e3af4407321526",
+      "manifest_sha256": "6e1a02f35e34e60842c220344cef084b1e411a7cd015707cdaaf8cafec6904ab",
+      "parameters": 4084800,
+      "same_names_shapes": true,
+      "only_existing_readouts_changed": true,
+      "calibration_unchanged": true,
+      "intermediate": true
+    }
+  ],
+  "live_backbone_training_sources_unchanged": true,
+  "calibration_or_final_used": false,
+  "release_allowed": false
+}

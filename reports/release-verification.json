@@ -1,0 +1,24 @@
+{
+  "release": "https://github.com/ken-jo/veyra/releases/tag/v0.1.0-alpha.1",
+  "release_source_commit": "5b3ecf22b6ba394c46827f21de18dad9a8f9762d",
+  "is_draft": false,
+  "is_prerelease": true,
+  "archive_bytes": 7814586,
+  "archive_sha256": "af672fa68e965af185e4e05622f21cc03c70a90d9ae10553418ba1005756da3e",
+  "head_sha256": "6b69f4336e2b8b1f2e79a1b229b5a49b8141a6b7f07b20bf81a430dd1ff1a0e0",
+  "published_archive_downloaded_again": true,
+  "downloaded_archive_checksum_matched": true,
+  "downloaded_checkpoint_loaded_with_actual_backbone": true,
+  "example": {
+    "generator": "scripts/make_example.py",
+    "question": "What is the color of the leftmost object?",
+    "expected_meaning": "blue",
+    "returned_choice": "a",
+    "returned_meaning": "blue",
+    "input_tokens": 259,
+    "output_tokens": 0
+  },
+  "unit_tests_passed": 52,
+  "ruff_check_passed": true,
+  "scope": "Distribution integrity and runnable example; semantic limitations remain as reported in MODEL_CARD.md."
+}

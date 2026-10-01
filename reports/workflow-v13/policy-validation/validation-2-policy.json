@@ -1,0 +1,100 @@
+{
+  "passed": true,
+  "kind": "validation-2",
+  "by_type": {
+    "choice": {
+      "questions": 1264,
+      "accepted": 1203,
+      "coverage": 0.9517405063291139,
+      "expected_error": 0.09588877207665768,
+      "passed": true
+    },
+    "score": {
+      "questions": 720,
+      "accepted": 660,
+      "coverage": 0.9166666666666666,
+      "expected_error": 0.12925755448318804,
+      "passed": true
+    },
+    "noul": {
+      "questions": 660,
+      "accepted": 501,
+      "coverage": 0.759090909090909,
+      "expected_error": 0.11569560878243514,
+      "passed": true
+    }
+  },
+  "bootstrap": {
+    "choice": {
+      "groups": 1084,
+      "seed": 223,
+      "replicates": 2000,
+      "coverage_95_interval": [
+        0.9397781299524565,
+        0.9629935806962809
+      ],
+      "expected_error_95_interval": [
+        0.08143374775247277,
+        0.11163989453390617
+      ],
+      "error_delta_policy_minus_always_answer_95_interval": [
+        -0.03021499488461002,
+        -0.01486462154151462
+      ],
+      "used_for_policy_fitting_or_selection": false,
+      "limitation": "Descriptive observation-group bootstrap; not a distribution-free risk guarantee or a final result."
+    },
+    "score": {
+      "groups": 480,
+      "seed": 223,
+      "replicates": 2000,
+      "coverage_95_interval": [
+        0.8962632927465252,
+        0.937074461784194
+      ],
+      "expected_error_95_interval": [
+        0.10534550318370679,
+        0.15417056265370996
+      ],
+      "error_delta_policy_minus_always_answer_95_interval": [
+        -0.0437799122849172,
+        -0.02104394000607045
+      ],
+      "used_for_policy_fitting_or_selection": false,
+      "limitation": "Descriptive observation-group bootstrap; not a distribution-free risk guarantee or a final result."
+    },
+    "noul": {
+      "groups": 480,
+      "seed": 223,
+      "replicates": 2000,
+      "coverage_95_interval": [
+        0.7324338312148083,
+        0.7877394225271583
+      ],
+      "expected_error_95_interval": [
+        0.08724271728472476,
+        0.1458942926125244
+      ],
+      "error_delta_policy_minus_always_answer_95_interval": [
+        -0.07576089451099188,
+        -0.04092810247836024
+      ],
+      "used_for_policy_fitting_or_selection": false,
+      "limitation": "Descriptive observation-group bootstrap; not a distribution-free risk guarantee or a final result."
+    }
+  },
+  "checked_at_utc": "2026-10-01T00:55:43.652729+00:00",
+  "source_sha256": "53e30eb82a603b7d114802fac3b2291f1c87801ac645f6982cd70a2f2c34fb99",
+  "study_sha256": "b1c604e1ea70bf67f5733f940fb6082b745a4325c789845fc86b0b2c907bf98e",
+  "selection_sha256": "dd30915e707292eabd6e5b44e5933172e89ac1a9caa5af24d0233e836904473d",
+  "weights_sha256": "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee",
+  "manifest_sha256": "d83f9910196c6e801658ca3816c3d2bd4a849ba3da6ff059a0edf7c6028e898d",
+  "policy_freeze_sha256": "91c456def4110ca74c5448b1d154e7574a15b4021863e48c1740e5ee40e6a728",
+  "fresh_calibration_report_sha256": "ed4640081bdca2536aef6363c6a358b9a12b9033241d9184794fb3f80edb849c",
+  "evaluation_sha256": "5305b6d217f641d9467f34d51f0e8470282c16c9c083dd25198a5437c5231038",
+  "predictions_sha256": "cd209a410f7f87f6ab49c7055202c6f813ef493aab23fd44a99579dfcdd357e4",
+  "policy_refitted": false,
+  "population_previously_inspected": false,
+  "release_allowed": false,
+  "final_predictions_used": false
+}

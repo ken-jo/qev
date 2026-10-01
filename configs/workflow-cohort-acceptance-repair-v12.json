@@ -1,0 +1,15 @@
+{
+  "experiment": "workflow-cohort-acceptance-repair-v12",
+  "declared_at_utc": "2026-09-30T22:32:11.746944+00:00",
+  "timing": "After final predictions and original auditor failure; no new model inference, training, fitting or threshold changes",
+  "original_auditor_sha256": "ebcd8082c4d6906c4eb2e551e98d3ef279df8a9e329f9874cf7d5dee913ca9fc",
+  "repaired_auditor_sha256": "58d0ae57b221fdc8ac03dee312fe67f0384962a87984349c1c96afbeb2062447",
+  "original_failure_log": "runs/workflow-v12-cohort-policy-release/acceptance.log",
+  "original_failure_log_sha256": "b4d82847255d1f5fa5af4370b7f5351ab515c666de0ee3e83010f0babb0f2909",
+  "baseline_development_records": "data/workflow-v12b/records.jsonl",
+  "baseline_development_records_sha256": "e3c3c10301f6c34561cd5281713152b3df4df0d093738c078b3d4fddde2196fb",
+  "repair": "Replace the mistaken whole-dataset equality requirement across calibration replacements with exact train/dev/test object-list equality, while retaining every frozen source, dataset, weight and prediction checksum check.",
+  "performance_thresholds_changed": false,
+  "original_sources_and_outputs_modified": false,
+  "release_allowed": false
+}

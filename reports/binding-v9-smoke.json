@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "scope": "GPU checkpoint reload and single-forward plumbing, not quality",
+  "reasoning_slots": 4,
+  "weights_sha256": "29f66bc3b1c8c57bceb01c9df189c01e2d98018899eae3ccb4de942ab14349b3",
+  "probes": [
+    {
+      "id": "policy-v3-20261004-dev-text-0-rule-0",
+      "family": "text_threshold",
+      "backbone_calls_with_auxiliary": 1,
+      "decision_logit_difference": 0.0,
+      "input_tokens": 147,
+      "output_tokens": 0,
+      "finite_condition_logits": true
+    },
+    {
+      "id": "policy-v3-20261004-dev-image-0-rule-0",
+      "family": "image_color_rule",
+      "backbone_calls_with_auxiliary": 1,
+      "decision_logit_difference": 0.0,
+      "input_tokens": 261,
+      "output_tokens": 0,
+      "finite_condition_logits": true
+    }
+  ]
+}

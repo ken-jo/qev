@@ -1,0 +1,25 @@
+{
+  "fingerprint": "359d7a5d626a9844d5346a42a180badf2074d727fd6405201c13a17686467872",
+  "specification": {
+    "format_version": 1,
+    "model_id": "Qwen/Qwen3.5-2B",
+    "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+    "encoder": {
+      "max_total_tokens": 2048,
+      "image_max_pixels": 262144,
+      "image_min_pixels": 65536,
+      "encoding": "packed-v1"
+    },
+    "dataset_sha256": "96414c7ee56cdb9edb7c91eb0ac0b6c85123cd5359e3a58a1047a59b1edbd2c7",
+    "encoding_source_sha256": "5abf9a2009f4514e6e66b6f92d23492dac381ac09c2d71fc1a7c942c76a67dc5",
+    "dependencies": {
+      "torch": "2.10.0+cu128",
+      "torchvision": "0.25.0+cu128",
+      "transformers": "5.17.0",
+      "pillow": "12.3.0"
+    }
+  },
+  "complete": true,
+  "records": 8972,
+  "max_tokens_this_run": 687
+}

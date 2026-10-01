@@ -1,0 +1,7 @@
+{
+  "completed": true,
+  "protocol_sha256": "7ef27ea4c37d9fef6b27644f25a1e5909cf3339d62825a819c690e4ddbe8d6a1",
+  "results_sha256": "9f08f3f7f912361804338b92bf5553769f5aeb19ca61b8808276bf4093262f77",
+  "release_allowed": false,
+  "limitations": "The decoder was trained only with the primitive arm, so transferring it to other checkpoints is not a capacity comparison with independently refitted probes. Similar neighboring hidden states alone do not prove collapse; compare decoded role information against the request-mean baseline. Best-assignment MSE uses targets as a diagnostic reference and is not model performance. No inference prompt, model weights, calibration or release gate was changed."
+}

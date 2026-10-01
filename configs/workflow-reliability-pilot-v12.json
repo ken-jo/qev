@@ -1,0 +1,43 @@
+{
+  "experiment": "workflow-reliability-pilot-v12",
+  "status": "declared_before_training",
+  "declared_at_utc": "2026-09-30T07:58:41.093953+00:00",
+  "scope": "Exploratory CPU confidence-head study on frozen Foundation representations and the earlier selected RLOO readout. Neither active study candidate list changes.",
+  "records": "data/workflow-v12/records.jsonl",
+  "records_sha256": "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571",
+  "features": "data/features-workflow-v12",
+  "representation_parent": "checkpoints/veyra-foundation-v11",
+  "classifier": "runs\\workflow-v12-head\\rloo-131\\checkpoint",
+  "classifier_weights_sha256": "8bea91f594aabcf35e3e9f517365ed5d1768956b8064620696d040a6e57a1679",
+  "classifier_manifest_sha256": "4187c64dc1e5b173090b0af88f255f991a594ea66a22dadb20a648131df50096",
+  "classifier_selection_sha256": "50d2ba7ef919beb746c37be53913aab9bd25cc88e61839e5b92b084d65013987",
+  "folds": 3,
+  "fold_seed": 167,
+  "fold_epochs": 14,
+  "fold_policy": "All related views share a fold. The six procedural training families are sorted by seeded SHA and assigned cyclically to folds, withholding two entire families for each out-of-fold readout. Other domains split by seeded group hash. No development/calibration/final label enters these readout fits.",
+  "fold_classifier": "Reinitialize the original Foundation readout for each fold; original RLOO+CE, optimizer, group batches, temperatures, domain shares and retention anchoring. Fixed epoch count matches the earlier selected full-data classifier. No early selection on withheld groups.",
+  "critic_seeds": [
+    173,
+    179,
+    181
+  ],
+  "critic_epochs": 40,
+  "critic_batch_size": 256,
+  "critic_learning_rate": 0.001,
+  "critic_weight_decay": 0.001,
+  "critic_width": 32,
+  "critic_dropout": 0.1,
+  "critic_input": "Parameter-free LayerNorm of the same 2048-dimensional request state, maximum probability, top-two margin, entropy/log(candidate_count), probability square sum, candidate_count/16, and one-hot question type. No family, domain, gold, observed-condition labels, case identity, or parsed rules at inference.",
+  "critic_target": "Expected correctness of the out-of-fold predicted option: 1/0 versus hard gold, or stated conditional target mass for soft-only observations. Train BCE under the original domain shares; keep class decisions and distributions unchanged.",
+  "comparison": "Evaluate once on original development groups after all declared critic epochs. Compare original maximum probability and each critic as answer-ordering scores. Report fixed-count 60% per-type error, threshold coverage under 15% error, and uncertain expected cost at 80% coverage. No threshold fitted for deployment.",
+  "promotion_screen": "Median over three critic seeds must reach >=60% coverage at <=15% error for every type and must not increase uncertainty cost at 80% coverage versus the same classifier. Representative seed is 173 regardless of favorable outliers. This screen is exploratory, not release approval.",
+  "limitations": "Cross-fitting excludes labels only from the new readout fits; the frozen parent previously adapted on some legacy training domains. This is not cross-fitting the backbone and not the live backbone candidate. Public pretraining overlap remains unknown.",
+  "calibration_or_final_used": false,
+  "base_forwards_added": 0,
+  "publication": "A useful pilot still requires a separately declared whole-model study, exact runtime integration, unchanged release gates and final isolation. Do not add it to either active candidate list.",
+  "related_primary_work": {
+    "selectivenet": "https://proceedings.mlr.press/v97/geifman19a.html",
+    "confidnet": "https://arxiv.org/abs/1910.04851"
+  },
+  "relationship_to_prior_work": "Inspired by learned rejection/confidence heads. This pilot predicts out-of-fold expected correctness, not ConfidNet TCP, and does not reproduce SelectiveNet end-to-end selective training or claim a novel algorithm."
+}

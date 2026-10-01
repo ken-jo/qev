@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "records_sha256": "4d3e808c3bd803629b058ac2110bd76ada9f1fa7fb897ce03a0d031409ef54b4",
+  "final_design_sha256": "678eb369816e4d47d2ccd553aaa3584e2062caf1acda4f9e9aa2fa608a04a49e",
+  "excluded_record_files": {
+    "data/workflow-v12b/records.jsonl": "e3c3c10301f6c34561cd5281713152b3df4df0d093738c078b3d4fddde2196fb",
+    "data/workflow-v12c/records.jsonl": "7449ca694bc88e20fed7b1389cb659191f5af088226ef609fac753589056ad07",
+    "data/workflow-v12d/records.jsonl": "f6cf512f9fe2f386adec99be7647677bec68afc8708f1236c5130fb257be9391",
+    "data/workflow-v12e/records.jsonl": "632af2eb5ecd6cc73c868d4043c0ea6d7fbb3ae2a9c8e10b84da878d5655c17d",
+    "data/workflow-v12f/records.jsonl": "c057956998e948ab22cfceb969f7711bedada963372b31e5d45089bbb71fbf46",
+    "data/workflow-v13g/records.jsonl": "92dd176e5d5c4fc057f2ec86fc5f877c571549559179491180382f40991c08f7",
+    "data/workflow-v13h/records.jsonl": "def4d0b9063184f4fdc72ad759e7399c7d5d8e336c57a6634958db7b448f65d7"
+  },
+  "source_sha256": "2fbece4d6ed1025d844460423f3b33540482fc6115851048ea0070f98e2f9251",
+  "primitive_parser_sha256": "db5f21b92c9e36e2592a1421b343d3341c79b4d8a9056f96de7ddc170a7c2a2f",
+  "fresh_policy_targets_recomputed": 1920,
+  "maximum_target_absolute_error": 1.1102230246251565e-16,
+  "fresh_final_domain_counts": {
+    "workflow_new": 1440,
+    "uncertainty": 480,
+    "text_nli": 450,
+    "text_intent": 462,
+    "photo_guard": 600
+  },
+  "preserved_subset_sha256": {
+    "train": "db7805a63da4dd319ac2ffb22368adfbc8ae49c62db9543c12d89a354770f4ff",
+    "dev": "a24385540a89b3d6d9e5cfed11cb10d882b69437704713f309a54e4ab1e7e90c",
+    "calibration": "4768013b2539babb972de9aa2204468bc0c492bb9e812d8ae1e27484f0cbc5c8"
+  },
+  "previous_group_overlap": 0,
+  "model_inference_used": false,
+  "scope": "Rendered rule targets independently parsed; public hard labels retain their source provenance. This does not validate empirical business frequencies."
+}

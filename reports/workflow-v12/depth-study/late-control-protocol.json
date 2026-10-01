@@ -1,0 +1,34 @@
+{
+  "started_at_utc": "2026-09-30T17:04:29.265138+00:00",
+  "configuration_sha256": "d96024a725b0935dd4b4fd528161adeceffbcd3522f0dfb03f4d743d8eb12380",
+  "arm": "late_control",
+  "source_sha256": {
+    "C:\\tmp\\veyra\\scripts\\train_workflow_depth.py": "97fc47ce05c871fd95998f826291b100cc715b30c81b596da653f3d70994ac35",
+    "scripts\\workflow_skill_common.py": "e3b726d2074292c391b796cbc525c811de494bb941769a121005f595b6cf6991",
+    "scripts\\workflow_depth_common.py": "3012e4653b7ff66e82ecfce8c7bf5c842bfa2c6143eee58ec2c0cd48cc50ae8a",
+    "scripts\\workflow_depth_execution.py": "e72b0e61d6e25f1ed3c56de08d65a7c51c5ca636e09c875d51f735fcbed25b5e",
+    "scripts\\workflow_depth_training.py": "34032a1fe8aabd9cca81bcd4072765ee99acbe8bbfa3dbcf49a916882fbbf1a2",
+    "scripts\\probe_workflow_depth.py": "6e6a2c6ab2ed401931430559faa23d5cde19578b234916666e034e6f0ddef044",
+    "scripts\\train_workflow_backbone.py": "c7ade8e49569de63c33a4552c554ab6ac035e90077f8c75cb4a13ca3c3f450cd",
+    "scripts\\train_workflow_workspace.py": "93dd647080074a3aa0f774d47ca776ed0bf08a4885eb5852b30583ab15bbffe5",
+    "src\\veyra\\option_model.py": "ac15e6e55108fc8ef69b57268bf004c6756305e21293d2a9683dfde9f6e79b48",
+    "src\\veyra\\proper_learning.py": "edcf97fed0c15b1e0219429a41963c27e6baae3890906d3c4a6829f51b3855a0",
+    "src\\veyra\\workflow_learning.py": "37cdb8d9d375938a5ac1a26ef53f1ccad949f141e2406caf232dab4df70a02d7"
+  },
+  "feature_cache": {
+    "complete": true,
+    "rows": 14524,
+    "by_split": {
+      "train": 11212,
+      "dev": 3312
+    },
+    "features_sha256": "10304d3889d09c01c55f05fcba6d48068daed7f1f9a3a56cbeda8a25c9c2aff3",
+    "metadata_sha256": "4a81e5c10d1425ccdd1141fe7bece83609404b6d2d1274a964c84d45a6ae6378",
+    "specification_sha256": "3ff0186b30e46416428ca6acf79640d4a8fac8940182095986429f894375c640",
+    "elapsed_seconds": 964.4121443999466
+  },
+  "training_plan_sha256": "47e037e36221355f031556e4e9145be0629e8ae7561d43094653dd59e7d4d947",
+  "skills_audit_sha256": "9696e22343eb3f395a69a8c8df9d5e88092afd94e378625ccc08ffca655e780a",
+  "calibration_or_final_used": false,
+  "inference_modules_added": 0
+}

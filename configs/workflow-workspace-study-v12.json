@@ -1,0 +1,52 @@
+{
+  "experiment": "workflow-workspace-study-v12",
+  "status": "declared_before_training",
+  "declared_at_utc": "2026-09-30T06:35:12.292679+00:00",
+  "scope": "A separate continuation study after the primary experiment failed calibration. Existing primary results and candidates remain immutable.",
+  "release_protocol": "configs/workflow-release-v12.json",
+  "release_protocol_sha256": "d0e6c454fc10cfa080523cfcc66706dfe73cb32524f4ce74bf87a5d4edde6776",
+  "parent": "runs\\workflow-v12-backbone\\high\\full",
+  "parent_weights_sha256": "92b3cb9b7e3353b68b116e93b8074148227a4c4d57eed2efc2a1a5867b443959",
+  "parent_manifest_sha256": "d2e62cd08e8b93d26a4212ec3616a9a9779777728d5f57aaad7e487f0bc01b65",
+  "records": "data/workflow-v12/records.jsonl",
+  "records_sha256": "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571",
+  "features": "data/features-workflow-v12",
+  "baseline_development": "runs/workflow-v12-head/baseline.json",
+  "baseline_development_sha256": "26c3f7b9ab331cec4a7b4727a4bfee6d2b85f2254978d3580f25c0d1270e4cce",
+  "seed": 149,
+  "epochs": 2,
+  "learning_rate": 3e-05,
+  "auxiliary_lr": 0.001,
+  "accumulation": 8,
+  "method": "rloo",
+  "arms": {
+    "primitive": {
+      "auxiliary_weight": 0.5
+    },
+    "continuation": {
+      "auxiliary_weight": 0.0
+    }
+  },
+  "execution_order": [
+    "primitive",
+    "continuation"
+  ],
+  "objective": "Both arms continue the same parent with the existing RLOO+CE and frozen-Foundation replay anchoring. The primitive arm adds mean BCE for the four A/B/C/D probabilities at the four existing dot positions; gradients reach late backbone LoRA. The shared auxiliary decoder is discarded before inference.",
+  "matched_design": "Same parent, seed, shuffled group order, two epochs, decision loss, optimizer schedule and replay for both arms. Auxiliary initialization preserves CPU/CUDA RNG. Only the added auxiliary loss and decoder optimizer group differ. One training seed is a limitation; this is not a multi-seed robustness claim.",
+  "candidate_checkpoints": "Parent plus epoch 1 and 2 from both arms; actual merged BF16 development inference for every candidate.",
+  "selection": "Development only. Require the original retention/workflow/probability eligibility and maximum threshold coverage >=0.60 under expected error <=0.15 for each question type on development. Among eligible models use the original mean known/new workflow accuracy, then uncertainty NLL and cost at 80% coverage. If none qualify, no calibration/final evaluation.",
+  "trigger": {
+    "prior_calibration_failure_reviewed": true,
+    "evaluation_sha256": "051c41d983fb896ae5f831e4ccea58fb1c85de768aaab6c4f8fa78ed9d0d24b5",
+    "diagnosis_sha256": "7f241fd16a5a4fd4095d7927ffe13bc459c08b4b0e68afc63cee6b9694134236",
+    "failed_types": [
+      "score",
+      "noul"
+    ]
+  },
+  "data_policy": "Training and candidate selection use original train/development groups only. Prior calibration rows are excluded. Before fitting a follow-up deployed policy, freeze fresh calibration groups of the same domains/family roles. Original independent final groups remain untouched; if any final prediction is later inspected, subsequent claims require fresh final groups.",
+  "fresh_calibration_required": true,
+  "inference_modules_added": 0,
+  "generated_answer_tokens": 0,
+  "publication": "No release before every original mandatory gate passes for the exact selected weights, fresh calibration, independent final and real HTTP runtime."
+}

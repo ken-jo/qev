@@ -1,0 +1,201 @@
+{
+  "scope": "Aggregate evaluations and protocols; excludes raw texts, images and credentials",
+  "source_sha256": "21fb27136a768f258897fa7b62eac37eefb5f8bc1ab04e5f694fdaab7dc6773b",
+  "entries": {
+    "data-protocol.json": {
+      "source": "data\\foundation-v11\\protocol.json",
+      "sha256": "1ee117590d470d1cfd5bed246b927157f8d4e8334aa7144c4c9efb871c6aff17",
+      "bytes": 6386
+    },
+    "source-downloads.json": {
+      "source": "data\\foundation-v11-source\\downloads.json",
+      "sha256": "1de95d8f40b2bc4736678701fae65293c70fb44c6c35d45e22d81e6547e0f4b2",
+      "bytes": 3196
+    },
+    "head-protocol.json": {
+      "source": "runs\\foundation-v11-head\\protocol.json",
+      "sha256": "55049fd5655c7a87b5e2c319152a1e50d7e19bc6d32bb1a22bb574df51846fab",
+      "bytes": 2051
+    },
+    "head-comparison.json": {
+      "source": "runs\\foundation-v11-head\\results.json",
+      "sha256": "8bb3ea34f6617e4e61fb57d73141f56b5cb01424967f47d35f7744363b20b87a",
+      "bytes": 69951
+    },
+    "head-baseline.json": {
+      "source": "runs\\foundation-v11-head\\baseline.json",
+      "sha256": "9c9c4c292bde876c448f90c3b961b2b68edef89fc9cb936173dff1fcaff56a47",
+      "bytes": 4169
+    },
+    "head-selection.json": {
+      "source": "runs\\foundation-v11-head\\selection.json",
+      "sha256": "497a5854deedd7470f54438f904afb515c5f20727218cf15d52596d0099420ed",
+      "bytes": 5520
+    },
+    "head-training-fit.json": {
+      "source": "runs\\foundation-v11-head\\training-fit.json",
+      "sha256": "9c8f2fce29261cd7a9540c025cf8530946eab3b4bfe2d7a8bdba4f225cca9f5b",
+      "bytes": 3883
+    },
+    "backbone-protocol.json": {
+      "source": "runs\\foundation-v11-backbone\\protocol.json",
+      "sha256": "06fdbf13886d5b28196b3a7fbf7627ffe28007170b02bfc2e246daa77ea0cc82",
+      "bytes": 1423
+    },
+    "backbone-history.json": {
+      "source": "runs\\foundation-v11-backbone\\history.json",
+      "sha256": "6ce10f1983ffaae9c0e6fce7df942bb2289c4c949c8af097f7abf8f16e9ac376",
+      "bytes": 85378
+    },
+    "midpoint-amendment.json": {
+      "source": "runs\\foundation-v11-backbone\\midpoint-amendment.json",
+      "sha256": "f9505385f31626e4e1cc2dc97b31f3cb05a8080d47c6c73d2149ac052ba360a6",
+      "bytes": 426
+    },
+    "selection.json": {
+      "source": "runs\\foundation-v11-selection\\selection.json",
+      "sha256": "597841f30fcd64f973da2110484c19867a73f8d84427cab02893d86fcec32f41",
+      "bytes": 1371
+    },
+    "selection-protocol.json": {
+      "source": "runs\\foundation-v11-selection\\protocol.json",
+      "sha256": "2cbb8640e1fc79887e56269e92d305c729d0d65abfc5af875831e859b8e29b1f",
+      "bytes": 557
+    },
+    "laya-sources.json": {
+      "source": "runs\\foundation-v11-laya\\sources.json",
+      "sha256": "a14287a543ee411d7206e7331e9cb47218f096fa0ab5f5cc3520dcf72c86b7f5",
+      "bytes": 1825
+    },
+    "typed-data-protocol.json": {
+      "source": "data\\foundation-v11-typed-regression\\protocol.json",
+      "sha256": "ceff09d634a8479ec21d1dadbe8354ed265d63d90493a2047582e4cd2589d468",
+      "bytes": 761
+    },
+    "calibration.json": {
+      "source": "runs\\foundation-v11-evaluation\\calibration\\evaluation.json",
+      "sha256": "b4a2640145a349a0186e463c61762a7d4affb656986ad94ea8034cb5196fa728",
+      "bytes": 19665
+    },
+    "baseline-final.json": {
+      "source": "runs\\foundation-v11-evaluation\\baseline-final\\evaluation.json",
+      "sha256": "69ce9c9a5254a96cc179d78090ddbffe5e364aee4930e1e976e8ebef02b0657e",
+      "bytes": 22848
+    },
+    "foundation-final.json": {
+      "source": "runs\\foundation-v11-evaluation\\foundation-final\\evaluation.json",
+      "sha256": "24dfc81d90e940f4e5e1c562dbd3e33ea573bd88cb33d259dab2dc67934df63d",
+      "bytes": 22818
+    },
+    "typed-regression.json": {
+      "source": "runs\\foundation-v11-evaluation\\typed-regression\\evaluation.json",
+      "sha256": "f8f42a8269735c06bf49fc0e45f01b124bf4224e2a1a35684c7a5983dad7a65e",
+      "bytes": 10562
+    },
+    "legacy-policy-regression.json": {
+      "source": "runs\\foundation-v11-evaluation\\legacy-policy-regression\\evaluation.json",
+      "sha256": "1536af8664fcf659025ed34b7ab6e8299c3234d063f8b7938c1b770900058871",
+      "bytes": 14909
+    },
+    "merged-dev-0.json": {
+      "source": "runs\\foundation-v11-selection\\candidate-0\\evaluation.json",
+      "sha256": "abbda7897cec89e8d58c9d98021b7f35b6411e980333dc298e2eb29bedf16b69",
+      "bytes": 18460
+    },
+    "merged-dev-1.json": {
+      "source": "runs\\foundation-v11-selection\\candidate-1\\evaluation.json",
+      "sha256": "1435d2d28f9b7187f7067dd60002b591d4dd675a5d6960abb9c62fd658c3605f",
+      "bytes": 18469
+    },
+    "merged-dev-2.json": {
+      "source": "runs\\foundation-v11-selection\\candidate-2\\evaluation.json",
+      "sha256": "94244112bc7deb708745fd8626a0f963b79f3b58d0ba7803b01f5efcb6c4bae9",
+      "bytes": 18486
+    },
+    "merged-dev-3.json": {
+      "source": "runs\\foundation-v11-selection\\candidate-3\\evaluation.json",
+      "sha256": "a94dc97f41a5c304d664f974d6e897d1c1d7fdbdd893ae95fa05b2c3b1ac773a",
+      "bytes": 18487
+    },
+    "runtime.json": {
+      "source": "runs\\foundation-v11-evaluation\\runtime.json",
+      "sha256": "40c283c460ff794d6475c79ac91800205feecaee096461e5d03ab0733d26bfd0",
+      "bytes": 20577
+    },
+    "photo-http.json": {
+      "source": "runs\\foundation-v11-evaluation\\photo-http.json",
+      "sha256": "6f5dd54aa0d73236858db579c7a7854ae5589a76c17f9f0fdeae7405d81007a7",
+      "bytes": 6279
+    },
+    "paired-comparison.json": {
+      "source": "runs\\foundation-v11-evaluation\\paired-comparison.json",
+      "sha256": "9ef416af37acbd4edf72d85e4ed3b3ec2ffe118e3a3c451d2c26618f2eb18ff2",
+      "bytes": 57568
+    },
+    "typed-regression-audit.json": {
+      "source": "runs\\foundation-v11-evaluation\\typed-regression-audit.json",
+      "sha256": "8726ae2b1afce053696c7dc130d7028259c95df96faa41517a6421b54adc42e4",
+      "bytes": 15127
+    },
+    "typed-baseline-standardized.json": {
+      "source": "runs\\foundation-v11-evaluation\\typed-baseline-standardized.json",
+      "sha256": "1a39f1d67a4df826bd277f70ba6598c5dc7f9e4e9d8dec9a36327d01aa4d8dc2",
+      "bytes": 10952
+    },
+    "laya-official-original-base.json": {
+      "source": "runs\\foundation-v11-laya\\official-original-base\\evaluation.json",
+      "sha256": "a1ec205e217d231f2248c30afa52361a4a26bc5facf62d24405b24f82325479e",
+      "bytes": 10347
+    },
+    "laya-official-original-specialist.json": {
+      "source": "runs\\foundation-v11-laya\\official-original-specialist\\evaluation.json",
+      "sha256": "81d0ff40d461bb69049e9aa3e29fa11f8f3a6584f945685e4864dba6fc5d2577",
+      "bytes": 10386
+    },
+    "laya-foundation-base.json": {
+      "source": "runs\\foundation-v11-laya\\foundation-base\\evaluation.json",
+      "sha256": "336905b0fd2216880a96b25dfdec710f2cac80b22acad9225f48e7d5c846b42d",
+      "bytes": 18426
+    },
+    "laya-foundation-specialist.json": {
+      "source": "runs\\foundation-v11-laya\\foundation-specialist\\evaluation.json",
+      "sha256": "88ddcf7f4e9a0a2391464f9e9ab082727ccf7cf826392639835733fcf18fc816",
+      "bytes": 18396
+    },
+    "laya-official-original-base-full-input.json": {
+      "source": "runs\\foundation-v11-laya\\official-original-base-full-input\\evaluation.json",
+      "sha256": "73e15102ec04a38c3db51b1f5d2ec663be3ca49db61fb1727e1293d927675ffe",
+      "bytes": 10372
+    },
+    "laya-official-base.json": {
+      "source": "runs\\foundation-v11-laya\\official-base\\evaluation.json",
+      "sha256": "3c19088107d6c7370cfc4509b68537553005ec8d1af53543c66fd80907b71fe7",
+      "bytes": 8900
+    },
+    "laya-official-specialist.json": {
+      "source": "runs\\foundation-v11-laya\\official-specialist\\evaluation.json",
+      "sha256": "3a952d8b459b566554732eb9c77cb91309c078c3732b16af6da16fddfd00bd89",
+      "bytes": 8916
+    },
+    "laya-original-base-input-audit.json": {
+      "source": "runs\\foundation-v11-laya\\original-base-input-audit.json",
+      "sha256": "1530d87fed1560bdf6726c6c3979082934105bb631e6e024e67ef8db2195659a",
+      "bytes": 1195
+    },
+    "laya-original-specialist-input-audit.json": {
+      "source": "runs\\foundation-v11-laya\\original-specialist-input-audit.json",
+      "sha256": "c7d662ae2d391b30b95a064242140199029f8060ba050bd82b379702c8c85c07",
+      "bytes": 1208
+    },
+    "laya-original-base-full-input-audit.json": {
+      "source": "runs\\foundation-v11-laya\\original-base-full-input-audit.json",
+      "sha256": "a0af00374946ba19ca17b2b70aaac768a2a5a66f55a9840aaccf824cb44778e3",
+      "bytes": 1192
+    },
+    "laya-foundation-base-input-audit.json": {
+      "source": "runs\\foundation-v11-laya\\foundation-base-input-audit.json",
+      "sha256": "2728800d23713cd7ea13d3e9a10591deca8345015bcdd5dae14504d13c563cd3",
+      "bytes": 1856
+    }
+  }
+}

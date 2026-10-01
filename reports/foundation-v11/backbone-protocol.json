@@ -1,0 +1,35 @@
+{
+  "arguments": {
+    "records": "data\\foundation-v11\\records.jsonl",
+    "features": "data\\features-foundation-v11",
+    "head_experiment": "runs\\foundation-v11-head",
+    "output": "runs\\foundation-v11-backbone",
+    "epochs": 1,
+    "learning_rate": 3e-05,
+    "seed": 107
+  },
+  "parent": "runs\\foundation-v11-head\\ce-83\\checkpoint",
+  "method": "ce",
+  "parent_weights_sha256": "cdb2618eb22316cfa0dd987770e06e16f44102f258fd46c59bdf9b865f22f011",
+  "dataset_sha256": "8f226fe90fb50e46c6a2e4c53020ed99db81a903f21317a96c66f27b6181d936",
+  "domain_shares": {
+    "text_nli": 0.2,
+    "text_intent": 0.2,
+    "image_waste": 0.25,
+    "image_leaf": 0.1,
+    "retention": 0.2,
+    "uncertainty": 0.05
+  },
+  "accumulation": 8,
+  "head_lr_multiplier": 0.1,
+  "selection": "Original-release domain guardrails, then domain macro accuracy and NLL",
+  "candidates": "Selected head, each half-epoch and full epoch; deployment merge evaluated later",
+  "condition_readout_frozen": true,
+  "vision_backbone_frozen": true,
+  "calibration_or_final_used": false,
+  "source_sha256": {
+    "C:\\tmp\\veyra\\scripts\\train_foundation_backbone.py": "88860b9956bf6aacd89a9421779ccd0ea34fb189e9828379e580a78e64fedccc",
+    "src\\veyra\\proper_learning.py": "edcf97fed0c15b1e0219429a41963c27e6baae3890906d3c4a6829f51b3855a0",
+    "src\\veyra\\option_model.py": "ac15e6e55108fc8ef69b57268bf004c6756305e21293d2a9683dfde9f6e79b48"
+  }
+}

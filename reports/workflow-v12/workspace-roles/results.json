@@ -1,0 +1,89 @@
+[
+  {
+    "checkpoint": "runs\\workflow-v12-backbone\\high\\full",
+    "artifact_sha256": "6f6ce89912d12f2016b2bd5accdc05697805c1b1f086d57d2b5627f2c2a21123",
+    "metrics": {
+      "questions": 1200,
+      "observed_conditions": 4064,
+      "mixed_condition_questions": 1088,
+      "condition_probability_mse": 0.20990437269210815,
+      "broadcast_same_request_prediction_mse": 0.20419549942016602,
+      "training_condition_prior_mse": 0.23304718732833862,
+      "observed_condition_accuracy": 0.6220472455024719,
+      "broadcast_observed_accuracy": 0.6400098204612732,
+      "training_prior_observed_accuracy": 0.5155019760131836,
+      "per_condition_observed_accuracy": {
+        "A": 0.579154372215271,
+        "B": 0.609375,
+        "C": 0.6287658214569092,
+        "D": 0.6720321774482727
+      },
+      "mean_within_request_probability_std": 0.15016883611679077,
+      "mean_pairwise_normalized_hidden_cosine": 0.8797755241394043,
+      "fraction_requests_with_identical_four_binary_predictions": 0.27166667580604553,
+      "mixed_question_probability_mse": 0.22239115834236145,
+      "mixed_question_broadcast_mse": 0.2188028246164322,
+      "mean_mse_over_all_24_role_permutations": 0.22941245138645172,
+      "best_assignment_per_question_mse_reference": 0.13129264116287231,
+      "target_mean_within_request_std": 0.38470861315727234
+    }
+  },
+  {
+    "checkpoint": "runs\\workflow-v12-workspace-study\\primitive\\epoch-2\\checkpoint",
+    "artifact_sha256": "e4332a42879f0ce00e9fc53930818969e733104138bfc0fa6a59c66bfa2513cd",
+    "metrics": {
+      "questions": 1200,
+      "observed_conditions": 4064,
+      "mixed_condition_questions": 1088,
+      "condition_probability_mse": 0.1802011877298355,
+      "broadcast_same_request_prediction_mse": 0.20631250739097595,
+      "training_condition_prior_mse": 0.23304718732833862,
+      "observed_condition_accuracy": 0.6963582634925842,
+      "broadcast_observed_accuracy": 0.6277067065238953,
+      "training_prior_observed_accuracy": 0.5155019760131836,
+      "per_condition_observed_accuracy": {
+        "A": 0.6017699241638184,
+        "B": 0.6572265625,
+        "C": 0.7084547877311707,
+        "D": 0.8209255337715149
+      },
+      "mean_within_request_probability_std": 0.15617568790912628,
+      "mean_pairwise_normalized_hidden_cosine": 0.7953156232833862,
+      "fraction_requests_with_identical_four_binary_predictions": 0.4166666567325592,
+      "mixed_question_probability_mse": 0.1935398131608963,
+      "mixed_question_broadcast_mse": 0.22439180314540863,
+      "mean_mse_over_all_24_role_permutations": 0.2390446960926056,
+      "best_assignment_per_question_mse_reference": 0.1351742148399353,
+      "target_mean_within_request_std": 0.38470861315727234
+    }
+  },
+  {
+    "checkpoint": "runs\\workflow-v12-workspace-study\\continuation\\epoch-2\\checkpoint",
+    "artifact_sha256": "670b52491c81147cecb5a860d0eb2d46a4c9b4a640e4abd23fab63863ea6bbff",
+    "metrics": {
+      "questions": 1200,
+      "observed_conditions": 4064,
+      "mixed_condition_questions": 1088,
+      "condition_probability_mse": 0.1888546496629715,
+      "broadcast_same_request_prediction_mse": 0.20379656553268433,
+      "training_condition_prior_mse": 0.23304718732833862,
+      "observed_condition_accuracy": 0.6879921555519104,
+      "broadcast_observed_accuracy": 0.632135808467865,
+      "training_prior_observed_accuracy": 0.5155019760131836,
+      "per_condition_observed_accuracy": {
+        "A": 0.5752212405204773,
+        "B": 0.640625,
+        "C": 0.6851311922073364,
+        "D": 0.8551307916641235
+      },
+      "mean_within_request_probability_std": 0.12849029898643494,
+      "mean_pairwise_normalized_hidden_cosine": 0.858440101146698,
+      "fraction_requests_with_identical_four_binary_predictions": 0.4283333420753479,
+      "mixed_question_probability_mse": 0.20278553664684296,
+      "mixed_question_broadcast_mse": 0.22070638835430145,
+      "mean_mse_over_all_24_role_permutations": 0.22461125254631042,
+      "best_assignment_per_question_mse_reference": 0.14003917574882507,
+      "target_mean_within_request_std": 0.38470861315727234
+    }
+  }
+]

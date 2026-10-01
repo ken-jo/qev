@@ -1,0 +1,15 @@
+{
+  "confirmed_failure": "Parquet source preparation stopped at import before creating any data directory: pyarrow was absent.",
+  "isolated_dependency": "pyarrow==21.0.0",
+  "isolated_target": ".cache/followup-data-runtime",
+  "historical_pyarrow_version_matched": true,
+  "fitting_source_directory_created": false,
+  "training_environment_versions": {
+    "torch": "2.10.0+cu128",
+    "transformers": "5.17.0",
+    "numpy": "2.5.3"
+  },
+  "model_predictions_used": false,
+  "next_run_output": "runs/workflow-v12-depth-policy-data-retry1",
+  "study_or_generator_changed": false
+}

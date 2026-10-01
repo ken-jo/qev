@@ -1,0 +1,3 @@
+"""Veyra: dynamic typed decisions with a shared multimodal backbone."""
+
+__version__ = "0.3.0a3"

@@ -1,0 +1,6 @@
+{
+  "release_allowed": false,
+  "mandatory_gate_enforced": true,
+  "reason": "Release blocked: both mandatory roadmap priorities must pass",
+  "publishing_api_called": false
+}

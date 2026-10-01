@@ -1,0 +1,74 @@
+{
+  "reference": "convaiinnovations/laya",
+  "revision": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+  "source_sha256": "d6398d4f63a6160cc378d7ba184d032b43b81740769263bf9e3cecf8b4d1c54e",
+  "max_len": 512,
+  "head_max_len": 192,
+  "option_token_cap": 48,
+  "label_or_prediction_inspected": false,
+  "counts": {
+    "overall": {
+      "questions": 2141,
+      "instruction_truncated": 0,
+      "options_truncated": 0,
+      "state_truncated": 0,
+      "any_truncated": 0
+    },
+    "text_intent": {
+      "questions": 924,
+      "instruction_truncated": 0,
+      "options_truncated": 0,
+      "state_truncated": 0,
+      "any_truncated": 0
+    },
+    "conditional_probability": {
+      "questions": 120,
+      "instruction_truncated": 0,
+      "options_truncated": 0,
+      "state_truncated": 0,
+      "any_truncated": 0
+    },
+    "missing_evidence": {
+      "questions": 37,
+      "instruction_truncated": 0,
+      "options_truncated": 0,
+      "state_truncated": 0,
+      "any_truncated": 0
+    },
+    "text_disjunction": {
+      "questions": 40,
+      "instruction_truncated": 0,
+      "options_truncated": 0,
+      "state_truncated": 0,
+      "any_truncated": 0
+    },
+    "text_conjunction": {
+      "questions": 40,
+      "instruction_truncated": 0,
+      "options_truncated": 0,
+      "state_truncated": 0,
+      "any_truncated": 0
+    },
+    "text_threshold": {
+      "questions": 40,
+      "instruction_truncated": 0,
+      "options_truncated": 0,
+      "state_truncated": 0,
+      "any_truncated": 0
+    },
+    "text_ranges": {
+      "questions": 40,
+      "instruction_truncated": 0,
+      "options_truncated": 0,
+      "state_truncated": 0,
+      "any_truncated": 0
+    },
+    "text_nli": {
+      "questions": 900,
+      "instruction_truncated": 0,
+      "options_truncated": 0,
+      "state_truncated": 0,
+      "any_truncated": 0
+    }
+  }
+}

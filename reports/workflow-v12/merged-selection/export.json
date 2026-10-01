@@ -1,0 +1,16 @@
+{
+  "scope": "Merged BF16 development selection only",
+  "source_directory": "runs\\workflow-v12-selection",
+  "byte_exact_files": {
+    "merged-baseline-dev.json": "d757775c444b6d535d1dd052ded81fcec8a557762c8fd5a31ca018283523f5ed",
+    "merged-dev-0.json": "25fb01fe588e57350d68c88aba5e76b8ff8c01a4339c8d492dcd418c56dfa01f",
+    "merged-dev-1.json": "a2d97c886bcd5e6622261b6743ed9ec047a1d18cd41ce5e2147c112ff85c961a",
+    "merged-dev-2.json": "004358316402b65f379240c398430b30fd493148a3db4dc8b9527094e9199cd0",
+    "merged-dev-3.json": "4ba6a3f74f4dc8a0da1ebb46b36f0056e5f10d96deb39926ed810c33bf6bb81b",
+    "merged-dev-4.json": "5937423e9183aeeeb693f81c11e0b23afd070e5bd62e416219ef652ab569d464",
+    "protocol.json": "559d38741c3ae47a0f2c7efc9050202514a63e645837b6209b2be22e8dab727a",
+    "selection.json": "7629eed4ef07e7f27c9509b574b9811e5804e709be4b6c986e875623dfe5336f"
+  },
+  "calibration_or_final_used": false,
+  "release_allowed": false
+}

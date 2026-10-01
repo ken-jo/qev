@@ -1,0 +1,28 @@
+{
+  "observed_at_utc": "2026-09-30T23:30:37.150791+00:00",
+  "completed": false,
+  "failure": "torch.OutOfMemoryError during training forward; 0.85 allocator cap",
+  "last_recorded_progress": {
+    "stage": "training",
+    "processed": 5197,
+    "total": 9129,
+    "steps": 650,
+    "mean_loss": 0.31156652294007325,
+    "elapsed_seconds": 1557.9302278000396,
+    "peak_memory_mib": 6807.837890625,
+    "release_allowed": false
+  },
+  "saved_candidates": {
+    "candidates": [
+      "runs\\backbone-recovery-v13\\fraction-0.25\\checkpoint",
+      "runs\\backbone-recovery-v13\\fraction-0.5\\checkpoint"
+    ],
+    "steps": 567,
+    "processed": 4533,
+    "release_allowed": false
+  },
+  "log_sha256": "91c69a6c6ff2a42e946443fef9387e2a7906d956c85b5e901622b5f5ec729c9b",
+  "development_calibration_or_final_inference_completed": false,
+  "release_allowed": false,
+  "diagnosis": "The training-only longest-input probe at a 0.90 cap used 7032.36 MiB, more than the old 0.85 allocator allowance. Fragmentation may also contribute; it was not separately quantified."
+}

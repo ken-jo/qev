@@ -1,0 +1,23 @@
+{
+  "records": 4192,
+  "groups": 2096,
+  "split_counts": {
+    "train": 2400,
+    "dev": 448,
+    "calibration": 448,
+    "test": 896
+  },
+  "sources": [
+    {
+      "id": "veyra-policy-generator-v3",
+      "revision": "sha256:9590630f175c5d2c59a09ac8feffa3009105e3c6a0c6ba9fd0562f4c402ed635",
+      "license": "Apache-2.0"
+    }
+  ],
+  "seed": 20261002,
+  "scale": 1,
+  "protocol": "docs/improvement-protocol.md",
+  "records_sha256": "42deb625c5130fd5e3cd4cee2774282efaca3f8eaa5661f5d3ab85bf042bf91b",
+  "final_sha256": "d59aded5a61bb7a4200f39b3e0aae30a7e401ba4d2a86846a74661accc715015",
+  "final_evaluated": false
+}

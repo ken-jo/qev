@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "model_evaluated": false,
+  "records": 16734,
+  "distinct_images": 3119,
+  "dataset_sha256": "43d5f8f31d5cfef33fe3721685ad9008209d1b3becb21742ba1ced1ab2557070",
+  "final_sha256": "00c91c0d8ed17a29bf9386e06beea1ea2ddbb2f036c4d9eb346abe55dc42b273",
+  "identical_protocol": true,
+  "all_image_files_byte_identical": true,
+  "source_revision": "sha256:b551bc1e88f12738a6379173991d2fed8aa80f7c25c65e899f5504f7c9b283c6",
+  "environment": {
+    "python": "3.12",
+    "pillow": "12.3.0"
+  },
+  "scope": "Fresh generation with the original four fixed seeds and exclusions; no model calls"
+}

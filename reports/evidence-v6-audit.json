@@ -1,0 +1,9 @@
+{
+  "dataset_sha256": "ad6c8b974df7e61b18463a748c18787c484edc770a6253ccb6520ed1e9cf143f",
+  "verified_evidence_records": 2400,
+  "images_recovered_from_actual_pixels": 400,
+  "all_parent_records_equal": true,
+  "training_units": 4800,
+  "training_requests_including_auxiliary": 7200,
+  "audit": "Independent numeric comparisons and pixel-derived shape/color/count; no model predictions."
+}

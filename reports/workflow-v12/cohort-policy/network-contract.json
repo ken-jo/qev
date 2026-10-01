@@ -1,0 +1,36 @@
+{
+  "weights_sha256": "86ce942f8ef036f2279422a3a2665248b98adcb0effa91bafdf15d9c14c6c83e",
+  "manifest_sha256": "0da2b6454441c37d17959a00a3608452a0555128aa693570eb1fd82349fc9af4",
+  "records_sha256": "8f226fe90fb50e46c6a2e4c53020ed99db81a903f21317a96c66f27b6181d936",
+  "source_sha256": "54c56300bbafd8567ab768db81bff6ffdf5f59eb392d751c81ca0c27f3da0e70",
+  "gpu": "NVIDIA GeForce RTX 4060 Ti",
+  "record_ids": [
+    "banking:005e379b6c403c724b97157c:policy",
+    "waste:00e0bbcc0a75007fb79cb8e2:policy"
+  ],
+  "results": {
+    "text": {
+      "backbone_forwards": 1,
+      "generated_answer_tokens": 0,
+      "valid_probabilities": true,
+      "questions": 1,
+      "types": [
+        "score"
+      ],
+      "input_tokens": 212
+    },
+    "photograph_three_questions": {
+      "backbone_forwards": 1,
+      "generated_answer_tokens": 0,
+      "valid_probabilities": true,
+      "questions": 3,
+      "types": [
+        "choice",
+        "noul",
+        "score"
+      ],
+      "input_tokens": 1103
+    }
+  },
+  "passed": true
+}

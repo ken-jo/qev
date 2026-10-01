@@ -1,0 +1,50 @@
+{
+  "candidates": [
+    {
+      "checkpoint": "runs\\foundation-v11-head\\ce-83\\checkpoint",
+      "selection": [
+        true,
+        0.8586020057869994,
+        -0.4056775539564607
+      ],
+      "evaluation": "runs\\foundation-v11-selection\\candidate-0\\evaluation.json"
+    },
+    {
+      "checkpoint": "runs\\foundation-v11-backbone\\epoch-0.5",
+      "selection": [
+        false,
+        0.8517050948324693,
+        -0.4742117316089887
+      ],
+      "evaluation": "runs\\foundation-v11-selection\\candidate-1\\evaluation.json"
+    },
+    {
+      "checkpoint": "runs\\foundation-v11-backbone\\epoch-1",
+      "selection": [
+        true,
+        0.8666750549295927,
+        -0.44935076918915506
+      ],
+      "evaluation": "runs\\foundation-v11-selection\\candidate-2\\evaluation.json"
+    },
+    {
+      "checkpoint": "runs\\foundation-v11-backbone\\head-final-midpoint",
+      "selection": [
+        true,
+        0.8636218625190766,
+        -0.41910095628621413
+      ],
+      "evaluation": "runs\\foundation-v11-selection\\candidate-3\\evaluation.json"
+    }
+  ],
+  "selected": {
+    "checkpoint": "runs\\foundation-v11-backbone\\epoch-1",
+    "selection": [
+      true,
+      0.8666750549295927,
+      -0.44935076918915506
+    ],
+    "evaluation": "runs\\foundation-v11-selection\\candidate-2\\evaluation.json"
+  },
+  "final_or_calibration_used": false
+}

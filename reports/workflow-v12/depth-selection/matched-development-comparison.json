@@ -1,0 +1,523 @@
+{
+  "created_at_utc": "2026-09-30T20:40:50.902705+00:00",
+  "selection_sha256": "18ef8e8beb527ac78933aa8eb6b050e4c8d6880ddc6f41f5a29d093ba29c1bfb",
+  "study_protocol_sha256": "d96024a725b0935dd4b4fd528161adeceffbcd3522f0dfb03f4d743d8eb12380",
+  "source_sha256": {
+    "C:\\tmp\\veyra\\scripts\\train_workflow_depth.py": "97fc47ce05c871fd95998f826291b100cc715b30c81b596da653f3d70994ac35",
+    "scripts\\workflow_skill_common.py": "e3b726d2074292c391b796cbc525c811de494bb941769a121005f595b6cf6991",
+    "scripts\\workflow_depth_common.py": "3012e4653b7ff66e82ecfce8c7bf5c842bfa2c6143eee58ec2c0cd48cc50ae8a",
+    "scripts\\workflow_depth_execution.py": "e72b0e61d6e25f1ed3c56de08d65a7c51c5ca636e09c875d51f735fcbed25b5e",
+    "scripts\\workflow_depth_training.py": "34032a1fe8aabd9cca81bcd4072765ee99acbe8bbfa3dbcf49a916882fbbf1a2",
+    "scripts\\probe_workflow_depth.py": "6e6a2c6ab2ed401931430559faa23d5cde19578b234916666e034e6f0ddef044",
+    "scripts\\train_workflow_backbone.py": "c7ade8e49569de63c33a4552c554ab6ac035e90077f8c75cb4a13ca3c3f450cd",
+    "scripts\\train_workflow_workspace.py": "93dd647080074a3aa0f774d47ca776ed0bf08a4885eb5852b30583ab15bbffe5",
+    "src\\veyra\\option_model.py": "ac15e6e55108fc8ef69b57268bf004c6756305e21293d2a9683dfde9f6e79b48",
+    "src\\veyra\\proper_learning.py": "edcf97fed0c15b1e0219429a41963c27e6baae3890906d3c4a6829f51b3855a0",
+    "src\\veyra\\workflow_learning.py": "37cdb8d9d375938a5ac1a26ef53f1ccad949f141e2406caf232dab4df70a02d7",
+    "C:\\tmp\\veyra\\scripts\\depth_training_checks.py": "fa5c2ce849f4c95d0ffaa4d141d3b22fa9285236ac7a46db801643d139047fbd",
+    "C:\\tmp\\veyra\\scripts\\select_depth_checkpoint.py": "22241da1e43afc266922ff8d9b83a81e6e1d0376e11ed84501b704da9fd7af9f",
+    "scripts\\workspace_development_diagnostics.py": "50410c204b38f051d5653d1dbdff8f5a04bae33828226a88f59da4fa9607b2ad",
+    "scripts\\curriculum_release_checks.py": "2eecd7509df3992c122ca9aa837be84a3a755073051ac7deb3053d696cce8b47",
+    "C:\\tmp\\veyra\\scripts\\compare_depth_development.py": "8d1a7edaf5e079a2d7fe7c829cdab4675f7e2f67aba946b5bbad6546a2f297f5",
+    "scripts\\compare_workspace_development.py": "8958237770397e060ad9f763fa176ab151397b8d1dbce3ffdcb24a05407f1478",
+    "scripts\\depth_training_checks.py": "fa5c2ce849f4c95d0ffaa4d141d3b22fa9285236ac7a46db801643d139047fbd",
+    "scripts\\depth_release_checks.py": "dcd67e7d6a39a244547a839c92c29c80e6392485edc4a2a68d9a8b005eec73eb"
+  },
+  "bindings": {
+    "runs\\workflow-v12-curriculum-study\\skill_curriculum\\epoch-2\\checkpoint\\head.safetensors": "a8384ccd73746888526e65b46f95dd531faafcf6d267e131e6205f8199e41342",
+    "runs\\workflow-v12-curriculum-study\\skill_curriculum\\epoch-2\\checkpoint\\manifest.json": "548f9dadb2e5daf1359864ccf590f70e06e01129b06cd3e10ffebfbe72d1b138",
+    "runs\\workflow-v12-curriculum-selection\\merged-dev-2.safetensors": "82176cf07c529242a7b3bc6942368c083d258155b62280594007d8ed465d9da6",
+    "runs\\workflow-v12-depth-study\\full_depth\\epoch-1\\checkpoint\\head.safetensors": "51fd8826f281d627d5390e1d073d1c31f10d5cec44cb6d8609987480fde34ace",
+    "runs\\workflow-v12-depth-study\\full_depth\\epoch-1\\checkpoint\\manifest.json": "be5794e0cfcd4e3f12fd571d44f9e47da1520ebdfb7363214c2cf2cc05917087",
+    "runs\\workflow-v12-depth-selection\\merged-dev-1.safetensors": "428ab54ed36ec9d557005f772212526a80486612a30c05e40b3fa75d18b7142c",
+    "runs\\workflow-v12-depth-study\\full_depth\\epoch-2\\checkpoint\\head.safetensors": "86ce942f8ef036f2279422a3a2665248b98adcb0effa91bafdf15d9c14c6c83e",
+    "runs\\workflow-v12-depth-study\\full_depth\\epoch-2\\checkpoint\\manifest.json": "5b6447b8cea24e6c74845496889c142bbaf6415a34cf91a2293d7b88658bb9ba",
+    "runs\\workflow-v12-depth-selection\\merged-dev-2.safetensors": "82d4addc9a54271bbf24ab859ba6a2ab2204d036f5a2e226311bc8ef0d7b508a",
+    "runs\\workflow-v12-depth-study\\late_control\\epoch-1\\checkpoint\\head.safetensors": "d1f227739117be1b93a435387455321eb4ddd4b6e7e3388a1c0e183a9d72e66c",
+    "runs\\workflow-v12-depth-study\\late_control\\epoch-1\\checkpoint\\manifest.json": "6a5b5d5acf7b713d473854f7bc9e24700e18d7fdf344cb7e70c0a99d97c3f3f1",
+    "runs\\workflow-v12-depth-selection\\merged-dev-3.safetensors": "94063296e9b6268cbfc5e8fe5a008c8ee8072cd0f281d3c04db66fed5a472daa",
+    "runs\\workflow-v12-depth-study\\late_control\\epoch-2\\checkpoint\\head.safetensors": "612a5ebd4b07fbb5c4396ad002ab24b8653be1615cd918bc2997e672fcf0a832",
+    "runs\\workflow-v12-depth-study\\late_control\\epoch-2\\checkpoint\\manifest.json": "f7ec0cd11903e7f80d45246cf3e5862e5348f5fa0a1d00efa324bc8fc30356de",
+    "runs\\workflow-v12-depth-selection\\merged-dev-4.safetensors": "4032309fb7d40b973497ec7e420fceb7f737ad739fa4de8d7bf8d96d14c3898a"
+  },
+  "training_audit": {
+    "passed": true,
+    "evidence_files": {
+      "configs\\workflow-depth-study-v12.json": "d96024a725b0935dd4b4fd528161adeceffbcd3522f0dfb03f4d743d8eb12380",
+      "data\\workflow-v12\\records.jsonl": "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571",
+      "runs\\workflow-v12-depth-plan\\training-plan.json": "47e037e36221355f031556e4e9145be0629e8ae7561d43094653dd59e7d4d947",
+      "runs\\workflow-v12-depth-execution\\results.json": "fd285c85f82debe20dfa0f8f8be47cbab19784375c95b8d80921d0173d935e28",
+      "configs/workflow-curriculum-study-v12.json": "05cbeb6125bdc7c081f7ba3e0dc1caaed52aaeeeccc85360bd0c05b76a621c79",
+      "runs\\workflow-v12-curriculum-selection\\selection.json": "a4033c8d7d5316954e2550bf3fe0ce46247e3c3c75aaff09592e930979e0a789",
+      "configs/workflow-release-v12.json": "d0e6c454fc10cfa080523cfcc66706dfe73cb32524f4ce74bf87a5d4edde6776",
+      "runs\\workflow-v12-depth-study\\full_depth\\epoch-1\\checkpoint\\head.safetensors": "51fd8826f281d627d5390e1d073d1c31f10d5cec44cb6d8609987480fde34ace",
+      "runs\\workflow-v12-depth-study\\full_depth\\epoch-1\\checkpoint\\manifest.json": "be5794e0cfcd4e3f12fd571d44f9e47da1520ebdfb7363214c2cf2cc05917087",
+      "runs\\workflow-v12-depth-study\\full_depth\\epoch-2\\checkpoint\\head.safetensors": "86ce942f8ef036f2279422a3a2665248b98adcb0effa91bafdf15d9c14c6c83e",
+      "runs\\workflow-v12-depth-study\\full_depth\\epoch-2\\checkpoint\\manifest.json": "5b6447b8cea24e6c74845496889c142bbaf6415a34cf91a2293d7b88658bb9ba",
+      "runs\\workflow-v12-depth-study\\full_depth\\protocol.json": "07634b77db1d7eba4757cdb1f6e26f93c50e3ed80b135429da58f54c39a101b9",
+      "runs\\workflow-v12-depth-study\\full_depth\\initialization.json": "392612c0976f185031c82c69684ecb2947ebcdd91a435d960842b24f7352d926",
+      "runs\\workflow-v12-depth-study\\full_depth\\first-gradient.json": "e7ac633ca9cecee059fe833326f2800b8431d1d6160712d198a6814832833788",
+      "runs\\workflow-v12-depth-study\\full_depth\\complete.json": "78e36579ac6b5be09888c2970709c0ef7a71ba82e5e3fce831fc07c026403aec",
+      "runs\\workflow-v12-depth-study\\full_depth\\history.json": "17d301e2c3b8b1fdcf1695d9d641119b20470882282b8e4eeb6fd8fb73f42e29",
+      "runs\\workflow-v12-depth-study\\late_control\\epoch-1\\checkpoint\\head.safetensors": "d1f227739117be1b93a435387455321eb4ddd4b6e7e3388a1c0e183a9d72e66c",
+      "runs\\workflow-v12-depth-study\\late_control\\epoch-1\\checkpoint\\manifest.json": "6a5b5d5acf7b713d473854f7bc9e24700e18d7fdf344cb7e70c0a99d97c3f3f1",
+      "runs\\workflow-v12-depth-study\\late_control\\epoch-2\\checkpoint\\head.safetensors": "612a5ebd4b07fbb5c4396ad002ab24b8653be1615cd918bc2997e672fcf0a832",
+      "runs\\workflow-v12-depth-study\\late_control\\epoch-2\\checkpoint\\manifest.json": "f7ec0cd11903e7f80d45246cf3e5862e5348f5fa0a1d00efa324bc8fc30356de",
+      "runs\\workflow-v12-depth-study\\late_control\\protocol.json": "3220cb4ccbd717b41a6c1d6e5911668335c9e3748a4a44857e1721e434a94b35",
+      "runs\\workflow-v12-depth-study\\late_control\\initialization.json": "eaef0095372632d13d11315045e196ee9cf4c5b350a2d7e5e7a248ee0d50327d",
+      "runs\\workflow-v12-depth-study\\late_control\\first-gradient.json": "e7ac633ca9cecee059fe833326f2800b8431d1d6160712d198a6814832833788",
+      "runs\\workflow-v12-depth-study\\late_control\\complete.json": "30b17a5c80231367c1fc91acd4f3a132b3b201bea2c719c8d06c0e81df37d5b0",
+      "runs\\workflow-v12-depth-study\\late_control\\history.json": "f02949b5015586cc98492d5e3476473aeb98d6aee6af13a0d61626bfc5d826a5",
+      "C:\\tmp\\veyra\\scripts\\train_workflow_depth.py": "97fc47ce05c871fd95998f826291b100cc715b30c81b596da653f3d70994ac35",
+      "scripts\\workflow_skill_common.py": "e3b726d2074292c391b796cbc525c811de494bb941769a121005f595b6cf6991",
+      "scripts\\workflow_depth_common.py": "3012e4653b7ff66e82ecfce8c7bf5c842bfa2c6143eee58ec2c0cd48cc50ae8a",
+      "scripts\\workflow_depth_execution.py": "e72b0e61d6e25f1ed3c56de08d65a7c51c5ca636e09c875d51f735fcbed25b5e",
+      "scripts\\workflow_depth_training.py": "34032a1fe8aabd9cca81bcd4072765ee99acbe8bbfa3dbcf49a916882fbbf1a2",
+      "scripts\\probe_workflow_depth.py": "6e6a2c6ab2ed401931430559faa23d5cde19578b234916666e034e6f0ddef044",
+      "scripts\\train_workflow_backbone.py": "c7ade8e49569de63c33a4552c554ab6ac035e90077f8c75cb4a13ca3c3f450cd",
+      "scripts\\train_workflow_workspace.py": "93dd647080074a3aa0f774d47ca776ed0bf08a4885eb5852b30583ab15bbffe5",
+      "src\\veyra\\option_model.py": "ac15e6e55108fc8ef69b57268bf004c6756305e21293d2a9683dfde9f6e79b48",
+      "src\\veyra\\proper_learning.py": "edcf97fed0c15b1e0219429a41963c27e6baae3890906d3c4a6829f51b3855a0",
+      "src\\veyra\\workflow_learning.py": "37cdb8d9d375938a5ac1a26ef53f1ccad949f141e2406caf232dab4df70a02d7",
+      "C:\\tmp\\veyra\\scripts\\depth_training_checks.py": "fa5c2ce849f4c95d0ffaa4d141d3b22fa9285236ac7a46db801643d139047fbd"
+    },
+    "source_files": {
+      "C:\\tmp\\veyra\\scripts\\train_workflow_depth.py": "97fc47ce05c871fd95998f826291b100cc715b30c81b596da653f3d70994ac35",
+      "scripts\\workflow_skill_common.py": "e3b726d2074292c391b796cbc525c811de494bb941769a121005f595b6cf6991",
+      "scripts\\workflow_depth_common.py": "3012e4653b7ff66e82ecfce8c7bf5c842bfa2c6143eee58ec2c0cd48cc50ae8a",
+      "scripts\\workflow_depth_execution.py": "e72b0e61d6e25f1ed3c56de08d65a7c51c5ca636e09c875d51f735fcbed25b5e",
+      "scripts\\workflow_depth_training.py": "34032a1fe8aabd9cca81bcd4072765ee99acbe8bbfa3dbcf49a916882fbbf1a2",
+      "scripts\\probe_workflow_depth.py": "6e6a2c6ab2ed401931430559faa23d5cde19578b234916666e034e6f0ddef044",
+      "scripts\\train_workflow_backbone.py": "c7ade8e49569de63c33a4552c554ab6ac035e90077f8c75cb4a13ca3c3f450cd",
+      "scripts\\train_workflow_workspace.py": "93dd647080074a3aa0f774d47ca776ed0bf08a4885eb5852b30583ab15bbffe5",
+      "src\\veyra\\option_model.py": "ac15e6e55108fc8ef69b57268bf004c6756305e21293d2a9683dfde9f6e79b48",
+      "src\\veyra\\proper_learning.py": "edcf97fed0c15b1e0219429a41963c27e6baae3890906d3c4a6829f51b3855a0",
+      "src\\veyra\\workflow_learning.py": "37cdb8d9d375938a5ac1a26ef53f1ccad949f141e2406caf232dab4df70a02d7",
+      "C:\\tmp\\veyra\\scripts\\depth_training_checks.py": "fa5c2ce849f4c95d0ffaa4d141d3b22fa9285236ac7a46db801643d139047fbd"
+    },
+    "calibration_or_final_used": false
+  },
+  "feature_cache": {
+    "complete": true,
+    "rows": 14524,
+    "by_split": {
+      "train": 11212,
+      "dev": 3312
+    },
+    "features_sha256": "10304d3889d09c01c55f05fcba6d48068daed7f1f9a3a56cbeda8a25c9c2aff3",
+    "metadata_sha256": "4a81e5c10d1425ccdd1141fe7bece83609404b6d2d1274a964c84d45a6ae6378",
+    "specification_sha256": "3ff0186b30e46416428ca6acf79640d4a8fac8940182095986429f894375c640",
+    "elapsed_seconds": 964.4121443999466
+  },
+  "development_metrics_recomputed_from_raw_outputs": true,
+  "bootstrap_seed": 211,
+  "bootstrap_replicates": 2000,
+  "comparisons": [
+    {
+      "epoch": 1,
+      "difference_direction": "full-depth learning minus matched zero-rate earlier-layer control",
+      "by_domain": {
+        "workflow_new": {
+          "questions": 900,
+          "groups": 300,
+          "before_accuracy": 0.7588889002799988,
+          "after_accuracy": 0.8544444441795349,
+          "accuracy_delta": 0.09555555555555556,
+          "paired_group_bootstrap_95pct_interval": [
+            0.058888888888888886,
+            0.1322222222222222
+          ],
+          "paired_outcomes": {
+            "both_correct": 654,
+            "both_wrong": 102,
+            "improved": 115,
+            "regressed": 29
+          }
+        },
+        "workflow_known": {
+          "questions": 600,
+          "groups": 120,
+          "before_accuracy": 0.7666666507720947,
+          "after_accuracy": 0.7733333110809326,
+          "accuracy_delta": 0.006666666666666667,
+          "paired_group_bootstrap_95pct_interval": [
+            -0.016666666666666666,
+            0.03
+          ],
+          "paired_outcomes": {
+            "both_correct": 439,
+            "both_wrong": 115,
+            "improved": 25,
+            "regressed": 21
+          }
+        },
+        "photo_guard": {
+          "questions": 600,
+          "groups": 600,
+          "before_accuracy": 0.9666666388511658,
+          "after_accuracy": 0.9649999737739563,
+          "accuracy_delta": -0.0016666666666666668,
+          "paired_group_bootstrap_95pct_interval": [
+            -0.005,
+            0.0
+          ],
+          "paired_outcomes": {
+            "both_correct": 579,
+            "both_wrong": 20,
+            "improved": 0,
+            "regressed": 1
+          }
+        },
+        "text_nli": {
+          "questions": 450,
+          "groups": 450,
+          "before_accuracy": 0.8688889145851135,
+          "after_accuracy": 0.8933333158493042,
+          "accuracy_delta": 0.024444444444444446,
+          "paired_group_bootstrap_95pct_interval": [
+            0.0044444444444444444,
+            0.04666666666666667
+          ],
+          "paired_outcomes": {
+            "both_correct": 386,
+            "both_wrong": 43,
+            "improved": 16,
+            "regressed": 5
+          }
+        },
+        "text_intent": {
+          "questions": 462,
+          "groups": 462,
+          "before_accuracy": 0.8376623392105103,
+          "after_accuracy": 0.8463203310966492,
+          "accuracy_delta": 0.008658008658008658,
+          "paired_group_bootstrap_95pct_interval": [
+            -0.006493506493506494,
+            0.021699134199133902
+          ],
+          "paired_outcomes": {
+            "both_correct": 383,
+            "both_wrong": 67,
+            "improved": 8,
+            "regressed": 4
+          }
+        }
+      },
+      "by_type_coverage_under_15pct_error": {
+        "choice": {
+          "full_depth": 1.0,
+          "control": 0.9866156787762906
+        },
+        "score": {
+          "full_depth": 0.640625,
+          "control": 0.246875
+        },
+        "noul": {
+          "full_depth": 0.9258620689655173,
+          "control": 0.7362068965517241
+        }
+      },
+      "uncertainty": {
+        "full_depth": {
+          "questions": 300,
+          "labeled_questions": 0,
+          "accuracy": null,
+          "nll": 0.8325990438461304,
+          "brier_vs_soft": 0.1721353530883789,
+          "score_mae": 0.29291218519210815,
+          "mean_confidence": 0.7255229949951172,
+          "matched_coverage": {
+            "0.5": {
+              "accepted": 150,
+              "expected_error": 0.24977317452430725,
+              "expected_cost": 0.428629606962204
+            },
+            "0.8": {
+              "accepted": 240,
+              "expected_error": 0.30550187826156616,
+              "expected_cost": 0.6034169793128967
+            },
+            "0.9": {
+              "accepted": 270,
+              "expected_error": 0.32790908217430115,
+              "expected_cost": 0.6743360757827759
+            },
+            "1.0": {
+              "accepted": 300,
+              "expected_error": 0.3472973108291626,
+              "expected_cost": 0.7203822731971741
+            }
+          }
+        },
+        "control": {
+          "questions": 300,
+          "labeled_questions": 0,
+          "accuracy": null,
+          "nll": 0.8537999391555786,
+          "brier_vs_soft": 0.20190700888633728,
+          "score_mae": 0.3446325361728668,
+          "mean_confidence": 0.6818448305130005,
+          "matched_coverage": {
+            "0.5": {
+              "accepted": 150,
+              "expected_error": 0.27829447388648987,
+              "expected_cost": 0.5900606513023376
+            },
+            "0.8": {
+              "accepted": 240,
+              "expected_error": 0.35367873311042786,
+              "expected_cost": 0.7803830504417419
+            },
+            "0.9": {
+              "accepted": 270,
+              "expected_error": 0.3775133490562439,
+              "expected_cost": 0.8303999304771423
+            },
+            "1.0": {
+              "accepted": 300,
+              "expected_error": 0.39371517300605774,
+              "expected_cost": 0.8680218458175659
+            }
+          }
+        }
+      },
+      "parameter_differences": {
+        "backbone_adapters": {
+          "tensors": 300,
+          "parameters": 7815168,
+          "control_update_norm": 1.5346701473947502,
+          "between_arms_norm": 2.7993029702406287,
+          "between_arms_max_absolute": 0.008119884878396988,
+          "nonidentical_parameters": 7815056,
+          "update_cosine": 0.2995966327272609,
+          "full_depth_update_norm": 2.8456328322678055
+        },
+        "decision_readouts": {
+          "tensors": 6,
+          "parameters": 171072,
+          "control_update_norm": 0.022814117685741556,
+          "between_arms_norm": 0.025465786904861714,
+          "between_arms_max_absolute": 0.0005419384688138962,
+          "nonidentical_parameters": 146478,
+          "update_cosine": 0.5106215389158433,
+          "full_depth_update_norm": 0.027889157852261173
+        },
+        "frozen": {
+          "tensors": 1,
+          "parameters": 6144,
+          "control_update_norm": 0.0,
+          "between_arms_norm": 0.0,
+          "between_arms_max_absolute": 0.0,
+          "nonidentical_parameters": 0,
+          "update_cosine": null,
+          "full_depth_update_norm": 0.0
+        }
+      }
+    },
+    {
+      "epoch": 2,
+      "difference_direction": "full-depth learning minus matched zero-rate earlier-layer control",
+      "by_domain": {
+        "workflow_new": {
+          "questions": 900,
+          "groups": 300,
+          "before_accuracy": 0.7688888907432556,
+          "after_accuracy": 0.894444465637207,
+          "accuracy_delta": 0.12555555555555556,
+          "paired_group_bootstrap_95pct_interval": [
+            0.08777777777777777,
+            0.1622222222222222
+          ],
+          "paired_outcomes": {
+            "both_correct": 669,
+            "both_wrong": 72,
+            "improved": 136,
+            "regressed": 23
+          }
+        },
+        "workflow_known": {
+          "questions": 600,
+          "groups": 120,
+          "before_accuracy": 0.7866666913032532,
+          "after_accuracy": 0.8066666722297668,
+          "accuracy_delta": 0.02,
+          "paired_group_bootstrap_95pct_interval": [
+            -4.16666666666643e-05,
+            0.041666666666666664
+          ],
+          "paired_outcomes": {
+            "both_correct": 455,
+            "both_wrong": 99,
+            "improved": 29,
+            "regressed": 17
+          }
+        },
+        "photo_guard": {
+          "questions": 600,
+          "groups": 600,
+          "before_accuracy": 0.9649999737739563,
+          "after_accuracy": 0.9683333039283752,
+          "accuracy_delta": 0.0033333333333333335,
+          "paired_group_bootstrap_95pct_interval": [
+            0.0,
+            0.008333333333333333
+          ],
+          "paired_outcomes": {
+            "both_correct": 579,
+            "both_wrong": 19,
+            "improved": 2,
+            "regressed": 0
+          }
+        },
+        "text_nli": {
+          "questions": 450,
+          "groups": 450,
+          "before_accuracy": 0.8711110949516296,
+          "after_accuracy": 0.8822222352027893,
+          "accuracy_delta": 0.011111111111111112,
+          "paired_group_bootstrap_95pct_interval": [
+            -0.0044444444444444444,
+            0.02666666666666667
+          ],
+          "paired_outcomes": {
+            "both_correct": 388,
+            "both_wrong": 49,
+            "improved": 9,
+            "regressed": 4
+          }
+        },
+        "text_intent": {
+          "questions": 462,
+          "groups": 462,
+          "before_accuracy": 0.8441558480262756,
+          "after_accuracy": 0.8441558480262756,
+          "accuracy_delta": 0.0,
+          "paired_group_bootstrap_95pct_interval": [
+            -0.012987012987012988,
+            0.012987012987012988
+          ],
+          "paired_outcomes": {
+            "both_correct": 385,
+            "both_wrong": 67,
+            "improved": 5,
+            "regressed": 5
+          }
+        }
+      },
+      "by_type_coverage_under_15pct_error": {
+        "choice": {
+          "full_depth": 1.0,
+          "control": 0.9923518164435946
+        },
+        "score": {
+          "full_depth": 0.9109375,
+          "control": 0.2609375
+        },
+        "noul": {
+          "full_depth": 1.0,
+          "control": 0.8344827586206897
+        }
+      },
+      "uncertainty": {
+        "full_depth": {
+          "questions": 300,
+          "labeled_questions": 0,
+          "accuracy": null,
+          "nll": 0.7716500163078308,
+          "brier_vs_soft": 0.13586151599884033,
+          "score_mae": 0.26290884613990784,
+          "mean_confidence": 0.7316799163818359,
+          "matched_coverage": {
+            "0.5": {
+              "accepted": 150,
+              "expected_error": 0.19975824654102325,
+              "expected_cost": 0.4308376610279083
+            },
+            "0.8": {
+              "accepted": 240,
+              "expected_error": 0.28330913186073303,
+              "expected_cost": 0.5928553938865662
+            },
+            "0.9": {
+              "accepted": 270,
+              "expected_error": 0.2998746931552887,
+              "expected_cost": 0.6585750579833984
+            },
+            "1.0": {
+              "accepted": 300,
+              "expected_error": 0.31943178176879883,
+              "expected_cost": 0.6890628337860107
+            }
+          }
+        },
+        "control": {
+          "questions": 300,
+          "labeled_questions": 0,
+          "accuracy": null,
+          "nll": 0.8739944696426392,
+          "brier_vs_soft": 0.2082386165857315,
+          "score_mae": 0.3385327160358429,
+          "mean_confidence": 0.6996271014213562,
+          "matched_coverage": {
+            "0.5": {
+              "accepted": 150,
+              "expected_error": 0.28119367361068726,
+              "expected_cost": 0.7119735479354858
+            },
+            "0.8": {
+              "accepted": 240,
+              "expected_error": 0.3550567626953125,
+              "expected_cost": 0.845562219619751
+            },
+            "0.9": {
+              "accepted": 270,
+              "expected_error": 0.3698638677597046,
+              "expected_cost": 0.8766742944717407
+            },
+            "1.0": {
+              "accepted": 300,
+              "expected_error": 0.39415109157562256,
+              "expected_cost": 0.920926034450531
+            }
+          }
+        }
+      },
+      "parameter_differences": {
+        "backbone_adapters": {
+          "tensors": 300,
+          "parameters": 7815168,
+          "control_update_norm": 1.7651773431837614,
+          "between_arms_norm": 3.0252922794914,
+          "between_arms_max_absolute": 0.008649063296616077,
+          "nonidentical_parameters": 7815053,
+          "update_cosine": 0.309127443861013,
+          "full_depth_update_norm": 3.0624667693236844
+        },
+        "decision_readouts": {
+          "tensors": 6,
+          "parameters": 171072,
+          "control_update_norm": 0.026263774150253275,
+          "between_arms_norm": 0.029891730537614503,
+          "between_arms_max_absolute": 0.0007239952683448792,
+          "nonidentical_parameters": 148404,
+          "update_cosine": 0.5312511403876582,
+          "full_depth_update_norm": 0.033912781263082836
+        },
+        "frozen": {
+          "tensors": 1,
+          "parameters": 6144,
+          "control_update_norm": 0.0,
+          "between_arms_norm": 0.0,
+          "between_arms_max_absolute": 0.0,
+          "nonidentical_parameters": 0,
+          "update_cosine": null,
+          "full_depth_update_norm": 0.0
+        }
+      }
+    }
+  ],
+  "used_for_candidate_selection": false,
+  "calibration_or_final_used": false,
+  "release_allowed": false,
+  "limitations": "Descriptive merged development comparisons after the fixed selection. Accuracy intervals resample observation groups, not workflow families or training seeds, and have no multiple-comparison correction. Probability and cost values are point estimates without bootstrap intervals here. One matched training seed and repeatedly inspected development data do not establish broad robustness or independent final performance. Parameter differences do not establish causally faithful reasoning."
+}

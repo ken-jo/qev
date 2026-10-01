@@ -1,0 +1,8 @@
+{
+  "stage": "selection",
+  "status": "gate_failed",
+  "updated_at_utc": "2026-09-30T13:07:49.157465+00:00",
+  "release_allowed": false,
+  "final_predictions_started": false,
+  "reason": "Training or merged selection did not qualify; inspect its evidence"
+}

@@ -1,0 +1,10 @@
+{
+  "stage": "combined-data",
+  "status": "failed_before_records_written",
+  "observed_at_utc": "2026-09-30T21:41:25.585787+00:00",
+  "source_sha256": "6f51fd8cfc79a896d987d928e714d47f455e55b946e6d6b0e154dc5c9d7372cb",
+  "confirmed_cause": "The original-image population referenced the same mutable list later extended with fresh calibration records. This tried to resolve a fresh calibration image under the original data folder.",
+  "exception": "FileNotFoundError for original images/21dc4171940cbf5eadeb9b18d9119c947643b69a91e423cf84d43384346d95af.png",
+  "model_inference_started": false,
+  "repair": "Copy the original non-calibration list before appending cohorts; reuse only byte-verified partial hardlinks. No completed records or protocol may be overwritten."
+}

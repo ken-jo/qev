@@ -1,0 +1,103 @@
+{
+  "protocol": "workflow-recovery-release-v13",
+  "declared_at_utc": "2026-09-30T22:46:42.391691+00:00",
+  "study": "configs/workflow-readout-recovery-v13.json",
+  "study_sha256": "c680b3a57fed4daadbb3d537ac9f9ff7bc0abb0a14ef60fc25725a729da83495",
+  "release_protocol": "configs/workflow-release-v12.json",
+  "release_protocol_sha256": "d0e6c454fc10cfa080523cfcc66706dfe73cb32524f4ce74bf87a5d4edde6776",
+  "all_original_numerical_gates_unchanged": true,
+  "candidate_selection": "Exactly the predeclared eleven train/dev readout candidates; verify selected cached logits against real merged GPU inference before fitting. No calibrated/final outputs select weights.",
+  "calibration": "Reuse the explicitly inspected B/C/D cohorts, split temperature/policy groups by the existing group hash. One common threshold per type from ascending 0.005 grid; every fitting cohort <=12% expected error and >=60% coverage. No fitting on either new validation population or final.",
+  "calibration_records": "data/workflow-v12-cohort/records.jsonl",
+  "calibration_records_sha256": "c22d9140b3f934de4bb41fe65d73ef6180553202c39bd1e874fd545b2c1c82d2",
+  "validation_populations": [
+    {
+      "design": "configs/workflow-recovery-validation-1-data-v13.json",
+      "design_sha256": "c53f8f687a5263931db93bc3d9ba13f4124eae7a2118486e3c7c353b1417fc8d",
+      "records": "data/workflow-v13g/records.jsonl"
+    },
+    {
+      "design": "configs/workflow-recovery-validation-2-data-v13.json",
+      "design_sha256": "ec5cade11e828b72435c5e25c154729e2ce2c574d104365854f2d433db80e94b",
+      "records": "data/workflow-v13h/records.jsonl"
+    }
+  ],
+  "validation_gates": {
+    "both_populations_must_pass": true,
+    "all_questions": true,
+    "per_type_expected_error_max": 0.15,
+    "per_type_minimum_coverage": 0.6,
+    "refit": false
+  },
+  "original_policy_group_regression_required": true,
+  "final_data_design": "configs/workflow-recovery-final-data-v13.json",
+  "final_data_design_sha256": "678eb369816e4d47d2ccd553aaa3584e2062caf1acda4f9e9aa2fa608a04a49e",
+  "final_family_truth_tables": {
+    "equipment_reservation": [
+      2,
+      2,
+      1,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      2,
+      0,
+      2,
+      0,
+      1,
+      0,
+      1
+    ],
+    "travel_reimbursement": [
+      1,
+      2,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "supplier_onboarding": [
+      1,
+      2,
+      1,
+      2,
+      1,
+      2,
+      1,
+      2,
+      0,
+      2,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "final_family_tables_differ_from_all_v12_tables": true,
+  "original_final_status": "Previously inspected, diagnostic/regression only. Not an independent result for any recovery candidate.",
+  "fresh_final_inference": "Only after all development and policy-validation prerequisites; freeze exact model, policy, sources and data first. One independent final attempt; failure requires another prospective design.",
+  "regressions": [
+    "official-workflow",
+    "legacy-text-and-image",
+    "foundation-domain-results"
+  ],
+  "runtime": "Same RTX4060Ti one-photo/one-question/six-candidates/40-photo resident HTTP protocol, p95 <=300ms and one forward/zero answer tokens.",
+  "packaging": "All mandatory gates and exact bundled-wheel real inference must pass; HF actual publication separately configured.",
+  "release_allowed": false,
+  "model_outputs_used_for_fresh_data": false
+}

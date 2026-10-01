@@ -1,0 +1,299 @@
+{
+  "protocol": {
+    "weights_sha256": "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee",
+    "manifest_sha256": "d83f9910196c6e801658ca3816c3d2bd4a849ba3da6ff059a0edf7c6028e898d",
+    "dataset_sha256": "8f226fe90fb50e46c6a2e4c53020ed99db81a903f21317a96c66f27b6181d936",
+    "script_sha256": "609169f2f978c28403073ec70da9c7360d70b67550193b81e4ed9c45a70e0a93",
+    "record_ids": [
+      "waste:f89d45dadc7209ea75216882:recognition",
+      "waste:695123647df273f08dd4ea82:recognition",
+      "waste:be36636033d78b61ddbbbdec:recognition",
+      "waste:1ec12a8ca7d10883c4fa60b8:recognition",
+      "waste:5f3f970fb7fa2143711f163a:recognition",
+      "waste:04ae1ef1fa24fe00ce75eb46:recognition",
+      "waste:ed30620f77fd4dbc65256dce:recognition",
+      "waste:44474bf3fefd8dd4d0cbe096:recognition",
+      "waste:5180641ce08953111aebef2c:recognition",
+      "waste:6fb8e1e49cfc17b4cbab2ed5:recognition",
+      "waste:3e69c4338acd879596b5c971:recognition",
+      "waste:7ae78b5a06265194f67c6be0:recognition",
+      "waste:f8d3ab2eb84000f3e6fb595a:recognition",
+      "waste:5f1ee42f525810222f5afc0a:recognition",
+      "waste:e3e78970390cc464123f3f38:recognition",
+      "waste:f56926cb59acf8831282b110:recognition",
+      "waste:1e8d901da0c91216f96152b1:recognition",
+      "waste:2e62194aacab189aabc30d09:recognition",
+      "waste:9ba5acfecee46bd977ce2ff7:recognition",
+      "waste:92fcf5269f1c4952f567dd3d:recognition",
+      "waste:3bb32682a12512d9910974e2:recognition",
+      "waste:4f8d3355d35f5db081ef9064:recognition",
+      "waste:12faaf4bf45f86a12f004e85:recognition",
+      "waste:7d19f0d696ecbfb6e53877c9:recognition",
+      "waste:7f90584427c4c9a2fe2fd7ef:recognition",
+      "waste:87647d44e4efcae1c5324450:recognition",
+      "waste:883026ba5e84644c7e004177:recognition",
+      "waste:0ee7095b9a08e846175af981:recognition",
+      "waste:6b91f0da34581c5771126e3c:recognition",
+      "waste:dd1e6da5bdc5f73aa15142e6:recognition",
+      "waste:878ededaa72ce87581c64fb7:recognition",
+      "waste:6ee988c39df74a3d4bae4662:recognition",
+      "waste:c182b5868c699359a7196d6e:recognition",
+      "waste:522c8be0b80105819ed646fa:recognition",
+      "waste:bc53f4dcfc411ce970005754:recognition",
+      "waste:446c9fe739a30a3c50308702:recognition",
+      "waste:bb4b099d6634443ee8dc6587:recognition",
+      "waste:1378754e2ca5c4a0b7db35f3:recognition",
+      "waste:b42ba5f6e76c4245eac7e5b6:recognition",
+      "waste:e9bd8863c4b41a107e70a028:recognition",
+      "waste:42d237120099c86a3061407b:recognition",
+      "waste:993d5f73ac457e4b6200dc35:recognition",
+      "waste:b740093eb803b7cb8cfb25cf:recognition"
+    ],
+    "image_dimensions": [
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ],
+      [
+        512,
+        384
+      ]
+    ],
+    "scope": "One real photograph, one recognition question, six candidates; local HTTP round trip including JSON and image decode",
+    "warmups": 3,
+    "photos_per_request": 1,
+    "questions_per_request": 1,
+    "candidates_per_question": 6,
+    "resident": true,
+    "feature_cache": false,
+    "serial": true,
+    "excludes": [
+      "model loading",
+      "WAN transport",
+      "concurrent load"
+    ],
+    "selection": "Fixed ID hash ordering, unique image groups; no correctness filtering"
+  },
+  "gpu": "NVIDIA GeForce RTX 4060 Ti",
+  "gpu_memory_mib": 8187.5,
+  "load_seconds": 5.898342999978922,
+  "requests": 40,
+  "latency_ms": {
+    "p50": 108.00039995228872,
+    "p95": 114.94054006761871,
+    "min": 103.63190004136413,
+    "max": 115.20260001998395,
+    "samples": [
+      107.08119999617338,
+      111.68570001609623,
+      105.71799997705966,
+      111.85580003075302,
+      107.83320001792163,
+      103.63190004136413,
+      109.58299995400012,
+      108.71359996963292,
+      113.27640002127737,
+      107.43730003014207,
+      106.11579997930676,
+      107.60979994665831,
+      110.18149997107685,
+      110.36669998429716,
+      109.73469994496554,
+      108.7401999393478,
+      106.79630003869534,
+      112.52240010071546,
+      110.03830004483461,
+      113.28140005934983,
+      114.93470007553697,
+      108.67460002191365,
+      107.39030002150685,
+      108.37999999057502,
+      106.18480003904551,
+      115.0514999171719,
+      108.02819998934865,
+      106.15089989732951,
+      106.75460007041693,
+      115.20260001998395,
+      107.97259991522878,
+      112.87099996116012,
+      105.85759999230504,
+      105.36509996745735,
+      105.93130008783191,
+      106.75409995019436,
+      105.21619999781251,
+      106.4157000510022,
+      104.60279998369515,
+      108.0787000246346
+    ]
+  },
+  "p95_target_met": true,
+  "input_token_range": [
+    368,
+    368
+  ],
+  "peak_torch_allocated_mib": 4295.92529296875
+}

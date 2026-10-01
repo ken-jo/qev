@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "protocol_sha256": "56080c25604d92acedec9592bfacbb046b106e8115b855ec401d5d3210f72161",
+  "targets_sha256": "7cfbbb767c27e37b4de360036fdbf0525dc56ac4eda4aa0a056e9e2137f35867",
+  "summary": {
+    "train": {
+      "questions": 3840,
+      "groups": 960,
+      "distinct_states": 1920,
+      "families": [
+        "backup_restore",
+        "content_publish",
+        "hardware_dispatch",
+        "purchase_return",
+        "shipping_release",
+        "staff_access"
+      ],
+      "maximum_rules": 3,
+      "maximum_branches": 4,
+      "states_with_repeated_branch_outcomes": 960,
+      "uncertain_states": 960,
+      "uncertain_mean_branch_entropy_beyond_outcome_bits": 0.08606283873130428,
+      "uncertain_states_with_extra_branch_entropy": 215
+    },
+    "dev": {
+      "questions": 1200,
+      "groups": 300,
+      "distinct_states": 600,
+      "families": [
+        "grant_payment",
+        "service_repair",
+        "warehouse_transfer"
+      ],
+      "maximum_rules": 2,
+      "maximum_branches": 3,
+      "states_with_repeated_branch_outcomes": 0,
+      "uncertain_states": 300,
+      "uncertain_mean_branch_entropy_beyond_outcome_bits": 0.0,
+      "uncertain_states_with_extra_branch_entropy": 0
+    }
+  },
+  "maximum_original_target_absolute_error": 2.220446049250313e-16,
+  "no_training_development_group_overlap": true,
+  "equivalent_view_annotations_match": true,
+  "calibration_or_final_used": false,
+  "model_training_or_inference_used": false,
+  "release_allowed": false
+}

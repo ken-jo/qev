@@ -1,0 +1,18 @@
+{
+  "experiment": "workflow-cohort-acceptance-repair-2-v12",
+  "declared_at_utc": "2026-09-30T22:36:11.930441+00:00",
+  "timing": "After final predictions and original auditor failure; no new model inference, training, fitting or threshold changes",
+  "original_auditor_sha256": "ebcd8082c4d6906c4eb2e551e98d3ef279df8a9e329f9874cf7d5dee913ca9fc",
+  "repaired_auditor_sha256": "31a3645bfb4c5e0a74f5c7d90836556e41a9f6242ae6a46abf3c60cd4ba899e2",
+  "original_failure_log": "runs/workflow-v12-cohort-policy-release/acceptance.log",
+  "original_failure_log_sha256": "b4d82847255d1f5fa5af4370b7f5351ab515c666de0ee3e83010f0babb0f2909",
+  "baseline_development_records": "data/workflow-v12b/records.jsonl",
+  "baseline_development_records_sha256": "e3c3c10301f6c34561cd5281713152b3df4df0d093738c078b3d4fddde2196fb",
+  "repair": "Replace the mistaken whole-dataset equality requirement across calibration replacements with exact train/dev/test object-list equality, while retaining every frozen source, dataset, weight and prediction checksum check.",
+  "performance_thresholds_changed": false,
+  "original_sources_and_outputs_modified": false,
+  "release_allowed": false,
+  "prior_supplemental_audit": "runs/workflow-v12-cohort-policy-release/release-acceptance.json",
+  "prior_supplemental_audit_sha256": "f91cd0862c6d72ba612e2ab386c905ca76efd768577992f0f1c8a4c17aeca066",
+  "additional_repair": "The original all(protocol.values()) treated a correct numeric probability difference of 0.0 as failure. Require the four boolean checks to be exactly True, the complete known schema, and the numeric difference to be finite/nonnegative/below the existing validator limit 1e-5. No runtime or speed threshold is changed."
+}

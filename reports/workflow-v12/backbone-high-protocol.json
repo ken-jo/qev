@@ -1,0 +1,37 @@
+{
+  "arguments": {
+    "learning_rate": 3e-05,
+    "output": "runs\\workflow-v12-backbone\\high",
+    "records": "data\\workflow-v12\\records.jsonl",
+    "features": "data\\features-workflow-v12",
+    "head_experiment": "runs\\workflow-v12-head"
+  },
+  "release_protocol_sha256": "d0e6c454fc10cfa080523cfcc66706dfe73cb32524f4ce74bf87a5d4edde6776",
+  "parent": "runs\\workflow-v12-head\\rloo-131\\checkpoint",
+  "parent_weights_sha256": "8bea91f594aabcf35e3e9f517365ed5d1768956b8064620696d040a6e57a1679",
+  "dataset_sha256": "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571",
+  "method": "rloo",
+  "seed": 131,
+  "domain_shares": {
+    "workflow_known": 0.3,
+    "workflow_new": 0.25,
+    "uncertainty": 0.2,
+    "image_waste": 0.075,
+    "image_leaf": 0.025,
+    "text_nli": 0.06,
+    "text_intent": 0.06,
+    "retention": 0.03
+  },
+  "accumulation": 8,
+  "head_lr_multiplier": 0.1,
+  "retention": "0.25 supervised + 4*temperature-2 KL + 0.1 cosine feature anchoring on replay",
+  "source_sha256": {
+    "C:\\tmp\\veyra\\scripts\\train_workflow_backbone.py": "c7ade8e49569de63c33a4552c554ab6ac035e90077f8c75cb4a13ca3c3f450cd",
+    "src\\veyra\\workflow_learning.py": "37cdb8d9d375938a5ac1a26ef53f1ccad949f141e2406caf232dab4df70a02d7",
+    "src\\veyra\\proper_learning.py": "edcf97fed0c15b1e0219429a41963c27e6baae3890906d3c4a6829f51b3855a0",
+    "src\\veyra\\option_model.py": "ac15e6e55108fc8ef69b57268bf004c6756305e21293d2a9683dfde9f6e79b48"
+  },
+  "condition_readout_frozen": true,
+  "vision_weights_frozen": true,
+  "final_or_calibration_used": false
+}

@@ -1,0 +1,7 @@
+{
+  "role": "final",
+  "stage": "sources",
+  "status": "failed",
+  "release_allowed": false,
+  "exit_code": 1
+}

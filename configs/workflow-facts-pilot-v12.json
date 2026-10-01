@@ -1,0 +1,19 @@
+{
+  "experiment": "workflow-facts-pilot-v12",
+  "status": "declared_before_training",
+  "scope": "Exploratory training/development-only follow-up; never an added candidate in the frozen primary v12 comparison.",
+  "release_protocol": "configs/workflow-release-v12.json",
+  "parent": "checkpoints/veyra-foundation-v11",
+  "features": "data/features-workflow-v12",
+  "records": "data/workflow-v12/records.jsonl",
+  "control": "runs/workflow-v12-head/results.json",
+  "seeds": [131, 137, 139],
+  "epochs": 25,
+  "auxiliary_weight": 0.25,
+  "objective": "Existing RLOO+CE and retention anchoring, plus BCE for the four named condition probabilities from the shared 64-dimensional readout projection. Auxiliary decoder is discarded before deployment.",
+  "targets": "Parse only training/development requests to calculate the stated numeric conditions and conditional independent-sensor posteriors. Auxiliary labels are never supplied as inference inputs. No calibration or final groups enter the experiment.",
+  "selection": "Same development eligibility and ranking. Compare median over three seeds against completed matched RLOO control; representative seed 131. Auxiliary prediction metrics are diagnostic and do not select candidates.",
+  "calibration_or_final_used": false,
+  "inference_modules_added": 0,
+  "publication": "No release approval follows from this pilot. A different selected model requires a separately declared complete evaluation cycle with the unchanged release thresholds."
+}

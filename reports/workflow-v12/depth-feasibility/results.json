@@ -1,0 +1,79 @@
+{
+  "completed": true,
+  "expansion": {
+    "previous_layers": 12,
+    "expanded_layers": 24,
+    "boundary": 12
+  },
+  "initial_logits_maximum_difference": 0.0,
+  "parameter_count_by_group": {
+    "earlier_adapters": 3907584,
+    "later_adapters": 3907584,
+    "readout": 171072
+  },
+  "cases": [
+    {
+      "record_id": "wf12:backup_restore:train:0152:choice",
+      "has_image": false,
+      "input_tokens": 265,
+      "peak_allocated_mib": 4396.7685546875,
+      "peak_reserved_mib": 4502.0,
+      "seconds": 0.5837980000069365,
+      "gradient_norms": {
+        "earlier_adapters": 0.778493344783783,
+        "later_adapters": 0.7044411897659302,
+        "readout": 0.7138828635215759
+      }
+    },
+    {
+      "record_id": "workflow:tr_customer_service_000270:action",
+      "has_image": false,
+      "input_tokens": 693,
+      "peak_allocated_mib": 4625.412109375,
+      "peak_reserved_mib": 4728.0,
+      "seconds": 0.6737886000191793,
+      "gradient_norms": {
+        "earlier_adapters": 19.03179931640625,
+        "later_adapters": 10.888307571411133,
+        "readout": 26.83754539489746
+      }
+    },
+    {
+      "record_id": "wf12:purchase_return:train:0023:uncertain",
+      "has_image": false,
+      "input_tokens": 383,
+      "peak_allocated_mib": 4493.259765625,
+      "peak_reserved_mib": 4728.0,
+      "seconds": 0.504287299932912,
+      "gradient_norms": {
+        "earlier_adapters": 16.57217788696289,
+        "later_adapters": 8.275382995605469,
+        "readout": 20.184144973754883
+      }
+    },
+    {
+      "record_id": "replay:bean-02856dd2f1c50e53c9da425911b19faf:condition",
+      "has_image": true,
+      "input_tokens": 375,
+      "peak_allocated_mib": 4494.84765625,
+      "peak_reserved_mib": 4728.0,
+      "seconds": 0.6605758999940008,
+      "gradient_norms": {
+        "earlier_adapters": 0.2902108430862427,
+        "later_adapters": 0.16861659288406372,
+        "readout": 0.41586846113204956
+      }
+    }
+  ],
+  "parameter_values_unchanged": true,
+  "configuration_sha256": "0108ef7678770b5ddf7163c5d5c7da88c95d16cbbfd6ef8821d1b0a8a405b44e",
+  "source_sha256": {
+    "C:\\tmp\\veyra\\scripts\\probe_workflow_depth.py": "6e6a2c6ab2ed401931430559faa23d5cde19578b234916666e034e6f0ddef044",
+    "scripts\\workflow_depth_common.py": "3012e4653b7ff66e82ecfce8c7bf5c842bfa2c6143eee58ec2c0cd48cc50ae8a",
+    "scripts\\workflow_skill_common.py": "e3b726d2074292c391b796cbc525c811de494bb941769a121005f595b6cf6991",
+    "src\\veyra\\option_model.py": "ac15e6e55108fc8ef69b57268bf004c6756305e21293d2a9683dfde9f6e79b48",
+    "src\\veyra\\proper_learning.py": "edcf97fed0c15b1e0219429a41963c27e6baae3890906d3c4a6829f51b3855a0"
+  },
+  "release_allowed": false,
+  "limitation": "A few declared training inputs and zero-rate AdamW steps only. This measures memory and gradients, not learning, development performance, all possible input shapes, runtime latency or release acceptance."
+}

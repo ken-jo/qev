@@ -1,0 +1,46 @@
+{
+  "reference": "convaiinnovations/laya",
+  "revision": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+  "source_sha256": "ff3bb18acfa85a2bcd5f5fa38db44a7626c39a99a2f9ceed9dda7e672f085d70",
+  "max_len": 1024,
+  "head_max_len": 192,
+  "option_token_cap": 48,
+  "label_or_prediction_inspected": false,
+  "counts": {
+    "overall": {
+      "questions": 2000,
+      "instruction_truncated": 0,
+      "options_truncated": 0,
+      "state_truncated": 0,
+      "any_truncated": 0
+    },
+    "agent_trace_observability": {
+      "questions": 500,
+      "instruction_truncated": 0,
+      "options_truncated": 0,
+      "state_truncated": 0,
+      "any_truncated": 0
+    },
+    "customer_service": {
+      "questions": 500,
+      "instruction_truncated": 0,
+      "options_truncated": 0,
+      "state_truncated": 0,
+      "any_truncated": 0
+    },
+    "invoice_processing": {
+      "questions": 500,
+      "instruction_truncated": 0,
+      "options_truncated": 0,
+      "state_truncated": 0,
+      "any_truncated": 0
+    },
+    "security_incidents": {
+      "questions": 500,
+      "instruction_truncated": 0,
+      "options_truncated": 0,
+      "state_truncated": 0,
+      "any_truncated": 0
+    }
+  }
+}

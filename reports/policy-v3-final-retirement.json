@@ -1,0 +1,11 @@
+{
+  "retired_at_utc": "2026-09-29T20:34:38.126264+00:00",
+  "subset_sha256": "d59aded5a61bb7a4200f39b3e0aae30a7e401ba4d2a86846a74661accc715015",
+  "first_independent_result": "reports/dynamic-v1-final.json",
+  "checkpoint_weights_sha256": "5c86e81173ac5b5c8b508509df326112d30b02386fda3506875523274ed68157",
+  "text_accuracy": 0.900390625,
+  "image_accuracy": 0.859375,
+  "reason": "Image policies failed the predeclared 90 percent criterion; further diagnosis and model changes require a new independent final set.",
+  "new_role": "regression",
+  "may_certify_subsequent_model": false
+}

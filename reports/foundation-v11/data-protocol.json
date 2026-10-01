@@ -1,0 +1,210 @@
+{
+  "records": 19279,
+  "groups": 7077,
+  "split_counts": {
+    "train": 10841,
+    "dev": 2440,
+    "calibration": 2132,
+    "test": 3866
+  },
+  "sources": [
+    {
+      "id": "AI-Lab-Makerere/beans",
+      "revision": "27aa014ce09b193e1a6f58112d4a66e0eddb69c5",
+      "license": "MIT"
+    },
+    {
+      "id": "PolyAI/banking77",
+      "revision": "57ec275d8078af65b7731c2a98be812d844a6d6b",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "id": "stanfordnlp/snli",
+      "revision": "cdb5c3d5eed6ead6e5a341c8e56e669bb666725b",
+      "license": "CC-BY-SA-4.0"
+    },
+    {
+      "id": "veyra-original-generator",
+      "revision": "sha256:08b4d436e455ff4156bb51809847487c139f9f9bca85ea803005c4630dd185fc",
+      "license": "Apache-2.0"
+    },
+    {
+      "id": "veyra-policy-refresh-v8",
+      "revision": "sha256:b551bc1e88f12738a6379173991d2fed8aa80f7c25c65e899f5504f7c9b283c6",
+      "license": "Apache-2.0"
+    },
+    {
+      "id": "veyra/conditional-probability",
+      "revision": "7a16faa5781000bb8a15a776a7dc25fcab7c86458f54185c75f4fb760881f5be",
+      "license": "Apache-2.0"
+    },
+    {
+      "id": "vminhkhoi/trashnet",
+      "revision": "kaggle-version-1",
+      "license": "MIT"
+    }
+  ],
+  "trashnet": {
+    "kaggle_image_count": 2527,
+    "matches_original_author_bytes": true,
+    "original_revision": "94cd17ebfd6702bf62281d3c89f22ff649815b46",
+    "perceptual_links": 24,
+    "clusters": 2503,
+    "excluded_files": [
+      "glass/glass_115.jpg",
+      "metal/metal_091.jpg",
+      "glass/glass_176.jpg",
+      "plastic/plastic_461.jpg",
+      "glass/glass_389.jpg",
+      "plastic/plastic_199.jpg"
+    ],
+    "retained_images": 2521,
+    "split_images": {
+      "test": 407,
+      "train": 1515,
+      "dev": 309,
+      "calibration": 290
+    },
+    "split_policy": "Stable perceptual-cluster hash: 60/12/12/16 percent train/dev/calibration/test",
+    "similarity": "Exact RGB pixels, or pHash<=4 and dHash<=8 and max mean RGB difference<=35",
+    "limitation": "Object identity unavailable; perceptual grouping cannot establish independence of all physical items"
+  },
+  "seed": 83,
+  "records_sha256": "8f226fe90fb50e46c6a2e4c53020ed99db81a903f21317a96c66f27b6181d936",
+  "generator_sha256": "7a16faa5781000bb8a15a776a7dc25fcab7c86458f54185c75f4fb760881f5be",
+  "downloads_manifest_sha256": "1de95d8f40b2bc4736678701fae65293c70fb44c6c35d45e22d81e6547e0f4b2",
+  "text_selection_sha256": "48bf2e2f8730e074cee8207348d73a662630120710f973e2f68d00a6a4e13921",
+  "no_typed_decisions_workflow_training": true,
+  "banking_scope": "8-way candidate subsets, not the published full 77-class benchmark",
+  "banking_category_groups": {
+    "train": [
+      "beneficiary_not_allowed",
+      "transaction_charged_twice",
+      "card_linking",
+      "cancel_transfer",
+      "get_disposable_virtual_card",
+      "top_up_by_bank_transfer_charge",
+      "pending_card_payment",
+      "top_up_reverted",
+      "pin_blocked",
+      "unable_to_verify_identity",
+      "contactless_not_working",
+      "verify_my_identity",
+      "card_payment_fee_charged",
+      "terminate_account",
+      "change_pin",
+      "fiat_currency_support",
+      "failed_transfer",
+      "exchange_rate",
+      "transfer_fee_charged",
+      "edit_personal_details",
+      "reverted_card_payment?",
+      "compromised_card",
+      "top_up_limits",
+      "exchange_via_app",
+      "card_not_working",
+      "direct_debit_payment_not_recognised",
+      "topping_up_by_card",
+      "wrong_exchange_rate_for_cash_withdrawal",
+      "card_payment_not_recognised",
+      "getting_spare_card",
+      "verify_top_up",
+      "cash_withdrawal_charge",
+      "card_acceptance",
+      "transfer_not_received_by_recipient",
+      "pending_cash_withdrawal",
+      "receiving_money",
+      "Refund_not_showing_up",
+      "wrong_amount_of_cash_received",
+      "balance_not_updated_after_bank_transfer",
+      "card_delivery_estimate",
+      "lost_or_stolen_phone",
+      "atm_support",
+      "verify_source_of_funds",
+      "card_about_to_expire",
+      "automatic_top_up",
+      "order_physical_card",
+      "card_arrival",
+      "pending_transfer",
+      "top_up_failed",
+      "declined_cash_withdrawal",
+      "transfer_timing",
+      "pending_top_up",
+      "request_refund",
+      "extra_charge_on_statement",
+      "declined_transfer",
+      "supported_cards_and_currencies",
+      "exchange_charge",
+      "top_up_by_cash_or_cheque",
+      "getting_virtual_card",
+      "lost_or_stolen_card"
+    ],
+    "dev_novel": [
+      "activate_my_card",
+      "passcode_forgotten",
+      "get_physical_card",
+      "balance_not_updated_after_cheque_or_cash_deposit",
+      "disposable_card_limits",
+      "virtual_card_not_working",
+      "transfer_into_account",
+      "age_limit"
+    ],
+    "test_novel": [
+      "declined_card_payment",
+      "apple_pay_or_google_pay",
+      "cash_withdrawal_not_recognised",
+      "top_up_by_card_charge",
+      "visa_or_mastercard",
+      "card_swallowed",
+      "why_verify_identity",
+      "card_payment_wrong_exchange_rate",
+      "country_support"
+    ]
+  },
+  "domain_split_questions": {
+    "image_leaf": {
+      "train": 900,
+      "test": 384,
+      "calibration": 204,
+      "dev": 195
+    },
+    "image_waste": {
+      "calibration": 870,
+      "train": 4545,
+      "dev": 927,
+      "test": 1221
+    },
+    "retention": {
+      "calibration": 224,
+      "dev": 336,
+      "test": 280,
+      "train": 1120
+    },
+    "text_intent": {
+      "train": 2160,
+      "test": 924,
+      "calibration": 408,
+      "dev": 552
+    },
+    "text_nli": {
+      "train": 1800,
+      "calibration": 360,
+      "test": 900,
+      "dev": 360
+    },
+    "uncertainty": {
+      "calibration": 66,
+      "dev": 70,
+      "test": 157,
+      "train": 316
+    }
+  },
+  "subset_sha256": {
+    "train": "ec439bd1bfabab9b1bff97983132f8e9442db1903c9c22cbd68fa4cd79669577",
+    "dev": "573c92e90da3d76900a74ad09519e42f25b86c8a27ad2b28072483580b45ae5a",
+    "calibration": "8eae929b7eff37b4a2eb6ec0185c8b4ff79b80826a83d0b11f2d35f804a374cb",
+    "test": "312a17de1f144fd51625553573e81da88cc0c96086935e348688162ec60bfd67"
+  },
+  "final_scope": "Fresh TrashNet, SNLI, 8-way BANKING subsets and known probability cases; separately tagged legacy leaf/policy/missing regressions",
+  "pretraining_overlap": "Unknown overlap with the backbone's original pretraining; only Veyra adaptation splits are audited"
+}

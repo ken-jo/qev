@@ -1,0 +1,27 @@
+[
+  {
+    "epoch": 1,
+    "train_loss": 0.6487725834585091,
+    "dev": {
+      "questions": 448,
+      "accuracy": 0.49776785714285715,
+      "nll": 1.349005065338653,
+      "text_accuracy": 0.4609375,
+      "image_accuracy": 0.546875,
+      "by_family": {
+        "image_color_rule": 0.515625,
+        "image_count_rule": 0.578125,
+        "image_shape_rule": 0.546875,
+        "text_conjunction": 0.5,
+        "text_disjunction": 0.5,
+        "text_ranges": 0.34375,
+        "text_threshold": 0.5
+      },
+      "by_type": {
+        "choice": 0.46710526315789475,
+        "noul": 0.5,
+        "score": 0.5263157894736842
+      }
+    }
+  }
+]

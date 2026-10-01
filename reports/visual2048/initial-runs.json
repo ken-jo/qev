@@ -1,0 +1,4892 @@
+{
+  "schema": "veyra.visual-2048.initial-runs.v1",
+  "checkpoint": "veyra-backbone-recovery-v13",
+  "prompt_version": "visual-2048-v1",
+  "device": "NVIDIA GeForce RTX 4060 Ti (8 GB)",
+  "runtime": "veyra-0.3.0a4 bundled wheel",
+  "protocol": {
+    "model_observation": "board PNG, fixed rules, last six arrow keys",
+    "all_four_directions_always_offered": true,
+    "board_state_sent_to_model": false,
+    "legal_move_filter": false,
+    "search_or_heuristic_fallback": false,
+    "training_performed": false,
+    "inference_timing_excludes": [
+      "PNG rendering",
+      "HTTP transport",
+      "UI refresh",
+      "model loading"
+    ],
+    "scope": "exploratory game demo; not a computer-use benchmark or calibrated success probability"
+  },
+  "questions": {
+    "move": {
+      "type": "choice",
+      "instructions": "Which arrow-key move is best for this board? Choose one direction.",
+      "criteria": {
+        "up": "Press the UP arrow: slide every tile toward the top edge.",
+        "down": "Press the DOWN arrow: slide every tile toward the bottom edge.",
+        "left": "Press the LEFT arrow: slide every tile toward the left edge.",
+        "right": "Press the RIGHT arrow: slide every tile toward the right edge."
+      }
+    }
+  },
+  "scope": "Exploratory live image/action runs, not a matched JEV benchmark. No model training.",
+  "export_note": "Per-run scores and every decision are preserved. Transient session URLs and temporary image paths are omitted; SHA-256 identifies each PNG. Board arrays are evaluation records, never model inputs. Response calibration flags describe the unchanged existing checkpoint and do not establish gameplay calibration.",
+  "aggregate": {
+    "initial_decisions": 44,
+    "all_displayed_image_hashes_match": true,
+    "exploration_decisions": 43,
+    "exploration_executed": 43,
+    "exploration_valid_moves": 27,
+    "exploration_abstained": 31,
+    "exploration_wins": 0
+  },
+  "runs": [
+    {
+      "name": "seed11-policy",
+      "config": {
+        "seed": 11,
+        "image_size": 512,
+        "theme": "classic"
+      },
+      "initial_board": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          2,
+          0
+        ]
+      ],
+      "final_board": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          2,
+          0
+        ]
+      ],
+      "score": 0,
+      "max_tile": 4,
+      "won": false,
+      "game_over": false,
+      "stats": {
+        "attempts": 0,
+        "valid_moves": 0,
+        "model_decisions": 1,
+        "abstained": 1,
+        "no_progress_streak": 0,
+        "model_median_ms": 500.7,
+        "model_total_ms": 500.7
+      },
+      "runner": {
+        "finished_utc": "2026-10-01T09:29:50.322176+00:00",
+        "stop_reason": "abstained",
+        "error": null,
+        "requested_steps": 30,
+        "execute_abstained": false,
+        "step_http_ms": [
+          522.8328000521287
+        ],
+        "http_median_ms": 522.8328000521287,
+        "loop_wall_ms": 550.8634999860078,
+        "displayed_image_matches_model": [
+          true
+        ],
+        "timing_note": "No discarded warmups; first model call may be cold for this shape. HTTP steps exclude the separate frame download; loop wall time includes evidence downloads and file writes."
+      },
+      "events": [
+        {
+          "revision": 0,
+          "direction": "left",
+          "executed": false,
+          "moved": false,
+          "score_gain": 0,
+          "score_after": 0,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              4,
+              2,
+              0
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              4,
+              2,
+              0
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": true,
+          "inference_ms": 500.7,
+          "server_step_ms": 504.58,
+          "image_sha256": "85728c34755f1036d8ad1aa6f24d282d9a119397c8f02d41a397c7bde94724dd",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.15974655747413635,
+                  "down": 0.1765362024307251,
+                  "left": 0.37690868973731995,
+                  "right": 0.2868085503578186
+                },
+                "confidence": 0.37690868973731995,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "left"
+              }
+            },
+            "usage": {
+              "input_tokens": 497,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 522.8328000521287,
+          "displayed_image_matches_model": true
+        }
+      ]
+    },
+    {
+      "name": "seed11-exploration",
+      "config": {
+        "seed": 11,
+        "image_size": 512,
+        "theme": "classic"
+      },
+      "initial_board": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          2,
+          0
+        ]
+      ],
+      "final_board": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          4,
+          2,
+          2
+        ]
+      ],
+      "score": 4,
+      "max_tile": 4,
+      "won": false,
+      "game_over": false,
+      "stats": {
+        "attempts": 7,
+        "valid_moves": 3,
+        "model_decisions": 7,
+        "abstained": 7,
+        "no_progress_streak": 4,
+        "model_median_ms": 127.34,
+        "model_total_ms": 893.49
+      },
+      "runner": {
+        "finished_utc": "2026-10-01T09:30:07.093353+00:00",
+        "stop_reason": "four_unchanged_actions",
+        "error": null,
+        "requested_steps": 60,
+        "execute_abstained": true,
+        "step_http_ms": [
+          144.98330000787973,
+          132.79960001818836,
+          133.3157999906689,
+          134.8682000534609,
+          126.35359994601458,
+          165.51110008731484,
+          141.3976999465376
+        ],
+        "http_median_ms": 134.8682000534609,
+        "loop_wall_ms": 1068.753800005652,
+        "displayed_image_matches_model": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "timing_note": "No discarded warmups; first model call may be cold for this shape. HTTP steps exclude the separate frame download; loop wall time includes evidence downloads and file writes."
+      },
+      "events": [
+        {
+          "revision": 0,
+          "direction": "left",
+          "executed": true,
+          "moved": true,
+          "score_gain": 0,
+          "score_after": 0,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              4,
+              2,
+              0
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              4,
+              2,
+              0,
+              0
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 127.34,
+          "server_step_ms": 131.76,
+          "image_sha256": "85728c34755f1036d8ad1aa6f24d282d9a119397c8f02d41a397c7bde94724dd",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.15974655747413635,
+                  "down": 0.1765362024307251,
+                  "left": 0.37690868973731995,
+                  "right": 0.2868085503578186
+                },
+                "confidence": 0.37690868973731995,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "left"
+              }
+            },
+            "usage": {
+              "input_tokens": 497,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 144.98330000787973,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 1,
+          "direction": "down",
+          "executed": true,
+          "moved": true,
+          "score_gain": 0,
+          "score_after": 0,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              4,
+              2,
+              0,
+              0
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              2,
+              0,
+              0
+            ],
+            [
+              4,
+              2,
+              0,
+              2
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 125.33,
+          "server_step_ms": 130.64,
+          "image_sha256": "17a581cd4c89983f187a939c9e3d77bb94c6f86efc424a76255e659a477b7b34",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.1485651284456253,
+                  "down": 0.3482637405395508,
+                  "left": 0.2916685938835144,
+                  "right": 0.21150246262550354
+                },
+                "confidence": 0.3482637405395508,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 506,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 132.79960001818836,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 2,
+          "direction": "down",
+          "executed": true,
+          "moved": true,
+          "score_gain": 4,
+          "score_after": 4,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              2,
+              0,
+              0
+            ],
+            [
+              4,
+              2,
+              0,
+              2
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              4,
+              4,
+              2,
+              2
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 125.42,
+          "server_step_ms": 131.01,
+          "image_sha256": "7581cb9411f767ae9fd5cf25b6852d299aff36a8100963e5db6d96d8ab276b83",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.12413167953491211,
+                  "down": 0.3568328022956848,
+                  "left": 0.3546476364135742,
+                  "right": 0.16438785195350647
+                },
+                "confidence": 0.3568328022956848,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 508,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 133.3157999906689,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 3,
+          "direction": "down",
+          "executed": true,
+          "moved": false,
+          "score_gain": 0,
+          "score_after": 4,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              4,
+              4,
+              2,
+              2
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              4,
+              4,
+              2,
+              2
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 127.68,
+          "server_step_ms": 132.77,
+          "image_sha256": "f41927a65b6e26d9192c354c91f44d13a143ecde7d19d6576dcc331708149df6",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.12904706597328186,
+                  "down": 0.4438899755477905,
+                  "left": 0.22724229097366333,
+                  "right": 0.1998206079006195
+                },
+                "confidence": 0.4438899755477905,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 510,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 134.8682000534609,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 4,
+          "direction": "down",
+          "executed": true,
+          "moved": false,
+          "score_gain": 0,
+          "score_after": 4,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              4,
+              4,
+              2,
+              2
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              4,
+              4,
+              2,
+              2
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 119.15,
+          "server_step_ms": 124.23,
+          "image_sha256": "f41927a65b6e26d9192c354c91f44d13a143ecde7d19d6576dcc331708149df6",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left, down, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.13134346902370453,
+                  "down": 0.46458253264427185,
+                  "left": 0.19636480510234833,
+                  "right": 0.2077091932296753
+                },
+                "confidence": 0.46458253264427185,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 512,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 126.35359994601458,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 5,
+          "direction": "down",
+          "executed": true,
+          "moved": false,
+          "score_gain": 0,
+          "score_after": 4,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              4,
+              4,
+              2,
+              2
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              4,
+              4,
+              2,
+              2
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 134.29,
+          "server_step_ms": 138.39,
+          "image_sha256": "f41927a65b6e26d9192c354c91f44d13a143ecde7d19d6576dcc331708149df6",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left, down, down, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.1275799423456192,
+                  "down": 0.5007316470146179,
+                  "left": 0.16842105984687805,
+                  "right": 0.2032674252986908
+                },
+                "confidence": 0.5007316470146179,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 514,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 165.51110008731484,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 6,
+          "direction": "down",
+          "executed": true,
+          "moved": false,
+          "score_gain": 0,
+          "score_after": 4,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              4,
+              4,
+              2,
+              2
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              4,
+              4,
+              2,
+              2
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 134.28,
+          "server_step_ms": 139.35,
+          "image_sha256": "f41927a65b6e26d9192c354c91f44d13a143ecde7d19d6576dcc331708149df6",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left, down, down, down, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.12837126851081848,
+                  "down": 0.4823972284793854,
+                  "left": 0.17079046368598938,
+                  "right": 0.21844108402729034
+                },
+                "confidence": 0.4823972284793854,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 516,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 141.3976999465376,
+          "displayed_image_matches_model": true
+        }
+      ]
+    },
+    {
+      "name": "seed29-exploration",
+      "config": {
+        "seed": 29,
+        "image_size": 512,
+        "theme": "classic"
+      },
+      "initial_board": [
+        [
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          0
+        ]
+      ],
+      "final_board": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          4,
+          8,
+          8
+        ]
+      ],
+      "score": 48,
+      "max_tile": 8,
+      "won": false,
+      "game_over": false,
+      "stats": {
+        "attempts": 20,
+        "valid_moves": 16,
+        "model_decisions": 20,
+        "abstained": 15,
+        "no_progress_streak": 4,
+        "model_median_ms": 137.98,
+        "model_total_ms": 2722.02
+      },
+      "runner": {
+        "finished_utc": "2026-10-01T09:30:28.228646+00:00",
+        "stop_reason": "four_unchanged_actions",
+        "error": null,
+        "requested_steps": 60,
+        "execute_abstained": true,
+        "step_http_ms": [
+          138.72320007067174,
+          158.96160004194826,
+          142.87390001118183,
+          168.16210001707077,
+          134.11849993281066,
+          147.32470002491027,
+          145.59489989187568,
+          149.46360001340508,
+          146.78020006977022,
+          145.572500070557,
+          148.73070002067834,
+          145.86779999081045,
+          145.500999991782,
+          142.58679992053658,
+          149.25010001752526,
+          148.0588000267744,
+          170.76340003404766,
+          147.40730007179081,
+          143.67849996779114,
+          173.42220002319664
+        ],
+        "http_median_ms": 147.05245004734024,
+        "loop_wall_ms": 3307.5105999596417,
+        "displayed_image_matches_model": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "timing_note": "No discarded warmups; first model call may be cold for this shape. HTTP steps exclude the separate frame download; loop wall time includes evidence downloads and file writes."
+      },
+      "events": [
+        {
+          "revision": 0,
+          "direction": "left",
+          "executed": true,
+          "moved": true,
+          "score_gain": 0,
+          "score_after": 0,
+          "board_before": [
+            [
+              0,
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2,
+              0
+            ]
+          ],
+          "board_after": [
+            [
+              2,
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              0
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 131.03,
+          "server_step_ms": 136.45,
+          "image_sha256": "30e3e09ab85b574c5c3df7396c3104e642ad1db5ce6739b0a2c309ee4a5958a0",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.15287350118160248,
+                  "down": 0.22479073703289032,
+                  "left": 0.4075646698474884,
+                  "right": 0.2147710919380188
+                },
+                "confidence": 0.4075646698474884,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "left"
+              }
+            },
+            "usage": {
+              "input_tokens": 497,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 138.72320007067174,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 1,
+          "direction": "left",
+          "executed": true,
+          "moved": true,
+          "score_gain": 4,
+          "score_after": 4,
+          "board_before": [
+            [
+              2,
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              0
+            ]
+          ],
+          "board_after": [
+            [
+              4,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              0
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 127.37,
+          "server_step_ms": 132.21,
+          "image_sha256": "92c086d50e06422442ccbd526d743338705d235690fe22cc71ea5d1437940ee4",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.14047986268997192,
+                  "down": 0.26956722140312195,
+                  "left": 0.37648507952690125,
+                  "right": 0.2134678214788437
+                },
+                "confidence": 0.37648507952690125,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "left"
+              }
+            },
+            "usage": {
+              "input_tokens": 506,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 158.96160004194826,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 2,
+          "direction": "down",
+          "executed": true,
+          "moved": true,
+          "score_gain": 0,
+          "score_after": 4,
+          "board_before": [
+            [
+              4,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              0
+            ]
+          ],
+          "board_after": [
+            [
+              4,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              4,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              2,
+              0
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 125.47,
+          "server_step_ms": 130.9,
+          "image_sha256": "2f055edef901419dce66ded4f04d9321f6bb0fd8b6eab31219abb4f775f2480a",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left, left.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.17340189218521118,
+                  "down": 0.35743045806884766,
+                  "left": 0.20466367900371552,
+                  "right": 0.26450395584106445
+                },
+                "confidence": 0.35743045806884766,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 508,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 142.87390001118183,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 3,
+          "direction": "down",
+          "executed": true,
+          "moved": true,
+          "score_gain": 8,
+          "score_after": 12,
+          "board_before": [
+            [
+              4,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              4,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              2,
+              0
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              2,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              2,
+              0
+            ]
+          ],
+          "abstained": false,
+          "respect_abstention": false,
+          "inference_ms": 136.76,
+          "server_step_ms": 142.29,
+          "image_sha256": "a15afaf19f4f8e155be5d4e58c194ac4af6a8656dfe2f09b50ba2bf0e8c3bc19",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left, left, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.15405209362506866,
+                  "down": 0.5171804428100586,
+                  "left": 0.17706851661205292,
+                  "right": 0.1516989767551422
+                },
+                "confidence": 0.5171804428100586,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": false,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 510,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 168.16210001707077,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 4,
+          "direction": "down",
+          "executed": true,
+          "moved": true,
+          "score_gain": 0,
+          "score_after": 12,
+          "board_before": [
+            [
+              0,
+              2,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              2,
+              0
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              0,
+              0,
+              2
+            ],
+            [
+              2,
+              2,
+              2,
+              0
+            ]
+          ],
+          "abstained": false,
+          "respect_abstention": false,
+          "inference_ms": 126.25,
+          "server_step_ms": 131.98,
+          "image_sha256": "a2639e2ed5f4e7850907bbb06aa536514eba87029f7b214cb9e8eb4a9967c150",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left, left, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.12925080955028534,
+                  "down": 0.5754314064979553,
+                  "left": 0.13567133247852325,
+                  "right": 0.15964645147323608
+                },
+                "confidence": 0.5754314064979553,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": false,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 512,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 134.11849993281066,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 5,
+          "direction": "down",
+          "executed": true,
+          "moved": true,
+          "score_gain": 0,
+          "score_after": 12,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              0,
+              0,
+              2
+            ],
+            [
+              2,
+              2,
+              2,
+              0
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              2,
+              0,
+              0
+            ],
+            [
+              8,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "abstained": false,
+          "respect_abstention": false,
+          "inference_ms": 139.08,
+          "server_step_ms": 145.14,
+          "image_sha256": "5219dca394186f3bcaac3b1a9f70d4b52a170ce6a9eee9985ab50c82d046517f",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left, left, down, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.13516122102737427,
+                  "down": 0.5789862275123596,
+                  "left": 0.11503920704126358,
+                  "right": 0.17081335186958313
+                },
+                "confidence": 0.5789862275123596,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": false,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 514,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 147.32470002491027,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 6,
+          "direction": "down",
+          "executed": true,
+          "moved": true,
+          "score_gain": 4,
+          "score_after": 16,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              2,
+              0,
+              0
+            ],
+            [
+              8,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              2,
+              2,
+              2
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              8,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              4,
+              2,
+              2
+            ]
+          ],
+          "abstained": false,
+          "respect_abstention": false,
+          "inference_ms": 138.27,
+          "server_step_ms": 143.4,
+          "image_sha256": "b7b08f515869c00a74075105c6e2d68836267b1a36967d1a0991d77f32ad3ca5",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left, left, down, down, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.12804752588272095,
+                  "down": 0.6361584663391113,
+                  "left": 0.09749811142683029,
+                  "right": 0.13829591870307922
+                },
+                "confidence": 0.6361584663391113,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": false,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 516,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 145.59489989187568,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 7,
+          "direction": "down",
+          "executed": true,
+          "moved": true,
+          "score_gain": 4,
+          "score_after": 20,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              8,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              4,
+              2,
+              2
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              0,
+              2,
+              0
+            ],
+            [
+              2,
+              4,
+              2,
+              4
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 141.19,
+          "server_step_ms": 147.38,
+          "image_sha256": "7ba8419f207aa943a30170ced6de0c6301c08f4f45438d315144138b78ebac42",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left, down, down, down, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.1410502791404724,
+                  "down": 0.4628296494483948,
+                  "left": 0.14324063062667847,
+                  "right": 0.25287941098213196
+                },
+                "confidence": 0.4628296494483948,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 516,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 149.46360001340508,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 8,
+          "direction": "down",
+          "executed": true,
+          "moved": true,
+          "score_gain": 4,
+          "score_after": 24,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              0,
+              2,
+              0
+            ],
+            [
+              2,
+              4,
+              2,
+              4
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              4,
+              4,
+              4
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 138.39,
+          "server_step_ms": 144.67,
+          "image_sha256": "f60479c1fc3ab97f3ffa2094a8df69e79f8a5fe0edcd111ea71a17957c083294",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: down, down, down, down, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.16057612001895905,
+                  "down": 0.4833400249481201,
+                  "left": 0.13831332325935364,
+                  "right": 0.21777045726776123
+                },
+                "confidence": 0.4833400249481201,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 516,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 146.78020006977022,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 9,
+          "direction": "down",
+          "executed": true,
+          "moved": true,
+          "score_gain": 0,
+          "score_after": 24,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              4,
+              4,
+              4
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              0,
+              0,
+              2
+            ],
+            [
+              2,
+              4,
+              4,
+              4
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 137.36,
+          "server_step_ms": 143.51,
+          "image_sha256": "fb0cf373ba214f0f71214d7de4f247d4339c296b6f2d140c4b239c723f18fb34",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: down, down, down, down, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.17089591920375824,
+                  "down": 0.4618048369884491,
+                  "left": 0.12142203003168106,
+                  "right": 0.2458772212266922
+                },
+                "confidence": 0.4618048369884491,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 516,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 145.572500070557,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 10,
+          "direction": "down",
+          "executed": true,
+          "moved": true,
+          "score_gain": 0,
+          "score_after": 24,
+          "board_before": [
+            [
+              0,
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              0,
+              0,
+              2
+            ],
+            [
+              2,
+              4,
+              4,
+              4
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2,
+              0
+            ],
+            [
+              8,
+              0,
+              2,
+              2
+            ],
+            [
+              2,
+              4,
+              4,
+              4
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 139.82,
+          "server_step_ms": 146.64,
+          "image_sha256": "e0bf196aa9e6ceaecb3709f3849bada7d13b0c2c47d67fe1cba272fc9d9aff7a",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: down, down, down, down, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.17921684682369232,
+                  "down": 0.45578163862228394,
+                  "left": 0.16127285361289978,
+                  "right": 0.20372866094112396
+                },
+                "confidence": 0.45578163862228394,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 516,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 148.73070002067834,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 11,
+          "direction": "down",
+          "executed": true,
+          "moved": true,
+          "score_gain": 4,
+          "score_after": 28,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2,
+              0
+            ],
+            [
+              8,
+              0,
+              2,
+              2
+            ],
+            [
+              2,
+              4,
+              4,
+              4
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              4,
+              2
+            ],
+            [
+              2,
+              4,
+              4,
+              4
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 137.68,
+          "server_step_ms": 143.99,
+          "image_sha256": "58d2de84a7be825d82d9636bea5ca0039ffe742f4f9790f163d81058e75e0c0c",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: down, down, down, down, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.15315645933151245,
+                  "down": 0.49994003772735596,
+                  "left": 0.11715507507324219,
+                  "right": 0.22974847257137299
+                },
+                "confidence": 0.49994003772735596,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 516,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 145.86779999081045,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 12,
+          "direction": "down",
+          "executed": true,
+          "moved": true,
+          "score_gain": 8,
+          "score_after": 36,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              4,
+              2
+            ],
+            [
+              2,
+              4,
+              4,
+              4
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2,
+              0
+            ],
+            [
+              8,
+              2,
+              0,
+              2
+            ],
+            [
+              2,
+              4,
+              8,
+              4
+            ]
+          ],
+          "abstained": false,
+          "respect_abstention": false,
+          "inference_ms": 136.94,
+          "server_step_ms": 143.35,
+          "image_sha256": "84d758c6b00a666d75a87746583601aaf6124af68fb4a27260ecd4601cda76fc",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: down, down, down, down, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.1550467312335968,
+                  "down": 0.5345562696456909,
+                  "left": 0.12697623670101166,
+                  "right": 0.18342071771621704
+                },
+                "confidence": 0.5345562696456909,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": false,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 516,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 145.500999991782,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 13,
+          "direction": "down",
+          "executed": true,
+          "moved": true,
+          "score_gain": 0,
+          "score_after": 36,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2,
+              0
+            ],
+            [
+              8,
+              2,
+              0,
+              2
+            ],
+            [
+              2,
+              4,
+              8,
+              4
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              2,
+              2
+            ],
+            [
+              2,
+              4,
+              8,
+              4
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 133.77,
+          "server_step_ms": 140.46,
+          "image_sha256": "7ecdecf7969f3256be8fffdd9f225bb04bf75161242ed26a3fd6cc3c0982da8f",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: down, down, down, down, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.14863109588623047,
+                  "down": 0.49094876646995544,
+                  "left": 0.13416580855846405,
+                  "right": 0.22625431418418884
+                },
+                "confidence": 0.49094876646995544,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 516,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 142.58679992053658,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 14,
+          "direction": "down",
+          "executed": true,
+          "moved": true,
+          "score_gain": 4,
+          "score_after": 40,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              2,
+              2
+            ],
+            [
+              2,
+              4,
+              8,
+              4
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              8,
+              2,
+              2,
+              4
+            ],
+            [
+              2,
+              4,
+              8,
+              4
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 140.25,
+          "server_step_ms": 146.87,
+          "image_sha256": "5e05f229b44f8570b6f4036865101336c97274c19efba7ccba1296b011dbf00b",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: down, down, down, down, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.1588178426027298,
+                  "down": 0.41428518295288086,
+                  "left": 0.17933973670005798,
+                  "right": 0.24755728244781494
+                },
+                "confidence": 0.41428518295288086,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 516,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 149.25010001752526,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 15,
+          "direction": "down",
+          "executed": true,
+          "moved": true,
+          "score_gain": 8,
+          "score_after": 48,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              8,
+              2,
+              2,
+              4
+            ],
+            [
+              2,
+              4,
+              8,
+              4
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              2,
+              2
+            ],
+            [
+              2,
+              4,
+              8,
+              8
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 138.95,
+          "server_step_ms": 146.02,
+          "image_sha256": "40da21f40f8c6623aa83b090025c2a85e51e889919be8eb16a8f6da203485735",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: down, down, down, down, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.15435171127319336,
+                  "down": 0.4320332407951355,
+                  "left": 0.17667415738105774,
+                  "right": 0.2369408756494522
+                },
+                "confidence": 0.4320332407951355,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 516,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 148.0588000267744,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 16,
+          "direction": "down",
+          "executed": true,
+          "moved": false,
+          "score_gain": 0,
+          "score_after": 48,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              2,
+              2
+            ],
+            [
+              2,
+              4,
+              8,
+              8
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              2,
+              2
+            ],
+            [
+              2,
+              4,
+              8,
+              8
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 139.05,
+          "server_step_ms": 146.16,
+          "image_sha256": "454f3eb0eecd1def505410a130d8bb480c1d914eaa0c61134300b2cc8e9f7cfd",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: down, down, down, down, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.14029724895954132,
+                  "down": 0.48126086592674255,
+                  "left": 0.14845971763134003,
+                  "right": 0.2299821972846985
+                },
+                "confidence": 0.48126086592674255,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 516,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 170.76340003404766,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 17,
+          "direction": "down",
+          "executed": true,
+          "moved": false,
+          "score_gain": 0,
+          "score_after": 48,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              2,
+              2
+            ],
+            [
+              2,
+              4,
+              8,
+              8
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              2,
+              2
+            ],
+            [
+              2,
+              4,
+              8,
+              8
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 138.62,
+          "server_step_ms": 145.33,
+          "image_sha256": "454f3eb0eecd1def505410a130d8bb480c1d914eaa0c61134300b2cc8e9f7cfd",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: down, down, down, down, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.14029724895954132,
+                  "down": 0.48126086592674255,
+                  "left": 0.14845971763134003,
+                  "right": 0.2299821972846985
+                },
+                "confidence": 0.48126086592674255,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 516,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 147.40730007179081,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 18,
+          "direction": "down",
+          "executed": true,
+          "moved": false,
+          "score_gain": 0,
+          "score_after": 48,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              2,
+              2
+            ],
+            [
+              2,
+              4,
+              8,
+              8
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              2,
+              2
+            ],
+            [
+              2,
+              4,
+              8,
+              8
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 134.54,
+          "server_step_ms": 141.61,
+          "image_sha256": "454f3eb0eecd1def505410a130d8bb480c1d914eaa0c61134300b2cc8e9f7cfd",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: down, down, down, down, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.14029724895954132,
+                  "down": 0.48126086592674255,
+                  "left": 0.14845971763134003,
+                  "right": 0.2299821972846985
+                },
+                "confidence": 0.48126086592674255,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 516,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 143.67849996779114,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 19,
+          "direction": "down",
+          "executed": true,
+          "moved": false,
+          "score_gain": 0,
+          "score_after": 48,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              2,
+              2
+            ],
+            [
+              2,
+              4,
+              8,
+              8
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              2,
+              2
+            ],
+            [
+              2,
+              4,
+              8,
+              8
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 141.23,
+          "server_step_ms": 148.65,
+          "image_sha256": "454f3eb0eecd1def505410a130d8bb480c1d914eaa0c61134300b2cc8e9f7cfd",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: down, down, down, down, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.14029724895954132,
+                  "down": 0.48126086592674255,
+                  "left": 0.14845971763134003,
+                  "right": 0.2299821972846985
+                },
+                "confidence": 0.48126086592674255,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 516,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 173.42220002319664,
+          "displayed_image_matches_model": true
+        }
+      ]
+    },
+    {
+      "name": "seed47-exploration",
+      "config": {
+        "seed": 47,
+        "image_size": 256,
+        "theme": "classic"
+      },
+      "initial_board": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "final_board": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          2,
+          2,
+          4
+        ]
+      ],
+      "score": 20,
+      "max_tile": 8,
+      "won": false,
+      "game_over": false,
+      "stats": {
+        "attempts": 10,
+        "valid_moves": 6,
+        "model_decisions": 10,
+        "abstained": 3,
+        "no_progress_streak": 4,
+        "model_median_ms": 96.3,
+        "model_total_ms": 976.95
+      },
+      "runner": {
+        "finished_utc": "2026-10-01T09:30:30.543275+00:00",
+        "stop_reason": "four_unchanged_actions",
+        "error": null,
+        "requested_steps": 60,
+        "execute_abstained": true,
+        "step_http_ms": [
+          106.0784999281168,
+          103.9223000407219,
+          119.73280005622655,
+          116.8573999311775,
+          100.79120006412268,
+          99.88259989768267,
+          102.26099996361881,
+          111.25030007679015,
+          96.12130001187325,
+          103.05959999095649
+        ],
+        "http_median_ms": 103.49095001583919,
+        "loop_wall_ms": 1156.318699941039,
+        "displayed_image_matches_model": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "timing_note": "No discarded warmups; first model call may be cold for this shape. HTTP steps exclude the separate frame download; loop wall time includes evidence downloads and file writes."
+      },
+      "events": [
+        {
+          "revision": 0,
+          "direction": "left",
+          "executed": true,
+          "moved": true,
+          "score_gain": 4,
+          "score_after": 4,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              2,
+              0,
+              0
+            ],
+            [
+              4,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 101.66,
+          "server_step_ms": 104.11,
+          "image_sha256": "c0b8fade1750357867b3736171856259f4fe9d9d55a51ed745ab083471eca235",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.15970617532730103,
+                  "down": 0.27147433161735535,
+                  "left": 0.4409969449043274,
+                  "right": 0.12782248854637146
+                },
+                "confidence": 0.4409969449043274,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "left"
+              }
+            },
+            "usage": {
+              "input_tokens": 305,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 106.0784999281168,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 1,
+          "direction": "left",
+          "executed": true,
+          "moved": true,
+          "score_gain": 0,
+          "score_after": 4,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              2,
+              0,
+              0
+            ],
+            [
+              4,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              2
+            ],
+            [
+              4,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 98.99,
+          "server_step_ms": 101.73,
+          "image_sha256": "2f1c86708d89ffabec822da88bec523b2598151f8bfea83fd75ff38a3507042c",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.20186670124530792,
+                  "down": 0.29686906933784485,
+                  "left": 0.3525363504886627,
+                  "right": 0.14872784912586212
+                },
+                "confidence": 0.3525363504886627,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "left"
+              }
+            },
+            "usage": {
+              "input_tokens": 314,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 103.9223000407219,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 2,
+          "direction": "down",
+          "executed": true,
+          "moved": true,
+          "score_gain": 0,
+          "score_after": 4,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              2
+            ],
+            [
+              4,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "board_after": [
+            [
+              2,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              0
+            ],
+            [
+              4,
+              0,
+              0,
+              2
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 113.73,
+          "server_step_ms": 117.13,
+          "image_sha256": "b0b8b9b146172533e902272a4766550b6b520802b9fab3b28ed4c750c59bc48e",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left, left.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.1613796204328537,
+                  "down": 0.4501694142818451,
+                  "left": 0.2083815485239029,
+                  "right": 0.1800694763660431
+                },
+                "confidence": 0.4501694142818451,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 316,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 119.73280005622655,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 3,
+          "direction": "down",
+          "executed": true,
+          "moved": true,
+          "score_gain": 4,
+          "score_after": 8,
+          "board_before": [
+            [
+              2,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              0
+            ],
+            [
+              4,
+              0,
+              0,
+              2
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              4,
+              0,
+              0,
+              2
+            ],
+            [
+              4,
+              0,
+              0,
+              2
+            ]
+          ],
+          "abstained": false,
+          "respect_abstention": false,
+          "inference_ms": 91.33,
+          "server_step_ms": 95.25,
+          "image_sha256": "825dfcf5e80a848e0ef5581a13acaffb95e568cbcb3bc88d83fc1b04de97037a",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left, left, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.16504140198230743,
+                  "down": 0.5163272619247437,
+                  "left": 0.14342641830444336,
+                  "right": 0.17520485818386078
+                },
+                "confidence": 0.5163272619247437,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": false,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 318,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 116.8573999311775,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 4,
+          "direction": "down",
+          "executed": true,
+          "moved": true,
+          "score_gain": 12,
+          "score_after": 20,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              4,
+              0,
+              0,
+              2
+            ],
+            [
+              4,
+              0,
+              0,
+              2
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              2,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              0,
+              0,
+              4
+            ]
+          ],
+          "abstained": false,
+          "respect_abstention": false,
+          "inference_ms": 95.67,
+          "server_step_ms": 98.75,
+          "image_sha256": "edd9aa6795609e314d33e8533bf8fc5f2c73f0bb944255a4c7908c9993c157df",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left, left, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.14102008938789368,
+                  "down": 0.5973047614097595,
+                  "left": 0.12019803375005722,
+                  "right": 0.14147715270519257
+                },
+                "confidence": 0.5973047614097595,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": false,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 320,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 100.79120006412268,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 5,
+          "direction": "down",
+          "executed": true,
+          "moved": true,
+          "score_gain": 0,
+          "score_after": 20,
+          "board_before": [
+            [
+              0,
+              2,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              0,
+              0,
+              4
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              2,
+              4
+            ]
+          ],
+          "abstained": false,
+          "respect_abstention": false,
+          "inference_ms": 95.45,
+          "server_step_ms": 98.15,
+          "image_sha256": "655f0e3041ea73fd01ef2e944d506b782ea5cc7a532043fdfd1944bd1cecf4cc",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left, left, down, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.12891420722007751,
+                  "down": 0.5816943645477295,
+                  "left": 0.10388042777776718,
+                  "right": 0.1855110079050064
+                },
+                "confidence": 0.5816943645477295,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": false,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 322,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 99.88259989768267,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 6,
+          "direction": "down",
+          "executed": true,
+          "moved": false,
+          "score_gain": 0,
+          "score_after": 20,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              2,
+              4
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              2,
+              4
+            ]
+          ],
+          "abstained": false,
+          "respect_abstention": false,
+          "inference_ms": 96.93,
+          "server_step_ms": 100.15,
+          "image_sha256": "c5afb061da7197746a2d60b296781b8dab4fe6e349f0a37dbeb61feec34d3097",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left, left, down, down, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.10591229796409607,
+                  "down": 0.5752805471420288,
+                  "left": 0.09509539604187012,
+                  "right": 0.2237117439508438
+                },
+                "confidence": 0.5752805471420288,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": false,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 324,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 102.26099996361881,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 7,
+          "direction": "down",
+          "executed": true,
+          "moved": false,
+          "score_gain": 0,
+          "score_after": 20,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              2,
+              4
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              2,
+              4
+            ]
+          ],
+          "abstained": false,
+          "respect_abstention": false,
+          "inference_ms": 94.39,
+          "server_step_ms": 97.76,
+          "image_sha256": "c5afb061da7197746a2d60b296781b8dab4fe6e349f0a37dbeb61feec34d3097",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left, down, down, down, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.09615369886159897,
+                  "down": 0.5380518436431885,
+                  "left": 0.10169578343629837,
+                  "right": 0.2640986442565918
+                },
+                "confidence": 0.5380518436431885,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": false,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 324,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 111.25030007679015,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 8,
+          "direction": "down",
+          "executed": true,
+          "moved": false,
+          "score_gain": 0,
+          "score_after": 20,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              2,
+              4
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              2,
+              4
+            ]
+          ],
+          "abstained": false,
+          "respect_abstention": false,
+          "inference_ms": 90.84,
+          "server_step_ms": 94.01,
+          "image_sha256": "c5afb061da7197746a2d60b296781b8dab4fe6e349f0a37dbeb61feec34d3097",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: down, down, down, down, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.11312992870807648,
+                  "down": 0.5219398140907288,
+                  "left": 0.10620687901973724,
+                  "right": 0.2587234079837799
+                },
+                "confidence": 0.5219398140907288,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": false,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 324,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 96.12130001187325,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 9,
+          "direction": "down",
+          "executed": true,
+          "moved": false,
+          "score_gain": 0,
+          "score_after": 20,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              2,
+              4
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              2,
+              4
+            ]
+          ],
+          "abstained": false,
+          "respect_abstention": false,
+          "inference_ms": 97.96,
+          "server_step_ms": 100.92,
+          "image_sha256": "c5afb061da7197746a2d60b296781b8dab4fe6e349f0a37dbeb61feec34d3097",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: down, down, down, down, down, down.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.11312992870807648,
+                  "down": 0.5219398140907288,
+                  "left": 0.10620687901973724,
+                  "right": 0.2587234079837799
+                },
+                "confidence": 0.5219398140907288,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": false,
+                "abstention_policy_fitted": true,
+                "choice": "down"
+              }
+            },
+            "usage": {
+              "input_tokens": 324,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 103.05959999095649,
+          "displayed_image_matches_model": true
+        }
+      ]
+    },
+    {
+      "name": "seed83-exploration",
+      "config": {
+        "seed": 83,
+        "image_size": 512,
+        "theme": "contrast"
+      },
+      "initial_board": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2
+        ]
+      ],
+      "final_board": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          2
+        ]
+      ],
+      "score": 4,
+      "max_tile": 4,
+      "won": false,
+      "game_over": false,
+      "stats": {
+        "attempts": 6,
+        "valid_moves": 2,
+        "model_decisions": 6,
+        "abstained": 6,
+        "no_progress_streak": 4,
+        "model_median_ms": 132.2,
+        "model_total_ms": 804.23
+      },
+      "runner": {
+        "finished_utc": "2026-10-01T09:30:32.655598+00:00",
+        "stop_reason": "four_unchanged_actions",
+        "error": null,
+        "requested_steps": 60,
+        "execute_abstained": true,
+        "step_http_ms": [
+          141.68130001053214,
+          162.6810000743717,
+          171.48810008075088,
+          135.22589998319745,
+          138.72390007600188,
+          148.97959993686527
+        ],
+        "http_median_ms": 145.3304499736987,
+        "loop_wall_ms": 969.6306000696495,
+        "displayed_image_matches_model": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "timing_note": "No discarded warmups; first model call may be cold for this shape. HTTP steps exclude the separate frame download; loop wall time includes evidence downloads and file writes."
+      },
+      "events": [
+        {
+          "revision": 0,
+          "direction": "left",
+          "executed": true,
+          "moved": true,
+          "score_gain": 0,
+          "score_after": 0,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              0
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 133.42,
+          "server_step_ms": 139.13,
+          "image_sha256": "ef647eb5ec55689665a6e851422d2568c8a1ee0be62ae89508f7f5af384472ee",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.16206929087638855,
+                  "down": 0.18388631939888,
+                  "left": 0.3439950942993164,
+                  "right": 0.31004929542541504
+                },
+                "confidence": 0.3439950942993164,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "left"
+              }
+            },
+            "usage": {
+              "input_tokens": 497,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 141.68130001053214,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 1,
+          "direction": "right",
+          "executed": true,
+          "moved": true,
+          "score_gain": 4,
+          "score_after": 4,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              0
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              4
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 130.98,
+          "server_step_ms": 136.75,
+          "image_sha256": "b957f9aeffcfb61338da260d0aabc9e17c2dac479aa028ccafff1356fb7ac246",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.14796938002109528,
+                  "down": 0.2736760377883911,
+                  "left": 0.23497962951660156,
+                  "right": 0.34337493777275085
+                },
+                "confidence": 0.34337493777275085,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "right"
+              }
+            },
+            "usage": {
+              "input_tokens": 506,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 162.6810000743717,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 2,
+          "direction": "right",
+          "executed": true,
+          "moved": false,
+          "score_gain": 0,
+          "score_after": 4,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              4
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              4
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 140.21,
+          "server_step_ms": 145.19,
+          "image_sha256": "40346e4242c0e3354bad985fc3a072dc1e25f2b3cede51cbf9867ada69c3b583",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left, right.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.2060655653476715,
+                  "down": 0.23573534190654755,
+                  "left": 0.1113373264670372,
+                  "right": 0.44686180353164673
+                },
+                "confidence": 0.44686180353164673,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "right"
+              }
+            },
+            "usage": {
+              "input_tokens": 508,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 171.48810008075088,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 3,
+          "direction": "right",
+          "executed": true,
+          "moved": false,
+          "score_gain": 0,
+          "score_after": 4,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              4
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              4
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 128.39,
+          "server_step_ms": 133.07,
+          "image_sha256": "40346e4242c0e3354bad985fc3a072dc1e25f2b3cede51cbf9867ada69c3b583",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left, right, right.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.18215276300907135,
+                  "down": 0.2813504636287689,
+                  "left": 0.10448752343654633,
+                  "right": 0.432009220123291
+                },
+                "confidence": 0.432009220123291,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "right"
+              }
+            },
+            "usage": {
+              "input_tokens": 510,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 135.22589998319745,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 4,
+          "direction": "right",
+          "executed": true,
+          "moved": false,
+          "score_gain": 0,
+          "score_after": 4,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              4
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              4
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 130.6,
+          "server_step_ms": 136.49,
+          "image_sha256": "40346e4242c0e3354bad985fc3a072dc1e25f2b3cede51cbf9867ada69c3b583",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left, right, right, right.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.18790413439273834,
+                  "down": 0.29403311014175415,
+                  "left": 0.09001217782497406,
+                  "right": 0.42805057764053345
+                },
+                "confidence": 0.42805057764053345,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "right"
+              }
+            },
+            "usage": {
+              "input_tokens": 512,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 138.72390007600188,
+          "displayed_image_matches_model": true
+        },
+        {
+          "revision": 5,
+          "direction": "right",
+          "executed": true,
+          "moved": false,
+          "score_gain": 0,
+          "score_after": 4,
+          "board_before": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              4
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ]
+          ],
+          "board_after": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              4
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ]
+          ],
+          "abstained": true,
+          "respect_abstention": false,
+          "inference_ms": 140.63,
+          "server_step_ms": 146.71,
+          "image_sha256": "40346e4242c0e3354bad985fc3a072dc1e25f2b3cede51cbf9867ada69c3b583",
+          "request_text": "Play the 2048 game shown in the attached board image. Choose the next arrow key. Tiles slide to that edge, adjacent equal tiles merge once, and a new tile then appears. Aim to reach 2048 by combining equal tiles and preserving empty spaces. Avoid a direction that leaves the board unchanged. Read the tile values and positions from the image. Recent arrow keys, oldest first: left, right, right, right, right.",
+          "response": {
+            "model": "veyra-qwen3.5-2b",
+            "architecture": "option_readout",
+            "decision_views": 1,
+            "backbone": {
+              "model_id": "Qwen/Qwen3.5-2B",
+              "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+            },
+            "answers": {
+              "move": {
+                "type": "choice",
+                "probabilities": {
+                  "up": 0.18586702644824982,
+                  "down": 0.3073347508907318,
+                  "left": 0.08962758630514145,
+                  "right": 0.41717058420181274
+                },
+                "confidence": 0.41717058420181274,
+                "confidence_definition": "maximum_candidate_probability",
+                "calibrated": true,
+                "abstained": true,
+                "abstention_policy_fitted": true,
+                "choice": "right"
+              }
+            },
+            "usage": {
+              "input_tokens": 514,
+              "output_tokens": 0
+            }
+          },
+          "http_ms": 148.97959993686527,
+          "displayed_image_matches_model": true
+        }
+      ]
+    }
+  ]
+}

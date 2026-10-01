@@ -1,0 +1,97 @@
+{
+  "records": 20600,
+  "groups": 7888,
+  "split_counts": {
+    "train": 11212,
+    "dev": 3312,
+    "calibration": 2644,
+    "test": 3432
+  },
+  "sources": [
+    {
+      "id": "AI-Lab-Makerere/beans",
+      "revision": "27aa014ce09b193e1a6f58112d4a66e0eddb69c5",
+      "license": "MIT"
+    },
+    {
+      "id": "LocalLLaMA/typed-decisions",
+      "revision": "d51d993547ad8355b1c25157fbc1fea0649e8ffa",
+      "license": "Apache-2.0"
+    },
+    {
+      "id": "PolyAI/banking77",
+      "revision": "57ec275d8078af65b7731c2a98be812d844a6d6b",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "id": "stanfordnlp/snli",
+      "revision": "cdb5c3d5eed6ead6e5a341c8e56e669bb666725b",
+      "license": "CC-BY-SA-4.0"
+    },
+    {
+      "id": "uoft-cs/cifar10",
+      "revision": "0b2714987fa478483af9968de7c934580d0bb9a2",
+      "license": "unknown"
+    },
+    {
+      "id": "veyra-policy-refresh-v8",
+      "revision": "sha256:b551bc1e88f12738a6379173991d2fed8aa80f7c25c65e899f5504f7c9b283c6",
+      "license": "Apache-2.0"
+    },
+    {
+      "id": "veyra-workflow-v12",
+      "revision": "sha256:5433c424ad7d2bea710c398899840d4a43a3608a9b7529a6cd8cbbe7a32bc4ca",
+      "license": "Apache-2.0"
+    },
+    {
+      "id": "vminhkhoi/trashnet",
+      "revision": "kaggle-version-1",
+      "license": "MIT"
+    },
+    {
+      "id": "workflow-recovery-fresh-final-v13",
+      "revision": "sha256:4eaba42e59734080cf710ead6edc43c178d8a290be63793a4aa8a23354c08e46",
+      "license": "Apache-2.0"
+    }
+  ],
+  "created_at_utc": "2026-09-30T22:59:28.680501+00:00",
+  "records_sha256": "4d3e808c3bd803629b058ac2110bd76ada9f1fa7fb897ce03a0d031409ef54b4",
+  "final_design_sha256": "678eb369816e4d47d2ccd553aaa3584e2062caf1acda4f9e9aa2fa608a04a49e",
+  "identity_namespace": "veyra-recovery-fresh-final-269",
+  "excluded_record_files": {
+    "data\\workflow-v12\\records.jsonl": "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571",
+    "data\\foundation-v11\\records.jsonl": "8f226fe90fb50e46c6a2e4c53020ed99db81a903f21317a96c66f27b6181d936",
+    "data\\workflow-v12b\\records.jsonl": "e3c3c10301f6c34561cd5281713152b3df4df0d093738c078b3d4fddde2196fb",
+    "data\\workflow-v12c\\records.jsonl": "7449ca694bc88e20fed7b1389cb659191f5af088226ef609fac753589056ad07",
+    "data\\workflow-v12d\\records.jsonl": "f6cf512f9fe2f386adec99be7647677bec68afc8708f1236c5130fb257be9391",
+    "data\\workflow-v12e\\records.jsonl": "632af2eb5ecd6cc73c868d4043c0ea6d7fbb3ae2a9c8e10b84da878d5655c17d",
+    "data\\workflow-v12f\\records.jsonl": "c057956998e948ab22cfceb969f7711bedada963372b31e5d45089bbb71fbf46",
+    "data\\workflow-v13g\\records.jsonl": "92dd176e5d5c4fc057f2ec86fc5f877c571549559179491180382f40991c08f7",
+    "data\\workflow-v13h\\records.jsonl": "def4d0b9063184f4fdc72ad759e7399c7d5d8e336c57a6634958db7b448f65d7"
+  },
+  "study_protocol_sha256": "6abe85061f05096fc99436220bb3b1094ff802cb6a62f47cfb14643a327684ef",
+  "release_protocol_sha256": "d0e6c454fc10cfa080523cfcc66706dfe73cb32524f4ce74bf87a5d4edde6776",
+  "generator_sha256": "4eaba42e59734080cf710ead6edc43c178d8a290be63793a4aa8a23354c08e46",
+  "procedural_rule_source_sha256": "fc0641726c18cf6182d540a00ee4a8ca27e5aa1a593ad42185f096b16f39f4d3",
+  "retention_selection_sha256": "12e36a1ebebc9b0064e48f9183df8bb7abf3e25bbb86df646cd5918754e767aa",
+  "preserved_subset_sha256": {
+    "train": "db7805a63da4dd319ac2ffb22368adfbc8ae49c62db9543c12d89a354770f4ff",
+    "dev": "a24385540a89b3d6d9e5cfed11cb10d882b69437704713f309a54e4ab1e7e90c",
+    "calibration": "4768013b2539babb972de9aa2204468bc0c492bb9e812d8ae1e27484f0cbc5c8"
+  },
+  "final_type_counts": {
+    "choice": 2152,
+    "score": 640,
+    "noul": 640
+  },
+  "fresh_final_groups": 1992,
+  "final_group_overlap_with_previous": 0,
+  "final_state_overlap_ignoring_case_nonce": 0,
+  "images_screened_against_previous_unique_images": 7102,
+  "near_duplicate_image_candidates_excluded": 1,
+  "new_known_workflow_label_counts": {},
+  "known_workflow_labels_are_new_explicit_policy_targets": true,
+  "old_calibration_policy_regression_required": true,
+  "model_outputs_used": false,
+  "final_inference_performed": false
+}

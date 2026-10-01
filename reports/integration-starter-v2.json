@@ -1,0 +1,713 @@
+{
+  "checkpoint_weights_sha256": "6b69f4336e2b8b1f2e79a1b229b5a49b8141a6b7f07b20bf81a430dd1ff1a0e0",
+  "load_seconds": 5.729396899987478,
+  "gpu": "NVIDIA GeForce RTX 4060 Ti",
+  "scope": "JSON parse, image decode, processor, Qwen, trained head, JSON serialize",
+  "feature_cache": false,
+  "serial_requests": true,
+  "warmups_per_condition": 3,
+  "excludes": [
+    "model loading",
+    "HTTP transport (reported separately)"
+  ],
+  "latency_target_ms": 300,
+  "matrix": {
+    "image384-candidates2-questions1": {
+      "latency_ms": {
+        "p50": 100.1844999846071,
+        "p95": 108.62308995274361,
+        "min": 92.42179995635524,
+        "max": 111.26400000648573,
+        "samples": [
+          105.1175000029616,
+          103.9135999744758,
+          105.0006000441499,
+          108.59659995185211,
+          98.6341999960132,
+          94.07930000452325,
+          96.78050002548844,
+          98.00080000422895,
+          96.91099997144192,
+          111.26400000648573,
+          103.93839998869225,
+          103.69379998883232,
+          102.4374999688007,
+          94.77079997304827,
+          92.98580000177026,
+          92.42179995635524,
+          95.06770002190024,
+          100.23769998224452,
+          106.49029997875914,
+          103.39090001070872,
+          101.81769996415824,
+          96.80499997921288,
+          97.52110001863912,
+          100.90210003545508,
+          97.60510001797229,
+          99.18219997780398,
+          109.1263999696821,
+          103.04139996878803,
+          102.62689995579422,
+          99.88949995022267,
+          100.13129998696968,
+          103.35180000402033,
+          100.66439997171983,
+          100.44439998455346,
+          96.28949995385483,
+          93.96470000501722,
+          96.64179995888844,
+          95.6498000305146,
+          100.39909998886287,
+          97.30059996945783
+        ]
+      },
+      "requests": 40,
+      "tokens_min_max": [
+        226,
+        226
+      ],
+      "peak_allocated_mib": 4276.35205078125,
+      "peak_reserved_mib": 4286.0,
+      "probabilities_valid": true,
+      "color_accuracy": 1.0,
+      "p95_target_met": true
+    },
+    "image384-candidates4-questions1": {
+      "latency_ms": {
+        "p50": 103.62710000481457,
+        "p95": 111.22509998967871,
+        "min": 93.75149995321408,
+        "max": 121.57649995060638,
+        "samples": [
+          102.62029996374622,
+          104.9563999986276,
+          93.75149995321408,
+          94.72490003099665,
+          107.44510003132746,
+          109.80840004049242,
+          111.16209998726845,
+          104.47780002141371,
+          99.29030004423112,
+          103.09410002082586,
+          121.57649995060638,
+          105.98360002040863,
+          104.89670000970364,
+          101.6356999753043,
+          112.4221000354737,
+          103.97799999918789,
+          105.65039998618886,
+          101.96669999277219,
+          104.62499997811392,
+          105.86310003418475,
+          99.33339996496215,
+          111.05459998361766,
+          107.65909997280687,
+          105.22480000508949,
+          103.76410000026226,
+          101.47230001166463,
+          103.43590000411496,
+          107.08300000987947,
+          103.3175999764353,
+          97.27500000735745,
+          96.59849997842684,
+          103.49010000936687,
+          103.08830003486946,
+          109.91569998441264,
+          102.06449998077005,
+          104.30509998695925,
+          103.42180001316592,
+          99.39600003417581,
+          100.6867999676615,
+          102.53959998954087
+        ]
+      },
+      "requests": 40,
+      "tokens_min_max": [
+        260,
+        260
+      ],
+      "peak_allocated_mib": 4283.22265625,
+      "peak_reserved_mib": 4306.0,
+      "probabilities_valid": true,
+      "color_accuracy": 1.0,
+      "p95_target_met": true
+    },
+    "image384-candidates8-questions1": {
+      "latency_ms": {
+        "p50": 108.58324996661395,
+        "p95": 117.85548500774892,
+        "min": 99.21899996697903,
+        "max": 124.28800005000085,
+        "samples": [
+          114.25569996936247,
+          115.18139997497201,
+          124.28800005000085,
+          116.45199998747557,
+          117.53700004192069,
+          109.92909997003153,
+          101.88769997330382,
+          111.0562999965623,
+          109.78410003008321,
+          112.82980005489662,
+          104.6134999487549,
+          102.63269999995828,
+          117.7081000059843,
+          120.65580004127696,
+          116.53220001608133,
+          103.86360000120476,
+          102.98389999661595,
+          99.21899996697903,
+          104.86830002628267,
+          107.14189999271184,
+          102.26469999179244,
+          108.49149996647611,
+          103.23499998776242,
+          114.26370003027841,
+          111.88169999513775,
+          112.36840003402904,
+          109.96069997781888,
+          108.67499996675178,
+          103.64230000413954,
+          103.95090002566576,
+          104.11280003609136,
+          101.96459997678176,
+          104.24780001631007,
+          107.70079999929294,
+          106.53310001362115,
+          111.72899999655783,
+          111.40850000083447,
+          113.58609999297187,
+          104.38279999652877,
+          106.01270000915974
+        ]
+      },
+      "requests": 40,
+      "tokens_min_max": [
+        328,
+        328
+      ],
+      "peak_allocated_mib": 4290.935546875,
+      "peak_reserved_mib": 4326.0,
+      "probabilities_valid": true,
+      "color_accuracy": 1.0,
+      "p95_target_met": true
+    },
+    "image384-candidates16-questions1": {
+      "latency_ms": {
+        "p50": 125.18230002024211,
+        "p95": 150.68773500097447,
+        "min": 112.7375999931246,
+        "max": 205.41809999849647,
+        "samples": [
+          122.95660004019737,
+          117.70750000141561,
+          125.23989996407181,
+          119.56910003209487,
+          119.52539999037981,
+          114.66959997778758,
+          116.4621000061743,
+          120.66570000024512,
+          119.08330000005662,
+          115.71340000955388,
+          134.0784000349231,
+          144.8930000187829,
+          117.09750001318753,
+          120.51640002755448,
+          125.4915000172332,
+          131.34720001835376,
+          127.21710000187159,
+          131.8567999987863,
+          119.44979999680072,
+          125.143300043419,
+          122.24480003351346,
+          141.97539997985587,
+          112.7375999931246,
+          118.29610000131652,
+          116.16690002847463,
+          137.38889998057857,
+          205.41809999849647,
+          150.04290000069886,
+          162.93960000621155,
+          135.9647000208497,
+          123.95730003481731,
+          138.1305999821052,
+          114.66770002152771,
+          125.3842000151053,
+          128.25479998718947,
+          125.22129999706522,
+          127.15020001633093,
+          127.4068999919109,
+          137.925399991218,
+          123.8343000295572
+        ]
+      },
+      "requests": 40,
+      "tokens_min_max": [
+        469,
+        469
+      ],
+      "peak_allocated_mib": 4304.037109375,
+      "peak_reserved_mib": 4326.0,
+      "probabilities_valid": true,
+      "color_accuracy": 1.0,
+      "p95_target_met": true
+    },
+    "image384-candidates4-questions3": {
+      "latency_ms": {
+        "p50": 140.4039999761153,
+        "p95": 168.75066495267671,
+        "min": 131.59090001136065,
+        "max": 209.91029997821897,
+        "samples": [
+          163.28849998535588,
+          168.25269995024428,
+          146.2473999708891,
+          147.09860004950315,
+          141.40849997056648,
+          137.46469997568056,
+          156.87179996166378,
+          137.6587999984622,
+          135.60949999373406,
+          134.90150001598522,
+          136.40299998223782,
+          148.7312000244856,
+          149.3010999984108,
+          134.7037999657914,
+          133.44320002943277,
+          132.69260001834482,
+          133.27140000183135,
+          134.28529998054728,
+          136.60559995332733,
+          134.04109998373315,
+          138.38219997705892,
+          135.12240001000464,
+          136.11419999506325,
+          139.46269999723881,
+          209.91029997821897,
+          178.2119999988936,
+          154.2691999929957,
+          146.88910002587363,
+          147.74539996869862,
+          140.1524999528192,
+          136.98739995015785,
+          167.133399983868,
+          145.51679999567568,
+          140.6554999994114,
+          131.59090001136065,
+          147.40370004437864,
+          157.43950003525242,
+          156.28039999864995,
+          141.1466999561526,
+          137.85890000872314
+        ]
+      },
+      "requests": 40,
+      "tokens_min_max": [
+        558,
+        558
+      ],
+      "peak_allocated_mib": 4312.349609375,
+      "peak_reserved_mib": 4346.0,
+      "probabilities_valid": true,
+      "color_accuracy": 1.0,
+      "p95_target_met": true
+    },
+    "image1024-candidates4-questions1": {
+      "latency_ms": {
+        "p50": 139.69229999929667,
+        "p95": 174.13889004965307,
+        "min": 132.35250004800037,
+        "max": 196.83619996067137,
+        "samples": [
+          133.05250002304092,
+          141.84490003390238,
+          135.277200024575,
+          142.2686000005342,
+          137.1260000159964,
+          154.9830000149086,
+          173.24270005337894,
+          156.26069996505976,
+          152.63609995599836,
+          140.24640002753586,
+          136.31759997224435,
+          138.47499998519197,
+          136.2620000145398,
+          140.2724999934435,
+          146.53640001779422,
+          135.21220005350187,
+          138.72250000713393,
+          160.36539996275678,
+          196.83619996067137,
+          146.712799964007,
+          137.66760000726208,
+          134.45579999824986,
+          142.33499998226762,
+          142.1826999867335,
+          140.78800001880154,
+          135.47809998271987,
+          135.61430003028363,
+          132.35250004800037,
+          134.92700003553182,
+          147.58300001267344,
+          160.46640003332868,
+          164.24820001702756,
+          191.1664999788627,
+          142.94740004697815,
+          133.7809999822639,
+          136.08989998465404,
+          136.08519994886592,
+          139.13819997105747,
+          137.0648000156507,
+          132.43820000207052
+        ]
+      },
+      "requests": 40,
+      "tokens_min_max": [
+        411,
+        411
+      ],
+      "peak_allocated_mib": 4302.35107421875,
+      "peak_reserved_mib": 4346.0,
+      "probabilities_valid": true,
+      "color_accuracy": 1.0,
+      "p95_target_met": true
+    }
+  },
+  "protocol": {
+    "choice_id_order_max_probability_difference": 1.0164395367051604e-19,
+    "choice_id_order_pass": true,
+    "zero_generated_tokens": true,
+    "http_path_escape_rejected": true,
+    "http_token_budget_rejected": true
+  },
+  "probes": [
+    {
+      "name": "blue_image",
+      "expected_choice": "c0",
+      "result": {
+        "model": "veyra-qwen3.5-2b",
+        "backbone": {
+          "model_id": "Qwen/Qwen3.5-2B",
+          "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+        },
+        "answers": {
+          "color": {
+            "type": "choice",
+            "probabilities": {
+              "c0": 0.9999632835388184,
+              "c1": 1.6626860999124915e-10,
+              "c2": 3.674451363622211e-05,
+              "c3": 1.875330812872123e-16
+            },
+            "confidence": 0.9999632835388184,
+            "confidence_definition": "maximum_candidate_probability",
+            "calibrated": true,
+            "abstained": false,
+            "abstention_policy_fitted": true,
+            "choice": "c0"
+          }
+        },
+        "usage": {
+          "input_tokens": 277,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "name": "red_image",
+      "expected_choice": "c1",
+      "result": {
+        "model": "veyra-qwen3.5-2b",
+        "backbone": {
+          "model_id": "Qwen/Qwen3.5-2B",
+          "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+        },
+        "answers": {
+          "color": {
+            "type": "choice",
+            "probabilities": {
+              "c0": 3.0282148316684854e-11,
+              "c1": 1.0,
+              "c2": 1.258974174911387e-11,
+              "c3": 1.8658264224011983e-13
+            },
+            "confidence": 1.0,
+            "confidence_definition": "maximum_candidate_probability",
+            "calibrated": true,
+            "abstained": false,
+            "abstention_policy_fitted": true,
+            "choice": "c1"
+          }
+        },
+        "usage": {
+          "input_tokens": 260,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "name": "unseen_visual_policy",
+      "expected_choice": "x",
+      "result": {
+        "model": "veyra-qwen3.5-2b",
+        "backbone": {
+          "model_id": "Qwen/Qwen3.5-2B",
+          "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+        },
+        "answers": {
+          "color": {
+            "type": "choice",
+            "probabilities": {
+              "x": 0.03669455647468567,
+              "y": 0.9633054137229919
+            },
+            "confidence": 0.9633054137229919,
+            "confidence_definition": "maximum_candidate_probability",
+            "calibrated": true,
+            "abstained": false,
+            "abstention_policy_fitted": true,
+            "choice": "y"
+          }
+        },
+        "usage": {
+          "input_tokens": 231,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "name": "unseen_parcel_policy_3_8",
+      "expected_choice": "r",
+      "result": {
+        "model": "veyra-qwen3.5-2b",
+        "backbone": {
+          "model_id": "Qwen/Qwen3.5-2B",
+          "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+        },
+        "answers": {
+          "route": {
+            "type": "choice",
+            "probabilities": {
+              "f": 0.9999988079071045,
+              "r": 1.1426182027207687e-06
+            },
+            "confidence": 0.9999988079071045,
+            "confidence_definition": "maximum_candidate_probability",
+            "calibrated": true,
+            "abstained": false,
+            "abstention_policy_fitted": true,
+            "choice": "f"
+          }
+        },
+        "usage": {
+          "input_tokens": 149,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "name": "unseen_parcel_policy_12_5",
+      "expected_choice": "f",
+      "result": {
+        "model": "veyra-qwen3.5-2b",
+        "backbone": {
+          "model_id": "Qwen/Qwen3.5-2B",
+          "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+        },
+        "answers": {
+          "route": {
+            "type": "choice",
+            "probabilities": {
+              "f": 0.9999997615814209,
+              "r": 2.3283692485165375e-07
+            },
+            "confidence": 0.9999997615814209,
+            "confidence_definition": "maximum_candidate_probability",
+            "calibrated": true,
+            "abstained": false,
+            "abstention_policy_fitted": true,
+            "choice": "f"
+          }
+        },
+        "usage": {
+          "input_tokens": 150,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "name": "unseen_parcel_policy_6_6",
+      "expected_choice": "f",
+      "result": {
+        "model": "veyra-qwen3.5-2b",
+        "backbone": {
+          "model_id": "Qwen/Qwen3.5-2B",
+          "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+        },
+        "answers": {
+          "route": {
+            "type": "choice",
+            "probabilities": {
+              "f": 0.9999998807907104,
+              "r": 1.575141226339838e-07
+            },
+            "confidence": 0.9999998807907104,
+            "confidence_definition": "maximum_candidate_probability",
+            "calibrated": true,
+            "abstained": false,
+            "abstention_policy_fitted": true,
+            "choice": "f"
+          }
+        },
+        "usage": {
+          "input_tokens": 149,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "name": "unseen_parcel_policy_9_12",
+      "expected_choice": "r",
+      "result": {
+        "model": "veyra-qwen3.5-2b",
+        "backbone": {
+          "model_id": "Qwen/Qwen3.5-2B",
+          "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+        },
+        "answers": {
+          "route": {
+            "type": "choice",
+            "probabilities": {
+              "f": 0.9999992847442627,
+              "r": 7.613318189214624e-07
+            },
+            "confidence": 0.9999992847442627,
+            "confidence_definition": "maximum_candidate_probability",
+            "calibrated": true,
+            "abstained": false,
+            "abstention_policy_fitted": true,
+            "choice": "f"
+          }
+        },
+        "usage": {
+          "input_tokens": 150,
+          "output_tokens": 0
+        }
+      }
+    },
+    {
+      "name": "missing_evidence",
+      "target_true_probability": 0.5,
+      "target_note": "Uninformative soft annotation; not an empirical event frequency.",
+      "result": {
+        "model": "veyra-qwen3.5-2b",
+        "backbone": {
+          "model_id": "Qwen/Qwen3.5-2B",
+          "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+        },
+        "answers": {
+          "visible": {
+            "type": "noul",
+            "probabilities": {
+              "false": 0.27548345923423767,
+              "true": 0.7245165109634399
+            },
+            "confidence": 0.7245165109634399,
+            "confidence_definition": "maximum_candidate_probability",
+            "calibrated": true,
+            "abstained": false,
+            "abstention_policy_fitted": true,
+            "noul": 0.7245165109634399
+          }
+        },
+        "usage": {
+          "input_tokens": 151,
+          "output_tokens": 0
+        }
+      }
+    }
+  ],
+  "dev_subset_diagnostic": [
+    {
+      "family": "diagram_attributes",
+      "questions": 36,
+      "full_expected_accuracy": 1.0,
+      "single_expected_accuracy": 1.0,
+      "changed_decisions": 0
+    },
+    {
+      "family": "leaf_photo",
+      "questions": 36,
+      "full_expected_accuracy": 0.7777777777777778,
+      "single_expected_accuracy": 0.75,
+      "changed_decisions": 7
+    },
+    {
+      "family": "missing_evidence",
+      "questions": 10,
+      "full_expected_accuracy": 0.75,
+      "single_expected_accuracy": 0.75,
+      "changed_decisions": 1
+    },
+    {
+      "family": "text_policy",
+      "questions": 36,
+      "full_expected_accuracy": 0.8888888888888888,
+      "single_expected_accuracy": 0.6388888888888888,
+      "changed_decisions": 15
+    }
+  ],
+  "http": {
+    "latency_ms": {
+      "p50": 109.20099998475052,
+      "p95": 135.34012501186226,
+      "min": 97.85289998399094,
+      "max": 139.7863999591209,
+      "samples": [
+        102.47119999257848,
+        117.47090000426397,
+        125.74549997225404,
+        135.84600004833192,
+        135.3135000099428,
+        114.28049998357892,
+        106.46700003417209,
+        120.0651999679394,
+        101.58930002944544,
+        102.66779997618869,
+        106.41720000421628,
+        109.12649997044355,
+        111.01699998835102,
+        101.79919999791309,
+        123.90420003794134,
+        110.36270001204684,
+        124.18939999770373,
+        125.27230003615841,
+        111.64190003182739,
+        103.08699996676296,
+        105.40810000384226,
+        101.44280001986772,
+        103.60360000049695,
+        112.76099999668077,
+        109.2754999990575,
+        105.12279998511076,
+        107.23129997495562,
+        101.58710001269355,
+        115.44520000461489,
+        106.18769994471222,
+        98.20900001795962,
+        97.85289998399094,
+        97.93520002858713,
+        110.36019999301061,
+        103.25220000231639,
+        124.44700003834441,
+        139.7863999591209,
+        116.72580003505573,
+        110.83629995118827,
+        104.51500001363456
+      ]
+    },
+    "requests": 40,
+    "local_loopback": true,
+    "p95_target_met": true
+  }
+}

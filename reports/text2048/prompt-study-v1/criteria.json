@@ -1,0 +1,11 @@
+{
+  "move": {
+    "type": "choice",
+    "criteria": {
+      "up": "Press the UP arrow: slide every tile toward the top edge.",
+      "down": "Press the DOWN arrow: slide every tile toward the bottom edge.",
+      "left": "Press the LEFT arrow: slide every tile toward the left edge.",
+      "right": "Press the RIGHT arrow: slide every tile toward the right edge."
+    }
+  }
+}

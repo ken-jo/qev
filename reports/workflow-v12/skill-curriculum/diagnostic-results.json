@@ -1,0 +1,79 @@
+{
+  "metrics": {
+    "overall": {
+      "questions": 1200,
+      "hard_questions": 784,
+      "hard_accuracy": 0.548469387755102,
+      "expected_error": 0.4592107612391313,
+      "nll": 0.8382816091389396,
+      "brier": 0.4852043349767894
+    },
+    "skill_fact": {
+      "questions": 600,
+      "hard_questions": 412,
+      "hard_accuracy": 0.6067961165048543,
+      "expected_error": 0.4180133326848348,
+      "nll": 0.7252607878064736,
+      "brier": 0.4184858719925372
+    },
+    "skill_fact/score": {
+      "questions": 216,
+      "hard_questions": 163,
+      "hard_accuracy": 0.588957055214724,
+      "expected_error": 0.42531024719829913,
+      "nll": 0.7854590974489434,
+      "brier": 0.4853600023060507
+    },
+    "skill_rule": {
+      "questions": 600,
+      "hard_questions": 372,
+      "hard_accuracy": 0.4838709677419355,
+      "expected_error": 0.5004081897934278,
+      "nll": 0.9513024304714054,
+      "brier": 0.5519227979610416
+    },
+    "skill_rule/noul": {
+      "questions": 205,
+      "hard_questions": 132,
+      "hard_accuracy": 0.5984848484848485,
+      "expected_error": 0.41667887815615023,
+      "nll": 0.7318290844196227,
+      "brier": 0.4167162537677607
+    },
+    "skill_fact/choice": {
+      "questions": 183,
+      "hard_questions": 112,
+      "hard_accuracy": 0.6339285714285714,
+      "expected_error": 0.3962185799749823,
+      "nll": 0.7284151140773476,
+      "brier": 0.3914789066045552
+    },
+    "skill_rule/score": {
+      "questions": 212,
+      "hard_questions": 127,
+      "hard_accuracy": 0.41732283464566927,
+      "expected_error": 0.5453254625482379,
+      "nll": 1.079435394400344,
+      "brier": 0.6411740019180661
+    },
+    "skill_fact/noul": {
+      "questions": 201,
+      "hard_questions": 137,
+      "hard_accuracy": 0.6058394160583942,
+      "expected_error": 0.43001485612261947,
+      "nll": 0.6576982177052628,
+      "brier": 0.3712095661133421
+    },
+    "skill_rule/choice": {
+      "questions": 183,
+      "hard_questions": 113,
+      "hard_accuracy": 0.4247787610619469,
+      "expected_error": 0.542168009802292,
+      "nll": 1.0487223626445226,
+      "brier": 0.5999888434295297
+    }
+  },
+  "logits_sha256": "d58d995364ab1a5b379a0274780c7b55bc64f5bd5d137d2817628685c0ceb0a6",
+  "data_audit_sha256": "9696e22343eb3f395a69a8c8df9d5e88092afd94e378625ccc08ffca655e780a",
+  "calibration_or_final_used": false
+}

@@ -1,0 +1,179 @@
+{
+  "status": "exploratory_interim_development",
+  "inference": "unmerged",
+  "source_records_sha256": "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571",
+  "results": {
+    "parent": {
+      "manifest_sha256": "0afe95f9ea13945282e4438ee50373d5375c21a55e3235b5f58940ccf1661073",
+      "weights_sha256": "4bb3c3187ec37e6ad7f6634c8aeec9bafbbb90ebea89ebae0d26f7c844a87c72",
+      "by_condition": {
+        "conflicting": {
+          "questions": 100,
+          "nll": 0.9624055624008179,
+          "brier_vs_soft": 0.208864226937294,
+          "expected_error_at_80pct": 0.4719201922416687,
+          "expected_cost_at_80pct": 1.4961389303207397
+        },
+        "missing": {
+          "questions": 100,
+          "nll": 0.9921222925186157,
+          "brier_vs_soft": 0.20386764407157898,
+          "expected_error_at_80pct": 0.47625628113746643,
+          "expected_cost_at_80pct": 1.4026312828063965
+        },
+        "shifted_prior": {
+          "questions": 100,
+          "nll": 0.9321532249450684,
+          "brier_vs_soft": 0.4141901135444641,
+          "expected_error_at_80pct": 0.41353654861450195,
+          "expected_cost_at_80pct": 1.0399115085601807
+        }
+      }
+    },
+    "curriculum_epoch_1": {
+      "manifest_sha256": "e24f36265aa69c021b09e6a129b7bc2b3e25fcaf447d0e7a9394a70d1b3c0050",
+      "weights_sha256": "3e5235cdc71c032180e5ea8ac3c2388a184213fd1fec259ff41ed63172e3e215",
+      "by_condition": {
+        "conflicting": {
+          "questions": 100,
+          "nll": 0.9390203952789307,
+          "brier_vs_soft": 0.195319265127182,
+          "expected_error_at_80pct": 0.4839199185371399,
+          "expected_cost_at_80pct": 1.0559381246566772
+        },
+        "missing": {
+          "questions": 100,
+          "nll": 0.893263041973114,
+          "brier_vs_soft": 0.1482519954442978,
+          "expected_error_at_80pct": 0.3701559603214264,
+          "expected_cost_at_80pct": 0.7507809400558472
+        },
+        "shifted_prior": {
+          "questions": 100,
+          "nll": 0.7845571637153625,
+          "brier_vs_soft": 0.31469541788101196,
+          "expected_error_at_80pct": 0.3142024874687195,
+          "expected_cost_at_80pct": 0.7078275680541992
+        }
+      }
+    }
+  },
+  "condition_type_counts": [
+    {
+      "split": "dev",
+      "condition": "conflicting",
+      "type": "choice",
+      "questions": 33
+    },
+    {
+      "split": "dev",
+      "condition": "conflicting",
+      "type": "noul",
+      "questions": 33
+    },
+    {
+      "split": "dev",
+      "condition": "conflicting",
+      "type": "score",
+      "questions": 34
+    },
+    {
+      "split": "dev",
+      "condition": "missing",
+      "type": "choice",
+      "questions": 34
+    },
+    {
+      "split": "dev",
+      "condition": "missing",
+      "type": "noul",
+      "questions": 33
+    },
+    {
+      "split": "dev",
+      "condition": "missing",
+      "type": "score",
+      "questions": 33
+    },
+    {
+      "split": "dev",
+      "condition": "shifted_prior",
+      "type": "choice",
+      "questions": 33
+    },
+    {
+      "split": "dev",
+      "condition": "shifted_prior",
+      "type": "noul",
+      "questions": 34
+    },
+    {
+      "split": "dev",
+      "condition": "shifted_prior",
+      "type": "score",
+      "questions": 33
+    },
+    {
+      "split": "train",
+      "condition": "conflicting",
+      "type": "choice",
+      "questions": 108
+    },
+    {
+      "split": "train",
+      "condition": "conflicting",
+      "type": "noul",
+      "questions": 106
+    },
+    {
+      "split": "train",
+      "condition": "conflicting",
+      "type": "score",
+      "questions": 106
+    },
+    {
+      "split": "train",
+      "condition": "missing",
+      "type": "choice",
+      "questions": 106
+    },
+    {
+      "split": "train",
+      "condition": "missing",
+      "type": "noul",
+      "questions": 108
+    },
+    {
+      "split": "train",
+      "condition": "missing",
+      "type": "score",
+      "questions": 106
+    },
+    {
+      "split": "train",
+      "condition": "shifted_prior",
+      "type": "choice",
+      "questions": 106
+    },
+    {
+      "split": "train",
+      "condition": "shifted_prior",
+      "type": "noul",
+      "questions": 106
+    },
+    {
+      "split": "train",
+      "condition": "shifted_prior",
+      "type": "score",
+      "questions": 108
+    }
+  ],
+  "used_for_selection": false,
+  "calibration_or_final_inference_used": false,
+  "release_allowed": false,
+  "limitations": [
+    "The same repeatedly inspected development population, one training seed and no completed control comparison.",
+    "Matched coverage is computed within each condition; its subsets differ from overall 80 percent coverage.",
+    "Lower mistake cost does not imply lower unweighted expected error in every condition."
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "protocol": "workflow-recovery-cohort-policy-v13",
+  "created_at_utc": "2026-10-01T00:39:58.788482+00:00",
+  "method_declared_before_training_in": "configs/workflow-recovery-release-v13.json",
+  "method_declaration_sha256": "6abe85061f05096fc99436220bb3b1094ff802cb6a62f47cfb14643a327684ef",
+  "checkpoint": "runs\\backbone-recovery-memory-v13\\fraction-0.5\\checkpoint",
+  "weights_sha256": "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee",
+  "uncalibrated_manifest_sha256": "69e91d4818f76b23876f0278259b61d405427fb1bb35a5801ef3ed5c63386662",
+  "release_protocol": "configs/workflow-release-v12.json",
+  "release_protocol_sha256": "d0e6c454fc10cfa080523cfcc66706dfe73cb32524f4ce74bf87a5d4edde6776",
+  "fitting_data_design": "configs/workflow-cohort-policy-fit-data-v12.json",
+  "fitting_data_design_sha256": "0d213c6126456741f213a3343666a8161d3b779d581242686b5681a694576a8d",
+  "fitting_populations": {
+    "b": {
+      "records": "data/workflow-v12b/records.jsonl",
+      "records_sha256": "e3c3c10301f6c34561cd5281713152b3df4df0d093738c078b3d4fddde2196fb",
+      "previously_inspected": true
+    },
+    "c": {
+      "records": "data/workflow-v12c/records.jsonl",
+      "records_sha256": "7449ca694bc88e20fed7b1389cb659191f5af088226ef609fac753589056ad07",
+      "previously_inspected": true
+    },
+    "d": {
+      "records": "data/workflow-v12d/records.jsonl",
+      "records_sha256": "f6cf512f9fe2f386adec99be7647677bec68afc8708f1236c5130fb257be9391",
+      "previously_inspected": true
+    }
+  },
+  "method": {
+    "name": "cohort_robust_empirical_policy",
+    "policy_fit_expected_error_max": 0.12,
+    "policy_fit_minimum_coverage": 0.6,
+    "threshold_grid_denominator": 200,
+    "temperature_fit": "Existing proper-scoring temperature fitting, minimum 1.0, pooling only group hash bucket 0 of the three declared fitting populations.",
+    "policy_fit": "One threshold per type, selected in ascending steps of 0.005. Each of the three cohorts separately must achieve expected error at most 12% and coverage at least 60% on its hash bucket 1. Include equal-confidence ties.",
+    "one_policy_only": true,
+    "candidate_weights_reselected": false,
+    "additional_trainable_parameters": 0,
+    "formal_distribution_free_guarantee_claimed": false
+  },
+  "validation_populations": {
+    "validation-1": {
+      "design": "configs/workflow-recovery-validation-1-data-v13.json",
+      "design_sha256": "c53f8f687a5263931db93bc3d9ba13f4124eae7a2118486e3c7c353b1417fc8d",
+      "records": "data/workflow-v13g/records.jsonl"
+    },
+    "validation-2": {
+      "design": "configs/workflow-recovery-validation-2-data-v13.json",
+      "design_sha256": "ec5cade11e828b72435c5e25c154729e2ce2c574d104365854f2d433db80e94b",
+      "records": "data/workflow-v13h/records.jsonl"
+    }
+  },
+  "previous_group_regression": {
+    "population_report": "runs/workflow-v12-evaluation/calibration/evaluation.json",
+    "population_report_sha256": "051c41d983fb896ae5f831e4ccea58fb1c85de768aaab6c4f8fa78ed9d0d24b5",
+    "policy_refit": false,
+    "use_for_policy_or_candidate_ranking": false,
+    "per_type_expected_error_max": 0.15,
+    "per_type_minimum_coverage": 0.6,
+    "population_previously_inspected": true,
+    "failure": "Stop before final inference."
+  },
+  "original_records": "data/workflow-v12/records.jsonl",
+  "original_records_sha256": "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571",
+  "final_data_design": "configs/workflow-recovery-final-data-v13.json",
+  "final_data_design_sha256": "678eb369816e4d47d2ccd553aaa3584e2062caf1acda4f9e9aa2fa608a04a49e",
+  "fresh_validation_or_final_predictions_observed": false,
+  "calibration_populations_previously_inspected": true,
+  "release_allowed": false
+}

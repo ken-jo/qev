@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Vision QEV · Visual 2048</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/game2048.css">
+  <script src="/static/game2048.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><span class="brand-mark">v.</span>vision-qev<span class="brand-divider"></span><span class="brand-page">Visual 2048</span></a>
+    <div class="header-actions"><a class="text-button" href="/">플레이그라운드</a><span class="connection" id="connection" role="status"><span class="status-dot"></span><span id="connection-label">모델 연결 중</span></span></div>
+  </header>
+  <main class="game-main">
+    <section class="page-heading">
+      <div><p class="eyebrow">SEE → DECIDE → ACT</p><h1>이미지를 보고, 다음 한 수.</h1><p class="intro">Vision QEV가 보드를 보고 방향을 고릅니다. 선택부터 실제 이동까지 한 단계씩 살펴보세요.</p></div>
+      <div class="game-badge"><span>선택형 판단</span><strong>choice → ↑ ↓ ← →</strong><small id="device-label">Workflow Recovery v13</small></div>
+    </section>
+    <div class="error-banner" id="game-error" role="alert" hidden></div>
+    <div class="game-layout">
+      <section class="game-board-panel" aria-label="2048 게임">
+        <div class="game-scoreboard"><div><span>점수</span><strong id="game-score">0</strong></div><div><span>가장 큰 타일</span><strong id="game-tile">—</strong></div><div><span>유효 이동 / 실행</span><strong id="game-moves">0 / 0</strong></div></div>
+        <div class="game-board-wrap"><img id="game-board" width="512" height="512" alt="2048 보드를 준비하고 있습니다."></div>
+        <p id="game-message" class="game-message" role="status" aria-live="polite">새 게임을 준비하고 있습니다.</p>
+        <div class="game-actions"><button class="primary-button" id="game-auto" type="button" disabled>자동 실행</button><button class="game-secondary" id="game-step" type="button" disabled>AI 한 수</button><button class="game-secondary" id="game-stop" type="button" hidden>중단</button></div>
+        <div class="manual-controls" role="group" aria-label="직접 방향키 조작"><span>직접 조작</span><button type="button" data-direction="up" aria-label="위로 이동">↑</button><button type="button" data-direction="down" aria-label="아래로 이동">↓</button><button type="button" data-direction="left" aria-label="왼쪽으로 이동">←</button><button type="button" data-direction="right" aria-label="오른쪽으로 이동">→</button></div>
+      </section>
+      <aside class="game-inspector" aria-label="모델 판단과 실행 설정">
+        <section class="game-card">
+          <div class="game-card-heading"><h2>모델의 마지막 선택</h2><span class="type-tag">choice</span></div>
+          <div class="game-decision"><strong id="decision-direction">—</strong><div><span id="decision-outcome">아직 AI를 실행하지 않았습니다.</span><small id="decision-policy">기존 v13 모델 · 게임 추가 학습 없음</small></div></div>
+          <div id="game-probabilities" class="game-probabilities" aria-label="방향별 선택 확률"></div>
+          <div class="game-timings"><div><span>모델 추론</span><strong id="game-inference">—</strong></div><div><span>브라우저 왕복</span><strong id="game-roundtrip">—</strong></div><div><span>추론 중앙값</span><strong id="game-median">—</strong></div></div>
+          <details class="game-input-details"><summary>모델이 본 이미지와 실제 요청</summary><img id="decision-frame" alt="마지막 판단에 사용한 보드 이미지" hidden><pre id="game-request">실행 후 표시됩니다.</pre></details>
+          <p class="game-note">확률은 방향 선택의 추정치입니다. 게임 승률이 아닙니다. 숫자 배열·가능한 방향·탐색 알고리즘의 답은 모델에 전달하지 않습니다.</p>
+        </section>
+        <section class="game-card">
+          <div class="game-card-heading"><h2>실행 설정</h2><button class="text-button" id="game-new" type="button">새 게임</button></div>
+          <fieldset id="game-settings">
+            <div class="game-fields"><label>시드<input id="game-seed" type="number" min="0" max="4294967295" value="11" step="1"></label><label>입력 이미지<select id="game-size"><option value="256">256 × 256</option><option value="384">384 × 384</option><option value="512" selected>512 × 512</option><option value="768">768 × 768</option></select></label><label>보드 스타일<select id="game-theme"><option value="classic">클래식</option><option value="contrast">단색 대비</option></select></label><label>자동 실행 한도<select id="game-budget"><option value="10">10회</option><option value="30" selected>30회</option><option value="60">60회</option><option value="120">120회</option></select></label></div>
+            <label class="game-checkbox"><input type="checkbox" id="game-abstention" checked><span>모델이 보류하면 실행 중단</span></label>
+            <p class="game-note">해제하면 보류된 추천 방향도 게임에서 실행합니다. 보류 표시는 기록에 남습니다. 시드·크기·스타일은 새 게임부터 적용됩니다.</p>
+          </fieldset>
+        </section>
+      </aside>
+    </div>
+    <section class="game-card game-history">
+      <div class="game-card-heading"><div><p class="eyebrow">ACTION TRACE</p><h2>무엇을 보고, 어떻게 움직였나요?</h2></div><button class="text-button" id="game-export" type="button" disabled>실행 기록 JSON 저장</button></div>
+      <p class="game-note" id="game-trace-note">이 게임의 AI 판단과 직접 조작을 기록합니다. 화면에는 최근 100개, JSON에는 전체 기록이 담깁니다.</p>
+      <div class="game-table-wrap"><table><caption class="sr-only">2048 판단 및 실행 기록</caption><thead><tr><th scope="col">단계</th><th scope="col">판단자</th><th scope="col">방향</th><th scope="col">실제 결과</th><th scope="col">선택 확률</th><th scope="col">모델 시간</th><th scope="col">점수</th></tr></thead><tbody id="game-trace"><tr><td colspan="7">AI 한 수 또는 자동 실행을 눌러 시작하세요.</td></tr></tbody></table></div>
+    </section>
+    <footer class="game-footer">이미지 판단을 행동에 연결하는 탐색용 데모입니다. 2048 달성 여부는 게임 엔진으로 확인합니다. 사진 분류 속도나 다른 에이전트의 전체 작업 시간과 직접 비교할 수 없습니다.</footer>
+  </main>
+</body>
+</html>

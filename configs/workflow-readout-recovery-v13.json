@@ -1,0 +1,77 @@
+{
+  "experiment": "workflow-readout-recovery-v13",
+  "declared_at_utc": "2026-09-30T22:33:31.944479+00:00",
+  "release_protocol": "configs/workflow-release-v12.json",
+  "release_protocol_sha256": "d0e6c454fc10cfa080523cfcc66706dfe73cb32524f4ce74bf87a5d4edde6776",
+  "parent": "checkpoints/veyra-cohort-policy-v12",
+  "parent_weights_sha256": "86ce942f8ef036f2279422a3a2665248b98adcb0effa91bafdf15d9c14c6c83e",
+  "parent_manifest_sha256": "0da2b6454441c37d17959a00a3608452a0555128aa693570eb1fd82349fc9af4",
+  "foundation": "checkpoints/veyra-foundation-v11",
+  "foundation_weights_sha256": "f13aa3346d7da369a2769eef7fa487747c97d1ba0878ea3af8f713463f463491",
+  "foundation_manifest_sha256": "dd4df10eba5880dc1bb0267502fe264eb1c5a730235619db9cd8cd74df87b1a9",
+  "motivation": "Preserve workflow transfer while repairing legacy conjunction and threshold forgetting. Original final has been consumed; no new independent claim can reuse it.",
+  "datasets": {
+    "workflow": {
+      "path": "data/workflow-v12/records.jsonl",
+      "sha256": "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571",
+      "maximum_training_groups_per_family": 96
+    },
+    "legacy": {
+      "path": "data/policy-v8/records.jsonl",
+      "sha256": "43d5f8f31d5cfef33fe3721685ad9008209d1b3becb21742ba1ced1ab2557070",
+      "maximum_training_groups_per_family": 256
+    }
+  },
+  "seed": 251,
+  "sampling": "Group SHA256(seed:dataset:group_id), capped independently per family, all views retained; all dev rows; exclude calibration/test from features/optimization/selection.",
+  "frozen": "All backbone adapters, vision, condition_readout, prompts and calibration used during development. Only readout.weight and existing binding_head parameters can change.",
+  "head_interpolation_foundation_fractions": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "interpolation_scope": "Same aligned readout and binding parameters only. All five candidates keep current backbone. Zero-training candidates are adaptation of parameter averaging, not a full model-soups replication.",
+  "training": {
+    "initialization": "unmodified parent head",
+    "epochs": 20,
+    "candidate_epochs": [
+      1,
+      2,
+      4,
+      8,
+      12,
+      20
+    ],
+    "batch_size": 128,
+    "learning_rates": {
+      "readout": 0.0001,
+      "binding": 0.0005
+    },
+    "optimizer": "AdamW",
+    "weight_decay": 0.01,
+    "clip_grad_norm": 1.0,
+    "legacy_total_loss_share": 0.5,
+    "workflow_total_loss_share": 0.5,
+    "loss": "Soft cross entropy at frozen parent temperature; workflow additionally 4*KL to parent at temperature 2; legacy has no parent-error distillation; each corpus weighted equally and each family equally within corpus.",
+    "dropout": 0.1
+  },
+  "selection": {
+    "development_only": true,
+    "legacy_text_accuracy_min": 0.91,
+    "legacy_image_accuracy_min": 0.91,
+    "retention_accuracy_drop_max_from_foundation": 0.01,
+    "workflow_known_and_new_accuracy_drop_max_from_parent": 0.01,
+    "uncertainty_nll_max_increase_from_parent": 0.03,
+    "uncertainty_brier_max_increase_from_parent": 0.01,
+    "uncertainty_cost80_max_increase_from_parent": 0.05,
+    "mandatory_original_development_gates": true,
+    "rank": "Eligible first; then minimum legacy text/image accuracy, workflow known/new macro accuracy, lower uncertainty NLL, smaller parameter movement; fixed candidate order breaks exact ties."
+  },
+  "followup": "Selected candidate must be checked by real merged GPU inference before any policy fitting. Refit policy with explicitly inspected calibration cohorts, obtain new independent policy validation, and freeze fresh final observations before inference. Original legacy and official sets become regression-only. All original release thresholds still apply.",
+  "release_allowed": false,
+  "references": [
+    "https://arxiv.org/abs/2203.05482"
+  ]
+}

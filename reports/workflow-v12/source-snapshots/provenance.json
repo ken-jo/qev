@@ -1,0 +1,23 @@
+[
+  {
+    "source": "scripts\\build_workflow_v12.py",
+    "snapshot": "reports\\workflow-v12\\source-snapshots\\build_workflow_v12.py.txt",
+    "sha256": "5433c424ad7d2bea710c398899840d4a43a3608a9b7529a6cd8cbbe7a32bc4ca",
+    "current_sha256": "fc0641726c18cf6182d540a00ee4a8ca27e5aa1a593ad42185f096b16f39f4d3",
+    "ast_equivalent": true
+  },
+  {
+    "source": "scripts\\prepare_workflow_retention.py",
+    "snapshot": "reports\\workflow-v12\\source-snapshots\\prepare_workflow_retention.py.txt",
+    "sha256": "d31759589cbeb1c771518e4ad4e981283845044e4f98b6ac34c4a0ec7a3e9015",
+    "current_sha256": "fe60be35e518686221993bebdb7ab59accf63bd2978e9530b82c0b11f685789a",
+    "ast_equivalent": true
+  },
+  {
+    "source": "scripts\\fetch_workflow_sources.py",
+    "snapshot": "reports\\workflow-v12\\source-snapshots\\fetch_workflow_sources.py.txt",
+    "sha256": "2bd929bac5eaa65c11d712ae8a2af111fcc8085573cd4e4b01d98f03a3931459",
+    "current_sha256": "2cccfc93ca719c2adf7483e16e2a1cd90e936ded26a69fc93f4d9b1a52f80fc1",
+    "ast_equivalent": true
+  }
+]

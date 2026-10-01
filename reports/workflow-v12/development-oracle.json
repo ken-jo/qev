@@ -1,0 +1,196 @@
+{
+  "scope": "Development annotation-aware ideal reference; not achieved model performance",
+  "limitations": "Hard-label agreement is assumed perfect, including teacher labels. Soft targets follow the stated conditional-independence and sensor/prior assumptions. This neither proves these targets describe real business frequencies nor fits a deployable policy. Fixed-count risk points can break ideal-confidence ties; maximum coverage respects complete confidence ties.",
+  "records_sha256": "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571",
+  "source_sha256": "91fd2b86b96a69814dff9b17fb066533f9692687d454ac0fcd04abf80fd07309",
+  "calibration_or_final_used": false,
+  "deployed_policy_changed": false,
+  "overall": {
+    "questions": 3312,
+    "groups": 1932,
+    "hard_annotation_questions": 3012,
+    "known_conditional_questions": 300,
+    "maximum_ideal_coverage_at_15pct_error": 1.0,
+    "ideal_risk_at_coverage": {
+      "0.5": 0.0,
+      "0.6": 0.0,
+      "0.8": 0.0,
+      "1.0": 0.02018071203200483
+    }
+  },
+  "by_type": {
+    "choice": {
+      "questions": 2092,
+      "groups": 1932,
+      "hard_annotation_questions": 1992,
+      "known_conditional_questions": 100,
+      "maximum_ideal_coverage_at_15pct_error": 1.0,
+      "ideal_risk_at_coverage": {
+        "0.5": 0.0,
+        "0.6": 0.0,
+        "0.8": 0.0,
+        "1.0": 0.011686423776814479
+      }
+    },
+    "noul": {
+      "questions": 580,
+      "groups": 420,
+      "hard_annotation_questions": 480,
+      "known_conditional_questions": 100,
+      "maximum_ideal_coverage_at_15pct_error": 1.0,
+      "ideal_risk_at_coverage": {
+        "0.5": 0.0,
+        "0.6": 0.0,
+        "0.8": 0.0,
+        "1.0": 0.03319235403873406
+      }
+    },
+    "score": {
+      "questions": 640,
+      "groups": 420,
+      "hard_annotation_questions": 540,
+      "known_conditional_questions": 100,
+      "maximum_ideal_coverage_at_15pct_error": 1.0,
+      "ideal_risk_at_coverage": {
+        "0.5": 0.0,
+        "0.6": 0.0,
+        "0.8": 0.0,
+        "1.0": 0.03615461619755993
+      }
+    }
+  },
+  "by_domain": {
+    "photo_guard": {
+      "questions": 600,
+      "groups": 600,
+      "hard_annotation_questions": 600,
+      "known_conditional_questions": 0,
+      "maximum_ideal_coverage_at_15pct_error": 1.0,
+      "ideal_risk_at_coverage": {
+        "0.5": 0.0,
+        "0.6": 0.0,
+        "0.8": 0.0,
+        "1.0": 0.0
+      }
+    },
+    "text_intent": {
+      "questions": 462,
+      "groups": 462,
+      "hard_annotation_questions": 462,
+      "known_conditional_questions": 0,
+      "maximum_ideal_coverage_at_15pct_error": 1.0,
+      "ideal_risk_at_coverage": {
+        "0.5": 0.0,
+        "0.6": 0.0,
+        "0.8": 0.0,
+        "1.0": 0.0
+      }
+    },
+    "text_nli": {
+      "questions": 450,
+      "groups": 450,
+      "hard_annotation_questions": 450,
+      "known_conditional_questions": 0,
+      "maximum_ideal_coverage_at_15pct_error": 1.0,
+      "ideal_risk_at_coverage": {
+        "0.5": 0.0,
+        "0.6": 0.0,
+        "0.8": 0.0,
+        "1.0": 0.0
+      }
+    },
+    "uncertainty": {
+      "questions": 300,
+      "groups": 300,
+      "hard_annotation_questions": 0,
+      "known_conditional_questions": 300,
+      "maximum_ideal_coverage_at_15pct_error": 0.6833333333333333,
+      "ideal_risk_at_coverage": {
+        "0.5": 0.10342228196347031,
+        "0.6": 0.12039856830289192,
+        "0.8": 0.1697856428938356,
+        "1.0": 0.2227950608333333
+      }
+    },
+    "workflow_known": {
+      "questions": 600,
+      "groups": 120,
+      "hard_annotation_questions": 600,
+      "known_conditional_questions": 0,
+      "maximum_ideal_coverage_at_15pct_error": 1.0,
+      "ideal_risk_at_coverage": {
+        "0.5": 0.0,
+        "0.6": 0.0,
+        "0.8": 0.0,
+        "1.0": 0.0
+      }
+    },
+    "workflow_new": {
+      "questions": 900,
+      "groups": 300,
+      "hard_annotation_questions": 900,
+      "known_conditional_questions": 0,
+      "maximum_ideal_coverage_at_15pct_error": 1.0,
+      "ideal_risk_at_coverage": {
+        "0.5": 0.0,
+        "0.6": 0.0,
+        "0.8": 0.0,
+        "1.0": 0.0
+      }
+    }
+  },
+  "by_condition": {
+    "conflicting": {
+      "questions": 100,
+      "groups": 100,
+      "hard_annotation_questions": 0,
+      "known_conditional_questions": 100,
+      "maximum_ideal_coverage_at_15pct_error": 0.0,
+      "ideal_risk_at_coverage": {
+        "0.5": 0.1784005139726027,
+        "0.6": 0.20530444657534244,
+        "0.8": 0.2418584719178082,
+        "1.0": 0.2881885575
+      }
+    },
+    "missing": {
+      "questions": 100,
+      "groups": 100,
+      "hard_annotation_questions": 0,
+      "known_conditional_questions": 100,
+      "maximum_ideal_coverage_at_15pct_error": 0.0,
+      "ideal_risk_at_coverage": {
+        "0.5": 0.18568399999999996,
+        "0.6": 0.21281,
+        "0.8": 0.24735749999999998,
+        "1.0": 0.29357975
+      }
+    },
+    "none": {
+      "questions": 3012,
+      "groups": 1932,
+      "hard_annotation_questions": 3012,
+      "known_conditional_questions": 0,
+      "maximum_ideal_coverage_at_15pct_error": 1.0,
+      "ideal_risk_at_coverage": {
+        "0.5": 0.0,
+        "0.6": 0.0,
+        "0.8": 0.0,
+        "1.0": 0.0
+      }
+    },
+    "shifted_prior": {
+      "questions": 100,
+      "groups": 100,
+      "hard_annotation_questions": 0,
+      "known_conditional_questions": 100,
+      "maximum_ideal_coverage_at_15pct_error": 1.0,
+      "ideal_risk_at_coverage": {
+        "0.5": 0.047246000000000024,
+        "0.6": 0.05571291666666668,
+        "0.8": 0.06678468750000001,
+        "1.0": 0.08661687500000001
+      }
+    }
+  }
+}

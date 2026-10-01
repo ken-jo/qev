@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "records_sha256": "92dd176e5d5c4fc057f2ec86fc5f877c571549559179491180382f40991c08f7",
+  "calibration_design_sha256": "c53f8f687a5263931db93bc3d9ba13f4124eae7a2118486e3c7c353b1417fc8d",
+  "excluded_record_files": {
+    "data/workflow-v12b/records.jsonl": "e3c3c10301f6c34561cd5281713152b3df4df0d093738c078b3d4fddde2196fb",
+    "data/workflow-v12c/records.jsonl": "7449ca694bc88e20fed7b1389cb659191f5af088226ef609fac753589056ad07",
+    "data/workflow-v12d/records.jsonl": "f6cf512f9fe2f386adec99be7647677bec68afc8708f1236c5130fb257be9391",
+    "data/workflow-v12e/records.jsonl": "632af2eb5ecd6cc73c868d4043c0ea6d7fbb3ae2a9c8e10b84da878d5655c17d",
+    "data/workflow-v12f/records.jsonl": "c057956998e948ab22cfceb969f7711bedada963372b31e5d45089bbb71fbf46"
+  },
+  "source_sha256": "9c46ec53c00e12673baf428df8bc2429b62e9f5d0f0703aa0b0e6483abd071fc",
+  "primitive_parser_sha256": "db5f21b92c9e36e2592a1421b343d3341c79b4d8a9056f96de7ddc170a7c2a2f",
+  "fresh_policy_targets_recomputed": 2040,
+  "maximum_target_absolute_error": 1.1102230246251565e-16,
+  "fresh_calibration_domain_counts": {
+    "workflow_new": 1080,
+    "uncertainty": 360,
+    "workflow_known": 600,
+    "text_nli": 150,
+    "text_intent": 154,
+    "photo_guard": 300
+  },
+  "preserved_subset_sha256": {
+    "train": "db7805a63da4dd319ac2ffb22368adfbc8ae49c62db9543c12d89a354770f4ff",
+    "dev": "a24385540a89b3d6d9e5cfed11cb10d882b69437704713f309a54e4ab1e7e90c",
+    "test": "4d153723f0745bc98f6e13697182e2560277c382d0f1e8dd945f23e45834f145"
+  },
+  "previous_group_overlap": 0,
+  "model_inference_used": false,
+  "scope": "Rendered rule targets independently parsed; public hard labels retain their source provenance. This does not validate empirical business frequencies."
+}

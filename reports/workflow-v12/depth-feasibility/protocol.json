@@ -1,0 +1,13 @@
+{
+  "started_at_utc": "2026-09-30T13:20:23.547902+00:00",
+  "configuration_sha256": "0108ef7678770b5ddf7163c5d5c7da88c95d16cbbfd6ef8821d1b0a8a405b44e",
+  "source_sha256": {
+    "C:\\tmp\\veyra\\scripts\\probe_workflow_depth.py": "6e6a2c6ab2ed401931430559faa23d5cde19578b234916666e034e6f0ddef044",
+    "scripts\\workflow_depth_common.py": "3012e4653b7ff66e82ecfce8c7bf5c842bfa2c6143eee58ec2c0cd48cc50ae8a",
+    "scripts\\workflow_skill_common.py": "e3b726d2074292c391b796cbc525c811de494bb941769a121005f595b6cf6991",
+    "src\\veyra\\option_model.py": "ac15e6e55108fc8ef69b57268bf004c6756305e21293d2a9683dfde9f6e79b48",
+    "src\\veyra\\proper_learning.py": "edcf97fed0c15b1e0219429a41963c27e6baae3890906d3c4a6829f51b3855a0"
+  },
+  "learning_rate": 0.0,
+  "calibration_or_final_used": false
+}

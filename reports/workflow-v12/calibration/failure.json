@@ -1,0 +1,17 @@
+{
+  "release_allowed": false,
+  "stage": "calibration_failed",
+  "failed_types": [
+    "score",
+    "noul"
+  ],
+  "source_files": {
+    "runs\\workflow-v12-evaluation\\calibration\\evaluation.json": "051c41d983fb896ae5f831e4ccea58fb1c85de768aaab6c4f8fa78ed9d0d24b5",
+    "runs\\workflow-v12-evaluation\\calibration\\protocol.json": "a65c189b6796b29d522f7a3f628bc881e52b9911dfb4df88d119b61333d9d816",
+    "runs\\workflow-v12-calibration-diagnosis.json": "7f241fd16a5a4fd4095d7927ffe13bc459c08b4b0e68afc63cee6b9694134236"
+  },
+  "final_freeze_created": false,
+  "baseline_final_predictions_created": false,
+  "candidate_final_predictions_created": false,
+  "next_step": "Separate primitive-workspace continuation study with matched control and unchanged release criteria. Fresh calibration is required before a follow-up deployed policy is fitted."
+}

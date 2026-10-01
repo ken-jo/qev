@@ -1,0 +1,101 @@
+{
+  "scope": "Unmerged cached features; development diagnosis, not final release evidence",
+  "source_sha256": "a15b03dd1af7e3a9eac15b422cc3faea8f92e05da316f7bc3ccc6d326513bb73",
+  "calibration_or_final_used": false,
+  "deployed_policy_changed": false,
+  "candidates": [
+    {
+      "method": "rloo",
+      "checkpoint": "runs\\workflow-v12-head\\rloo-131\\checkpoint",
+      "weights_sha256": "8bea91f594aabcf35e3e9f517365ed5d1768956b8064620696d040a6e57a1679",
+      "by_type": {
+        "choice": {
+          "questions": 2092,
+          "new_workflow_accuracy": 0.4266666769981384,
+          "risk_at_60pct_coverage": 0.06294820457696915,
+          "maximum_coverage_at_15pct_error": 0.8369980879541109
+        },
+        "score": {
+          "questions": 640,
+          "new_workflow_accuracy": 0.5099999904632568,
+          "risk_at_60pct_coverage": 0.3738660514354706,
+          "maximum_coverage_at_15pct_error": 0.0
+        },
+        "noul": {
+          "questions": 580,
+          "new_workflow_accuracy": 0.653333306312561,
+          "risk_at_60pct_coverage": 0.21435345709323883,
+          "maximum_coverage_at_15pct_error": 0.06896551724137931
+        }
+      }
+    },
+    {
+      "method": "rloo-consistency-0.25",
+      "checkpoint": "runs\\workflow-v12-consistency-pilot\\rloo-consistency-0.25-131\\checkpoint",
+      "weights_sha256": "7bbf8debb70c2b32d97df980d51724ced0ad5cc5adff2e4ac3236eb093fe9aa4",
+      "by_type": {
+        "choice": {
+          "questions": 2092,
+          "new_workflow_accuracy": 0.4933333396911621,
+          "risk_at_60pct_coverage": 0.06368191540241241,
+          "maximum_coverage_at_15pct_error": 0.8685468451242829
+        },
+        "score": {
+          "questions": 640,
+          "new_workflow_accuracy": 0.5400000214576721,
+          "risk_at_60pct_coverage": 0.3680683672428131,
+          "maximum_coverage_at_15pct_error": 0.0
+        },
+        "noul": {
+          "questions": 580,
+          "new_workflow_accuracy": 0.6633333563804626,
+          "risk_at_60pct_coverage": 0.22173850238323212,
+          "maximum_coverage_at_15pct_error": 0.08620689655172414
+        }
+      }
+    },
+    {
+      "method": "rloo-facts-0.25",
+      "checkpoint": "runs\\workflow-v12-facts-pilot\\rloo-facts-0.25-131\\checkpoint",
+      "weights_sha256": "71a4f3e470ad8b34028bb9867c9cee25570a811cedbd79dacafb57737de1f528",
+      "by_type": {
+        "choice": {
+          "questions": 2092,
+          "new_workflow_accuracy": 0.47333332896232605,
+          "risk_at_60pct_coverage": 0.06527553498744965,
+          "maximum_coverage_at_15pct_error": 0.8589866156787763
+        },
+        "score": {
+          "questions": 640,
+          "new_workflow_accuracy": 0.550000011920929,
+          "risk_at_60pct_coverage": 0.3713126480579376,
+          "maximum_coverage_at_15pct_error": 0.0
+        },
+        "noul": {
+          "questions": 580,
+          "new_workflow_accuracy": 0.6600000262260437,
+          "risk_at_60pct_coverage": 0.22266966104507446,
+          "maximum_coverage_at_15pct_error": 0.06551724137931035
+        }
+      },
+      "auxiliary_condition_diagnosis": {
+        "train": {
+          "questions": 3840,
+          "condition_probability_mse": 0.20153193175792694,
+          "constant_half_mse": 0.22650699317455292,
+          "training_marginal_mse": 0.21649236977100372,
+          "observed_condition_accuracy": 0.6331068277359009,
+          "training_marginal_observed_accuracy": 0.6036133170127869
+        },
+        "dev": {
+          "questions": 1200,
+          "condition_probability_mse": 0.21721141040325165,
+          "constant_half_mse": 0.22721754014492035,
+          "training_marginal_mse": 0.23304718732833862,
+          "observed_condition_accuracy": 0.5398622155189514,
+          "training_marginal_observed_accuracy": 0.5155019760131836
+        }
+      }
+    }
+  ]
+}

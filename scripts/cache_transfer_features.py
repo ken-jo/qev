@@ -1,0 +1,173 @@
+"""Extract only training/development representations from the unchanged release."""
+
+import argparse
+import hashlib
+import json
+import time
+from collections import Counter
+from pathlib import Path
+
+import torch
+from safetensors.torch import save_file
+
+from veyra.candidates import candidates_for
+from veyra.constants import QUESTION_TYPES
+from veyra.data import read_records
+from veyra.option_model import OptionModel
+
+
+def digest(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+@torch.inference_mode()
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--records", type=Path, required=True)
+    parser.add_argument("--checkpoint", type=Path, required=True)
+    parser.add_argument("--output", type=Path, required=True)
+    args = parser.parse_args()
+    if args.output.exists() and any(args.output.iterdir()):
+        raise FileExistsError("feature output must be empty")
+    args.output.mkdir(parents=True, exist_ok=True)
+    records = [r for r in read_records(args.records) if r.split in {"train", "dev"}]
+    if not records or any(len(r.request.questions) != 1 for r in records):
+        raise ValueError("require independent single-question training/development records")
+    specification = {
+        "records_sha256": digest(args.records),
+        "parent_weights_sha256": digest(args.checkpoint / "head.safetensors"),
+        "parent_manifest_sha256": digest(args.checkpoint / "manifest.json"),
+        "script_sha256": digest(Path(__file__)),
+        "option_model_sha256": digest(Path("src/veyra/option_model.py")),
+        "calibration_or_final_encoded": False,
+        "items": len(records),
+    }
+    (args.output / "specification.json").write_text(
+        json.dumps(specification, indent=2) + "\n", encoding="utf-8", newline="\n"
+    )
+    model = OptionModel.load(args.checkpoint, local_files_only=True, merge=True)
+    collected = {
+        key: []
+        for key in (
+            "states",
+            "condition_logits",
+            "parent_logits",
+            "targets",
+            "valid",
+            "gold",
+            "types",
+        )
+    }
+    metadata = []
+    positions_by_record = {}
+    started = time.perf_counter()
+    for index, record in enumerate(records):
+        hidden, mappings, _, condition_hidden = model.encode(
+            record.request, args.records.parent, capture_condition=True
+        )
+        conditions = model.condition_readout(condition_hidden)
+        parent = model.readout(hidden) + model.binding_head(hidden, conditions)
+        name, question = next(iter(record.request.questions.items()))
+        positions_by_record[record.id] = {
+            candidate.key: position
+            for candidate, position in zip(candidates_for(question), mappings[name], strict=True)
+        }
+        target, valid = torch.zeros(16), torch.zeros(16, dtype=torch.bool)
+        gold_tags = [
+            tag.removeprefix("gold_key:") for tag in record.tags if tag.startswith("gold_key:")
+        ]
+        gold_position = -1
+        for candidate, position in zip(candidates_for(question), mappings[name], strict=True):
+            target[position] = record.targets[name][candidate.key]
+            valid[position] = True
+            if gold_tags and candidate.key == gold_tags[0]:
+                gold_position = position
+        domains = [tag.removeprefix("domain:") for tag in record.tags if tag.startswith("domain:")]
+        if len(domains) != 1 or len(gold_tags) > 1:
+            raise ValueError("one domain and at most one gold label are required")
+        collected["states"].append(hidden[0].cpu())
+        collected["condition_logits"].append(conditions[0].cpu())
+        collected["parent_logits"].append(parent[0].cpu())
+        collected["targets"].append(target)
+        collected["valid"].append(valid)
+        collected["gold"].append(torch.tensor(gold_position, dtype=torch.long))
+        collected["types"].append(
+            torch.tensor(QUESTION_TYPES.index(question.type), dtype=torch.long)
+        )
+        metadata.append(
+            {
+                "id": record.id,
+                "group": record.group_id,
+                "split": record.split,
+                "domain": domains[0],
+                "family": record.family,
+                "type": question.type,
+                "question": name,
+                "tags": record.tags,
+            }
+        )
+        if (index + 1) % 200 == 0 or index + 1 == len(records):
+            progress = {
+                "encoded": index + 1,
+                "total": len(records),
+                "elapsed_seconds": time.perf_counter() - started,
+            }
+            (args.output / "progress.json").write_text(json.dumps(progress), encoding="utf-8")
+            print(json.dumps(progress), flush=True)
+    row_indices = {row["id"]: i for i, row in enumerate(metadata)}
+    for row, record in zip(metadata, records, strict=True):
+        references = [
+            t.removeprefix("transport_from:")
+            for t in record.tags
+            if t.startswith("transport_from:")
+        ]
+        maps = [
+            t.removeprefix("transport_map:") for t in record.tags if t.startswith("transport_map:")
+        ]
+        if references:
+            reference = references[0]
+            if len(references) != 1 or len(maps) != 1 or reference not in row_indices:
+                raise ValueError("incomplete probability transport relation")
+            parent_index = row_indices[reference]
+            if (
+                metadata[parent_index]["split"] != row["split"]
+                or metadata[parent_index]["group"] != row["group"]
+            ):
+                raise ValueError("probability relation crosses observation groups or splits")
+            mapping = [-1] * 16
+            for parent_key, child_key in json.loads(maps[0]).items():
+                mapping[positions_by_record[reference][parent_key]] = positions_by_record[
+                    record.id
+                ][child_key]
+            pushed = torch.zeros(16)
+            for source_position, target_position in enumerate(mapping):
+                if target_position >= 0:
+                    pushed[target_position] += collected["targets"][parent_index][source_position]
+            if not torch.allclose(pushed, collected["targets"][row_indices[row["id"]]], atol=1e-6):
+                raise ValueError("transport map contradicts the supervised target")
+            row["transport_parent"] = parent_index
+            row["transport_map"] = mapping
+    tensors = {key: torch.stack(values) for key, values in collected.items()}
+    if any(not torch.isfinite(value).all() for value in tensors.values()):
+        raise ValueError("nonfinite cached representation")
+    save_file(tensors, args.output / "features.safetensors")
+    (args.output / "records.json").write_text(
+        json.dumps(metadata, indent=2) + "\n", encoding="utf-8", newline="\n"
+    )
+    manifest = {
+        "complete": True,
+        "rows": len(metadata),
+        "by_split": dict(Counter(row["split"] for row in metadata)),
+        "features_sha256": digest(args.output / "features.safetensors"),
+        "metadata_sha256": digest(args.output / "records.json"),
+        "specification_sha256": digest(args.output / "specification.json"),
+        "elapsed_seconds": time.perf_counter() - started,
+    }
+    (args.output / "manifest.json").write_text(
+        json.dumps(manifest, indent=2) + "\n", encoding="utf-8", newline="\n"
+    )
+    print(json.dumps(manifest, indent=2), flush=True)
+
+
+if __name__ == "__main__":
+    main()

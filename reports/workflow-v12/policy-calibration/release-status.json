@@ -1,0 +1,9 @@
+{
+  "stage": "independent-policy-audit",
+  "status": "failed",
+  "updated_at_utc": "2026-09-30T21:32:59.287680+00:00",
+  "release_allowed": false,
+  "final_predictions_started": false,
+  "exit_code": 2,
+  "log": "runs\\workflow-v12-depth-policy-release\\independent-policy-audit.log"
+}

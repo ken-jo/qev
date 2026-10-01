@@ -1,0 +1,28 @@
+{
+  "completed": true,
+  "version": "0.3.0a3",
+  "selection_sha256": "97a1668aa3070c290da166c30b5bd71e316993a8b7db6e072d921a41060d4e19",
+  "source_sha256": "7afa98e2a45fd4181e9841122d724855246d654ea831a3216727d53d249e35c3",
+  "changed_files": {
+    "pyproject.toml": {
+      "before_sha256": "a7b91b6d42bf4f61092b78a43ca5e28635c3f3b09bf0f4d5d612f76778460cf2",
+      "after_sha256": "964aa581315cec3a6511ade9e196cecc624a16f15519b6a464c961eb6c5f5d13"
+    },
+    "uv.lock": {
+      "before_sha256": "d0c876e96af4271f473e31e2f7d563ff022524c2afe5a04944c73245f8c9a71e",
+      "after_sha256": "15d3974a7ffafb3c6046e8292bd11ee2bef2cc14c1ab4e633416c993d3cb2c7e"
+    },
+    "src\\veyra\\__init__.py": {
+      "before_sha256": "c01e8beb0de2c29e0b146c54ef669c46d583a3c1e7326b98faf5e35625d2a59c",
+      "after_sha256": "d03aea767fb63d3b02092daa23ad02d07324d48f745dc6a2dba1a2d1615033f4"
+    }
+  },
+  "policy_checks": {
+    "depth_study_provenance": true,
+    "cohort_policy_study_provenance": true,
+    "independent_policy_validation": true,
+    "previous_calibration_policy_regression": true
+  },
+  "model_weights_or_training_environment_changed": false,
+  "release_allowed": false
+}

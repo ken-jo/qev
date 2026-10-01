@@ -1,0 +1,13 @@
+{
+  "declared_at_utc": "2026-09-30T21:41:28.204091+00:00",
+  "study_sha256": "ee66ed106d54c72154ab30f4045f171b57b394b1281e4a31a91392ac6f7b7c01",
+  "failed_source": "scripts/build_cohort_calibration.py",
+  "failed_source_sha256": "6f51fd8cfc79a896d987d928e714d47f455e55b946e6d6b0e154dc5c9d7372cb",
+  "failure_report": "runs/workflow-v12-cohort-policy-data/combined-data-failure.json",
+  "failure_report_sha256": "9be00336c43424c63e6eb3567db34939fef8d99ad94bc107f230fc71e8c8dff4",
+  "replacement_source": "scripts/build_cohort_calibration_repair.py",
+  "replacement_source_sha256": "ee48872a523af347200a35d0fdc8e35158df6d76a38bcb20322a82a81d0b22ba",
+  "change": "Copy original non-calibration list before extending cohorts. Allow completion of byte-verified partial image hardlinks, but refuse completed record/protocol overwrite.",
+  "method_or_sampling_changed": false,
+  "cohort_policy_fitting_or_validation_predictions_observed": false
+}

@@ -1,0 +1,22 @@
+{
+  "purpose": "Zero-update execution, memory and gradient comparison before declaring full-depth learning.",
+  "declared_at_utc": "2026-09-30T13:34:44.289244+00:00",
+  "feasibility_config": "configs\\workflow-depth-feasibility-v12.json",
+  "feasibility_config_sha256": "0108ef7678770b5ddf7163c5d5c7da88c95d16cbbfd6ef8821d1b0a8a405b44e",
+  "seed": 211,
+  "strategies": [
+    "none",
+    "earlier12",
+    "all24"
+  ],
+  "allocator_memory_fraction": 0.85,
+  "warmups": 1,
+  "repeats": 3,
+  "logits_atol": 1e-05,
+  "gradient_atol": 1e-05,
+  "gradient_relative_l2_tolerance": 0.0001,
+  "learning_rate": 0.0,
+  "selection": "Smallest sum of per-case median measured training-step times among strategies completing all declared cases after parity checks.",
+  "calibration_or_final_used": false,
+  "release_allowed": false
+}

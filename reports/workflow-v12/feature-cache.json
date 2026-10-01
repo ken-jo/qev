@@ -1,0 +1,12 @@
+{
+  "complete": true,
+  "rows": 14524,
+  "by_split": {
+    "train": 11212,
+    "dev": 3312
+  },
+  "features_sha256": "10304d3889d09c01c55f05fcba6d48068daed7f1f9a3a56cbeda8a25c9c2aff3",
+  "metadata_sha256": "4a81e5c10d1425ccdd1141fe7bece83609404b6d2d1274a964c84d45a6ae6378",
+  "specification_sha256": "3ff0186b30e46416428ca6acf79640d4a8fac8940182095986429f894375c640",
+  "elapsed_seconds": 964.4121443999466
+}

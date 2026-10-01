@@ -1,0 +1,13 @@
+{
+  "fraction-0.25-development.json": "e3683755160f22606cf8adec436e6a3802eb34f7fb48bf4f5740844ee81e75a7",
+  "fraction-0.25-execution-equivalence.json": "1ed50371f7c18aa14282bbf07f74e8626de05ae09b2b36e36433bc0c44bc30a5",
+  "fraction-0.5-development.json": "2a05c8997dcffc746b34cce6544c6a9f81095297700deb2c80aa06acaaf24f49",
+  "fraction-0.5-execution-equivalence.json": "f3a672a2d859e852ebc08a479fac8ea409f3315624832da89f0ba9c7fdb4bcfb",
+  "fraction-1-development.json": "06dcee6fb6193d282b97083827c7e5e4fc068840aa9a78501173c9460b137e32",
+  "parameter-plan.json": "1b938af51226036d8f7f99d676bc6599c7fe5eb959e5d2ca35e3ae5d094def4b",
+  "passed-prior-failure.json": "fa46624a9ab2efac8612c047f3184f247e0bc40a29eaa616f0571c2ec7821c5c",
+  "protocol.json": "70b613e32b4905dcfd6cc1fcdb84debe1e022883d83886d306ae4a1316bfdeb5",
+  "selection.json": "56f4ddfd568afa57be5010b41b379ea19e879719ef6f127014fdf5f7c5186c02",
+  "training-complete.json": "bf4bdfce630a7af995e2f09ac906bd7a2c5611b3a2a9b0e6bbcf8973238b5d15",
+  "training-memory-probe.json": "d249ae6cdffc1d797149fc52e7ce30487397273dcef3a6410a7885b1d5c94706"
+}

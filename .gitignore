@@ -1,0 +1,41 @@
+# Python environments and generated files
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+
+# Credentials and local settings
+.env
+.env.*
+!.env.example
+*.local.json
+.vscode/
+.idea/
+
+# Local datasets, model weights, and experiment outputs
+/data/
+/datasets/
+/checkpoints/
+/runs/
+/outputs/
+/wandb/
+/logs/
+/.cache/
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.log
+
+# OS metadata
+.DS_Store
+Thumbs.db

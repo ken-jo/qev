@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "questions_checked": 16080,
+  "maximum_rendered_target_error": 2.220446049250313e-16,
+  "question_counts": {
+    "train/fact/score": 2569,
+    "train/fact/noul": 2562,
+    "train/fact/choice": 2549,
+    "train/rule/noul": 1568,
+    "train/rule/score": 1646,
+    "train/rule/choice": 1586,
+    "dev/fact/score": 803,
+    "dev/fact/noul": 818,
+    "dev/rule/noul": 412,
+    "dev/fact/choice": 779,
+    "dev/rule/score": 417,
+    "dev/rule/choice": 371
+  },
+  "original_groups_splits_families_preserved": true,
+  "canonical_targets_agree": true,
+  "calibration_or_final_used": false,
+  "model_inference_used": false,
+  "source_sha256": {
+    "C:\\tmp\\veyra\\scripts\\verify_workflow_skill_data.py": "38550be5adbd7a3913aebb367b66410a8254f3fdb4ec6d5ad919a047155274a8",
+    "scripts\\verify_workspace_calibration_data.py": "6f2b4ea2ad1c325d29feff88d5410e3f25e6eafaafda0937425714c442fa6191",
+    "src\\veyra\\workflow_facts.py": "db5f21b92c9e36e2592a1421b343d3341c79b4d8a9056f96de7ddc170a7c2a2f",
+    "scripts\\workflow_skill_common.py": "e3b726d2074292c391b796cbc525c811de494bb941769a121005f595b6cf6991"
+  },
+  "data_audit_sha256": "9696e22343eb3f395a69a8c8df9d5e88092afd94e378625ccc08ffca655e780a",
+  "scope": "Propositions and rubric direction re-parsed independently of builder annotations; primitive and Boolean parsers are shared with prior audited sources."
+}

@@ -1,0 +1,38 @@
+{
+  "documentation_only": true,
+  "recorded_at_utc": "2026-09-30T03:37:22.538241+00:00",
+  "reference_release": "v0.3.0-alpha.1",
+  "reference_source_commit": "856499c05c038e78b3a87db4c5b0745698b65d47",
+  "prepared_for_huggingface": true,
+  "published_to_huggingface": false,
+  "original_github_archive_modified": false,
+  "previous_checksums_sha256": "815e0819314bd8216887c7a82fa21bf8e954ab16df51c597029976636832b179",
+  "current_checksums_sha256": "177afde6dae2c28d2d86b72cc83856b53aec271270e4e645c9e5d623da0a5a76",
+  "previous_package_files": 38,
+  "current_package_files": 40,
+  "verified_checksummed_files": 39,
+  "added_files": [
+    "ROADMAP.ko.md",
+    "ROADMAP.md"
+  ],
+  "changed_checksummed_files": [
+    "README.md",
+    "reproducibility/build-environment.json"
+  ],
+  "removed_files": [],
+  "all_other_checksummed_files_unchanged": true,
+  "weights_sha256": "f13aa3346d7da369a2769eef7fa487747c97d1ba0878ea3af8f713463f463491",
+  "manifest_sha256": "dd4df10eba5880dc1bb0267502fe264eb1c5a730235619db9cd8cd74df87b1a9",
+  "wheel_sha256": "aeff4b5de2359e216e1fcde39b8dcd5ee65a0f73b2f26e7ea206227bb8167d20",
+  "prepare_source_sha256": "4ed592c16bbe6e53b23b41de3919c671f1a9df3afe9b0a0554f2d48130a879c8",
+  "model_card_sha256": "616c6ced1ed1333673056d13129e9437a5655bd90894eaab9327ad9066801855",
+  "source_model_card_sha256": "116b6b402fb8660e9ea9947f429f411f7d9887c75b8d92a04590e4a78fef0a51",
+  "roadmap_hashes": {
+    "ROADMAP.ko.md": "4ac2cb7122069bc79b3f37e2c162938ea2f8cd5317fb4bf6b1f3ccb0ecb220a4",
+    "ROADMAP.md": "7e55e395b41836f48b22fc1585b254614f53c75ff7d02c76a35ed49a394a280e"
+  },
+  "training_or_benchmark_rerun": false,
+  "inference_rerun": false,
+  "verification_scope": "Documentation and checksums rebuilt; model weights, calibration, runtime wheel, loader and evaluation reports are byte-identical to the original verified release. Prior inference and download reports refer to the original package, not this documentation revision.",
+  "roadmap_scope": "Planned complex workflows, uncertainty/abstention, and context/OCR/Korean extensions. Proposed acceptance criteria are not achieved performance."
+}

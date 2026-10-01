@@ -1,0 +1,333 @@
+{
+  "protocol": {
+    "arguments": {
+      "checkpoint": "checkpoints\\veyra-foundation-v11",
+      "records": "data\\foundation-v11-typed-regression\\records.jsonl",
+      "split": "test",
+      "output": "runs\\foundation-v11-evaluation\\typed-regression",
+      "calibrated_output": null,
+      "legacy_regression": false
+    },
+    "weights_sha256": "f13aa3346d7da369a2769eef7fa487747c97d1ba0878ea3af8f713463f463491",
+    "manifest_sha256": "dd4df10eba5880dc1bb0267502fe264eb1c5a730235619db9cd8cd74df87b1a9",
+    "records_sha256": "f9eaf3ec7848cc4a0e05f3fa2ae210aa8be65a80b7698f3d55c57dd541725b35",
+    "source_sha256": "b15fa72ced584e8421b6ad539fd8ee4edd6c69df10d67a7a7f1f844f4de0e2df",
+    "dependency_source_sha256": {
+      "src\\veyra\\decision_metrics.py": "ad5c922d756e5faf85877275885cfb0fdf3f84bf5915b3b4be6bba39b703a5bc",
+      "src\\veyra\\probability.py": "16b682045f37cc561b4fbbb6b9498d2669171cbc03f095dcb29586f27452eea5",
+      "src\\veyra\\option_model.py": "ac15e6e55108fc8ef69b57268bf004c6756305e21293d2a9683dfde9f6e79b48",
+      "src\\veyra\\calibrate.py": "f0950930e5b5e625419c2428c7180508d8b9fdd836c7ecb10a8b346cbbbfdb4a"
+    },
+    "subset_sha256": "026b87d3a705309defbcb1d483f794544eccc156a8086e992e94a1969268369c",
+    "metric": "All probability-argmax decisions, including abstained answers, against explicit hard gold; soft targets scored separately",
+    "merged_bf16_deployment": true
+  },
+  "overall": {
+    "questions": 2000,
+    "groups": 400,
+    "labeled_questions": 2000,
+    "correct": 937,
+    "accuracy": 0.4685,
+    "nll": 1.5945307193903355,
+    "brier_vs_soft": 0.3713434481645218,
+    "coverage": 0.9985,
+    "accepted_accuracy": 0.46920380570856285,
+    "score_mae": 0.7037758193762746,
+    "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+    "ece_15_bins": 0.2772592045018222,
+    "group_bootstrap_accuracy_95_ci": [
+      0.4425,
+      0.4935124999999999
+    ]
+  },
+  "by_domain": {
+    "agent_trace_observability": {
+      "questions": 500,
+      "groups": 100,
+      "labeled_questions": 500,
+      "correct": 173,
+      "accuracy": 0.346,
+      "nll": 2.1744598453152344,
+      "brier_vs_soft": 0.4949184628853893,
+      "coverage": 1.0,
+      "accepted_accuracy": 0.346,
+      "score_mae": 1.183314477729911,
+      "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+      "ece_15_bins": 0.38681748198392524,
+      "group_bootstrap_accuracy_95_ci": [
+        0.3,
+        0.394
+      ]
+    },
+    "customer_service": {
+      "questions": 500,
+      "groups": 100,
+      "labeled_questions": 500,
+      "correct": 290,
+      "accuracy": 0.58,
+      "nll": 1.4479576021021041,
+      "brier_vs_soft": 0.3144804679971943,
+      "coverage": 1.0,
+      "accepted_accuracy": 0.58,
+      "score_mae": 0.4450787051914454,
+      "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+      "ece_15_bins": 0.23891423275338633,
+      "group_bootstrap_accuracy_95_ci": [
+        0.54,
+        0.6180499999999998
+      ]
+    },
+    "invoice_processing": {
+      "questions": 500,
+      "groups": 100,
+      "labeled_questions": 500,
+      "correct": 211,
+      "accuracy": 0.422,
+      "nll": 1.3602608878155467,
+      "brier_vs_soft": 0.4215723127337923,
+      "coverage": 0.998,
+      "accepted_accuracy": 0.4228456913827655,
+      "score_mae": 0.7225609507630563,
+      "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+      "ece_15_bins": 0.27563016512580646,
+      "group_bootstrap_accuracy_95_ci": [
+        0.368,
+        0.476
+      ]
+    },
+    "security_incidents": {
+      "questions": 500,
+      "groups": 100,
+      "labeled_questions": 500,
+      "correct": 263,
+      "accuracy": 0.526,
+      "nll": 1.3954445423284565,
+      "brier_vs_soft": 0.2544025490417113,
+      "coverage": 0.996,
+      "accepted_accuracy": 0.5281124497991968,
+      "score_mae": 0.4641491438206863,
+      "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+      "ece_15_bins": 0.20852468965417664,
+      "group_bootstrap_accuracy_95_ci": [
+        0.484,
+        0.5680499999999997
+      ]
+    }
+  },
+  "by_modality": {
+    "text": {
+      "questions": 2000,
+      "groups": 400,
+      "labeled_questions": 2000,
+      "correct": 937,
+      "accuracy": 0.4685,
+      "nll": 1.5945307193903355,
+      "brier_vs_soft": 0.3713434481645218,
+      "coverage": 0.9985,
+      "accepted_accuracy": 0.46920380570856285,
+      "score_mae": 0.7037758193762746,
+      "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+      "ece_15_bins": 0.2772592045018222,
+      "group_bootstrap_accuracy_95_ci": [
+        0.4425,
+        0.4935124999999999
+      ]
+    }
+  },
+  "by_view": {
+    "legacy": {
+      "questions": 2000,
+      "groups": 400,
+      "labeled_questions": 2000,
+      "correct": 937,
+      "accuracy": 0.4685,
+      "nll": 1.5945307193903355,
+      "brier_vs_soft": 0.3713434481645218,
+      "coverage": 0.9985,
+      "accepted_accuracy": 0.46920380570856285,
+      "score_mae": 0.7037758193762746,
+      "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+      "ece_15_bins": 0.2772592045018222,
+      "group_bootstrap_accuracy_95_ci": [
+        0.4425,
+        0.4935124999999999
+      ]
+    }
+  },
+  "by_type": {
+    "choice": {
+      "questions": 600,
+      "groups": 400,
+      "labeled_questions": 600,
+      "correct": 284,
+      "accuracy": 0.47333333333333333,
+      "nll": 2.131594327677409,
+      "brier_vs_soft": 0.483255339881532,
+      "coverage": 1.0,
+      "accepted_accuracy": 0.47333333333333333,
+      "score_mae": null,
+      "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+      "ece_15_bins": 0.3643791946071902,
+      "group_bootstrap_accuracy_95_ci": [
+        0.43074260873979153,
+        0.5139174071582823
+      ]
+    },
+    "noul": {
+      "questions": 600,
+      "groups": 400,
+      "labeled_questions": 600,
+      "correct": 298,
+      "accuracy": 0.49666666666666665,
+      "nll": 0.8297742924187079,
+      "brier_vs_soft": 0.30019719643951914,
+      "coverage": 0.9966666666666667,
+      "accepted_accuracy": 0.4983277591973244,
+      "score_mae": null,
+      "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+      "ece_15_bins": 0.24738164819102415,
+      "group_bootstrap_accuracy_95_ci": [
+        0.4552830125783368,
+        0.5397657132738587
+      ]
+    },
+    "score": {
+      "questions": 800,
+      "groups": 400,
+      "labeled_questions": 800,
+      "correct": 355,
+      "accuracy": 0.44375,
+      "nll": 1.7653003334037516,
+      "brier_vs_soft": 0.34076921817051614,
+      "coverage": 0.99875,
+      "accepted_accuracy": 0.44430538172715894,
+      "score_mae": 0.7037758193762746,
+      "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+      "ece_15_bins": 0.23614222171150687,
+      "group_bootstrap_accuracy_95_ci": [
+        0.40875,
+        0.48
+      ]
+    }
+  },
+  "by_scope": {
+    "legacy_regression": {
+      "questions": 2000,
+      "groups": 400,
+      "labeled_questions": 2000,
+      "correct": 937,
+      "accuracy": 0.4685,
+      "nll": 1.5945307193903355,
+      "brier_vs_soft": 0.3713434481645218,
+      "coverage": 0.9985,
+      "accepted_accuracy": 0.46920380570856285,
+      "score_mae": 0.7037758193762746,
+      "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+      "ece_15_bins": 0.2772592045018222,
+      "group_bootstrap_accuracy_95_ci": [
+        0.4425,
+        0.4935124999999999
+      ]
+    }
+  },
+  "by_domain_view": {
+    "agent_trace_observability/legacy": {
+      "questions": 500,
+      "groups": 100,
+      "labeled_questions": 500,
+      "correct": 173,
+      "accuracy": 0.346,
+      "nll": 2.1744598453152344,
+      "brier_vs_soft": 0.4949184628853893,
+      "coverage": 1.0,
+      "accepted_accuracy": 0.346,
+      "score_mae": 1.183314477729911,
+      "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+      "ece_15_bins": 0.38681748198392524,
+      "group_bootstrap_accuracy_95_ci": [
+        0.3,
+        0.394
+      ]
+    },
+    "customer_service/legacy": {
+      "questions": 500,
+      "groups": 100,
+      "labeled_questions": 500,
+      "correct": 290,
+      "accuracy": 0.58,
+      "nll": 1.4479576021021041,
+      "brier_vs_soft": 0.3144804679971943,
+      "coverage": 1.0,
+      "accepted_accuracy": 0.58,
+      "score_mae": 0.4450787051914454,
+      "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+      "ece_15_bins": 0.23891423275338633,
+      "group_bootstrap_accuracy_95_ci": [
+        0.54,
+        0.6180499999999998
+      ]
+    },
+    "invoice_processing/legacy": {
+      "questions": 500,
+      "groups": 100,
+      "labeled_questions": 500,
+      "correct": 211,
+      "accuracy": 0.422,
+      "nll": 1.3602608878155467,
+      "brier_vs_soft": 0.4215723127337923,
+      "coverage": 0.998,
+      "accepted_accuracy": 0.4228456913827655,
+      "score_mae": 0.7225609507630563,
+      "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+      "ece_15_bins": 0.27563016512580646,
+      "group_bootstrap_accuracy_95_ci": [
+        0.368,
+        0.476
+      ]
+    },
+    "security_incidents/legacy": {
+      "questions": 500,
+      "groups": 100,
+      "labeled_questions": 500,
+      "correct": 263,
+      "accuracy": 0.526,
+      "nll": 1.3954445423284565,
+      "brier_vs_soft": 0.2544025490417113,
+      "coverage": 0.996,
+      "accepted_accuracy": 0.5281124497991968,
+      "score_mae": 0.4641491438206863,
+      "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+      "ece_15_bins": 0.20852468965417664,
+      "group_bootstrap_accuracy_95_ci": [
+        0.484,
+        0.5680499999999997
+      ]
+    }
+  },
+  "calibration": {
+    "temperatures": [
+      1.727825980507863,
+      2.0535250264571463,
+      2.2387211385683394
+    ],
+    "abstain_thresholds": [
+      0.3450687680642363,
+      0.3420299488502666,
+      0.5012738158432763
+    ],
+    "fitted_types": [
+      "choice",
+      "score",
+      "noul"
+    ],
+    "abstention_fitted_types": [
+      "choice",
+      "score",
+      "noul"
+    ],
+    "always_abstain_types": []
+  },
+  "fitting": null,
+  "predictions_sha256": "8a9a01ada186a74443b84dcae84c67d6c75a188fed681af1f76aed552311db7b",
+  "elapsed_seconds": 146.03095619997475
+}

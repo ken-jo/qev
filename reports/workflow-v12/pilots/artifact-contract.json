@@ -1,0 +1,25 @@
+{
+  "scope": "Static adapter/architecture comparison only; new-model latency and one-forward inference still require runtime validation",
+  "baseline_weights_sha256": "f13aa3346d7da369a2769eef7fa487747c97d1ba0878ea3af8f713463f463491",
+  "candidates": [
+    {
+      "method": "rloo-consistency-0.25",
+      "weights_sha256": "7bbf8debb70c2b32d97df980d51724ced0ad5cc5adff2e4ac3236eb093fe9aa4",
+      "keys_match": true,
+      "shapes_match": true,
+      "architecture_matches": true,
+      "parameters": 4084800,
+      "auxiliary_decoder_stored_in_model": false
+    },
+    {
+      "method": "rloo-facts-0.25",
+      "weights_sha256": "71a4f3e470ad8b34028bb9867c9cee25570a811cedbd79dacafb57737de1f528",
+      "keys_match": true,
+      "shapes_match": true,
+      "architecture_matches": true,
+      "parameters": 4084800,
+      "auxiliary_decoder_stored_in_model": false
+    }
+  ],
+  "passed": true
+}

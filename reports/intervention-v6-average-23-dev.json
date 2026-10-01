@@ -1,0 +1,6267 @@
+{
+  "split": "dev",
+  "architecture": "option_readout",
+  "accuracy_target": 0.9,
+  "accuracy_target_scope": "pre-abstention, each modality separately",
+  "calibration": {
+    "temperatures": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "abstain_thresholds": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "fitted_types": [],
+    "abstention_fitted_types": [],
+    "always_abstain_types": []
+  },
+  "dataset_sha256": "42deb625c5130fd5e3cd4cee2774282efaca3f8eaa5661f5d3ab85bf042bf91b",
+  "checkpoint_sha256": "8bea2f9b228ac539cc6836e866598c893acd383b019f3f06dcdfb1bb5d4ed37b",
+  "checkpoint_manifest_sha256": "cf86c890882ded58aca1103e063cdf51989f691463b9d2a118b9e7166cc6d44f",
+  "overall": {
+    "questions": 448,
+    "nll": 0.328166153400493,
+    "brier": 0.1535967976637415,
+    "expected_accuracy": 0.9084821428571429,
+    "hard_label_accuracy": 0.9084821428571429,
+    "hard_label_questions": 448,
+    "ece_10_bins": 0.0626495747308282,
+    "score_mae": 0.07938468820258755,
+    "coverage": 1.0,
+    "accepted_expected_accuracy": 0.9084821428571429,
+    "counterfactual_pairs": 224,
+    "both_correct_accuracy": 0.84375,
+    "group_bootstrap_expected_accuracy_95_ci": [
+      0.8772321428571429,
+      0.9352678571428571
+    ]
+  },
+  "raw_overall": {
+    "questions": 448,
+    "nll": 0.328166153400493,
+    "brier": 0.1535967976637415,
+    "expected_accuracy": 0.9084821428571429,
+    "hard_label_accuracy": 0.9084821428571429,
+    "hard_label_questions": 448,
+    "ece_10_bins": 0.0626495747308282,
+    "score_mae": 0.07938468820258755
+  },
+  "by_modality": {
+    "text": {
+      "questions": 256,
+      "nll": 0.31394794504078744,
+      "brier": 0.16375854160630676,
+      "expected_accuracy": 0.90625,
+      "hard_label_accuracy": 0.90625,
+      "hard_label_questions": 256,
+      "ece_10_bins": 0.06880702840972204,
+      "score_mae": 0.0920146750042602,
+      "coverage": 1.0,
+      "accepted_expected_accuracy": 0.90625,
+      "counterfactual_pairs": 128,
+      "both_correct_accuracy": 0.84375,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.86328125,
+        0.9453125
+      ]
+    },
+    "image": {
+      "questions": 192,
+      "nll": 0.347123764546767,
+      "brier": 0.1400478057403212,
+      "expected_accuracy": 0.9114583333333334,
+      "hard_label_accuracy": 0.9114583333333334,
+      "hard_label_questions": 192,
+      "ece_10_bins": 0.06648890492027837,
+      "score_mae": 0.06292743267313533,
+      "coverage": 1.0,
+      "accepted_expected_accuracy": 0.9114583333333334,
+      "counterfactual_pairs": 96,
+      "both_correct_accuracy": 0.84375,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.8697916666666666,
+        0.953125
+      ]
+    }
+  },
+  "by_family": {
+    "image_color_rule": {
+      "questions": 64,
+      "nll": 0.3962038268442627,
+      "brier": 0.15495022329344102,
+      "expected_accuracy": 0.90625,
+      "hard_label_accuracy": 0.90625,
+      "hard_label_questions": 64,
+      "ece_10_bins": 0.07605816519990993,
+      "score_mae": 0.1338331218570449,
+      "coverage": 1.0,
+      "accepted_expected_accuracy": 0.90625,
+      "counterfactual_pairs": 32,
+      "both_correct_accuracy": 0.8125,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.828125,
+        0.96875
+      ]
+    },
+    "image_count_rule": {
+      "questions": 64,
+      "nll": 0.4303326841500843,
+      "brier": 0.19214150774697983,
+      "expected_accuracy": 0.875,
+      "hard_label_accuracy": 0.875,
+      "hard_label_questions": 64,
+      "ece_10_bins": 0.10601789671033082,
+      "score_mae": 0.028721081294158513,
+      "coverage": 1.0,
+      "accepted_expected_accuracy": 0.875,
+      "counterfactual_pairs": 32,
+      "both_correct_accuracy": 0.78125,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.78125,
+        0.953125
+      ]
+    },
+    "image_shape_rule": {
+      "questions": 64,
+      "nll": 0.21483478264595413,
+      "brier": 0.07305168618054272,
+      "expected_accuracy": 0.953125,
+      "hard_label_accuracy": 0.953125,
+      "hard_label_questions": 64,
+      "ece_10_bins": 0.04096916133512315,
+      "score_mae": 0.026228094868202555,
+      "coverage": 1.0,
+      "accepted_expected_accuracy": 0.953125,
+      "counterfactual_pairs": 32,
+      "both_correct_accuracy": 0.9375,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.875,
+        1.0
+      ]
+    },
+    "text_conjunction": {
+      "questions": 64,
+      "nll": 0.30446384258278075,
+      "brier": 0.13073614933745067,
+      "expected_accuracy": 0.921875,
+      "hard_label_accuracy": 0.921875,
+      "hard_label_questions": 64,
+      "ece_10_bins": 0.06380390748707573,
+      "score_mae": 0.03585361341928006,
+      "coverage": 1.0,
+      "accepted_expected_accuracy": 0.921875,
+      "counterfactual_pairs": 32,
+      "both_correct_accuracy": 0.90625,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.828125,
+        1.0
+      ]
+    },
+    "text_disjunction": {
+      "questions": 64,
+      "nll": 0.386465914407651,
+      "brier": 0.21732955794189138,
+      "expected_accuracy": 0.875,
+      "hard_label_accuracy": 0.875,
+      "hard_label_questions": 64,
+      "ece_10_bins": 0.11495223813616515,
+      "score_mae": 0.06763121606477879,
+      "coverage": 1.0,
+      "accepted_expected_accuracy": 0.875,
+      "counterfactual_pairs": 32,
+      "both_correct_accuracy": 0.8125,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.765625,
+        0.96875
+      ]
+    },
+    "text_ranges": {
+      "questions": 64,
+      "nll": 0.44529611129349783,
+      "brier": 0.25021343208698316,
+      "expected_accuracy": 0.859375,
+      "hard_label_accuracy": 0.859375,
+      "hard_label_questions": 64,
+      "ece_10_bins": 0.1078250628446597,
+      "score_mae": 0.26157099430585756,
+      "coverage": 1.0,
+      "accepted_expected_accuracy": 0.859375,
+      "counterfactual_pairs": 32,
+      "both_correct_accuracy": 0.71875,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.78125,
+        0.9375
+      ]
+    },
+    "text_threshold": {
+      "questions": 64,
+      "nll": 0.11956591187922026,
+      "brier": 0.0567550270589018,
+      "expected_accuracy": 0.96875,
+      "hard_label_accuracy": 0.96875,
+      "hard_label_questions": 64,
+      "ece_10_bins": 0.0355850451065145,
+      "score_mae": 0.0007861981417169252,
+      "coverage": 1.0,
+      "accepted_expected_accuracy": 0.96875,
+      "counterfactual_pairs": 32,
+      "both_correct_accuracy": 0.9375,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.921875,
+        1.0
+      ]
+    }
+  },
+  "by_type": {
+    "choice": {
+      "questions": 152,
+      "nll": 0.3798147530985699,
+      "brier": 0.15965321914994923,
+      "expected_accuracy": 0.9078947368421053,
+      "hard_label_accuracy": 0.9078947368421053,
+      "hard_label_questions": 152,
+      "ece_10_bins": 0.07383463707337369,
+      "score_mae": null,
+      "coverage": 1.0,
+      "accepted_expected_accuracy": 0.9078947368421053,
+      "counterfactual_pairs": 76,
+      "both_correct_accuracy": 0.868421052631579,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.8486842105263158,
+        0.9605263157894737
+      ]
+    },
+    "score": {
+      "questions": 152,
+      "nll": 0.20977617916804722,
+      "brier": 0.10734500431537461,
+      "expected_accuracy": 0.9276315789473685,
+      "hard_label_accuracy": 0.9276315789473685,
+      "hard_label_questions": 152,
+      "ece_10_bins": 0.048519749858577085,
+      "score_mae": 0.07938468820258755,
+      "coverage": 1.0,
+      "accepted_expected_accuracy": 0.9276315789473685,
+      "counterfactual_pairs": 76,
+      "both_correct_accuracy": 0.8552631578947368,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.8881578947368421,
+        0.9671052631578947
+      ]
+    },
+    "noul": {
+      "questions": 144,
+      "nll": 0.39861538207566016,
+      "brier": 0.1960252457404651,
+      "expected_accuracy": 0.8888888888888888,
+      "hard_label_accuracy": 0.8888888888888888,
+      "hard_label_questions": 144,
+      "ece_10_bins": 0.08618241254251496,
+      "score_mae": null,
+      "coverage": 1.0,
+      "accepted_expected_accuracy": 0.8888888888888888,
+      "counterfactual_pairs": 72,
+      "both_correct_accuracy": 0.8055555555555556,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.8333333333333334,
+        0.9444444444444444
+      ]
+    }
+  },
+  "by_language": {
+    "en": {
+      "questions": 336,
+      "nll": 0.28372212698063093,
+      "brier": 0.1385942251517078,
+      "expected_accuracy": 0.9196428571428571,
+      "hard_label_accuracy": 0.9196428571428571,
+      "hard_label_questions": 336,
+      "ece_10_bins": 0.06153044107855369,
+      "score_mae": 0.053735538731362095,
+      "coverage": 1.0,
+      "accepted_expected_accuracy": 0.9196428571428571,
+      "counterfactual_pairs": 168,
+      "both_correct_accuracy": 0.8630952380952381,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.8839285714285714,
+        0.9494047619047619
+      ]
+    },
+    "ko": {
+      "questions": 112,
+      "nll": 0.4614982326600791,
+      "brier": 0.19860451519984262,
+      "expected_accuracy": 0.875,
+      "hard_label_accuracy": 0.875,
+      "hard_label_questions": 112,
+      "ece_10_bins": 0.09559877848004192,
+      "score_mae": 0.1620319476098696,
+      "coverage": 1.0,
+      "accepted_expected_accuracy": 0.875,
+      "counterfactual_pairs": 56,
+      "both_correct_accuracy": 0.7857142857142857,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.8125,
+        0.9375
+      ]
+    }
+  },
+  "by_tag": {
+    "numeric_boundary": {
+      "questions": 52,
+      "nll": 0.6353165393544227,
+      "brier": 0.2957932821107395,
+      "expected_accuracy": 0.8269230769230769,
+      "hard_label_accuracy": 0.8269230769230769,
+      "hard_label_questions": 52,
+      "ece_10_bins": 0.14493190993745073,
+      "score_mae": 0.2343230823178956,
+      "coverage": 1.0,
+      "accepted_expected_accuracy": 0.8269230769230769,
+      "counterfactual_pairs": 26,
+      "both_correct_accuracy": 0.7307692307692307,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.6923076923076923,
+        0.9423076923076923
+      ]
+    },
+    "image_text_conflict": {
+      "questions": 28,
+      "nll": 0.5955187352866594,
+      "brier": 0.29774723555878707,
+      "expected_accuracy": 0.7857142857142857,
+      "hard_label_accuracy": 0.7857142857142857,
+      "hard_label_questions": 28,
+      "ece_10_bins": 0.17760958179017095,
+      "score_mae": 0.09463711203679125,
+      "coverage": 1.0,
+      "accepted_expected_accuracy": 0.7857142857142857,
+      "counterfactual_pairs": 14,
+      "both_correct_accuracy": 0.6428571428571429,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.6071428571428571,
+        0.9285714285714286
+      ]
+    }
+  },
+  "fitting": null,
+  "predictions": [
+    {
+      "id": "policy-v3-20261002-dev-text-0-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-0",
+      "logits": [
+        24.4284610748291,
+        18.822628021240234
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-0-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-0",
+      "logits": [
+        24.771610260009766,
+        18.532127380371094
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-1-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-1",
+      "logits": [
+        17.508909225463867,
+        24.177017211914062
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-1-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-1",
+      "logits": [
+        24.268529891967773,
+        18.691984176635742
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-2-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-2",
+      "logits": [
+        19.911951065063477,
+        26.687864303588867
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-2-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-2",
+      "logits": [
+        24.261760711669922,
+        16.99639892578125
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-3-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-3",
+      "logits": [
+        18.98785972595215,
+        23.485942840576172,
+        24.919841766357422
+      ],
+      "targets": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-3-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-3",
+      "logits": [
+        24.507823944091797,
+        22.900346755981445,
+        18.317522048950195
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-4-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-4",
+      "logits": [
+        23.872352600097656,
+        15.532341003417969
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-4-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-4",
+      "logits": [
+        18.054136276245117,
+        25.532703399658203
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-5-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-5",
+      "logits": [
+        16.570417404174805,
+        23.14822006225586
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-5-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-5",
+      "logits": [
+        24.294872283935547,
+        17.549705505371094
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-6-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-6",
+      "logits": [
+        23.10363006591797,
+        22.043975830078125
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-6-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-6",
+      "logits": [
+        24.51381492614746,
+        20.316429138183594
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-7-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-7",
+      "logits": [
+        18.473155975341797,
+        17.23601531982422,
+        24.803955078125
+      ],
+      "targets": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-7-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-7",
+      "logits": [
+        23.54046630859375,
+        16.667207717895508,
+        21.701204299926758
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-8-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-8",
+      "logits": [
+        18.31290054321289,
+        23.273468017578125
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-8-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-8",
+      "logits": [
+        25.458724975585938,
+        17.606918334960938
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-9-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-9",
+      "logits": [
+        17.878273010253906,
+        25.958759307861328
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-9-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-9",
+      "logits": [
+        16.49167823791504,
+        27.519939422607422
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-10-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-10",
+      "logits": [
+        22.089672088623047,
+        23.65793228149414
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-10-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-10",
+      "logits": [
+        17.61780548095703,
+        23.942630767822266
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-11-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-11",
+      "logits": [
+        21.04924774169922,
+        24.107940673828125
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-11-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-11",
+      "logits": [
+        24.132909774780273,
+        20.814117431640625
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-12-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-12",
+      "logits": [
+        18.758947372436523,
+        23.23183822631836
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-12-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-12",
+      "logits": [
+        18.924306869506836,
+        24.47947883605957
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-13-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-13",
+      "logits": [
+        23.645477294921875,
+        15.290725708007812
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-13-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-13",
+      "logits": [
+        18.24607276916504,
+        26.1746768951416
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-14-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-14",
+      "logits": [
+        19.216665267944336,
+        25.555179595947266
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-14-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-14",
+      "logits": [
+        24.353130340576172,
+        20.97635269165039
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-15-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-15",
+      "logits": [
+        18.501977920532227,
+        18.36945343017578,
+        24.05158233642578
+      ],
+      "targets": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-15-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-15",
+      "logits": [
+        17.254291534423828,
+        23.88515853881836,
+        16.49846076965332
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-16-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-16",
+      "logits": [
+        24.798765182495117,
+        17.52292251586914
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-16-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-16",
+      "logits": [
+        18.14360809326172,
+        25.31515121459961
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-17-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-17",
+      "logits": [
+        20.183307647705078,
+        25.52499008178711
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-17-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-17",
+      "logits": [
+        24.264177322387695,
+        19.173086166381836
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-18-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-18",
+      "logits": [
+        24.716306686401367,
+        15.984691619873047
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-18-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-18",
+      "logits": [
+        16.626419067382812,
+        24.470842361450195
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-19-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-19",
+      "logits": [
+        24.844757080078125,
+        17.500713348388672,
+        17.250534057617188
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-19-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-19",
+      "logits": [
+        16.2261962890625,
+        24.194900512695312,
+        15.960223197937012
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-20-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-20",
+      "logits": [
+        21.278331756591797,
+        24.740550994873047
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-20-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-20",
+      "logits": [
+        24.20212173461914,
+        19.928924560546875
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-21-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-21",
+      "logits": [
+        15.394440650939941,
+        25.902341842651367
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-21-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-21",
+      "logits": [
+        26.0391845703125,
+        18.57558250427246
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-22-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-22",
+      "logits": [
+        23.428546905517578,
+        16.328298568725586
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-22-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-22",
+      "logits": [
+        19.41896629333496,
+        24.42544174194336
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-23-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-23",
+      "logits": [
+        21.041980743408203,
+        22.301794052124023
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-23-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-23",
+      "logits": [
+        23.478059768676758,
+        22.431140899658203
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-24-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-24",
+      "logits": [
+        24.695785522460938,
+        16.27615737915039
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-24-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-24",
+      "logits": [
+        25.983488082885742,
+        17.829444885253906
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-25-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-25",
+      "logits": [
+        18.388309478759766,
+        25.1306095123291
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-25-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-25",
+      "logits": [
+        24.68138313293457,
+        16.309005737304688
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-26-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-26",
+      "logits": [
+        21.617740631103516,
+        23.22093391418457
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-26-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-26",
+      "logits": [
+        20.190818786621094,
+        23.14996910095215
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-27-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-27",
+      "logits": [
+        24.610855102539062,
+        19.080612182617188,
+        18.070518493652344
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-27-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-27",
+      "logits": [
+        25.498023986816406,
+        19.779708862304688,
+        17.884109497070312
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-28-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-28",
+      "logits": [
+        18.26009750366211,
+        25.119468688964844
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-28-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-28",
+      "logits": [
+        25.071802139282227,
+        16.70852279663086
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-29-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-29",
+      "logits": [
+        16.117525100708008,
+        23.475200653076172
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-29-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-29",
+      "logits": [
+        25.22917938232422,
+        17.2431583404541
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-30-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-30",
+      "logits": [
+        23.44287872314453,
+        17.496356964111328
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-30-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-30",
+      "logits": [
+        24.29537010192871,
+        18.53956413269043
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-31-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-31",
+      "logits": [
+        20.06622314453125,
+        24.048603057861328,
+        23.561439514160156
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-31-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-31",
+      "logits": [
+        20.359100341796875,
+        18.63798713684082,
+        24.353832244873047
+      ],
+      "targets": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-32-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-32",
+      "logits": [
+        20.522136688232422,
+        24.914600372314453
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-32-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-32",
+      "logits": [
+        24.306623458862305,
+        20.425922393798828
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-33-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-33",
+      "logits": [
+        25.385635375976562,
+        15.98143196105957
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-33-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-33",
+      "logits": [
+        17.4583797454834,
+        25.926883697509766
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-34-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-34",
+      "logits": [
+        23.609649658203125,
+        18.16115379333496
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-34-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-34",
+      "logits": [
+        16.907001495361328,
+        23.06722640991211
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-35-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-35",
+      "logits": [
+        20.961496353149414,
+        23.422082901000977
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-35-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-35",
+      "logits": [
+        23.242923736572266,
+        21.535236358642578
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-36-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-36",
+      "logits": [
+        18.29387855529785,
+        24.368453979492188
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-36-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-36",
+      "logits": [
+        23.735416412353516,
+        22.509592056274414
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-37-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-37",
+      "logits": [
+        23.65998077392578,
+        15.20032024383545
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-37-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-37",
+      "logits": [
+        17.47184181213379,
+        24.448135375976562
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-38-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-38",
+      "logits": [
+        24.76892852783203,
+        19.56682586669922
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-38-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-38",
+      "logits": [
+        20.222492218017578,
+        23.520414352416992
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-39-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-39",
+      "logits": [
+        23.803852081298828,
+        17.654937744140625,
+        18.358720779418945
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-39-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-39",
+      "logits": [
+        23.785791397094727,
+        18.814605712890625,
+        17.640615463256836
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-40-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-40",
+      "logits": [
+        24.59735870361328,
+        16.683856964111328
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-40-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-40",
+      "logits": [
+        18.237247467041016,
+        25.33000946044922
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-41-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-41",
+      "logits": [
+        17.90196418762207,
+        23.18376350402832
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-41-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-41",
+      "logits": [
+        25.841934204101562,
+        17.776521682739258
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-42-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-42",
+      "logits": [
+        15.529275894165039,
+        25.26788330078125
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-42-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-42",
+      "logits": [
+        26.119218826293945,
+        17.131853103637695
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-43-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-43",
+      "logits": [
+        17.964290618896484,
+        18.4412841796875,
+        24.86383819580078
+      ],
+      "targets": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-43-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-43",
+      "logits": [
+        24.546463012695312,
+        16.564006805419922,
+        17.956096649169922
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-44-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-44",
+      "logits": [
+        19.794391632080078,
+        25.83026885986328
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-44-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-44",
+      "logits": [
+        24.11695671081543,
+        22.011234283447266
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-45-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-45",
+      "logits": [
+        24.72357940673828,
+        19.006200790405273
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-45-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-45",
+      "logits": [
+        24.003074645996094,
+        19.295509338378906
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-46-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-46",
+      "logits": [
+        24.764196395874023,
+        15.023824691772461
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-46-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-46",
+      "logits": [
+        17.253646850585938,
+        25.99732780456543
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-47-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-47",
+      "logits": [
+        22.497379302978516,
+        21.479284286499023
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-47-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-47",
+      "logits": [
+        23.94835662841797,
+        20.548259735107422
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-48-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-48",
+      "logits": [
+        17.113996505737305,
+        24.72170639038086
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-48-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-48",
+      "logits": [
+        17.38574981689453,
+        24.71882438659668
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-49-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-49",
+      "logits": [
+        22.973594665527344,
+        23.451126098632812
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-49-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-49",
+      "logits": [
+        21.54035186767578,
+        23.41507339477539
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-50-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-50",
+      "logits": [
+        20.342145919799805,
+        26.17154884338379
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-50-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-50",
+      "logits": [
+        22.819692611694336,
+        23.079744338989258
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-51-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-51",
+      "logits": [
+        25.514244079589844,
+        19.87351417541504,
+        17.7110538482666
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-51-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-51",
+      "logits": [
+        24.728309631347656,
+        18.149539947509766,
+        16.78595542907715
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-52-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-52",
+      "logits": [
+        18.454851150512695,
+        25.690067291259766
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-52-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-52",
+      "logits": [
+        24.613174438476562,
+        15.934435844421387
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-53-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-53",
+      "logits": [
+        19.801666259765625,
+        24.344173431396484
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-53-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-53",
+      "logits": [
+        23.692401885986328,
+        20.775714874267578
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-54-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-54",
+      "logits": [
+        25.128719329833984,
+        15.913127899169922
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-54-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-54",
+      "logits": [
+        18.705690383911133,
+        25.41578483581543
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-55-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-55",
+      "logits": [
+        24.92061996459961,
+        17.578826904296875,
+        18.611474990844727
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-55-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-55",
+      "logits": [
+        18.5929012298584,
+        19.249378204345703,
+        24.1702880859375
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-56-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-56",
+      "logits": [
+        19.520151138305664,
+        26.019302368164062
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-56-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-56",
+      "logits": [
+        25.151113510131836,
+        19.526594161987305
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-57-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-57",
+      "logits": [
+        25.336727142333984,
+        18.30965805053711
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-57-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-57",
+      "logits": [
+        26.122329711914062,
+        16.406749725341797
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-58-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-58",
+      "logits": [
+        18.737834930419922,
+        24.668378829956055
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-58-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-58",
+      "logits": [
+        24.18792152404785,
+        15.645322799682617
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-59-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-59",
+      "logits": [
+        22.633052825927734,
+        21.064929962158203
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-59-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-59",
+      "logits": [
+        23.380393981933594,
+        20.635677337646484
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-60-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-60",
+      "logits": [
+        25.87071990966797,
+        17.814407348632812
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-60-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-60",
+      "logits": [
+        16.53758430480957,
+        25.490049362182617
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-61-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-61",
+      "logits": [
+        17.96353530883789,
+        24.587472915649414
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-61-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-61",
+      "logits": [
+        23.8667049407959,
+        16.19834327697754
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-62-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-62",
+      "logits": [
+        18.837968826293945,
+        24.854948043823242
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-62-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-62",
+      "logits": [
+        22.364917755126953,
+        21.761547088623047
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-63-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-63",
+      "logits": [
+        24.903732299804688,
+        18.064172744750977,
+        18.498714447021484
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-63-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-63",
+      "logits": [
+        16.945138931274414,
+        23.822256088256836,
+        16.120319366455078
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-64-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-64",
+      "logits": [
+        25.38649559020996,
+        17.65234375
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-64-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-64",
+      "logits": [
+        16.91014862060547,
+        24.418277740478516
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-65-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-65",
+      "logits": [
+        24.932350158691406,
+        19.549457550048828
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-65-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-65",
+      "logits": [
+        20.641494750976562,
+        22.802324295043945
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-66-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-66",
+      "logits": [
+        22.99583625793457,
+        22.736042022705078
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-66-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-66",
+      "logits": [
+        24.241897583007812,
+        19.304203033447266
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-67-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-67",
+      "logits": [
+        22.512672424316406,
+        25.244340896606445,
+        18.48871612548828
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-67-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-67",
+      "logits": [
+        16.57111167907715,
+        23.71732521057129,
+        18.52051544189453
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-68-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-68",
+      "logits": [
+        18.61611557006836,
+        23.82811164855957
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-68-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-68",
+      "logits": [
+        25.560441970825195,
+        19.39443016052246
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-69-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-69",
+      "logits": [
+        18.242172241210938,
+        25.267681121826172
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-69-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-69",
+      "logits": [
+        25.62264633178711,
+        16.166046142578125
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-70-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-70",
+      "logits": [
+        24.87688446044922,
+        15.277727127075195
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-70-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-70",
+      "logits": [
+        17.249834060668945,
+        25.818544387817383
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-71-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-71",
+      "logits": [
+        20.378456115722656,
+        23.370765686035156
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-71-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-71",
+      "logits": [
+        24.31229019165039,
+        20.879117965698242
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-72-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-72",
+      "logits": [
+        18.482833862304688,
+        25.16400146484375
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-72-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-72",
+      "logits": [
+        15.985015869140625,
+        24.699462890625
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-73-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-73",
+      "logits": [
+        18.67638397216797,
+        24.629234313964844
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-73-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-73",
+      "logits": [
+        23.412267684936523,
+        15.966981887817383
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-74-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-74",
+      "logits": [
+        19.180784225463867,
+        26.42911148071289
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-74-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-74",
+      "logits": [
+        24.55698585510254,
+        18.807861328125
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-75-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-75",
+      "logits": [
+        15.721491813659668,
+        24.709983825683594,
+        17.290857315063477
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-75-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-75",
+      "logits": [
+        24.778528213500977,
+        19.245697021484375,
+        19.463712692260742
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-76-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-76",
+      "logits": [
+        17.878833770751953,
+        25.02460289001465
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-76-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-76",
+      "logits": [
+        24.540258407592773,
+        15.823442459106445
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-77-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-77",
+      "logits": [
+        16.202110290527344,
+        23.98092269897461
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-77-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-77",
+      "logits": [
+        25.64202880859375,
+        17.748580932617188
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-78-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-78",
+      "logits": [
+        24.976896286010742,
+        21.581993103027344
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-78-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-78",
+      "logits": [
+        22.603240966796875,
+        21.080726623535156
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-79-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-79",
+      "logits": [
+        21.25143051147461,
+        21.336366653442383,
+        24.72492027282715
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-79-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-79",
+      "logits": [
+        20.441030502319336,
+        20.183143615722656,
+        24.88518714904785
+      ],
+      "targets": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-80-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-80",
+      "logits": [
+        20.32234764099121,
+        25.525936126708984
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-80-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-80",
+      "logits": [
+        23.91040802001953,
+        22.40497589111328
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-81-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-81",
+      "logits": [
+        18.09324073791504,
+        25.35486602783203
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-81-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-81",
+      "logits": [
+        23.690969467163086,
+        16.09286117553711
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-82-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-82",
+      "logits": [
+        24.661060333251953,
+        16.51056480407715
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-82-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-82",
+      "logits": [
+        16.46770668029785,
+        25.3292236328125
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-83-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-83",
+      "logits": [
+        23.002500534057617,
+        20.89572525024414
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-83-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-83",
+      "logits": [
+        23.549835205078125,
+        20.443260192871094
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-84-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-84",
+      "logits": [
+        24.795734405517578,
+        19.712657928466797
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-84-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-84",
+      "logits": [
+        23.38753890991211,
+        23.09176254272461
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-85-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-85",
+      "logits": [
+        18.47838020324707,
+        25.341060638427734
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-85-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-85",
+      "logits": [
+        23.398637771606445,
+        15.82103157043457
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-86-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-86",
+      "logits": [
+        19.151390075683594,
+        24.86231231689453
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-86-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-86",
+      "logits": [
+        23.345975875854492,
+        20.561298370361328
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-87-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-87",
+      "logits": [
+        19.369922637939453,
+        18.493532180786133,
+        25.198490142822266
+      ],
+      "targets": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-87-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-87",
+      "logits": [
+        16.506282806396484,
+        25.15088653564453,
+        19.31598663330078
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-88-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-88",
+      "logits": [
+        24.549678802490234,
+        15.894963264465332
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-88-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-88",
+      "logits": [
+        18.639646530151367,
+        26.594951629638672
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-89-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-89",
+      "logits": [
+        19.30091667175293,
+        24.56609344482422
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-89-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-89",
+      "logits": [
+        23.513853073120117,
+        20.042682647705078
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-90-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-90",
+      "logits": [
+        25.51959228515625,
+        16.5805721282959
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-90-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-90",
+      "logits": [
+        24.80789566040039,
+        15.646862030029297
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-91-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-91",
+      "logits": [
+        25.32512855529785,
+        17.657726287841797,
+        17.296594619750977
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-91-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-91",
+      "logits": [
+        17.825693130493164,
+        24.942041397094727,
+        18.128862380981445
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-92-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-92",
+      "logits": [
+        19.071884155273438,
+        26.14404296875
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-92-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-92",
+      "logits": [
+        24.05975341796875,
+        17.734989166259766
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-93-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-93",
+      "logits": [
+        24.622526168823242,
+        16.529827117919922
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-93-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-93",
+      "logits": [
+        24.551496505737305,
+        18.527254104614258
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-94-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-94",
+      "logits": [
+        18.10361099243164,
+        25.35427474975586
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-94-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-94",
+      "logits": [
+        25.393695831298828,
+        16.192325592041016
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-95-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-95",
+      "logits": [
+        24.206024169921875,
+        20.67333984375
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-95-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-95",
+      "logits": [
+        24.87702178955078,
+        20.918888092041016
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-96-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-96",
+      "logits": [
+        25.89004898071289,
+        18.198326110839844
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-96-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-96",
+      "logits": [
+        25.733638763427734,
+        17.59412384033203
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-97-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-97",
+      "logits": [
+        17.82465171813965,
+        23.705944061279297
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-97-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-97",
+      "logits": [
+        23.477174758911133,
+        19.47917938232422
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-98-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-98",
+      "logits": [
+        24.413862228393555,
+        21.54051971435547
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-98-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-98",
+      "logits": [
+        23.548131942749023,
+        22.21163558959961
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-99-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-99",
+      "logits": [
+        18.40567398071289,
+        17.039501190185547,
+        24.691856384277344
+      ],
+      "targets": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-99-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-99",
+      "logits": [
+        16.532865524291992,
+        16.806808471679688,
+        24.213401794433594
+      ],
+      "targets": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-100-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-100",
+      "logits": [
+        24.43197250366211,
+        17.372467041015625
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-100-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-100",
+      "logits": [
+        18.792171478271484,
+        25.290904998779297
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-101-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-101",
+      "logits": [
+        19.17074203491211,
+        23.97919464111328
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-101-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-101",
+      "logits": [
+        24.90221405029297,
+        18.962032318115234
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-102-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-102",
+      "logits": [
+        16.540271759033203,
+        23.928600311279297
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-102-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-102",
+      "logits": [
+        25.307435989379883,
+        17.642181396484375
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-103-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-103",
+      "logits": [
+        19.328266143798828,
+        21.256771087646484,
+        24.92890167236328
+      ],
+      "targets": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-103-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-103",
+      "logits": [
+        24.31304931640625,
+        17.476648330688477,
+        19.952381134033203
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-104-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-104",
+      "logits": [
+        17.97336769104004,
+        23.876493453979492
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-104-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-104",
+      "logits": [
+        25.17270278930664,
+        18.353702545166016
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-105-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-105",
+      "logits": [
+        15.830801963806152,
+        24.820415496826172
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-105-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-105",
+      "logits": [
+        25.953079223632812,
+        17.798381805419922
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-106-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-106",
+      "logits": [
+        19.7041015625,
+        24.62580108642578
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-106-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-106",
+      "logits": [
+        23.455352783203125,
+        16.42731285095215
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-107-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-107",
+      "logits": [
+        21.153833389282227,
+        21.803916931152344
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-107-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-107",
+      "logits": [
+        24.78345489501953,
+        20.966890335083008
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-108-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-108",
+      "logits": [
+        25.29629135131836,
+        18.439563751220703
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-108-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-108",
+      "logits": [
+        15.215132713317871,
+        24.870637893676758
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-109-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-109",
+      "logits": [
+        19.143356323242188,
+        25.664701461791992
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-109-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-109",
+      "logits": [
+        23.860992431640625,
+        16.246784210205078
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-110-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-110",
+      "logits": [
+        18.88521957397461,
+        25.538301467895508
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-110-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-110",
+      "logits": [
+        24.104713439941406,
+        19.388931274414062
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-111-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-111",
+      "logits": [
+        16.449260711669922,
+        24.875566482543945,
+        18.348709106445312
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-111-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-111",
+      "logits": [
+        15.53174877166748,
+        26.17398452758789,
+        17.97423553466797
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-112-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-112",
+      "logits": [
+        17.768558502197266,
+        23.653743743896484
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-112-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-112",
+      "logits": [
+        23.49729347229004,
+        17.784273147583008
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-113-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-113",
+      "logits": [
+        18.228195190429688,
+        24.359447479248047
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-113-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-113",
+      "logits": [
+        24.072052001953125,
+        15.972339630126953
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-114-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-114",
+      "logits": [
+        24.38920021057129,
+        15.357525825500488
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-114-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-114",
+      "logits": [
+        15.57636833190918,
+        24.669998168945312
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-115-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-115",
+      "logits": [
+        17.753890991210938,
+        19.37582015991211,
+        24.34963035583496
+      ],
+      "targets": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-115-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-115",
+      "logits": [
+        20.877452850341797,
+        17.656864166259766,
+        23.997882843017578
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-116-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-116",
+      "logits": [
+        19.875022888183594,
+        25.4849910736084
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-116-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-116",
+      "logits": [
+        24.687541961669922,
+        21.629199981689453
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-117-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-117",
+      "logits": [
+        26.01778793334961,
+        15.609024047851562
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-117-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-117",
+      "logits": [
+        26.242605209350586,
+        18.64759635925293
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-118-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-118",
+      "logits": [
+        22.632793426513672,
+        22.19540023803711
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-118-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-118",
+      "logits": [
+        22.057905197143555,
+        24.207260131835938
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-119-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-119",
+      "logits": [
+        23.330150604248047,
+        21.208690643310547
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-119-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-119",
+      "logits": [
+        24.17562484741211,
+        20.044776916503906
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-120-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-120",
+      "logits": [
+        17.57697105407715,
+        24.853816986083984
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-120-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-120",
+      "logits": [
+        25.934560775756836,
+        18.233755111694336
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-121-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-121",
+      "logits": [
+        18.368698120117188,
+        25.20340919494629
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-121-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-121",
+      "logits": [
+        25.04568862915039,
+        15.326091766357422
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-122-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-122",
+      "logits": [
+        17.910343170166016,
+        23.22118377685547
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-122-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-122",
+      "logits": [
+        24.044353485107422,
+        17.388057708740234
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-123-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-123",
+      "logits": [
+        15.286226272583008,
+        17.486003875732422,
+        25.419340133666992
+      ],
+      "targets": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-123-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-123",
+      "logits": [
+        18.966480255126953,
+        24.79823875427246,
+        18.376609802246094
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-124-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-124",
+      "logits": [
+        17.714365005493164,
+        24.9834041595459
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-124-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-124",
+      "logits": [
+        25.223541259765625,
+        15.806877136230469
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-125-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-125",
+      "logits": [
+        18.871543884277344,
+        25.06524658203125
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-125-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-125",
+      "logits": [
+        23.740245819091797,
+        21.554224014282227
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-126-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-126",
+      "logits": [
+        24.88924789428711,
+        15.198923110961914
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-126-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-126",
+      "logits": [
+        17.067501068115234,
+        24.786779403686523
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-127-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-127",
+      "logits": [
+        24.764127731323242,
+        16.40046501159668,
+        17.468252182006836
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-text-127-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-text-127",
+      "logits": [
+        20.130229949951172,
+        24.435592651367188,
+        23.13992691040039
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-0-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-0",
+      "logits": [
+        21.031187057495117,
+        27.643333435058594
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-0-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-0",
+      "logits": [
+        25.717302322387695,
+        16.73092269897461
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-1-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-1",
+      "logits": [
+        23.93295669555664,
+        17.36669921875
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-1-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-1",
+      "logits": [
+        20.606943130493164,
+        26.50455093383789
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-2-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-2",
+      "logits": [
+        15.460658073425293,
+        29.64219093322754
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-2-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-2",
+      "logits": [
+        28.443954467773438,
+        23.687047958374023
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-3-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-3",
+      "logits": [
+        27.932106018066406,
+        13.484615325927734
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-3-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-3",
+      "logits": [
+        25.47016716003418,
+        30.590063095092773
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-4-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-4",
+      "logits": [
+        20.30531883239746,
+        27.44519805908203
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-4-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-4",
+      "logits": [
+        26.50535011291504,
+        15.375791549682617
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-5-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-5",
+      "logits": [
+        17.274799346923828,
+        25.567506790161133
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-5-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-5",
+      "logits": [
+        23.890623092651367,
+        15.720229148864746
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-6-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-6",
+      "logits": [
+        18.86551284790039,
+        24.782079696655273
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-6-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-6",
+      "logits": [
+        25.17557716369629,
+        17.129438400268555
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-7-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-7",
+      "logits": [
+        8.54817008972168,
+        16.2127685546875
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-7-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-7",
+      "logits": [
+        13.395387649536133,
+        6.1315155029296875
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-8-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-8",
+      "logits": [
+        20.862770080566406,
+        16.44805145263672
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-8-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-8",
+      "logits": [
+        13.350866317749023,
+        5.217281818389893
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-9-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-9",
+      "logits": [
+        21.81728744506836,
+        16.051441192626953
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-9-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-9",
+      "logits": [
+        13.992939949035645,
+        25.96597671508789
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-10-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-10",
+      "logits": [
+        19.331932067871094,
+        30.86507797241211
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-10-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-10",
+      "logits": [
+        28.663311004638672,
+        15.936893463134766
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-11-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-11",
+      "logits": [
+        25.371477127075195,
+        24.342430114746094
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-11-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-11",
+      "logits": [
+        20.97278594970703,
+        25.612716674804688
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-12-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-12",
+      "logits": [
+        26.104732513427734,
+        23.48590087890625
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-12-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-12",
+      "logits": [
+        27.418235778808594,
+        15.827644348144531
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-13-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-13",
+      "logits": [
+        27.429155349731445,
+        15.418088912963867
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-13-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-13",
+      "logits": [
+        17.37042236328125,
+        26.948833465576172
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-14-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-14",
+      "logits": [
+        19.902198791503906,
+        27.503644943237305
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-14-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-14",
+      "logits": [
+        25.604421615600586,
+        16.068275451660156
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-15-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-15",
+      "logits": [
+        12.69749927520752,
+        20.96090316772461
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-15-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-15",
+      "logits": [
+        16.534706115722656,
+        9.952783584594727
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-16-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-16",
+      "logits": [
+        17.93239974975586,
+        27.113338470458984
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-16-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-16",
+      "logits": [
+        24.40570068359375,
+        13.887145042419434
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-17-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-17",
+      "logits": [
+        20.508785247802734,
+        21.4970703125
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-17-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-17",
+      "logits": [
+        19.38751220703125,
+        14.398633003234863
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-18-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-18",
+      "logits": [
+        30.553558349609375,
+        20.28150749206543
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-18-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-18",
+      "logits": [
+        18.34803009033203,
+        29.100393295288086
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-19-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-19",
+      "logits": [
+        15.605488777160645,
+        25.280771255493164
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-19-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-19",
+      "logits": [
+        29.531848907470703,
+        22.896718978881836
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-20-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-20",
+      "logits": [
+        21.133895874023438,
+        13.959770202636719
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-20-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-20",
+      "logits": [
+        23.744049072265625,
+        13.782222747802734
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-21-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-21",
+      "logits": [
+        28.440277099609375,
+        16.732168197631836
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-21-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-21",
+      "logits": [
+        19.101360321044922,
+        28.897445678710938
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-22-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-22",
+      "logits": [
+        18.759014129638672,
+        29.330501556396484
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-22-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-22",
+      "logits": [
+        25.838607788085938,
+        14.996475219726562
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-23-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-23",
+      "logits": [
+        22.92904281616211,
+        15.93996810913086
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-23-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-23",
+      "logits": [
+        16.6901798248291,
+        21.99608612060547
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-24-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-24",
+      "logits": [
+        16.277591705322266,
+        25.481792449951172
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-24-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-24",
+      "logits": [
+        26.308738708496094,
+        18.331979751586914
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-25-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-25",
+      "logits": [
+        13.502029418945312,
+        24.326181411743164
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-25-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-25",
+      "logits": [
+        17.58501625061035,
+        15.718782424926758
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-26-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-26",
+      "logits": [
+        4.085224151611328,
+        11.775444984436035
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-26-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-26",
+      "logits": [
+        12.253746032714844,
+        7.299747467041016
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-27-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-27",
+      "logits": [
+        26.66289520263672,
+        13.645546913146973
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-27-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-27",
+      "logits": [
+        28.548871994018555,
+        17.90487289428711
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-28-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-28",
+      "logits": [
+        21.410324096679688,
+        29.140169143676758
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-28-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-28",
+      "logits": [
+        27.168113708496094,
+        15.990421295166016
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-29-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-29",
+      "logits": [
+        19.522180557250977,
+        26.050506591796875
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-29-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-29",
+      "logits": [
+        17.82187271118164,
+        22.599742889404297
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-30-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-30",
+      "logits": [
+        18.43721580505371,
+        29.602855682373047
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-30-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-30",
+      "logits": [
+        27.087989807128906,
+        14.184783935546875
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-31-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-31",
+      "logits": [
+        23.083585739135742,
+        19.263275146484375
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-31-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-31",
+      "logits": [
+        17.029075622558594,
+        27.043230056762695
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-32-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-32",
+      "logits": [
+        28.63017463684082,
+        17.847015380859375
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-32-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-32",
+      "logits": [
+        18.918243408203125,
+        26.007835388183594
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-33-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-33",
+      "logits": [
+        12.72103214263916,
+        18.83609390258789
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-33-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-33",
+      "logits": [
+        13.550137519836426,
+        8.854103088378906
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-34-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-34",
+      "logits": [
+        19.194429397583008,
+        28.8741512298584
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-34-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-34",
+      "logits": [
+        24.39226722717285,
+        14.031041145324707
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-35-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-35",
+      "logits": [
+        14.348810195922852,
+        7.059928894042969
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-35-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-35",
+      "logits": [
+        15.29279613494873,
+        7.097202777862549
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-36-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-36",
+      "logits": [
+        15.480128288269043,
+        26.486135482788086
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-36-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-36",
+      "logits": [
+        20.613075256347656,
+        28.621232986450195
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-37-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-37",
+      "logits": [
+        16.92311668395996,
+        26.979522705078125
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-37-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-37",
+      "logits": [
+        24.478023529052734,
+        12.72450065612793
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-38-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-38",
+      "logits": [
+        15.173202514648438,
+        26.675304412841797
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-38-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-38",
+      "logits": [
+        28.285598754882812,
+        20.08571434020996
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-39-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-39",
+      "logits": [
+        28.173568725585938,
+        15.891387939453125
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-39-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-39",
+      "logits": [
+        19.542015075683594,
+        28.36388397216797
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-40-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-40",
+      "logits": [
+        18.532007217407227,
+        28.622150421142578
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-40-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-40",
+      "logits": [
+        26.36285400390625,
+        16.421396255493164
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-41-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-41",
+      "logits": [
+        18.16826629638672,
+        26.23431396484375
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-41-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-41",
+      "logits": [
+        25.34882164001465,
+        15.614376068115234
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-42-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-42",
+      "logits": [
+        23.516273498535156,
+        20.91330337524414
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-42-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-42",
+      "logits": [
+        24.058528900146484,
+        17.02513885498047
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-43-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-43",
+      "logits": [
+        8.08163833618164,
+        18.328624725341797
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-43-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-43",
+      "logits": [
+        12.75015926361084,
+        8.049962997436523
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-44-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-44",
+      "logits": [
+        12.462194442749023,
+        13.850142478942871
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-44-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-44",
+      "logits": [
+        15.32767391204834,
+        13.373290061950684
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-45-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-45",
+      "logits": [
+        15.921003341674805,
+        27.155292510986328
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-45-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-45",
+      "logits": [
+        18.827457427978516,
+        30.064285278320312
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-46-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-46",
+      "logits": [
+        22.111392974853516,
+        25.985721588134766
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-46-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-46",
+      "logits": [
+        31.423093795776367,
+        20.648197174072266
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-47-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-47",
+      "logits": [
+        25.078624725341797,
+        19.238880157470703
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-47-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-47",
+      "logits": [
+        18.178646087646484,
+        22.74589729309082
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-48-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-48",
+      "logits": [
+        27.978797912597656,
+        20.87200927734375
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-48-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-48",
+      "logits": [
+        27.200908660888672,
+        15.82135009765625
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-49-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-49",
+      "logits": [
+        28.20366668701172,
+        15.83500862121582
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-49-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-49",
+      "logits": [
+        21.69640350341797,
+        21.491615295410156
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-50-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-50",
+      "logits": [
+        20.855648040771484,
+        27.446044921875
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-50-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-50",
+      "logits": [
+        26.5479793548584,
+        16.526844024658203
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-51-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-51",
+      "logits": [
+        16.96731948852539,
+        21.50098419189453
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-51-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-51",
+      "logits": [
+        18.41412353515625,
+        9.409181594848633
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-52-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-52",
+      "logits": [
+        17.311107635498047,
+        24.52977752685547
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-52-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-52",
+      "logits": [
+        25.37483787536621,
+        17.588184356689453
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-53-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-53",
+      "logits": [
+        22.02275276184082,
+        17.490755081176758
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-53-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-53",
+      "logits": [
+        21.6162109375,
+        14.540924072265625
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-54-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-54",
+      "logits": [
+        26.857397079467773,
+        12.727729797363281
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-54-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-54",
+      "logits": [
+        19.274099349975586,
+        28.503236770629883
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-55-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-55",
+      "logits": [
+        14.71420955657959,
+        26.126367568969727
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-55-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-55",
+      "logits": [
+        28.99650764465332,
+        20.0509033203125
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-56-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-56",
+      "logits": [
+        21.927703857421875,
+        24.479263305664062
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-56-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-56",
+      "logits": [
+        21.27465057373047,
+        21.127696990966797
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-57-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-57",
+      "logits": [
+        28.462757110595703,
+        15.6181640625
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-57-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-57",
+      "logits": [
+        19.174806594848633,
+        28.1120662689209
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-58-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-58",
+      "logits": [
+        18.904645919799805,
+        30.355995178222656
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-58-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-58",
+      "logits": [
+        26.634326934814453,
+        16.215805053710938
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-59-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-59",
+      "logits": [
+        22.500518798828125,
+        13.81434440612793
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-59-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-59",
+      "logits": [
+        15.539472579956055,
+        22.57158660888672
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-60-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-60",
+      "logits": [
+        22.23849868774414,
+        25.770984649658203
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-60-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-60",
+      "logits": [
+        25.45494270324707,
+        16.074085235595703
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-61-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-61",
+      "logits": [
+        9.37380599975586,
+        17.944231033325195
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-61-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-61",
+      "logits": [
+        10.65418815612793,
+        7.953487873077393
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-62-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-62",
+      "logits": [
+        17.77661895751953,
+        25.301528930664062
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-62-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-62",
+      "logits": [
+        22.70330047607422,
+        15.295318603515625
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-63-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-63",
+      "logits": [
+        14.599609375,
+        12.736038208007812
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-63-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-63",
+      "logits": [
+        14.1050443649292,
+        26.915224075317383
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-64-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-64",
+      "logits": [
+        18.40499496459961,
+        26.881839752197266
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-64-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-64",
+      "logits": [
+        27.440784454345703,
+        29.320642471313477
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-65-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-65",
+      "logits": [
+        28.71385955810547,
+        21.6126708984375
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-65-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-65",
+      "logits": [
+        16.841144561767578,
+        25.695959091186523
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-66-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-66",
+      "logits": [
+        26.67363739013672,
+        26.218856811523438
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-66-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-66",
+      "logits": [
+        27.01364517211914,
+        15.388065338134766
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-67-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-67",
+      "logits": [
+        29.753063201904297,
+        23.324298858642578
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-67-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-67",
+      "logits": [
+        18.110227584838867,
+        28.537477493286133
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-68-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-68",
+      "logits": [
+        21.86136245727539,
+        22.271459579467773
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-68-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-68",
+      "logits": [
+        19.169015884399414,
+        23.880088806152344
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-69-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-69",
+      "logits": [
+        11.050472259521484,
+        22.673120498657227
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-69-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-69",
+      "logits": [
+        15.092458724975586,
+        9.898698806762695
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-70-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-70",
+      "logits": [
+        17.37032699584961,
+        23.848072052001953
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-70-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-70",
+      "logits": [
+        23.401199340820312,
+        17.73662567138672
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-71-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-71",
+      "logits": [
+        9.473434448242188,
+        15.942872047424316
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-71-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-71",
+      "logits": [
+        12.041791915893555,
+        7.284413814544678
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-72-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-72",
+      "logits": [
+        26.594085693359375,
+        14.596229553222656
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-72-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-72",
+      "logits": [
+        30.335987091064453,
+        19.608726501464844
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-73-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-73",
+      "logits": [
+        14.8446626663208,
+        26.216569900512695
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-73-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-73",
+      "logits": [
+        25.439762115478516,
+        18.565567016601562
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-74-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-74",
+      "logits": [
+        14.066407203674316,
+        27.097881317138672
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-74-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-74",
+      "logits": [
+        29.915508270263672,
+        19.183826446533203
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-75-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-75",
+      "logits": [
+        27.620193481445312,
+        18.438207626342773
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-75-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-75",
+      "logits": [
+        19.824750900268555,
+        27.332971572875977
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-76-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-76",
+      "logits": [
+        19.988807678222656,
+        28.417922973632812
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-76-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-76",
+      "logits": [
+        26.48753547668457,
+        17.87359619140625
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-77-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-77",
+      "logits": [
+        26.271697998046875,
+        18.75589370727539
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-77-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-77",
+      "logits": [
+        19.306482315063477,
+        27.086584091186523
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-78-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-78",
+      "logits": [
+        16.118797302246094,
+        26.07278823852539
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-78-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-78",
+      "logits": [
+        24.088903427124023,
+        16.810197830200195
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-79-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-79",
+      "logits": [
+        10.45585823059082,
+        21.214344024658203
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-79-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-79",
+      "logits": [
+        13.597949981689453,
+        7.749244213104248
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-80-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-80",
+      "logits": [
+        10.380647659301758,
+        15.079604148864746
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-80-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-80",
+      "logits": [
+        12.411888122558594,
+        8.1913480758667
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-81-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-81",
+      "logits": [
+        20.68316650390625,
+        29.22000503540039
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-81-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-81",
+      "logits": [
+        14.491917610168457,
+        27.962797164916992
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-82-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-82",
+      "logits": [
+        27.020536422729492,
+        17.98009490966797
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-82-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-82",
+      "logits": [
+        20.16783905029297,
+        28.173931121826172
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-83-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-83",
+      "logits": [
+        21.574146270751953,
+        31.458009719848633
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-83-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-83",
+      "logits": [
+        29.369028091430664,
+        15.894969940185547
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-84-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-84",
+      "logits": [
+        17.952587127685547,
+        20.24954605102539
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-84-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-84",
+      "logits": [
+        22.3107852935791,
+        21.474773406982422
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-85-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-85",
+      "logits": [
+        26.4814395904541,
+        14.276163101196289
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-85-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-85",
+      "logits": [
+        17.985721588134766,
+        27.013843536376953
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-86-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-86",
+      "logits": [
+        25.641138076782227,
+        13.689292907714844
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-86-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-86",
+      "logits": [
+        18.582622528076172,
+        25.901744842529297
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-87-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-87",
+      "logits": [
+        9.579172134399414,
+        19.166263580322266
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-87-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-87",
+      "logits": [
+        15.05530071258545,
+        9.0101318359375
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-88-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-88",
+      "logits": [
+        21.277103424072266,
+        25.17336082458496
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-88-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-88",
+      "logits": [
+        25.852039337158203,
+        16.083343505859375
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-89-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-89",
+      "logits": [
+        13.705574035644531,
+        16.20721435546875
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-89-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-89",
+      "logits": [
+        13.253911972045898,
+        8.324013710021973
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-90-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-90",
+      "logits": [
+        28.816959381103516,
+        19.419830322265625
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-90-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-90",
+      "logits": [
+        28.417823791503906,
+        19.457073211669922
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-91-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-91",
+      "logits": [
+        15.184616088867188,
+        18.401798248291016
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-91-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-91",
+      "logits": [
+        24.48101234436035,
+        13.633013725280762
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-92-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-92",
+      "logits": [
+        19.075904846191406,
+        24.75310516357422
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-92-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-92",
+      "logits": [
+        23.955665588378906,
+        22.32921600341797
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-93-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-93",
+      "logits": [
+        29.87398910522461,
+        17.82279396057129
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-93-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-93",
+      "logits": [
+        20.287633895874023,
+        27.769115447998047
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-94-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-94",
+      "logits": [
+        21.711875915527344,
+        28.377859115600586
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-94-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-94",
+      "logits": [
+        26.820476531982422,
+        14.322822570800781
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-95-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-95",
+      "logits": [
+        27.90729522705078,
+        17.119384765625
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-dev-image-95-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-dev-image-95",
+      "logits": [
+        18.60942268371582,
+        23.253292083740234
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    }
+  ],
+  "macro_family_expected_accuracy": 0.9084821428571429,
+  "accuracy_target_met": true
+}

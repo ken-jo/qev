@@ -1,0 +1,19 @@
+{
+  "created_at_utc": "2026-09-30T08:23:24.598254+00:00",
+  "records_sha256": "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571",
+  "source_sha256": {
+    "C:\\tmp\\veyra\\scripts\\build_workflow_execution_targets.py": "aae65bfd9e50cae6bfaabc2cf17073d796b8b039c587ebda994056bad14ba186",
+    "scripts\\verify_workspace_calibration_data.py": "6f2b4ea2ad1c325d29feff88d5410e3f25e6eafaafda0937425714c442fa6191",
+    "src\\veyra\\workflow_facts.py": "db5f21b92c9e36e2592a1421b343d3341c79b4d8a9056f96de7ddc170a7c2a2f"
+  },
+  "scope": "Prospective training-target audit; no model fitting or inference.",
+  "allowed_splits": [
+    "dev",
+    "train"
+  ],
+  "method": "Parse only eligible original train/development text; enumerate the 16 assignments under its declared independent priors and sensors. Record each rule's marginal truth and the mutually exclusive first matching rule (including default). Sum branches by their rendered action and check every original candidate target.",
+  "calibration_or_final_used": false,
+  "current_study_changed": false,
+  "runtime_solver_added": false,
+  "limitations": "Targets encode specified procedural assumptions, not real event frequencies. A loss on first-branch probabilities can duplicate outcome supervision when branch actions are unique. Extra annotation does not prove learnability, causal reasoning, or generalization. Training requires a separate prospective protocol."
+}

@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "wheel": "dist\\workflow-runtime\\veyra-0.3.0a4-py3-none-any.whl",
+  "wheel_sha256": "9d18d64b0c711c01e3295ac85bf0c7b721413c4b533f6bcf7ad8addd2ee31721",
+  "python_modules_compared": 38,
+  "version": "0.3.0a4",
+  "release_allowed": false
+}

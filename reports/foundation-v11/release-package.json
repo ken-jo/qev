@@ -1,0 +1,22 @@
+{
+  "release": "v0.3.0-alpha.1",
+  "prepared_for_huggingface": true,
+  "published_to_huggingface": false,
+  "archive": "veyra-foundation-v11.zip",
+  "archive_bytes": 15325967,
+  "archive_sha256": "e3ac1b805d5f8c9539a5dd22c3055f5fd58820357b0469cf32346e21f2f49d81",
+  "weights_sha256": "f13aa3346d7da369a2769eef7fa487747c97d1ba0878ea3af8f713463f463491",
+  "manifest_sha256": "dd4df10eba5880dc1bb0267502fe264eb1c5a730235619db9cd8cd74df87b1a9",
+  "checksums_sha256": "815e0819314bd8216887c7a82fa21bf8e954ab16df51c597029976636832b179",
+  "archive_files_verified": 38,
+  "package_inference_passed": true,
+  "packaged_loader_executed": true,
+  "runtime_source": "Included wheel, Python isolated mode, existing dependencies and cached base",
+  "photograph_http_p95_ms": 111.1560549819842,
+  "latency_target_ms": 300,
+  "previous_synthetic_90_percent_targets_retained": true,
+  "official_workflow_accuracy_regressed": true,
+  "laya_workflow_specialist_parity": false,
+  "release_scope": "Research checkpoint; task gains and workflow regression are both documented",
+  "upload_scope": "Checksummed file allowlist only"
+}

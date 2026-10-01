@@ -1,0 +1,101 @@
+{
+  "phase": "development_only",
+  "final_evaluated": false,
+  "run": {
+    "arguments": {
+      "records": "data\\policy-v6\\records.jsonl",
+      "output": "runs\\intervention-v6",
+      "epochs": 3,
+      "layers": 12,
+      "rank": 8,
+      "learning_rate": 2.5E-05,
+      "accumulation": 8,
+      "initialize": "checkpoints\\intervention-v5-raw",
+      "seed": 31,
+      "selection": "min-modality-accuracy",
+      "schedule": "cosine",
+      "warmup_steps": 20,
+      "interventions": true,
+      "consistency_weight": 0.25,
+      "smoke": false
+    },
+    "source_sha256": {
+      "C:\\tmp\\veyra\\scripts\\train_option.py": "b1331e707ee84faec57620385228b8397fd766e573c233872d15f5d4eb7d06a0",
+      "src\\veyra\\option_model.py": "ffbbe84d7f8eaa22e929da8362a23706989838da75a069ce921cff6d3c8c3a4c",
+      "src\\veyra\\interventions.py": "89daa4149b88edbe52a75c246fe3083b5586cd14d5f9d6148812ef675da36b83"
+    }
+  },
+  "checkpoint": {
+    "format_version": 2,
+    "architecture": "option_readout",
+    "decision_views": 1,
+    "backbone": {
+      "model_id": "Qwen/Qwen3.5-2B",
+      "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+    },
+    "encoder": {
+      "max_total_tokens": 2048,
+      "image_max_pixels": 262144,
+      "image_min_pixels": 65536,
+      "encoding": "option-v1"
+    },
+    "adaptation": {
+      "layers": 12,
+      "rank": 8,
+      "alpha": 16.0
+    },
+    "calibration": {
+      "temperatures": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "abstain_thresholds": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "fitted_types": [],
+      "abstention_fitted_types": [],
+      "always_abstain_types": []
+    },
+    "training": {
+      "completed": true,
+      "optimizer_steps": 900,
+      "epochs": 1,
+      "selection_split": "dev",
+      "history": [
+        {
+          "epoch": 1,
+          "train_loss": 0.2970053310620135,
+          "dev": {
+            "questions": 448,
+            "accuracy": 0.8883928571428571,
+            "nll": 0.3343947041716514,
+            "text_accuracy": 0.87109375,
+            "image_accuracy": 0.9114583333333334,
+            "by_family": {
+              "image_color_rule": 0.921875,
+              "image_count_rule": 0.875,
+              "image_shape_rule": 0.9375,
+              "text_conjunction": 0.890625,
+              "text_disjunction": 0.859375,
+              "text_ranges": 0.796875,
+              "text_threshold": 0.9375
+            },
+            "by_type": {
+              "choice": 0.9144736842105263,
+              "noul": 0.8263888888888888,
+              "score": 0.9210526315789473
+            }
+          }
+        }
+      ],
+      "seed": 31,
+      "initialization_sha256": "a412c382d36fe376672f00417a108c5831ee6b91489f553c1d4ec498932421b9",
+      "dataset_sha256": "ad6c8b974df7e61b18463a748c18787c484edc770a6253ccb6520ed1e9cf143f",
+      "intermediate": true
+    },
+    "weights_sha256": "413e5e8d0ae1de0196727ae7032d8b73a2f3c4f7cd6c79476222ef49393b7dee"
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "records": 20600,
+  "groups": 7888,
+  "split_counts": {
+    "train": 11212,
+    "dev": 3312,
+    "calibration": 2644,
+    "test": 3432
+  },
+  "sources": [
+    {
+      "id": "AI-Lab-Makerere/beans",
+      "revision": "27aa014ce09b193e1a6f58112d4a66e0eddb69c5",
+      "license": "MIT"
+    },
+    {
+      "id": "LocalLLaMA/typed-decisions",
+      "revision": "d51d993547ad8355b1c25157fbc1fea0649e8ffa",
+      "license": "Apache-2.0"
+    },
+    {
+      "id": "PolyAI/banking77",
+      "revision": "57ec275d8078af65b7731c2a98be812d844a6d6b",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "id": "stanfordnlp/snli",
+      "revision": "cdb5c3d5eed6ead6e5a341c8e56e669bb666725b",
+      "license": "CC-BY-SA-4.0"
+    },
+    {
+      "id": "uoft-cs/cifar10",
+      "revision": "0b2714987fa478483af9968de7c934580d0bb9a2",
+      "license": "unknown"
+    },
+    {
+      "id": "veyra-policy-refresh-v8",
+      "revision": "sha256:b551bc1e88f12738a6379173991d2fed8aa80f7c25c65e899f5504f7c9b283c6",
+      "license": "Apache-2.0"
+    },
+    {
+      "id": "veyra-workflow-v12",
+      "revision": "sha256:5433c424ad7d2bea710c398899840d4a43a3608a9b7529a6cd8cbbe7a32bc4ca",
+      "license": "Apache-2.0"
+    },
+    {
+      "id": "vminhkhoi/trashnet",
+      "revision": "kaggle-version-1",
+      "license": "MIT"
+    },
+    {
+      "id": "workflow-depth-policy-validation-data-v12",
+      "revision": "sha256:88e8185002db5d7df22526a73cbad926a9d085abedf9b47564e1f8343fde018a",
+      "license": "Apache-2.0"
+    }
+  ],
+  "created_at_utc": "2026-09-30T21:07:17.753314+00:00",
+  "records_sha256": "f6cf512f9fe2f386adec99be7647677bec68afc8708f1236c5130fb257be9391",
+  "calibration_design_sha256": "bac1c51bd6d652e10c1dc6f8291b199686a5026986ba39f4185a508132d796b7",
+  "identity_namespace": "veyra-depth-policy-validation-227",
+  "excluded_record_files": {
+    "data\\workflow-v12\\records.jsonl": "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571",
+    "data\\foundation-v11\\records.jsonl": "8f226fe90fb50e46c6a2e4c53020ed99db81a903f21317a96c66f27b6181d936",
+    "data\\workflow-v12b\\records.jsonl": "e3c3c10301f6c34561cd5281713152b3df4df0d093738c078b3d4fddde2196fb",
+    "data\\workflow-v12c\\records.jsonl": "7449ca694bc88e20fed7b1389cb659191f5af088226ef609fac753589056ad07"
+  },
+  "study_protocol_sha256": "100438f6f579b4018bd87b21348a9095306f1caa6b0e644bbc2b3c3b090421a5",
+  "release_protocol_sha256": "d0e6c454fc10cfa080523cfcc66706dfe73cb32524f4ce74bf87a5d4edde6776",
+  "generator_sha256": "88e8185002db5d7df22526a73cbad926a9d085abedf9b47564e1f8343fde018a",
+  "procedural_rule_source_sha256": "fc0641726c18cf6182d540a00ee4a8ca27e5aa1a593ad42185f096b16f39f4d3",
+  "retention_selection_sha256": "ce53fce2968b74c0ab341298b8c57f60b36eb408d441229e2fc32146ddf918b5",
+  "preserved_subset_sha256": {
+    "train": "db7805a63da4dd319ac2ffb22368adfbc8ae49c62db9543c12d89a354770f4ff",
+    "dev": "a24385540a89b3d6d9e5cfed11cb10d882b69437704713f309a54e4ab1e7e90c",
+    "test": "4d153723f0745bc98f6e13697182e2560277c382d0f1e8dd945f23e45834f145"
+  },
+  "calibration_type_counts": {
+    "choice": 1264,
+    "score": 720,
+    "noul": 660
+  },
+  "fresh_calibration_groups": 1084,
+  "calibration_group_overlap_with_previous": 0,
+  "calibration_state_overlap_ignoring_case_nonce": 0,
+  "images_screened_against_previous_unique_images": 5602,
+  "near_duplicate_image_candidates_excluded": 1,
+  "new_known_workflow_label_counts": {
+    "workflow_agent_trace_observability/action": {
+      "1": 6,
+      "0": 8,
+      "3": 8,
+      "2": 8
+    },
+    "workflow_agent_trace_observability/needs_review": {
+      "True": 19,
+      "False": 11
+    },
+    "workflow_agent_trace_observability/outcome": {
+      "3": 8,
+      "0": 8,
+      "1": 7,
+      "2": 7
+    },
+    "workflow_agent_trace_observability/risk": {
+      "2": 7,
+      "0": 7,
+      "3": 8,
+      "1": 8
+    },
+    "workflow_agent_trace_observability/urgency": {
+      "1": 6,
+      "0": 8,
+      "3": 8,
+      "2": 8
+    },
+    "workflow_customer_service/action": {
+      "1": 7,
+      "3": 8,
+      "2": 8,
+      "0": 7
+    },
+    "workflow_customer_service/category": {
+      "2": 8,
+      "1": 7,
+      "3": 7,
+      "0": 8
+    },
+    "workflow_customer_service/churn_risk": {
+      "1": 8,
+      "0": 8,
+      "2": 8,
+      "3": 6
+    },
+    "workflow_customer_service/needs_human": {
+      "False": 11,
+      "True": 19
+    },
+    "workflow_customer_service/urgency": {
+      "1": 7,
+      "3": 8,
+      "2": 8,
+      "0": 7
+    },
+    "workflow_invoice_processing/discrepancy_severity": {
+      "2": 8,
+      "0": 7,
+      "1": 8,
+      "3": 7
+    },
+    "workflow_invoice_processing/disposition": {
+      "1": 7,
+      "0": 8,
+      "2": 8,
+      "3": 7
+    },
+    "workflow_invoice_processing/duplicate": {
+      "True": 19,
+      "False": 11
+    },
+    "workflow_invoice_processing/matches_order": {
+      "True": 19,
+      "False": 11
+    },
+    "workflow_invoice_processing/urgency": {
+      "2": 8,
+      "0": 7,
+      "1": 8,
+      "3": 7
+    },
+    "workflow_security_incidents/credential_compromise": {
+      "True": 20,
+      "False": 10
+    },
+    "workflow_security_incidents/disposition": {
+      "0": 8,
+      "2": 8,
+      "3": 8,
+      "1": 6
+    },
+    "workflow_security_incidents/severity": {
+      "0": 8,
+      "1": 8,
+      "3": 6,
+      "2": 8
+    },
+    "workflow_security_incidents/true_positive": {
+      "True": 18,
+      "False": 12
+    },
+    "workflow_security_incidents/urgency": {
+      "2": 7,
+      "1": 8,
+      "0": 7,
+      "3": 8
+    }
+  },
+  "known_workflow_labels_are_new_explicit_policy_targets": true,
+  "old_calibration_policy_regression_required": true,
+  "model_outputs_used": false,
+  "final_inference_performed": false
+}

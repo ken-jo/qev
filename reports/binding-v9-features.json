@@ -1,0 +1,43 @@
+{
+  "manifest": {
+    "complete": true,
+    "rows": 12272,
+    "by_split": {
+      "train": 10482,
+      "dev": 1790
+    },
+    "features_sha256": "1ec6e65a772896a113edf05645e9511d302e96c637fc8a1eaa46fb4eb37cd522",
+    "metadata_sha256": "7b1a4033d2f331a6c319b8fdafad9ca3572659e152cae187368594574450276d",
+    "specification_sha256": "2153b20af3928c7a1407e9a5d41cc4b5a1d0bfeeceb1ead3a439e61a910534e9",
+    "elapsed_seconds": 791.3848012999515
+  },
+  "specification": {
+    "arguments": {
+      "checkpoint": "runs\\workspace-v8\\checkpoint",
+      "records": "data\\policy-v8\\records.jsonl",
+      "replay_records": "data\\starter-v2\\records.jsonl",
+      "replay_count": 900,
+      "output": "runs\\binding-v9-features",
+      "seed": 43,
+      "smoke": false
+    },
+    "parent_manifest_sha256": "1639eac4b01fc9746b4679eb30f258f07506cb638653377832e65ac860ddd28f",
+    "parent_weights_sha256": "23a14581bf137b2c021e788f9c05e5bd39165adcbcc8cf85b7f75fab376ca6cc",
+    "dataset_sha256": "43d5f8f31d5cfef33fe3721685ad9008209d1b3becb21742ba1ced1ab2557070",
+    "replay_dataset_sha256": "96414c7ee56cdb9edb7c91eb0ac0b6c85123cd5359e3a58a1047a59b1edbd2c7",
+    "source_sha256": {
+      "C:\\tmp\\veyra\\scripts\\cache_binding_features.py": "85198c389e0ed158d95f3e80d26017f7c91e80888634d6ae69bfcaa581cb79cd",
+      "src\\veyra\\option_model.py": "ac15e6e55108fc8ef69b57268bf004c6756305e21293d2a9683dfde9f6e79b48",
+      "src\\veyra\\reasoning_workspace.py": "53d246b5737be11a70e5c7e8047bc4c3c01aec8cbbace0057650e51921e3546a",
+      "src\\veyra\\interventions.py": "8539a61982757c6697af844e52ae5265842a451387319bf5353df5a6b61bbd13",
+      "src\\veyra\\replay.py": "7299219b38455e111c16b5130e36e07dbd133fcb3a9ab18f65417869fc180159"
+    },
+    "replay_audit": {
+      "heldout_records_checked": 7152,
+      "replay_train_records_checked": 7008
+    },
+    "actual_requests_sha256": "9a8f16d46fb47c786920d6ee520ff0ab9e93a39a2b0afa9b08555ee1fe0ab37a",
+    "calibration_or_final_encoded": false,
+    "smoke": false
+  }
+}

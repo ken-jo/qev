@@ -1,0 +1,91 @@
+{
+  "protocol": "workflow-depth-conservative-policy-v12",
+  "status": "declared_before_fresh_data_generation_and_policy_fitting",
+  "declared_at_utc": "2026-09-30T21:03:14.046974+00:00",
+  "origin_study": "configs/workflow-depth-study-v12.json",
+  "origin_study_sha256": "d96024a725b0935dd4b4fd528161adeceffbcd3522f0dfb03f4d743d8eb12380",
+  "development_selection": "runs/workflow-v12-depth-selection/selection.json",
+  "development_selection_sha256": "18ef8e8beb527ac78933aa8eb6b050e4c8d6880ddc6f41f5a29d093ba29c1bfb",
+  "checkpoint": "runs/workflow-v12-depth-study/full_depth/epoch-2/checkpoint",
+  "weights_sha256": "86ce942f8ef036f2279422a3a2665248b98adcb0effa91bafdf15d9c14c6c83e",
+  "uncalibrated_manifest_sha256": "5b6447b8cea24e6c74845496889c142bbaf6415a34cf91a2293d7b88658bb9ba",
+  "release_protocol": "configs/workflow-release-v12.json",
+  "release_protocol_sha256": "d0e6c454fc10cfa080523cfcc66706dfe73cb32524f4ce74bf87a5d4edde6776",
+  "required_priorities": [
+    1,
+    2
+  ],
+  "trigger": {
+    "previous_policy_report": "runs/workflow-v12-depth-release/previous-calibration-policy.json",
+    "previous_policy_report_sha256": "b33c3f142a1f2bbe914fc36556cbbc56f3147bc99718afa59c3007bc4146d11e",
+    "diagnosis": "runs/workflow-v12-depth-policy-diagnosis/report.json",
+    "diagnosis_sha256": "8c94fdab628d846972e15b05bedc53e63f102f09c563129db74c879bfa1d594e",
+    "disclosure": "The 12% fit target was motivated by a post-hoc sensitivity diagnosis on previously inspected calibration groups. The resulting thresholds are not reused or promoted. No final prediction has been observed."
+  },
+  "fitting_data_design": "configs/workflow-depth-policy-fit-data-v12.json",
+  "fitting_data_design_sha256": "3c0aebafb3471e9177fbd484d2ba06e805bb0c23684542c5f95e5c360d1fff94",
+  "validation_data_design": "configs/workflow-depth-policy-validation-data-v12.json",
+  "validation_data_design_sha256": "bac1c51bd6d652e10c1dc6f8291b199686a5026986ba39f4185a508132d796b7",
+  "method": {
+    "name": "conservative_empirical_policy_with_independent_validation",
+    "policy_fit_expected_error_max": 0.12,
+    "policy_fit_minimum_coverage": 0.6,
+    "types": [
+      "choice",
+      "score",
+      "noul"
+    ],
+    "temperature_fit": "Existing per-type proper-scoring temperature fitting, minimum temperature 1.0, on group hash bucket 0.",
+    "policy_fit": "Maximize empirical answer coverage under expected error at most 0.12 on separate group hash bucket 1; include all equal-confidence ties.",
+    "one_policy_only": true,
+    "candidate_weights_reselected": false,
+    "additional_trainable_parameters": 0,
+    "runtime_policy": "Existing per-type maximum-probability thresholds; one backbone forward and zero generated answer tokens.",
+    "formal_distribution_free_guarantee_claimed": false
+  },
+  "independent_policy_validation": {
+    "records": "data/workflow-v12d/records.jsonl",
+    "split": "calibration",
+    "all_questions_evaluated": true,
+    "fit_any_parameter": false,
+    "per_type_expected_error_max": 0.15,
+    "per_type_minimum_coverage": 0.6,
+    "failure": "Stop before final inference; preserve the failure and do not refit against these validation labels.",
+    "uncertainty_reporting": "Report paired observation-group bootstrap intervals descriptively. They are not finite-sample guarantees under distribution shift."
+  },
+  "previous_group_regression": {
+    "population_report": "runs/workflow-v12-evaluation/calibration/evaluation.json",
+    "population_report_sha256": "051c41d983fb896ae5f831e4ccea58fb1c85de768aaab6c4f8fa78ed9d0d24b5",
+    "policy_refit": false,
+    "use_for_policy_or_candidate_ranking": false,
+    "per_type_expected_error_max": 0.15,
+    "per_type_minimum_coverage": 0.6,
+    "population_previously_inspected": true,
+    "failure": "Stop before final inference."
+  },
+  "sequence": [
+    "audit original selected weights, source/data lineage and failed regression",
+    "construct and independently audit two disjoint fresh calibration populations",
+    "freeze a continuation selection retaining the original development-selected weights",
+    "fit temperature and conservative thresholds on fitting data",
+    "freeze calibrated weights, manifest and policy before new validation inference",
+    "apply unchanged policy to all independent validation groups",
+    "apply unchanged policy to exact original policy groups",
+    "freeze final evaluation only if every preceding gate passes",
+    "original final comparison, regressions, runtime, acceptance and HF preparation/verification"
+  ],
+  "source_files": {
+    "scripts/prepare_followup_calibration_sources.py": "64bfae40cc3b678351d80e5e063f60e736a205efe7853c8d4c94173f2e85bf0c",
+    "scripts/build_followup_calibration.py": "88e8185002db5d7df22526a73cbad926a9d085abedf9b47564e1f8343fde018a",
+    "scripts/verify_followup_calibration_data.py": "9c46ec53c00e12673baf428df8bc2429b62e9f5d0f0703aa0b0e6483abd071fc",
+    "scripts/diagnose_depth_policy.py": "f50afee0d3ca52845f8d630c1b3aa8cfe52540aa803b701e1a6bc8499532b850"
+  },
+  "frozen_generator_ancestors": {
+    "scripts/prepare_workspace_calibration_sources.py": "2b58ed48e522885fc926949f4db6f53f8e0327af2f6ae31d901f781ea260ded8",
+    "scripts/build_workspace_calibration.py": "9f4d1b3c3b737848b1b841d98f8a69563a71ff7f31cc837b0702a2ab249d8aab",
+    "scripts/verify_workspace_calibration_data.py": "6f2b4ea2ad1c325d29feff88d5410e3f25e6eafaafda0937425714c442fa6191"
+  },
+  "release_allowed": false,
+  "final_predictions_used": false,
+  "limitations": "New familiar-workflow calibration uses authored explicit policies, not newly sampled original teacher annotations. The previous-group regression and original official workflow regression remain mandatory. All numerical release gates stay unchanged. The study targets abstention robustness and does not itself improve raw answer accuracy."
+}

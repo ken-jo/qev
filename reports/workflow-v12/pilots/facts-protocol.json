@@ -1,0 +1,52 @@
+{
+  "config_sha256": "22a5f3a627cad714dfc479aa8596c8d010bee6166cd5fd9c5e7e089d4e7b7430",
+  "release_protocol_sha256": "d0e6c454fc10cfa080523cfcc66706dfe73cb32524f4ce74bf87a5d4edde6776",
+  "scope": "Exploratory training/development-only follow-up; never an added candidate in the frozen primary v12 comparison.",
+  "feature_specification": {
+    "records_sha256": "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571",
+    "parent_weights_sha256": "f13aa3346d7da369a2769eef7fa487747c97d1ba0878ea3af8f713463f463491",
+    "parent_manifest_sha256": "dd4df10eba5880dc1bb0267502fe264eb1c5a730235619db9cd8cd74df87b1a9",
+    "script_sha256": "ec8f1f8febb209e2bc390846fd53ff3534c9a0eada2c31679062ddc51fe74df8",
+    "option_model_sha256": "ac15e6e55108fc8ef69b57268bf004c6756305e21293d2a9683dfde9f6e79b48",
+    "calibration_or_final_encoded": false,
+    "items": 14524
+  },
+  "matched_control_sha256": "5b974252fae76fa0b86fcb03f46c2b52eea51b54054dd63429759578730be16d",
+  "source_sha256": {
+    "C:\\tmp\\veyra\\scripts\\train_workflow_facts_pilot.py": "4115fdcc015184c5cc21b730da6afd65dc438044137a8536bc2d8d5e5d37918b",
+    "src\\veyra\\workflow_facts.py": "db5f21b92c9e36e2592a1421b343d3341c79b4d8a9056f96de7ddc170a7c2a2f",
+    "src\\veyra\\workflow_learning.py": "37cdb8d9d375938a5ac1a26ef53f1ccad949f141e2406caf232dab4df70a02d7",
+    "src\\veyra\\proper_learning.py": "edcf97fed0c15b1e0219429a41963c27e6baae3890906d3c4a6829f51b3855a0"
+  },
+  "auxiliary_questions": {
+    "train": 3840,
+    "dev": 1200
+  },
+  "conditional_audit_sha256": "9a73f3fd1eb4445045fcb13cd946118fbfa679a3113c4ef02fe32967c94142f7",
+  "conditional_targets_match_audit": true,
+  "domain_shares": {
+    "workflow_known": 0.3,
+    "workflow_new": 0.25,
+    "uncertainty": 0.2,
+    "image_waste": 0.075,
+    "image_leaf": 0.025,
+    "text_nli": 0.06,
+    "text_intent": 0.06,
+    "retention": 0.03
+  },
+  "learning_rates": {
+    "readout": 0.0001,
+    "binding": 0.001
+  },
+  "batch_size": 128,
+  "epochs": 25,
+  "seeds": [
+    131,
+    137,
+    139
+  ],
+  "auxiliary_weight": 0.25,
+  "calibration_or_final_used": false,
+  "inference_modules_added": 0,
+  "primary_experiment_candidates_changed": false
+}

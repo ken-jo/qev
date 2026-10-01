@@ -1,0 +1,35 @@
+{
+  "exports": [
+    {
+      "file": "reports/workflow-v12/data-protocol.json",
+      "original_sha256": "9c8f8680efe911f4aef2364712906cb75ccd8cbee9f6c8ac616abd112071d53a",
+      "published_sha256": "3f3ddf1a3b5bdc3b3f3c539d37471e66cf069a97a11d0e0ab13e8793ce61d636",
+      "change": "CRLF to LF only; JSON content unchanged"
+    },
+    {
+      "file": "reports/workflow-v12/initialization-repair.json",
+      "original_sha256": "c361e1f3b671c357069c13221d0e7923bdb800b384f8168d486bf28dd702deb3",
+      "published_sha256": "699b3373cc1a61a243a045573c69bd9caf093e087d77f0eea7c03fab5cf8965c",
+      "change": "CRLF to LF only; JSON content unchanged"
+    },
+    {
+      "file": "reports/workflow-v12/publication-gate-check.json",
+      "original_sha256": "939e0c73452272f322b73d3fd657048702129754185fa40bb712f0258f52a2b3",
+      "published_sha256": "a286c9b69688b1da5ae58c6650fea3cabe821f99a881ccc74764aed4314a890b",
+      "change": "CRLF to LF only; JSON content unchanged"
+    },
+    {
+      "file": "reports/workflow-v12/release-readiness.json",
+      "original_sha256": "54f49be466bda4bd39f1c2b7a789f594d57fecbb8ce305d0f463869c56daa217",
+      "published_sha256": "a0043f9481bd2556928ba69683fbf15cdc7e88f6e30a52804bf264b7e0509aae",
+      "change": "CRLF to LF only; JSON content unchanged"
+    },
+    {
+      "file": "reports/workflow-v12/source-snapshots/provenance.json",
+      "original_sha256": "c7ba9e898fad9002d2e79856ee9ac87accd87ca7a313d2382b77afcb6974c4ad",
+      "published_sha256": "093ad7d3cef39baf90c9dd1347d8d063db14c199e64b8559e8592e76c90205c4",
+      "change": "CRLF to LF only; JSON content unchanged"
+    }
+  ],
+  "scope": "Public report copies only. Original data, run outputs, frozen protocol and source snapshots are unchanged."
+}

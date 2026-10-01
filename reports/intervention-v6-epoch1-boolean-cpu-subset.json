@@ -1,0 +1,1354 @@
+{
+  "split": "dev",
+  "checkpoint": "runs\\intervention-v6\\epochs\\epoch-1",
+  "device": "cpu",
+  "precision": "float32",
+  "limit_per_family": 8,
+  "family_prefix": "text_",
+  "variants": {
+    "trained_option_letters": {
+      "overall": {
+        "questions": 32,
+        "accuracy": 0.75,
+        "nll": 0.4970799915772659
+      },
+      "by_modality": {
+        "text": {
+          "questions": 32,
+          "accuracy": 0.75,
+          "nll": 0.4970799915772659
+        }
+      },
+      "predictions": [
+        {
+          "id": "policy-v3-20261002-dev-text-2-rule-0",
+          "family": "text_disjunction",
+          "correct": 1.0,
+          "nll": 0.0023849159479141235,
+          "probabilities": [
+            0.002382072852924466,
+            0.9976179003715515
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-2-rule-1",
+          "family": "text_disjunction",
+          "correct": 1.0,
+          "nll": 0.008965711109340191,
+          "probabilities": [
+            0.9910743832588196,
+            0.008925621397793293
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-5-rule-0",
+          "family": "text_conjunction",
+          "correct": 1.0,
+          "nll": 0.0011064843274652958,
+          "probabilities": [
+            0.001105820992961526,
+            0.9988941550254822
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-5-rule-1",
+          "family": "text_conjunction",
+          "correct": 1.0,
+          "nll": 0.003850428620353341,
+          "probabilities": [
+            0.9961569905281067,
+            0.003842985490337014
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-8-rule-0",
+          "family": "text_threshold",
+          "correct": 1.0,
+          "nll": 0.028409423306584358,
+          "probabilities": [
+            0.028009649366140366,
+            0.9719903469085693
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-8-rule-1",
+          "family": "text_threshold",
+          "correct": 1.0,
+          "nll": 0.0005383234238252044,
+          "probabilities": [
+            0.999461829662323,
+            0.0005381368682719767
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-11-rule-0",
+          "family": "text_ranges",
+          "correct": 1.0,
+          "nll": 0.020496586337685585,
+          "probabilities": [
+            0.02028791233897209,
+            0.9797120690345764
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-11-rule-1",
+          "family": "text_ranges",
+          "correct": 1.0,
+          "nll": 0.5550685524940491,
+          "probabilities": [
+            0.5740329027175903,
+            0.42596709728240967
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-14-rule-0",
+          "family": "text_disjunction",
+          "correct": 1.0,
+          "nll": 0.00318068522028625,
+          "probabilities": [
+            0.003175658406689763,
+            0.9968243837356567
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-14-rule-1",
+          "family": "text_disjunction",
+          "correct": 0.0,
+          "nll": 0.9386393427848816,
+          "probabilities": [
+            0.3911597430706024,
+            0.60884028673172
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-17-rule-0",
+          "family": "text_conjunction",
+          "correct": 1.0,
+          "nll": 0.009457075037062168,
+          "probabilities": [
+            0.009412482380867004,
+            0.9905875325202942
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-17-rule-1",
+          "family": "text_conjunction",
+          "correct": 1.0,
+          "nll": 0.062383782118558884,
+          "probabilities": [
+            0.9395222663879395,
+            0.060477789491415024
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-20-rule-0",
+          "family": "text_threshold",
+          "correct": 1.0,
+          "nll": 0.019053179770708084,
+          "probabilities": [
+            0.018872857093811035,
+            0.9811272025108337
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-20-rule-1",
+          "family": "text_threshold",
+          "correct": 1.0,
+          "nll": 0.23361726105213165,
+          "probabilities": [
+            0.7916647791862488,
+            0.20833522081375122
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-23-rule-0",
+          "family": "text_ranges",
+          "correct": 1.0,
+          "nll": 0.1405072659254074,
+          "probabilities": [
+            0.13108260929584503,
+            0.8689173460006714
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-23-rule-1",
+          "family": "text_ranges",
+          "correct": 0.0,
+          "nll": 1.2334377765655518,
+          "probabilities": [
+            0.29128944873809814,
+            0.7087104916572571
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-26-rule-0",
+          "family": "text_disjunction",
+          "correct": 1.0,
+          "nll": 0.6347986459732056,
+          "probabilities": [
+            0.4699578583240509,
+            0.5300422310829163
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-26-rule-1",
+          "family": "text_disjunction",
+          "correct": 0.0,
+          "nll": 3.3914237022399902,
+          "probabilities": [
+            0.03366071730852127,
+            0.9663392901420593
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-29-rule-0",
+          "family": "text_conjunction",
+          "correct": 1.0,
+          "nll": 0.0006003961316309869,
+          "probabilities": [
+            0.0006002612062729895,
+            0.9993997812271118
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-29-rule-1",
+          "family": "text_conjunction",
+          "correct": 1.0,
+          "nll": 0.0007259594276547432,
+          "probabilities": [
+            0.9992743134498596,
+            0.0007256668759509921
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-32-rule-0",
+          "family": "text_threshold",
+          "correct": 1.0,
+          "nll": 0.023546593263745308,
+          "probabilities": [
+            0.02327151596546173,
+            0.9767284393310547
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-32-rule-1",
+          "family": "text_threshold",
+          "correct": 1.0,
+          "nll": 0.12611722946166992,
+          "probabilities": [
+            0.8815115094184875,
+            0.11848844587802887
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-35-rule-0",
+          "family": "text_ranges",
+          "correct": 1.0,
+          "nll": 0.03199496492743492,
+          "probabilities": [
+            0.031488560140132904,
+            0.9685114622116089
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-35-rule-1",
+          "family": "text_ranges",
+          "correct": 0.0,
+          "nll": 0.9998371005058289,
+          "probabilities": [
+            0.3679393529891968,
+            0.6320605874061584
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-38-rule-0",
+          "family": "text_disjunction",
+          "correct": 0.0,
+          "nll": 3.4267008304595947,
+          "probabilities": [
+            0.9675059914588928,
+            0.032493967562913895
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-38-rule-1",
+          "family": "text_disjunction",
+          "correct": 0.0,
+          "nll": 1.5709269046783447,
+          "probabilities": [
+            0.20785245299339294,
+            0.7921475172042847
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-41-rule-0",
+          "family": "text_conjunction",
+          "correct": 1.0,
+          "nll": 0.012982605956494808,
+          "probabilities": [
+            0.012898646295070648,
+            0.9871013164520264
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-41-rule-1",
+          "family": "text_conjunction",
+          "correct": 1.0,
+          "nll": 0.00040082051418721676,
+          "probabilities": [
+            0.999599277973175,
+            0.0004007294774055481
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-44-rule-0",
+          "family": "text_threshold",
+          "correct": 1.0,
+          "nll": 0.00437505217269063,
+          "probabilities": [
+            0.004365500528365374,
+            0.9956344962120056
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-44-rule-1",
+          "family": "text_threshold",
+          "correct": 0.0,
+          "nll": 1.1869853734970093,
+          "probabilities": [
+            0.30513978004455566,
+            0.6948602795600891
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-47-rule-0",
+          "family": "text_ranges",
+          "correct": 0.0,
+          "nll": 0.8807163238525391,
+          "probabilities": [
+            0.5855141282081604,
+            0.414485901594162
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-47-rule-1",
+          "family": "text_ranges",
+          "correct": 1.0,
+          "nll": 0.35333043336868286,
+          "probabilities": [
+            0.702345073223114,
+            0.297654926776886
+          ]
+        }
+      ]
+    },
+    "lowercase_boolean": {
+      "overall": {
+        "questions": 32,
+        "accuracy": 0.53125,
+        "nll": 1.4135264195047057
+      },
+      "by_modality": {
+        "text": {
+          "questions": 32,
+          "accuracy": 0.53125,
+          "nll": 1.4135264195047057
+        }
+      },
+      "predictions": [
+        {
+          "id": "policy-v3-20261002-dev-text-2-rule-0",
+          "family": "text_disjunction",
+          "correct": 1.0,
+          "nll": 0.00011669908417388797,
+          "probabilities": [
+            0.00011667587386909872,
+            0.9998832941055298
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-2-rule-1",
+          "family": "text_disjunction",
+          "correct": 0.0,
+          "nll": 6.139338970184326,
+          "probabilities": [
+            0.0021563484333455563,
+            0.9978436231613159
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-5-rule-0",
+          "family": "text_conjunction",
+          "correct": 0.0,
+          "nll": 1.7065762281417847,
+          "probabilities": [
+            0.8185139298439026,
+            0.1814860850572586
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-5-rule-1",
+          "family": "text_conjunction",
+          "correct": 1.0,
+          "nll": 0.014799568802118301,
+          "probabilities": [
+            0.9853094220161438,
+            0.014690548181533813
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-8-rule-0",
+          "family": "text_threshold",
+          "correct": 0.0,
+          "nll": 4.762405872344971,
+          "probabilities": [
+            0.9914549589157104,
+            0.008545025251805782
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-8-rule-1",
+          "family": "text_threshold",
+          "correct": 1.0,
+          "nll": 0.003515613032504916,
+          "probabilities": [
+            0.9964905381202698,
+            0.003509488422423601
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-11-rule-0",
+          "family": "text_ranges",
+          "correct": 1.0,
+          "nll": 0.0048220534808933735,
+          "probabilities": [
+            0.004810398444533348,
+            0.9951895475387573
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-11-rule-1",
+          "family": "text_ranges",
+          "correct": 0.0,
+          "nll": 1.6118013858795166,
+          "probabilities": [
+            0.19952784478664398,
+            0.8004721403121948
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-14-rule-0",
+          "family": "text_disjunction",
+          "correct": 1.0,
+          "nll": 0.0002431573811918497,
+          "probabilities": [
+            0.0002430907334201038,
+            0.9997568726539612
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-14-rule-1",
+          "family": "text_disjunction",
+          "correct": 0.0,
+          "nll": 4.854756832122803,
+          "probabilities": [
+            0.007791225798428059,
+            0.99220871925354
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-17-rule-0",
+          "family": "text_conjunction",
+          "correct": 1.0,
+          "nll": 0.01557226199656725,
+          "probabilities": [
+            0.015451688319444656,
+            0.9845483303070068
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-17-rule-1",
+          "family": "text_conjunction",
+          "correct": 0.0,
+          "nll": 2.678274393081665,
+          "probabilities": [
+            0.06868156045675278,
+            0.931318461894989
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-20-rule-0",
+          "family": "text_threshold",
+          "correct": 1.0,
+          "nll": 0.004669950809329748,
+          "probabilities": [
+            0.004659079946577549,
+            0.9953409433364868
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-20-rule-1",
+          "family": "text_threshold",
+          "correct": 0.0,
+          "nll": 2.467190980911255,
+          "probabilities": [
+            0.08482279628515244,
+            0.9151772260665894
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-23-rule-0",
+          "family": "text_ranges",
+          "correct": 1.0,
+          "nll": 0.28404107689857483,
+          "probabilities": [
+            0.2472642958164215,
+            0.7527357339859009
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-23-rule-1",
+          "family": "text_ranges",
+          "correct": 1.0,
+          "nll": 0.5786012411117554,
+          "probabilities": [
+            0.5606820583343506,
+            0.43931785225868225
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-26-rule-0",
+          "family": "text_disjunction",
+          "correct": 0.0,
+          "nll": 1.0196974277496338,
+          "probabilities": [
+            0.6392958760261536,
+            0.36070406436920166
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-26-rule-1",
+          "family": "text_disjunction",
+          "correct": 0.0,
+          "nll": 0.9550217390060425,
+          "probabilities": [
+            0.38480374217033386,
+            0.6151962280273438
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-29-rule-0",
+          "family": "text_conjunction",
+          "correct": 0.0,
+          "nll": 1.6850260496139526,
+          "probabilities": [
+            0.8145604133605957,
+            0.1854395866394043
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-29-rule-1",
+          "family": "text_conjunction",
+          "correct": 1.0,
+          "nll": 0.006975346710532904,
+          "probabilities": [
+            0.993048906326294,
+            0.006951062008738518
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-32-rule-0",
+          "family": "text_threshold",
+          "correct": 1.0,
+          "nll": 0.058184728026390076,
+          "probabilities": [
+            0.056524328887462616,
+            0.9434756636619568
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-32-rule-1",
+          "family": "text_threshold",
+          "correct": 0.0,
+          "nll": 2.1140034198760986,
+          "probabilities": [
+            0.12075356394052505,
+            0.8792464137077332
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-35-rule-0",
+          "family": "text_ranges",
+          "correct": 1.0,
+          "nll": 0.08151914924383163,
+          "probabilities": [
+            0.07828490436077118,
+            0.9217150807380676
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-35-rule-1",
+          "family": "text_ranges",
+          "correct": 1.0,
+          "nll": 0.49321746826171875,
+          "probabilities": [
+            0.6106584668159485,
+            0.3893415331840515
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-38-rule-0",
+          "family": "text_disjunction",
+          "correct": 0.0,
+          "nll": 2.7718355655670166,
+          "probabilities": [
+            0.9374529123306274,
+            0.06254708766937256
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-38-rule-1",
+          "family": "text_disjunction",
+          "correct": 1.0,
+          "nll": 0.09721583873033524,
+          "probabilities": [
+            0.9073601365089417,
+            0.09263982623815536
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-41-rule-0",
+          "family": "text_conjunction",
+          "correct": 0.0,
+          "nll": 5.2852301597595215,
+          "probabilities": [
+            0.9949341416358948,
+            0.005065866280347109
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-41-rule-1",
+          "family": "text_conjunction",
+          "correct": 1.0,
+          "nll": 0.003364380681887269,
+          "probabilities": [
+            0.9966412782669067,
+            0.003358726156875491
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-44-rule-0",
+          "family": "text_threshold",
+          "correct": 1.0,
+          "nll": 0.00182235985994339,
+          "probabilities": [
+            0.0018207256216555834,
+            0.9981793165206909
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-44-rule-1",
+          "family": "text_threshold",
+          "correct": 0.0,
+          "nll": 4.0184645652771,
+          "probabilities": [
+            0.017980551347136497,
+            0.9820194840431213
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-47-rule-0",
+          "family": "text_ranges",
+          "correct": 1.0,
+          "nll": 0.47486308217048645,
+          "probabilities": [
+            0.37802985310554504,
+            0.6219702363014221
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-47-rule-1",
+          "family": "text_ranges",
+          "correct": 0.0,
+          "nll": 1.0396778583526611,
+          "probabilities": [
+            0.35356855392456055,
+            0.6464314460754395
+          ]
+        }
+      ]
+    },
+    "titlecase_boolean": {
+      "overall": {
+        "questions": 32,
+        "accuracy": 0.5625,
+        "nll": 1.503137103191193
+      },
+      "by_modality": {
+        "text": {
+          "questions": 32,
+          "accuracy": 0.5625,
+          "nll": 1.503137103191193
+        }
+      },
+      "predictions": [
+        {
+          "id": "policy-v3-20261002-dev-text-2-rule-0",
+          "family": "text_disjunction",
+          "correct": 1.0,
+          "nll": 0.00011860620725201443,
+          "probabilities": [
+            0.00011865348642459139,
+            0.999881386756897
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-2-rule-1",
+          "family": "text_disjunction",
+          "correct": 0.0,
+          "nll": 5.971572399139404,
+          "probabilities": [
+            0.0025502280332148075,
+            0.9974496960639954
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-5-rule-0",
+          "family": "text_conjunction",
+          "correct": 0.0,
+          "nll": 1.3716402053833008,
+          "probabilities": [
+            0.7463094592094421,
+            0.25369054079055786
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-5-rule-1",
+          "family": "text_conjunction",
+          "correct": 1.0,
+          "nll": 0.03903324902057648,
+          "probabilities": [
+            0.961718738079071,
+            0.03828129544854164
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-8-rule-0",
+          "family": "text_threshold",
+          "correct": 0.0,
+          "nll": 4.425388813018799,
+          "probabilities": [
+            0.9880304932594299,
+            0.011969555169343948
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-8-rule-1",
+          "family": "text_threshold",
+          "correct": 1.0,
+          "nll": 0.005802453961223364,
+          "probabilities": [
+            0.9942143559455872,
+            0.005785694345831871
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-11-rule-0",
+          "family": "text_ranges",
+          "correct": 1.0,
+          "nll": 0.006417855154722929,
+          "probabilities": [
+            0.006397347431629896,
+            0.9936026930809021
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-11-rule-1",
+          "family": "text_ranges",
+          "correct": 0.0,
+          "nll": 2.112931966781616,
+          "probabilities": [
+            0.1208830252289772,
+            0.879116952419281
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-14-rule-0",
+          "family": "text_disjunction",
+          "correct": 1.0,
+          "nll": 0.0003252692404203117,
+          "probabilities": [
+            0.000325228669680655,
+            0.9996747970581055
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-14-rule-1",
+          "family": "text_disjunction",
+          "correct": 0.0,
+          "nll": 4.8794732093811035,
+          "probabilities": [
+            0.007601016201078892,
+            0.9923990368843079
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-17-rule-0",
+          "family": "text_conjunction",
+          "correct": 1.0,
+          "nll": 0.006814335938543081,
+          "probabilities": [
+            0.006791160441935062,
+            0.9932088255882263
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-17-rule-1",
+          "family": "text_conjunction",
+          "correct": 0.0,
+          "nll": 2.0947282314300537,
+          "probabilities": [
+            0.12310370057821274,
+            0.8768963813781738
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-20-rule-0",
+          "family": "text_threshold",
+          "correct": 1.0,
+          "nll": 0.003587716491892934,
+          "probabilities": [
+            0.003581344150006771,
+            0.9964187145233154
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-20-rule-1",
+          "family": "text_threshold",
+          "correct": 0.0,
+          "nll": 2.5876498222351074,
+          "probabilities": [
+            0.07519656419754028,
+            0.9248034358024597
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-23-rule-0",
+          "family": "text_ranges",
+          "correct": 1.0,
+          "nll": 0.2541930675506592,
+          "probabilities": [
+            0.22445794939994812,
+            0.7755420804023743
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-23-rule-1",
+          "family": "text_ranges",
+          "correct": 1.0,
+          "nll": 0.6174519658088684,
+          "probabilities": [
+            0.5393168926239014,
+            0.4606831669807434
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-26-rule-0",
+          "family": "text_disjunction",
+          "correct": 1.0,
+          "nll": 0.612946629524231,
+          "probabilities": [
+            0.4582478404045105,
+            0.5417521595954895
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-26-rule-1",
+          "family": "text_disjunction",
+          "correct": 0.0,
+          "nll": 4.238553524017334,
+          "probabilities": [
+            0.014428447932004929,
+            0.9855716228485107
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-29-rule-0",
+          "family": "text_conjunction",
+          "correct": 0.0,
+          "nll": 1.3283976316452026,
+          "probabilities": [
+            0.7350986003875732,
+            0.26490136981010437
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-29-rule-1",
+          "family": "text_conjunction",
+          "correct": 1.0,
+          "nll": 0.020123252645134926,
+          "probabilities": [
+            0.980077862739563,
+            0.019922154024243355
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-32-rule-0",
+          "family": "text_threshold",
+          "correct": 1.0,
+          "nll": 0.005879251752048731,
+          "probabilities": [
+            0.005861958023160696,
+            0.9941380023956299
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-32-rule-1",
+          "family": "text_threshold",
+          "correct": 0.0,
+          "nll": 3.1717522144317627,
+          "probabilities": [
+            0.04193006455898285,
+            0.958069920539856
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-35-rule-0",
+          "family": "text_ranges",
+          "correct": 1.0,
+          "nll": 0.12287032604217529,
+          "probabilities": [
+            0.11562170833349228,
+            0.8843783140182495
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-35-rule-1",
+          "family": "text_ranges",
+          "correct": 1.0,
+          "nll": 0.5376954078674316,
+          "probabilities": [
+            0.5840927958488464,
+            0.41590723395347595
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-38-rule-0",
+          "family": "text_disjunction",
+          "correct": 0.0,
+          "nll": 2.0360522270202637,
+          "probabilities": [
+            0.8694570064544678,
+            0.130543053150177
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-38-rule-1",
+          "family": "text_disjunction",
+          "correct": 1.0,
+          "nll": 0.10022523999214172,
+          "probabilities": [
+            0.904633641242981,
+            0.09536641836166382
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-41-rule-0",
+          "family": "text_conjunction",
+          "correct": 0.0,
+          "nll": 4.739531993865967,
+          "probabilities": [
+            0.9912573099136353,
+            0.008742735721170902
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-41-rule-1",
+          "family": "text_conjunction",
+          "correct": 1.0,
+          "nll": 0.004806393291801214,
+          "probabilities": [
+            0.9952051639556885,
+            0.004794828128069639
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-44-rule-0",
+          "family": "text_threshold",
+          "correct": 1.0,
+          "nll": 0.0005534547381103039,
+          "probabilities": [
+            0.0005532709765248001,
+            0.99944669008255
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-44-rule-1",
+          "family": "text_threshold",
+          "correct": 0.0,
+          "nll": 5.040071487426758,
+          "probabilities": [
+            0.006473287008702755,
+            0.9935266971588135
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-47-rule-0",
+          "family": "text_ranges",
+          "correct": 1.0,
+          "nll": 0.49084702134132385,
+          "probabilities": [
+            0.3878922760486603,
+            0.6121076941490173
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-47-rule-1",
+          "family": "text_ranges",
+          "correct": 0.0,
+          "nll": 1.2729520797729492,
+          "probabilities": [
+            0.2800038158893585,
+            0.7199962139129639
+          ]
+        }
+      ]
+    },
+    "no_yes": {
+      "overall": {
+        "questions": 32,
+        "accuracy": 0.5,
+        "nll": 1.016956485393166
+      },
+      "by_modality": {
+        "text": {
+          "questions": 32,
+          "accuracy": 0.5,
+          "nll": 1.016956485393166
+        }
+      },
+      "predictions": [
+        {
+          "id": "policy-v3-20261002-dev-text-2-rule-0",
+          "family": "text_disjunction",
+          "correct": 1.0,
+          "nll": 0.002643782878294587,
+          "probabilities": [
+            0.002640233375132084,
+            0.9973596930503845
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-2-rule-1",
+          "family": "text_disjunction",
+          "correct": 0.0,
+          "nll": 3.2391092777252197,
+          "probabilities": [
+            0.039198797196149826,
+            0.9608011841773987
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-5-rule-0",
+          "family": "text_conjunction",
+          "correct": 0.0,
+          "nll": 0.8413674831390381,
+          "probabilities": [
+            0.5688794851303101,
+            0.4311205744743347
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-5-rule-1",
+          "family": "text_conjunction",
+          "correct": 1.0,
+          "nll": 0.014670826494693756,
+          "probabilities": [
+            0.9854362607002258,
+            0.01456376165151596
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-8-rule-0",
+          "family": "text_threshold",
+          "correct": 0.0,
+          "nll": 4.092898845672607,
+          "probabilities": [
+            0.9833092093467712,
+            0.016690783202648163
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-8-rule-1",
+          "family": "text_threshold",
+          "correct": 1.0,
+          "nll": 0.010600803419947624,
+          "probabilities": [
+            0.9894551634788513,
+            0.01054486632347107
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-11-rule-0",
+          "family": "text_ranges",
+          "correct": 1.0,
+          "nll": 0.035337239503860474,
+          "probabilities": [
+            0.03472014144062996,
+            0.9652798175811768
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-11-rule-1",
+          "family": "text_ranges",
+          "correct": 0.0,
+          "nll": 1.4848415851593018,
+          "probabilities": [
+            0.22653822600841522,
+            0.7734617590904236
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-14-rule-0",
+          "family": "text_disjunction",
+          "correct": 1.0,
+          "nll": 0.009678935632109642,
+          "probabilities": [
+            0.009632269851863384,
+            0.9903677701950073
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-14-rule-1",
+          "family": "text_disjunction",
+          "correct": 0.0,
+          "nll": 2.580404043197632,
+          "probabilities": [
+            0.07574339956045151,
+            0.9242565631866455
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-17-rule-0",
+          "family": "text_conjunction",
+          "correct": 1.0,
+          "nll": 0.03941437229514122,
+          "probabilities": [
+            0.038647767156362534,
+            0.9613522887229919
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-17-rule-1",
+          "family": "text_conjunction",
+          "correct": 0.0,
+          "nll": 1.4062076807022095,
+          "probabilities": [
+            0.2450709044933319,
+            0.7549291253089905
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-20-rule-0",
+          "family": "text_threshold",
+          "correct": 1.0,
+          "nll": 0.02704237774014473,
+          "probabilities": [
+            0.02667996846139431,
+            0.9733200073242188
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-20-rule-1",
+          "family": "text_threshold",
+          "correct": 0.0,
+          "nll": 1.446527123451233,
+          "probabilities": [
+            0.23538634181022644,
+            0.764613687992096
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-23-rule-0",
+          "family": "text_ranges",
+          "correct": 1.0,
+          "nll": 0.3475627899169922,
+          "probabilities": [
+            0.2935923635959625,
+            0.7064076662063599
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-23-rule-1",
+          "family": "text_ranges",
+          "correct": 0.0,
+          "nll": 0.7055493593215942,
+          "probabilities": [
+            0.4938371777534485,
+            0.5061628222465515
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-26-rule-0",
+          "family": "text_disjunction",
+          "correct": 0.0,
+          "nll": 0.9794460535049438,
+          "probabilities": [
+            0.6244809627532959,
+            0.3755190372467041
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-26-rule-1",
+          "family": "text_disjunction",
+          "correct": 0.0,
+          "nll": 1.5857319831848145,
+          "probabilities": [
+            0.20479781925678253,
+            0.7952021360397339
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-29-rule-0",
+          "family": "text_conjunction",
+          "correct": 0.0,
+          "nll": 0.7106643915176392,
+          "probabilities": [
+            0.5086823105812073,
+            0.49131765961647034
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-29-rule-1",
+          "family": "text_conjunction",
+          "correct": 1.0,
+          "nll": 0.004357604775577784,
+          "probabilities": [
+            0.99565190076828,
+            0.004348175134509802
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-32-rule-0",
+          "family": "text_threshold",
+          "correct": 1.0,
+          "nll": 0.0912838876247406,
+          "probabilities": [
+            0.08724146336317062,
+            0.9127585291862488
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-32-rule-1",
+          "family": "text_threshold",
+          "correct": 0.0,
+          "nll": 1.6054306030273438,
+          "probabilities": [
+            0.20080304145812988,
+            0.7991969585418701
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-35-rule-0",
+          "family": "text_ranges",
+          "correct": 1.0,
+          "nll": 0.28227636218070984,
+          "probabilities": [
+            0.24593470990657806,
+            0.7540652751922607
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-35-rule-1",
+          "family": "text_ranges",
+          "correct": 1.0,
+          "nll": 0.4949478507041931,
+          "probabilities": [
+            0.609602689743042,
+            0.390397310256958
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-38-rule-0",
+          "family": "text_disjunction",
+          "correct": 0.0,
+          "nll": 2.1579408645629883,
+          "probabilities": [
+            0.8844372034072876,
+            0.11556282639503479
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-38-rule-1",
+          "family": "text_disjunction",
+          "correct": 1.0,
+          "nll": 0.16657792031764984,
+          "probabilities": [
+            0.8465568423271179,
+            0.1534430980682373
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-41-rule-0",
+          "family": "text_conjunction",
+          "correct": 0.0,
+          "nll": 4.297680377960205,
+          "probabilities": [
+            0.9863998889923096,
+            0.013600068166851997
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-41-rule-1",
+          "family": "text_conjunction",
+          "correct": 1.0,
+          "nll": 0.00648240651935339,
+          "probabilities": [
+            0.9935385584831238,
+            0.00646147271618247
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-44-rule-0",
+          "family": "text_threshold",
+          "correct": 1.0,
+          "nll": 0.02797052636742592,
+          "probabilities": [
+            0.02758292853832245,
+            0.9724170565605164
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-44-rule-1",
+          "family": "text_threshold",
+          "correct": 0.0,
+          "nll": 2.4171957969665527,
+          "probabilities": [
+            0.08917132019996643,
+            0.9108286499977112
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-47-rule-0",
+          "family": "text_ranges",
+          "correct": 1.0,
+          "nll": 0.5229997038841248,
+          "probabilities": [
+            0.4072601795196533,
+            0.5927398204803467
+          ]
+        },
+        {
+          "id": "policy-v3-20261002-dev-text-47-rule-1",
+          "family": "text_ranges",
+          "correct": 0.0,
+          "nll": 0.9077646732330322,
+          "probabilities": [
+            0.4034249782562256,
+            0.5965749621391296
+          ]
+        }
+      ]
+    }
+  }
+}

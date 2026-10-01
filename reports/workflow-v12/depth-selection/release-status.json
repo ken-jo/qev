@@ -1,0 +1,9 @@
+{
+  "stage": "previous-policy",
+  "status": "failed",
+  "updated_at_utc": "2026-09-30T20:47:04.776191+00:00",
+  "release_allowed": false,
+  "final_predictions_started": false,
+  "exit_code": 2,
+  "log": "runs\\workflow-v12-depth-release\\previous-policy.log"
+}

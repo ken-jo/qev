@@ -1,0 +1,50 @@
+{
+  "protocol": "workflow-backbone-memory-repair-v13",
+  "declared_at_utc": "2026-09-30T23:30:37.151792+00:00",
+  "study_design": "configs/workflow-backbone-recovery-v13.json",
+  "study_design_sha256": "55aa5eab85903a3f142dcbbff737156c5e59c74135d45262c011ed5b4c849180",
+  "original_failed_root": "runs\\backbone-recovery-v13",
+  "retry_root": "runs/backbone-recovery-memory-v13",
+  "retry_source": "scripts/run_backbone_recovery_memory.py",
+  "retry_source_sha256": "c8b48890a1e742a41bf47e0be2dd114089933b7621d1a4bf24191c63dad5b423",
+  "preserved_evidence": {
+    "runs\\backbone-recovery-v13\\execution-failure.json": "27bcde19acd37c5410ee45f0cae2501bb6d5c52281244664307f8db375b4cd6d",
+    "runs\\backbone-recovery-v13\\protocol.json": "5cc0bbef3e6e06e208ff70f6efbc586d56b98423ea636a4ec7ce2864e353974e",
+    "runs\\backbone-recovery-v13\\parameter-plan.json": "1b938af51226036d8f7f99d676bc6599c7fe5eb959e5d2ca35e3ae5d094def4b",
+    "runs\\backbone-recovery-v13\\training-checkpoints.json": "4f46f5b1e12e79921a0f18e047a779855868289d7da4f84b525f232c5d3345df",
+    "runs/backbone-recovery-memory-probe-v13.json": "d249ae6cdffc1d797149fc52e7ce30487397273dcef3a6410a7885b1d5c94706",
+    "scripts/run_backbone_recovery.py": "a08b5e2d05d22f8f9a908bd9db16fab090fe7e102b487509d9f601690078d24d",
+    "configs/workflow-backbone-recovery-v13.json": "55aa5eab85903a3f142dcbbff737156c5e59c74135d45262c011ed5b4c849180",
+    "scripts/probe_backbone_recovery_memory.py": "d7833d4f1bba33fd9781cf89076329a490048024b7c6a869d40c27246c0c61bf",
+    "runs\\backbone-recovery-v13\\fraction-0.25\\checkpoint\\head.safetensors": "390ea306d935b7772a26122d95f471501c3d6e9fc8bdba61dc629912ceb64b52",
+    "runs\\backbone-recovery-v13\\fraction-0.25\\checkpoint\\manifest.json": "f7bf3ff3b6aee40f65aa9d3adf86870109b63c5847390b9cd2c4b1bd1223aba3",
+    "runs\\backbone-recovery-v13\\fraction-0.5\\checkpoint\\head.safetensors": "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee",
+    "runs\\backbone-recovery-v13\\fraction-0.5\\checkpoint\\manifest.json": "c114aa49dc969d771ebfaee6cfd621571e8c7000f4586b3449dbbc30447cf1b1"
+  },
+  "changes": [
+    "Allocator memory cap 0.85 to 0.90, after a train-only longest-input backward probe.",
+    "Release each question graph by local function scope, collect garbage and clear unused cache after each accumulated batch.",
+    "Save optimizer/scheduler/RNG states at the same predeclared fraction boundaries for exact future resumption."
+  ],
+  "unchanged": [
+    "Parent weights",
+    "9129 train questions",
+    "5102 dev questions",
+    "seed and group order",
+    "trainable parameters",
+    "loss",
+    "learning rates and schedule",
+    "gradient accumulation",
+    "three fraction boundaries",
+    "all candidate-selection and release thresholds"
+  ],
+  "restart": "Restart from the identical original parent; no optimizer state was saved by the failed run. Never silently resume its weights with a reset optimizer.",
+  "old_partial_checkpoint_selection": "Preserved diagnostics only; do not add them to the three declared retry candidates.",
+  "prospective_model_selection": true,
+  "new_final_or_validation_outputs_used": false,
+  "release_allowed": false,
+  "references": [
+    "https://docs.pytorch.org/docs/2.10/generated/torch.cuda.memory.set_per_process_memory_fraction.html",
+    "https://docs.pytorch.org/docs/2.10/generated/torch.cuda.memory.empty_cache.html"
+  ]
+}

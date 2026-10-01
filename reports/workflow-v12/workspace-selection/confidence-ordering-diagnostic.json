@@ -1,0 +1,606 @@
+{
+  "created_at_utc": "2026-09-30T09:23:01.436274+00:00",
+  "selection_sha256": "29f6adea6d407a3844ce849ec54e98c59491c30e8718a7d12151a6e49032ffad",
+  "source_sha256": {
+    "C:\\tmp\\veyra\\scripts\\diagnose_workspace_confidence.py": "e1106014d4ad8aaac494af2243754648d7e2df1eed638ce186630b75d4e9027f",
+    "scripts\\train_workflow_reliability_pilot.py": "56fb6bd9acf9af3c77853b51428b6cc54dbf526a3f312cf179477cced2f0366e",
+    "src\\veyra\\workflow_learning.py": "37cdb8d9d375938a5ac1a26ef53f1ccad949f141e2406caf232dab4df70a02d7"
+  },
+  "bindings": {
+    "runs\\workflow-v12-workspace-selection\\merged-baseline-dev.safetensors": "3c5fc301ff7485ce7e0533fc9cfa56e5867968ecad8cda291635e7828a1bf212",
+    "checkpoints\\veyra-foundation-v11\\manifest.json": "dd4df10eba5880dc1bb0267502fe264eb1c5a730235619db9cd8cd74df87b1a9",
+    "checkpoints\\veyra-foundation-v11\\head.safetensors": "f13aa3346d7da369a2769eef7fa487747c97d1ba0878ea3af8f713463f463491",
+    "runs\\workflow-v12-workspace-selection\\merged-dev-0.safetensors": "9624af79bc10db599e9cf3be473c8cbafd4136ab84e1f9551d209a30226eab38",
+    "runs\\workflow-v12-backbone\\high\\full\\manifest.json": "d2e62cd08e8b93d26a4212ec3616a9a9779777728d5f57aaad7e487f0bc01b65",
+    "runs\\workflow-v12-backbone\\high\\full\\head.safetensors": "92b3cb9b7e3353b68b116e93b8074148227a4c4d57eed2efc2a1a5867b443959",
+    "runs\\workflow-v12-workspace-selection\\merged-dev-1.safetensors": "3505c483b430897ffc78d80e57c244b3d157533360e164ab4a7a58b919ec29c6",
+    "runs\\workflow-v12-workspace-study\\primitive\\epoch-1\\checkpoint\\manifest.json": "7f538ca419998bb358c6a9b57fdafb175b8ba9c13a12193baa9584673fd00dac",
+    "runs\\workflow-v12-workspace-study\\primitive\\epoch-1\\checkpoint\\head.safetensors": "0baf777a61e54f4283755238fba8cdc34522ee68857a1e5616ff182855894822",
+    "runs\\workflow-v12-workspace-selection\\merged-dev-2.safetensors": "2dbfa31ba1233e31855169c1e6fcfb655d94e627fc9c1f0c38a725af8af8801e",
+    "runs\\workflow-v12-workspace-study\\primitive\\epoch-2\\checkpoint\\manifest.json": "0afe95f9ea13945282e4438ee50373d5375c21a55e3235b5f58940ccf1661073",
+    "runs\\workflow-v12-workspace-study\\primitive\\epoch-2\\checkpoint\\head.safetensors": "4bb3c3187ec37e6ad7f6634c8aeec9bafbbb90ebea89ebae0d26f7c844a87c72",
+    "runs\\workflow-v12-workspace-selection\\merged-dev-3.safetensors": "ab647b36fe8daa854252894c8b6dfcbe077decb601f4d0730df76d6b9a7b9516",
+    "runs\\workflow-v12-workspace-study\\continuation\\epoch-1\\checkpoint\\manifest.json": "9ab563a73c09763452b643c52f40a08e7ad1d850e549b1f9c528492de42ce433",
+    "runs\\workflow-v12-workspace-study\\continuation\\epoch-1\\checkpoint\\head.safetensors": "a0a081d3a0cb34909113198a5f73fe272aedd1d41d77f6cf171be0ee6949f500",
+    "runs\\workflow-v12-workspace-selection\\merged-dev-4.safetensors": "8323df059e078b618b0da719dd4a943094b43bf9407d7e6040324fbc8efb3df5",
+    "runs\\workflow-v12-workspace-study\\continuation\\epoch-2\\checkpoint\\manifest.json": "3c577a2c4f378f822505abc63fd041656bb6b3e6d7b85ceddcde88db5b25a54e",
+    "runs\\workflow-v12-workspace-study\\continuation\\epoch-2\\checkpoint\\head.safetensors": "e6c3f80dd10675dbe0c4b8d73e36a94058d978e32ae99f936a10b1d7897f42c5"
+  },
+  "feature_cache": {
+    "complete": true,
+    "rows": 14524,
+    "by_split": {
+      "train": 11212,
+      "dev": 3312
+    },
+    "features_sha256": "10304d3889d09c01c55f05fcba6d48068daed7f1f9a3a56cbeda8a25c9c2aff3",
+    "metadata_sha256": "4a81e5c10d1425ccdd1141fe7bece83609404b6d2d1274a964c84d45a6ae6378",
+    "specification_sha256": "3ff0186b30e46416428ca6acf79640d4a8fac8940182095986429f894375c640",
+    "elapsed_seconds": 964.4121443999466
+  },
+  "results": [
+    {
+      "checkpoint": "checkpoints\\veyra-foundation-v11",
+      "orderings": {
+        "maximum_probability": {
+          "by_type": {
+            "choice": {
+              "questions": 2092,
+              "maximum_threshold_coverage_at_15pct_error": 0.777246653919694,
+              "fixed_count_error_at_60pct": 0.09786687791347504
+            },
+            "score": {
+              "questions": 640,
+              "maximum_threshold_coverage_at_15pct_error": 0.0,
+              "fixed_count_error_at_60pct": 0.511890709400177
+            },
+            "noul": {
+              "questions": 580,
+              "maximum_threshold_coverage_at_15pct_error": 0.1,
+              "fixed_count_error_at_60pct": 0.36387214064598083
+            }
+          },
+          "uncertainty_cost_at_80pct": 1.9997645616531372,
+          "uncertainty_answer_count_at_80pct": 240,
+          "class_predictions_and_distributions_unchanged": true
+        },
+        "probability_margin": {
+          "by_type": {
+            "choice": {
+              "questions": 2092,
+              "maximum_threshold_coverage_at_15pct_error": 0.7810707456978967,
+              "fixed_count_error_at_60pct": 0.09621154516935349
+            },
+            "score": {
+              "questions": 640,
+              "maximum_threshold_coverage_at_15pct_error": 0.0,
+              "fixed_count_error_at_60pct": 0.5203925371170044
+            },
+            "noul": {
+              "questions": 580,
+              "maximum_threshold_coverage_at_15pct_error": 0.1,
+              "fixed_count_error_at_60pct": 0.36387214064598083
+            }
+          },
+          "uncertainty_cost_at_80pct": 2.0655131340026855,
+          "uncertainty_answer_count_at_80pct": 240,
+          "class_predictions_and_distributions_unchanged": true
+        },
+        "top_two_conditional_probability": {
+          "by_type": {
+            "choice": {
+              "questions": 2092,
+              "maximum_threshold_coverage_at_15pct_error": 0.7810707456978967,
+              "fixed_count_error_at_60pct": 0.09621154516935349
+            },
+            "score": {
+              "questions": 640,
+              "maximum_threshold_coverage_at_15pct_error": 0.0,
+              "fixed_count_error_at_60pct": 0.5312488675117493
+            },
+            "noul": {
+              "questions": 580,
+              "maximum_threshold_coverage_at_15pct_error": 0.1,
+              "fixed_count_error_at_60pct": 0.36387214064598083
+            }
+          },
+          "uncertainty_cost_at_80pct": 2.055190324783325,
+          "uncertainty_answer_count_at_80pct": 240,
+          "class_predictions_and_distributions_unchanged": true
+        },
+        "one_minus_normalized_entropy": {
+          "by_type": {
+            "choice": {
+              "questions": 2092,
+              "maximum_threshold_coverage_at_15pct_error": 0.747131931166348,
+              "fixed_count_error_at_60pct": 0.09388598799705505
+            },
+            "score": {
+              "questions": 640,
+              "maximum_threshold_coverage_at_15pct_error": 0.0,
+              "fixed_count_error_at_60pct": 0.5246515870094299
+            },
+            "noul": {
+              "questions": 580,
+              "maximum_threshold_coverage_at_15pct_error": 0.1,
+              "fixed_count_error_at_60pct": 0.36387214064598083
+            }
+          },
+          "uncertainty_cost_at_80pct": 2.042011022567749,
+          "uncertainty_answer_count_at_80pct": 240,
+          "class_predictions_and_distributions_unchanged": true
+        }
+      }
+    },
+    {
+      "checkpoint": "runs\\workflow-v12-backbone\\high\\full",
+      "orderings": {
+        "maximum_probability": {
+          "by_type": {
+            "choice": {
+              "questions": 2092,
+              "maximum_threshold_coverage_at_15pct_error": 0.8608986615678776,
+              "fixed_count_error_at_60pct": 0.06815485656261444
+            },
+            "score": {
+              "questions": 640,
+              "maximum_threshold_coverage_at_15pct_error": 0.034375,
+              "fixed_count_error_at_60pct": 0.3212626278400421
+            },
+            "noul": {
+              "questions": 580,
+              "maximum_threshold_coverage_at_15pct_error": 0.496551724137931,
+              "fixed_count_error_at_60pct": 0.1791379302740097
+            }
+          },
+          "uncertainty_cost_at_80pct": 1.2975623607635498,
+          "uncertainty_answer_count_at_80pct": 240,
+          "class_predictions_and_distributions_unchanged": true
+        },
+        "probability_margin": {
+          "by_type": {
+            "choice": {
+              "questions": 2092,
+              "maximum_threshold_coverage_at_15pct_error": 0.8661567877629063,
+              "fixed_count_error_at_60pct": 0.06815485656261444
+            },
+            "score": {
+              "questions": 640,
+              "maximum_threshold_coverage_at_15pct_error": 0.04375,
+              "fixed_count_error_at_60pct": 0.313323974609375
+            },
+            "noul": {
+              "questions": 580,
+              "maximum_threshold_coverage_at_15pct_error": 0.496551724137931,
+              "fixed_count_error_at_60pct": 0.1791379302740097
+            }
+          },
+          "uncertainty_cost_at_80pct": 1.3673537969589233,
+          "uncertainty_answer_count_at_80pct": 240,
+          "class_predictions_and_distributions_unchanged": true
+        },
+        "top_two_conditional_probability": {
+          "by_type": {
+            "choice": {
+              "questions": 2092,
+              "maximum_threshold_coverage_at_15pct_error": 0.8776290630975143,
+              "fixed_count_error_at_60pct": 0.06576631963253021
+            },
+            "score": {
+              "questions": 640,
+              "maximum_threshold_coverage_at_15pct_error": 0.0,
+              "fixed_count_error_at_60pct": 0.313323974609375
+            },
+            "noul": {
+              "questions": 580,
+              "maximum_threshold_coverage_at_15pct_error": 0.496551724137931,
+              "fixed_count_error_at_60pct": 0.1791379302740097
+            }
+          },
+          "uncertainty_cost_at_80pct": 1.3716870546340942,
+          "uncertainty_answer_count_at_80pct": 240,
+          "class_predictions_and_distributions_unchanged": true
+        },
+        "one_minus_normalized_entropy": {
+          "by_type": {
+            "choice": {
+              "questions": 2092,
+              "maximum_threshold_coverage_at_15pct_error": 0.8446462715105163,
+              "fixed_count_error_at_60pct": 0.06289809197187424
+            },
+            "score": {
+              "questions": 640,
+              "maximum_threshold_coverage_at_15pct_error": 0.0515625,
+              "fixed_count_error_at_60pct": 0.29500797390937805
+            },
+            "noul": {
+              "questions": 580,
+              "maximum_threshold_coverage_at_15pct_error": 0.496551724137931,
+              "fixed_count_error_at_60pct": 0.1791379302740097
+            }
+          },
+          "uncertainty_cost_at_80pct": 1.3772072792053223,
+          "uncertainty_answer_count_at_80pct": 240,
+          "class_predictions_and_distributions_unchanged": true
+        }
+      }
+    },
+    {
+      "checkpoint": "runs\\workflow-v12-workspace-study\\primitive\\epoch-1\\checkpoint",
+      "orderings": {
+        "maximum_probability": {
+          "by_type": {
+            "choice": {
+              "questions": 2092,
+              "maximum_threshold_coverage_at_15pct_error": 0.9364244741873805,
+              "fixed_count_error_at_60pct": 0.06608280539512634
+            },
+            "score": {
+              "questions": 640,
+              "maximum_threshold_coverage_at_15pct_error": 0.053125,
+              "fixed_count_error_at_60pct": 0.27475014328956604
+            },
+            "noul": {
+              "questions": 580,
+              "maximum_threshold_coverage_at_15pct_error": 0.656896551724138,
+              "fixed_count_error_at_60pct": 0.12972156703472137
+            }
+          },
+          "uncertainty_cost_at_80pct": 1.567071795463562,
+          "uncertainty_answer_count_at_80pct": 240,
+          "class_predictions_and_distributions_unchanged": true
+        },
+        "probability_margin": {
+          "by_type": {
+            "choice": {
+              "questions": 2092,
+              "maximum_threshold_coverage_at_15pct_error": 0.9354684512428298,
+              "fixed_count_error_at_60pct": 0.06050955504179001
+            },
+            "score": {
+              "questions": 640,
+              "maximum_threshold_coverage_at_15pct_error": 0.0640625,
+              "fixed_count_error_at_60pct": 0.262416809797287
+            },
+            "noul": {
+              "questions": 580,
+              "maximum_threshold_coverage_at_15pct_error": 0.656896551724138,
+              "fixed_count_error_at_60pct": 0.12972156703472137
+            }
+          },
+          "uncertainty_cost_at_80pct": 1.527435541152954,
+          "uncertainty_answer_count_at_80pct": 240,
+          "class_predictions_and_distributions_unchanged": true
+        },
+        "top_two_conditional_probability": {
+          "by_type": {
+            "choice": {
+              "questions": 2092,
+              "maximum_threshold_coverage_at_15pct_error": 0.9316443594646272,
+              "fixed_count_error_at_60pct": 0.05971337482333183
+            },
+            "score": {
+              "questions": 640,
+              "maximum_threshold_coverage_at_15pct_error": 0.0734375,
+              "fixed_count_error_at_60pct": 0.25784650444984436
+            },
+            "noul": {
+              "questions": 580,
+              "maximum_threshold_coverage_at_15pct_error": 0.656896551724138,
+              "fixed_count_error_at_60pct": 0.12972156703472137
+            }
+          },
+          "uncertainty_cost_at_80pct": 1.499921441078186,
+          "uncertainty_answer_count_at_80pct": 240,
+          "class_predictions_and_distributions_unchanged": true
+        },
+        "one_minus_normalized_entropy": {
+          "by_type": {
+            "choice": {
+              "questions": 2092,
+              "maximum_threshold_coverage_at_15pct_error": 0.9168260038240917,
+              "fixed_count_error_at_60pct": 0.06210191175341606
+            },
+            "score": {
+              "questions": 640,
+              "maximum_threshold_coverage_at_15pct_error": 0.0546875,
+              "fixed_count_error_at_60pct": 0.270042359828949
+            },
+            "noul": {
+              "questions": 580,
+              "maximum_threshold_coverage_at_15pct_error": 0.656896551724138,
+              "fixed_count_error_at_60pct": 0.12972156703472137
+            }
+          },
+          "uncertainty_cost_at_80pct": 1.5001332759857178,
+          "uncertainty_answer_count_at_80pct": 240,
+          "class_predictions_and_distributions_unchanged": true
+        }
+      }
+    },
+    {
+      "checkpoint": "runs\\workflow-v12-workspace-study\\primitive\\epoch-2\\checkpoint",
+      "orderings": {
+        "maximum_probability": {
+          "by_type": {
+            "choice": {
+              "questions": 2092,
+              "maximum_threshold_coverage_at_15pct_error": 0.9588910133843213,
+              "fixed_count_error_at_60pct": 0.06614650040864944
+            },
+            "score": {
+              "questions": 640,
+              "maximum_threshold_coverage_at_15pct_error": 0.20625,
+              "fixed_count_error_at_60pct": 0.2590116262435913
+            },
+            "noul": {
+              "questions": 580,
+              "maximum_threshold_coverage_at_15pct_error": 0.6862068965517242,
+              "fixed_count_error_at_60pct": 0.1370905190706253
+            }
+          },
+          "uncertainty_cost_at_80pct": 1.3069294691085815,
+          "uncertainty_answer_count_at_80pct": 240,
+          "class_predictions_and_distributions_unchanged": true
+        },
+        "probability_margin": {
+          "by_type": {
+            "choice": {
+              "questions": 2092,
+              "maximum_threshold_coverage_at_15pct_error": 0.9593690248565966,
+              "fixed_count_error_at_60pct": 0.05887738615274429
+            },
+            "score": {
+              "questions": 640,
+              "maximum_threshold_coverage_at_15pct_error": 0.2015625,
+              "fixed_count_error_at_60pct": 0.24983464181423187
+            },
+            "noul": {
+              "questions": 580,
+              "maximum_threshold_coverage_at_15pct_error": 0.6862068965517242,
+              "fixed_count_error_at_60pct": 0.1370905190706253
+            }
+          },
+          "uncertainty_cost_at_80pct": 1.264628291130066,
+          "uncertainty_answer_count_at_80pct": 240,
+          "class_predictions_and_distributions_unchanged": true
+        },
+        "top_two_conditional_probability": {
+          "by_type": {
+            "choice": {
+              "questions": 2092,
+              "maximum_threshold_coverage_at_15pct_error": 0.9603250478011472,
+              "fixed_count_error_at_60pct": 0.05808120593428612
+            },
+            "score": {
+              "questions": 640,
+              "maximum_threshold_coverage_at_15pct_error": 0.19375,
+              "fixed_count_error_at_60pct": 0.24842189252376556
+            },
+            "noul": {
+              "questions": 580,
+              "maximum_threshold_coverage_at_15pct_error": 0.6862068965517242,
+              "fixed_count_error_at_60pct": 0.1370905190706253
+            }
+          },
+          "uncertainty_cost_at_80pct": 1.2850815057754517,
+          "uncertainty_answer_count_at_80pct": 240,
+          "class_predictions_and_distributions_unchanged": true
+        },
+        "one_minus_normalized_entropy": {
+          "by_type": {
+            "choice": {
+              "questions": 2092,
+              "maximum_threshold_coverage_at_15pct_error": 0.9469407265774379,
+              "fixed_count_error_at_60pct": 0.06190286576747894
+            },
+            "score": {
+              "questions": 640,
+              "maximum_threshold_coverage_at_15pct_error": 0.2375,
+              "fixed_count_error_at_60pct": 0.2460375279188156
+            },
+            "noul": {
+              "questions": 580,
+              "maximum_threshold_coverage_at_15pct_error": 0.6862068965517242,
+              "fixed_count_error_at_60pct": 0.1370905190706253
+            }
+          },
+          "uncertainty_cost_at_80pct": 1.2001899480819702,
+          "uncertainty_answer_count_at_80pct": 240,
+          "class_predictions_and_distributions_unchanged": true
+        }
+      }
+    },
+    {
+      "checkpoint": "runs\\workflow-v12-workspace-study\\continuation\\epoch-1\\checkpoint",
+      "orderings": {
+        "maximum_probability": {
+          "by_type": {
+            "choice": {
+              "questions": 2092,
+              "maximum_threshold_coverage_at_15pct_error": 0.9369024856596558,
+              "fixed_count_error_at_60pct": 0.06289809197187424
+            },
+            "score": {
+              "questions": 640,
+              "maximum_threshold_coverage_at_15pct_error": 0.06875,
+              "fixed_count_error_at_60pct": 0.2807527482509613
+            },
+            "noul": {
+              "questions": 580,
+              "maximum_threshold_coverage_at_15pct_error": 0.656896551724138,
+              "fixed_count_error_at_60pct": 0.1341896653175354
+            }
+          },
+          "uncertainty_cost_at_80pct": 1.5808167457580566,
+          "uncertainty_answer_count_at_80pct": 240,
+          "class_predictions_and_distributions_unchanged": true
+        },
+        "probability_margin": {
+          "by_type": {
+            "choice": {
+              "questions": 2092,
+              "maximum_threshold_coverage_at_15pct_error": 0.9388145315487572,
+              "fixed_count_error_at_60pct": 0.0573248416185379
+            },
+            "score": {
+              "questions": 640,
+              "maximum_threshold_coverage_at_15pct_error": 0.08125,
+              "fixed_count_error_at_60pct": 0.26646888256073
+            },
+            "noul": {
+              "questions": 580,
+              "maximum_threshold_coverage_at_15pct_error": 0.656896551724138,
+              "fixed_count_error_at_60pct": 0.1341896653175354
+            }
+          },
+          "uncertainty_cost_at_80pct": 1.5710511207580566,
+          "uncertainty_answer_count_at_80pct": 240,
+          "class_predictions_and_distributions_unchanged": true
+        },
+        "top_two_conditional_probability": {
+          "by_type": {
+            "choice": {
+              "questions": 2092,
+              "maximum_threshold_coverage_at_15pct_error": 0.9330783938814532,
+              "fixed_count_error_at_60pct": 0.0573248416185379
+            },
+            "score": {
+              "questions": 640,
+              "maximum_threshold_coverage_at_15pct_error": 0.10625,
+              "fixed_count_error_at_60pct": 0.2612605392932892
+            },
+            "noul": {
+              "questions": 580,
+              "maximum_threshold_coverage_at_15pct_error": 0.656896551724138,
+              "fixed_count_error_at_60pct": 0.1341896653175354
+            }
+          },
+          "uncertainty_cost_at_80pct": 1.584384560585022,
+          "uncertainty_answer_count_at_80pct": 240,
+          "class_predictions_and_distributions_unchanged": true
+        },
+        "one_minus_normalized_entropy": {
+          "by_type": {
+            "choice": {
+              "questions": 2092,
+              "maximum_threshold_coverage_at_15pct_error": 0.9297323135755258,
+              "fixed_count_error_at_60pct": 0.05971337482333183
+            },
+            "score": {
+              "questions": 640,
+              "maximum_threshold_coverage_at_15pct_error": 0.0578125,
+              "fixed_count_error_at_60pct": 0.2957650125026703
+            },
+            "noul": {
+              "questions": 580,
+              "maximum_threshold_coverage_at_15pct_error": 0.656896551724138,
+              "fixed_count_error_at_60pct": 0.1341896653175354
+            }
+          },
+          "uncertainty_cost_at_80pct": 1.4436933994293213,
+          "uncertainty_answer_count_at_80pct": 240,
+          "class_predictions_and_distributions_unchanged": true
+        }
+      }
+    },
+    {
+      "checkpoint": "runs\\workflow-v12-workspace-study\\continuation\\epoch-2\\checkpoint",
+      "orderings": {
+        "maximum_probability": {
+          "by_type": {
+            "choice": {
+              "questions": 2092,
+              "maximum_threshold_coverage_at_15pct_error": 0.9631931166347992,
+              "fixed_count_error_at_60pct": 0.06535031646490097
+            },
+            "score": {
+              "questions": 640,
+              "maximum_threshold_coverage_at_15pct_error": 0.228125,
+              "fixed_count_error_at_60pct": 0.2589009702205658
+            },
+            "noul": {
+              "questions": 580,
+              "maximum_threshold_coverage_at_15pct_error": 0.6827586206896552,
+              "fixed_count_error_at_60pct": 0.13194683194160461
+            }
+          },
+          "uncertainty_cost_at_80pct": 1.32168710231781,
+          "uncertainty_answer_count_at_80pct": 240,
+          "class_predictions_and_distributions_unchanged": true
+        },
+        "probability_margin": {
+          "by_type": {
+            "choice": {
+              "questions": 2092,
+              "maximum_threshold_coverage_at_15pct_error": 0.9627151051625239,
+              "fixed_count_error_at_60pct": 0.06372611224651337
+            },
+            "score": {
+              "questions": 640,
+              "maximum_threshold_coverage_at_15pct_error": 0.2203125,
+              "fixed_count_error_at_60pct": 0.24840886890888214
+            },
+            "noul": {
+              "questions": 580,
+              "maximum_threshold_coverage_at_15pct_error": 0.6827586206896552,
+              "fixed_count_error_at_60pct": 0.13194683194160461
+            }
+          },
+          "uncertainty_cost_at_80pct": 1.3317055702209473,
+          "uncertainty_answer_count_at_80pct": 240,
+          "class_predictions_and_distributions_unchanged": true
+        },
+        "top_two_conditional_probability": {
+          "by_type": {
+            "choice": {
+              "questions": 2092,
+              "maximum_threshold_coverage_at_15pct_error": 0.9617590822179732,
+              "fixed_count_error_at_60pct": 0.059665605425834656
+            },
+            "score": {
+              "questions": 640,
+              "maximum_threshold_coverage_at_15pct_error": 0.1890625,
+              "fixed_count_error_at_60pct": 0.24532683193683624
+            },
+            "noul": {
+              "questions": 580,
+              "maximum_threshold_coverage_at_15pct_error": 0.6827586206896552,
+              "fixed_count_error_at_60pct": 0.13194683194160461
+            }
+          },
+          "uncertainty_cost_at_80pct": 1.3213306665420532,
+          "uncertainty_answer_count_at_80pct": 240,
+          "class_predictions_and_distributions_unchanged": true
+        },
+        "one_minus_normalized_entropy": {
+          "by_type": {
+            "choice": {
+              "questions": 2092,
+              "maximum_threshold_coverage_at_15pct_error": 0.9474187380497132,
+              "fixed_count_error_at_60pct": 0.06190286576747894
+            },
+            "score": {
+              "questions": 640,
+              "maximum_threshold_coverage_at_15pct_error": 0.2265625,
+              "fixed_count_error_at_60pct": 0.2593729496002197
+            },
+            "noul": {
+              "questions": 580,
+              "maximum_threshold_coverage_at_15pct_error": 0.6827586206896552,
+              "fixed_count_error_at_60pct": 0.13194683194160461
+            }
+          },
+          "uncertainty_cost_at_80pct": 1.2559914588928223,
+          "uncertainty_answer_count_at_80pct": 240,
+          "class_predictions_and_distributions_unchanged": true
+        }
+      }
+    }
+  ],
+  "used_for_candidate_selection": false,
+  "policy_fitted_or_runtime_changed": false,
+  "calibration_or_final_used": false,
+  "release_allowed": false,
+  "limitations": "Exploratory development diagnostics of four fixed orderings. Model predictions, probability distributions, NLL and distribution Brier stay unchanged. The other scores are ranking statistics, not calibrated probabilities of correctness. Fixed-count 60% risk can split ties; maximum threshold coverage keeps ties together. This analysis does not adopt any alternative policy or add a release candidate. Any later alternative requires a separate declaration, fresh calibration and the same full release gates before final evaluation."
+}

@@ -1,0 +1,8 @@
+{
+  "stage": "selection",
+  "status": "complete",
+  "updated_at_utc": "2026-09-30T20:40:47.097357+00:00",
+  "release_allowed": false,
+  "final_predictions_started": false,
+  "next_stage": "Fresh calibration, unchanged original-policy regression and full release audit"
+}

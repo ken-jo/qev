@@ -1,0 +1,70 @@
+{
+  "protocol": "veyra-workflow-release-v12",
+  "status": "frozen_before_training",
+  "required_priorities": [1, 2],
+  "baseline": "checkpoints/veyra-foundation-v11",
+  "baseline_weights_sha256": "f13aa3346d7da369a2769eef7fa487747c97d1ba0878ea3af8f713463f463491",
+  "baseline_manifest_sha256": "dd4df10eba5880dc1bb0267502fe264eb1c5a730235619db9cd8cd74df87b1a9",
+  "seed": 131,
+  "head_seeds": [131, 137, 139],
+  "head_methods": ["ce", "direct", "rloo"],
+  "head_epochs": 25,
+  "backbone_learning_rates": [0.00001, 0.00003],
+  "backbone_epochs": 1,
+  "backbone_checkpoints": [0.5, 1.0],
+  "candidate_selection": "Development only: all retention gates, then mean known/novel workflow accuracy, uncertainty NLL and matched-coverage cost. Select objective by median across seeds; use first declared seed. Evaluate merged BF16 candidates before final selection.",
+  "data": {
+    "official_workflow": "Reuse the recorded v10 train/dev/calibration groups only. Neither v10 test nor official test enters optimization or selection.",
+    "new_workflows": "Six training families, three development families and three final-only families with different rule compositions. Four related views stay in one group. Procedural families are controlled transfer evidence, not proof of arbitrary operational reliability.",
+    "new_workflow_groups_per_family": {"train": 160, "dev": 100, "calibration": 40, "test": 160},
+    "uncertainty_conditions": ["missing", "conflicting", "shifted_prior"],
+    "uncertainty_gold": "Exact conditional distribution by enumerating independent latent facts and stated noisy evidence; no arbitrary 0.5 annotations.",
+    "new_retention": "Unused SNLI premises and BANKING77 utterances plus CIFAR-10 observation groups; exclude earlier selected text and group image duplicates. CIFAR is an evaluation-only low-resolution transfer guard with upstream license marked unknown.",
+    "retention_replay": "Training observations only from Foundation; teacher-logit anchoring; no old final records in optimization.",
+    "public_pretraining_overlap": "unknown"
+  },
+  "gates": {
+    "new_workflow": {
+      "minimum_final_families": 3,
+      "minimum_final_groups": 480,
+      "paired_accuracy_delta_95_lower_gt": 0.0,
+      "all_family_results_required": true
+    },
+    "retention": {
+      "development_max_accuracy_drop": 0.01,
+      "domains": ["photo_guard", "text_nli", "text_intent"],
+      "final_changes_and_intervals_required": true,
+      "legacy_text_accuracy_min": 0.9,
+      "legacy_image_accuracy_min": 0.9
+    },
+    "uncertainty": {
+      "matched_answer_coverage": 0.8,
+      "diagnostic_coverages": [0.5, 0.8, 0.9, 1.0],
+      "nll_delta_lt": 0.0,
+      "brier_delta_lt": 0.0,
+      "matched_coverage_expected_cost_delta_lt": 0.0,
+      "paired_nll_delta_95_upper_lt": 0.0,
+      "minimum_final_groups_per_condition": 120,
+      "calibration_temperature_policy_group_disjoint": true,
+      "calibration_expected_error_max": 0.15,
+      "calibration_minimum_coverage": 0.6,
+      "final_overall_minimum_coverage": 0.6,
+      "final_uncertainty_minimum_abstention_rate": 0.05,
+      "cost_definition": "A wrong decision costs 1; overlooking the explicitly designated critical outcome costs 5. Correct decisions cost 0. Soft-target costs are conditional expectations; teacher disagreement is not an empirical event frequency."
+    },
+    "official_workflow_accuracy_min": 0.4905,
+    "latency": {
+      "http_p95_ms_max": 300,
+      "gpu": "RTX 4060 Ti 8 GB",
+      "photos": 40,
+      "questions_per_request": 1,
+      "candidates_per_question": 6,
+      "warmups": 3,
+      "resident": true
+    },
+    "one_backbone_forward": true,
+    "generated_answer_tokens": 0
+  },
+  "final_policy": "Freeze weights, calibration and selection before final evaluation. A failed final set becomes previously inspected; use a new final group generation for any subsequent performance claim. Do not lower thresholds after observing results.",
+  "publication": "All gates must pass and bind to exact weights, calibration, protocol and evaluation hashes. Existing alpha is historical and does not satisfy this release gate. No new GitHub model release or HF upload before passing."
+}

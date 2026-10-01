@@ -1,0 +1,107 @@
+{
+  "origin_study": "configs/workflow-depth-study-v12.json",
+  "origin_study_sha256": "d96024a725b0935dd4b4fd528161adeceffbcd3522f0dfb03f4d743d8eb12380",
+  "development_selection": "runs/workflow-v12-depth-selection/selection.json",
+  "development_selection_sha256": "18ef8e8beb527ac78933aa8eb6b050e4c8d6880ddc6f41f5a29d093ba29c1bfb",
+  "checkpoint": "runs/workflow-v12-depth-study/full_depth/epoch-2/checkpoint",
+  "weights_sha256": "86ce942f8ef036f2279422a3a2665248b98adcb0effa91bafdf15d9c14c6c83e",
+  "uncalibrated_manifest_sha256": "5b6447b8cea24e6c74845496889c142bbaf6415a34cf91a2293d7b88658bb9ba",
+  "release_protocol": "configs/workflow-release-v12.json",
+  "release_protocol_sha256": "d0e6c454fc10cfa080523cfcc66706dfe73cb32524f4ce74bf87a5d4edde6776",
+  "required_priorities": [
+    1,
+    2
+  ],
+  "previous_group_regression": {
+    "population_report": "runs/workflow-v12-evaluation/calibration/evaluation.json",
+    "population_report_sha256": "051c41d983fb896ae5f831e4ccea58fb1c85de768aaab6c4f8fa78ed9d0d24b5",
+    "policy_refit": false,
+    "use_for_policy_or_candidate_ranking": false,
+    "per_type_expected_error_max": 0.15,
+    "per_type_minimum_coverage": 0.6,
+    "population_previously_inspected": true,
+    "failure": "Stop before final inference."
+  },
+  "frozen_generator_ancestors": {
+    "scripts/prepare_workspace_calibration_sources.py": "2b58ed48e522885fc926949f4db6f53f8e0327af2f6ae31d901f781ea260ded8",
+    "scripts/build_workspace_calibration.py": "9f4d1b3c3b737848b1b841d98f8a69563a71ff7f31cc837b0702a2ab249d8aab",
+    "scripts/verify_workspace_calibration_data.py": "6f2b4ea2ad1c325d29feff88d5410e3f25e6eafaafda0937425714c442fa6191"
+  },
+  "protocol": "workflow-cohort-robust-policy-v12",
+  "status": "declared_before_new_validation_generation_and_cohort_fitting",
+  "declared_at_utc": "2026-09-30T21:40:03.999895+00:00",
+  "prior_policy_study": "configs/workflow-depth-policy-v12.json",
+  "prior_policy_study_sha256": "100438f6f579b4018bd87b21348a9095306f1caa6b0e644bbc2b3c3b090421a5",
+  "trigger": {
+    "failure": "runs/workflow-v12-depth-policy-release/independent-policy-validation.json",
+    "failure_sha256": "7938c488150bae98b98ae55d36aea2deb4646d27a88986a739f174b9549de9ea",
+    "diagnosis": "runs/workflow-v12-depth-policy-release/population-shift-diagnosis.json",
+    "diagnosis_sha256": "b194c5808be6d23dda3d022f9619ca638542b3a2bbacdf2401920252da76b13b",
+    "disclosure": "Noul failed independent validation at 17.0948% expected error. All three inspected populations are explicitly reused for fitting in this adaptive follow-up. Their results are not independent final evidence."
+  },
+  "fitting_data_design": "configs/workflow-cohort-policy-fit-data-v12.json",
+  "fitting_data_design_sha256": "0d213c6126456741f213a3343666a8161d3b779d581242686b5681a694576a8d",
+  "fitting_populations": {
+    "b": {
+      "records": "data/workflow-v12b/records.jsonl",
+      "records_sha256": "e3c3c10301f6c34561cd5281713152b3df4df0d093738c078b3d4fddde2196fb",
+      "previously_inspected": true
+    },
+    "c": {
+      "records": "data/workflow-v12c/records.jsonl",
+      "records_sha256": "7449ca694bc88e20fed7b1389cb659191f5af088226ef609fac753589056ad07",
+      "previously_inspected": true
+    },
+    "d": {
+      "records": "data/workflow-v12d/records.jsonl",
+      "records_sha256": "f6cf512f9fe2f386adec99be7647677bec68afc8708f1236c5130fb257be9391",
+      "previously_inspected": true
+    }
+  },
+  "validation_populations": {
+    "validation-1": {
+      "design": "configs/workflow-cohort-policy-validation-1-data-v12.json",
+      "design_sha256": "00b23ef75a648c662620bd272e82e3282a10106d5477ac640f4764af6b50073c",
+      "records": "data/workflow-v12e/records.jsonl",
+      "seed": 233
+    },
+    "validation-2": {
+      "design": "configs/workflow-cohort-policy-validation-2-data-v12.json",
+      "design_sha256": "acb8ab2e2e830dd7ca8034cd546323e0f9a40d6834f11582b50a742cf50cb3e3",
+      "records": "data/workflow-v12f/records.jsonl",
+      "seed": 239
+    }
+  },
+  "method": {
+    "name": "cohort_robust_empirical_policy",
+    "policy_fit_expected_error_max": 0.12,
+    "policy_fit_minimum_coverage": 0.6,
+    "threshold_grid_denominator": 200,
+    "temperature_fit": "Existing proper-scoring temperature fitting, minimum 1.0, pooling only group hash bucket 0 of the three declared fitting populations.",
+    "policy_fit": "One threshold per type, selected in ascending steps of 0.005. Each of the three cohorts separately must achieve expected error at most 12% and coverage at least 60% on its hash bucket 1. Include equal-confidence ties.",
+    "one_policy_only": true,
+    "candidate_weights_reselected": false,
+    "additional_trainable_parameters": 0,
+    "formal_distribution_free_guarantee_claimed": false
+  },
+  "independent_validation": {
+    "both_populations_must_pass": true,
+    "all_calibration_questions": true,
+    "per_type_expected_error_max": 0.15,
+    "per_type_minimum_coverage": 0.6,
+    "policy_refit": false,
+    "failure": "Stop before final inference. Preserve every failure. Any new policy must use new independent validation groups."
+  },
+  "source_files": {
+    "scripts/prepare_followup_calibration_sources.py": "64bfae40cc3b678351d80e5e063f60e736a205efe7853c8d4c94173f2e85bf0c",
+    "scripts/build_followup_calibration.py": "88e8185002db5d7df22526a73cbad926a9d085abedf9b47564e1f8343fde018a",
+    "scripts/verify_followup_calibration_data.py": "9c46ec53c00e12673baf428df8bc2429b62e9f5d0f0703aa0b0e6483abd071fc",
+    "scripts/build_cohort_calibration.py": "6f51fd8cfc79a896d987d928e714d47f455e55b946e6d6b0e154dc5c9d7372cb",
+    "scripts/fit_cohort_policy.py": "0076efbcab1d529f8c9d078d256922739c49319a79a9fc902e67d1b2cade68ae",
+    "scripts/cohort_policy_rules.py": "bcdfa8913c5fa8acf05cc271b793e16cd04b6440b34b44cdd38e4fb5607ead8a",
+    "scripts/diagnose_policy_population_shift.py": "d24968ccadf852c8e6b8bd33ef8dbe91062d5210b59b53c7bbfd9cd3fe159f28"
+  },
+  "release_allowed": false,
+  "final_predictions_used": false,
+  "limitations": "One trained model and an adaptively proposed calibration method. Cohorts are different generated samples, not independent real-world deployment domains. New authored workflow targets are not public teacher annotations. No guarantee under future distribution shift. All original release gates remain mandatory."
+}

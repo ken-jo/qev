@@ -1,0 +1,18 @@
+{
+  "completed": true,
+  "study_sha256": "100438f6f579b4018bd87b21348a9095306f1caa6b0e644bbc2b3c3b090421a5",
+  "outputs": {
+    "fit": {
+      "data\\workflow-v12c\\records.jsonl": "7449ca694bc88e20fed7b1389cb659191f5af088226ef609fac753589056ad07",
+      "data\\workflow-v12c\\protocol.json": "b4cd4213bf0add143dc558f11851ef524536ad7223db5bf01b63741529934be1",
+      "data\\workflow-v12c\\independent-target-audit.json": "cc71e5fb4bae9f6e8c1b56827ec0548379fe018f98eeca07a2ac017ff90e16e0"
+    },
+    "validation": {
+      "data\\workflow-v12d\\records.jsonl": "f6cf512f9fe2f386adec99be7647677bec68afc8708f1236c5130fb257be9391",
+      "data\\workflow-v12d\\protocol.json": "08a1b1096260a3e5f3cf6f1fed556761018b4cdeec34140c1cca7b0b5aa3bf67",
+      "data\\workflow-v12d\\independent-target-audit.json": "230bb25034389cf730b97e26712965a22de2697dc8c7a138642b0a11e94bbbe0"
+    }
+  },
+  "model_predictions_used": false,
+  "release_allowed": false
+}

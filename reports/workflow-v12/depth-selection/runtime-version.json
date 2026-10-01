@@ -1,0 +1,22 @@
+{
+  "completed": true,
+  "version": "0.3.0a2",
+  "selection_sha256": "18ef8e8beb527ac78933aa8eb6b050e4c8d6880ddc6f41f5a29d093ba29c1bfb",
+  "source_sha256": "1ac7f99b33c45c5f06387e76a58d179f25075f353dea87e193bc1729d2c478f4",
+  "changed_files": {
+    "pyproject.toml": {
+      "before_sha256": "6a9ed6f3449215f5b234472ef16967b2120552a22ea1898517d4d6347fc6d2ed",
+      "after_sha256": "a7b91b6d42bf4f61092b78a43ca5e28635c3f3b09bf0f4d5d612f76778460cf2"
+    },
+    "uv.lock": {
+      "before_sha256": "031e86b49231b5e632f6755ae4741347bc95811793134f9b5f8ccd6d1ebc9b24",
+      "after_sha256": "d0c876e96af4271f473e31e2f7d563ff022524c2afe5a04944c73245f8c9a71e"
+    },
+    "src\\veyra\\__init__.py": {
+      "before_sha256": "186a155a8fc59dbc834946472d27f5c003351ee101d073570c18b6e2365e2df4",
+      "after_sha256": "c01e8beb0de2c29e0b146c54ef669c46d583a3c1e7326b98faf5e35625d2a59c"
+    }
+  },
+  "model_weights_or_training_environment_changed": false,
+  "release_allowed": false
+}

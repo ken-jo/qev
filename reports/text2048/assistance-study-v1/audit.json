@@ -1,0 +1,28 @@
+{
+  "audit_script_sha256": "623ac1067a2e88f315a8b4844f3d7a7c3a4defd500b21c4d3f780e2e8d5dffd2",
+  "phases": [
+    {
+      "phase": "development",
+      "games": 24,
+      "events": 2761,
+      "verified_image_frames": 36,
+      "all_checks_passed": true,
+      "summary_sha256": "8fe4231571351c077e242cfb983de61ddab8869472848ba239dd762a6effc377"
+    },
+    {
+      "phase": "evaluation",
+      "games": 48,
+      "events": 5662,
+      "verified_image_frames": 50,
+      "all_checks_passed": true,
+      "summary_sha256": "27d65c771c53e6e5bb627eb7844732545dd203b401cffe623c35de49c56b9260"
+    }
+  ],
+  "readout": {
+    "cases": 28,
+    "calls": 56,
+    "uploaded_images_verified": 28,
+    "all_checks_passed": true,
+    "summary_sha256": "8217c0aaca636ab97ed578c97613943cf17a15db76d870c21e68d55409ccf258"
+  }
+}

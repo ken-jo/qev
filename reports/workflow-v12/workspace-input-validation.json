@@ -1,0 +1,24 @@
+{
+  "scope": "CPU text tokenization/alignment only; no model forward or optimizer update",
+  "passed": true,
+  "questions": 5040,
+  "split_counts": {
+    "train": 3840,
+    "dev": 1200
+  },
+  "minimum_input_tokens": 239,
+  "maximum_input_tokens": 394,
+  "workspace_token_id": 641,
+  "backbone_revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+  "records_sha256": "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571",
+  "source_sha256": {
+    "C:\\tmp\\veyra\\scripts\\verify_workflow_workspace_inputs.py": "9691d74323cc34be2292d07b12bee04548cb6e2550f41cabdd32855b1cf6a16f",
+    "scripts\\train_workflow_workspace.py": "93dd647080074a3aa0f774d47ca776ed0bf08a4885eb5852b30583ab15bbffe5",
+    "scripts\\workflow_workspace_supervision.py": "fe485d6c16026dcc559478118e88801d84e58414a411a2035cbce1b7c4713b2a",
+    "src\\veyra\\option_model.py": "ac15e6e55108fc8ef69b57268bf004c6756305e21293d2a9683dfde9f6e79b48",
+    "src\\veyra\\reasoning_workspace.py": "53d246b5737be11a70e5c7e8047bc4c3c01aec8cbbace0057650e51921e3546a"
+  },
+  "calibration_or_final_used": false,
+  "gpu_training_verified": false,
+  "primary_candidates_changed": false
+}

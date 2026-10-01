@@ -1,0 +1,556 @@
+{
+  "protocol": {
+    "source_sha256": "90fd6591abbcf502e482b30cda113573f7860728b2d6927a2b40e4572ea43720",
+    "original_source_sha256": "238f9a9c1d5671a0e09b6a24a44bc0c9f0b86a3711d82e6ce2d71f00e4e3ff61",
+    "old_predictions_sha256": "eba55499c5e89ed213654f93eded5c1dc1edd2894495b91a05d9a514757b607f",
+    "new_predictions_sha256": "8a9a01ada186a74443b84dcae84c67d6c75a188fed681af1f76aed552311db7b",
+    "scope": "Post-evaluation regression diagnosis only, no tuning or reselection",
+    "input_contract": "Both use original state JSON as text and one original typed question per call; gold labels and complete target distributions matched for all 2000 questions"
+  },
+  "paired": {
+    "overall": {
+      "questions": 2000,
+      "groups": 400,
+      "accuracy": {
+        "new_minus_reference": -0.022,
+        "paired_group_bootstrap_95_ci": [
+          -0.0365,
+          -0.0075
+        ],
+        "questions": 2000,
+        "groups": 400
+      },
+      "nll": {
+        "new_minus_reference": -0.48719143268191345,
+        "paired_group_bootstrap_95_ci": [
+          -0.5112392396272254,
+          -0.4622237311220875
+        ],
+        "questions": 2000,
+        "groups": 400
+      },
+      "brier": {
+        "new_minus_reference": -0.12925302535296757,
+        "paired_group_bootstrap_95_ci": [
+          -0.13785618901919391,
+          -0.1198002510502941
+        ],
+        "questions": 2000,
+        "groups": 400
+      }
+    },
+    "by_domain": {
+      "agent_trace_observability": {
+        "questions": 500,
+        "groups": 100,
+        "accuracy": {
+          "new_minus_reference": 0.01,
+          "paired_group_bootstrap_95_ci": [
+            -0.014,
+            0.032
+          ],
+          "questions": 500,
+          "groups": 100
+        },
+        "nll": {
+          "new_minus_reference": -0.491265202296285,
+          "paired_group_bootstrap_95_ci": [
+            -0.5462108324671681,
+            -0.4307344741191427
+          ],
+          "questions": 500,
+          "groups": 100
+        },
+        "brier": {
+          "new_minus_reference": -0.1574295827443566,
+          "paired_group_bootstrap_95_ci": [
+            -0.17581104229805825,
+            -0.13593101344470268
+          ],
+          "questions": 500,
+          "groups": 100
+        }
+      },
+      "customer_service": {
+        "questions": 500,
+        "groups": 100,
+        "accuracy": {
+          "new_minus_reference": 0.026,
+          "paired_group_bootstrap_95_ci": [
+            0.002,
+            0.052
+          ],
+          "questions": 500,
+          "groups": 100
+        },
+        "nll": {
+          "new_minus_reference": -0.4566036934777281,
+          "paired_group_bootstrap_95_ci": [
+            -0.5083345957330776,
+            -0.4024126157062479
+          ],
+          "questions": 500,
+          "groups": 100
+        },
+        "brier": {
+          "new_minus_reference": -0.10792988418197731,
+          "paired_group_bootstrap_95_ci": [
+            -0.12739374700600684,
+            -0.08867356734455024
+          ],
+          "questions": 500,
+          "groups": 100
+        }
+      },
+      "invoice_processing": {
+        "questions": 500,
+        "groups": 100,
+        "accuracy": {
+          "new_minus_reference": -0.084,
+          "paired_group_bootstrap_95_ci": [
+            -0.12,
+            -0.044
+          ],
+          "questions": 500,
+          "groups": 100
+        },
+        "nll": {
+          "new_minus_reference": -0.4314687418348138,
+          "paired_group_bootstrap_95_ci": [
+            -0.47770721886371326,
+            -0.38780404677953756
+          ],
+          "questions": 500,
+          "groups": 100
+        },
+        "brier": {
+          "new_minus_reference": -0.11114297667006257,
+          "paired_group_bootstrap_95_ci": [
+            -0.12773072669884947,
+            -0.09533570798356764
+          ],
+          "questions": 500,
+          "groups": 100
+        }
+      },
+      "security_incidents": {
+        "questions": 500,
+        "groups": 100,
+        "accuracy": {
+          "new_minus_reference": -0.04,
+          "paired_group_bootstrap_95_ci": [
+            -0.064,
+            -0.016
+          ],
+          "questions": 500,
+          "groups": 100
+        },
+        "nll": {
+          "new_minus_reference": -0.569428093118827,
+          "paired_group_bootstrap_95_ci": [
+            -0.6023497561597801,
+            -0.5379169810610548
+          ],
+          "questions": 500,
+          "groups": 100
+        },
+        "brier": {
+          "new_minus_reference": -0.14050965781547387,
+          "paired_group_bootstrap_95_ci": [
+            -0.1552208369480317,
+            -0.125910917034584
+          ],
+          "questions": 500,
+          "groups": 100
+        }
+      }
+    },
+    "by_type": {
+      "choice": {
+        "questions": 600,
+        "groups": 400,
+        "accuracy": {
+          "new_minus_reference": -0.028333333333333332,
+          "paired_group_bootstrap_95_ci": [
+            -0.05175725595143218,
+            -0.005049870564945946
+          ],
+          "questions": 600,
+          "groups": 400
+        },
+        "nll": {
+          "new_minus_reference": 0.1222445503926415,
+          "paired_group_bootstrap_95_ci": [
+            0.09003488309505307,
+            0.15615979456074114
+          ],
+          "questions": 600,
+          "groups": 400
+        },
+        "brier": {
+          "new_minus_reference": 0.006482874944336573,
+          "paired_group_bootstrap_95_ci": [
+            -0.008089674989421801,
+            0.02134880372905271
+          ],
+          "questions": 600,
+          "groups": 400
+        }
+      },
+      "noul": {
+        "questions": 600,
+        "groups": 400,
+        "accuracy": {
+          "new_minus_reference": -0.11166666666666666,
+          "paired_group_bootstrap_95_ci": [
+            -0.13875026219742417,
+            -0.08374859246063093
+          ],
+          "questions": 600,
+          "groups": 400
+        },
+        "nll": {
+          "new_minus_reference": -0.2824766589665397,
+          "paired_group_bootstrap_95_ci": [
+            -0.3130493380709747,
+            -0.2521554249235995
+          ],
+          "questions": 600,
+          "groups": 400
+        },
+        "brier": {
+          "new_minus_reference": -0.07764250031672437,
+          "paired_group_bootstrap_95_ci": [
+            -0.09256239978093686,
+            -0.062248149953286556
+          ],
+          "questions": 600,
+          "groups": 400
+        }
+      },
+      "score": {
+        "questions": 800,
+        "groups": 400,
+        "accuracy": {
+          "new_minus_reference": 0.05,
+          "paired_group_bootstrap_95_ci": [
+            0.03,
+            0.07
+          ],
+          "questions": 800,
+          "groups": 400
+        },
+        "nll": {
+          "new_minus_reference": -1.09780450027436,
+          "paired_group_bootstrap_95_ci": [
+            -1.1541310816255097,
+            -1.0391668177507196
+          ],
+          "questions": 800,
+          "groups": 400
+        },
+        "brier": {
+          "new_minus_reference": -0.2697628443531281,
+          "paired_group_bootstrap_95_ci": [
+            -0.2878775078454206,
+            -0.2509328833359687
+          ],
+          "questions": 800,
+          "groups": 400
+        }
+      }
+    },
+    "by_modality": {
+      "text": {
+        "questions": 2000,
+        "groups": 400,
+        "accuracy": {
+          "new_minus_reference": -0.022,
+          "paired_group_bootstrap_95_ci": [
+            -0.0365,
+            -0.0075
+          ],
+          "questions": 2000,
+          "groups": 400
+        },
+        "nll": {
+          "new_minus_reference": -0.48719143268191345,
+          "paired_group_bootstrap_95_ci": [
+            -0.5112392396272254,
+            -0.4622237311220875
+          ],
+          "questions": 2000,
+          "groups": 400
+        },
+        "brier": {
+          "new_minus_reference": -0.12925302535296757,
+          "paired_group_bootstrap_95_ci": [
+            -0.13785618901919391,
+            -0.1198002510502941
+          ],
+          "questions": 2000,
+          "groups": 400
+        }
+      }
+    },
+    "by_scope": {
+      "legacy_regression": {
+        "questions": 2000,
+        "groups": 400,
+        "accuracy": {
+          "new_minus_reference": -0.022,
+          "paired_group_bootstrap_95_ci": [
+            -0.0365,
+            -0.0075
+          ],
+          "questions": 2000,
+          "groups": 400
+        },
+        "nll": {
+          "new_minus_reference": -0.48719143268191345,
+          "paired_group_bootstrap_95_ci": [
+            -0.5112392396272254,
+            -0.4622237311220875
+          ],
+          "questions": 2000,
+          "groups": 400
+        },
+        "brier": {
+          "new_minus_reference": -0.12925302535296757,
+          "paired_group_bootstrap_95_ci": [
+            -0.13785618901919391,
+            -0.1198002510502941
+          ],
+          "questions": 2000,
+          "groups": 400
+        }
+      }
+    },
+    "by_domain_view": {
+      "agent_trace_observability/legacy": {
+        "questions": 500,
+        "groups": 100,
+        "accuracy": {
+          "new_minus_reference": 0.01,
+          "paired_group_bootstrap_95_ci": [
+            -0.014,
+            0.032
+          ],
+          "questions": 500,
+          "groups": 100
+        },
+        "nll": {
+          "new_minus_reference": -0.491265202296285,
+          "paired_group_bootstrap_95_ci": [
+            -0.5462108324671681,
+            -0.4307344741191427
+          ],
+          "questions": 500,
+          "groups": 100
+        },
+        "brier": {
+          "new_minus_reference": -0.1574295827443566,
+          "paired_group_bootstrap_95_ci": [
+            -0.17581104229805825,
+            -0.13593101344470268
+          ],
+          "questions": 500,
+          "groups": 100
+        }
+      },
+      "customer_service/legacy": {
+        "questions": 500,
+        "groups": 100,
+        "accuracy": {
+          "new_minus_reference": 0.026,
+          "paired_group_bootstrap_95_ci": [
+            0.002,
+            0.052
+          ],
+          "questions": 500,
+          "groups": 100
+        },
+        "nll": {
+          "new_minus_reference": -0.4566036934777281,
+          "paired_group_bootstrap_95_ci": [
+            -0.5083345957330776,
+            -0.4024126157062479
+          ],
+          "questions": 500,
+          "groups": 100
+        },
+        "brier": {
+          "new_minus_reference": -0.10792988418197731,
+          "paired_group_bootstrap_95_ci": [
+            -0.12739374700600684,
+            -0.08867356734455024
+          ],
+          "questions": 500,
+          "groups": 100
+        }
+      },
+      "invoice_processing/legacy": {
+        "questions": 500,
+        "groups": 100,
+        "accuracy": {
+          "new_minus_reference": -0.084,
+          "paired_group_bootstrap_95_ci": [
+            -0.12,
+            -0.044
+          ],
+          "questions": 500,
+          "groups": 100
+        },
+        "nll": {
+          "new_minus_reference": -0.4314687418348138,
+          "paired_group_bootstrap_95_ci": [
+            -0.47770721886371326,
+            -0.38780404677953756
+          ],
+          "questions": 500,
+          "groups": 100
+        },
+        "brier": {
+          "new_minus_reference": -0.11114297667006257,
+          "paired_group_bootstrap_95_ci": [
+            -0.12773072669884947,
+            -0.09533570798356764
+          ],
+          "questions": 500,
+          "groups": 100
+        }
+      },
+      "security_incidents/legacy": {
+        "questions": 500,
+        "groups": 100,
+        "accuracy": {
+          "new_minus_reference": -0.04,
+          "paired_group_bootstrap_95_ci": [
+            -0.064,
+            -0.016
+          ],
+          "questions": 500,
+          "groups": 100
+        },
+        "nll": {
+          "new_minus_reference": -0.569428093118827,
+          "paired_group_bootstrap_95_ci": [
+            -0.6023497561597801,
+            -0.5379169810610548
+          ],
+          "questions": 500,
+          "groups": 100
+        },
+        "brier": {
+          "new_minus_reference": -0.14050965781547387,
+          "paired_group_bootstrap_95_ci": [
+            -0.1552208369480317,
+            -0.125910917034584
+          ],
+          "questions": 500,
+          "groups": 100
+        }
+      }
+    }
+  },
+  "flips": {
+    "wrong_to_correct": 83,
+    "correct_to_wrong": 127
+  },
+  "by_prior_input_length": {
+    "up_to_256": {
+      "questions": 427,
+      "groups": 108,
+      "accuracy": {
+        "new_minus_reference": 0.00234192037470726,
+        "paired_group_bootstrap_95_ci": [
+          -0.021128003314001657,
+          0.024943310657596373
+        ],
+        "questions": 427,
+        "groups": 108
+      },
+      "nll": {
+        "new_minus_reference": -0.44006576797128644,
+        "paired_group_bootstrap_95_ci": [
+          -0.494937821892218,
+          -0.38350997835059525
+        ],
+        "questions": 427,
+        "groups": 108
+      },
+      "brier": {
+        "new_minus_reference": -0.1428184461622762,
+        "paired_group_bootstrap_95_ci": [
+          -0.16136750461713686,
+          -0.1227942124504066
+        ],
+        "questions": 427,
+        "groups": 108
+      }
+    },
+    "257_to_512": {
+      "questions": 1476,
+      "groups": 327,
+      "accuracy": {
+        "new_minus_reference": -0.03184281842818428,
+        "paired_group_bootstrap_95_ci": [
+          -0.050268281154218275,
+          -0.014035798723408807
+        ],
+        "questions": 1476,
+        "groups": 327
+      },
+      "nll": {
+        "new_minus_reference": -0.5086405417956319,
+        "paired_group_bootstrap_95_ci": [
+          -0.536162857736205,
+          -0.47849886126061797
+        ],
+        "questions": 1476,
+        "groups": 327
+      },
+      "brier": {
+        "new_minus_reference": -0.12681101739542813,
+        "paired_group_bootstrap_95_ci": [
+          -0.1370337402344431,
+          -0.1168423269137082
+        ],
+        "questions": 1476,
+        "groups": 327
+      }
+    },
+    "over_512": {
+      "questions": 97,
+      "groups": 26,
+      "accuracy": {
+        "new_minus_reference": 0.020618556701030927,
+        "paired_group_bootstrap_95_ci": [
+          -0.061855670103092786,
+          0.12091836734693856
+        ],
+        "questions": 97,
+        "groups": 26
+      },
+      "nll": {
+        "new_minus_reference": -0.36826126546118465,
+        "paired_group_bootstrap_95_ci": [
+          -0.4761662479367165,
+          -0.23268317124959437
+        ],
+        "questions": 97,
+        "groups": 26
+      },
+      "brier": {
+        "new_minus_reference": -0.10669600535042598,
+        "paired_group_bootstrap_95_ci": [
+          -0.14756804679637997,
+          -0.06104563839467253
+        ],
+        "questions": 97,
+        "groups": 26
+      }
+    }
+  },
+  "interpretation": "The observed workflow regression is not a gold-label or hard/soft metric mismatch. Transfer across domains/formats remains limited. The causal contribution of training distribution, instruction length and adaptation is not isolated by this audit."
+}

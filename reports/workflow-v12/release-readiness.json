@@ -1,0 +1,125 @@
+{
+  "status": "v13_recovery_accepted_hf_package_verified",
+  "release_allowed": true,
+  "published_to_huggingface": false,
+  "required_priorities": [
+    1,
+    2
+  ],
+  "weights_sha256": "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee",
+  "manifest_sha256": "d83f9910196c6e801658ca3816c3d2bd4a849ba3da6ff059a0edf7c6028e898d",
+  "release_protocol_sha256": "d0e6c454fc10cfa080523cfcc66706dfe73cb32524f4ce74bf87a5d4edde6776",
+  "release_extensions": {
+    "workflow_recovery_v13": {
+      "study_design_sha256": "55aa5eab85903a3f142dcbbff737156c5e59c74135d45262c011ed5b4c849180",
+      "merged_selection_sha256": "56f4ddfd568afa57be5010b41b379ea19e879719ef6f127014fdf5f7c5186c02",
+      "policy_design_sha256": "b1c604e1ea70bf67f5733f940fb6082b745a4325c789845fc86b0b2c907bf98e",
+      "fresh_final_data_design_sha256": "678eb369816e4d47d2ccd553aaa3584e2062caf1acda4f9e9aa2fa608a04a49e"
+    }
+  },
+  "checks": {
+    "workflow_generalization": true,
+    "uncertainty_probability": true,
+    "uncertainty_abstention": true,
+    "retention_development": true,
+    "legacy_text": true,
+    "legacy_image": true,
+    "official_workflow": true,
+    "runtime": true,
+    "single_network": true,
+    "provenance": true,
+    "recovery_study_provenance": true,
+    "fresh_data_provenance": true,
+    "independent_policy_validation": true,
+    "previous_calibration_policy_regression": true
+  },
+  "hf_package_verified": true,
+  "model_acceptance_report": "reports/workflow-v13/final-evaluation/release-acceptance.json",
+  "model_acceptance_sha256": "9356095e3e53c0be2c5b6d10be0ad6853657e7b9d13a30b2b0699202de679684",
+  "package": {
+    "path": "dist/huggingface/veyra-workflow-recovery-v13",
+    "files": 190,
+    "verified_checksum_entries": 189,
+    "checksums_sha256": "9fe5b289c5a6e1673779961752e2a8c87d093e4e14f9d936b8876a55df3e902d",
+    "wheel_sha256": "9d18d64b0c711c01e3295ac85bf0c7b721413c4b533f6bcf7ad8addd2ee31721",
+    "runtime_version": "0.3.0a4",
+    "verification_report": "reports/workflow-v13/final-evaluation/hf-package-verification.json",
+    "verification_report_sha256": "98d39ca81cf226a4135dd34f4fd53ed892e732bf52b49b2db311063e9cd9f688",
+    "python_isolated": true,
+    "new_model_inference": true,
+    "clean_dependency_install": false
+  },
+  "measured_results": {
+    "new_workflow": {
+      "before": 0.44305555555555554,
+      "after": 0.69375,
+      "delta": 0.25069444444444444,
+      "delta_95_ci": [
+        0.20067708333333334,
+        0.3013888888888889
+      ],
+      "groups": 480,
+      "questions": 1440
+    },
+    "uncertainty": {
+      "nll": {
+        "before": 1.0032852034561321,
+        "after": 0.8990933386979466,
+        "delta": -0.10419186475818557,
+        "delta_95_ci": [
+          -0.15039407746461655,
+          -0.05637557472088959
+        ],
+        "groups": 480,
+        "questions": 480
+      },
+      "brier": {
+        "before": 0.3239183465212667,
+        "after": 0.24512231711450333,
+        "delta": -0.07879602940676339,
+        "delta_95_ci": [
+          -0.10994547169413722,
+          -0.047838987789886406
+        ],
+        "groups": 480,
+        "questions": 480
+      },
+      "matched_coverage_cost": {
+        "coverage": 0.8,
+        "accepted": 384,
+        "before": 1.7865844238013697,
+        "after": 1.0111766983090753,
+        "delta": -0.7754077254922944,
+        "delta_95_ci": [
+          -0.9667000597665165,
+          -0.6029395115631243
+        ]
+      }
+    },
+    "official_accuracy": 0.77,
+    "official_actual_coverage": 0.308,
+    "legacy_text_accuracy": 0.91162109375,
+    "legacy_image_accuracy": 0.9777486910994765,
+    "resident_photo_http_p95_ms": 114.94054006761871
+  },
+  "material_limits": {
+    "final_accepted_expected_error": 0.20492451551076066,
+    "uncertain_accepted_expected_error": 0.4557121840073929,
+    "uncertain_actual_coverage": 0.525,
+    "uncertain_always_answer_expected_error": 0.4454124513984018,
+    "baseline_ece_15_bins": 0.067954337370751,
+    "recovery_ece_15_bins": 0.12576106654071229,
+    "shifted_prior_nll_delta_95_ci": [
+      -0.22659553585041478,
+      0.015616446895963901
+    ],
+    "scope": "Controlled procedural transfer, previously inspected regressions and pinned public datasets. Not unrestricted business reliability or JEV parity."
+  },
+  "prior_progress_and_failures": {
+    "path": "reports/workflow-v12/release-readiness-progress-history.json",
+    "sha256": "86c656ad35a4686704838ee7bebcbb06a53b7e71d9a623c2681e55b005acc14f",
+    "failure_reports_preserved": true
+  },
+  "reason": "All 14 fixed exact-model requirements and checksum-bound text/image inference using the HF bundled wheel passed. Preparation is complete. Actual HF publication awaits separately configured account and target.",
+  "updated_at_utc": "2026-10-01T01:36:35.376879+00:00"
+}

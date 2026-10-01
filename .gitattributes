@@ -1,0 +1,10 @@
+* text=auto eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.py text eol=lf
+*.toml text eol=lf
+LICENSE text eol=lf
+NOTICE text eol=lf
+# These evidence files include raw-byte SHA-256 provenance across platforms.
+reports/** -text
+apps/playground/static/samples/provenance.json -text

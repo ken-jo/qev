@@ -1,0 +1,13 @@
+{
+  "dataset": "LocalLLaMA/typed-decisions",
+  "revision": "d51d993547ad8355b1c25157fbc1fea0649e8ffa",
+  "parquet_sha256": "4f294f218ea1da27f3efef936359389c62ea4d3973a41457732990f1d31b647c",
+  "original_jsonl_sha256": "4881baae1cfd752311a58064cb2095c0457ee2c0b8914d1cfe2590e19933e7b3",
+  "records_sha256": "f9eaf3ec7848cc4a0e05f3fa2ae210aa8be65a80b7698f3d55c57dd541725b35",
+  "questions": 2000,
+  "groups": 400,
+  "scope": "Previously inspected regression test, excluded from all foundation training",
+  "source_sha256": "67d3daa22430bfd112d7f3a862b75b56e2996cf72cf08948e663a0f9eb0f618c",
+  "adapter_sha256": "9bcb750c76a649f12823a45b9e9b0cb4a4eb28236edb1f14942f82dba870d7bf",
+  "byte_reproduction": "Explicit CRLF to preserve the original experiment hashes"
+}

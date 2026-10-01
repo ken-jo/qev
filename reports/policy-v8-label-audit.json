@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "model_evaluated": false,
+  "records_verified": 16734,
+  "by_split": {
+    "train": 9582,
+    "dev": 1790,
+    "calibration": 1786,
+    "test": 3576
+  },
+  "images_decoded_and_verified": 3119,
+  "dataset_sha256": "43d5f8f31d5cfef33fe3721685ad9008209d1b3becb21742ba1ced1ab2557070",
+  "final_sha256": "00c91c0d8ed17a29bf9386e06beea1ea2ddbb2f036c4d9eb346abe55dc42b273",
+  "method": "Independent numeric comparisons and pixel-derived colors/shapes/counts"
+}

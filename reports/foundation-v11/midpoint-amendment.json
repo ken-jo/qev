@@ -1,0 +1,9 @@
+{
+  "created_utc": "2026-09-30T01:35:31.416931+00:00",
+  "fixed_ratio": 0.5,
+  "candidates_added": 1,
+  "parents": "Selected head and final backbone epoch",
+  "reason": "Mid-epoch development showed a leaf-domain regression; consider one parameter midpoint before calibration or final evaluation",
+  "known_results": "Head development and unmerged half-epoch development only",
+  "final_or_calibration_used": false
+}

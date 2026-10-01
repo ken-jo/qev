@@ -1,0 +1,33 @@
+{
+  "scope": "Unmerged cached-feature development diagnosis only; not release evidence",
+  "weights_sha256": "8bea91f594aabcf35e3e9f517365ed5d1768956b8064620696d040a6e57a1679",
+  "source_sha256": "2915e03835601b4dbf9c59af2d4eff4d5b8110143503b8dc1c3067b694eeb462",
+  "calibration_or_final_used": false,
+  "deployed_policy_changed": false,
+  "by_type": {
+    "choice": {
+      "questions": 2092,
+      "maximum_development_coverage_at_15pct_error": 0.8369980879541109,
+      "risk_at_maximum_coverage": 0.1498986780643463,
+      "risk_at_60pct_coverage": 0.06294820457696915,
+      "risk_at_80pct_coverage": 0.1316341906785965,
+      "risk_at_full_coverage": 0.22636160254478455
+    },
+    "score": {
+      "questions": 640,
+      "maximum_development_coverage_at_15pct_error": 0,
+      "risk_at_maximum_coverage": null,
+      "risk_at_60pct_coverage": 0.3738660514354706,
+      "risk_at_80pct_coverage": 0.4055689573287964,
+      "risk_at_full_coverage": 0.4571763575077057
+    },
+    "noul": {
+      "questions": 580,
+      "maximum_development_coverage_at_15pct_error": 0.06896551724137931,
+      "risk_at_maximum_coverage": 0.15000000596046448,
+      "risk_at_60pct_coverage": 0.21435345709323883,
+      "risk_at_80pct_coverage": 0.2735237777233124,
+      "risk_at_full_coverage": 0.323933482170105
+    }
+  }
+}

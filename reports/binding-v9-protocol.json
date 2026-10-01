@@ -1,0 +1,36 @@
+{
+  "frozen_at_utc": "2026-09-29T21:56:56.840926+00:00",
+  "stage": "before_full_feature_extraction_and_residual_training",
+  "parent_weights_sha256": "23a14581bf137b2c021e788f9c05e5bd39165adcbcc8cf85b7f75fab376ca6cc",
+  "dataset_sha256": "43d5f8f31d5cfef33fe3721685ad9008209d1b3becb21742ba1ced1ab2557070",
+  "frozen_final_sha256": "00c91c0d8ed17a29bf9386e06beea1ea2ddbb2f036c4d9eb346abe55dc42b273",
+  "final_model_evaluated": false,
+  "arms": [
+    "condition",
+    "uniform"
+  ],
+  "rank": 64,
+  "parameters_per_arm": 138304,
+  "feature_seed": 43,
+  "training_seed": 47,
+  "epochs": 20,
+  "batch_size": 128,
+  "learning_rate": 0.0015,
+  "schedule": "cosine to 0.1 of initial rate",
+  "weight_decay": 0.01,
+  "dropout": 0.1,
+  "residual_penalty": 0.01,
+  "selection": "maximum minimum modality development accuracy; tie by lower NLL; retain zero-residual parent",
+  "frozen_components": [
+    "merged backbone",
+    "original option readout",
+    "condition readout"
+  ],
+  "required_followup": [
+    "actual deployment development confirmation",
+    "legacy and retired-set regression",
+    "separate calibration",
+    "untouched final evaluation",
+    "uncached resident and HTTP timings"
+  ]
+}

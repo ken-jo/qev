@@ -1,0 +1,2892 @@
+[
+  {
+    "id": "text-20260930-10",
+    "family": "text_policy",
+    "question": "action",
+    "type": "choice",
+    "correct": 0.0,
+    "probabilities": [
+      0.5217172503471375,
+      0.47828277945518494
+    ],
+    "milliseconds": 385.7679999782704
+  },
+  {
+    "id": "text-20260930-10",
+    "family": "text_policy",
+    "question": "condition",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.6084672808647156,
+      0.3915327191352844
+    ],
+    "milliseconds": 64.58150001708418
+  },
+  {
+    "id": "text-20260930-10",
+    "family": "text_policy",
+    "question": "flags",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.527938723564148,
+      0.3664674758911133,
+      0.10559377819299698
+    ],
+    "milliseconds": 64.27869998151436
+  },
+  {
+    "id": "text-20260930-16",
+    "family": "text_policy",
+    "question": "action",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.6692678928375244,
+      0.3307320475578308
+    ],
+    "milliseconds": 62.774999998509884
+  },
+  {
+    "id": "text-20260930-16",
+    "family": "text_policy",
+    "question": "condition",
+    "type": "noul",
+    "correct": 0.0,
+    "probabilities": [
+      0.5347273349761963,
+      0.46527260541915894
+    ],
+    "milliseconds": 61.46769999759272
+  },
+  {
+    "id": "text-20260930-16",
+    "family": "text_policy",
+    "question": "flags",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.2677111029624939,
+      0.3653402626514435,
+      0.36694860458374023
+    ],
+    "milliseconds": 54.18350000400096
+  },
+  {
+    "id": "text-20260930-30",
+    "family": "text_policy",
+    "question": "action",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.7907721400260925,
+      0.20922784507274628
+    ],
+    "milliseconds": 66.52880000183359
+  },
+  {
+    "id": "text-20260930-30",
+    "family": "text_policy",
+    "question": "condition",
+    "type": "noul",
+    "correct": 0.0,
+    "probabilities": [
+      0.5159347653388977,
+      0.4840652048587799
+    ],
+    "milliseconds": 52.86779999732971
+  },
+  {
+    "id": "text-20260930-30",
+    "family": "text_policy",
+    "question": "flags",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.0790814608335495,
+      0.47497686743736267,
+      0.44594165682792664
+    ],
+    "milliseconds": 59.87860000459477
+  },
+  {
+    "id": "text-20260930-32",
+    "family": "text_policy",
+    "question": "action",
+    "type": "choice",
+    "correct": 0.0,
+    "probabilities": [
+      0.6032080054283142,
+      0.3967919945716858
+    ],
+    "milliseconds": 58.9559999643825
+  },
+  {
+    "id": "text-20260930-32",
+    "family": "text_policy",
+    "question": "condition",
+    "type": "noul",
+    "correct": 0.0,
+    "probabilities": [
+      0.5265501141548157,
+      0.4734499156475067
+    ],
+    "milliseconds": 63.60640004277229
+  },
+  {
+    "id": "text-20260930-32",
+    "family": "text_policy",
+    "question": "flags",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.5476685166358948,
+      0.3036136329174042,
+      0.14871785044670105
+    ],
+    "milliseconds": 62.942099990323186
+  },
+  {
+    "id": "text-20260930-33",
+    "family": "text_policy",
+    "question": "action",
+    "type": "choice",
+    "correct": 0.0,
+    "probabilities": [
+      0.6876574158668518,
+      0.3123425841331482
+    ],
+    "milliseconds": 63.86339996242896
+  },
+  {
+    "id": "text-20260930-33",
+    "family": "text_policy",
+    "question": "condition",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.5136546492576599,
+      0.4863453209400177
+    ],
+    "milliseconds": 68.91430000541732
+  },
+  {
+    "id": "text-20260930-33",
+    "family": "text_policy",
+    "question": "flags",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.3511480391025543,
+      0.5441685914993286,
+      0.10468332469463348
+    ],
+    "milliseconds": 63.67910001426935
+  },
+  {
+    "id": "text-20260930-41",
+    "family": "text_policy",
+    "question": "action",
+    "type": "choice",
+    "correct": 0.0,
+    "probabilities": [
+      0.5206738710403442,
+      0.47932612895965576
+    ],
+    "milliseconds": 70.77970000682399
+  },
+  {
+    "id": "text-20260930-41",
+    "family": "text_policy",
+    "question": "condition",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.5917315483093262,
+      0.4082684814929962
+    ],
+    "milliseconds": 65.25709998095408
+  },
+  {
+    "id": "text-20260930-41",
+    "family": "text_policy",
+    "question": "flags",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.7526416182518005,
+      0.17818865180015564,
+      0.06916972994804382
+    ],
+    "milliseconds": 52.04099998809397
+  },
+  {
+    "id": "text-20260930-47",
+    "family": "text_policy",
+    "question": "action",
+    "type": "choice",
+    "correct": 0.0,
+    "probabilities": [
+      0.5344639420509338,
+      0.4655360281467438
+    ],
+    "milliseconds": 60.15320000005886
+  },
+  {
+    "id": "text-20260930-47",
+    "family": "text_policy",
+    "question": "condition",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.5899129509925842,
+      0.4100870192050934
+    ],
+    "milliseconds": 64.57240000599995
+  },
+  {
+    "id": "text-20260930-47",
+    "family": "text_policy",
+    "question": "flags",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.7251209020614624,
+      0.19928789138793945,
+      0.07559125125408173
+    ],
+    "milliseconds": 60.706500022206455
+  },
+  {
+    "id": "text-20260930-52",
+    "family": "text_policy",
+    "question": "action",
+    "type": "choice",
+    "correct": 0.0,
+    "probabilities": [
+      0.5943066477775574,
+      0.4056933522224426
+    ],
+    "milliseconds": 59.06020000111312
+  },
+  {
+    "id": "text-20260930-52",
+    "family": "text_policy",
+    "question": "condition",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.5441660284996033,
+      0.45583391189575195
+    ],
+    "milliseconds": 53.33450000034645
+  },
+  {
+    "id": "text-20260930-52",
+    "family": "text_policy",
+    "question": "flags",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.41672125458717346,
+      0.3496057391166687,
+      0.23367294669151306
+    ],
+    "milliseconds": 61.9905999628827
+  },
+  {
+    "id": "text-20260930-58",
+    "family": "text_policy",
+    "question": "action",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.6961609125137329,
+      0.3038391172885895
+    ],
+    "milliseconds": 67.37790000624955
+  },
+  {
+    "id": "text-20260930-58",
+    "family": "text_policy",
+    "question": "condition",
+    "type": "noul",
+    "correct": 0.0,
+    "probabilities": [
+      0.5489819049835205,
+      0.4510180950164795
+    ],
+    "milliseconds": 62.13079998269677
+  },
+  {
+    "id": "text-20260930-58",
+    "family": "text_policy",
+    "question": "flags",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.1831514537334442,
+      0.37651196122169495,
+      0.44033655524253845
+    ],
+    "milliseconds": 66.34570000460371
+  },
+  {
+    "id": "text-20260930-67",
+    "family": "text_policy",
+    "question": "action",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.7139892578125,
+      0.2860106825828552
+    ],
+    "milliseconds": 64.59790002554655
+  },
+  {
+    "id": "text-20260930-67",
+    "family": "text_policy",
+    "question": "condition",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.47508877515792847,
+      0.5249112844467163
+    ],
+    "milliseconds": 58.2429000060074
+  },
+  {
+    "id": "text-20260930-67",
+    "family": "text_policy",
+    "question": "flags",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.23182649910449982,
+      0.39558565616607666,
+      0.37258782982826233
+    ],
+    "milliseconds": 61.059400031808764
+  },
+  {
+    "id": "text-20260930-68",
+    "family": "text_policy",
+    "question": "action",
+    "type": "choice",
+    "correct": 0.0,
+    "probabilities": [
+      0.5496745705604553,
+      0.4503253698348999
+    ],
+    "milliseconds": 57.410000008530915
+  },
+  {
+    "id": "text-20260930-68",
+    "family": "text_policy",
+    "question": "condition",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.6328773498535156,
+      0.36712270975112915
+    ],
+    "milliseconds": 57.34820000361651
+  },
+  {
+    "id": "text-20260930-68",
+    "family": "text_policy",
+    "question": "flags",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.5153794288635254,
+      0.36800065636634827,
+      0.11661995947360992
+    ],
+    "milliseconds": 57.870499964337796
+  },
+  {
+    "id": "text-20260930-86",
+    "family": "text_policy",
+    "question": "action",
+    "type": "choice",
+    "correct": 0.0,
+    "probabilities": [
+      0.5657636523246765,
+      0.4342363774776459
+    ],
+    "milliseconds": 63.877099950332195
+  },
+  {
+    "id": "text-20260930-86",
+    "family": "text_policy",
+    "question": "condition",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.5651787519454956,
+      0.4348212480545044
+    ],
+    "milliseconds": 64.65580000076443
+  },
+  {
+    "id": "text-20260930-86",
+    "family": "text_policy",
+    "question": "flags",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.3615185022354126,
+      0.3754267692565918,
+      0.2630546987056732
+    ],
+    "milliseconds": 61.668100010138005
+  },
+  {
+    "id": "text-20260930-88",
+    "family": "text_policy",
+    "question": "action",
+    "type": "choice",
+    "correct": 0.0,
+    "probabilities": [
+      0.5474271774291992,
+      0.452572762966156
+    ],
+    "milliseconds": 62.43269995320588
+  },
+  {
+    "id": "text-20260930-88",
+    "family": "text_policy",
+    "question": "condition",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.5476606488227844,
+      0.4523393511772156
+    ],
+    "milliseconds": 55.90530001791194
+  },
+  {
+    "id": "text-20260930-88",
+    "family": "text_policy",
+    "question": "flags",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.444036602973938,
+      0.32910504937171936,
+      0.22685833275318146
+    ],
+    "milliseconds": 57.32940003508702
+  },
+  {
+    "id": "text-20260930-101",
+    "family": "text_policy",
+    "question": "action",
+    "type": "choice",
+    "correct": 0.0,
+    "probabilities": [
+      0.6108153462409973,
+      0.3891846239566803
+    ],
+    "milliseconds": 65.93270000303164
+  },
+  {
+    "id": "text-20260930-101",
+    "family": "text_policy",
+    "question": "condition",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.5770089626312256,
+      0.422991007566452
+    ],
+    "milliseconds": 69.39740001689643
+  },
+  {
+    "id": "text-20260930-101",
+    "family": "text_policy",
+    "question": "flags",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.42602381110191345,
+      0.35015901923179626,
+      0.22381725907325745
+    ],
+    "milliseconds": 68.63479997264221
+  },
+  {
+    "id": "text-20260930-128",
+    "family": "text_policy",
+    "question": "action",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.7045363187789917,
+      0.2954637408256531
+    ],
+    "milliseconds": 61.50410004192963
+  },
+  {
+    "id": "text-20260930-128",
+    "family": "text_policy",
+    "question": "condition",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.43886691331863403,
+      0.561133086681366
+    ],
+    "milliseconds": 65.46210002852604
+  },
+  {
+    "id": "text-20260930-128",
+    "family": "text_policy",
+    "question": "flags",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.22518549859523773,
+      0.38540589809417725,
+      0.38940858840942383
+    ],
+    "milliseconds": 54.39910001587123
+  },
+  {
+    "id": "text-20260930-140",
+    "family": "text_policy",
+    "question": "action",
+    "type": "choice",
+    "correct": 0.0,
+    "probabilities": [
+      0.6172499060630798,
+      0.3827500343322754
+    ],
+    "milliseconds": 62.608599953819066
+  },
+  {
+    "id": "text-20260930-140",
+    "family": "text_policy",
+    "question": "condition",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.45665207505226135,
+      0.543347954750061
+    ],
+    "milliseconds": 55.29960000421852
+  },
+  {
+    "id": "text-20260930-140",
+    "family": "text_policy",
+    "question": "flags",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.45661288499832153,
+      0.3272446393966675,
+      0.216142475605011
+    ],
+    "milliseconds": 56.127000018022954
+  },
+  {
+    "id": "text-20260930-152",
+    "family": "text_policy",
+    "question": "action",
+    "type": "choice",
+    "correct": 0.0,
+    "probabilities": [
+      0.5785746574401855,
+      0.42142531275749207
+    ],
+    "milliseconds": 59.01119997724891
+  },
+  {
+    "id": "text-20260930-152",
+    "family": "text_policy",
+    "question": "condition",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.4653718173503876,
+      0.53462815284729
+    ],
+    "milliseconds": 56.9213000126183
+  },
+  {
+    "id": "text-20260930-152",
+    "family": "text_policy",
+    "question": "flags",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.5945015549659729,
+      0.2721177637577057,
+      0.13338063657283783
+    ],
+    "milliseconds": 52.65650001820177
+  },
+  {
+    "id": "text-20260930-172",
+    "family": "text_policy",
+    "question": "action",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.7546643614768982,
+      0.2453356385231018
+    ],
+    "milliseconds": 58.96300001768395
+  },
+  {
+    "id": "text-20260930-172",
+    "family": "text_policy",
+    "question": "condition",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.4100695252418518,
+      0.5899304747581482
+    ],
+    "milliseconds": 67.18830001773313
+  },
+  {
+    "id": "text-20260930-172",
+    "family": "text_policy",
+    "question": "flags",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.21421226859092712,
+      0.3984775245189667,
+      0.3873101770877838
+    ],
+    "milliseconds": 52.31440003262833
+  },
+  {
+    "id": "text-20260930-178",
+    "family": "text_policy",
+    "question": "action",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.7297644019126892,
+      0.27023565769195557
+    ],
+    "milliseconds": 61.925999994855374
+  },
+  {
+    "id": "text-20260930-178",
+    "family": "text_policy",
+    "question": "condition",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.4878382980823517,
+      0.5121617317199707
+    ],
+    "milliseconds": 64.03280002996325
+  },
+  {
+    "id": "text-20260930-178",
+    "family": "text_policy",
+    "question": "flags",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.2481151521205902,
+      0.40607279539108276,
+      0.3458120822906494
+    ],
+    "milliseconds": 55.99319998873398
+  },
+  {
+    "id": "text-20260930-192",
+    "family": "text_policy",
+    "question": "action",
+    "type": "choice",
+    "correct": 0.0,
+    "probabilities": [
+      0.5327290296554565,
+      0.46727097034454346
+    ],
+    "milliseconds": 57.41189996479079
+  },
+  {
+    "id": "text-20260930-192",
+    "family": "text_policy",
+    "question": "condition",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.534722626209259,
+      0.46527740359306335
+    ],
+    "milliseconds": 57.255899999290705
+  },
+  {
+    "id": "text-20260930-192",
+    "family": "text_policy",
+    "question": "flags",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.6383367776870728,
+      0.32555824518203735,
+      0.03610499948263168
+    ],
+    "milliseconds": 60.62229996314272
+  },
+  {
+    "id": "text-20260930-196",
+    "family": "text_policy",
+    "question": "action",
+    "type": "choice",
+    "correct": 0.0,
+    "probabilities": [
+      0.5934067964553833,
+      0.4065932035446167
+    ],
+    "milliseconds": 59.01960004121065
+  },
+  {
+    "id": "text-20260930-196",
+    "family": "text_policy",
+    "question": "condition",
+    "type": "noul",
+    "correct": 0.0,
+    "probabilities": [
+      0.5288299918174744,
+      0.471170037984848
+    ],
+    "milliseconds": 64.85520000569522
+  },
+  {
+    "id": "text-20260930-196",
+    "family": "text_policy",
+    "question": "flags",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.5901599526405334,
+      0.28800857067108154,
+      0.12183146178722382
+    ],
+    "milliseconds": 58.95140004577115
+  },
+  {
+    "id": "text-20260930-198",
+    "family": "text_policy",
+    "question": "action",
+    "type": "choice",
+    "correct": 0.0,
+    "probabilities": [
+      0.6390002965927124,
+      0.3609997034072876
+    ],
+    "milliseconds": 56.43730005249381
+  },
+  {
+    "id": "text-20260930-198",
+    "family": "text_policy",
+    "question": "condition",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.521904706954956,
+      0.47809523344039917
+    ],
+    "milliseconds": 52.33059998136014
+  },
+  {
+    "id": "text-20260930-198",
+    "family": "text_policy",
+    "question": "flags",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.309189110994339,
+      0.5313732028007507,
+      0.1594376564025879
+    ],
+    "milliseconds": 51.98310001287609
+  },
+  {
+    "id": "text-20260930-200",
+    "family": "text_policy",
+    "question": "action",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.7729794383049011,
+      0.2270205020904541
+    ],
+    "milliseconds": 61.29670003429055
+  },
+  {
+    "id": "text-20260930-200",
+    "family": "text_policy",
+    "question": "condition",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.4261019229888916,
+      0.5738981366157532
+    ],
+    "milliseconds": 57.71110003115609
+  },
+  {
+    "id": "text-20260930-200",
+    "family": "text_policy",
+    "question": "flags",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.22044338285923004,
+      0.38829702138900757,
+      0.39125964045524597
+    ],
+    "milliseconds": 56.34270003065467
+  },
+  {
+    "id": "text-20260930-202",
+    "family": "text_policy",
+    "question": "action",
+    "type": "choice",
+    "correct": 0.0,
+    "probabilities": [
+      0.5725575089454651,
+      0.4274424612522125
+    ],
+    "milliseconds": 60.98910002037883
+  },
+  {
+    "id": "text-20260930-202",
+    "family": "text_policy",
+    "question": "condition",
+    "type": "noul",
+    "correct": 0.0,
+    "probabilities": [
+      0.5119282007217407,
+      0.4880717992782593
+    ],
+    "milliseconds": 53.45459998352453
+  },
+  {
+    "id": "text-20260930-202",
+    "family": "text_policy",
+    "question": "flags",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.3899523913860321,
+      0.3644794523715973,
+      0.245568186044693
+    ],
+    "milliseconds": 59.5964000094682
+  },
+  {
+    "id": "diagram-20260930-2",
+    "family": "diagram_attributes",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.023430243134498596,
+      0.9765697121620178
+    ],
+    "milliseconds": 235.66980002215132
+  },
+  {
+    "id": "diagram-20260930-2",
+    "family": "diagram_attributes",
+    "question": "shape",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.09903368353843689,
+      0.9009662866592407
+    ],
+    "milliseconds": 85.84400004474446
+  },
+  {
+    "id": "diagram-20260930-2",
+    "family": "diagram_attributes",
+    "question": "count",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.00017029880837071687,
+      1.1080216609116178e-05,
+      0.022367367520928383,
+      0.9774496555328369,
+      1.6136501699293149e-06
+    ],
+    "milliseconds": 84.97470000293106
+  },
+  {
+    "id": "diagram-20260930-14",
+    "family": "diagram_attributes",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.9974368810653687,
+      0.002563103334978223
+    ],
+    "milliseconds": 84.05280002625659
+  },
+  {
+    "id": "diagram-20260930-14",
+    "family": "diagram_attributes",
+    "question": "shape",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.2540120482444763,
+      0.7459880113601685
+    ],
+    "milliseconds": 84.87530000275001
+  },
+  {
+    "id": "diagram-20260930-14",
+    "family": "diagram_attributes",
+    "question": "count",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.00036609775270335376,
+      0.000251315301284194,
+      0.998489499092102,
+      0.0008860669913701713,
+      7.014494713075692e-06
+    ],
+    "milliseconds": 87.2337999753654
+  },
+  {
+    "id": "diagram-20260930-16",
+    "family": "diagram_attributes",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.0003101808251813054,
+      1.2464492101571523e-05,
+      0.9995927214622498,
+      8.467104635201395e-05
+    ],
+    "milliseconds": 95.24380002403632
+  },
+  {
+    "id": "diagram-20260930-16",
+    "family": "diagram_attributes",
+    "question": "shape",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.999312162399292,
+      0.0006878629792481661
+    ],
+    "milliseconds": 84.97740002349019
+  },
+  {
+    "id": "diagram-20260930-16",
+    "family": "diagram_attributes",
+    "question": "count",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.0009977716254070401,
+      0.0002444090787321329,
+      0.0027292612940073013,
+      0.43758583068847656,
+      0.5584427714347839
+    ],
+    "milliseconds": 83.48700002534315
+  },
+  {
+    "id": "diagram-20260930-37",
+    "family": "diagram_attributes",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      8.955553494160995e-05,
+      2.6210889245703584e-06,
+      0.999895453453064,
+      1.2364469512249343e-05
+    ],
+    "milliseconds": 81.80949999950826
+  },
+  {
+    "id": "diagram-20260930-37",
+    "family": "diagram_attributes",
+    "question": "shape",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.05769411474466324,
+      0.9423059225082397
+    ],
+    "milliseconds": 89.32029997231439
+  },
+  {
+    "id": "diagram-20260930-37",
+    "family": "diagram_attributes",
+    "question": "count",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.005317864939570427,
+      0.002119496464729309,
+      0.010671151801943779,
+      0.6464515924453735,
+      0.33543989062309265
+    ],
+    "milliseconds": 86.55819995328784
+  },
+  {
+    "id": "diagram-20260930-39",
+    "family": "diagram_attributes",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.9999806880950928,
+      1.6671079720254056e-05,
+      1.049539832820301e-06,
+      1.5962476709319162e-06
+    ],
+    "milliseconds": 86.68639999814332
+  },
+  {
+    "id": "diagram-20260930-39",
+    "family": "diagram_attributes",
+    "question": "shape",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.9389950633049011,
+      0.06100500375032425
+    ],
+    "milliseconds": 90.84119996987283
+  },
+  {
+    "id": "diagram-20260930-39",
+    "family": "diagram_attributes",
+    "question": "count",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.0002797486959025264,
+      9.84407015494071e-05,
+      0.056961458176374435,
+      0.9426517486572266,
+      8.558872650610283e-06
+    ],
+    "milliseconds": 89.1892000217922
+  },
+  {
+    "id": "diagram-20260930-40",
+    "family": "diagram_attributes",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.1296897679567337,
+      0.8692494034767151,
+      0.0010608748998492956
+    ],
+    "milliseconds": 85.14830004423857
+  },
+  {
+    "id": "diagram-20260930-40",
+    "family": "diagram_attributes",
+    "question": "shape",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.8930187225341797,
+      0.10698125511407852
+    ],
+    "milliseconds": 85.83350002299994
+  },
+  {
+    "id": "diagram-20260930-40",
+    "family": "diagram_attributes",
+    "question": "count",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.17980104684829712,
+      0.6135058403015137,
+      0.16283845901489258,
+      0.03432505950331688,
+      0.009529579430818558
+    ],
+    "milliseconds": 83.00769998459145
+  },
+  {
+    "id": "diagram-20260930-43",
+    "family": "diagram_attributes",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.0003231613081879914,
+      2.1215294054854894e-06,
+      0.9996227025985718,
+      5.19536915817298e-05
+    ],
+    "milliseconds": 85.16369998687878
+  },
+  {
+    "id": "diagram-20260930-43",
+    "family": "diagram_attributes",
+    "question": "shape",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.14827829599380493,
+      0.8517217040061951
+    ],
+    "milliseconds": 83.15590000711381
+  },
+  {
+    "id": "diagram-20260930-43",
+    "family": "diagram_attributes",
+    "question": "count",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.0008441992104053497,
+      0.00021557329455390573,
+      0.0009055070113390684,
+      0.3893963694572449,
+      0.6086384654045105
+    ],
+    "milliseconds": 81.91780000925064
+  },
+  {
+    "id": "diagram-20260930-48",
+    "family": "diagram_attributes",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.013864378444850445,
+      0.9861356019973755
+    ],
+    "milliseconds": 77.4127000477165
+  },
+  {
+    "id": "diagram-20260930-48",
+    "family": "diagram_attributes",
+    "question": "shape",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.9936122298240662,
+      0.006387751549482346
+    ],
+    "milliseconds": 89.34140001656488
+  },
+  {
+    "id": "diagram-20260930-48",
+    "family": "diagram_attributes",
+    "question": "count",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.0003522193874232471,
+      0.0011533552315086126,
+      0.9983452558517456,
+      0.00013714462693315,
+      1.205883836519206e-05
+    ],
+    "milliseconds": 88.32330000586808
+  },
+  {
+    "id": "diagram-20260930-55",
+    "family": "diagram_attributes",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.070222407579422,
+      0.002095967996865511,
+      0.9241100549697876,
+      0.0035715894773602486
+    ],
+    "milliseconds": 89.90609995089471
+  },
+  {
+    "id": "diagram-20260930-55",
+    "family": "diagram_attributes",
+    "question": "shape",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.40619149804115295,
+      0.5938084721565247
+    ],
+    "milliseconds": 82.93309999862686
+  },
+  {
+    "id": "diagram-20260930-55",
+    "family": "diagram_attributes",
+    "question": "count",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.13789218664169312,
+      0.7468456029891968,
+      0.091181680560112,
+      0.018204016610980034,
+      0.005876527167856693
+    ],
+    "milliseconds": 93.90690003056079
+  },
+  {
+    "id": "diagram-20260930-60",
+    "family": "diagram_attributes",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.9934685230255127,
+      0.006531481631100178
+    ],
+    "milliseconds": 97.51140000298619
+  },
+  {
+    "id": "diagram-20260930-60",
+    "family": "diagram_attributes",
+    "question": "shape",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.9703347682952881,
+      0.029665237292647362
+    ],
+    "milliseconds": 88.25049997540191
+  },
+  {
+    "id": "diagram-20260930-60",
+    "family": "diagram_attributes",
+    "question": "count",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.016591843217611313,
+      0.023805733770132065,
+      0.06863604485988617,
+      0.5801152586936951,
+      0.3108510971069336
+    ],
+    "milliseconds": 87.34109997749329
+  },
+  {
+    "id": "diagram-20260930-62",
+    "family": "diagram_attributes",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.0005317556788213551,
+      5.628853978123516e-05,
+      1.901276300486643e-05,
+      0.9993929862976074
+    ],
+    "milliseconds": 85.71200002916157
+  },
+  {
+    "id": "diagram-20260930-62",
+    "family": "diagram_attributes",
+    "question": "shape",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.9969780445098877,
+      0.0030220025219023228
+    ],
+    "milliseconds": 82.16699998592958
+  },
+  {
+    "id": "diagram-20260930-62",
+    "family": "diagram_attributes",
+    "question": "count",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.0007531746523454785,
+      0.0013919215416535735,
+      0.996453046798706,
+      0.0013735839165747166,
+      2.833743747032713e-05
+    ],
+    "milliseconds": 86.10120002413169
+  },
+  {
+    "id": "diagram-20260930-73",
+    "family": "diagram_attributes",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.0019984303507953882,
+      0.9979819059371948,
+      1.9640072423499078e-05
+    ],
+    "milliseconds": 83.10120005626231
+  },
+  {
+    "id": "diagram-20260930-73",
+    "family": "diagram_attributes",
+    "question": "shape",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.049347054213285446,
+      0.9506528973579407
+    ],
+    "milliseconds": 100.64749995945022
+  },
+  {
+    "id": "diagram-20260930-73",
+    "family": "diagram_attributes",
+    "question": "count",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.020164579153060913,
+      0.9592209458351135,
+      0.017561908811330795,
+      0.002681831596419215,
+      0.0003707945579662919
+    ],
+    "milliseconds": 87.4881999916397
+  },
+  {
+    "id": "diagram-20260930-74",
+    "family": "diagram_attributes",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.00034459863672964275,
+      8.969777809397783e-06,
+      0.9989792108535767,
+      0.0006672012386843562
+    ],
+    "milliseconds": 87.24139997502789
+  },
+  {
+    "id": "diagram-20260930-74",
+    "family": "diagram_attributes",
+    "question": "shape",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.9982415437698364,
+      0.0017584405140951276
+    ],
+    "milliseconds": 85.7961000292562
+  },
+  {
+    "id": "diagram-20260930-74",
+    "family": "diagram_attributes",
+    "question": "count",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.0003281885583419353,
+      0.00012313998013269156,
+      0.9993945360183716,
+      0.00014959511463530362,
+      4.595946847985033e-06
+    ],
+    "milliseconds": 89.556300023105
+  },
+  {
+    "id": "diagram-20260930-87",
+    "family": "diagram_attributes",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.0116715794429183,
+      0.9880453944206238,
+      0.0002830442099366337
+    ],
+    "milliseconds": 92.24849997553974
+  },
+  {
+    "id": "diagram-20260930-87",
+    "family": "diagram_attributes",
+    "question": "shape",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.915861964225769,
+      0.08413800597190857
+    ],
+    "milliseconds": 97.47500001685694
+  },
+  {
+    "id": "diagram-20260930-87",
+    "family": "diagram_attributes",
+    "question": "count",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.00304758851416409,
+      0.0017506302101537585,
+      0.6033788323402405,
+      0.3917306959629059,
+      9.220119682140648e-05
+    ],
+    "milliseconds": 85.40229999925941
+  },
+  {
+    "id": "diagram-20260930-89",
+    "family": "diagram_attributes",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.0034004859626293182,
+      0.9965260624885559,
+      7.344123878283426e-05
+    ],
+    "milliseconds": 77.55099999485537
+  },
+  {
+    "id": "diagram-20260930-89",
+    "family": "diagram_attributes",
+    "question": "shape",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.9988909363746643,
+      0.0011090702610090375
+    ],
+    "milliseconds": 98.57600001851097
+  },
+  {
+    "id": "diagram-20260930-89",
+    "family": "diagram_attributes",
+    "question": "count",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.0002928823232650757,
+      4.15335271100048e-05,
+      0.059708066284656525,
+      0.9399495720863342,
+      7.876458766986616e-06
+    ],
+    "milliseconds": 89.66549998149276
+  },
+  {
+    "id": "diagram-20260930-95",
+    "family": "diagram_attributes",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.043059203773736954,
+      0.0008659124141559005,
+      0.03316042199730873,
+      0.9229143857955933
+    ],
+    "milliseconds": 87.11329998914152
+  },
+  {
+    "id": "diagram-20260930-95",
+    "family": "diagram_attributes",
+    "question": "shape",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.9715671539306641,
+      0.028432872146368027
+    ],
+    "milliseconds": 83.70149997062981
+  },
+  {
+    "id": "diagram-20260930-95",
+    "family": "diagram_attributes",
+    "question": "count",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.00784579012542963,
+      0.0020069070160388947,
+      0.010392000898718834,
+      0.7408245205879211,
+      0.23893077671527863
+    ],
+    "milliseconds": 85.41190001415089
+  },
+  {
+    "id": "diagram-20260930-101",
+    "family": "diagram_attributes",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.9999306201934814,
+      5.10038917127531e-05,
+      2.21230084207491e-06,
+      1.604740282346029e-05
+    ],
+    "milliseconds": 79.72089998656884
+  },
+  {
+    "id": "diagram-20260930-101",
+    "family": "diagram_attributes",
+    "question": "shape",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.1821202039718628,
+      0.8178797960281372
+    ],
+    "milliseconds": 86.44890005234629
+  },
+  {
+    "id": "diagram-20260930-101",
+    "family": "diagram_attributes",
+    "question": "count",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.0005948368925601244,
+      5.405151023296639e-05,
+      0.006694902665913105,
+      0.9926456212997437,
+      1.0597511391097214e-05
+    ],
+    "milliseconds": 84.45110003231093
+  },
+  {
+    "id": "diagram-20260930-113",
+    "family": "diagram_attributes",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.9998997449874878,
+      9.703882096800953e-05,
+      3.2592256502539385e-06
+    ],
+    "milliseconds": 80.43219998944551
+  },
+  {
+    "id": "diagram-20260930-113",
+    "family": "diagram_attributes",
+    "question": "shape",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.9974462985992432,
+      0.002553762635216117
+    ],
+    "milliseconds": 81.17140003014356
+  },
+  {
+    "id": "diagram-20260930-113",
+    "family": "diagram_attributes",
+    "question": "count",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.00040613184683024883,
+      6.190099520608783e-05,
+      0.03432045876979828,
+      0.9652036428451538,
+      7.887544597906526e-06
+    ],
+    "milliseconds": 91.67100000195205
+  },
+  {
+    "id": "diagram-20260930-121",
+    "family": "diagram_attributes",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.9999830722808838,
+      1.5174739928625058e-05,
+      1.7403591527909157e-06
+    ],
+    "milliseconds": 91.2436000071466
+  },
+  {
+    "id": "diagram-20260930-121",
+    "family": "diagram_attributes",
+    "question": "shape",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.994383692741394,
+      0.005616307258605957
+    ],
+    "milliseconds": 90.39109997684136
+  },
+  {
+    "id": "diagram-20260930-121",
+    "family": "diagram_attributes",
+    "question": "count",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.0004796164284925908,
+      5.784812310594134e-05,
+      0.022086745128035545,
+      0.9773651957511902,
+      1.0509958883631043e-05
+    ],
+    "milliseconds": 90.73249995708466
+  },
+  {
+    "id": "diagram-20260930-124",
+    "family": "diagram_attributes",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.9999873638153076,
+      1.1561283827177249e-05,
+      1.0838011803571135e-06
+    ],
+    "milliseconds": 82.04559999285266
+  },
+  {
+    "id": "diagram-20260930-124",
+    "family": "diagram_attributes",
+    "question": "shape",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.9993465542793274,
+      0.0006534679559990764
+    ],
+    "milliseconds": 84.95370001764968
+  },
+  {
+    "id": "diagram-20260930-124",
+    "family": "diagram_attributes",
+    "question": "count",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.00033444585278630257,
+      2.955472155008465e-05,
+      0.0626097023487091,
+      0.9370231628417969,
+      3.1313613817474106e-06
+    ],
+    "milliseconds": 89.57599999848753
+  },
+  {
+    "id": "diagram-20260930-139",
+    "family": "diagram_attributes",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.0012022207956761122,
+      0.998788058757782,
+      9.741741450852714e-06
+    ],
+    "milliseconds": 77.25709996884689
+  },
+  {
+    "id": "diagram-20260930-139",
+    "family": "diagram_attributes",
+    "question": "shape",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.04890336096286774,
+      0.9510966539382935
+    ],
+    "milliseconds": 83.11539998976514
+  },
+  {
+    "id": "diagram-20260930-139",
+    "family": "diagram_attributes",
+    "question": "count",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.02313278429210186,
+      0.9474005103111267,
+      0.026457348838448524,
+      0.002636670833453536,
+      0.0003726514696609229
+    ],
+    "milliseconds": 89.09769996535033
+  },
+  {
+    "id": "diagram-20260930-157",
+    "family": "diagram_attributes",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.9999724626541138,
+      2.4226394089055248e-05,
+      5.504016371560283e-07,
+      2.7072037482867017e-06
+    ],
+    "milliseconds": 90.45760001754388
+  },
+  {
+    "id": "diagram-20260930-157",
+    "family": "diagram_attributes",
+    "question": "shape",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.9995725750923157,
+      0.0004273952799849212
+    ],
+    "milliseconds": 88.35829998133704
+  },
+  {
+    "id": "diagram-20260930-157",
+    "family": "diagram_attributes",
+    "question": "count",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      8.95174453034997e-05,
+      1.1778875887102913e-05,
+      0.004320248495787382,
+      0.9955755472183228,
+      2.953750481538009e-06
+    ],
+    "milliseconds": 83.6612000130117
+  },
+  {
+    "id": "diagram-20260930-170",
+    "family": "diagram_attributes",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.9311290979385376,
+      0.0688709020614624
+    ],
+    "milliseconds": 90.62060003634542
+  },
+  {
+    "id": "diagram-20260930-170",
+    "family": "diagram_attributes",
+    "question": "shape",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.9849424362182617,
+      0.015057514421641827
+    ],
+    "milliseconds": 86.0114999813959
+  },
+  {
+    "id": "diagram-20260930-170",
+    "family": "diagram_attributes",
+    "question": "count",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.00427239527925849,
+      0.0008900543325580657,
+      0.046144817024469376,
+      0.9486455321311951,
+      4.715496106655337e-05
+    ],
+    "milliseconds": 86.94720000494272
+  },
+  {
+    "id": "diagram-20260930-172",
+    "family": "diagram_attributes",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.01648101396858692,
+      0.0004798515001311898,
+      0.983039140701294
+    ],
+    "milliseconds": 80.53680002922192
+  },
+  {
+    "id": "diagram-20260930-172",
+    "family": "diagram_attributes",
+    "question": "shape",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.9803529977798462,
+      0.019646991044282913
+    ],
+    "milliseconds": 82.77039998210967
+  },
+  {
+    "id": "diagram-20260930-172",
+    "family": "diagram_attributes",
+    "question": "count",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.060954879969358444,
+      0.9037343859672546,
+      0.027863139286637306,
+      0.006479742471128702,
+      0.000967912026681006
+    ],
+    "milliseconds": 80.38599998690188
+  },
+  {
+    "id": "bean-68a9cc5b7c7c0047942bb383186a94e2",
+    "family": "leaf_photo",
+    "question": "condition",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.5916637182235718,
+      0.37980690598487854,
+      0.028529344126582146
+    ],
+    "milliseconds": 110.3558000177145
+  },
+  {
+    "id": "bean-68a9cc5b7c7c0047942bb383186a94e2",
+    "family": "leaf_photo",
+    "question": "matches",
+    "type": "noul",
+    "correct": 0.0,
+    "probabilities": [
+      0.7550889849662781,
+      0.2449110746383667
+    ],
+    "milliseconds": 118.44990000827238
+  },
+  {
+    "id": "bean-68a9cc5b7c7c0047942bb383186a94e2",
+    "family": "leaf_photo",
+    "question": "policy_level",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.8788442611694336,
+      0.06473615765571594,
+      0.056419529020786285
+    ],
+    "milliseconds": 120.34260004293174
+  },
+  {
+    "id": "bean-0e4bf121885bb58290da3ad2fa33c3ab",
+    "family": "leaf_photo",
+    "question": "condition",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.7706731557846069,
+      0.21674160659313202,
+      0.01258520781993866
+    ],
+    "milliseconds": 110.14279996743426
+  },
+  {
+    "id": "bean-0e4bf121885bb58290da3ad2fa33c3ab",
+    "family": "leaf_photo",
+    "question": "matches",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.4759221374988556,
+      0.524077832698822
+    ],
+    "milliseconds": 108.10109996236861
+  },
+  {
+    "id": "bean-0e4bf121885bb58290da3ad2fa33c3ab",
+    "family": "leaf_photo",
+    "question": "policy_level",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.20081007480621338,
+      0.7267288565635681,
+      0.0724610835313797
+    ],
+    "milliseconds": 120.69880001945421
+  },
+  {
+    "id": "bean-26317e0b848d50e30f3639b7c7462064",
+    "family": "leaf_photo",
+    "question": "condition",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.7061118483543396,
+      0.25533562898635864,
+      0.03855248913168907
+    ],
+    "milliseconds": 127.1409000037238
+  },
+  {
+    "id": "bean-26317e0b848d50e30f3639b7c7462064",
+    "family": "leaf_photo",
+    "question": "matches",
+    "type": "noul",
+    "correct": 0.0,
+    "probabilities": [
+      0.6888765096664429,
+      0.31112346053123474
+    ],
+    "milliseconds": 132.6435999944806
+  },
+  {
+    "id": "bean-26317e0b848d50e30f3639b7c7462064",
+    "family": "leaf_photo",
+    "question": "policy_level",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.1619085669517517,
+      0.8074902892112732,
+      0.030601195991039276
+    ],
+    "milliseconds": 121.21620000107214
+  },
+  {
+    "id": "bean-d7d96431bc8fd7784de0f43a87c18a6b",
+    "family": "leaf_photo",
+    "question": "condition",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.7007501125335693,
+      0.2620995342731476,
+      0.037150368094444275
+    ],
+    "milliseconds": 116.2639000103809
+  },
+  {
+    "id": "bean-d7d96431bc8fd7784de0f43a87c18a6b",
+    "family": "leaf_photo",
+    "question": "matches",
+    "type": "noul",
+    "correct": 0.0,
+    "probabilities": [
+      0.7169979810714722,
+      0.2830020487308502
+    ],
+    "milliseconds": 115.47710001468658
+  },
+  {
+    "id": "bean-d7d96431bc8fd7784de0f43a87c18a6b",
+    "family": "leaf_photo",
+    "question": "policy_level",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.2819511592388153,
+      0.5394092798233032,
+      0.17863954603672028
+    ],
+    "milliseconds": 113.8924999977462
+  },
+  {
+    "id": "bean-6a4490154d1a2dde4c0e87e1a1433134",
+    "family": "leaf_photo",
+    "question": "condition",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.7932921051979065,
+      0.1982986330986023,
+      0.00840927753597498
+    ],
+    "milliseconds": 110.03759998129681
+  },
+  {
+    "id": "bean-6a4490154d1a2dde4c0e87e1a1433134",
+    "family": "leaf_photo",
+    "question": "matches",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.9883823990821838,
+      0.011617626063525677
+    ],
+    "milliseconds": 108.85449999477714
+  },
+  {
+    "id": "bean-6a4490154d1a2dde4c0e87e1a1433134",
+    "family": "leaf_photo",
+    "question": "policy_level",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.14803741872310638,
+      0.7974805235862732,
+      0.05448204651474953
+    ],
+    "milliseconds": 115.78739999094978
+  },
+  {
+    "id": "bean-abba8b31c3f3b078db6bfb9fbc1f0fda",
+    "family": "leaf_photo",
+    "question": "condition",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.7139093279838562,
+      0.2634423077106476,
+      0.022648360580205917
+    ],
+    "milliseconds": 121.73200002871454
+  },
+  {
+    "id": "bean-abba8b31c3f3b078db6bfb9fbc1f0fda",
+    "family": "leaf_photo",
+    "question": "matches",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.7005332112312317,
+      0.2994668185710907
+    ],
+    "milliseconds": 123.40499996207654
+  },
+  {
+    "id": "bean-abba8b31c3f3b078db6bfb9fbc1f0fda",
+    "family": "leaf_photo",
+    "question": "policy_level",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.26607897877693176,
+      0.5316053032875061,
+      0.20231567323207855
+    ],
+    "milliseconds": 128.78319999435917
+  },
+  {
+    "id": "bean-28d84f97f98cc1ce63d226c891807466",
+    "family": "leaf_photo",
+    "question": "condition",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.6919457316398621,
+      0.3009270429611206,
+      0.007127219345420599
+    ],
+    "milliseconds": 110.89230002835393
+  },
+  {
+    "id": "bean-28d84f97f98cc1ce63d226c891807466",
+    "family": "leaf_photo",
+    "question": "matches",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.9888514876365662,
+      0.011148565448820591
+    ],
+    "milliseconds": 109.09639997407794
+  },
+  {
+    "id": "bean-28d84f97f98cc1ce63d226c891807466",
+    "family": "leaf_photo",
+    "question": "policy_level",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.2664371728897095,
+      0.7294111847877502,
+      0.004151602741330862
+    ],
+    "milliseconds": 116.80840002372861
+  },
+  {
+    "id": "bean-77ddabdd9b0ffb1450c48dbc96305d56",
+    "family": "leaf_photo",
+    "question": "condition",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.7152097821235657,
+      0.26958638429641724,
+      0.015203859657049179
+    ],
+    "milliseconds": 107.53400000976399
+  },
+  {
+    "id": "bean-77ddabdd9b0ffb1450c48dbc96305d56",
+    "family": "leaf_photo",
+    "question": "matches",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.9670754671096802,
+      0.03292453661561012
+    ],
+    "milliseconds": 112.005400005728
+  },
+  {
+    "id": "bean-77ddabdd9b0ffb1450c48dbc96305d56",
+    "family": "leaf_photo",
+    "question": "policy_level",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.21791943907737732,
+      0.5523157715797424,
+      0.22976480424404144
+    ],
+    "milliseconds": 117.02500004321337
+  },
+  {
+    "id": "bean-f513ed25ce958d29d2db9c2a4a95b633",
+    "family": "leaf_photo",
+    "question": "condition",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.7903008460998535,
+      0.18645507097244263,
+      0.02324407733976841
+    ],
+    "milliseconds": 107.76569996960461
+  },
+  {
+    "id": "bean-f513ed25ce958d29d2db9c2a4a95b633",
+    "family": "leaf_photo",
+    "question": "matches",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.9968385696411133,
+      0.003161380300298333
+    ],
+    "milliseconds": 105.36899999715388
+  },
+  {
+    "id": "bean-f513ed25ce958d29d2db9c2a4a95b633",
+    "family": "leaf_photo",
+    "question": "policy_level",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.06726955622434616,
+      0.9179611206054688,
+      0.014769327826797962
+    ],
+    "milliseconds": 119.09089999971911
+  },
+  {
+    "id": "bean-d037391beac67c133fef66898ad4e227",
+    "family": "leaf_photo",
+    "question": "condition",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.9025452136993408,
+      0.07945311069488525,
+      0.018001694232225418
+    ],
+    "milliseconds": 114.79959997814149
+  },
+  {
+    "id": "bean-d037391beac67c133fef66898ad4e227",
+    "family": "leaf_photo",
+    "question": "matches",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.9986299276351929,
+      0.0013701487332582474
+    ],
+    "milliseconds": 106.85380001086742
+  },
+  {
+    "id": "bean-d037391beac67c133fef66898ad4e227",
+    "family": "leaf_photo",
+    "question": "policy_level",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.2648325562477112,
+      0.6819599270820618,
+      0.05320749059319496
+    ],
+    "milliseconds": 116.46200000541285
+  },
+  {
+    "id": "bean-567eed0dbf7ad8670c1fd26722179cd0",
+    "family": "leaf_photo",
+    "question": "condition",
+    "type": "choice",
+    "correct": 0.0,
+    "probabilities": [
+      0.48533302545547485,
+      0.4979029893875122,
+      0.016764048486948013
+    ],
+    "milliseconds": 111.84120003599674
+  },
+  {
+    "id": "bean-567eed0dbf7ad8670c1fd26722179cd0",
+    "family": "leaf_photo",
+    "question": "matches",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.9735669493675232,
+      0.02643303945660591
+    ],
+    "milliseconds": 113.41839999658987
+  },
+  {
+    "id": "bean-567eed0dbf7ad8670c1fd26722179cd0",
+    "family": "leaf_photo",
+    "question": "policy_level",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.19905194640159607,
+      0.7704102993011475,
+      0.03053778037428856
+    ],
+    "milliseconds": 115.08690001210198
+  },
+  {
+    "id": "bean-43a8cf5f96522713e4862661b11b6a02",
+    "family": "leaf_photo",
+    "question": "condition",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.9755722284317017,
+      0.02238469570875168,
+      0.00204313057474792
+    ],
+    "milliseconds": 111.33699998026714
+  },
+  {
+    "id": "bean-43a8cf5f96522713e4862661b11b6a02",
+    "family": "leaf_photo",
+    "question": "matches",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.27795541286468506,
+      0.7220445275306702
+    ],
+    "milliseconds": 110.1831000414677
+  },
+  {
+    "id": "bean-43a8cf5f96522713e4862661b11b6a02",
+    "family": "leaf_photo",
+    "question": "policy_level",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.24857473373413086,
+      0.7260134816169739,
+      0.025411823764443398
+    ],
+    "milliseconds": 114.68240001704544
+  },
+  {
+    "id": "bean-501512654d17721123835cb74798e793",
+    "family": "leaf_photo",
+    "question": "condition",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.6652748584747314,
+      0.31507524847984314,
+      0.019649842754006386
+    ],
+    "milliseconds": 113.60979999881238
+  },
+  {
+    "id": "bean-501512654d17721123835cb74798e793",
+    "family": "leaf_photo",
+    "question": "matches",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.9978092312812805,
+      0.0021907694172114134
+    ],
+    "milliseconds": 108.60350000439212
+  },
+  {
+    "id": "bean-501512654d17721123835cb74798e793",
+    "family": "leaf_photo",
+    "question": "policy_level",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.59317547082901,
+      0.12494301795959473,
+      0.28188157081604004
+    ],
+    "milliseconds": 114.32900000363588
+  },
+  {
+    "id": "bean-3c7980c5e0c7b764f1be4d95aae174b6",
+    "family": "leaf_photo",
+    "question": "condition",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.5596023201942444,
+      0.4248712658882141,
+      0.015526403672993183
+    ],
+    "milliseconds": 105.65290000522509
+  },
+  {
+    "id": "bean-3c7980c5e0c7b764f1be4d95aae174b6",
+    "family": "leaf_photo",
+    "question": "matches",
+    "type": "noul",
+    "correct": 0.0,
+    "probabilities": [
+      0.5304084420204163,
+      0.46959152817726135
+    ],
+    "milliseconds": 112.63399996096268
+  },
+  {
+    "id": "bean-3c7980c5e0c7b764f1be4d95aae174b6",
+    "family": "leaf_photo",
+    "question": "policy_level",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.24652491509914398,
+      0.12420380115509033,
+      0.6292712688446045
+    ],
+    "milliseconds": 123.1073999661021
+  },
+  {
+    "id": "bean-91e92beb10eb51261a734786d64d8e54",
+    "family": "leaf_photo",
+    "question": "condition",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.5329836010932922,
+      0.45664215087890625,
+      0.010374275967478752
+    ],
+    "milliseconds": 114.44139998639002
+  },
+  {
+    "id": "bean-91e92beb10eb51261a734786d64d8e54",
+    "family": "leaf_photo",
+    "question": "matches",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.9971957206726074,
+      0.0028043175116181374
+    ],
+    "milliseconds": 114.01969997677952
+  },
+  {
+    "id": "bean-91e92beb10eb51261a734786d64d8e54",
+    "family": "leaf_photo",
+    "question": "policy_level",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.4794146716594696,
+      0.10206859558820724,
+      0.41851678490638733
+    ],
+    "milliseconds": 122.29490000754595
+  },
+  {
+    "id": "bean-9ec1301d92f38082a506ac9a362efd87",
+    "family": "leaf_photo",
+    "question": "condition",
+    "type": "choice",
+    "correct": 0.0,
+    "probabilities": [
+      0.41547948122024536,
+      0.5653975605964661,
+      0.019122974947094917
+    ],
+    "milliseconds": 113.33429999649525
+  },
+  {
+    "id": "bean-9ec1301d92f38082a506ac9a362efd87",
+    "family": "leaf_photo",
+    "question": "matches",
+    "type": "noul",
+    "correct": 0.0,
+    "probabilities": [
+      0.7728546261787415,
+      0.22714538872241974
+    ],
+    "milliseconds": 113.62369998823851
+  },
+  {
+    "id": "bean-9ec1301d92f38082a506ac9a362efd87",
+    "family": "leaf_photo",
+    "question": "policy_level",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.16354867815971375,
+      0.8328467011451721,
+      0.003604587633162737
+    ],
+    "milliseconds": 119.15819998830557
+  },
+  {
+    "id": "bean-cd71cab1d32929a0b6e8251d93574a01",
+    "family": "leaf_photo",
+    "question": "condition",
+    "type": "choice",
+    "correct": 0.0,
+    "probabilities": [
+      0.4289010763168335,
+      0.5540524125099182,
+      0.017046542838215828
+    ],
+    "milliseconds": 115.29779998818412
+  },
+  {
+    "id": "bean-cd71cab1d32929a0b6e8251d93574a01",
+    "family": "leaf_photo",
+    "question": "matches",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.6197086572647095,
+      0.3802913427352905
+    ],
+    "milliseconds": 116.8102000374347
+  },
+  {
+    "id": "bean-cd71cab1d32929a0b6e8251d93574a01",
+    "family": "leaf_photo",
+    "question": "policy_level",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.9313219785690308,
+      0.04268775135278702,
+      0.025990335270762444
+    ],
+    "milliseconds": 121.79560004733503
+  },
+  {
+    "id": "bean-94ea8eff178dbfa5e395e051b6cb259e",
+    "family": "leaf_photo",
+    "question": "condition",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.8688012361526489,
+      0.12115990370512009,
+      0.01003885455429554
+    ],
+    "milliseconds": 116.69610004173592
+  },
+  {
+    "id": "bean-94ea8eff178dbfa5e395e051b6cb259e",
+    "family": "leaf_photo",
+    "question": "matches",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.998174786567688,
+      0.0018252618610858917
+    ],
+    "milliseconds": 116.48200004128739
+  },
+  {
+    "id": "bean-94ea8eff178dbfa5e395e051b6cb259e",
+    "family": "leaf_photo",
+    "question": "policy_level",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.862424373626709,
+      0.05390018969774246,
+      0.08367545157670975
+    ],
+    "milliseconds": 124.04069997137412
+  },
+  {
+    "id": "bean-8722534b5cad7dbc427b8ee7fefce770",
+    "family": "leaf_photo",
+    "question": "condition",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.8500787019729614,
+      0.12114700675010681,
+      0.02877427637577057
+    ],
+    "milliseconds": 120.62110000988469
+  },
+  {
+    "id": "bean-8722534b5cad7dbc427b8ee7fefce770",
+    "family": "leaf_photo",
+    "question": "matches",
+    "type": "noul",
+    "correct": 0.0,
+    "probabilities": [
+      0.5202649831771851,
+      0.47973504662513733
+    ],
+    "milliseconds": 112.45820001931861
+  },
+  {
+    "id": "bean-8722534b5cad7dbc427b8ee7fefce770",
+    "family": "leaf_photo",
+    "question": "policy_level",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.8016166687011719,
+      0.10301440209150314,
+      0.09536892920732498
+    ],
+    "milliseconds": 116.94219999480993
+  },
+  {
+    "id": "bean-0548394392a0e7b404c42c1705959148",
+    "family": "leaf_photo",
+    "question": "condition",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.7681632041931152,
+      0.21130108833312988,
+      0.02053573541343212
+    ],
+    "milliseconds": 115.78800005372614
+  },
+  {
+    "id": "bean-0548394392a0e7b404c42c1705959148",
+    "family": "leaf_photo",
+    "question": "matches",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.9878096580505371,
+      0.012190297245979309
+    ],
+    "milliseconds": 112.25230002310127
+  },
+  {
+    "id": "bean-0548394392a0e7b404c42c1705959148",
+    "family": "leaf_photo",
+    "question": "policy_level",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.324105441570282,
+      0.5990241169929504,
+      0.07687041908502579
+    ],
+    "milliseconds": 113.73420001473278
+  },
+  {
+    "id": "bean-b789da0fc0e93b0d36991f154afba145",
+    "family": "leaf_photo",
+    "question": "condition",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.855259895324707,
+      0.12591621279716492,
+      0.018823929131031036
+    ],
+    "milliseconds": 106.818700034637
+  },
+  {
+    "id": "bean-b789da0fc0e93b0d36991f154afba145",
+    "family": "leaf_photo",
+    "question": "matches",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.9974741339683533,
+      0.0025259016547352076
+    ],
+    "milliseconds": 113.17899997811764
+  },
+  {
+    "id": "bean-b789da0fc0e93b0d36991f154afba145",
+    "family": "leaf_photo",
+    "question": "policy_level",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.8362917900085449,
+      0.07157600671052933,
+      0.09213218092918396
+    ],
+    "milliseconds": 111.45019996911287
+  },
+  {
+    "id": "bean-88e48fe71c68e18b5c07402aa9189863",
+    "family": "leaf_photo",
+    "question": "condition",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.4128093719482422,
+      0.5801371335983276,
+      0.007053420878946781
+    ],
+    "milliseconds": 111.01090000011027
+  },
+  {
+    "id": "bean-88e48fe71c68e18b5c07402aa9189863",
+    "family": "leaf_photo",
+    "question": "matches",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.37471023201942444,
+      0.6252897381782532
+    ],
+    "milliseconds": 108.69779996573925
+  },
+  {
+    "id": "bean-88e48fe71c68e18b5c07402aa9189863",
+    "family": "leaf_photo",
+    "question": "policy_level",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.14717955887317657,
+      0.830399215221405,
+      0.02242126874625683
+    ],
+    "milliseconds": 114.52449997887015
+  },
+  {
+    "id": "bean-4a1276a774d907e41518ce5712f772a9",
+    "family": "leaf_photo",
+    "question": "condition",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.41764047741889954,
+      0.5581308007240295,
+      0.024228723719716072
+    ],
+    "milliseconds": 113.47640003077686
+  },
+  {
+    "id": "bean-4a1276a774d907e41518ce5712f772a9",
+    "family": "leaf_photo",
+    "question": "matches",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.9956852197647095,
+      0.004314786288887262
+    ],
+    "milliseconds": 110.82850000821054
+  },
+  {
+    "id": "bean-4a1276a774d907e41518ce5712f772a9",
+    "family": "leaf_photo",
+    "question": "policy_level",
+    "type": "score",
+    "correct": 1.0,
+    "probabilities": [
+      0.9085118770599365,
+      0.056109651923179626,
+      0.035378534346818924
+    ],
+    "milliseconds": 116.07409996213391
+  },
+  {
+    "id": "bean-b9f3ac8154750e2801fda3c1b9daa892",
+    "family": "leaf_photo",
+    "question": "condition",
+    "type": "choice",
+    "correct": 0.0,
+    "probabilities": [
+      0.6688854098320007,
+      0.28412750363349915,
+      0.046987053006887436
+    ],
+    "milliseconds": 111.67980002937838
+  },
+  {
+    "id": "bean-b9f3ac8154750e2801fda3c1b9daa892",
+    "family": "leaf_photo",
+    "question": "matches",
+    "type": "noul",
+    "correct": 1.0,
+    "probabilities": [
+      0.59247225522995,
+      0.40752774477005005
+    ],
+    "milliseconds": 111.63190001389012
+  },
+  {
+    "id": "bean-b9f3ac8154750e2801fda3c1b9daa892",
+    "family": "leaf_photo",
+    "question": "policy_level",
+    "type": "score",
+    "correct": 0.0,
+    "probabilities": [
+      0.7567105889320374,
+      0.17761175334453583,
+      0.0656776875257492
+    ],
+    "milliseconds": 113.21440001484007
+  },
+  {
+    "id": "diagram-20260930-40-missing",
+    "family": "missing_evidence",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.9993767142295837,
+      0.0005526205059140921,
+      7.064589590299875e-05
+    ],
+    "milliseconds": 61.786900041624904
+  },
+  {
+    "id": "diagram-20260930-40-missing",
+    "family": "missing_evidence",
+    "question": "shape",
+    "type": "noul",
+    "correct": 0.5,
+    "probabilities": [
+      0.9920035004615784,
+      0.007996486499905586
+    ],
+    "milliseconds": 61.31570000434294
+  },
+  {
+    "id": "diagram-20260930-60-missing",
+    "family": "missing_evidence",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.9987668991088867,
+      0.0009923925390467048,
+      0.00024074054090306163
+    ],
+    "milliseconds": 49.604700005147606
+  },
+  {
+    "id": "diagram-20260930-60-missing",
+    "family": "missing_evidence",
+    "question": "shape",
+    "type": "noul",
+    "correct": 0.5,
+    "probabilities": [
+      0.9920035004615784,
+      0.007996486499905586
+    ],
+    "milliseconds": 51.08449998078868
+  },
+  {
+    "id": "diagram-20260930-170-missing",
+    "family": "missing_evidence",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.9993767142295837,
+      0.0005526205059140921,
+      7.064589590299875e-05
+    ],
+    "milliseconds": 46.46280000451952
+  },
+  {
+    "id": "diagram-20260930-170-missing",
+    "family": "missing_evidence",
+    "question": "shape",
+    "type": "noul",
+    "correct": 0.5,
+    "probabilities": [
+      0.9920035004615784,
+      0.007996486499905586
+    ],
+    "milliseconds": 53.10819996520877
+  },
+  {
+    "id": "diagram-20260930-390-missing",
+    "family": "missing_evidence",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.9987668991088867,
+      0.0009923925390467048,
+      0.00024074054090306163
+    ],
+    "milliseconds": 61.02880003163591
+  },
+  {
+    "id": "diagram-20260930-390-missing",
+    "family": "missing_evidence",
+    "question": "shape",
+    "type": "noul",
+    "correct": 0.5,
+    "probabilities": [
+      0.99446702003479,
+      0.005532979033887386
+    ],
+    "milliseconds": 60.285600018687546
+  },
+  {
+    "id": "diagram-20260930-440-missing",
+    "family": "missing_evidence",
+    "question": "color",
+    "type": "choice",
+    "correct": 1.0,
+    "probabilities": [
+      0.9993767142295837,
+      0.0005526205059140921,
+      7.064589590299875e-05
+    ],
+    "milliseconds": 47.1045000012964
+  },
+  {
+    "id": "diagram-20260930-440-missing",
+    "family": "missing_evidence",
+    "question": "shape",
+    "type": "noul",
+    "correct": 0.5,
+    "probabilities": [
+      0.99446702003479,
+      0.005532979033887386
+    ],
+    "milliseconds": 51.37309996644035
+  }
+]

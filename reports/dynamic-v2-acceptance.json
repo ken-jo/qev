@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "checks": {
+    "trained_selected_checkpoint": true,
+    "checkpoint_weights_verified": true,
+    "independent_final_role": true,
+    "frozen_final_dataset": true,
+    "each_modality_at_least_90_before_abstention": true,
+    "same_final_checkpoint": true,
+    "calibration_separate_from_final": true,
+    "same_integration_checkpoint": true,
+    "uncached_serial_rtx4060ti_measurement": true,
+    "one_image_four_candidates_p95_at_most_300_ms": true,
+    "actual_http_p95_at_most_300_ms": true,
+    "dynamic_api_protocol": true,
+    "same_checkpoint_legacy_and_uncertainty_report": true,
+    "type_and_language_slices_reported": true
+  },
+  "checkpoint_weights_sha256": "e7fd32d74e18c8e95b6155c0fa61bfb9ea5f2e9602a37da5c101f628adadb65a",
+  "checkpoint_manifest_sha256": "c94a745e865782d880a2d94638839b4f7a9270fa23222a20919baabdc140f132",
+  "scope": "Frozen controlled policy final set, legacy regression and resident serial API",
+  "limitations": "A passing audit does not establish general real-world policy accuracy, fully Korean policy understanding, concurrent-load latency or OOD calibration.",
+  "evidence": {
+    "quality": {
+      "path": "reports\\dynamic-v2-final.json",
+      "sha256": "d007dc1bd205949bf4ec8bf832987025f21d5fe841b756b54f005747b3265550",
+      "lf_sha256": "d007dc1bd205949bf4ec8bf832987025f21d5fe841b756b54f005747b3265550"
+    },
+    "calibration": {
+      "path": "reports\\dynamic-v2-calibration.json",
+      "sha256": "d3628136ba0b1b807d520c4d997adebea911581a2f6a7cbca59116999dc27d82",
+      "lf_sha256": "d3628136ba0b1b807d520c4d997adebea911581a2f6a7cbca59116999dc27d82"
+    },
+    "integration": {
+      "path": "reports\\dynamic-v2-integration.json",
+      "sha256": "511c50d7a266287b40678c3c57a61de46e91161d6c5be9f9ec1129be726742d2",
+      "lf_sha256": "511c50d7a266287b40678c3c57a61de46e91161d6c5be9f9ec1129be726742d2"
+    },
+    "regression": {
+      "path": "reports\\dynamic-v2-legacy-regression.json",
+      "sha256": "4ee1fb8ad063149c8ed730c4d20e9db549ea64c279391fc7cba0d2b6764808e7",
+      "lf_sha256": "4ee1fb8ad063149c8ed730c4d20e9db549ea64c279391fc7cba0d2b6764808e7"
+    },
+    "protocol": {
+      "path": "reports\\policy-v8-protocol.json",
+      "sha256": "3e83442a8a4d833182002795e89f512faac7f8ea7d3e4f86a5aa8dd833840f1c",
+      "lf_sha256": "f219331682b9eae3d49f72aa10049f2b257b47ff6f2afe1aa5005f55ace0ce7c"
+    }
+  }
+}

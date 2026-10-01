@@ -1,0 +1,62 @@
+{
+  "trashnet-kaggle.zip": {
+    "url": "https://www.kaggle.com/api/v1/datasets/download/vminhkhoi/trashnet?datasetVersionNumber=1",
+    "bytes": 42869415,
+    "sha256": "1af8543cffc6fb7e097d2a1a4305d986a28fde408a5586e50403f4e87ae5a136"
+  },
+  "trashnet-original.zip": {
+    "url": "https://huggingface.co/datasets/garythung/trashnet/resolve/94cd17ebfd6702bf62281d3c89f22ff649815b46/dataset-resized.zip",
+    "bytes": 42834870,
+    "sha256": "c060e8abfe5d6de0578ca15be1ed8ad0794a865d333c3473d53d1d9ad6e38b8c"
+  },
+  "trashnet-README.md": {
+    "url": "https://huggingface.co/datasets/garythung/trashnet/resolve/94cd17ebfd6702bf62281d3c89f22ff649815b46/README.md",
+    "bytes": 21,
+    "sha256": "3e0e15fa0c5cc81675bd69af8eb469d128a725c1a7bfc71f03b7877b7b650567"
+  },
+  "trashnet-kaggle-metadata.json": {
+    "url": "https://www.kaggle.com/api/v1/datasets/view/vminhkhoi/trashnet",
+    "bytes": 1778,
+    "sha256": "0f9100d076dc81a71848e0704e1778a3a4b63402b269cd3877d70324e5e9bc79"
+  },
+  "snli-README.md": {
+    "url": "https://huggingface.co/datasets/stanfordnlp/snli/resolve/cdb5c3d5eed6ead6e5a341c8e56e669bb666725b/README.md",
+    "bytes": 15970,
+    "sha256": "f5182390b149b02e045286a586b7f4d4d626e1e47eade1bc1feabc01ee549578"
+  },
+  "snli-train.parquet": {
+    "url": "https://huggingface.co/datasets/stanfordnlp/snli/resolve/cdb5c3d5eed6ead6e5a341c8e56e669bb666725b/plain_text/train-00000-of-00001.parquet",
+    "bytes": 19614612,
+    "sha256": "ef9a7b25d97390a62aeda7abe26aec8640600f50b818eaeb9107097d60ac6620"
+  },
+  "snli-validation.parquet": {
+    "url": "https://huggingface.co/datasets/stanfordnlp/snli/resolve/cdb5c3d5eed6ead6e5a341c8e56e669bb666725b/plain_text/validation-00000-of-00001.parquet",
+    "bytes": 413157,
+    "sha256": "00f5ed8deaed007fef3022f0215b287efbab815b1bb31ac3f3ff4f4129d41ffe"
+  },
+  "snli-test.parquet": {
+    "url": "https://huggingface.co/datasets/stanfordnlp/snli/resolve/cdb5c3d5eed6ead6e5a341c8e56e669bb666725b/plain_text/test-00000-of-00001.parquet",
+    "bytes": 411531,
+    "sha256": "4696deda851c4d2385f26b58f2e13f9ed9f08ea7b42a3f4c2b97a9d08448878c"
+  },
+  "banking-train.csv": {
+    "url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/57ec275d8078af65b7731c2a98be812d844a6d6b/banking_data/train.csv",
+    "bytes": 839073,
+    "sha256": "b06e26ac675513959a63135f11b94ea7786ed02da65db93a5650d8838cbc664b"
+  },
+  "banking-test.csv": {
+    "url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/57ec275d8078af65b7731c2a98be812d844a6d6b/banking_data/test.csv",
+    "bytes": 239961,
+    "sha256": "d12d6e3bc4c3103966ae786dc435913c0c563dfa328f5a3646d0e62cfeeb474d"
+  },
+  "banking-categories.json": {
+    "url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/57ec275d8078af65b7731c2a98be812d844a6d6b/banking_data/categories.json",
+    "bytes": 2036,
+    "sha256": "53261da888122daf2d120d925458631d9619e15d82e56052e7a42e535ce32b63"
+  },
+  "banking-README.md": {
+    "url": "https://huggingface.co/datasets/PolyAI/banking77/resolve/90d4e2ee5521c04fc1488f065b8b083658768c57/README.md",
+    "bytes": 9779,
+    "sha256": "b494ae99274ad98adfedfefcb504469197a8732f9726f678320f4aaafc5502bf"
+  }
+}

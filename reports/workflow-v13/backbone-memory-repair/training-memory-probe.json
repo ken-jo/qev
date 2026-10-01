@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "training_questions": 16,
+  "maximum_input_tokens": 680,
+  "peak_memory_mib": 7032.35986328125,
+  "per_process_memory_fraction": 0.9,
+  "parameter_updates": false,
+  "development_calibration_or_final_used": false,
+  "purpose": "Training-only allocation feasibility, not accuracy or long-run memory proof",
+  "records": [
+    "workflow:tr_customer_service_000165:action",
+    "workflow:tr_customer_service_000120:action",
+    "workflow:tr_customer_service_000165:category",
+    "workflow:tr_customer_service_000120:category",
+    "workflow:tr_customer_service_000165:churn_risk",
+    "workflow:tr_customer_service_000120:churn_risk",
+    "workflow:tr_customer_service_000255:action",
+    "workflow:tr_customer_service_000165:urgency",
+    "replay:bean-02856dd2f1c50e53c9da425911b19faf:policy_level",
+    "replay:bean-06a2da9a9ed8f7a4b299e5675b27a8da:policy_level",
+    "replay:bean-09da55b30be92bead268738f7e0cb121:policy_level",
+    "replay:bean-0c6007045000a419a3e24cccd4145e76:policy_level",
+    "replay:bean-0eea30b7325dc6a634f771465a15726d:policy_level",
+    "replay:bean-1036849467ed96de7ef20ddec960faaf:policy_level",
+    "replay:bean-104f573dcbf7baab3726b4c3b74f6a94:policy_level",
+    "replay:bean-10cd82c1889e288a8816179e17f93903:policy_level"
+  ],
+  "release_allowed": false
+}

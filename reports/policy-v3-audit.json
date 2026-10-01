@@ -1,0 +1,1187 @@
+{
+  "records": 4192,
+  "groups": 2096,
+  "unique_pixels": 784,
+  "canonical_request_cross_split_duplicates": 0,
+  "pixel_cross_split_duplicates": 0,
+  "counterfactual_groups_with_changed_target": 2096,
+  "dataset_sha256": "42deb625c5130fd5e3cd4cee2774282efaca3f8eaa5661f5d3ab85bf042bf91b",
+  "slices": [
+    {
+      "split": "calibration",
+      "family": "image_color_rule",
+      "language": "en",
+      "type": "choice",
+      "records": 16
+    },
+    {
+      "split": "calibration",
+      "family": "image_color_rule",
+      "language": "en",
+      "type": "noul",
+      "records": 16
+    },
+    {
+      "split": "calibration",
+      "family": "image_color_rule",
+      "language": "en",
+      "type": "score",
+      "records": 16
+    },
+    {
+      "split": "calibration",
+      "family": "image_color_rule",
+      "language": "ko",
+      "type": "choice",
+      "records": 6
+    },
+    {
+      "split": "calibration",
+      "family": "image_color_rule",
+      "language": "ko",
+      "type": "noul",
+      "records": 4
+    },
+    {
+      "split": "calibration",
+      "family": "image_color_rule",
+      "language": "ko",
+      "type": "score",
+      "records": 6
+    },
+    {
+      "split": "calibration",
+      "family": "image_count_rule",
+      "language": "en",
+      "type": "choice",
+      "records": 16
+    },
+    {
+      "split": "calibration",
+      "family": "image_count_rule",
+      "language": "en",
+      "type": "noul",
+      "records": 14
+    },
+    {
+      "split": "calibration",
+      "family": "image_count_rule",
+      "language": "en",
+      "type": "score",
+      "records": 18
+    },
+    {
+      "split": "calibration",
+      "family": "image_count_rule",
+      "language": "ko",
+      "type": "choice",
+      "records": 6
+    },
+    {
+      "split": "calibration",
+      "family": "image_count_rule",
+      "language": "ko",
+      "type": "noul",
+      "records": 6
+    },
+    {
+      "split": "calibration",
+      "family": "image_count_rule",
+      "language": "ko",
+      "type": "score",
+      "records": 4
+    },
+    {
+      "split": "calibration",
+      "family": "image_shape_rule",
+      "language": "en",
+      "type": "choice",
+      "records": 14
+    },
+    {
+      "split": "calibration",
+      "family": "image_shape_rule",
+      "language": "en",
+      "type": "noul",
+      "records": 16
+    },
+    {
+      "split": "calibration",
+      "family": "image_shape_rule",
+      "language": "en",
+      "type": "score",
+      "records": 18
+    },
+    {
+      "split": "calibration",
+      "family": "image_shape_rule",
+      "language": "ko",
+      "type": "choice",
+      "records": 8
+    },
+    {
+      "split": "calibration",
+      "family": "image_shape_rule",
+      "language": "ko",
+      "type": "noul",
+      "records": 4
+    },
+    {
+      "split": "calibration",
+      "family": "image_shape_rule",
+      "language": "ko",
+      "type": "score",
+      "records": 4
+    },
+    {
+      "split": "calibration",
+      "family": "text_conjunction",
+      "language": "en",
+      "type": "choice",
+      "records": 16
+    },
+    {
+      "split": "calibration",
+      "family": "text_conjunction",
+      "language": "en",
+      "type": "noul",
+      "records": 16
+    },
+    {
+      "split": "calibration",
+      "family": "text_conjunction",
+      "language": "en",
+      "type": "score",
+      "records": 16
+    },
+    {
+      "split": "calibration",
+      "family": "text_conjunction",
+      "language": "ko",
+      "type": "choice",
+      "records": 4
+    },
+    {
+      "split": "calibration",
+      "family": "text_conjunction",
+      "language": "ko",
+      "type": "noul",
+      "records": 6
+    },
+    {
+      "split": "calibration",
+      "family": "text_conjunction",
+      "language": "ko",
+      "type": "score",
+      "records": 6
+    },
+    {
+      "split": "calibration",
+      "family": "text_disjunction",
+      "language": "en",
+      "type": "choice",
+      "records": 16
+    },
+    {
+      "split": "calibration",
+      "family": "text_disjunction",
+      "language": "en",
+      "type": "noul",
+      "records": 16
+    },
+    {
+      "split": "calibration",
+      "family": "text_disjunction",
+      "language": "en",
+      "type": "score",
+      "records": 16
+    },
+    {
+      "split": "calibration",
+      "family": "text_disjunction",
+      "language": "ko",
+      "type": "choice",
+      "records": 6
+    },
+    {
+      "split": "calibration",
+      "family": "text_disjunction",
+      "language": "ko",
+      "type": "noul",
+      "records": 6
+    },
+    {
+      "split": "calibration",
+      "family": "text_disjunction",
+      "language": "ko",
+      "type": "score",
+      "records": 4
+    },
+    {
+      "split": "calibration",
+      "family": "text_ranges",
+      "language": "en",
+      "type": "choice",
+      "records": 16
+    },
+    {
+      "split": "calibration",
+      "family": "text_ranges",
+      "language": "en",
+      "type": "noul",
+      "records": 16
+    },
+    {
+      "split": "calibration",
+      "family": "text_ranges",
+      "language": "en",
+      "type": "score",
+      "records": 16
+    },
+    {
+      "split": "calibration",
+      "family": "text_ranges",
+      "language": "ko",
+      "type": "choice",
+      "records": 6
+    },
+    {
+      "split": "calibration",
+      "family": "text_ranges",
+      "language": "ko",
+      "type": "noul",
+      "records": 4
+    },
+    {
+      "split": "calibration",
+      "family": "text_ranges",
+      "language": "ko",
+      "type": "score",
+      "records": 6
+    },
+    {
+      "split": "calibration",
+      "family": "text_threshold",
+      "language": "en",
+      "type": "choice",
+      "records": 16
+    },
+    {
+      "split": "calibration",
+      "family": "text_threshold",
+      "language": "en",
+      "type": "noul",
+      "records": 16
+    },
+    {
+      "split": "calibration",
+      "family": "text_threshold",
+      "language": "en",
+      "type": "score",
+      "records": 16
+    },
+    {
+      "split": "calibration",
+      "family": "text_threshold",
+      "language": "ko",
+      "type": "choice",
+      "records": 6
+    },
+    {
+      "split": "calibration",
+      "family": "text_threshold",
+      "language": "ko",
+      "type": "noul",
+      "records": 4
+    },
+    {
+      "split": "calibration",
+      "family": "text_threshold",
+      "language": "ko",
+      "type": "score",
+      "records": 6
+    },
+    {
+      "split": "dev",
+      "family": "image_color_rule",
+      "language": "en",
+      "type": "choice",
+      "records": 16
+    },
+    {
+      "split": "dev",
+      "family": "image_color_rule",
+      "language": "en",
+      "type": "noul",
+      "records": 16
+    },
+    {
+      "split": "dev",
+      "family": "image_color_rule",
+      "language": "en",
+      "type": "score",
+      "records": 16
+    },
+    {
+      "split": "dev",
+      "family": "image_color_rule",
+      "language": "ko",
+      "type": "choice",
+      "records": 6
+    },
+    {
+      "split": "dev",
+      "family": "image_color_rule",
+      "language": "ko",
+      "type": "noul",
+      "records": 4
+    },
+    {
+      "split": "dev",
+      "family": "image_color_rule",
+      "language": "ko",
+      "type": "score",
+      "records": 6
+    },
+    {
+      "split": "dev",
+      "family": "image_count_rule",
+      "language": "en",
+      "type": "choice",
+      "records": 16
+    },
+    {
+      "split": "dev",
+      "family": "image_count_rule",
+      "language": "en",
+      "type": "noul",
+      "records": 14
+    },
+    {
+      "split": "dev",
+      "family": "image_count_rule",
+      "language": "en",
+      "type": "score",
+      "records": 18
+    },
+    {
+      "split": "dev",
+      "family": "image_count_rule",
+      "language": "ko",
+      "type": "choice",
+      "records": 6
+    },
+    {
+      "split": "dev",
+      "family": "image_count_rule",
+      "language": "ko",
+      "type": "noul",
+      "records": 6
+    },
+    {
+      "split": "dev",
+      "family": "image_count_rule",
+      "language": "ko",
+      "type": "score",
+      "records": 4
+    },
+    {
+      "split": "dev",
+      "family": "image_shape_rule",
+      "language": "en",
+      "type": "choice",
+      "records": 14
+    },
+    {
+      "split": "dev",
+      "family": "image_shape_rule",
+      "language": "en",
+      "type": "noul",
+      "records": 16
+    },
+    {
+      "split": "dev",
+      "family": "image_shape_rule",
+      "language": "en",
+      "type": "score",
+      "records": 18
+    },
+    {
+      "split": "dev",
+      "family": "image_shape_rule",
+      "language": "ko",
+      "type": "choice",
+      "records": 8
+    },
+    {
+      "split": "dev",
+      "family": "image_shape_rule",
+      "language": "ko",
+      "type": "noul",
+      "records": 4
+    },
+    {
+      "split": "dev",
+      "family": "image_shape_rule",
+      "language": "ko",
+      "type": "score",
+      "records": 4
+    },
+    {
+      "split": "dev",
+      "family": "text_conjunction",
+      "language": "en",
+      "type": "choice",
+      "records": 16
+    },
+    {
+      "split": "dev",
+      "family": "text_conjunction",
+      "language": "en",
+      "type": "noul",
+      "records": 16
+    },
+    {
+      "split": "dev",
+      "family": "text_conjunction",
+      "language": "en",
+      "type": "score",
+      "records": 16
+    },
+    {
+      "split": "dev",
+      "family": "text_conjunction",
+      "language": "ko",
+      "type": "choice",
+      "records": 4
+    },
+    {
+      "split": "dev",
+      "family": "text_conjunction",
+      "language": "ko",
+      "type": "noul",
+      "records": 6
+    },
+    {
+      "split": "dev",
+      "family": "text_conjunction",
+      "language": "ko",
+      "type": "score",
+      "records": 6
+    },
+    {
+      "split": "dev",
+      "family": "text_disjunction",
+      "language": "en",
+      "type": "choice",
+      "records": 16
+    },
+    {
+      "split": "dev",
+      "family": "text_disjunction",
+      "language": "en",
+      "type": "noul",
+      "records": 16
+    },
+    {
+      "split": "dev",
+      "family": "text_disjunction",
+      "language": "en",
+      "type": "score",
+      "records": 16
+    },
+    {
+      "split": "dev",
+      "family": "text_disjunction",
+      "language": "ko",
+      "type": "choice",
+      "records": 6
+    },
+    {
+      "split": "dev",
+      "family": "text_disjunction",
+      "language": "ko",
+      "type": "noul",
+      "records": 6
+    },
+    {
+      "split": "dev",
+      "family": "text_disjunction",
+      "language": "ko",
+      "type": "score",
+      "records": 4
+    },
+    {
+      "split": "dev",
+      "family": "text_ranges",
+      "language": "en",
+      "type": "choice",
+      "records": 16
+    },
+    {
+      "split": "dev",
+      "family": "text_ranges",
+      "language": "en",
+      "type": "noul",
+      "records": 16
+    },
+    {
+      "split": "dev",
+      "family": "text_ranges",
+      "language": "en",
+      "type": "score",
+      "records": 16
+    },
+    {
+      "split": "dev",
+      "family": "text_ranges",
+      "language": "ko",
+      "type": "choice",
+      "records": 6
+    },
+    {
+      "split": "dev",
+      "family": "text_ranges",
+      "language": "ko",
+      "type": "noul",
+      "records": 4
+    },
+    {
+      "split": "dev",
+      "family": "text_ranges",
+      "language": "ko",
+      "type": "score",
+      "records": 6
+    },
+    {
+      "split": "dev",
+      "family": "text_threshold",
+      "language": "en",
+      "type": "choice",
+      "records": 16
+    },
+    {
+      "split": "dev",
+      "family": "text_threshold",
+      "language": "en",
+      "type": "noul",
+      "records": 16
+    },
+    {
+      "split": "dev",
+      "family": "text_threshold",
+      "language": "en",
+      "type": "score",
+      "records": 16
+    },
+    {
+      "split": "dev",
+      "family": "text_threshold",
+      "language": "ko",
+      "type": "choice",
+      "records": 6
+    },
+    {
+      "split": "dev",
+      "family": "text_threshold",
+      "language": "ko",
+      "type": "noul",
+      "records": 4
+    },
+    {
+      "split": "dev",
+      "family": "text_threshold",
+      "language": "ko",
+      "type": "score",
+      "records": 6
+    },
+    {
+      "split": "test",
+      "family": "image_color_rule",
+      "language": "en",
+      "type": "choice",
+      "records": 32
+    },
+    {
+      "split": "test",
+      "family": "image_color_rule",
+      "language": "en",
+      "type": "noul",
+      "records": 32
+    },
+    {
+      "split": "test",
+      "family": "image_color_rule",
+      "language": "en",
+      "type": "score",
+      "records": 32
+    },
+    {
+      "split": "test",
+      "family": "image_color_rule",
+      "language": "ko",
+      "type": "choice",
+      "records": 12
+    },
+    {
+      "split": "test",
+      "family": "image_color_rule",
+      "language": "ko",
+      "type": "noul",
+      "records": 10
+    },
+    {
+      "split": "test",
+      "family": "image_color_rule",
+      "language": "ko",
+      "type": "score",
+      "records": 10
+    },
+    {
+      "split": "test",
+      "family": "image_count_rule",
+      "language": "en",
+      "type": "choice",
+      "records": 34
+    },
+    {
+      "split": "test",
+      "family": "image_count_rule",
+      "language": "en",
+      "type": "noul",
+      "records": 30
+    },
+    {
+      "split": "test",
+      "family": "image_count_rule",
+      "language": "en",
+      "type": "score",
+      "records": 32
+    },
+    {
+      "split": "test",
+      "family": "image_count_rule",
+      "language": "ko",
+      "type": "choice",
+      "records": 10
+    },
+    {
+      "split": "test",
+      "family": "image_count_rule",
+      "language": "ko",
+      "type": "noul",
+      "records": 12
+    },
+    {
+      "split": "test",
+      "family": "image_count_rule",
+      "language": "ko",
+      "type": "score",
+      "records": 10
+    },
+    {
+      "split": "test",
+      "family": "image_shape_rule",
+      "language": "en",
+      "type": "choice",
+      "records": 32
+    },
+    {
+      "split": "test",
+      "family": "image_shape_rule",
+      "language": "en",
+      "type": "noul",
+      "records": 30
+    },
+    {
+      "split": "test",
+      "family": "image_shape_rule",
+      "language": "en",
+      "type": "score",
+      "records": 34
+    },
+    {
+      "split": "test",
+      "family": "image_shape_rule",
+      "language": "ko",
+      "type": "choice",
+      "records": 12
+    },
+    {
+      "split": "test",
+      "family": "image_shape_rule",
+      "language": "ko",
+      "type": "noul",
+      "records": 12
+    },
+    {
+      "split": "test",
+      "family": "image_shape_rule",
+      "language": "ko",
+      "type": "score",
+      "records": 8
+    },
+    {
+      "split": "test",
+      "family": "text_conjunction",
+      "language": "en",
+      "type": "choice",
+      "records": 32
+    },
+    {
+      "split": "test",
+      "family": "text_conjunction",
+      "language": "en",
+      "type": "noul",
+      "records": 32
+    },
+    {
+      "split": "test",
+      "family": "text_conjunction",
+      "language": "en",
+      "type": "score",
+      "records": 32
+    },
+    {
+      "split": "test",
+      "family": "text_conjunction",
+      "language": "ko",
+      "type": "choice",
+      "records": 10
+    },
+    {
+      "split": "test",
+      "family": "text_conjunction",
+      "language": "ko",
+      "type": "noul",
+      "records": 10
+    },
+    {
+      "split": "test",
+      "family": "text_conjunction",
+      "language": "ko",
+      "type": "score",
+      "records": 12
+    },
+    {
+      "split": "test",
+      "family": "text_disjunction",
+      "language": "en",
+      "type": "choice",
+      "records": 32
+    },
+    {
+      "split": "test",
+      "family": "text_disjunction",
+      "language": "en",
+      "type": "noul",
+      "records": 32
+    },
+    {
+      "split": "test",
+      "family": "text_disjunction",
+      "language": "en",
+      "type": "score",
+      "records": 32
+    },
+    {
+      "split": "test",
+      "family": "text_disjunction",
+      "language": "ko",
+      "type": "choice",
+      "records": 10
+    },
+    {
+      "split": "test",
+      "family": "text_disjunction",
+      "language": "ko",
+      "type": "noul",
+      "records": 12
+    },
+    {
+      "split": "test",
+      "family": "text_disjunction",
+      "language": "ko",
+      "type": "score",
+      "records": 10
+    },
+    {
+      "split": "test",
+      "family": "text_ranges",
+      "language": "en",
+      "type": "choice",
+      "records": 32
+    },
+    {
+      "split": "test",
+      "family": "text_ranges",
+      "language": "en",
+      "type": "noul",
+      "records": 32
+    },
+    {
+      "split": "test",
+      "family": "text_ranges",
+      "language": "en",
+      "type": "score",
+      "records": 32
+    },
+    {
+      "split": "test",
+      "family": "text_ranges",
+      "language": "ko",
+      "type": "choice",
+      "records": 12
+    },
+    {
+      "split": "test",
+      "family": "text_ranges",
+      "language": "ko",
+      "type": "noul",
+      "records": 10
+    },
+    {
+      "split": "test",
+      "family": "text_ranges",
+      "language": "ko",
+      "type": "score",
+      "records": 10
+    },
+    {
+      "split": "test",
+      "family": "text_threshold",
+      "language": "en",
+      "type": "choice",
+      "records": 32
+    },
+    {
+      "split": "test",
+      "family": "text_threshold",
+      "language": "en",
+      "type": "noul",
+      "records": 32
+    },
+    {
+      "split": "test",
+      "family": "text_threshold",
+      "language": "en",
+      "type": "score",
+      "records": 32
+    },
+    {
+      "split": "test",
+      "family": "text_threshold",
+      "language": "ko",
+      "type": "choice",
+      "records": 12
+    },
+    {
+      "split": "test",
+      "family": "text_threshold",
+      "language": "ko",
+      "type": "noul",
+      "records": 10
+    },
+    {
+      "split": "test",
+      "family": "text_threshold",
+      "language": "ko",
+      "type": "score",
+      "records": 10
+    },
+    {
+      "split": "train",
+      "family": "image_color_rule",
+      "language": "en",
+      "type": "choice",
+      "records": 66
+    },
+    {
+      "split": "train",
+      "family": "image_color_rule",
+      "language": "en",
+      "type": "noul",
+      "records": 66
+    },
+    {
+      "split": "train",
+      "family": "image_color_rule",
+      "language": "en",
+      "type": "score",
+      "records": 68
+    },
+    {
+      "split": "train",
+      "family": "image_color_rule",
+      "language": "ko",
+      "type": "choice",
+      "records": 24
+    },
+    {
+      "split": "train",
+      "family": "image_color_rule",
+      "language": "ko",
+      "type": "noul",
+      "records": 22
+    },
+    {
+      "split": "train",
+      "family": "image_color_rule",
+      "language": "ko",
+      "type": "score",
+      "records": 22
+    },
+    {
+      "split": "train",
+      "family": "image_count_rule",
+      "language": "en",
+      "type": "choice",
+      "records": 68
+    },
+    {
+      "split": "train",
+      "family": "image_count_rule",
+      "language": "en",
+      "type": "noul",
+      "records": 64
+    },
+    {
+      "split": "train",
+      "family": "image_count_rule",
+      "language": "en",
+      "type": "score",
+      "records": 68
+    },
+    {
+      "split": "train",
+      "family": "image_count_rule",
+      "language": "ko",
+      "type": "choice",
+      "records": 22
+    },
+    {
+      "split": "train",
+      "family": "image_count_rule",
+      "language": "ko",
+      "type": "noul",
+      "records": 24
+    },
+    {
+      "split": "train",
+      "family": "image_count_rule",
+      "language": "ko",
+      "type": "score",
+      "records": 20
+    },
+    {
+      "split": "train",
+      "family": "image_shape_rule",
+      "language": "en",
+      "type": "choice",
+      "records": 66
+    },
+    {
+      "split": "train",
+      "family": "image_shape_rule",
+      "language": "en",
+      "type": "noul",
+      "records": 66
+    },
+    {
+      "split": "train",
+      "family": "image_shape_rule",
+      "language": "en",
+      "type": "score",
+      "records": 68
+    },
+    {
+      "split": "train",
+      "family": "image_shape_rule",
+      "language": "ko",
+      "type": "choice",
+      "records": 24
+    },
+    {
+      "split": "train",
+      "family": "image_shape_rule",
+      "language": "ko",
+      "type": "noul",
+      "records": 22
+    },
+    {
+      "split": "train",
+      "family": "image_shape_rule",
+      "language": "ko",
+      "type": "score",
+      "records": 20
+    },
+    {
+      "split": "train",
+      "family": "text_conjunction",
+      "language": "en",
+      "type": "choice",
+      "records": 100
+    },
+    {
+      "split": "train",
+      "family": "text_conjunction",
+      "language": "en",
+      "type": "noul",
+      "records": 100
+    },
+    {
+      "split": "train",
+      "family": "text_conjunction",
+      "language": "en",
+      "type": "score",
+      "records": 100
+    },
+    {
+      "split": "train",
+      "family": "text_conjunction",
+      "language": "ko",
+      "type": "choice",
+      "records": 32
+    },
+    {
+      "split": "train",
+      "family": "text_conjunction",
+      "language": "ko",
+      "type": "noul",
+      "records": 34
+    },
+    {
+      "split": "train",
+      "family": "text_conjunction",
+      "language": "ko",
+      "type": "score",
+      "records": 34
+    },
+    {
+      "split": "train",
+      "family": "text_disjunction",
+      "language": "en",
+      "type": "choice",
+      "records": 100
+    },
+    {
+      "split": "train",
+      "family": "text_disjunction",
+      "language": "en",
+      "type": "noul",
+      "records": 100
+    },
+    {
+      "split": "train",
+      "family": "text_disjunction",
+      "language": "en",
+      "type": "score",
+      "records": 100
+    },
+    {
+      "split": "train",
+      "family": "text_disjunction",
+      "language": "ko",
+      "type": "choice",
+      "records": 34
+    },
+    {
+      "split": "train",
+      "family": "text_disjunction",
+      "language": "ko",
+      "type": "noul",
+      "records": 34
+    },
+    {
+      "split": "train",
+      "family": "text_disjunction",
+      "language": "ko",
+      "type": "score",
+      "records": 32
+    },
+    {
+      "split": "train",
+      "family": "text_ranges",
+      "language": "en",
+      "type": "choice",
+      "records": 100
+    },
+    {
+      "split": "train",
+      "family": "text_ranges",
+      "language": "en",
+      "type": "noul",
+      "records": 100
+    },
+    {
+      "split": "train",
+      "family": "text_ranges",
+      "language": "en",
+      "type": "score",
+      "records": 100
+    },
+    {
+      "split": "train",
+      "family": "text_ranges",
+      "language": "ko",
+      "type": "choice",
+      "records": 34
+    },
+    {
+      "split": "train",
+      "family": "text_ranges",
+      "language": "ko",
+      "type": "noul",
+      "records": 32
+    },
+    {
+      "split": "train",
+      "family": "text_ranges",
+      "language": "ko",
+      "type": "score",
+      "records": 34
+    },
+    {
+      "split": "train",
+      "family": "text_threshold",
+      "language": "en",
+      "type": "choice",
+      "records": 100
+    },
+    {
+      "split": "train",
+      "family": "text_threshold",
+      "language": "en",
+      "type": "noul",
+      "records": 100
+    },
+    {
+      "split": "train",
+      "family": "text_threshold",
+      "language": "en",
+      "type": "score",
+      "records": 100
+    },
+    {
+      "split": "train",
+      "family": "text_threshold",
+      "language": "ko",
+      "type": "choice",
+      "records": 34
+    },
+    {
+      "split": "train",
+      "family": "text_threshold",
+      "language": "ko",
+      "type": "noul",
+      "records": 32
+    },
+    {
+      "split": "train",
+      "family": "text_threshold",
+      "language": "ko",
+      "type": "score",
+      "records": 34
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "run": {
+    "arguments": {
+      "records": "data\\policy-v8\\records.jsonl",
+      "output": "runs\\workspace-v8",
+      "epochs": 1,
+      "layers": 12,
+      "rank": 8,
+      "learning_rate": 2e-05,
+      "accumulation": 8,
+      "initialize": "checkpoints\\type-replay-v7-raw",
+      "seed": 41,
+      "selection": "min-modality-accuracy",
+      "schedule": "cosine",
+      "warmup_steps": 20,
+      "interventions": true,
+      "type_interventions": true,
+      "reasoning_slots": 4,
+      "condition_weight": 0.25,
+      "consistency_weight": 0.25,
+      "replay_records": "data\\starter-v2\\records.jsonl",
+      "replay_per_epoch": 900,
+      "smoke": false
+    },
+    "source_sha256": {
+      "C:\\tmp\\veyra\\scripts\\train_option.py": "1aa90605fcefbf1320714677b043b2275c249625a73f94df26d4a8c6820ef644",
+      "src\\veyra\\option_model.py": "36b408de87859ba3c9c077c5f20afcc6a56b1e152d14d359361ee3fcdf285c58",
+      "src\\veyra\\interventions.py": "8539a61982757c6697af844e52ae5265842a451387319bf5353df5a6b61bbd13",
+      "src\\veyra\\evidence_data.py": "83d05a43fec14f1e92bae4ee36a461e275007dd5cf961030006d8bd91f761f7e",
+      "src\\veyra\\policy_data.py": "9590630f175c5d2c59a09ac8feffa3009105e3c6a0c6ba9fd0562f4c402ed635",
+      "src\\veyra\\replay.py": "7299219b38455e111c16b5130e36e07dbd133fcb3a9ab18f65417869fc180159",
+      "src\\veyra\\reasoning_workspace.py": "53d246b5737be11a70e5c7e8047bc4c3c01aec8cbbace0057650e51921e3546a"
+    }
+  },
+  "checkpoint_manifest": {
+    "format_version": 2,
+    "architecture": "option_readout",
+    "decision_views": 1,
+    "reasoning_slots": 4,
+    "backbone": {
+      "model_id": "Qwen/Qwen3.5-2B",
+      "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+    },
+    "encoder": {
+      "max_total_tokens": 2048,
+      "image_max_pixels": 262144,
+      "image_min_pixels": 65536,
+      "encoding": "option-v1"
+    },
+    "adaptation": {
+      "layers": 12,
+      "rank": 8,
+      "alpha": 16.0
+    },
+    "calibration": {
+      "temperatures": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "abstain_thresholds": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "fitted_types": [],
+      "abstention_fitted_types": [],
+      "always_abstain_types": []
+    },
+    "training": {
+      "completed": true,
+      "optimizer_steps": 1910,
+      "epochs": 1,
+      "selected_epoch": 1,
+      "selection_split": "dev",
+      "selection_metric": "min-modality-accuracy",
+      "initial_dev": {
+        "questions": 1790,
+        "accuracy": 0.8960893854748604,
+        "nll": 0.3045487638200014,
+        "text_accuracy": 0.8828125,
+        "image_accuracy": 0.9138381201044387,
+        "by_family": {
+          "image_color_rule": 0.91015625,
+          "image_count_rule": 0.91015625,
+          "image_shape_rule": 0.9212598425196851,
+          "text_conjunction": 0.91796875,
+          "text_disjunction": 0.89453125,
+          "text_ranges": 0.765625,
+          "text_threshold": 0.953125
+        },
+        "by_type": {
+          "choice": 0.8861386138613861,
+          "noul": 0.9045138888888888,
+          "score": 0.8980263157894737
+        }
+      },
+      "history": [
+        {
+          "epoch": 1,
+          "train_loss": 0.273015487517245,
+          "dev": {
+            "questions": 1790,
+            "accuracy": 0.9128491620111732,
+            "nll": 0.2891697768731218,
+            "text_accuracy": 0.8984375,
+            "image_accuracy": 0.9321148825065274,
+            "by_family": {
+              "image_color_rule": 0.91796875,
+              "image_count_rule": 0.9296875,
+              "image_shape_rule": 0.9488188976377953,
+              "text_conjunction": 0.9375,
+              "text_disjunction": 0.94140625,
+              "text_ranges": 0.73046875,
+              "text_threshold": 0.984375
+            },
+            "by_type": {
+              "choice": 0.9026402640264026,
+              "noul": 0.8923611111111112,
+              "score": 0.9424342105263158
+            }
+          }
+        }
+      ],
+      "seed": 41,
+      "initialization_sha256": "5c86e81173ac5b5c8b508509df326112d30b02386fda3506875523274ed68157",
+      "optimizer_resumed": false,
+      "source_sha256": {
+        "C:\\tmp\\veyra\\scripts\\train_option.py": "1aa90605fcefbf1320714677b043b2275c249625a73f94df26d4a8c6820ef644",
+        "src\\veyra\\option_model.py": "36b408de87859ba3c9c077c5f20afcc6a56b1e152d14d359361ee3fcdf285c58",
+        "src\\veyra\\interventions.py": "8539a61982757c6697af844e52ae5265842a451387319bf5353df5a6b61bbd13",
+        "src\\veyra\\evidence_data.py": "83d05a43fec14f1e92bae4ee36a461e275007dd5cf961030006d8bd91f761f7e",
+        "src\\veyra\\policy_data.py": "9590630f175c5d2c59a09ac8feffa3009105e3c6a0c6ba9fd0562f4c402ed635",
+        "src\\veyra\\replay.py": "7299219b38455e111c16b5130e36e07dbd133fcb3a9ab18f65417869fc180159",
+        "src\\veyra\\reasoning_workspace.py": "53d246b5737be11a70e5c7e8047bc4c3c01aec8cbbace0057650e51921e3546a"
+      },
+      "learning_rate": 2e-05,
+      "schedule": "cosine",
+      "warmup_steps": 20,
+      "interventions": true,
+      "type_interventions": true,
+      "reasoning_slots": 4,
+      "condition_weight": 0.25,
+      "consistency_weight": 0.25,
+      "epoch_records_including_auxiliary": 15273,
+      "readout_lr": 2.0000000000000003e-06,
+      "accumulation": 8,
+      "train_records": 9582,
+      "replay_requests_per_epoch": 900,
+      "replay_audit": {
+        "heldout_records_checked": 7152,
+        "replay_train_records_checked": 7008
+      },
+      "replay_dataset_sha256": "96414c7ee56cdb9edb7c91eb0ac0b6c85123cd5359e3a58a1047a59b1edbd2c7",
+      "smoke": false,
+      "dataset_sha256": "43d5f8f31d5cfef33fe3721685ad9008209d1b3becb21742ba1ced1ab2557070",
+      "peak_allocated_mib": 5667.181640625,
+      "elapsed_seconds": 2539.607417499996
+    },
+    "weights_sha256": "23a14581bf137b2c021e788f9c05e5bd39165adcbcc8cf85b7f75fab376ca6cc"
+  },
+  "scope": "Complete one-epoch workspace experiment; development evaluation only",
+  "source_files_unchanged_at_completion": true
+}

@@ -1,0 +1,90 @@
+{
+  "scope": "Post-hoc explanation of calibration failure; not a new fit or performance claim",
+  "source_sha256": "3609c9b91d4476234d9c020d260920d570e15fa7183a2c9b98d758c32b12d4d2",
+  "evaluation_sha256": "051c41d983fb896ae5f831e4ccea58fb1c85de768aaab6c4f8fa78ed9d0d24b5",
+  "predictions_sha256": "8aca224231c57be301fc9898209d777230ab479ca010cddbcdbe978f9179ccf7",
+  "weights_sha256": "92b3cb9b7e3353b68b116e93b8074148227a4c4d57eed2efc2a1a5867b443959",
+  "by_type": {
+    "choice": {
+      "passed": true,
+      "policy_questions": 666,
+      "minimum_required_answers": 400,
+      "fixed_count_error_at_minimum_coverage": 0.12455375,
+      "maximum_threshold_coverage_at_error_limit": 0.6561561561561562,
+      "error_at_maximum_coverage": 0.149891533180778,
+      "by_domain_in_fixed_count_prefix": {
+        "photo_guard": {
+          "questions": 160,
+          "expected_error": 0.03125
+        },
+        "text_intent": {
+          "questions": 69,
+          "expected_error": 0.08695652173913043
+        },
+        "text_nli": {
+          "questions": 54,
+          "expected_error": 0.09259259259259259
+        },
+        "uncertainty": {
+          "questions": 10,
+          "expected_error": 0.38215
+        },
+        "workflow_known": {
+          "questions": 26,
+          "expected_error": 0.0
+        },
+        "workflow_new": {
+          "questions": 81,
+          "expected_error": 0.37037037037037035
+        }
+      }
+    },
+    "score": {
+      "passed": false,
+      "policy_questions": 368,
+      "minimum_required_answers": 221,
+      "fixed_count_error_at_minimum_coverage": 0.3428755656108597,
+      "maximum_threshold_coverage_at_error_limit": 0.07065217391304347,
+      "error_at_maximum_coverage": 0.14807692307692305,
+      "by_domain_in_fixed_count_prefix": {
+        "uncertainty": {
+          "questions": 29,
+          "expected_error": 0.406051724137931
+        },
+        "workflow_known": {
+          "questions": 66,
+          "expected_error": 0.21212121212121213
+        },
+        "workflow_new": {
+          "questions": 126,
+          "expected_error": 0.3968253968253968
+        }
+      }
+    },
+    "noul": {
+      "passed": false,
+      "policy_questions": 333,
+      "minimum_required_answers": 200,
+      "fixed_count_error_at_minimum_coverage": 0.1875375,
+      "maximum_threshold_coverage_at_error_limit": 0.4984984984984985,
+      "error_at_maximum_coverage": 0.145210843373494,
+      "by_domain_in_fixed_count_prefix": {
+        "uncertainty": {
+          "questions": 14,
+          "expected_error": 0.39339285714285716
+        },
+        "workflow_known": {
+          "questions": 51,
+          "expected_error": 0.1568627450980392
+        },
+        "workflow_new": {
+          "questions": 135,
+          "expected_error": 0.17777777777777778
+        }
+      }
+    }
+  },
+  "policy_or_weights_changed": false,
+  "final_predictions_used": false,
+  "limitations": "The calibration set is now inspected. Fixed-count prefixes can split confidence ties; maximum threshold coverage respects ties. Future training/selection must continue to exclude these groups."
+}

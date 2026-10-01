@@ -1,0 +1,142 @@
+{
+  "records": 16734,
+  "groups": 8367,
+  "split_counts": {
+    "train": 9582,
+    "dev": 1790,
+    "calibration": 1786,
+    "test": 3576
+  },
+  "sources": [
+    {
+      "id": "veyra-policy-refresh-v8",
+      "revision": "sha256:b551bc1e88f12738a6379173991d2fed8aa80f7c25c65e899f5504f7c9b283c6",
+      "license": "Apache-2.0"
+    }
+  ],
+  "seeds": [
+    20261004,
+    20261005,
+    20261006,
+    20261007
+  ],
+  "selection_by_model_results": false,
+  "source_revision": "sha256:b551bc1e88f12738a6379173991d2fed8aa80f7c25c65e899f5504f7c9b283c6",
+  "excluded_sources": [
+    {
+      "path": "data\\policy-v3\\records.jsonl",
+      "sha256": "42deb625c5130fd5e3cd4cee2774282efaca3f8eaa5661f5d3ab85bf042bf91b",
+      "records": 4192,
+      "splits": "all previous observations, not just training"
+    },
+    {
+      "path": "data\\policy-v6\\records.jsonl",
+      "sha256": "ad6c8b974df7e61b18463a748c18787c484edc770a6253ccb6520ed1e9cf143f",
+      "records": 6592,
+      "splits": "all previous observations, not just training"
+    },
+    {
+      "path": "data\\starter-v2\\records.jsonl",
+      "sha256": "96414c7ee56cdb9edb7c91eb0ac0b6c85123cd5359e3a58a1047a59b1edbd2c7",
+      "records": 8972,
+      "splits": "all previous observations, not just training"
+    }
+  ],
+  "duplicate_groups_removed": [
+    {
+      "group": "policy-v3-20261004-train-image-117",
+      "split": "train",
+      "reason": "duplicate observation"
+    },
+    {
+      "group": "policy-v3-20261004-calibration-image-69",
+      "split": "calibration",
+      "reason": "duplicate observation"
+    },
+    {
+      "group": "policy-v3-20261005-train-image-184",
+      "split": "train",
+      "reason": "duplicate observation"
+    },
+    {
+      "group": "policy-v3-20261005-train-image-216",
+      "split": "train",
+      "reason": "duplicate observation"
+    },
+    {
+      "group": "policy-v3-20261005-train-image-288",
+      "split": "train",
+      "reason": "duplicate observation"
+    },
+    {
+      "group": "policy-v3-20261005-dev-image-19",
+      "split": "dev",
+      "reason": "duplicate observation"
+    },
+    {
+      "group": "policy-v3-20261005-test-image-45",
+      "split": "test",
+      "reason": "duplicate observation"
+    },
+    {
+      "group": "policy-v3-20261006-train-image-130",
+      "split": "train",
+      "reason": "duplicate observation"
+    },
+    {
+      "group": "policy-v3-20261006-train-image-132",
+      "split": "train",
+      "reason": "duplicate observation"
+    },
+    {
+      "group": "policy-v3-20261006-calibration-image-78",
+      "split": "calibration",
+      "reason": "duplicate observation"
+    },
+    {
+      "group": "policy-v3-20261006-test-image-171",
+      "split": "test",
+      "reason": "duplicate observation"
+    },
+    {
+      "group": "policy-v3-20261007-train-image-0",
+      "split": "train",
+      "reason": "duplicate observation"
+    },
+    {
+      "group": "policy-v3-20261007-train-image-38",
+      "split": "train",
+      "reason": "duplicate observation"
+    },
+    {
+      "group": "policy-v3-20261007-train-image-291",
+      "split": "train",
+      "reason": "duplicate observation"
+    },
+    {
+      "group": "policy-v3-20261007-calibration-image-54",
+      "split": "calibration",
+      "reason": "duplicate observation"
+    },
+    {
+      "group": "policy-v3-20261007-test-image-2",
+      "split": "test",
+      "reason": "duplicate observation"
+    },
+    {
+      "group": "policy-v3-20261007-test-image-59",
+      "split": "test",
+      "reason": "duplicate observation"
+    }
+  ],
+  "records_sha256": "43d5f8f31d5cfef33fe3721685ad9008209d1b3becb21742ba1ced1ab2557070",
+  "split_sha256": {
+    "train": "b690923d1fe2125f95a1885089aa1f048be68a7374345067b6b88c81124e83d6",
+    "dev": "a94d0907b1d482faec4cf021cf6d8dca5c7d355a5aae6286a172b58e13118dfb",
+    "calibration": "122c767e25a472f30d4a9504ec22e97f48f5e8d8e7e641325a4f2a29fa69fe92",
+    "test": "00c91c0d8ed17a29bf9386e06beea1ea2ddbb2f036c4d9eb346abe55dc42b273"
+  },
+  "final_evaluated": false,
+  "scope": "Fresh controlled-policy groups and disjoint split vocabularies; synthetic images",
+  "final_sha256": "00c91c0d8ed17a29bf9386e06beea1ea2ddbb2f036c4d9eb346abe55dc42b273"
+}

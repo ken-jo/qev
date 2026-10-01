@@ -1,0 +1,576 @@
+[
+  {
+    "family": "diagram_attributes",
+    "id": "diagram-20260930-2",
+    "question": "color",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "diagram_attributes",
+    "id": "diagram-20260930-2",
+    "question": "shape",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "diagram_attributes",
+    "id": "diagram-20260930-2",
+    "question": "count",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "diagram_attributes",
+    "id": "diagram-20260930-14",
+    "question": "color",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "diagram_attributes",
+    "id": "diagram-20260930-14",
+    "question": "shape",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "diagram_attributes",
+    "id": "diagram-20260930-14",
+    "question": "count",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "diagram_attributes",
+    "id": "diagram-20260930-16",
+    "question": "color",
+    "single_correct": 0.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "diagram_attributes",
+    "id": "diagram-20260930-16",
+    "question": "shape",
+    "single_correct": 0.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "diagram_attributes",
+    "id": "diagram-20260930-16",
+    "question": "count",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "diagram_attributes",
+    "id": "diagram-20260930-37",
+    "question": "color",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "diagram_attributes",
+    "id": "diagram-20260930-37",
+    "question": "shape",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "diagram_attributes",
+    "id": "diagram-20260930-37",
+    "question": "count",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "diagram_attributes",
+    "id": "diagram-20260930-39",
+    "question": "color",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "diagram_attributes",
+    "id": "diagram-20260930-39",
+    "question": "shape",
+    "single_correct": 0.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "diagram_attributes",
+    "id": "diagram-20260930-39",
+    "question": "count",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "diagram_attributes",
+    "id": "diagram-20260930-40",
+    "question": "color",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "diagram_attributes",
+    "id": "diagram-20260930-40",
+    "question": "shape",
+    "single_correct": 0.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "diagram_attributes",
+    "id": "diagram-20260930-40",
+    "question": "count",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "diagram_attributes",
+    "id": "diagram-20260930-43",
+    "question": "color",
+    "single_correct": 0.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "diagram_attributes",
+    "id": "diagram-20260930-43",
+    "question": "shape",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "diagram_attributes",
+    "id": "diagram-20260930-43",
+    "question": "count",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "diagram_attributes",
+    "id": "diagram-20260930-48",
+    "question": "color",
+    "single_correct": 0.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "diagram_attributes",
+    "id": "diagram-20260930-48",
+    "question": "shape",
+    "single_correct": 0.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "diagram_attributes",
+    "id": "diagram-20260930-48",
+    "question": "count",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "text_policy",
+    "id": "text-20260930-10",
+    "question": "action",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "text_policy",
+    "id": "text-20260930-10",
+    "question": "condition",
+    "single_correct": 0.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "text_policy",
+    "id": "text-20260930-10",
+    "question": "flags",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "text_policy",
+    "id": "text-20260930-16",
+    "question": "action",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "text_policy",
+    "id": "text-20260930-16",
+    "question": "condition",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "text_policy",
+    "id": "text-20260930-16",
+    "question": "flags",
+    "single_correct": 0.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "text_policy",
+    "id": "text-20260930-30",
+    "question": "action",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "text_policy",
+    "id": "text-20260930-30",
+    "question": "condition",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "text_policy",
+    "id": "text-20260930-30",
+    "question": "flags",
+    "single_correct": 0.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "text_policy",
+    "id": "text-20260930-32",
+    "question": "action",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "text_policy",
+    "id": "text-20260930-32",
+    "question": "condition",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "text_policy",
+    "id": "text-20260930-32",
+    "question": "flags",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "text_policy",
+    "id": "text-20260930-33",
+    "question": "action",
+    "single_correct": 0.0,
+    "multi_correct": 0.0
+  },
+  {
+    "family": "text_policy",
+    "id": "text-20260930-33",
+    "question": "condition",
+    "single_correct": 0.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "text_policy",
+    "id": "text-20260930-33",
+    "question": "flags",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "text_policy",
+    "id": "text-20260930-41",
+    "question": "action",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "text_policy",
+    "id": "text-20260930-41",
+    "question": "condition",
+    "single_correct": 0.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "text_policy",
+    "id": "text-20260930-41",
+    "question": "flags",
+    "single_correct": 0.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "text_policy",
+    "id": "text-20260930-47",
+    "question": "action",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "text_policy",
+    "id": "text-20260930-47",
+    "question": "condition",
+    "single_correct": 0.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "text_policy",
+    "id": "text-20260930-47",
+    "question": "flags",
+    "single_correct": 0.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "text_policy",
+    "id": "text-20260930-52",
+    "question": "action",
+    "single_correct": 0.0,
+    "multi_correct": 0.0
+  },
+  {
+    "family": "text_policy",
+    "id": "text-20260930-52",
+    "question": "condition",
+    "single_correct": 0.0,
+    "multi_correct": 0.0
+  },
+  {
+    "family": "text_policy",
+    "id": "text-20260930-52",
+    "question": "flags",
+    "single_correct": 1.0,
+    "multi_correct": 0.0
+  },
+  {
+    "family": "leaf_photo",
+    "id": "bean-68a9cc5b7c7c0047942bb383186a94e2",
+    "question": "condition",
+    "single_correct": 0.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "leaf_photo",
+    "id": "bean-68a9cc5b7c7c0047942bb383186a94e2",
+    "question": "matches",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "leaf_photo",
+    "id": "bean-68a9cc5b7c7c0047942bb383186a94e2",
+    "question": "policy_level",
+    "single_correct": 0.0,
+    "multi_correct": 0.0
+  },
+  {
+    "family": "leaf_photo",
+    "id": "bean-0e4bf121885bb58290da3ad2fa33c3ab",
+    "question": "condition",
+    "single_correct": 0.0,
+    "multi_correct": 0.0
+  },
+  {
+    "family": "leaf_photo",
+    "id": "bean-0e4bf121885bb58290da3ad2fa33c3ab",
+    "question": "matches",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "leaf_photo",
+    "id": "bean-0e4bf121885bb58290da3ad2fa33c3ab",
+    "question": "policy_level",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "leaf_photo",
+    "id": "bean-26317e0b848d50e30f3639b7c7462064",
+    "question": "condition",
+    "single_correct": 0.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "leaf_photo",
+    "id": "bean-26317e0b848d50e30f3639b7c7462064",
+    "question": "matches",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "leaf_photo",
+    "id": "bean-26317e0b848d50e30f3639b7c7462064",
+    "question": "policy_level",
+    "single_correct": 1.0,
+    "multi_correct": 0.0
+  },
+  {
+    "family": "leaf_photo",
+    "id": "bean-d7d96431bc8fd7784de0f43a87c18a6b",
+    "question": "condition",
+    "single_correct": 0.0,
+    "multi_correct": 0.0
+  },
+  {
+    "family": "leaf_photo",
+    "id": "bean-d7d96431bc8fd7784de0f43a87c18a6b",
+    "question": "matches",
+    "single_correct": 1.0,
+    "multi_correct": 0.0
+  },
+  {
+    "family": "leaf_photo",
+    "id": "bean-d7d96431bc8fd7784de0f43a87c18a6b",
+    "question": "policy_level",
+    "single_correct": 0.0,
+    "multi_correct": 0.0
+  },
+  {
+    "family": "leaf_photo",
+    "id": "bean-6a4490154d1a2dde4c0e87e1a1433134",
+    "question": "condition",
+    "single_correct": 0.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "leaf_photo",
+    "id": "bean-6a4490154d1a2dde4c0e87e1a1433134",
+    "question": "matches",
+    "single_correct": 0.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "leaf_photo",
+    "id": "bean-6a4490154d1a2dde4c0e87e1a1433134",
+    "question": "policy_level",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "leaf_photo",
+    "id": "bean-abba8b31c3f3b078db6bfb9fbc1f0fda",
+    "question": "condition",
+    "single_correct": 0.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "leaf_photo",
+    "id": "bean-abba8b31c3f3b078db6bfb9fbc1f0fda",
+    "question": "matches",
+    "single_correct": 1.0,
+    "multi_correct": 0.0
+  },
+  {
+    "family": "leaf_photo",
+    "id": "bean-abba8b31c3f3b078db6bfb9fbc1f0fda",
+    "question": "policy_level",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "leaf_photo",
+    "id": "bean-28d84f97f98cc1ce63d226c891807466",
+    "question": "condition",
+    "single_correct": 0.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "leaf_photo",
+    "id": "bean-28d84f97f98cc1ce63d226c891807466",
+    "question": "matches",
+    "single_correct": 0.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "leaf_photo",
+    "id": "bean-28d84f97f98cc1ce63d226c891807466",
+    "question": "policy_level",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "leaf_photo",
+    "id": "bean-77ddabdd9b0ffb1450c48dbc96305d56",
+    "question": "condition",
+    "single_correct": 0.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "leaf_photo",
+    "id": "bean-77ddabdd9b0ffb1450c48dbc96305d56",
+    "question": "matches",
+    "single_correct": 0.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "leaf_photo",
+    "id": "bean-77ddabdd9b0ffb1450c48dbc96305d56",
+    "question": "policy_level",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "missing_evidence",
+    "id": "diagram-20260930-40-missing",
+    "question": "color",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "missing_evidence",
+    "id": "diagram-20260930-40-missing",
+    "question": "shape",
+    "single_correct": 0.5,
+    "multi_correct": 0.5
+  },
+  {
+    "family": "missing_evidence",
+    "id": "diagram-20260930-60-missing",
+    "question": "color",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "missing_evidence",
+    "id": "diagram-20260930-60-missing",
+    "question": "shape",
+    "single_correct": 0.5,
+    "multi_correct": 0.5
+  },
+  {
+    "family": "missing_evidence",
+    "id": "diagram-20260930-170-missing",
+    "question": "color",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "missing_evidence",
+    "id": "diagram-20260930-170-missing",
+    "question": "shape",
+    "single_correct": 0.5,
+    "multi_correct": 0.5
+  },
+  {
+    "family": "missing_evidence",
+    "id": "diagram-20260930-390-missing",
+    "question": "color",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "missing_evidence",
+    "id": "diagram-20260930-390-missing",
+    "question": "shape",
+    "single_correct": 0.5,
+    "multi_correct": 0.5
+  },
+  {
+    "family": "missing_evidence",
+    "id": "diagram-20260930-440-missing",
+    "question": "color",
+    "single_correct": 1.0,
+    "multi_correct": 1.0
+  },
+  {
+    "family": "missing_evidence",
+    "id": "diagram-20260930-440-missing",
+    "question": "shape",
+    "single_correct": 0.5,
+    "multi_correct": 0.5
+  }
+]

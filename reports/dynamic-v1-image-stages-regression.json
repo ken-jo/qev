@@ -1,0 +1,6012 @@
+{
+  "evaluation_role": "retired_final_diagnostic",
+  "checkpoint_sha256": "5c86e81173ac5b5c8b508509df326112d30b02386fda3506875523274ed68157",
+  "evaluated_subset_sha256": "d59aded5a61bb7a4200f39b3e0aae30a7e401ba4d2a86846a74661accc715015",
+  "pixel_policy_label_audit": "all selected image targets verified",
+  "by_family": {
+    "image_color_rule": {
+      "observation_groups": 64,
+      "policy_accuracy": 0.9609375,
+      "attribute_accuracy": 1.0,
+      "condition_accuracy": 1.0
+    },
+    "image_count_rule": {
+      "observation_groups": 64,
+      "policy_accuracy": 0.7109375,
+      "attribute_accuracy": 0.984375,
+      "condition_accuracy": 1.0
+    },
+    "image_shape_rule": {
+      "observation_groups": 64,
+      "policy_accuracy": 0.90625,
+      "attribute_accuracy": 0.96875,
+      "condition_accuracy": 0.96875
+    }
+  },
+  "predictions": [
+    {
+      "group": "policy-v3-20261002-test-image-0",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "yellow",
+          "circle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is red",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "yellow",
+        "target": "yellow"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-1",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "blue",
+          "circle"
+        ]
+      ],
+      "predicate": "the leftmost object is a circle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "circle",
+        "target": "circle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-2",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "green",
+          "square"
+        ],
+        [
+          "blue",
+          "triangle"
+        ]
+      ],
+      "predicate": "the image contains at least 3 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "2",
+        "target": "2"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-3",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "yellow",
+          "circle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is yellow",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "yellow",
+        "target": "yellow"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-4",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "red",
+          "circle"
+        ]
+      ],
+      "predicate": "the leftmost object is a square",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "circle",
+        "target": "circle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-5",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "blue",
+          "circle"
+        ],
+        [
+          "yellow",
+          "circle"
+        ],
+        [
+          "yellow",
+          "square"
+        ]
+      ],
+      "predicate": "the image contains at least 2 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "3",
+        "target": "3"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-6",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "yellow",
+          "triangle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is blue",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "yellow",
+        "target": "yellow"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-7",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "green",
+          "triangle"
+        ],
+        [
+          "blue",
+          "circle"
+        ],
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "green",
+          "circle"
+        ]
+      ],
+      "predicate": "the leftmost object is a triangle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "triangle",
+        "target": "triangle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-8",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "blue",
+          "circle"
+        ],
+        [
+          "blue",
+          "circle"
+        ]
+      ],
+      "predicate": "the image contains at least 4 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "3",
+        "target": "3"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-9",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "yellow",
+          "square"
+        ]
+      ],
+      "predicate": "the rightmost object's color is yellow",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "yellow",
+        "target": "yellow"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-10",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "green",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ]
+      ],
+      "predicate": "the leftmost object is a triangle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "circle",
+        "target": "circle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-11",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ],
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "red",
+          "triangle"
+        ]
+      ],
+      "predicate": "the image contains at least 1 objects",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "4",
+        "target": "4"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-12",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ],
+        [
+          "blue",
+          "circle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is red",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "blue",
+        "target": "blue"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-13",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "green",
+          "triangle"
+        ],
+        [
+          "red",
+          "square"
+        ]
+      ],
+      "predicate": "the rightmost object is a square",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-14",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "yellow",
+          "circle"
+        ],
+        [
+          "green",
+          "triangle"
+        ],
+        [
+          "red",
+          "triangle"
+        ]
+      ],
+      "predicate": "the image contains at least 3 objects",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "3",
+        "target": "3"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-15",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "blue",
+          "triangle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is blue",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "blue",
+        "target": "blue"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-16",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "yellow",
+          "circle"
+        ],
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "circle"
+        ]
+      ],
+      "predicate": "the leftmost object is a square",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "circle",
+        "target": "circle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-17",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "blue",
+          "square"
+        ]
+      ],
+      "predicate": "the image contains at least 3 objects",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "2",
+        "target": "2"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-18",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "green",
+          "triangle"
+        ],
+        [
+          "blue",
+          "circle"
+        ]
+      ],
+      "predicate": "the leftmost object's color is blue",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "green",
+        "target": "green"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-19",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "yellow",
+          "triangle"
+        ]
+      ],
+      "predicate": "the rightmost object is a triangle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "triangle",
+        "target": "triangle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-20",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "yellow",
+          "circle"
+        ]
+      ],
+      "predicate": "the image contains at least 2 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "1",
+        "target": "1"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-21",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "red",
+          "square"
+        ],
+        [
+          "red",
+          "triangle"
+        ]
+      ],
+      "predicate": "the leftmost object's color is blue",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "blue",
+        "target": "blue"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-22",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "green",
+          "square"
+        ]
+      ],
+      "predicate": "the leftmost object is a triangle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "circle",
+        "target": "circle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-23",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ],
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "red",
+          "square"
+        ]
+      ],
+      "predicate": "the image contains at least 2 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "4",
+        "target": "4"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-24",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "green",
+          "square"
+        ],
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "green",
+          "triangle"
+        ]
+      ],
+      "predicate": "the leftmost object's color is blue",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "green",
+        "target": "green"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-25",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "green",
+          "square"
+        ],
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "blue",
+          "square"
+        ]
+      ],
+      "predicate": "the rightmost object is a square",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-26",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "blue",
+          "circle"
+        ]
+      ],
+      "predicate": "the image contains at least 2 objects",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "1",
+        "target": "1"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-27",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "green",
+          "square"
+        ],
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "blue",
+          "square"
+        ]
+      ],
+      "predicate": "the leftmost object's color is blue",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "blue",
+        "target": "blue"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-28",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ],
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "blue",
+          "square"
+        ]
+      ],
+      "predicate": "the leftmost object is a square",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "triangle",
+        "target": "triangle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-29",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "yellow",
+          "square"
+        ]
+      ],
+      "predicate": "the image contains at least 4 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "1",
+        "target": "1"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-30",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "red",
+          "square"
+        ],
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "green",
+          "triangle"
+        ],
+        [
+          "red",
+          "circle"
+        ]
+      ],
+      "predicate": "the leftmost object's color is blue",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "red",
+        "target": "red"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-31",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "green",
+          "triangle"
+        ],
+        [
+          "red",
+          "circle"
+        ]
+      ],
+      "predicate": "the rightmost object is a circle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "circle",
+        "target": "circle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-32",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "yellow",
+          "circle"
+        ],
+        [
+          "yellow",
+          "circle"
+        ]
+      ],
+      "predicate": "the image contains at least 4 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "2",
+        "target": "2"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-33",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ],
+        [
+          "red",
+          "square"
+        ]
+      ],
+      "predicate": "the rightmost object's color is red",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "red",
+        "target": "red"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-34",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "yellow",
+          "square"
+        ]
+      ],
+      "predicate": "the rightmost object is a triangle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": false,
+        "picked": "circle",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-35",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "blue",
+          "circle"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ]
+      ],
+      "predicate": "the image contains at least 2 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "4",
+        "target": "4"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-36",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "blue",
+          "circle"
+        ]
+      ],
+      "predicate": "the leftmost object's color is green",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "blue",
+        "target": "blue"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-37",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "red",
+          "square"
+        ]
+      ],
+      "predicate": "the rightmost object is a square",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-38",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "blue",
+          "triangle"
+        ]
+      ],
+      "predicate": "the image contains at least 2 objects",
+      "policy_correct": [
+        true,
+        false
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "2",
+        "target": "2"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-39",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "circle"
+        ],
+        [
+          "yellow",
+          "circle"
+        ]
+      ],
+      "predicate": "the leftmost object's color is yellow",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "yellow",
+        "target": "yellow"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-40",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "red",
+          "circle"
+        ]
+      ],
+      "predicate": "the rightmost object is a square",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "circle",
+        "target": "circle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-41",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "green",
+          "square"
+        ]
+      ],
+      "predicate": "the image contains at least 2 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "1",
+        "target": "1"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-42",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "blue",
+          "circle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is red",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "blue",
+        "target": "blue"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-43",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "green",
+          "square"
+        ],
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "yellow",
+          "circle"
+        ]
+      ],
+      "predicate": "the leftmost object is a square",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-44",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "green",
+          "triangle"
+        ],
+        [
+          "blue",
+          "circle"
+        ]
+      ],
+      "predicate": "the image contains at least 4 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "2",
+        "target": "2"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-45",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "red",
+          "square"
+        ]
+      ],
+      "predicate": "the leftmost object's color is green",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "green",
+        "target": "green"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-46",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "yellow",
+          "circle"
+        ],
+        [
+          "green",
+          "square"
+        ],
+        [
+          "red",
+          "triangle"
+        ]
+      ],
+      "predicate": "the rightmost object is a circle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "triangle",
+        "target": "triangle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-47",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "green",
+          "circle"
+        ]
+      ],
+      "predicate": "the image contains at least 3 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "2",
+        "target": "2"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-48",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "yellow",
+          "circle"
+        ],
+        [
+          "red",
+          "square"
+        ],
+        [
+          "blue",
+          "circle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is red",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "blue",
+        "target": "blue"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-49",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "yellow",
+          "triangle"
+        ],
+        [
+          "blue",
+          "circle"
+        ],
+        [
+          "yellow",
+          "circle"
+        ]
+      ],
+      "predicate": "the rightmost object is a circle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "circle",
+        "target": "circle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-50",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "green",
+          "square"
+        ],
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "red",
+          "circle"
+        ]
+      ],
+      "predicate": "the image contains at least 4 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "3",
+        "target": "3"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-51",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "green",
+          "circle"
+        ]
+      ],
+      "predicate": "the leftmost object's color is red",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "red",
+        "target": "red"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-52",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "green",
+          "square"
+        ],
+        [
+          "green",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ]
+      ],
+      "predicate": "the leftmost object is a triangle",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-53",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "blue",
+          "circle"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ]
+      ],
+      "predicate": "the image contains at least 2 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "3",
+        "target": "3"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-54",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "yellow",
+          "circle"
+        ],
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "yellow",
+          "circle"
+        ]
+      ],
+      "predicate": "the leftmost object's color is red",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "yellow",
+        "target": "yellow"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-55",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "yellow",
+          "square"
+        ]
+      ],
+      "predicate": "the leftmost object is a square",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-56",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "blue",
+          "circle"
+        ],
+        [
+          "red",
+          "square"
+        ],
+        [
+          "blue",
+          "triangle"
+        ]
+      ],
+      "predicate": "the image contains at least 1 objects",
+      "policy_correct": [
+        false,
+        false
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "4",
+        "target": "4"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-57",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "yellow",
+          "circle"
+        ],
+        [
+          "red",
+          "square"
+        ]
+      ],
+      "predicate": "the leftmost object's color is yellow",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "yellow",
+        "target": "yellow"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-58",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "yellow",
+          "circle"
+        ]
+      ],
+      "predicate": "the rightmost object is a square",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "circle",
+        "target": "circle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-59",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "red",
+          "square"
+        ]
+      ],
+      "predicate": "the image contains at least 1 objects",
+      "policy_correct": [
+        true,
+        false
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "2",
+        "target": "2"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-60",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "red",
+          "square"
+        ],
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "red",
+          "circle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is green",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "red",
+        "target": "red"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-61",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "yellow",
+          "triangle"
+        ],
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "red",
+          "triangle"
+        ]
+      ],
+      "predicate": "the rightmost object is a triangle",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "triangle",
+        "target": "triangle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-62",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "red",
+          "triangle"
+        ]
+      ],
+      "predicate": "the image contains at least 2 objects",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "2",
+        "target": "2"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-63",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "red",
+          "square"
+        ],
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ],
+        [
+          "blue",
+          "square"
+        ]
+      ],
+      "predicate": "the rightmost object's color is blue",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "blue",
+        "target": "blue"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-64",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "blue",
+          "triangle"
+        ]
+      ],
+      "predicate": "the leftmost object is a circle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "triangle",
+        "target": "triangle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-65",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "yellow",
+          "triangle"
+        ],
+        [
+          "red",
+          "triangle"
+        ]
+      ],
+      "predicate": "the image contains at least 1 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "2",
+        "target": "2"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-66",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "red",
+          "square"
+        ],
+        [
+          "green",
+          "square"
+        ],
+        [
+          "blue",
+          "square"
+        ]
+      ],
+      "predicate": "the leftmost object's color is blue",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "red",
+        "target": "red"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-67",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "blue",
+          "circle"
+        ],
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "yellow",
+          "circle"
+        ],
+        [
+          "yellow",
+          "square"
+        ]
+      ],
+      "predicate": "the rightmost object is a square",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-68",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ]
+      ],
+      "predicate": "the image contains at least 2 objects",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "4",
+        "target": "4"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-69",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "blue",
+          "circle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is blue",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "blue",
+        "target": "blue"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-70",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "red",
+          "triangle"
+        ]
+      ],
+      "predicate": "the leftmost object is a square",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "circle",
+        "target": "circle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-71",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "yellow",
+          "circle"
+        ],
+        [
+          "yellow",
+          "circle"
+        ]
+      ],
+      "predicate": "the image contains at least 3 objects",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "4",
+        "target": "4"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-72",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "yellow",
+          "circle"
+        ],
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "blue",
+          "circle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is red",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "blue",
+        "target": "blue"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-73",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "yellow",
+          "circle"
+        ],
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "yellow",
+          "square"
+        ]
+      ],
+      "predicate": "the rightmost object is a square",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-74",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "green",
+          "square"
+        ],
+        [
+          "green",
+          "square"
+        ]
+      ],
+      "predicate": "the image contains at least 4 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "3",
+        "target": "3"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-75",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "red",
+          "circle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is red",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "red",
+        "target": "red"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-76",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "green",
+          "square"
+        ],
+        [
+          "blue",
+          "square"
+        ]
+      ],
+      "predicate": "the rightmost object is a triangle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-77",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "circle"
+        ]
+      ],
+      "predicate": "the image contains at least 3 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "3",
+        "target": "3"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-78",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "yellow",
+          "triangle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is green",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "yellow",
+        "target": "yellow"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-79",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "green",
+          "square"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ]
+      ],
+      "predicate": "the rightmost object is a triangle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "triangle",
+        "target": "triangle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-80",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "red",
+          "square"
+        ]
+      ],
+      "predicate": "the image contains at least 1 objects",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "1",
+        "target": "1"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-81",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "square"
+        ]
+      ],
+      "predicate": "the leftmost object's color is green",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "green",
+        "target": "green"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-82",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "yellow",
+          "circle"
+        ]
+      ],
+      "predicate": "the rightmost object is a square",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "circle",
+        "target": "circle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-83",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "blue",
+          "circle"
+        ],
+        [
+          "red",
+          "triangle"
+        ]
+      ],
+      "predicate": "the image contains at least 1 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "4",
+        "target": "4"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-84",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "green",
+          "circle"
+        ]
+      ],
+      "predicate": "the leftmost object's color is blue",
+      "policy_correct": [
+        true,
+        false
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "red",
+        "target": "red"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-85",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "red",
+          "square"
+        ],
+        [
+          "blue",
+          "square"
+        ]
+      ],
+      "predicate": "the rightmost object is a square",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-86",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "red",
+          "circle"
+        ]
+      ],
+      "predicate": "the image contains at least 3 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "1",
+        "target": "1"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-87",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "red",
+          "square"
+        ]
+      ],
+      "predicate": "the leftmost object's color is red",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "red",
+        "target": "red"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-88",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "circle"
+        ]
+      ],
+      "predicate": "the leftmost object is a circle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-89",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "green",
+          "square"
+        ],
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "yellow",
+          "circle"
+        ],
+        [
+          "green",
+          "circle"
+        ]
+      ],
+      "predicate": "the image contains at least 1 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "4",
+        "target": "4"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-90",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "red",
+          "circle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is green",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "red",
+        "target": "red"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-91",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "red",
+          "triangle"
+        ]
+      ],
+      "predicate": "the leftmost object is a triangle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "triangle",
+        "target": "triangle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-92",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "blue",
+          "circle"
+        ],
+        [
+          "yellow",
+          "square"
+        ]
+      ],
+      "predicate": "the image contains at least 2 objects",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "3",
+        "target": "3"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-93",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "blue",
+          "triangle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is blue",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "blue",
+        "target": "blue"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-94",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "green",
+          "square"
+        ],
+        [
+          "yellow",
+          "square"
+        ]
+      ],
+      "predicate": "the leftmost object is a square",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "triangle",
+        "target": "triangle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-95",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "blue",
+          "square"
+        ]
+      ],
+      "predicate": "the image contains at least 2 objects",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": false,
+        "picked": "3",
+        "target": "4"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-96",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "yellow",
+          "square"
+        ]
+      ],
+      "predicate": "the leftmost object's color is green",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "yellow",
+        "target": "yellow"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-97",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "yellow",
+          "triangle"
+        ]
+      ],
+      "predicate": "the leftmost object is a triangle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "triangle",
+        "target": "triangle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-98",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "green",
+          "triangle"
+        ],
+        [
+          "red",
+          "square"
+        ]
+      ],
+      "predicate": "the image contains at least 2 objects",
+      "policy_correct": [
+        true,
+        false
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "3",
+        "target": "3"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-99",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "green",
+          "square"
+        ],
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "blue",
+          "triangle"
+        ]
+      ],
+      "predicate": "the leftmost object's color is green",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "green",
+        "target": "green"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-100",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "blue",
+          "square"
+        ]
+      ],
+      "predicate": "the rightmost object is a circle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-101",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ],
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "green",
+          "square"
+        ]
+      ],
+      "predicate": "the image contains at least 1 objects",
+      "policy_correct": [
+        false,
+        false
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "4",
+        "target": "4"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-102",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "green",
+          "square"
+        ],
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "blue",
+          "square"
+        ]
+      ],
+      "predicate": "the leftmost object's color is red",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "green",
+        "target": "green"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-103",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "red",
+          "square"
+        ],
+        [
+          "red",
+          "square"
+        ],
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "green",
+          "triangle"
+        ]
+      ],
+      "predicate": "the leftmost object is a square",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-104",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "red",
+          "circle"
+        ]
+      ],
+      "predicate": "the image contains at least 4 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "2",
+        "target": "2"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-105",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "red",
+          "triangle"
+        ]
+      ],
+      "predicate": "the leftmost object's color is red",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "red",
+        "target": "red"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-106",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "blue",
+          "circle"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ],
+        [
+          "blue",
+          "square"
+        ]
+      ],
+      "predicate": "the rightmost object is a circle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-107",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "blue",
+          "triangle"
+        ]
+      ],
+      "predicate": "the image contains at least 3 objects",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "1",
+        "target": "1"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-108",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "green",
+          "triangle"
+        ]
+      ],
+      "predicate": "the leftmost object's color is blue",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "green",
+        "target": "green"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-109",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "red",
+          "triangle"
+        ]
+      ],
+      "predicate": "the leftmost object is a square",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-110",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "blue",
+          "square"
+        ]
+      ],
+      "predicate": "the image contains at least 4 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "1",
+        "target": "1"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-111",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "yellow",
+          "triangle"
+        ],
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "green",
+          "triangle"
+        ],
+        [
+          "blue",
+          "triangle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is blue",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "blue",
+        "target": "blue"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-112",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "blue",
+          "square"
+        ]
+      ],
+      "predicate": "the leftmost object is a triangle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-113",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "green",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "square"
+        ]
+      ],
+      "predicate": "the image contains at least 1 objects",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "2",
+        "target": "2"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-114",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "green",
+          "square"
+        ]
+      ],
+      "predicate": "the leftmost object's color is yellow",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "red",
+        "target": "red"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-115",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "red",
+          "square"
+        ],
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "red",
+          "square"
+        ],
+        [
+          "blue",
+          "triangle"
+        ]
+      ],
+      "predicate": "the rightmost object is a triangle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "triangle",
+        "target": "triangle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-116",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "green",
+          "square"
+        ],
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "yellow",
+          "circle"
+        ]
+      ],
+      "predicate": "the image contains at least 3 objects",
+      "policy_correct": [
+        true,
+        false
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "4",
+        "target": "4"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-117",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "yellow",
+          "circle"
+        ],
+        [
+          "red",
+          "circle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is red",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "red",
+        "target": "red"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-118",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "square"
+        ]
+      ],
+      "predicate": "the leftmost object is a triangle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "circle",
+        "target": "circle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-119",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "green",
+          "triangle"
+        ],
+        [
+          "blue",
+          "circle"
+        ],
+        [
+          "blue",
+          "triangle"
+        ]
+      ],
+      "predicate": "the image contains at least 3 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "4",
+        "target": "4"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-120",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "green",
+          "triangle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is blue",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "green",
+        "target": "green"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-121",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "square"
+        ]
+      ],
+      "predicate": "the rightmost object is a square",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-122",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "blue",
+          "circle"
+        ],
+        [
+          "blue",
+          "circle"
+        ],
+        [
+          "blue",
+          "circle"
+        ],
+        [
+          "red",
+          "circle"
+        ]
+      ],
+      "predicate": "the image contains at least 2 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "4",
+        "target": "4"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-123",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "yellow",
+          "triangle"
+        ],
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "yellow",
+          "square"
+        ]
+      ],
+      "predicate": "the rightmost object's color is yellow",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "yellow",
+        "target": "yellow"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-124",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "red",
+          "square"
+        ],
+        [
+          "blue",
+          "circle"
+        ],
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "blue",
+          "triangle"
+        ]
+      ],
+      "predicate": "the leftmost object is a circle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-125",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "yellow",
+          "circle"
+        ],
+        [
+          "red",
+          "triangle"
+        ]
+      ],
+      "predicate": "the image contains at least 2 objects",
+      "policy_correct": [
+        true,
+        false
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "3",
+        "target": "3"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-126",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "red",
+          "square"
+        ]
+      ],
+      "predicate": "the leftmost object's color is yellow",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "red",
+        "target": "red"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-127",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "circle"
+        ]
+      ],
+      "predicate": "the rightmost object is a circle",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "circle",
+        "target": "circle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-128",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "green",
+          "square"
+        ],
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "red",
+          "square"
+        ]
+      ],
+      "predicate": "the image contains at least 3 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "4",
+        "target": "4"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-129",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "blue",
+          "triangle"
+        ]
+      ],
+      "predicate": "the leftmost object's color is blue",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "blue",
+        "target": "blue"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-130",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "red",
+          "triangle"
+        ]
+      ],
+      "predicate": "the rightmost object is a circle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "triangle",
+        "target": "triangle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-131",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "green",
+          "square"
+        ]
+      ],
+      "predicate": "the image contains at least 3 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "1",
+        "target": "1"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-132",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ],
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "red",
+          "circle"
+        ]
+      ],
+      "predicate": "the leftmost object's color is green",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "red",
+        "target": "red"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-133",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "red",
+          "square"
+        ]
+      ],
+      "predicate": "the rightmost object is a square",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-134",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "green",
+          "square"
+        ],
+        [
+          "red",
+          "square"
+        ]
+      ],
+      "predicate": "the image contains at least 1 objects",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "4",
+        "target": "4"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-135",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "blue",
+          "triangle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is blue",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "blue",
+        "target": "blue"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-136",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "red",
+          "square"
+        ]
+      ],
+      "predicate": "the rightmost object is a triangle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-137",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "circle"
+        ]
+      ],
+      "predicate": "the image contains at least 2 objects",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "2",
+        "target": "2"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-138",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "yellow",
+          "circle"
+        ],
+        [
+          "blue",
+          "circle"
+        ]
+      ],
+      "predicate": "the leftmost object's color is red",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "yellow",
+        "target": "yellow"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-139",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "green",
+          "circle"
+        ]
+      ],
+      "predicate": "the rightmost object is a circle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "circle",
+        "target": "circle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-140",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "red",
+          "square"
+        ]
+      ],
+      "predicate": "the image contains at least 1 objects",
+      "policy_correct": [
+        false,
+        false
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "2",
+        "target": "2"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-141",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "green",
+          "circle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is green",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "green",
+        "target": "green"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-142",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "red",
+          "triangle"
+        ]
+      ],
+      "predicate": "the leftmost object is a triangle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-143",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "blue",
+          "circle"
+        ],
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "red",
+          "square"
+        ]
+      ],
+      "predicate": "the image contains at least 2 objects",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "3",
+        "target": "3"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-144",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "yellow",
+          "circle"
+        ],
+        [
+          "red",
+          "square"
+        ],
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "green",
+          "square"
+        ]
+      ],
+      "predicate": "the rightmost object's color is red",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "green",
+        "target": "green"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-145",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "yellow",
+          "square"
+        ]
+      ],
+      "predicate": "the leftmost object is a circle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "circle",
+        "target": "circle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-146",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "yellow",
+          "circle"
+        ],
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "green",
+          "circle"
+        ]
+      ],
+      "predicate": "the image contains at least 2 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "3",
+        "target": "3"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-147",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "green",
+          "square"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ]
+      ],
+      "predicate": "the leftmost object's color is green",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "green",
+        "target": "green"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-148",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "circle"
+        ],
+        [
+          "blue",
+          "triangle"
+        ]
+      ],
+      "predicate": "the rightmost object is a square",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "triangle",
+        "target": "triangle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-149",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "yellow",
+          "square"
+        ]
+      ],
+      "predicate": "the image contains at least 3 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "1",
+        "target": "1"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-150",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "square"
+        ]
+      ],
+      "predicate": "the leftmost object's color is yellow",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "blue",
+        "target": "blue"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-151",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "green",
+          "square"
+        ],
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "blue",
+          "circle"
+        ]
+      ],
+      "predicate": "the rightmost object is a circle",
+      "policy_correct": [
+        true,
+        false
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "circle",
+        "target": "circle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-152",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "yellow",
+          "triangle"
+        ],
+        [
+          "green",
+          "circle"
+        ]
+      ],
+      "predicate": "the image contains at least 1 objects",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "2",
+        "target": "2"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-153",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "blue",
+          "square"
+        ]
+      ],
+      "predicate": "the leftmost object's color is blue",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "blue",
+        "target": "blue"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-154",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "yellow",
+          "circle"
+        ],
+        [
+          "green",
+          "triangle"
+        ],
+        [
+          "blue",
+          "triangle"
+        ]
+      ],
+      "predicate": "the rightmost object is a square",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "triangle",
+        "target": "triangle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-155",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "red",
+          "square"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ]
+      ],
+      "predicate": "the image contains at least 2 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "3",
+        "target": "3"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-156",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "green",
+          "triangle"
+        ],
+        [
+          "green",
+          "triangle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is yellow",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "green",
+        "target": "green"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-157",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "green",
+          "circle"
+        ]
+      ],
+      "predicate": "the rightmost object is a circle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "circle",
+        "target": "circle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-158",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "green",
+          "triangle"
+        ],
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "blue",
+          "triangle"
+        ]
+      ],
+      "predicate": "the image contains at least 2 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "4",
+        "target": "4"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-159",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "red",
+          "square"
+        ],
+        [
+          "red",
+          "triangle"
+        ]
+      ],
+      "predicate": "the leftmost object's color is red",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "red",
+        "target": "red"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-160",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "yellow",
+          "circle"
+        ],
+        [
+          "blue",
+          "square"
+        ]
+      ],
+      "predicate": "the rightmost object is a circle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-161",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "red",
+          "square"
+        ],
+        [
+          "green",
+          "square"
+        ]
+      ],
+      "predicate": "the image contains at least 1 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "2",
+        "target": "2"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-162",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ],
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "green",
+          "circle"
+        ]
+      ],
+      "predicate": "the leftmost object's color is green",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "yellow",
+        "target": "yellow"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-163",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "red",
+          "square"
+        ],
+        [
+          "green",
+          "square"
+        ]
+      ],
+      "predicate": "the leftmost object is a square",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-164",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "yellow",
+          "circle"
+        ],
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "red",
+          "square"
+        ]
+      ],
+      "predicate": "the image contains at least 1 objects",
+      "policy_correct": [
+        true,
+        false
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "4",
+        "target": "4"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-165",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is yellow",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "yellow",
+        "target": "yellow"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-166",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "yellow",
+          "circle"
+        ]
+      ],
+      "predicate": "the leftmost object is a triangle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "circle",
+        "target": "circle"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-167",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "yellow",
+          "circle"
+        ]
+      ],
+      "predicate": "the image contains at least 1 objects",
+      "policy_correct": [
+        false,
+        false
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "1",
+        "target": "1"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-168",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "blue",
+          "square"
+        ]
+      ],
+      "predicate": "the rightmost object's color is yellow",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "blue",
+        "target": "blue"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-169",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "green",
+          "square"
+        ]
+      ],
+      "predicate": "the rightmost object is a square",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-170",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "blue",
+          "triangle"
+        ],
+        [
+          "green",
+          "triangle"
+        ],
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "blue",
+          "triangle"
+        ]
+      ],
+      "predicate": "the image contains at least 2 objects",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "4",
+        "target": "4"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-171",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "red",
+          "square"
+        ],
+        [
+          "green",
+          "square"
+        ]
+      ],
+      "predicate": "the rightmost object's color is green",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "green",
+        "target": "green"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-172",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "blue",
+          "circle"
+        ],
+        [
+          "blue",
+          "square"
+        ]
+      ],
+      "predicate": "the rightmost object is a triangle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-173",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "red",
+          "circle"
+        ]
+      ],
+      "predicate": "the image contains at least 1 objects",
+      "policy_correct": [
+        false,
+        false
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "1",
+        "target": "1"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-174",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ],
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "green",
+          "triangle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is red",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "green",
+        "target": "green"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-175",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "red",
+          "square"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ],
+        [
+          "green",
+          "triangle"
+        ]
+      ],
+      "predicate": "the rightmost object is a triangle",
+      "policy_correct": [
+        true,
+        false
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "triangle",
+        "target": "triangle"
+      },
+      "condition": {
+        "correct": false,
+        "picked": "false",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-176",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "green",
+          "circle"
+        ]
+      ],
+      "predicate": "the image contains at least 4 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "1",
+        "target": "1"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-177",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "yellow",
+          "circle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is yellow",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "yellow",
+        "target": "yellow"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-178",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "blue",
+          "square"
+        ]
+      ],
+      "predicate": "the rightmost object is a circle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-179",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "green",
+          "circle"
+        ]
+      ],
+      "predicate": "the image contains at least 3 objects",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "1",
+        "target": "1"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-180",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "green",
+          "circle"
+        ],
+        [
+          "green",
+          "triangle"
+        ],
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "green",
+          "triangle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is red",
+      "policy_correct": [
+        true,
+        false
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "green",
+        "target": "green"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-181",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ],
+        [
+          "red",
+          "square"
+        ]
+      ],
+      "predicate": "the leftmost object is a square",
+      "policy_correct": [
+        false,
+        false
+      ],
+      "attribute": {
+        "correct": false,
+        "picked": "triangle",
+        "target": "square"
+      },
+      "condition": {
+        "correct": false,
+        "picked": "false",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-182",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ]
+      ],
+      "predicate": "the image contains at least 1 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "2",
+        "target": "2"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-183",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ]
+      ],
+      "predicate": "the leftmost object's color is red",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "red",
+        "target": "red"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-184",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "red",
+          "square"
+        ]
+      ],
+      "predicate": "the leftmost object is a triangle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-185",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "yellow",
+          "triangle"
+        ]
+      ],
+      "predicate": "the image contains at least 1 objects",
+      "policy_correct": [
+        false,
+        false
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "2",
+        "target": "2"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-186",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "red",
+          "circle"
+        ],
+        [
+          "green",
+          "square"
+        ],
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "yellow",
+          "circle"
+        ]
+      ],
+      "predicate": "the rightmost object's color is blue",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "yellow",
+        "target": "yellow"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-187",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "red",
+          "square"
+        ]
+      ],
+      "predicate": "the leftmost object is a square",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-188",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "red",
+          "triangle"
+        ]
+      ],
+      "predicate": "the image contains at least 4 objects",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "2",
+        "target": "2"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-189",
+      "family": "image_color_rule",
+      "objects": [
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "yellow",
+          "square"
+        ],
+        [
+          "green",
+          "square"
+        ]
+      ],
+      "predicate": "the leftmost object's color is yellow",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "yellow",
+        "target": "yellow"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-190",
+      "family": "image_shape_rule",
+      "objects": [
+        [
+          "red",
+          "square"
+        ],
+        [
+          "red",
+          "triangle"
+        ],
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "green",
+          "circle"
+        ]
+      ],
+      "predicate": "the leftmost object is a triangle",
+      "policy_correct": [
+        true,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "square",
+        "target": "square"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "false",
+        "target": "false"
+      }
+    },
+    {
+      "group": "policy-v3-20261002-test-image-191",
+      "family": "image_count_rule",
+      "objects": [
+        [
+          "blue",
+          "square"
+        ],
+        [
+          "red",
+          "square"
+        ],
+        [
+          "blue",
+          "circle"
+        ],
+        [
+          "blue",
+          "circle"
+        ]
+      ],
+      "predicate": "the image contains at least 1 objects",
+      "policy_correct": [
+        false,
+        true
+      ],
+      "attribute": {
+        "correct": true,
+        "picked": "4",
+        "target": "4"
+      },
+      "condition": {
+        "correct": true,
+        "picked": "true",
+        "target": "true"
+      }
+    }
+  ]
+}

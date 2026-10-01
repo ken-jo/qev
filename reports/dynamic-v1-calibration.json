@@ -1,0 +1,6328 @@
+{
+  "split": "calibration",
+  "evaluation_role": "calibration",
+  "architecture": "option_readout",
+  "accuracy_target": 0.9,
+  "accuracy_target_scope": "pre-abstention, each modality separately",
+  "calibration": {
+    "temperatures": [
+      2.3040929760558453,
+      1.8836490894898001,
+      3.4474660657314935
+    ],
+    "abstain_thresholds": [
+      0.4717323687899862,
+      0.48196484807406575,
+      0.5452931097921535
+    ],
+    "fitted_types": [
+      "choice",
+      "score",
+      "noul"
+    ],
+    "abstention_fitted_types": [
+      "choice",
+      "score",
+      "noul"
+    ],
+    "always_abstain_types": []
+  },
+  "dataset_sha256": "42deb625c5130fd5e3cd4cee2774282efaca3f8eaa5661f5d3ab85bf042bf91b",
+  "evaluated_subset_sha256": "2ca7a6f3e5ed2a4009a8b31a38f165deb6f6533f9af15b0b06c081b067168784",
+  "evaluated_records": 448,
+  "checkpoint_sha256": "5c86e81173ac5b5c8b508509df326112d30b02386fda3506875523274ed68157",
+  "checkpoint_manifest_sha256": "d1f732e11757b220d6e4b5733892dfda94b849366f0ce7cda423110af86b0b30",
+  "overall": {
+    "questions": 448,
+    "nll": 0.30726650209769824,
+    "brier": 0.18308230929721375,
+    "expected_accuracy": 0.8861607142857143,
+    "hard_label_accuracy": 0.8861607142857143,
+    "hard_label_questions": 448,
+    "ece_10_bins": 0.02242977961193309,
+    "score_mae": 0.1247846879176751,
+    "coverage": 0.9732142857142857,
+    "accepted_expected_accuracy": 0.8944954128440367,
+    "counterfactual_pairs": 224,
+    "both_correct_accuracy": 0.7991071428571429,
+    "group_bootstrap_expected_accuracy_95_ci": [
+      0.8549107142857143,
+      0.9174107142857143
+    ]
+  },
+  "raw_overall": {
+    "questions": 448,
+    "nll": 0.44849437181723273,
+    "brier": 0.19743979570558953,
+    "expected_accuracy": 0.8861607142857143,
+    "hard_label_accuracy": 0.8861607142857143,
+    "hard_label_questions": 448,
+    "ece_10_bins": 0.07549565900242765,
+    "score_mae": 0.09309312572054437
+  },
+  "by_modality": {
+    "text": {
+      "questions": 256,
+      "nll": 0.3325679800368024,
+      "brier": 0.19327846843697682,
+      "expected_accuracy": 0.875,
+      "hard_label_accuracy": 0.875,
+      "hard_label_questions": 256,
+      "ece_10_bins": 0.0321958649499156,
+      "score_mae": 0.1501364835780988,
+      "coverage": 0.96484375,
+      "accepted_expected_accuracy": 0.8825910931174089,
+      "counterfactual_pairs": 128,
+      "both_correct_accuracy": 0.796875,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.828125,
+        0.91796875
+      ]
+    },
+    "image": {
+      "questions": 192,
+      "nll": 0.27353119817889265,
+      "brier": 0.16948743044419626,
+      "expected_accuracy": 0.9010416666666666,
+      "hard_label_accuracy": 0.9010416666666666,
+      "hard_label_questions": 192,
+      "ece_10_bins": 0.05161514021617432,
+      "score_mae": 0.09175052993591086,
+      "coverage": 0.984375,
+      "accepted_expected_accuracy": 0.91005291005291,
+      "counterfactual_pairs": 96,
+      "both_correct_accuracy": 0.8020833333333334,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.859375,
+        0.9375
+      ]
+    }
+  },
+  "by_family": {
+    "image_color_rule": {
+      "questions": 64,
+      "nll": 0.2109559520041809,
+      "brier": 0.13538108561996876,
+      "expected_accuracy": 0.921875,
+      "hard_label_accuracy": 0.921875,
+      "hard_label_questions": 64,
+      "ece_10_bins": 0.08011113697839072,
+      "score_mae": 0.023129171249475697,
+      "coverage": 0.984375,
+      "accepted_expected_accuracy": 0.9206349206349206,
+      "counterfactual_pairs": 32,
+      "both_correct_accuracy": 0.84375,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.859375,
+        0.984375
+      ]
+    },
+    "image_count_rule": {
+      "questions": 64,
+      "nll": 0.22891715422935965,
+      "brier": 0.13472582376026007,
+      "expected_accuracy": 0.921875,
+      "hard_label_accuracy": 0.921875,
+      "hard_label_questions": 64,
+      "ece_10_bins": 0.08554063536864182,
+      "score_mae": 0.07931339434471617,
+      "coverage": 0.984375,
+      "accepted_expected_accuracy": 0.9365079365079365,
+      "counterfactual_pairs": 32,
+      "both_correct_accuracy": 0.84375,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.859375,
+        0.984375
+      ]
+    },
+    "image_shape_rule": {
+      "questions": 64,
+      "nll": 0.3807204883031373,
+      "brier": 0.23835538195236003,
+      "expected_accuracy": 0.859375,
+      "hard_label_accuracy": 0.859375,
+      "hard_label_questions": 64,
+      "ece_10_bins": 0.07816052649847323,
+      "score_mae": 0.1728090242135407,
+      "coverage": 0.984375,
+      "accepted_expected_accuracy": 0.873015873015873,
+      "counterfactual_pairs": 32,
+      "both_correct_accuracy": 0.71875,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.78125,
+        0.9375
+      ]
+    },
+    "text_conjunction": {
+      "questions": 64,
+      "nll": 0.20944826534198363,
+      "brier": 0.11954297979645934,
+      "expected_accuracy": 0.90625,
+      "hard_label_accuracy": 0.90625,
+      "hard_label_questions": 64,
+      "ece_10_bins": 0.06110335727824194,
+      "score_mae": 0.04930817974430857,
+      "coverage": 0.96875,
+      "accepted_expected_accuracy": 0.9193548387096774,
+      "counterfactual_pairs": 32,
+      "both_correct_accuracy": 0.84375,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.828125,
+        0.96875
+      ]
+    },
+    "text_disjunction": {
+      "questions": 64,
+      "nll": 0.35329575892310117,
+      "brier": 0.21140027529439925,
+      "expected_accuracy": 0.890625,
+      "hard_label_accuracy": 0.890625,
+      "hard_label_questions": 64,
+      "ece_10_bins": 0.05778504064686455,
+      "score_mae": 0.19385203734153494,
+      "coverage": 0.984375,
+      "accepted_expected_accuracy": 0.8888888888888888,
+      "counterfactual_pairs": 32,
+      "both_correct_accuracy": 0.84375,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.78125,
+        0.96875
+      ]
+    },
+    "text_ranges": {
+      "questions": 64,
+      "nll": 0.5567717174958097,
+      "brier": 0.3248079692438358,
+      "expected_accuracy": 0.765625,
+      "hard_label_accuracy": 0.765625,
+      "hard_label_questions": 64,
+      "ece_10_bins": 0.0860727144010516,
+      "score_mae": 0.3209159822615576,
+      "coverage": 0.90625,
+      "accepted_expected_accuracy": 0.7758620689655172,
+      "counterfactual_pairs": 32,
+      "both_correct_accuracy": 0.59375,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.65625,
+        0.875
+      ]
+    },
+    "text_threshold": {
+      "questions": 64,
+      "nll": 0.21075617838631497,
+      "brier": 0.11736264941321291,
+      "expected_accuracy": 0.9375,
+      "hard_label_accuracy": 0.9375,
+      "hard_label_questions": 64,
+      "ece_10_bins": 0.08356197591096515,
+      "score_mae": 0.04044387621621557,
+      "coverage": 1.0,
+      "accepted_expected_accuracy": 0.9375,
+      "counterfactual_pairs": 32,
+      "both_correct_accuracy": 0.90625,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.859375,
+        1.0
+      ]
+    }
+  },
+  "by_type": {
+    "choice": {
+      "questions": 152,
+      "nll": 0.23101842260246644,
+      "brier": 0.12043653151382608,
+      "expected_accuracy": 0.9276315789473685,
+      "hard_label_accuracy": 0.9276315789473685,
+      "hard_label_questions": 152,
+      "ece_10_bins": 0.03244274059767783,
+      "score_mae": null,
+      "coverage": 0.9868421052631579,
+      "accepted_expected_accuracy": 0.9266666666666666,
+      "counterfactual_pairs": 76,
+      "both_correct_accuracy": 0.8947368421052632,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.868421052631579,
+        0.9736842105263158
+      ]
+    },
+    "score": {
+      "questions": 152,
+      "nll": 0.1979862890001072,
+      "brier": 0.1124014225124073,
+      "expected_accuracy": 0.9342105263157895,
+      "hard_label_accuracy": 0.9342105263157895,
+      "hard_label_questions": 152,
+      "ece_10_bins": 0.045370805697615486,
+      "score_mae": 0.1247846879176751,
+      "coverage": 0.993421052631579,
+      "accepted_expected_accuracy": 0.9337748344370861,
+      "counterfactual_pairs": 76,
+      "both_correct_accuracy": 0.8947368421052632,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.8881578947368421,
+        0.9736842105263158
+      ]
+    },
+    "noul": {
+      "questions": 144,
+      "nll": 0.5031019220567888,
+      "brier": 0.32381601078586303,
+      "expected_accuracy": 0.7916666666666666,
+      "hard_label_accuracy": 0.7916666666666666,
+      "hard_label_questions": 144,
+      "ece_10_bins": 0.06343842292263958,
+      "score_mae": null,
+      "coverage": 0.9375,
+      "accepted_expected_accuracy": 0.8148148148148148,
+      "counterfactual_pairs": 72,
+      "both_correct_accuracy": 0.5972222222222222,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.7291666666666666,
+        0.8473958333333323
+      ]
+    }
+  },
+  "by_target_kind": {
+    "hard": {
+      "questions": 448,
+      "nll": 0.30726650209769824,
+      "brier": 0.18308230929721375,
+      "expected_accuracy": 0.8861607142857143,
+      "hard_label_accuracy": 0.8861607142857143,
+      "hard_label_questions": 448,
+      "ece_10_bins": 0.02242977961193309,
+      "score_mae": 0.1247846879176751,
+      "coverage": 0.9732142857142857,
+      "accepted_expected_accuracy": 0.8944954128440367,
+      "counterfactual_pairs": 224,
+      "both_correct_accuracy": 0.7991071428571429,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.8549107142857143,
+        0.9174107142857143
+      ]
+    }
+  },
+  "by_language": {
+    "en": {
+      "questions": 336,
+      "nll": 0.28489467408356006,
+      "brier": 0.1680204065435887,
+      "expected_accuracy": 0.8928571428571429,
+      "hard_label_accuracy": 0.8928571428571429,
+      "hard_label_questions": 336,
+      "ece_10_bins": 0.030847193689157597,
+      "score_mae": 0.12091972532969644,
+      "coverage": 0.9732142857142857,
+      "accepted_expected_accuracy": 0.9051987767584098,
+      "counterfactual_pairs": 168,
+      "both_correct_accuracy": 0.8095238095238095,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.8571428571428571,
+        0.9285714285714286
+      ]
+    },
+    "ko": {
+      "questions": 112,
+      "nll": 0.3743819861401126,
+      "brier": 0.22826801755808881,
+      "expected_accuracy": 0.8660714285714286,
+      "hard_label_accuracy": 0.8660714285714286,
+      "hard_label_questions": 112,
+      "ece_10_bins": 0.07457597840391367,
+      "score_mae": 0.13723845625671738,
+      "coverage": 0.9732142857142857,
+      "accepted_expected_accuracy": 0.8623853211009175,
+      "counterfactual_pairs": 56,
+      "both_correct_accuracy": 0.7678571428571429,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.7946428571428571,
+        0.9285714285714286
+      ]
+    }
+  },
+  "by_tag": {
+    "numeric_boundary": {
+      "questions": 52,
+      "nll": 0.19560712153563337,
+      "brier": 0.10530534973077986,
+      "expected_accuracy": 0.9423076923076923,
+      "hard_label_accuracy": 0.9423076923076923,
+      "hard_label_questions": 52,
+      "ece_10_bins": 0.09758415530583496,
+      "score_mae": 0.10265315368670314,
+      "coverage": 0.9423076923076923,
+      "accepted_expected_accuracy": 0.9591836734693877,
+      "counterfactual_pairs": 26,
+      "both_correct_accuracy": 0.8846153846153846,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.8653846153846154,
+        1.0
+      ]
+    },
+    "image_text_conflict": {
+      "questions": 28,
+      "nll": 0.456761856180521,
+      "brier": 0.29994282350595575,
+      "expected_accuracy": 0.8214285714285714,
+      "hard_label_accuracy": 0.8214285714285714,
+      "hard_label_questions": 28,
+      "ece_10_bins": 0.1260431490932611,
+      "score_mae": 0.1374750899137897,
+      "coverage": 1.0,
+      "accepted_expected_accuracy": 0.8214285714285714,
+      "counterfactual_pairs": 14,
+      "both_correct_accuracy": 0.6428571428571429,
+      "group_bootstrap_expected_accuracy_95_ci": [
+        0.6785714285714286,
+        0.9285714285714286
+      ]
+    }
+  },
+  "fitting": {
+    "choice": {
+      "threshold": 0.4717323687899862,
+      "accepted": 82,
+      "observed_error": 0.06097560975609756,
+      "always_abstain": false,
+      "temperature": 2.3040929760558453,
+      "temperature_questions": 70,
+      "policy_questions": 82
+    },
+    "score": {
+      "threshold": 0.48196484807406575,
+      "accepted": 70,
+      "observed_error": 0.07142857142857142,
+      "always_abstain": false,
+      "temperature": 1.8836490894898001,
+      "temperature_questions": 82,
+      "policy_questions": 70
+    },
+    "noul": {
+      "threshold": 0.5452931097921535,
+      "accepted": 69,
+      "observed_error": 0.14492753623188406,
+      "always_abstain": false,
+      "temperature": 3.4474660657314935,
+      "temperature_questions": 72,
+      "policy_questions": 72
+    }
+  },
+  "calibrated_checkpoint_manifest_sha256": "f5be13a91834bc23af0469c558322443790dcd09da9a125c1af3f21c3d72e9c1",
+  "predictions": [
+    {
+      "id": "policy-v3-20261002-calibration-text-0-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-0",
+      "logits": [
+        17.049144744873047,
+        25.142789840698242
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-0-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-0",
+      "logits": [
+        26.870262145996094,
+        18.51116943359375
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-1-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-1",
+      "logits": [
+        24.666336059570312,
+        16.874717712402344
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-1-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-1",
+      "logits": [
+        17.158594131469727,
+        25.142763137817383
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-2-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-2",
+      "logits": [
+        20.320541381835938,
+        26.09374237060547
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-2-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-2",
+      "logits": [
+        24.155988693237305,
+        19.81157875061035
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-3-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-3",
+      "logits": [
+        17.684539794921875,
+        26.04646110534668,
+        18.67198944091797
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-3-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-3",
+      "logits": [
+        25.494388580322266,
+        17.803199768066406,
+        18.372600555419922
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-4-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-4",
+      "logits": [
+        18.784629821777344,
+        25.39004898071289
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-4-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-4",
+      "logits": [
+        23.49407196044922,
+        18.711605072021484
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-5-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-5",
+      "logits": [
+        19.012048721313477,
+        24.023832321166992
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-5-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-5",
+      "logits": [
+        21.90545654296875,
+        17.477554321289062
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-6-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-6",
+      "logits": [
+        20.792251586914062,
+        24.877304077148438
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-6-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-6",
+      "logits": [
+        19.667789459228516,
+        23.69589614868164
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-7-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-7",
+      "logits": [
+        22.572038650512695,
+        24.812931060791016,
+        22.303428649902344
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-7-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-7",
+      "logits": [
+        19.423105239868164,
+        20.409381866455078,
+        25.044631958007812
+      ],
+      "targets": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-8-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-8",
+      "logits": [
+        23.60129165649414,
+        19.64958953857422
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-8-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-8",
+      "logits": [
+        22.634109497070312,
+        21.118091583251953
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-9-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-9",
+      "logits": [
+        24.807239532470703,
+        18.428726196289062
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-9-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-9",
+      "logits": [
+        24.11404037475586,
+        18.067848205566406
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-10-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-10",
+      "logits": [
+        24.708297729492188,
+        16.311752319335938
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-10-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-10",
+      "logits": [
+        18.576030731201172,
+        27.277742385864258
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-11-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-11",
+      "logits": [
+        21.63723373413086,
+        19.395050048828125
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-11-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-11",
+      "logits": [
+        21.898555755615234,
+        18.585824966430664
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-12-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-12",
+      "logits": [
+        23.87412452697754,
+        19.63799285888672
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-12-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-12",
+      "logits": [
+        19.481046676635742,
+        25.17980194091797
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-13-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-13",
+      "logits": [
+        23.713991165161133,
+        18.21223258972168
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-13-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-13",
+      "logits": [
+        19.876476287841797,
+        25.039199829101562
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-14-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-14",
+      "logits": [
+        19.344207763671875,
+        23.482349395751953
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-14-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-14",
+      "logits": [
+        20.51154327392578,
+        18.98520278930664
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-15-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-15",
+      "logits": [
+        25.307004928588867,
+        17.163440704345703,
+        19.074542999267578
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-15-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-15",
+      "logits": [
+        18.294103622436523,
+        25.21747398376465,
+        17.37126350402832
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-16-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-16",
+      "logits": [
+        18.236846923828125,
+        25.925369262695312
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-16-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-16",
+      "logits": [
+        24.01337432861328,
+        16.527185440063477
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-17-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-17",
+      "logits": [
+        23.574153900146484,
+        22.124731063842773
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-17-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-17",
+      "logits": [
+        24.818838119506836,
+        18.839845657348633
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-18-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-18",
+      "logits": [
+        17.925073623657227,
+        24.81804656982422
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-18-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-18",
+      "logits": [
+        17.323200225830078,
+        24.184743881225586
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-19-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-19",
+      "logits": [
+        17.974761962890625,
+        20.79422378540039,
+        25.403667449951172
+      ],
+      "targets": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-19-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-19",
+      "logits": [
+        22.613506317138672,
+        19.258777618408203,
+        24.601486206054688
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-20-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-20",
+      "logits": [
+        20.39297866821289,
+        24.68332290649414
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-20-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-20",
+      "logits": [
+        22.789627075195312,
+        20.02265167236328
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-21-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-21",
+      "logits": [
+        18.65949058532715,
+        24.431358337402344
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-21-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-21",
+      "logits": [
+        18.23366928100586,
+        23.92827606201172
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-22-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-22",
+      "logits": [
+        19.19336700439453,
+        25.206039428710938
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-22-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-22",
+      "logits": [
+        23.57813262939453,
+        18.30582046508789
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-23-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-23",
+      "logits": [
+        22.968029022216797,
+        21.760282516479492
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-23-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-23",
+      "logits": [
+        24.547374725341797,
+        18.55298614501953
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-24-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-24",
+      "logits": [
+        18.542247772216797,
+        26.220977783203125
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-24-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-24",
+      "logits": [
+        26.044780731201172,
+        18.628568649291992
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-25-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-25",
+      "logits": [
+        24.13137435913086,
+        18.385774612426758
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-25-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-25",
+      "logits": [
+        18.652803421020508,
+        24.644142150878906
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-26-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-26",
+      "logits": [
+        19.224138259887695,
+        23.499935150146484
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-26-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-26",
+      "logits": [
+        21.716594696044922,
+        18.42693328857422
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-27-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-27",
+      "logits": [
+        18.456523895263672,
+        25.75695037841797,
+        17.926801681518555
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-27-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-27",
+      "logits": [
+        18.45138168334961,
+        17.843582153320312,
+        24.790266036987305
+      ],
+      "targets": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-28-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-28",
+      "logits": [
+        19.51306915283203,
+        25.032325744628906
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-28-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-28",
+      "logits": [
+        24.029491424560547,
+        19.504812240600586
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-29-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-29",
+      "logits": [
+        20.28685760498047,
+        23.55344581604004
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-29-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-29",
+      "logits": [
+        22.436260223388672,
+        18.65062713623047
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-30-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-30",
+      "logits": [
+        18.295692443847656,
+        25.778738021850586
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-30-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-30",
+      "logits": [
+        17.638975143432617,
+        26.60226058959961
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-31-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-31",
+      "logits": [
+        20.709325790405273,
+        23.012531280517578,
+        24.099258422851562
+      ],
+      "targets": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-31-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-31",
+      "logits": [
+        22.80755043029785,
+        22.184255599975586,
+        21.970361709594727
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-32-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-32",
+      "logits": [
+        20.74645233154297,
+        22.613555908203125
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-32-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-32",
+      "logits": [
+        24.64128875732422,
+        20.27939796447754
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-33-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-33",
+      "logits": [
+        18.05481719970703,
+        24.554628372192383
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-33-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-33",
+      "logits": [
+        19.136730194091797,
+        24.215097427368164
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-34-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-34",
+      "logits": [
+        18.185897827148438,
+        24.384662628173828
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-34-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-34",
+      "logits": [
+        23.217140197753906,
+        17.56806182861328
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-35-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-35",
+      "logits": [
+        21.44680404663086,
+        22.045888900756836
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-35-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-35",
+      "logits": [
+        23.631336212158203,
+        19.860065460205078
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-36-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-36",
+      "logits": [
+        18.73253631591797,
+        25.450834274291992
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-36-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-36",
+      "logits": [
+        24.880216598510742,
+        19.263015747070312
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-37-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-37",
+      "logits": [
+        18.826339721679688,
+        25.0993709564209
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-37-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-37",
+      "logits": [
+        24.353721618652344,
+        18.038116455078125
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-38-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-38",
+      "logits": [
+        19.707294464111328,
+        23.522464752197266
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-38-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-38",
+      "logits": [
+        20.959068298339844,
+        17.543611526489258
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-39-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-39",
+      "logits": [
+        19.272441864013672,
+        25.036556243896484,
+        18.636831283569336
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-39-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-39",
+      "logits": [
+        18.867937088012695,
+        26.11448097229004,
+        18.398035049438477
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-40-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-40",
+      "logits": [
+        24.069564819335938,
+        18.90001678466797
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-40-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-40",
+      "logits": [
+        18.61009979248047,
+        24.887428283691406
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-41-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-41",
+      "logits": [
+        23.45557403564453,
+        19.931880950927734
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-41-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-41",
+      "logits": [
+        23.97206687927246,
+        18.352218627929688
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-42-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-42",
+      "logits": [
+        24.79607391357422,
+        18.735570907592773
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-42-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-42",
+      "logits": [
+        18.34821891784668,
+        24.822296142578125
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-43-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-43",
+      "logits": [
+        23.989656448364258,
+        21.21084976196289,
+        18.595603942871094
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-43-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-43",
+      "logits": [
+        19.614425659179688,
+        24.498760223388672,
+        23.857677459716797
+      ],
+      "targets": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-44-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-44",
+      "logits": [
+        17.82417869567871,
+        23.79974365234375
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-44-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-44",
+      "logits": [
+        24.631999969482422,
+        18.652809143066406
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-45-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-45",
+      "logits": [
+        18.853679656982422,
+        25.778444290161133
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-45-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-45",
+      "logits": [
+        18.455713272094727,
+        24.963518142700195
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-46-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-46",
+      "logits": [
+        23.258623123168945,
+        22.521461486816406
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-46-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-46",
+      "logits": [
+        21.685047149658203,
+        24.421199798583984
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-47-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-47",
+      "logits": [
+        22.12476348876953,
+        21.672500610351562
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-47-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-47",
+      "logits": [
+        23.34485626220703,
+        18.701431274414062
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-48-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-48",
+      "logits": [
+        16.55270004272461,
+        25.824922561645508
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-48-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-48",
+      "logits": [
+        17.614274978637695,
+        25.742658615112305
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-49-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-49",
+      "logits": [
+        18.161609649658203,
+        25.228967666625977
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-49-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-49",
+      "logits": [
+        24.014293670654297,
+        16.570892333984375
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-50-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-50",
+      "logits": [
+        24.33289909362793,
+        19.6817569732666
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-50-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-50",
+      "logits": [
+        22.721153259277344,
+        21.29308319091797
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-51-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-51",
+      "logits": [
+        18.440982818603516,
+        24.963754653930664,
+        20.43012809753418
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-51-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-51",
+      "logits": [
+        17.850507736206055,
+        17.399076461791992,
+        24.836076736450195
+      ],
+      "targets": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-52-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-52",
+      "logits": [
+        19.634544372558594,
+        25.490684509277344
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-52-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-52",
+      "logits": [
+        24.34676742553711,
+        19.3057861328125
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-53-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-53",
+      "logits": [
+        19.96270751953125,
+        23.736921310424805
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-53-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-53",
+      "logits": [
+        21.817623138427734,
+        18.014347076416016
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-54-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-54",
+      "logits": [
+        23.088703155517578,
+        21.257247924804688
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-54-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-54",
+      "logits": [
+        21.644287109375,
+        24.52165985107422
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-55-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-55",
+      "logits": [
+        18.782838821411133,
+        21.909299850463867,
+        25.577106475830078
+      ],
+      "targets": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-55-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-55",
+      "logits": [
+        23.48705291748047,
+        20.723419189453125,
+        23.741931915283203
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-56-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-56",
+      "logits": [
+        19.502681732177734,
+        25.891796112060547
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-56-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-56",
+      "logits": [
+        23.14204978942871,
+        20.251720428466797
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-57-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-57",
+      "logits": [
+        18.66979217529297,
+        25.036270141601562
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-57-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-57",
+      "logits": [
+        24.652908325195312,
+        18.813968658447266
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-58-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-58",
+      "logits": [
+        18.586963653564453,
+        24.424346923828125
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-58-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-58",
+      "logits": [
+        23.88825798034668,
+        18.065391540527344
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-59-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-59",
+      "logits": [
+        21.773399353027344,
+        22.654401779174805
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-59-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-59",
+      "logits": [
+        24.232654571533203,
+        18.636781692504883
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-60-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-60",
+      "logits": [
+        18.892738342285156,
+        25.758098602294922
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-60-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-60",
+      "logits": [
+        25.640792846679688,
+        18.90561294555664
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-61-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-61",
+      "logits": [
+        19.67094612121582,
+        25.063922882080078
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-61-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-61",
+      "logits": [
+        23.750028610229492,
+        19.027002334594727
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-62-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-62",
+      "logits": [
+        19.415597915649414,
+        24.518129348754883
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-62-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-62",
+      "logits": [
+        22.189842224121094,
+        18.317487716674805
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-63-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-63",
+      "logits": [
+        20.755619049072266,
+        23.63494300842285,
+        23.954784393310547
+      ],
+      "targets": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-63-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-63",
+      "logits": [
+        20.474241256713867,
+        23.271921157836914,
+        22.20250701904297
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-64-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-64",
+      "logits": [
+        17.778759002685547,
+        25.13088607788086
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-64-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-64",
+      "logits": [
+        24.539154052734375,
+        16.75198745727539
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-65-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-65",
+      "logits": [
+        21.84636688232422,
+        21.975149154663086
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-65-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-65",
+      "logits": [
+        22.255634307861328,
+        21.489103317260742
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-66-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-66",
+      "logits": [
+        25.327003479003906,
+        16.60443115234375
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-66-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-66",
+      "logits": [
+        16.503374099731445,
+        25.12906265258789
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-67-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-67",
+      "logits": [
+        18.37874984741211,
+        25.143829345703125,
+        24.240577697753906
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-67-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-67",
+      "logits": [
+        20.20425033569336,
+        17.561275482177734,
+        25.16346549987793
+      ],
+      "targets": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-68-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-68",
+      "logits": [
+        19.474225997924805,
+        21.051851272583008
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-68-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-68",
+      "logits": [
+        23.824485778808594,
+        19.55992889404297
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-69-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-69",
+      "logits": [
+        18.995363235473633,
+        26.356613159179688
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-69-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-69",
+      "logits": [
+        17.691762924194336,
+        25.720439910888672
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-70-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-70",
+      "logits": [
+        24.618694305419922,
+        17.461288452148438
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-70-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-70",
+      "logits": [
+        18.54392433166504,
+        26.63762664794922
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-71-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-71",
+      "logits": [
+        24.75345230102539,
+        20.558931350708008
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-71-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-71",
+      "logits": [
+        24.916950225830078,
+        20.518524169921875
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-72-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-72",
+      "logits": [
+        19.071807861328125,
+        26.309892654418945
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-72-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-72",
+      "logits": [
+        19.346553802490234,
+        27.632591247558594
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-73-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-73",
+      "logits": [
+        20.681900024414062,
+        25.310373306274414
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-73-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-73",
+      "logits": [
+        23.722558975219727,
+        19.6204891204834
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-74-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-74",
+      "logits": [
+        19.22906494140625,
+        24.420269012451172
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-74-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-74",
+      "logits": [
+        22.027971267700195,
+        18.734394073486328
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-75-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-75",
+      "logits": [
+        25.142595291137695,
+        16.839345932006836,
+        18.032550811767578
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-75-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-75",
+      "logits": [
+        17.811336517333984,
+        25.05291175842285,
+        17.421688079833984
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-76-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-76",
+      "logits": [
+        18.955028533935547,
+        24.87801170349121
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-76-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-76",
+      "logits": [
+        23.774707794189453,
+        18.677209854125977
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-77-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-77",
+      "logits": [
+        21.798465728759766,
+        21.555259704589844
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-77-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-77",
+      "logits": [
+        19.593746185302734,
+        20.727176666259766
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-78-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-78",
+      "logits": [
+        25.017520904541016,
+        17.567737579345703
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-78-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-78",
+      "logits": [
+        18.522871017456055,
+        27.557209014892578
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-79-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-79",
+      "logits": [
+        18.5350341796875,
+        20.51888084411621,
+        26.16092872619629
+      ],
+      "targets": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-79-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-79",
+      "logits": [
+        24.883878707885742,
+        19.221769332885742,
+        19.603153228759766
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-80-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-80",
+      "logits": [
+        20.870079040527344,
+        25.59615707397461
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-80-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-80",
+      "logits": [
+        22.858352661132812,
+        17.976896286010742
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-81-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-81",
+      "logits": [
+        25.42589569091797,
+        17.520145416259766
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-81-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-81",
+      "logits": [
+        17.977554321289062,
+        26.10805892944336
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-82-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-82",
+      "logits": [
+        23.584951400756836,
+        17.86793327331543
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-82-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-82",
+      "logits": [
+        17.633577346801758,
+        24.613229751586914
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-83-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-83",
+      "logits": [
+        21.851221084594727,
+        20.508163452148438
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-83-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-83",
+      "logits": [
+        22.78265953063965,
+        19.058198928833008
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-84-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-84",
+      "logits": [
+        25.381425857543945,
+        19.365825653076172
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-84-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-84",
+      "logits": [
+        20.188796997070312,
+        23.743396759033203
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-85-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-85",
+      "logits": [
+        23.408649444580078,
+        16.94194221496582
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-85-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-85",
+      "logits": [
+        19.24702262878418,
+        26.026973724365234
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-86-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-86",
+      "logits": [
+        21.601909637451172,
+        22.036762237548828
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-86-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-86",
+      "logits": [
+        23.928173065185547,
+        19.192289352416992
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-87-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-87",
+      "logits": [
+        23.125694274902344,
+        24.35797119140625,
+        21.370887756347656
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-87-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-87",
+      "logits": [
+        20.662500381469727,
+        24.125341415405273,
+        24.721651077270508
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-88-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-88",
+      "logits": [
+        25.237577438354492,
+        17.79608726501465
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-88-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-88",
+      "logits": [
+        18.9046573638916,
+        26.678464889526367
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-89-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-89",
+      "logits": [
+        23.117034912109375,
+        21.695587158203125
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-89-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-89",
+      "logits": [
+        23.841785430908203,
+        19.908161163330078
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-90-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-90",
+      "logits": [
+        27.280147552490234,
+        18.232473373413086
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-90-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-90",
+      "logits": [
+        17.842796325683594,
+        25.775447845458984
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-91-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-91",
+      "logits": [
+        18.904216766357422,
+        18.77977180480957,
+        26.308725357055664
+      ],
+      "targets": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-91-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-91",
+      "logits": [
+        24.870342254638672,
+        18.652488708496094,
+        18.51462173461914
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-92-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-92",
+      "logits": [
+        19.413196563720703,
+        21.866403579711914
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-92-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-92",
+      "logits": [
+        24.093555450439453,
+        19.076955795288086
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-93-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-93",
+      "logits": [
+        18.59032440185547,
+        24.98463249206543
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-93-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-93",
+      "logits": [
+        18.34235382080078,
+        25.472047805786133
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-94-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-94",
+      "logits": [
+        24.680057525634766,
+        17.262100219726562
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-94-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-94",
+      "logits": [
+        18.525236129760742,
+        26.909225463867188
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-95-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-95",
+      "logits": [
+        21.08136749267578,
+        20.541454315185547
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-95-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-95",
+      "logits": [
+        22.510116577148438,
+        19.495737075805664
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-96-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-96",
+      "logits": [
+        22.1962947845459,
+        25.076826095581055
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-96-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-96",
+      "logits": [
+        23.236312866210938,
+        23.662090301513672
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-97-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-97",
+      "logits": [
+        17.99494171142578,
+        24.945064544677734
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-97-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-97",
+      "logits": [
+        23.783050537109375,
+        17.519712448120117
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-98-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-98",
+      "logits": [
+        24.7442626953125,
+        17.982952117919922
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-98-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-98",
+      "logits": [
+        22.946739196777344,
+        22.19076919555664
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-99-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-99",
+      "logits": [
+        23.164161682128906,
+        23.021728515625,
+        19.220216751098633
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-99-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-99",
+      "logits": [
+        18.23843765258789,
+        24.858531951904297,
+        19.44899559020996
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-100-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-100",
+      "logits": [
+        25.120956420898438,
+        18.21919822692871
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-100-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-100",
+      "logits": [
+        18.858016967773438,
+        25.402647018432617
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-101-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-101",
+      "logits": [
+        19.457717895507812,
+        23.439226150512695
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-101-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-101",
+      "logits": [
+        21.036972045898438,
+        18.70792579650879
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-102-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-102",
+      "logits": [
+        21.127025604248047,
+        24.186025619506836
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-102-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-102",
+      "logits": [
+        18.624656677246094,
+        24.127702713012695
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-103-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-103",
+      "logits": [
+        18.858840942382812,
+        20.678192138671875,
+        25.9011287689209
+      ],
+      "targets": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-103-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-103",
+      "logits": [
+        24.167037963867188,
+        18.60716438293457,
+        19.34946060180664
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-104-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-104",
+      "logits": [
+        19.119770050048828,
+        23.582324981689453
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-104-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-104",
+      "logits": [
+        22.071636199951172,
+        18.82903480529785
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-105-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-105",
+      "logits": [
+        25.055681228637695,
+        18.31505012512207
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-105-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-105",
+      "logits": [
+        18.236793518066406,
+        25.82794952392578
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-106-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-106",
+      "logits": [
+        22.67405128479004,
+        20.954252243041992
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-106-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-106",
+      "logits": [
+        22.49702262878418,
+        20.770517349243164
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-107-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-107",
+      "logits": [
+        22.574176788330078,
+        20.049123764038086
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-107-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-107",
+      "logits": [
+        23.503568649291992,
+        20.095901489257812
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-108-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-108",
+      "logits": [
+        22.340913772583008,
+        23.046558380126953
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-108-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-108",
+      "logits": [
+        21.31939697265625,
+        24.399259567260742
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-109-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-109",
+      "logits": [
+        19.351394653320312,
+        24.951276779174805
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-109-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-109",
+      "logits": [
+        23.54267120361328,
+        17.740556716918945
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-110-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-110",
+      "logits": [
+        19.239961624145508,
+        23.67949676513672
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-110-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-110",
+      "logits": [
+        21.57723617553711,
+        18.835506439208984
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-111-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-111",
+      "logits": [
+        15.913938522338867,
+        26.74788475036621,
+        16.160066604614258
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-111-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-111",
+      "logits": [
+        15.715977668762207,
+        25.645418167114258,
+        17.116016387939453
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-112-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-112",
+      "logits": [
+        18.675888061523438,
+        24.958276748657227
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-112-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-112",
+      "logits": [
+        23.053552627563477,
+        17.122802734375
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-113-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-113",
+      "logits": [
+        24.130327224731445,
+        20.17424774169922
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-113-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-113",
+      "logits": [
+        23.725168228149414,
+        21.377853393554688
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-114-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-114",
+      "logits": [
+        16.524076461791992,
+        25.024700164794922
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-114-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-114",
+      "logits": [
+        16.677112579345703,
+        25.305587768554688
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-115-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-115",
+      "logits": [
+        24.207942962646484,
+        18.127878189086914,
+        15.767794609069824
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-115-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-115",
+      "logits": [
+        15.588831901550293,
+        23.0968017578125,
+        15.062252044677734
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-116-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-116",
+      "logits": [
+        19.746646881103516,
+        23.190448760986328
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-116-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-116",
+      "logits": [
+        21.743465423583984,
+        18.53445053100586
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-117-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-117",
+      "logits": [
+        25.41319465637207,
+        18.66624641418457
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-117-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-117",
+      "logits": [
+        24.529022216796875,
+        17.544925689697266
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-118-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-118",
+      "logits": [
+        23.59524917602539,
+        17.251649856567383
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-118-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-118",
+      "logits": [
+        19.088123321533203,
+        26.4364013671875
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-119-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-119",
+      "logits": [
+        21.8812313079834,
+        23.242923736572266
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-119-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-119",
+      "logits": [
+        24.366920471191406,
+        18.48944854736328
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-120-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-120",
+      "logits": [
+        18.93670654296875,
+        25.934282302856445
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-120-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-120",
+      "logits": [
+        25.820640563964844,
+        18.53717041015625
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-121-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-121",
+      "logits": [
+        22.64742088317871,
+        19.906429290771484
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-121-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-121",
+      "logits": [
+        18.876663208007812,
+        24.911903381347656
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-122-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-122",
+      "logits": [
+        18.935222625732422,
+        24.741729736328125
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-122-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-122",
+      "logits": [
+        23.29570960998535,
+        17.47715950012207
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-123-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-123",
+      "logits": [
+        25.08591079711914,
+        16.720577239990234,
+        16.634756088256836
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-123-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-123",
+      "logits": [
+        25.738821029663086,
+        19.723262786865234,
+        22.78726577758789
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-124-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-124",
+      "logits": [
+        19.50747299194336,
+        25.440963745117188
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-124-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-124",
+      "logits": [
+        24.11967658996582,
+        19.271377563476562
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-125-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-125",
+      "logits": [
+        18.129398345947266,
+        23.50802993774414
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-125-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-125",
+      "logits": [
+        24.741809844970703,
+        18.299245834350586
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-126-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-126",
+      "logits": [
+        25.703685760498047,
+        17.760305404663086
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-126-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-126",
+      "logits": [
+        25.685932159423828,
+        17.670642852783203
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-127-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-127",
+      "logits": [
+        25.276336669921875,
+        18.6888427734375,
+        17.026824951171875
+      ],
+      "targets": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-text-127-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-text-127",
+      "logits": [
+        18.302642822265625,
+        25.15711212158203,
+        19.690860748291016
+      ],
+      "targets": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-0-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-0",
+      "logits": [
+        27.10146141052246,
+        20.6580810546875
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-0-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-0",
+      "logits": [
+        27.0532283782959,
+        21.624399185180664
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-1-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-1",
+      "logits": [
+        19.019485473632812,
+        11.501837730407715
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-1-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-1",
+      "logits": [
+        23.866943359375,
+        13.68851089477539
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-2-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-2",
+      "logits": [
+        7.329619884490967,
+        15.95602798461914
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-2-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-2",
+      "logits": [
+        19.7714900970459,
+        27.338714599609375
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-3-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-3",
+      "logits": [
+        26.05126953125,
+        14.168266296386719
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-3-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-3",
+      "logits": [
+        17.983243942260742,
+        27.795055389404297
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-4-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-4",
+      "logits": [
+        19.105819702148438,
+        25.678495407104492
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-4-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-4",
+      "logits": [
+        24.28058624267578,
+        17.319908142089844
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-5-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-5",
+      "logits": [
+        25.456836700439453,
+        17.11491584777832
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-5-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-5",
+      "logits": [
+        18.589454650878906,
+        24.516061782836914
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-6-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-6",
+      "logits": [
+        24.356170654296875,
+        19.798532485961914
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-6-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-6",
+      "logits": [
+        24.801513671875,
+        18.06959342956543
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-7-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-7",
+      "logits": [
+        12.970864295959473,
+        13.899797439575195
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-7-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-7",
+      "logits": [
+        19.070011138916016,
+        11.97671127319336
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-8-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-8",
+      "logits": [
+        9.049545288085938,
+        14.484382629394531
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-8-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-8",
+      "logits": [
+        12.361581802368164,
+        7.472234725952148
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-9-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-9",
+      "logits": [
+        24.533390045166016,
+        16.736112594604492
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-9-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-9",
+      "logits": [
+        14.807814598083496,
+        23.462186813354492
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-10-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-10",
+      "logits": [
+        26.571300506591797,
+        18.26880645751953
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-10-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-10",
+      "logits": [
+        18.76340103149414,
+        27.332796096801758
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-11-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-11",
+      "logits": [
+        20.337387084960938,
+        28.042613983154297
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-11-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-11",
+      "logits": [
+        21.890838623046875,
+        24.430904388427734
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-12-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-12",
+      "logits": [
+        20.20101547241211,
+        26.804121017456055
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-12-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-12",
+      "logits": [
+        25.416240692138672,
+        18.109107971191406
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-13-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-13",
+      "logits": [
+        26.173751831054688,
+        24.659828186035156
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-13-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-13",
+      "logits": [
+        18.427804946899414,
+        26.792430877685547
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-14-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-14",
+      "logits": [
+        19.835102081298828,
+        25.408418655395508
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-14-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-14",
+      "logits": [
+        23.166410446166992,
+        16.5296630859375
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-15-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-15",
+      "logits": [
+        10.846236228942871,
+        11.472538948059082
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-15-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-15",
+      "logits": [
+        15.514249801635742,
+        10.086272239685059
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-16-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-16",
+      "logits": [
+        19.025957107543945,
+        22.576377868652344
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-16-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-16",
+      "logits": [
+        22.03719711303711,
+        14.121655464172363
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-17-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-17",
+      "logits": [
+        18.33562469482422,
+        13.29843521118164
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-17-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-17",
+      "logits": [
+        20.57427406311035,
+        15.475150108337402
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-18-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-18",
+      "logits": [
+        27.132959365844727,
+        17.80144500732422
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-18-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-18",
+      "logits": [
+        28.382783889770508,
+        20.260713577270508
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-19-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-19",
+      "logits": [
+        18.560932159423828,
+        25.237363815307617
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-19-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-19",
+      "logits": [
+        12.74472427368164,
+        23.793254852294922
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-20-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-20",
+      "logits": [
+        13.271641731262207,
+        20.593873977661133
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-20-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-20",
+      "logits": [
+        14.159181594848633,
+        20.985496520996094
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-21-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-21",
+      "logits": [
+        23.671024322509766,
+        11.757783889770508
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-21-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-21",
+      "logits": [
+        10.865238189697266,
+        15.849018096923828
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-22-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-22",
+      "logits": [
+        18.422754287719727,
+        25.867706298828125
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-22-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-22",
+      "logits": [
+        24.73177719116211,
+        17.69915199279785
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-23-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-23",
+      "logits": [
+        20.778179168701172,
+        12.732098579406738
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-23-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-23",
+      "logits": [
+        17.6484317779541,
+        26.190563201904297
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-24-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-24",
+      "logits": [
+        22.53591537475586,
+        18.518678665161133
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-24-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-24",
+      "logits": [
+        22.716341018676758,
+        16.354778289794922
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-25-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-25",
+      "logits": [
+        17.407878875732422,
+        12.893441200256348
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-25-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-25",
+      "logits": [
+        13.50913143157959,
+        9.595063209533691
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-26-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-26",
+      "logits": [
+        9.630180358886719,
+        14.065250396728516
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-26-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-26",
+      "logits": [
+        12.726995468139648,
+        7.531635284423828
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-27-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-27",
+      "logits": [
+        25.539812088012695,
+        12.488189697265625
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-27-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-27",
+      "logits": [
+        16.212717056274414,
+        24.53934097290039
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-28-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-28",
+      "logits": [
+        28.133987426757812,
+        20.014366149902344
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-28-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-28",
+      "logits": [
+        19.487836837768555,
+        25.184879302978516
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-29-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-29",
+      "logits": [
+        19.134960174560547,
+        25.464202880859375
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-29-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-29",
+      "logits": [
+        22.017902374267578,
+        18.37149429321289
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-30-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-30",
+      "logits": [
+        18.340700149536133,
+        27.03989028930664
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-30-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-30",
+      "logits": [
+        25.40146827697754,
+        17.48465347290039
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-31-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-31",
+      "logits": [
+        27.271745681762695,
+        18.025100708007812
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-31-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-31",
+      "logits": [
+        18.828800201416016,
+        27.63939094543457
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-32-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-32",
+      "logits": [
+        19.217456817626953,
+        22.638029098510742
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-32-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-32",
+      "logits": [
+        18.434329986572266,
+        25.073843002319336
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-33-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-33",
+      "logits": [
+        8.37613296508789,
+        14.622151374816895
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-33-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-33",
+      "logits": [
+        11.215469360351562,
+        7.0017218589782715
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-34-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-34",
+      "logits": [
+        18.562854766845703,
+        25.22191619873047
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-34-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-34",
+      "logits": [
+        23.465625762939453,
+        19.30205726623535
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-35-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-35",
+      "logits": [
+        10.5399169921875,
+        4.788918972015381
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-35-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-35",
+      "logits": [
+        11.426410675048828,
+        5.675227642059326
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-36-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-36",
+      "logits": [
+        17.848026275634766,
+        28.07771873474121
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-36-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-36",
+      "logits": [
+        26.371131896972656,
+        17.821441650390625
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-37-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-37",
+      "logits": [
+        13.688796043395996,
+        24.318984985351562
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-37-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-37",
+      "logits": [
+        14.884868621826172,
+        19.8161678314209
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-38-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-38",
+      "logits": [
+        21.4258975982666,
+        14.361759185791016
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-38-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-38",
+      "logits": [
+        22.162471771240234,
+        16.500463485717773
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-39-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-39",
+      "logits": [
+        26.098453521728516,
+        14.242410659790039
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-39-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-39",
+      "logits": [
+        18.44582176208496,
+        26.327775955200195
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-40-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-40",
+      "logits": [
+        18.18744659423828,
+        24.819129943847656
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-40-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-40",
+      "logits": [
+        23.970104217529297,
+        18.63206672668457
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-41-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-41",
+      "logits": [
+        17.014772415161133,
+        9.398740768432617
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-41-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-41",
+      "logits": [
+        16.6551570892334,
+        24.00101089477539
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-42-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-42",
+      "logits": [
+        22.545225143432617,
+        16.08123779296875
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-42-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-42",
+      "logits": [
+        24.087631225585938,
+        17.987085342407227
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-43-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-43",
+      "logits": [
+        11.852340698242188,
+        10.592344284057617
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-43-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-43",
+      "logits": [
+        11.61659049987793,
+        6.653215408325195
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-44-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-44",
+      "logits": [
+        6.060107231140137,
+        9.972658157348633
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-44-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-44",
+      "logits": [
+        9.454550743103027,
+        6.35732364654541
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-45-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-45",
+      "logits": [
+        21.29385757446289,
+        9.770669937133789
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-45-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-45",
+      "logits": [
+        17.637012481689453,
+        25.752197265625
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-46-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-46",
+      "logits": [
+        24.92325782775879,
+        18.26557159423828
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-46-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-46",
+      "logits": [
+        27.959630966186523,
+        18.49846649169922
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-47-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-47",
+      "logits": [
+        24.292375564575195,
+        16.42171287536621
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-47-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-47",
+      "logits": [
+        17.976699829101562,
+        24.46004867553711
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-48-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-48",
+      "logits": [
+        17.341867446899414,
+        26.590999603271484
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-48-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-48",
+      "logits": [
+        26.40351104736328,
+        18.9508056640625
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-49-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-49",
+      "logits": [
+        27.87213134765625,
+        13.787496566772461
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-49-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-49",
+      "logits": [
+        18.338497161865234,
+        13.469524383544922
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-50-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-50",
+      "logits": [
+        25.309215545654297,
+        16.50524139404297
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-50-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-50",
+      "logits": [
+        17.9296875,
+        24.54232406616211
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-51-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-51",
+      "logits": [
+        10.610233306884766,
+        19.034526824951172
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-51-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-51",
+      "logits": [
+        14.049371719360352,
+        11.328736305236816
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-52-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-52",
+      "logits": [
+        19.895687103271484,
+        21.065418243408203
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-52-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-52",
+      "logits": [
+        23.56689453125,
+        17.15928077697754
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-53-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-53",
+      "logits": [
+        14.737350463867188,
+        19.572973251342773
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-53-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-53",
+      "logits": [
+        15.747932434082031,
+        11.134969711303711
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-54-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-54",
+      "logits": [
+        18.513063430786133,
+        25.958160400390625
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-54-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-54",
+      "logits": [
+        18.155004501342773,
+        26.65938949584961
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-55-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-55",
+      "logits": [
+        19.388835906982422,
+        23.420211791992188
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-55-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-55",
+      "logits": [
+        15.574238777160645,
+        21.649887084960938
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-56-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-56",
+      "logits": [
+        26.829328536987305,
+        17.846784591674805
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-56-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-56",
+      "logits": [
+        22.38800048828125,
+        12.324469566345215
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-57-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-57",
+      "logits": [
+        25.482643127441406,
+        15.699186325073242
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-57-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-57",
+      "logits": [
+        17.815685272216797,
+        25.505483627319336
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-58-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-58",
+      "logits": [
+        19.777523040771484,
+        27.555957794189453
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-58-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-58",
+      "logits": [
+        26.388561248779297,
+        17.057065963745117
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-59-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-59",
+      "logits": [
+        16.563135147094727,
+        15.607423782348633
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-59-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-59",
+      "logits": [
+        18.27826499938965,
+        25.749780654907227
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-60-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-60",
+      "logits": [
+        13.859172821044922,
+        8.393903732299805
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-60-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-60",
+      "logits": [
+        15.442680358886719,
+        11.216268539428711
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-61-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-61",
+      "logits": [
+        10.280508995056152,
+        15.545833587646484
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-61-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-61",
+      "logits": [
+        10.157262802124023,
+        7.602118968963623
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-62-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-62",
+      "logits": [
+        15.533626556396484,
+        10.580606460571289
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-62-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-62",
+      "logits": [
+        22.961734771728516,
+        17.284454345703125
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-63-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-63",
+      "logits": [
+        12.131830215454102,
+        25.628215789794922
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-63-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-63",
+      "logits": [
+        23.987092971801758,
+        13.170400619506836
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-64-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-64",
+      "logits": [
+        28.582857131958008,
+        15.982133865356445
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-64-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-64",
+      "logits": [
+        29.883869171142578,
+        18.15250015258789
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-65-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-65",
+      "logits": [
+        21.089635848999023,
+        27.29346466064453
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-65-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-65",
+      "logits": [
+        17.358936309814453,
+        25.50884246826172
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-66-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-66",
+      "logits": [
+        19.162702560424805,
+        26.643253326416016
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-66-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-66",
+      "logits": [
+        26.877368927001953,
+        21.376327514648438
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-67-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-67",
+      "logits": [
+        25.281972885131836,
+        24.48868179321289
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-67-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-67",
+      "logits": [
+        19.520061492919922,
+        29.155990600585938
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-68-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-68",
+      "logits": [
+        18.07450294494629,
+        10.857955932617188
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-68-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-68",
+      "logits": [
+        17.62381362915039,
+        25.986974716186523
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-69-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-69",
+      "logits": [
+        13.507952690124512,
+        14.789148330688477
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-69-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-69",
+      "logits": [
+        12.632203102111816,
+        8.643009185791016
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-70-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-70",
+      "logits": [
+        17.26349449157715,
+        11.486849784851074
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-70-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-70",
+      "logits": [
+        19.57938003540039,
+        12.845413208007812
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-71-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-71",
+      "logits": [
+        8.737120628356934,
+        8.361222267150879
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-71-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-71",
+      "logits": [
+        8.762564659118652,
+        3.958540916442871
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-72-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-72",
+      "logits": [
+        18.096782684326172,
+        26.57596778869629
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-72-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-72",
+      "logits": [
+        18.072803497314453,
+        28.61300277709961
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-73-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-73",
+      "logits": [
+        22.572267532348633,
+        11.136219024658203
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-73-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-73",
+      "logits": [
+        26.214664459228516,
+        17.684154510498047
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-74-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-74",
+      "logits": [
+        23.080463409423828,
+        16.74456787109375
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-74-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-74",
+      "logits": [
+        19.9600887298584,
+        27.52620506286621
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-75-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-75",
+      "logits": [
+        27.352476119995117,
+        16.35308265686035
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-75-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-75",
+      "logits": [
+        19.641605377197266,
+        28.28062629699707
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-76-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-76",
+      "logits": [
+        18.68740463256836,
+        25.02259063720703
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-76-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-76",
+      "logits": [
+        23.154207229614258,
+        18.70633888244629
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-77-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-77",
+      "logits": [
+        19.02164077758789,
+        25.84321403503418
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-77-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-77",
+      "logits": [
+        23.91130828857422,
+        19.132320404052734
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-78-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-78",
+      "logits": [
+        25.43796157836914,
+        19.523086547851562
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-78-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-78",
+      "logits": [
+        25.616540908813477,
+        17.892393112182617
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-79-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-79",
+      "logits": [
+        14.899944305419922,
+        14.367301940917969
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-79-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-79",
+      "logits": [
+        16.298656463623047,
+        12.643867492675781
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-80-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-80",
+      "logits": [
+        10.498680114746094,
+        12.662942886352539
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-80-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-80",
+      "logits": [
+        11.167887687683105,
+        9.842406272888184
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-81-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-81",
+      "logits": [
+        29.766515731811523,
+        19.156291961669922
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-81-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-81",
+      "logits": [
+        15.008362770080566,
+        28.973485946655273
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-82-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-82",
+      "logits": [
+        16.3348388671875,
+        27.683536529541016
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-82-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-82",
+      "logits": [
+        19.559978485107422,
+        28.14429473876953
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-83-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-83",
+      "logits": [
+        10.922381401062012,
+        18.75318145751953
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-83-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-83",
+      "logits": [
+        21.6400146484375,
+        10.55490493774414
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-84-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-84",
+      "logits": [
+        22.018295288085938,
+        24.945144653320312
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-84-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-84",
+      "logits": [
+        25.428171157836914,
+        18.48113441467285
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-85-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-85",
+      "logits": [
+        20.720706939697266,
+        24.749759674072266
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-85-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-85",
+      "logits": [
+        22.550065994262695,
+        22.676589965820312
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-86-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-86",
+      "logits": [
+        23.58196449279785,
+        16.540172576904297
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-86-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-86",
+      "logits": [
+        18.600238800048828,
+        24.071487426757812
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-87-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-87",
+      "logits": [
+        5.179253101348877,
+        14.987013816833496
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-87-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-87",
+      "logits": [
+        11.14816665649414,
+        9.647416114807129
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-88-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-88",
+      "logits": [
+        25.932876586914062,
+        21.12334442138672
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-88-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-88",
+      "logits": [
+        25.805971145629883,
+        18.98065948486328
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-89-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-89",
+      "logits": [
+        12.839632034301758,
+        16.3800048828125
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-89-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-89",
+      "logits": [
+        13.840230941772461,
+        7.956221103668213
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-90-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-90",
+      "logits": [
+        16.009645462036133,
+        26.654905319213867
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-90-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-90",
+      "logits": [
+        29.087223052978516,
+        17.55850601196289
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-91-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-91",
+      "logits": [
+        24.401430130004883,
+        15.359785079956055
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-91-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-91",
+      "logits": [
+        16.172897338867188,
+        10.655521392822266
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-92-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-92",
+      "logits": [
+        20.81943130493164,
+        22.433006286621094
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-92-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-92",
+      "logits": [
+        25.27928352355957,
+        18.739463806152344
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-93-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-93",
+      "logits": [
+        26.99800682067871,
+        15.738395690917969
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-93-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-93",
+      "logits": [
+        17.99898338317871,
+        26.564720153808594
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-94-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-94",
+      "logits": [
+        18.362327575683594,
+        25.047515869140625
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-94-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-94",
+      "logits": [
+        23.875112533569336,
+        23.135986328125
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-95-rule-0",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-95",
+      "logits": [
+        19.143220901489258,
+        27.77224349975586
+      ],
+      "targets": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "policy-v3-20261002-calibration-image-95-rule-1",
+      "question": "decision",
+      "group": "policy-v3-20261002-calibration-image-95",
+      "logits": [
+        24.813528060913086,
+        16.73519515991211
+      ],
+      "targets": [
+        1.0,
+        0.0
+      ]
+    }
+  ],
+  "macro_family_expected_accuracy": 0.8861607142857143,
+  "accuracy_target_met": false,
+  "final_accuracy_target_met": false
+}

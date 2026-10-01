@@ -1,0 +1,70 @@
+{
+  "passed": true,
+  "source_sha256": "27ce70044fe5ace53df407c626af92f5966df5a1c16850e9a32ccef39c03d662",
+  "auditor_sha256": "2eecd7509df3992c122ca9aa837be84a3a755073051ac7deb3053d696cce8b47",
+  "feature_cache": {
+    "complete": true,
+    "rows": 14524,
+    "by_split": {
+      "train": 11212,
+      "dev": 3312
+    },
+    "features_sha256": "10304d3889d09c01c55f05fcba6d48068daed7f1f9a3a56cbeda8a25c9c2aff3",
+    "metadata_sha256": "4a81e5c10d1425ccdd1141fe7bece83609404b6d2d1274a964c84d45a6ae6378",
+    "specification_sha256": "3ff0186b30e46416428ca6acf79640d4a8fac8940182095986429f894375c640",
+    "elapsed_seconds": 964.4121443999466
+  },
+  "results": [
+    {
+      "checkpoint": "checkpoints\\veyra-foundation-v11",
+      "weights_sha256": "f13aa3346d7da369a2769eef7fa487747c97d1ba0878ea3af8f713463f463491",
+      "development_logits_sha256": "3c5fc301ff7485ce7e0533fc9cfa56e5867968ecad8cda291635e7828a1bf212",
+      "novel_workflow_accuracy": 0.4466666579246521,
+      "risk": {
+        "choice": {
+          "questions": 2092,
+          "risk_at_60pct_coverage": 0.09794486314058304,
+          "maximum_coverage_at_15pct_error": 0.777246653919694
+        },
+        "score": {
+          "questions": 640,
+          "risk_at_60pct_coverage": 0.511890709400177,
+          "maximum_coverage_at_15pct_error": 0.0
+        },
+        "noul": {
+          "questions": 580,
+          "risk_at_60pct_coverage": 0.36387214064598083,
+          "maximum_coverage_at_15pct_error": 0.1
+        }
+      },
+      "reported_metrics_reproduced": true
+    },
+    {
+      "checkpoint": "runs\\workflow-v12-workspace-study\\primitive\\epoch-2\\checkpoint",
+      "weights_sha256": "4bb3c3187ec37e6ad7f6634c8aeec9bafbbb90ebea89ebae0d26f7c844a87c72",
+      "development_logits_sha256": "2dbfa31ba1233e31855169c1e6fcfb655d94e627fc9c1f0c38a725af8af8801e",
+      "novel_workflow_accuracy": 0.7311111092567444,
+      "risk": {
+        "choice": {
+          "questions": 2092,
+          "risk_at_60pct_coverage": 0.06619920581579208,
+          "maximum_coverage_at_15pct_error": 0.9588910133843213
+        },
+        "score": {
+          "questions": 640,
+          "risk_at_60pct_coverage": 0.2590116262435913,
+          "maximum_coverage_at_15pct_error": 0.20625
+        },
+        "noul": {
+          "questions": 580,
+          "risk_at_60pct_coverage": 0.1370905190706253,
+          "maximum_coverage_at_15pct_error": 0.6862068965517242
+        }
+      },
+      "reported_metrics_reproduced": true
+    }
+  ],
+  "model_inference_used": false,
+  "calibration_or_final_used": false,
+  "release_allowed": false
+}

@@ -1,0 +1,7 @@
+{
+  "backbone_parameters_with_gradient": 150,
+  "backbone_parameters_with_nonzero_gradient": 150,
+  "maximum_absolute_gradient": 0.10789217054843903,
+  "same_decision_forward": true,
+  "optimizer_steps_before_check": 2
+}

@@ -1,0 +1,439 @@
+"""Fit one policy across three inspected calibration cohorts using fresh model outputs."""
+
+import argparse
+import ast
+import hashlib
+import json
+import math
+import shutil
+import time
+from datetime import datetime, timezone
+from pathlib import Path
+
+import numpy as np
+import torch
+from recovery_policy_rules import fit_policy
+from train_foundation_head import write
+
+from veyra.calibrate import fit_temperature
+from veyra.candidates import candidates_for
+from veyra.constants import QUESTION_TYPES
+from veyra.data import read_records
+from veyra.decision_metrics import observation, report, summarize
+from veyra.features import FeatureSample
+from veyra.option_model import OptionModel
+from veyra.probability import Calibration, typed_answer
+
+
+def digest(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def structural_annotations():
+    """Reporting metadata only; never supplied to the model or used to select an answer."""
+    snapshot = Path("reports/workflow-v12/source-snapshots/build_workflow_v12.py.txt")
+    expected = json.loads(Path("data/workflow-v12/protocol.json").read_text(encoding="utf-8"))[
+        "generator_sha256"
+    ]
+    if digest(snapshot) != expected:
+        raise ValueError("original rule structure snapshot changed")
+    tree = ast.parse(snapshot.read_text(encoding="utf-8"))
+    families = next(
+        ast.literal_eval(node.value)
+        for node in tree.body
+        if isinstance(node, ast.Assign)
+        and any(isinstance(target, ast.Name) and target.id == "FAMILIES" for target in node.targets)
+    )
+
+    def depth(expression):
+        if isinstance(expression, int):
+            return 0
+        terms = expression[2:] if expression[0] == "count" else expression[1:]
+        return 1 + max(depth(term) for term in terms)
+
+    return {
+        name: {"rule_count": len(rules), "boolean_operator_depth": max(depth(r[0]) for r in rules)}
+        for name, _, _, rules, _ in families
+    }, snapshot
+
+
+def expected_error(record, name, winner):
+    if "teacher_distribution" in record.tags:
+        gold = next((t[9:] for t in record.tags if t.startswith("gold_key:")), None)
+        if gold is not None:
+            return float(winner != gold)
+    return 1 - record.targets[name][winner]
+
+
+def augment(row, record, name):
+    critical = next((t[13:] for t in record.tags if t.startswith("critical_key:")), "")
+    row["condition"] = next((t[10:] for t in record.tags if t.startswith("condition:")), "none")
+    row["expected_error"] = expected_error(record, name, row["prediction"])
+    row["expected_cost"] = row["expected_error"]
+    if critical and row["prediction"] != critical:
+        row["expected_cost"] += 4 * record.targets[name].get(critical, 0.0)
+    row["critical_key"] = critical
+    return row
+
+
+def risk_report(rows):
+    ordered = sorted(
+        rows, key=lambda r: (-r["confidence"], hashlib.sha256(r["id"].encode()).hexdigest())
+    )
+    points = {}
+    for coverage in (0.5, 0.8, 0.9, 1.0):
+        accepted = ordered[: max(1, math.floor(len(ordered) * coverage))]
+        points[str(coverage)] = {
+            "accepted": len(accepted),
+            "coverage": len(accepted) / len(rows),
+            "expected_error": float(np.mean([r["expected_error"] for r in accepted])),
+            "expected_cost": float(np.mean([r["expected_cost"] for r in accepted])),
+        }
+    accepted = [r for r in rows if not r["abstained"]]
+    expected_ece = 0.0
+    for bin_index in range(15):
+        selected = [r for r in rows if min(14, int(r["confidence"] * 15)) == bin_index]
+        if selected:
+            expected_ece += (
+                len(selected)
+                / len(rows)
+                * abs(
+                    np.mean([r["confidence"] for r in selected])
+                    - np.mean([1 - r["expected_error"] for r in selected])
+                )
+            )
+    return {
+        "conditional_expected_ece_15_bins": float(expected_ece),
+        "matched_coverage": points,
+        "actual_policy": {
+            "accepted": len(accepted),
+            "coverage": len(accepted) / len(rows),
+            "abstention_rate": 1 - len(accepted) / len(rows),
+            "expected_error": float(np.mean([r["expected_error"] for r in accepted]))
+            if accepted
+            else None,
+            "expected_cost": float(np.mean([r["expected_cost"] for r in accepted]))
+            if accepted
+            else None,
+        },
+    }
+
+
+@torch.inference_mode()
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--checkpoint", type=Path, required=True)
+    parser.add_argument("--records", type=Path, default=Path("data/workflow-v12/records.jsonl"))
+    parser.add_argument("--split", choices=["dev", "calibration", "test"], required=True)
+    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--calibrated-output", type=Path)
+    parser.add_argument("--policy-design", type=Path)
+    parser.add_argument("--selection", type=Path)
+    parser.add_argument("--final-freeze", type=Path)
+    parser.add_argument("--baseline", action="store_true")
+    args = parser.parse_args()
+    if args.split != "calibration" or not args.calibrated_output or not args.policy_design:
+        raise ValueError("This frozen fitter supports declared calibration only")
+    if args.output.exists():
+        raise FileExistsError("evaluation output is immutable")
+    if args.calibrated_output and args.split != "calibration":
+        raise ValueError("only calibration data may fit probabilities or abstention")
+    if args.calibrated_output and args.calibrated_output.exists():
+        raise FileExistsError("calibrated checkpoint is immutable")
+    config_path = Path("configs/workflow-release-v12.json")
+    config = json.loads(config_path.read_text(encoding="utf-8"))
+    policy_design = None
+    if args.policy_design:
+        if not args.calibrated_output or not args.selection:
+            raise ValueError("a policy design requires calibrated output and frozen selection")
+        policy_design = json.loads(args.policy_design.read_text(encoding="utf-8"))
+        selected_policy = json.loads(args.selection.read_text(encoding="utf-8"))
+        fit_design = Path(policy_design["fitting_data_design"])
+        fit_data = json.loads(fit_design.read_text(encoding="utf-8"))
+        method = policy_design["method"]
+        if not (
+            policy_design["protocol"] == "workflow-recovery-cohort-policy-v13"
+            and policy_design["release_protocol_sha256"] == digest(config_path)
+            and selected_policy["study_protocol_sha256"] == digest(args.policy_design)
+            and policy_design["fitting_data_design_sha256"] == digest(fit_design)
+            and args.records == Path(fit_data["output"]) / "records.jsonl"
+            and method["name"] == "cohort_robust_empirical_policy"
+            and 0
+            < method["policy_fit_expected_error_max"]
+            < config["gates"]["uncertainty"]["calibration_expected_error_max"]
+            and method["policy_fit_minimum_coverage"]
+            == config["gates"]["uncertainty"]["calibration_minimum_coverage"]
+        ):
+            raise ValueError("undeclared conservative policy-fitting configuration")
+    weights_hash = digest(args.checkpoint / "head.safetensors")
+    manifest_hash = digest(args.checkpoint / "manifest.json")
+    if args.baseline:
+        if (
+            weights_hash != config["baseline_weights_sha256"]
+            or manifest_hash != config["baseline_manifest_sha256"]
+        ):
+            raise ValueError("baseline must be the unmodified frozen release")
+    elif args.split in {"calibration", "test"}:
+        if not args.selection:
+            raise ValueError("a frozen development selection is required")
+        selection = json.loads(args.selection.read_text(encoding="utf-8"))
+        if (
+            args.calibrated_output
+            and "workflow_recovery_v13" in selection.get("release_extensions", {})
+            and args.policy_design is None
+        ):
+            raise ValueError("conservative policy fitting requires its declared policy design")
+        if selection.get("eligible") is not True:
+            raise ValueError("selected candidate did not pass development requirements")
+        if selection["weights_sha256"] != weights_hash or selection[
+            "release_protocol_sha256"
+        ] != digest(config_path):
+            raise ValueError("candidate does not match the frozen selection")
+    if args.split == "test":
+        if not args.final_freeze:
+            raise ValueError("final evaluation needs a prewritten final-freeze record")
+        freeze = json.loads(args.final_freeze.read_text(encoding="utf-8"))
+        if freeze["records_sha256"] != digest(args.records) or freeze[
+            "release_protocol_sha256"
+        ] != digest(config_path):
+            raise ValueError("final data or release protocol mismatch")
+        if not args.baseline and (
+            freeze["weights_sha256"] != weights_hash or freeze["manifest_sha256"] != manifest_hash
+        ):
+            raise ValueError("final model changed after freezing")
+    records = [r for r in read_records(args.records) if r.split == args.split]
+    if not records or any(len(r.request.questions) != 1 for r in records):
+        raise ValueError("require single-question observation views")
+    annotations, structure_source = structural_annotations()
+    protocol = {
+        "started_at_utc": datetime.now(timezone.utc).isoformat(),
+        "arguments": vars(args),
+        "weights_sha256": weights_hash,
+        "manifest_sha256": manifest_hash,
+        "records_sha256": digest(args.records),
+        "release_protocol_sha256": digest(config_path),
+        "source_sha256": digest(Path(__file__)),
+        "rule_structure_source_sha256": digest(structure_source),
+        "boolean_operator_depth_definition": (
+            "Maximum nested Boolean operators in any supplied rule; atoms have depth zero. "
+            "Rule count is separate. Legacy rule_depth tags were rule counts and are not used."
+        ),
+        "token_length_bins": [256, 512, 1024, 2048],
+        "selection_sha256": digest(args.selection) if args.selection else None,
+        "policy_design_sha256": digest(args.policy_design) if args.policy_design else None,
+        "final_freeze_sha256": digest(args.final_freeze) if args.final_freeze else None,
+        "dependency_source_sha256": {
+            str(path): digest(path)
+            for path in (
+                Path("src/veyra/decision_metrics.py"),
+                Path("src/veyra/probability.py"),
+                Path("src/veyra/option_model.py"),
+                Path("src/veyra/calibrate.py"),
+                Path("scripts/recovery_policy_rules.py"),
+            )
+        },
+        "merged_bf16_deployment": True,
+        "probability_serialization": "typed_answer float32 softmax on the model device",
+        "subset_sha256": hashlib.sha256(
+            "".join(r.model_dump_json() + "\n" for r in records).encode()
+        ).hexdigest(),
+        "teacher_risk_interpretation": (
+            "Teacher consensus hard labels for policy errors; "
+            "exact conditional distributions for constructed uncertain cases"
+        ),
+    }
+    write(args.output / "protocol.json", protocol)
+    model = OptionModel.load(args.checkpoint, local_files_only=True, merge=True)
+    torch.set_num_threads(4)
+    samples, logits, descriptors, token_counts = [], [], [], []
+    started = time.perf_counter()
+    for index, record in enumerate(records, start=1):
+        outputs, tokens = model(record.request, args.records.parent)
+        for name, values in outputs.items():
+            question = record.request.questions[name]
+            candidates = candidates_for(question)
+            samples.append(
+                FeatureSample(
+                    features=torch.zeros(len(candidates), 1),
+                    context=torch.zeros(1),
+                    levels=torch.tensor([c.level for c in candidates]),
+                    targets=torch.tensor([record.targets[name][c.key] for c in candidates]),
+                    type_id=QUESTION_TYPES.index(question.type),
+                    record_id=record.id,
+                    group_id=record.group_id,
+                    split=record.split,
+                    family=record.family,
+                    language=record.language,
+                    question_id=name,
+                    tags=record.tags,
+                )
+            )
+            logits.append(values.cpu().float())
+            descriptors.append((record, name, question))
+            token_counts.append(tokens)
+        if index % 200 == 0:
+            progress = {
+                "evaluated": index,
+                "total": len(records),
+                "split": args.split,
+                "elapsed_seconds": time.perf_counter() - started,
+            }
+            write(args.output / "progress.json", progress)
+            print(json.dumps(progress), flush=True)
+    calibration, fitting = model.calibration, None
+    if args.calibrated_output:
+        temperatures, thresholds, always, fitting = [], [], [], {}
+        gate = config["gates"]["uncertainty"]
+        fit_error_max = (
+            policy_design["method"]["policy_fit_expected_error_max"]
+            if policy_design
+            else gate["calibration_expected_error_max"]
+        )
+        for type_id, kind in enumerate(QUESTION_TYPES):
+            fitting_indices, policy_indices = [], []
+            for i, sample in enumerate(samples):
+                if sample.type_id == type_id:
+                    bucket = int(hashlib.sha256(sample.group_id.encode()).hexdigest()[:8], 16) % 2
+                    (fitting_indices if bucket == 0 else policy_indices).append(i)
+            if not fitting_indices or not policy_indices:
+                raise ValueError("insufficient independent calibration groups")
+            temperature = max(
+                1.0,
+                fit_temperature(
+                    [samples[i] for i in fitting_indices], [logits[i] for i in fitting_indices]
+                ),
+            )
+            policy = fit_policy(
+                policy_indices,
+                logits,
+                descriptors,
+                temperature,
+                fit_error_max,
+                gate["calibration_minimum_coverage"],
+                model.encoder.device,
+            )
+            temperatures.append(temperature)
+            thresholds.append(policy["threshold"])
+            if policy["always_abstain"]:
+                always.append(kind)
+            fitting[kind] = {
+                **policy,
+                "policy_fit_expected_error_max": fit_error_max,
+                "temperature": temperature,
+                "temperature_questions": len(fitting_indices),
+                "temperature_group_ids": sorted({samples[i].group_id for i in fitting_indices}),
+                "policy_group_ids": sorted({samples[i].group_id for i in policy_indices}),
+            }
+        calibration = Calibration(
+            tuple(temperatures),
+            tuple(thresholds),
+            tuple(QUESTION_TYPES),
+            tuple(QUESTION_TYPES),
+            tuple(always),
+        )
+    rows = []
+    for (record, name, question), values, tokens in zip(
+        descriptors, logits, token_counts, strict=True
+    ):
+        answer = typed_answer(question, values.to(model.encoder.device), calibration)
+        row = augment(
+            observation(record, name, answer["probabilities"], abstained=answer["abstained"]),
+            record,
+            name,
+        )
+        row["confidence"] = answer["confidence"]
+        row["input_tokens"] = tokens
+        row["token_length_bin"] = next(
+            str(limit) for limit in (256, 512, 1024, 2048) if tokens <= limit
+        )
+        row.update(
+            annotations.get(
+                record.family,
+                {
+                    "rule_count": "unannotated",
+                    "boolean_operator_depth": "unannotated",
+                },
+            )
+        )
+        rows.append(row)
+    serialized_policy_check = None
+    if args.calibrated_output:
+        serialized_policy_check = {}
+        for kind, fit in fitting.items():
+            policy_groups = set(fit["policy_group_ids"])
+            selected = [r for r in rows if r["type"] == kind and r["group"] in policy_groups]
+            accepted = [r for r in selected if not r["abstained"]]
+            error = sum(r["expected_error"] for r in accepted) / len(accepted) if accepted else None
+            matches = (
+                len(selected) == fit["questions"]
+                and len(accepted) == fit["accepted"]
+                and (
+                    error == fit["expected_error"]
+                    or (
+                        error is not None
+                        and fit["expected_error"] is not None
+                        and abs(error - fit["expected_error"]) <= 1e-12
+                    )
+                )
+            )
+            serialized_policy_check[kind] = {
+                "matches_fitted_policy": matches,
+                "questions": len(selected),
+                "accepted": len(accepted),
+                "expected_error": error,
+            }
+            if not matches:
+                raise ValueError(
+                    "serialized runtime policy differs from the fitted policy: " + kind
+                )
+        args.calibrated_output.mkdir(parents=True)
+        shutil.copyfile(
+            args.checkpoint / "head.safetensors", args.calibrated_output / "head.safetensors"
+        )
+        manifest = json.loads((args.checkpoint / "manifest.json").read_text(encoding="utf-8"))
+        manifest["calibration"] = calibration.to_dict()
+        manifest["training"]["intermediate"] = not all(x["passed"] for x in fitting.values())
+        if args.selection and selection.get("release_extensions"):
+            manifest["training"]["release_extensions"] = selection["release_extensions"]
+        manifest["training"]["calibration"] = {
+            "split": "calibration",
+            "group_disjoint": True,
+            "protocol": protocol,
+            "fits": fitting,
+            "serialized_policy_check": serialized_policy_check,
+            "all_policy_requirements_passed": all(x["passed"] for x in fitting.values()),
+        }
+        write(args.calibrated_output / "manifest.json", manifest)
+    path = args.output / "predictions.jsonl"
+    path.write_text(
+        "".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows),
+        encoding="utf-8",
+        newline="\n",
+    )
+    result = {
+        "protocol": protocol,
+        **report(rows, bootstrap=args.split == "test"),
+        "risk": risk_report(rows),
+        "calibration": calibration.to_dict(),
+        "fitting": fitting,
+        "serialized_policy_check": serialized_policy_check,
+        "calibrated_manifest_sha256": digest(args.calibrated_output / "manifest.json")
+        if args.calibrated_output
+        else None,
+        "predictions_sha256": digest(path),
+        "elapsed_seconds": time.perf_counter() - started,
+    }
+    for field in ("domain", "family", "condition", "token_length_bin", "boolean_operator_depth"):
+        result["detailed_by_" + field] = {
+            value: {
+                **summarize([r for r in rows if r[field] == value], bootstrap=args.split == "test"),
+                **risk_report([r for r in rows if r[field] == value]),
+            }
+            for value in sorted({r[field] for r in rows}, key=str)
+        }
+    write(args.output / "evaluation.json", result)
+    print(json.dumps({"overall": result["overall"], "risk": result["risk"]}), flush=True)
+
+
+if __name__ == "__main__":
+    main()

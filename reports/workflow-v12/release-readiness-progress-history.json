@@ -1,0 +1,1355 @@
+{
+  "release_allowed": false,
+  "status": "recovery_all_model_gates_passed_hf_verification_pending",
+  "required_priorities": [
+    1,
+    2
+  ],
+  "release_protocol_sha256": "d0e6c454fc10cfa080523cfcc66706dfe73cb32524f4ce74bf87a5d4edde6776",
+  "weights_sha256": "f13aa3346d7da369a2769eef7fa487747c97d1ba0878ea3af8f713463f463491",
+  "manifest_sha256": "dd4df10eba5880dc1bb0267502fe264eb1c5a730235619db9cd8cd74df87b1a9",
+  "checks": {},
+  "evidence_files": {
+    "reports/workflow-v12/curriculum-selection/comparison-status.json": "914a8b890b525092690825a554e432e11a905c49473e78839589d7dc30b8eab5",
+    "reports/workflow-v12/curriculum-selection/evaluation-status.json": "2df8c521baf3dc3935375c3a708ad38434363ab8259f8cdc80c837b3b522301a",
+    "reports/workflow-v12/curriculum-selection/matched-development-comparison.json": "24dbb3df5b188bed00316fbf5611ad1ab5e7a84511ac986a99154f9a502747c1",
+    "reports/workflow-v12/curriculum-selection/merged-baseline-dev.json": "f8c67a1b478ad54cb0344df05804cb94a8dc2e1f591aee0c9f8103ea72c39a8e",
+    "reports/workflow-v12/curriculum-selection/merged-dev-0.json": "1a6e27a7c23b6bb8e7671dd858b8576d50db07ae88dd8c3f388af263eaaf8ae9",
+    "reports/workflow-v12/curriculum-selection/merged-dev-1.json": "2b73f12fe63547e251cf25b4d396f4e9afb494a2dd9f59b2936c44f96997e71c",
+    "reports/workflow-v12/curriculum-selection/merged-dev-2.json": "8d360cf2be17f84250d81026ec65f36773feb3a706de5f3b58ca4e5e7bfe59f0",
+    "reports/workflow-v12/curriculum-selection/merged-dev-3.json": "e37777d56030bd65d8b2f9d7ec2cc76daf3331930f2d0fcd4127167ffce5c286",
+    "reports/workflow-v12/curriculum-selection/merged-dev-4.json": "3f056fc169d60623213206d03192a799dd0fe9f9d5cbb56f3d905307afec7842",
+    "reports/workflow-v12/curriculum-selection/protocol.json": "3c91136775d98d5de66a1f938d9409d0129fe3c11cdb257eb5453813b9d8b432",
+    "reports/workflow-v12/curriculum-selection/release-status.json": "209f80adf1b47536ed5ec5690924dfa99ebca2de1fb7ae9a6249f90850451c0b",
+    "reports/workflow-v12/curriculum-selection/selection.json": "a4033c8d7d5316954e2550bf3fe0ce46247e3c3c75aaff09592e930979e0a789",
+    "reports/workflow-v12/curriculum-selection/training-complete.json": "e7bc6ba0532fdd2952e02981be90dba235acfe85adfd6c08e838a1635284870b",
+    "reports/workflow-v12/policy-calibration/data-and-lineage-audit.json": "897d0e558ffd379181161225b59ad5cc882de61dd4ae5a3cafc1f9ff6c2797da",
+    "reports/workflow-v12/policy-calibration/data-preparation-complete.json": "e59caed8b1a19add0be0f25ad54ad536ccd389df3258ce95c93314a4168a14d0",
+    "reports/workflow-v12/policy-calibration/diagnosis.json": "8c94fdab628d846972e15b05bedc53e63f102f09c563129db74c879bfa1d594e",
+    "reports/workflow-v12/policy-calibration/environment-repair.json": "1ba65c3041b81aafe0e760347a616390924b4c059f626681c1e53108136985e8",
+    "reports/workflow-v12/policy-calibration/evaluate-workflow-before-margin.py.txt": "57752a9222398ed6a28da4d33685068adaab47dcc6b3b6f724b7c78158a566d4",
+    "reports/workflow-v12/policy-calibration/fit-data-protocol.json": "b4cd4213bf0add143dc558f11851ef524536ad7223db5bf01b63741529934be1",
+    "reports/workflow-v12/policy-calibration/fit-target-audit.json": "cc71e5fb4bae9f6e8c1b56827ec0548379fe018f98eeca07a2ac017ff90e16e0",
+    "reports/workflow-v12/policy-calibration/selection.json": "7f15a0c082abc7fed7edab9daeec9c329bb6ace82d48a569f58ab1459fd376a5",
+    "reports/workflow-v12/policy-calibration/validation-data-protocol.json": "08a1b1096260a3e5f3cf6f1fed556761018b4cdeec34140c1cca7b0b5aa3bf67",
+    "reports/workflow-v12/policy-calibration/validation-target-audit.json": "230bb25034389cf730b97e26712965a22de2697dc8c7a138642b0a11e94bbbe0",
+    "reports/workflow-v12/policy-calibration/calibration.json": "c2fafd6732a24c298ab5e44b7797cd4226b14d9271c7dc353d4d9cf233aa7ba3",
+    "reports/workflow-v12/policy-calibration/policy-freeze.json": "749066245626eed44498044d428fef28c168b28feab2edbb2b4b86973031b7e2",
+    "reports/workflow-v12/policy-calibration/independent-policy-validation.json": "7938c488150bae98b98ae55d36aea2deb4646d27a88986a739f174b9549de9ea",
+    "reports/workflow-v12/policy-calibration/population-shift-diagnosis.json": "b194c5808be6d23dda3d022f9619ca638542b3a2bbacdf2401920252da76b13b",
+    "reports/workflow-v12/policy-calibration/release-status.json": "69c709f98faef1205ccf60064739b742e2952cbbe1298f2f24476b741281b009",
+    "reports/workflow-v12/policy-calibration/validation-evaluation.json": "f6003ec399226d50080eeac5b4017cefd501e2ce6dc587760bc28eb078456d73",
+    "reports/workflow-v12/cohort-policy/combined-data-failure.json": "9be00336c43424c63e6eb3567db34939fef8d99ad94bc107f230fc71e8c8dff4",
+    "reports/workflow-v12/cohort-policy/combined-data-protocol.json": "8a4adf99f1b2b896f97674b18b2cbcd1d2feb73e89ab62a3e93e1ab3f58bbc0e",
+    "reports/workflow-v12/cohort-policy/data-and-lineage-audit.json": "06e08a2a8e070a9c6834f46e1c09e30cd61e5c0cb8d8e5dcb4f4ab2183b25916",
+    "reports/workflow-v12/cohort-policy/selection.json": "97a1668aa3070c290da166c30b5bd71e316993a8b7db6e072d921a41060d4e19",
+    "reports/workflow-v12/cohort-policy/validation-1-data-protocol.json": "3587bba6b06ce4c8304e2729ec089f00a33ac979849ba7710e7344271704ae2a",
+    "reports/workflow-v12/cohort-policy/validation-1-target-audit.json": "b2758402f85d616174d3c5fcda7fa944d3fdf6f3d86ab4008d14a1c1b41e9907",
+    "reports/workflow-v12/cohort-policy/validation-2-data-protocol.json": "a8819e2a17ee732c56e7db153d529ec31afc5a8d0d37aad1964932f617fa4ed0",
+    "reports/workflow-v12/cohort-policy/validation-2-target-audit.json": "a0066239a78c4985c0ff3a0847fdb1aeafab9a369e7a6f5154b89ebe2f70e5fe",
+    "reports/workflow-v12/cohort-policy/validation-data-complete.json": "f5595c6f19682486ec4831f0e63a4c1ea9fdfe4c1aba2f6572e077c1ade0ecff",
+    "reports/workflow-v12/cohort-policy/calibration.json": "8651034d9aec44a11bab332a1a02a8af45f952004acc921d5944eb0077a64478",
+    "reports/workflow-v12/cohort-policy/policy-freeze.json": "02607ed35d019b9c74a81f90f521d1e3d2fc54ef2df7fc68efa5c98f777c2640",
+    "reports/workflow-v12/cohort-policy/validation-1-evaluation.json": "25a58d8432c5f42a75799afd2e7a94a32040271d7a47d4010feb511707db533f",
+    "reports/workflow-v12/cohort-policy/validation-1-policy.json": "f619de5fcc28820bd953f58740153a5b96ab05a75972f5bc777144297ff73849",
+    "reports/workflow-v12/cohort-policy/validation-2-evaluation.json": "6c506a836847dffb013dd3b99a6da622b650475832fc80b80ed731884d4efa9c",
+    "reports/workflow-v12/cohort-policy/validation-2-policy.json": "b2e184ed19f9e3fa1eebda9ca91c02cf3fcc8a44dc0fab511fa74e43ffffc768",
+    "reports/workflow-v12/cohort-policy/final-freeze.json": "8dcf9972862d078bf276c00903b914cb424fdf9411d2bd1b79bccadba16c8e25",
+    "reports/workflow-v12/cohort-policy/previous-calibration-policy.json": "167b07b4a0e0bd669260df08aec931e17612b6361322e902048924e6bcebbb3c",
+    "reports/workflow-v12/cohort-policy/previous-evaluation.json": "7a5a518f43edeecd4a2e8d0a87f90baa56a69f32f457b977592d99661833be3a",
+    "reports/workflow-v12/cohort-policy/runtime-version.json": "aa93abda48172d84bad7928ddb571f869f351e3006dbadfebbab2f4271b285a7",
+    "reports/workflow-v12/cohort-policy/runtime-wheel.json": "351199e8a0a320b607b3ee95f9fffec8ef7686aa4263c57ad1226becb98c7c06",
+    "reports/workflow-v12/cohort-policy/baseline-final.json": "1e259b4a77f8462045a375d64ae086ab15404ce5d0d8823751aef3c3a27ad3ad",
+    "reports/workflow-v12/cohort-policy/candidate-final.json": "d9c80c97cebab629e2047787312ad319f669c06526caa0f45634dc07902c36aa",
+    "reports/workflow-v12/cohort-policy/completed-results.json": "7ac140076c9825300762469a87730620d3f205bc53c46e06ae4d663933b63e6d",
+    "reports/workflow-v12/cohort-policy/foundation-regression.json": "c5471c1da12c93d2ca601204f7005e2b2b4cce008ac67e75fcdbc6562cb5d09b",
+    "reports/workflow-v12/cohort-policy/legacy-regression.json": "e00c1d482148227eec59ccab49546170791119b93ade04995c32fe71dec4fbb8",
+    "reports/workflow-v12/cohort-policy/network-contract.json": "8a1352abac48a3a7a0eaa750975db0d9469fed9953dca0386f73316bb7668ad6",
+    "reports/workflow-v12/cohort-policy/official-regression.json": "79e918732e47f8e6da4996073952c96423b3ac1d59ae4ff2c938730d452d8c6d",
+    "reports/workflow-v12/cohort-policy/paired-final.json": "a1ba3d1f725542139151091997c86bf947d8a96275b39cdaeed59153a71c62d3",
+    "reports/workflow-v12/cohort-policy/photo-http.json": "935e66aa21a3c38e636ddd3f9e11bced78939068644a6409d7ac568c8ca9d848",
+    "reports/workflow-v12/cohort-policy/release-acceptance-supplemental.json": "72bebed73d0f1dfd45f884b89ed8c523b9a28847b2bf110c1b5ae73e3dacd58c",
+    "reports/workflow-v12/cohort-policy/release-acceptance.json": "f91cd0862c6d72ba612e2ab386c905ca76efd768577992f0f1c8a4c17aeca066",
+    "reports/workflow-v12/cohort-policy/release-status.json": "ac48e678ea65bd52d92d8e3fd3896fab357af164b6d05adca3fcdc8aa2ba3ab7",
+    "reports/workflow-v12/cohort-policy/runtime.json": "740b1c6927f16b826f215e41199560657c9545188def58c6901cf9f54505af17",
+    "reports/workflow-v13/backbone-recovery/parameter-plan.json": "1b938af51226036d8f7f99d676bc6599c7fe5eb959e5d2ca35e3ae5d094def4b",
+    "reports/workflow-v13/backbone-recovery/protocol.json": "5cc0bbef3e6e06e208ff70f6efbc586d56b98423ea636a4ec7ce2864e353974e",
+    "reports/workflow-v13/fresh-data/complete.json": "b2f7c2ca03f56a87f9aa512059bef0710f969dea1d9ce7921ad420d474712ea6",
+    "reports/workflow-v13/fresh-data/final-count-repair-execution.json": "eb067ac22a564eb4685523c6f815da8ee6999d489d4919566c3be59e753451df",
+    "reports/workflow-v13/fresh-data/final-protocol.json": "c9b6ed927479c1dbd06ba1cb2efb6001aaab16918870e8b961ff5b53ce4b4498",
+    "reports/workflow-v13/fresh-data/final-target-audit.json": "4f3b858f20e2713fbec3d563a88f6c935f1dfe4de99f8df6fa1d615393b9a4ed",
+    "reports/workflow-v13/fresh-data/initial-preparation-execution.json": "e7f6b8b3844790f90e6717b42dabf07172253d5309523c56124ea566e78c3f5b",
+    "reports/workflow-v13/fresh-data/initial-preparation-failure.json": "65a5d8e0770cb508803e956d70610857b39e0d91b66d41a0bee878ff3ca1575b",
+    "reports/workflow-v13/fresh-data/source-pool-repair-execution.json": "b5cce4afad729a390fc9c76e46ace5623d5d12ce41ff3c917111ae46c6c3e07f",
+    "reports/workflow-v13/fresh-data/source-pool-repair-failure.json": "9900ec1753635ad9ae6fbbcd43347b7ad345d8633542026c98e15ec01302f1e7",
+    "reports/workflow-v13/fresh-data/validation-1-protocol.json": "a968f25fc07e0cebd88c51a5312f1c4d4607b02826219926a12c66f4b93e0192",
+    "reports/workflow-v13/fresh-data/validation-1-target-audit.json": "00b85c216b4e767966861666dac544a70fa7dc52413e64d11cc8b84ae6dc81b3",
+    "reports/workflow-v13/fresh-data/validation-2-protocol.json": "827c412f6718d7e4cdd0622af9a9fc5156e4b559381c1a9491ffb4120dfd03c9",
+    "reports/workflow-v13/fresh-data/validation-2-target-audit.json": "802fb3915865071ed2ee0ae70316721ca90111b1fea9a55e263efb040590dfc1",
+    "reports/workflow-v13/readout-recovery/feature-manifest.json": "3ed8e46cae5214b5e9bfabb5dc9301fc2ce3f724adfbff6f67746bab24125c27",
+    "reports/workflow-v13/readout-recovery/feature-specification.json": "81a4da6dcfe4a8d794d59b6ce8a2381863393b9a5b8d20cf1ddba8b942d0a220",
+    "reports/workflow-v13/readout-recovery/interpolation-complete.json": "6d2b102312a50cd9d47320f4b84f805c0d31ecb2ea18934d207caa428d07cd8d",
+    "reports/workflow-v13/readout-recovery/interpolation-protocol.json": "23eacb66d79f267310ca45f5ae86e35df8043a477d6a03ea81cef33322c3c677",
+    "reports/workflow-v13/readout-recovery/selection.json": "64fc4a87c9808b877b0f89935c972842ce3c2cb1bb2b99f30c696f668f7555bc",
+    "reports/workflow-v13/readout-recovery/training-complete.json": "a89dba26454ce9923feb055a194dcf2dc56e40b638ffb1bb22903a9b4e4ae76a",
+    "reports/workflow-v13/readout-recovery/training-protocol.json": "8bb8114ce5e01d8e17b4965d68e5a0bd2bf1ffcf4a44cd9a15b037107b616c09",
+    "reports/workflow-v13/backbone-memory-repair/parameter-plan.json": "1b938af51226036d8f7f99d676bc6599c7fe5eb959e5d2ca35e3ae5d094def4b",
+    "reports/workflow-v13/backbone-memory-repair/protocol.json": "70b613e32b4905dcfd6cc1fcdb84debe1e022883d83886d306ae4a1316bfdeb5",
+    "reports/workflow-v13/backbone-memory-repair/training-memory-probe.json": "d249ae6cdffc1d797149fc52e7ce30487397273dcef3a6410a7885b1d5c94706",
+    "reports/workflow-v13/backbone-recovery/execution-failure.json": "27bcde19acd37c5410ee45f0cae2501bb6d5c52281244664307f8db375b4cd6d",
+    "reports/workflow-v13/backbone-memory-repair/fraction-0.25-execution-equivalence.json": "1ed50371f7c18aa14282bbf07f74e8626de05ae09b2b36e36433bc0c44bc30a5",
+    "reports/workflow-v13/backbone-memory-repair/fraction-0.5-execution-equivalence.json": "f3a672a2d859e852ebc08a479fac8ea409f3315624832da89f0ba9c7fdb4bcfb",
+    "reports/workflow-v13/backbone-memory-repair/passed-prior-failure.json": "fa46624a9ab2efac8612c047f3184f247e0bc40a29eaa616f0571c2ec7821c5c",
+    "reports/workflow-v13/uncertainty-diagnosis/consumed-final-uncertainty.json": "52759def079184be598baac0923739ec5f0eb6b453fa22a8d3c6d55fbaf01d12",
+    "reports/workflow-v13/backbone-memory-repair/training-complete.json": "bf4bdfce630a7af995e2f09ac906bd7a2c5611b3a2a9b0e6bbcf8973238b5d15",
+    "reports/workflow-v13/backbone-memory-repair/fraction-0.25-development.json": "e3683755160f22606cf8adec436e6a3802eb34f7fb48bf4f5740844ee81e75a7",
+    "reports/workflow-v13/backbone-memory-repair/fraction-0.5-development.json": "2a05c8997dcffc746b34cce6544c6a9f81095297700deb2c80aa06acaaf24f49",
+    "reports/workflow-v13/backbone-memory-repair/selection.json": "56f4ddfd568afa57be5010b41b379ea19e879719ef6f127014fdf5f7c5186c02",
+    "reports/workflow-v13/backbone-memory-repair/fraction-1-development.json": "06dcee6fb6193d282b97083827c7e5e4fc068840aa9a78501173c9460b137e32",
+    "reports/workflow-v13/policy-validation/selection.json": "dd30915e707292eabd6e5b44e5933172e89ac1a9caa5af24d0233e836904473d",
+    "reports/workflow-v13/policy-validation/admission-audit.json": "40fcc4b6408010da0925b56e4105caa0cb49ce54f1a3ede62ff633de1da797ed",
+    "reports/workflow-v13/policy-validation/calibration.json": "ed4640081bdca2536aef6363c6a358b9a12b9033241d9184794fb3f80edb849c",
+    "reports/workflow-v13/policy-validation/policy-freeze.json": "91c456def4110ca74c5448b1d154e7574a15b4021863e48c1740e5ee40e6a728",
+    "reports/workflow-v13/policy-validation/validation-1-policy.json": "2d38199e2cdab861f671e0efe709b32008338cafc5c38888aa511a2a7a4e0a33",
+    "reports/workflow-v13/policy-validation/validation-1-evaluation.json": "b390a2ed2916d59a3fcefb5dfd8e4b25d0f07ce8bb65808de757b81a559af069",
+    "reports/workflow-v13/policy-validation/validation-2-policy.json": "013628253e3fa6c0a19f10d5e5642119a8fe69eee839c6787efca854c89c269b",
+    "reports/workflow-v13/policy-validation/validation-2-evaluation.json": "5305b6d217f641d9467f34d51f0e8470282c16c9c083dd25198a5437c5231038",
+    "reports/workflow-v13/policy-validation/previous-evaluation.json": "6a4b5692ab3b51f79fb33d51969fa5b311c96f65a3b62a41bacac49efaca9c58",
+    "reports/workflow-v13/policy-validation/previous-calibration-policy.json": "db60651c968dd24448cb516f0d6c9159fc4bbe8a15b602e78a5fc2c4302eafd1",
+    "reports/workflow-v13/policy-validation/pre-final-policy-checks.json": "d3f6cd889a2a5af5d5a70f3bd31b3d4a6f0c22e105b06fd10f9b035b9c659f99",
+    "reports/workflow-v13/final-evaluation/runtime-transition.json": "6f3672e56d4bef52263e11260cb0cc87c5c783ba3831ef7c71beca2b54d4f075",
+    "reports/workflow-v13/final-evaluation/runtime-wheel.json": "c309d8d0d86886aded8a8db9409689c3da2f14876a1e3b531ae8d73dbfadafad",
+    "reports/workflow-v13/final-evaluation/final-freeze.json": "093acb58e85a7bb75b8747b761e7f071fa68a328cfbfc7dea9b29bc53f12868b",
+    "reports/workflow-v13/final-evaluation/baseline-final.json": "7cbb308897ddfe5937ced15767749ee4f7f7cebf5df07429c77f3e06dc0416fb",
+    "reports/workflow-v13/final-evaluation/candidate-final.json": "342a460bf453fc5d607d9a86bcbec7a6d81fa33fa831bf7fb666998938cf4346",
+    "reports/workflow-v13/final-evaluation/paired-final.json": "38e4d24d165d810f03b8d216084be6296ddf95753338b9b861970898e35a7b81",
+    "reports/workflow-v13/final-evaluation/official-regression.json": "a27345050205190cdd1119878e3f26e9561758cd9b2d5069b0936f626a25024d",
+    "reports/workflow-v13/final-evaluation/legacy-regression.json": "7131dd99d01bea2f2a508e084491f9cb975d958928b68bf254bc796d8f39da30",
+    "reports/workflow-v13/uncertainty-diagnosis/recovery-final-uncertainty.json": "d5cc674cb319e740354259fa1050728d2f78612138cc7ed39415f49e3896e609",
+    "reports/workflow-v13/final-evaluation/foundation-regression.json": "e89d5a090cbe70f1e18ae94ae13fbc233baf729bf88add9827f93efa828d93e1",
+    "reports/workflow-v13/final-evaluation/runtime.json": "3d8d6a2bd9d183b58e5daedf753f240b7f6956acf0062c0a63f34f47b245a0a0",
+    "reports/workflow-v13/final-evaluation/photo-http.json": "97cce40fdc2964b17f8b8bf2c958cc678d7aa8f3fe7178fe54f918b6b21f87a3",
+    "reports/workflow-v13/final-evaluation/network-contract.json": "a6f4c8078cd48f997fcf30ff7fa32b4fade90d3b7510b519fde637a8fe176bce",
+    "reports/workflow-v13/final-evaluation/release-acceptance.json": "9356095e3e53c0be2c5b6d10be0ad6853657e7b9d13a30b2b0699202de679684"
+  },
+  "reason": "The selected recovery passed all 14 fixed model acceptance checks, including fresh paired final improvement, both independent policy validations, original regressions, 114.94 ms photo HTTP p95 and one-forward/zero-generation inference. HF packaging and exact bundled-wheel inference remain required before preparation is complete. Actual HF publication is separately configured.",
+  "updated_at_utc": "2026-10-01T01:28:34.085501+00:00",
+  "evaluation_pipeline": "scripts/run_cohort_policy_release.py",
+  "cached_development_metrics_reproduced": true,
+  "interim_development": {
+    "report": "reports/workflow-v12/depth-study/full_depth-epoch-2.json",
+    "report_sha256": "03e4ea64faaaee6bcd1316b83fae0120b7da3f134f016e755f52c009700fdfd1",
+    "weights_sha256": "86ce942f8ef036f2279422a3a2665248b98adcb0effa91bafdf15d9c14c6c83e",
+    "manifest_sha256": "5b6447b8cea24e6c74845496889c142bbaf6415a34cf91a2293d7b88658bb9ba",
+    "inference": "unmerged",
+    "new_workflow_accuracy": 0.8999999761581421,
+    "known_workflow_accuracy": 0.8083333373069763,
+    "uncertainty_nll": 0.7742339372634888,
+    "uncertainty_brier_vs_soft": 0.13641779124736786,
+    "uncertainty_cost_at_80pct": 0.6205493807792664,
+    "per_type_coverage_under_15pct_error": {
+      "choice": 1.0,
+      "score": 0.9390625,
+      "noul": 1.0
+    },
+    "score_error_at_60pct_coverage": 0.10588619112968445,
+    "matched_control_complete": true,
+    "merged_selection_complete": true,
+    "release_allowed": false,
+    "matched_control_epochs_completed": 2
+  },
+  "interim_matched_epoch1": {
+    "full_depth": {
+      "report": "reports/workflow-v12/depth-study/full_depth-epoch-1.json",
+      "report_sha256": "0a796d84a2a71d9de13c0f5b4a478296c4b8b246e2880781bcaf39f78802da8e",
+      "weights_sha256": "51fd8826f281d627d5390e1d073d1c31f10d5cec44cb6d8609987480fde34ace",
+      "manifest_sha256": "be5794e0cfcd4e3f12fd571d44f9e47da1520ebdfb7363214c2cf2cc05917087",
+      "inference": "unmerged",
+      "epoch": 1,
+      "new_workflow_accuracy": 0.8533333539962769,
+      "known_workflow_accuracy": 0.7716666460037231,
+      "uncertainty_nll": 0.833091139793396,
+      "uncertainty_brier_vs_soft": 0.17175938189029694,
+      "uncertainty_cost_at_80pct": 0.5905088782310486,
+      "per_type_coverage_under_15pct_error": {
+        "choice": 1.0,
+        "score": 0.64375,
+        "noul": 0.9327586206896552
+      },
+      "score_error_at_60pct_coverage": 0.14516927301883698,
+      "release_allowed": false
+    },
+    "late_control": {
+      "report": "reports/workflow-v12/depth-study/late_control-epoch-1.json",
+      "report_sha256": "ff4230267887224ddc668858eebf4c5ca75dbedadb150e53dddfb17e3bfa8616",
+      "weights_sha256": "d1f227739117be1b93a435387455321eb4ddd4b6e7e3388a1c0e183a9d72e66c",
+      "manifest_sha256": "6a5b5d5acf7b713d473854f7bc9e24700e18d7fdf344cb7e70c0a99d97c3f3f1",
+      "inference": "unmerged",
+      "epoch": 1,
+      "new_workflow_accuracy": 0.7588889002799988,
+      "known_workflow_accuracy": 0.7716666460037231,
+      "uncertainty_nll": 0.8545127511024475,
+      "uncertainty_brier_vs_soft": 0.2024250030517578,
+      "uncertainty_cost_at_80pct": 0.7751335501670837,
+      "per_type_coverage_under_15pct_error": {
+        "choice": 0.9866156787762906,
+        "score": 0.2421875,
+        "noul": 0.7413793103448276
+      },
+      "score_error_at_60pct_coverage": 0.22204531729221344,
+      "release_allowed": false
+    },
+    "new_workflow_accuracy_delta_full_minus_control": 0.09444445371627808,
+    "significance_tested": false,
+    "limitation": "Unmerged point estimates from one seed and repeatedly inspected development. The completed merged comparison is reported separately; these diagnostics are not independent final evidence.",
+    "release_allowed": false
+  },
+  "interim_matched_epoch2": {
+    "full_depth": {
+      "report": "reports/workflow-v12/depth-study/full_depth-epoch-2.json",
+      "report_sha256": "03e4ea64faaaee6bcd1316b83fae0120b7da3f134f016e755f52c009700fdfd1",
+      "weights_sha256": "86ce942f8ef036f2279422a3a2665248b98adcb0effa91bafdf15d9c14c6c83e",
+      "manifest_sha256": "5b6447b8cea24e6c74845496889c142bbaf6415a34cf91a2293d7b88658bb9ba",
+      "inference": "unmerged",
+      "epoch": 2,
+      "new_workflow_accuracy": 0.8999999761581421,
+      "known_workflow_accuracy": 0.8083333373069763,
+      "uncertainty_nll": 0.7742339372634888,
+      "uncertainty_brier_vs_soft": 0.13641779124736786,
+      "uncertainty_cost_at_80pct": 0.6205493807792664,
+      "per_type_coverage_under_15pct_error": {
+        "choice": 1.0,
+        "score": 0.9390625,
+        "noul": 1.0
+      },
+      "score_error_at_60pct_coverage": 0.10588619112968445,
+      "release_allowed": false
+    },
+    "late_control": {
+      "report": "reports/workflow-v12/depth-study/late_control-epoch-2.json",
+      "report_sha256": "d8df6ea9f9de91463ccae02d231fd30dd486f037266f3b2dfb777713ad00d3d8",
+      "weights_sha256": "612a5ebd4b07fbb5c4396ad002ab24b8653be1615cd918bc2997e672fcf0a832",
+      "manifest_sha256": "f7ec0cd11903e7f80d45246cf3e5862e5348f5fa0a1d00efa324bc8fc30356de",
+      "inference": "unmerged",
+      "epoch": 2,
+      "new_workflow_accuracy": 0.7699999809265137,
+      "known_workflow_accuracy": 0.7850000262260437,
+      "uncertainty_nll": 0.8738158941268921,
+      "uncertainty_brier_vs_soft": 0.20840363204479218,
+      "uncertainty_cost_at_80pct": 0.8428434729576111,
+      "per_type_coverage_under_15pct_error": {
+        "choice": 0.9947418738049714,
+        "score": 0.2609375,
+        "noul": 0.8275862068965517
+      },
+      "score_error_at_60pct_coverage": 0.2028132826089859,
+      "release_allowed": false
+    },
+    "training_seed": 211,
+    "new_workflow_accuracy_delta_full_minus_control": 0.12999999523162842,
+    "significance_tested": false,
+    "limitation": "Unmerged point estimates from one seed and repeatedly inspected development. The completed merged comparison is reported separately; these diagnostics are not independent final evidence.",
+    "release_allowed": false
+  },
+  "training_completion": {
+    "report": "reports/workflow-v12/depth-study/study-complete.json",
+    "sha256": "17ee3301d1c43461a9631c515800f30415b91a2d38895c86183b7cf465e75a53",
+    "completed_at_utc": "2026-09-30T20:25:32.027961+00:00",
+    "arms": [
+      "full_depth",
+      "late_control"
+    ],
+    "training_forwards_per_arm": 30104,
+    "optimizer_steps_per_arm": 3764
+  },
+  "final_predictions_started": false,
+  "latest_merged_development": {
+    "study": "matched_depth_adaptation",
+    "selection_report": "reports/workflow-v12/depth-selection/selection.json",
+    "selection_sha256": "18ef8e8beb527ac78933aa8eb6b050e4c8d6880ddc6f41f5a29d093ba29c1bfb",
+    "checkpoint": "runs/workflow-v12-depth-study/full_depth/epoch-2/checkpoint",
+    "weights_sha256": "86ce942f8ef036f2279422a3a2665248b98adcb0effa91bafdf15d9c14c6c83e",
+    "manifest_sha256": "5b6447b8cea24e6c74845496889c142bbaf6415a34cf91a2293d7b88658bb9ba",
+    "inference": "merged_bfloat16",
+    "development_eligible": true,
+    "candidate_count": 5,
+    "eligible_candidate_count": 2,
+    "new_workflow_accuracy": 0.894444465637207,
+    "known_workflow_accuracy": 0.8066666722297668,
+    "photo_accuracy": 0.9683333039283752,
+    "text_nli_accuracy": 0.8822222352027893,
+    "text_intent_accuracy": 0.8441558480262756,
+    "uncertainty_nll": 0.7716500163078308,
+    "uncertainty_brier_vs_soft": 0.13586151599884033,
+    "uncertainty_cost_at_80pct": 0.5928553938865662,
+    "per_type_coverage_under_15pct_error": {
+      "choice": 1.0,
+      "score": 0.9109375,
+      "noul": 1.0
+    },
+    "score_error_at_60pct_coverage": 0.10875076800584793,
+    "matched_comparison_report": "reports/workflow-v12/depth-selection/matched-development-comparison.json",
+    "matched_comparison_sha256": "907a262752c04f2c57d35e70df67c7a81ab364ba76b1767cdd916969cefa1ba0",
+    "development_audit_report": "reports/workflow-v12/depth-selection/development-audit.json",
+    "development_audit_sha256": "9190d7ab30e3018d509772014c0c201e288f6d5dbed7782cdb93d0b4ea6844c7",
+    "development_audit_passed": true,
+    "release_allowed": false
+  },
+  "next_experiment_preparation": {
+    "status": "execution_profile_complete_training_declared",
+    "report": "reports/workflow-v12/depth-feasibility/results.json",
+    "report_sha256": "c1069fa3a54ffaf30ad9dd6fba4488dcfdb18e890d4aad710bd6e71d80f3343c",
+    "configuration": "configs/workflow-depth-feasibility-v12.json",
+    "configuration_sha256": "0108ef7678770b5ddf7163c5d5c7da88c95d16cbbfd6ef8821d1b0a8a405b44e",
+    "maximum_allocated_mib": 4625.412109375,
+    "parameter_values_unchanged": true,
+    "new_trained_candidate": false,
+    "execution_profile": {
+      "report": "reports/workflow-v12/depth-execution/results.json",
+      "sha256": "fd285c85f82debe20dfa0f8f8be47cbab19784375c95b8d80921d0173d935e28",
+      "recommended_strategy": "earlier12",
+      "maximum_allocated_mib": 6604.02490234375,
+      "measured_gradient_difference": 0.0,
+      "parameter_values_unchanged": true
+    }
+  },
+  "active_study": {
+    "configuration": "configs/workflow-depth-study-v12.json",
+    "configuration_sha256": "d96024a725b0935dd4b4fd528161adeceffbcd3522f0dfb03f4d743d8eb12380",
+    "status": "merged_selection_passed_previous_policy_failed",
+    "epochs_per_arm": 2,
+    "arms": [
+      "full_depth",
+      "late_control"
+    ],
+    "training_plan_sha256": "47e037e36221355f031556e4e9145be0629e8ae7561d43094653dd59e7d4d947",
+    "release_allowed": false,
+    "calibration_or_final_started": true,
+    "training_protocol_sha256": "07634b77db1d7eba4757cdb1f6e26f93c50e3ed80b135429da58f54c39a101b9",
+    "evaluation_pipeline": "scripts/run_depth_release_evaluation.py",
+    "evidence_files": {
+      "reports/workflow-v12/depth-study/cached-development-audit.json": "107051222925a7192d54a94348eddf91dc12168905a64e20dc91bf5f0e229e3b",
+      "reports/workflow-v12/depth-study/full-depth-complete.json": "78e36579ac6b5be09888c2970709c0ef7a71ba82e5e3fce831fc07c026403aec",
+      "reports/workflow-v12/depth-study/full-depth-first-gradient.json": "e7ac633ca9cecee059fe833326f2800b8431d1d6160712d198a6814832833788",
+      "reports/workflow-v12/depth-study/full-depth-initialization.json": "392612c0976f185031c82c69684ecb2947ebcdd91a435d960842b24f7352d926",
+      "reports/workflow-v12/depth-study/full-depth-protocol.json": "07634b77db1d7eba4757cdb1f6e26f93c50e3ed80b135429da58f54c39a101b9",
+      "reports/workflow-v12/depth-study/full_depth-epoch-1.json": "0a796d84a2a71d9de13c0f5b4a478296c4b8b246e2880781bcaf39f78802da8e",
+      "reports/workflow-v12/depth-study/full_depth-epoch-2.json": "03e4ea64faaaee6bcd1316b83fae0120b7da3f134f016e755f52c009700fdfd1",
+      "reports/workflow-v12/depth-study/hf-evidence-inventory.json": "b5b4d7da3db2635edb96b095030eec023e3db9db46ffe4bc4244f7c7100d0515",
+      "reports/workflow-v12/depth-study/late-control-complete.json": "30b17a5c80231367c1fc91acd4f3a132b3b201bea2c719c8d06c0e81df37d5b0",
+      "reports/workflow-v12/depth-study/late-control-first-gradient.json": "e7ac633ca9cecee059fe833326f2800b8431d1d6160712d198a6814832833788",
+      "reports/workflow-v12/depth-study/late-control-initialization.json": "eaef0095372632d13d11315045e196ee9cf4c5b350a2d7e5e7a248ee0d50327d",
+      "reports/workflow-v12/depth-study/late-control-protocol.json": "3220cb4ccbd717b41a6c1d6e5911668335c9e3748a4a44857e1721e434a94b35",
+      "reports/workflow-v12/depth-study/late_control-epoch-1.json": "ff4230267887224ddc668858eebf4c5ca75dbedadb150e53dddfb17e3bfa8616",
+      "reports/workflow-v12/depth-study/late_control-epoch-2.json": "d8df6ea9f9de91463ccae02d231fd30dd486f037266f3b2dfb777713ad00d3d8",
+      "reports/workflow-v12/depth-study/merged-selection-protocol.json": "70c11a2dc54367a4e0f81b5676e08c5fd55553fdb6c819e48d415aba780dbf60",
+      "reports/workflow-v12/depth-study/study-complete.json": "17ee3301d1c43461a9631c515800f30415b91a2d38895c86183b7cf465e75a53",
+      "reports/workflow-v12/depth-study/training-plan-audit.json": "3a170e738c88b3d8c41261f3b135f1c5c53146e52fd122b2e9ba4c42b8d3ac8d"
+    },
+    "hf_input_inventory_audited": true,
+    "completed_epochs": {
+      "full_depth": 2,
+      "late_control": 2
+    },
+    "interim_all_type_coverage_screen_passed": true,
+    "merged_selection_complete": true,
+    "control_startup_verification": {
+      "initialization_matches_reference": true,
+      "identical_initialization_fields": [
+        "trainable_parameter_sha256",
+        "parameter_group_sha256",
+        "parameter_count_by_group",
+        "expansion",
+        "configuration_sha256"
+      ],
+      "reference_initialization_sha256": "392612c0976f185031c82c69684ecb2947ebcdd91a435d960842b24f7352d926",
+      "control_initialization_sha256": "eaef0095372632d13d11315045e196ee9cf4c5b350a2d7e5e7a248ee0d50327d",
+      "first_gradient_norms_identical": true,
+      "first_gradient_sha256": "e7ac633ca9cecee059fe833326f2800b8431d1d6160712d198a6814832833788",
+      "learning_rate_multipliers": {
+        "full_depth": 1.0,
+        "late_control": 0.0
+      },
+      "complete_study_audit_pending": false
+    },
+    "control_training_protocol_sha256": "3220cb4ccbd717b41a6c1d6e5911668335c9e3748a4a44857e1721e434a94b35",
+    "interim_all_type_coverage_screen_checkpoint": "runs/workflow-v12-depth-study/full_depth/epoch-2/checkpoint",
+    "interim_coverage_screens": {
+      "full_depth/epoch-1": true,
+      "full_depth/epoch-2": true,
+      "late_control/epoch-1": false,
+      "late_control/epoch-2": false
+    },
+    "control_epoch1_saved_checkpoint_verification": {
+      "weights_sha256": "d1f227739117be1b93a435387455321eb4ddd4b6e7e3388a1c0e183a9d72e66c",
+      "manifest_sha256": "6a5b5d5acf7b713d473854f7bc9e24700e18d7fdf344cb7e70c0a99d97c3f3f1",
+      "earlier_b_matrices_exactly_zero": 75,
+      "stored_parameters": 7992384,
+      "all_serialized_values_finite": true,
+      "serialized_layout_verified": true,
+      "frozen_condition_readout_preserved": true,
+      "inference_contract_preserved": true,
+      "recorded_earlier_parameter_fingerprint_matches_initialization": true,
+      "training_sources_unchanged": true,
+      "optimizer_steps": 1882,
+      "training_forwards": 15052,
+      "complete_study_audit_pending": false
+    },
+    "control_epoch2_saved_checkpoint_verification": {
+      "weights_sha256": "612a5ebd4b07fbb5c4396ad002ab24b8653be1615cd918bc2997e672fcf0a832",
+      "manifest_sha256": "f7ec0cd11903e7f80d45246cf3e5862e5348f5fa0a1d00efa324bc8fc30356de",
+      "earlier_b_matrices_exactly_zero": 75,
+      "stored_parameters": 7992384,
+      "all_serialized_values_finite": true,
+      "serialized_layout_verified": true,
+      "frozen_condition_readout_preserved": true,
+      "inference_contract_preserved": true,
+      "recorded_earlier_parameter_fingerprint_matches_initialization": true,
+      "training_sources_unchanged": true,
+      "optimizer_steps": 3764,
+      "training_forwards": 30104,
+      "complete_study_audit_pending": false,
+      "earlier_a_and_b_identical_to_epoch1": true
+    },
+    "complete_study_training_audit": {
+      "passed": true,
+      "report": "reports/workflow-v12/depth-study/merged-selection-protocol.json",
+      "report_sha256": "70c11a2dc54367a4e0f81b5676e08c5fd55553fdb6c819e48d415aba780dbf60",
+      "json_pointer": "/training_audit",
+      "evidence_hashes_verified": 37,
+      "all_four_saved_checkpoints_inspected": true,
+      "all_serialized_values_finite": true,
+      "control_earlier_tensors_identical_across_epochs": true,
+      "release_allowed": false
+    },
+    "development_eligible": true,
+    "selected_checkpoint": "runs/workflow-v12-depth-study/full_depth/epoch-2/checkpoint",
+    "merged_evidence_files": {
+      "reports/workflow-v12/depth-selection/comparison-status.json": "1b1720e3bd70a291390305971ef7e6187d563d6505aa41d8433f7cb8b7673e52",
+      "reports/workflow-v12/depth-selection/development-audit.json": "9190d7ab30e3018d509772014c0c201e288f6d5dbed7782cdb93d0b4ea6844c7",
+      "reports/workflow-v12/depth-selection/evaluation-status.json": "66127f0b2a4cb098ba20e6b5fea4435ac791f52b0e1577ffaa3267680f1cf548",
+      "reports/workflow-v12/depth-selection/matched-development-comparison.json": "907a262752c04f2c57d35e70df67c7a81ab364ba76b1767cdd916969cefa1ba0",
+      "reports/workflow-v12/depth-selection/merged-baseline-dev.json": "f8c67a1b478ad54cb0344df05804cb94a8dc2e1f591aee0c9f8103ea72c39a8e",
+      "reports/workflow-v12/depth-selection/merged-dev-0.json": "8d360cf2be17f84250d81026ec65f36773feb3a706de5f3b58ca4e5e7bfe59f0",
+      "reports/workflow-v12/depth-selection/merged-dev-1.json": "498ec921f0af246692328f98836e595f875667290d4484e373c52e6b7635f900",
+      "reports/workflow-v12/depth-selection/merged-dev-2.json": "7f855680b957a7bb11374815c61122df1a5adbabff5fae9ffbddeb3f2c2815b9",
+      "reports/workflow-v12/depth-selection/merged-dev-3.json": "86d8e2ceddbe6e6401a4c458e94de06bd899d04643ab267f26c1939fabe01cfe",
+      "reports/workflow-v12/depth-selection/merged-dev-4.json": "70debd076ed40966538c61f1894df2efaadafcd2557ddcb665274b2421630a90",
+      "reports/workflow-v12/depth-selection/protocol.json": "70c11a2dc54367a4e0f81b5676e08c5fd55553fdb6c819e48d415aba780dbf60",
+      "reports/workflow-v12/depth-selection/runtime-version.json": "576ac0c69f98bbd78445443e6ee32d70cfc6cdd00712a65b48517b340dd06b0f",
+      "reports/workflow-v12/depth-selection/selection.json": "18ef8e8beb527ac78933aa8eb6b050e4c8d6880ddc6f41f5a29d093ba29c1bfb",
+      "reports/workflow-v12/depth-selection/training-complete.json": "17ee3301d1c43461a9631c515800f30415b91a2d38895c86183b7cf465e75a53",
+      "reports/workflow-v12/depth-selection/fresh-calibration.json": "db44862a548eda93dca2f4e1d86e6c10bf62967d7c1788d43b9c7560f18ee73a",
+      "reports/workflow-v12/depth-selection/previous-calibration.json": "9b14e788c505b6f729b230cd57cfb81d007d633ef8a4195fb480e6239660ee58",
+      "reports/workflow-v12/depth-selection/previous-calibration-policy.json": "b33c3f142a1f2bbe914fc36556cbbc56f3147bc99718afa59c3007bc4146d11e",
+      "reports/workflow-v12/depth-selection/release-status.json": "74e179d974b4ea3f81f5943d6c86887c3410ddb79ec4e5398a0b67c50ee536bf"
+    }
+  },
+  "previous_evaluation_pipeline": "scripts/run_curriculum_release_evaluation.py",
+  "prior_curriculum_interim_development": {
+    "report": "reports\\workflow-v12\\skill-curriculum\\skill_curriculum-epoch-2.json",
+    "report_sha256": "862857b14392773fbf83e9dcfb023da055588cb1fe981189985c9e5667ab6133",
+    "weights_sha256": "a8384ccd73746888526e65b46f95dd531faafcf6d267e131e6205f8199e41342",
+    "inference": "unmerged",
+    "new_workflow_accuracy": 0.7633333206176758,
+    "uncertainty_nll": 0.875885009765625,
+    "uncertainty_cost_at_80pct": 0.8691791296005249,
+    "per_type_coverage_under_15pct_error": {
+      "choice": 0.9880497131931166,
+      "score": 0.296875,
+      "noul": 0.8206896551724138
+    }
+  },
+  "prior_depth_epoch1_interim_development": {
+    "report": "reports/workflow-v12/depth-study/full_depth-epoch-1.json",
+    "report_sha256": "0a796d84a2a71d9de13c0f5b4a478296c4b8b246e2880781bcaf39f78802da8e",
+    "weights_sha256": "51fd8826f281d627d5390e1d073d1c31f10d5cec44cb6d8609987480fde34ace",
+    "manifest_sha256": "be5794e0cfcd4e3f12fd571d44f9e47da1520ebdfb7363214c2cf2cc05917087",
+    "inference": "unmerged",
+    "new_workflow_accuracy": 0.8533333539962769,
+    "known_workflow_accuracy": 0.7716666460037231,
+    "uncertainty_nll": 0.833091139793396,
+    "uncertainty_brier_vs_soft": 0.17175938189029694,
+    "uncertainty_cost_at_80pct": 0.5905088782310486,
+    "per_type_coverage_under_15pct_error": {
+      "choice": 1.0,
+      "score": 0.64375,
+      "noul": 0.9327586206896552
+    },
+    "score_error_at_60pct_coverage": 0.14516927301883698,
+    "matched_control_complete": false,
+    "merged_selection_complete": false,
+    "release_allowed": false
+  },
+  "interim_control_development": {
+    "report": "reports/workflow-v12/depth-study/late_control-epoch-2.json",
+    "report_sha256": "d8df6ea9f9de91463ccae02d231fd30dd486f037266f3b2dfb777713ad00d3d8",
+    "weights_sha256": "612a5ebd4b07fbb5c4396ad002ab24b8653be1615cd918bc2997e672fcf0a832",
+    "manifest_sha256": "f7ec0cd11903e7f80d45246cf3e5862e5348f5fa0a1d00efa324bc8fc30356de",
+    "inference": "unmerged",
+    "epoch": 2,
+    "new_workflow_accuracy": 0.7699999809265137,
+    "known_workflow_accuracy": 0.7850000262260437,
+    "uncertainty_nll": 0.8738158941268921,
+    "uncertainty_brier_vs_soft": 0.20840363204479218,
+    "uncertainty_cost_at_80pct": 0.8428434729576111,
+    "per_type_coverage_under_15pct_error": {
+      "choice": 0.9947418738049714,
+      "score": 0.2609375,
+      "noul": 0.8275862068965517
+    },
+    "score_error_at_60pct_coverage": 0.2028132826089859,
+    "release_allowed": false
+  },
+  "prior_curriculum_training_completion": {
+    "report": "runs/workflow-v12-curriculum-study/complete.json",
+    "sha256": "e7bc6ba0532fdd2952e02981be90dba235acfe85adfd6c08e838a1635284870b",
+    "completed_at_utc": "2026-09-30T12:52:59.764980+00:00"
+  },
+  "prior_curriculum_interim_matched_epoch2": {
+    "inference": "unmerged",
+    "training_seed": 197,
+    "arms": {
+      "skill_curriculum": {
+        "report": "reports/workflow-v12/skill-curriculum/skill_curriculum-epoch-2.json",
+        "report_sha256": "862857b14392773fbf83e9dcfb023da055588cb1fe981189985c9e5667ab6133",
+        "weights_sha256": "a8384ccd73746888526e65b46f95dd531faafcf6d267e131e6205f8199e41342",
+        "optimizer_steps": 3764,
+        "new_workflow_accuracy": 0.7633333206176758,
+        "known_workflow_accuracy": 0.800000011920929,
+        "uncertainty_nll": 0.875885009765625,
+        "uncertainty_cost_at_80pct": 0.8691791296005249,
+        "per_type_coverage_under_15pct_error": {
+          "choice": 0.9880497131931166,
+          "score": 0.296875,
+          "noul": 0.8206896551724138
+        }
+      },
+      "outcome_replay": {
+        "report": "reports/workflow-v12/skill-curriculum/outcome_replay-epoch-2.json",
+        "report_sha256": "ec301fe159738c8de2ac509a26ef74651a1761d3014927d6e6afab611ac55be5",
+        "weights_sha256": "a13b3ac3e715028181c56a8d34b60f2981eac42dd9f6ae242cc6df38c238d4a6",
+        "optimizer_steps": 3764,
+        "new_workflow_accuracy": 0.7511110901832581,
+        "known_workflow_accuracy": 0.7933333516120911,
+        "uncertainty_nll": 0.8630395531654358,
+        "uncertainty_cost_at_80pct": 0.8909891247749329,
+        "per_type_coverage_under_15pct_error": {
+          "choice": 0.9890057361376673,
+          "score": 0.24375,
+          "noul": 0.8172413793103448
+        }
+      }
+    },
+    "used_for_selection": false,
+    "calibration_or_final_used": false,
+    "limitation": "Single-seed development point estimates; merged selection remains pending."
+  },
+  "prior_curriculum_merged_development": {
+    "report": "reports/workflow-v12/curriculum-selection/merged-dev-2.json",
+    "report_sha256": "8d360cf2be17f84250d81026ec65f36773feb3a706de5f3b58ca4e5e7bfe59f0",
+    "weights_sha256": "a8384ccd73746888526e65b46f95dd531faafcf6d267e131e6205f8199e41342",
+    "manifest_sha256": "548f9dadb2e5daf1359864ccf590f70e06e01129b06cd3e10ffebfbe72d1b138",
+    "new_workflow_accuracy": 0.7644444704055786,
+    "known_workflow_accuracy": 0.7950000166893005,
+    "uncertainty_nll": 0.8764436841011047,
+    "uncertainty_cost_at_80pct": 0.8633459210395813,
+    "per_type_coverage_under_15pct_error": {
+      "choice": 0.9875717017208413,
+      "score": 0.29375,
+      "noul": 0.8344827586206897
+    },
+    "eligible": false
+  },
+  "current_release_evaluation_snapshot": {
+    "stage": "acceptance",
+    "status": "failed",
+    "updated_at_utc": "2026-09-30T22:28:08.793187+00:00",
+    "release_allowed": false,
+    "final_predictions_started": true,
+    "exit_code": 1,
+    "log": "runs\\workflow-v12-cohort-policy-release\\acceptance.log",
+    "supplemental_acceptance": "reports/workflow-v12/cohort-policy/release-acceptance-supplemental.json",
+    "confirmed_failed_checks": [
+      "legacy_text"
+    ]
+  },
+  "fresh_calibration_result": {
+    "report": "reports/workflow-v12/depth-selection/fresh-calibration.json",
+    "sha256": "db44862a548eda93dca2f4e1d86e6c10bf62967d7c1788d43b9c7560f18ee73a",
+    "all_policy_fitting_types_passed": true,
+    "calibrated_manifest_sha256": "04fd31900d5fc4d6338cccb0ed4782b9836e93dfa91b055e6a518051b2cf0b35",
+    "by_type": {
+      "choice": {
+        "passed": true,
+        "coverage": 1.0,
+        "expected_error": 0.1232771430997396,
+        "questions": 605,
+        "accepted": 605,
+        "temperature": 1.9386526359522072,
+        "threshold": 0.2241216003894806
+      },
+      "score": {
+        "passed": true,
+        "coverage": 1.0,
+        "expected_error": 0.14983820821540436,
+        "questions": 363,
+        "accepted": 363,
+        "temperature": 3.3496543915782757,
+        "threshold": 0.32673320174217224
+      },
+      "noul": {
+        "passed": true,
+        "coverage": 0.9049079754601227,
+        "expected_error": 0.14998556535871835,
+        "questions": 326,
+        "accepted": 295,
+        "temperature": 4.46683592150963,
+        "threshold": 0.5650777816772461
+      }
+    },
+    "not_independent_final_evidence": true
+  },
+  "previous_policy_regression": {
+    "report": "reports/workflow-v12/depth-selection/previous-calibration-policy.json",
+    "sha256": "b33c3f142a1f2bbe914fc36556cbbc56f3147bc99718afa59c3007bc4146d11e",
+    "passed": false,
+    "policy_refitted": false,
+    "population_previously_inspected": true,
+    "by_type": {
+      "choice": {
+        "questions": 666,
+        "accepted": 665,
+        "coverage": 0.9984984984984985,
+        "expected_error": 0.1109734357297353,
+        "passed": true
+      },
+      "score": {
+        "questions": 368,
+        "accepted": 367,
+        "coverage": 0.9972826086956522,
+        "expected_error": 0.16954360326228957,
+        "passed": false
+      },
+      "noul": {
+        "questions": 333,
+        "accepted": 282,
+        "coverage": 0.8468468468468469,
+        "expected_error": 0.07637446383464491,
+        "passed": true
+      }
+    },
+    "final_predictions_started": false
+  },
+  "prior_depth_release_evaluation_snapshot": {
+    "stage": "previous-policy",
+    "status": "failed",
+    "updated_at_utc": "2026-09-30T20:47:04.776191+00:00",
+    "release_allowed": false,
+    "final_predictions_started": false,
+    "exit_code": 2,
+    "log": "runs\\workflow-v12-depth-release\\previous-policy.log",
+    "observed_at_utc": "2026-09-30T20:50:10.343528+00:00",
+    "source": "reports/workflow-v12/depth-selection/release-status.json",
+    "source_sha256": "74e179d974b4ea3f81f5943d6c86887c3410ddb79ec4e5398a0b67c50ee536bf"
+  },
+  "prior_conservative_policy_study": {
+    "config": "configs/workflow-depth-policy-v12.json",
+    "config_sha256": "100438f6f579b4018bd87b21348a9095306f1caa6b0e644bbc2b3c3b090421a5",
+    "selected_weights_sha256": "86ce942f8ef036f2279422a3a2665248b98adcb0effa91bafdf15d9c14c6c83e",
+    "fit_expected_error_max": 0.12,
+    "release_expected_error_max": 0.15,
+    "minimum_coverage": 0.6,
+    "candidate_weights_reselected": false,
+    "independent_validation_required": true,
+    "data_and_lineage_audit": "reports/workflow-v12/policy-calibration/data-and-lineage-audit.json",
+    "data_and_lineage_audit_sha256": "897d0e558ffd379181161225b59ad5cc882de61dd4ae5a3cafc1f9ff6c2797da",
+    "data_audit_passed": true,
+    "final_predictions_started": false,
+    "release_allowed": false,
+    "calibration_fitting_passed": true,
+    "calibration_report": "reports/workflow-v12/policy-calibration/calibration.json",
+    "calibration_report_sha256": "c2fafd6732a24c298ab5e44b7797cd4226b14d9271c7dc353d4d9cf233aa7ba3",
+    "status": "failed_independent_noul_validation",
+    "validation_report": "reports/workflow-v12/policy-calibration/independent-policy-validation.json",
+    "validation_report_sha256": "7938c488150bae98b98ae55d36aea2deb4646d27a88986a739f174b9549de9ea",
+    "by_type": {
+      "choice": {
+        "questions": 1264,
+        "accepted": 1260,
+        "coverage": 0.9968354430379747,
+        "expected_error": 0.13666459216677537,
+        "passed": true
+      },
+      "score": {
+        "questions": 720,
+        "accepted": 700,
+        "coverage": 0.9722222222222222,
+        "expected_error": 0.13612827886497064,
+        "passed": true
+      },
+      "noul": {
+        "questions": 660,
+        "accepted": 636,
+        "coverage": 0.9636363636363636,
+        "expected_error": 0.17094803297579048,
+        "passed": false
+      }
+    }
+  },
+  "active_policy_study": {
+    "config": "configs/workflow-cohort-policy-v12.json",
+    "config_sha256": "ee66ed106d54c72154ab30f4045f171b57b394b1281e4a31a91392ac6f7b7c01",
+    "selected_weights_sha256": "86ce942f8ef036f2279422a3a2665248b98adcb0effa91bafdf15d9c14c6c83e",
+    "fitting_questions": 7932,
+    "fitting_groups": 3252,
+    "inspected_populations_explicitly_reused_for_fitting": true,
+    "validation_populations": 2,
+    "validation_questions_each": 2644,
+    "per_cohort_fitting_error_max": 0.12,
+    "release_error_max": 0.15,
+    "minimum_coverage": 0.6,
+    "candidate_weights_reselected": false,
+    "data_audit_passed": true,
+    "data_and_lineage_audit": "reports/workflow-v12/cohort-policy/data-and-lineage-audit.json",
+    "data_and_lineage_audit_sha256": "06e08a2a8e070a9c6834f46e1c09e30cd61e5c0cb8d8e5dcb4f4ab2183b25916",
+    "final_predictions_started": true,
+    "release_allowed": false,
+    "calibration_fitting_passed": true,
+    "independent_validations": {
+      "validation-1": {
+        "report": "reports/workflow-v12/cohort-policy/validation-1-policy.json",
+        "sha256": "f619de5fcc28820bd953f58740153a5b96ab05a75972f5bc777144297ff73849",
+        "passed": true,
+        "by_type": {
+          "choice": {
+            "questions": 1264,
+            "accepted": 1195,
+            "coverage": 0.9454113924050633,
+            "expected_error": 0.09818483034332551,
+            "passed": true
+          },
+          "score": {
+            "questions": 720,
+            "accepted": 652,
+            "coverage": 0.9055555555555556,
+            "expected_error": 0.09988277770190772,
+            "passed": true
+          },
+          "noul": {
+            "questions": 660,
+            "accepted": 522,
+            "coverage": 0.7909090909090909,
+            "expected_error": 0.09615292440822967,
+            "passed": true
+          }
+        }
+      },
+      "validation-2": {
+        "report": "reports/workflow-v12/cohort-policy/validation-2-policy.json",
+        "sha256": "b2e184ed19f9e3fa1eebda9ca91c02cf3fcc8a44dc0fab511fa74e43ffffc768",
+        "passed": true,
+        "by_type": {
+          "choice": {
+            "questions": 1264,
+            "accepted": 1201,
+            "coverage": 0.9501582278481012,
+            "expected_error": 0.10063419638885404,
+            "passed": true
+          },
+          "score": {
+            "questions": 720,
+            "accepted": 651,
+            "coverage": 0.9041666666666667,
+            "expected_error": 0.12283539509816299,
+            "passed": true
+          },
+          "noul": {
+            "questions": 660,
+            "accepted": 514,
+            "coverage": 0.7787878787878788,
+            "expected_error": 0.11825496108949417,
+            "passed": true
+          }
+        }
+      }
+    },
+    "previous_group_regression": {
+      "report": "reports/workflow-v12/cohort-policy/previous-calibration-policy.json",
+      "sha256": "167b07b4a0e0bd669260df08aec931e17612b6361322e902048924e6bcebbb3c",
+      "passed": true,
+      "by_type": {
+        "choice": {
+          "questions": 666,
+          "accepted": 582,
+          "coverage": 0.8738738738738738,
+          "expected_error": 0.07730399013792778,
+          "passed": true
+        },
+        "score": {
+          "questions": 368,
+          "accepted": 272,
+          "coverage": 0.7391304347826086,
+          "expected_error": 0.09047390587228042,
+          "passed": true
+        },
+        "noul": {
+          "questions": 333,
+          "accepted": 222,
+          "coverage": 0.6666666666666666,
+          "expected_error": 0.0440521905467111,
+          "passed": true
+        }
+      },
+      "population_previously_inspected": true
+    },
+    "final_freeze": "reports/workflow-v12/cohort-policy/final-freeze.json",
+    "final_freeze_sha256": "8dcf9972862d078bf276c00903b914cb424fdf9411d2bd1b79bccadba16c8e25",
+    "runtime_version": "0.3.0a3",
+    "status": "final_failed_legacy_text",
+    "completed_results": "reports/workflow-v12/cohort-policy/completed-results.json",
+    "completed_results_sha256": "7ac140076c9825300762469a87730620d3f205bc53c46e06ae4d663933b63e6d",
+    "original_final_now_previously_inspected": true
+  },
+  "prior_readout_recovery_study": {
+    "config": "configs/workflow-readout-recovery-v13.json",
+    "config_sha256": "c680b3a57fed4daadbb3d537ac9f9ff7bc0abb0a14ef60fc25725a729da83495",
+    "status": "complete_no_eligible_candidate",
+    "calibration_or_final_used_for_recovery_selection": false,
+    "release_allowed": false
+  },
+  "active_recovery_study": {
+    "config": "configs/workflow-backbone-recovery-v13.json",
+    "config_sha256": "55aa5eab85903a3f142dcbbff737156c5e59c74135d45262c011ed5b4c849180",
+    "status": "complete_eligible_candidate_selected",
+    "original_release_thresholds_unchanged": true,
+    "new_validation_and_final_data_complete": true,
+    "release_allowed": false,
+    "execution_repair": "configs/workflow-backbone-memory-repair-v13.json",
+    "execution_repair_sha256": "d16e5615ec2f4618430c53241ea6859007a536d2b9cac973fe6efef5b1426187",
+    "failed_execution": "reports/workflow-v13/backbone-recovery/execution-failure.json",
+    "memory_repair_reports": "reports/workflow-v13/backbone-memory-repair",
+    "execution_equivalence_at_fraction_025_and_05": "All 307 stored tensors and the complete weight-file SHA-256 are identical to the original partial execution; not accuracy evidence.",
+    "passed_prior_memory_failure_window": true,
+    "memory_repair_progress_evidence": "reports/workflow-v13/backbone-memory-repair/passed-prior-failure.json",
+    "training_completed": true,
+    "training_questions": 9129,
+    "optimizer_steps": 1142,
+    "training_completion_evidence": "reports/workflow-v13/backbone-memory-repair/training-complete.json",
+    "first_candidate_development": {
+      "fraction": 0.25,
+      "legacy_text_accuracy": 0.908203125,
+      "legacy_image_accuracy": 0.9738903641700745,
+      "eligible": false,
+      "failed_checks": [
+        "legacy_text"
+      ],
+      "selection_text_minimum": 0.91,
+      "remaining_candidates_pending": false
+    },
+    "second_candidate_development": {
+      "fraction": 0.5,
+      "legacy_text_accuracy": 0.912109375,
+      "legacy_image_accuracy": 0.9738903641700745,
+      "eligible": true,
+      "checks": {
+        "original_development_gates": true,
+        "legacy_text": true,
+        "legacy_image": true,
+        "workflow_retained": true,
+        "uncertainty_nll_retained": true,
+        "uncertainty_brier_retained": true,
+        "uncertainty_cost_retained": true,
+        "development_policy_feasible": true
+      },
+      "all_candidates_selection_complete": true
+    },
+    "all_candidates_selection_complete": true,
+    "selected_checkpoint": "runs\\backbone-recovery-memory-v13\\fraction-0.5\\checkpoint",
+    "selected_weights_sha256": "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee",
+    "selected_manifest_sha256": "69e91d4818f76b23876f0278259b61d405427fb1bb35a5801ef3ed5c63386662",
+    "selected_fraction": 0.5,
+    "selected_training_questions": 4533,
+    "selected_optimizer_steps": 567,
+    "selected_development_checks": {
+      "original_development_gates": true,
+      "legacy_text": true,
+      "legacy_image": true,
+      "workflow_retained": true,
+      "uncertainty_nll_retained": true,
+      "uncertainty_brier_retained": true,
+      "uncertainty_cost_retained": true,
+      "development_policy_feasible": true
+    }
+  },
+  "diagnostics": {
+    "consumed_final_uncertainty": {
+      "report": "reports/workflow-v13/uncertainty-diagnosis/consumed-final-uncertainty.json",
+      "sha256": "52759def079184be598baac0923739ec5f0eb6b453fa22a8d3c6d55fbaf01d12",
+      "release_thresholds_changed": false,
+      "recovery_model_evaluated": false
+    },
+    "recovery_final_uncertainty": {
+      "report": "reports/workflow-v13/uncertainty-diagnosis/recovery-final-uncertainty.json",
+      "sha256": "d5cc674cb319e740354259fa1050728d2f78612138cc7ed39415f49e3896e609",
+      "release_thresholds_changed": false,
+      "training_or_policy_fitting_used": false
+    }
+  },
+  "top_level_checks_scope": "Historical v12 cohort-policy final; active recovery evidence is tracked separately below.",
+  "recovery_release_pipeline": {
+    "status": "model_acceptance_passed_hf_verification_pending",
+    "admission_passed": true,
+    "selected_checkpoint": "runs\\backbone-recovery-memory-v13\\fraction-0.5\\checkpoint",
+    "weights_sha256": "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee",
+    "policy_design": "configs/workflow-recovery-policy-v13.json",
+    "policy_design_sha256": "b1c604e1ea70bf67f5733f940fb6082b745a4325c789845fc86b0b2c907bf98e",
+    "fresh_validation_predictions_started": true,
+    "fresh_final_predictions_started": true,
+    "release_allowed": false,
+    "calibration_passed": true,
+    "calibrated_manifest_sha256": "d83f9910196c6e801658ca3816c3d2bd4a849ba3da6ff059a0edf7c6028e898d",
+    "policy_frozen": true,
+    "calibration_by_type": {
+      "choice": {
+        "temperature": 2.371373705661655,
+        "threshold": 0.505,
+        "max_cohort_expected_error": 0.11914257263222354,
+        "min_cohort_coverage": 0.9320987654320988,
+        "passed": true
+      },
+      "score": {
+        "temperature": 4.46683592150963,
+        "threshold": 0.48,
+        "max_cohort_expected_error": 0.11927913863747554,
+        "min_cohort_coverage": 0.9256198347107438,
+        "passed": true
+      },
+      "noul": {
+        "temperature": 7.7179151558501236,
+        "threshold": 0.705,
+        "max_cohort_expected_error": 0.11730186721991702,
+        "min_cohort_coverage": 0.7392638036809815,
+        "passed": true
+      }
+    },
+    "independent_validations": {
+      "validation-1": {
+        "passed": true,
+        "by_type": {
+          "choice": {
+            "questions": 1264,
+            "accepted": 1192,
+            "coverage": 0.9430379746835443,
+            "expected_error": 0.1010878325537832,
+            "passed": true
+          },
+          "score": {
+            "questions": 720,
+            "accepted": 648,
+            "coverage": 0.9,
+            "expected_error": 0.10869350583460173,
+            "passed": true
+          },
+          "noul": {
+            "questions": 660,
+            "accepted": 487,
+            "coverage": 0.7378787878787879,
+            "expected_error": 0.08495174537987679,
+            "passed": true
+          }
+        },
+        "report": "reports/workflow-v13/policy-validation/validation-1-policy.json",
+        "sha256": "2d38199e2cdab861f671e0efe709b32008338cafc5c38888aa511a2a7a4e0a33",
+        "policy_refitted": false
+      },
+      "validation-2": {
+        "passed": true,
+        "by_type": {
+          "choice": {
+            "questions": 1264,
+            "accepted": 1203,
+            "coverage": 0.9517405063291139,
+            "expected_error": 0.09588877207665768,
+            "passed": true
+          },
+          "score": {
+            "questions": 720,
+            "accepted": 660,
+            "coverage": 0.9166666666666666,
+            "expected_error": 0.12925755448318804,
+            "passed": true
+          },
+          "noul": {
+            "questions": 660,
+            "accepted": 501,
+            "coverage": 0.759090909090909,
+            "expected_error": 0.11569560878243514,
+            "passed": true
+          }
+        },
+        "report": "reports/workflow-v13/policy-validation/validation-2-policy.json",
+        "sha256": "013628253e3fa6c0a19f10d5e5642119a8fe69eee839c6787efca854c89c269b",
+        "policy_refitted": false,
+        "score_expected_error_95_interval": [
+          0.10534550318370679,
+          0.15417056265370996
+        ]
+      }
+    },
+    "previous_calibration_policy_regression": {
+      "choice": {
+        "questions": 666,
+        "accepted": 584,
+        "coverage": 0.8768768768768769,
+        "expected_error": 0.07726185318540063,
+        "passed": true
+      },
+      "score": {
+        "questions": 368,
+        "accepted": 257,
+        "coverage": 0.6983695652173914,
+        "expected_error": 0.08775837508661585,
+        "passed": true
+      },
+      "noul": {
+        "questions": 333,
+        "accepted": 204,
+        "coverage": 0.6126126126126126,
+        "expected_error": 0.026250000000000002,
+        "passed": true
+      }
+    },
+    "all_policy_prerequisites_passed": true,
+    "runtime_version": "0.3.0a4",
+    "runtime_wheel_sha256": "9d18d64b0c711c01e3295ac85bf0c7b721413c4b533f6bcf7ad8addd2ee31721",
+    "runtime_modules_verified": 38,
+    "final_freeze_sha256": "093acb58e85a7bb75b8747b761e7f071fa68a328cfbfc7dea9b29bc53f12868b",
+    "final_frozen_at_utc": "2026-10-01T00:59:56.956065+00:00",
+    "paired_final": {
+      "new_workflow": {
+        "accuracy": {
+          "before": 0.44305555555555554,
+          "after": 0.69375,
+          "delta": 0.25069444444444444,
+          "delta_95_ci": [
+            0.20067708333333334,
+            0.3013888888888889
+          ],
+          "groups": 480,
+          "questions": 1440
+        },
+        "families": {
+          "equipment_reservation": {
+            "before": 0.4666666666666667,
+            "after": 0.6854166666666667,
+            "delta": 0.21875,
+            "delta_95_ci": [
+              0.15416666666666667,
+              0.2833333333333333
+            ],
+            "groups": 160,
+            "questions": 480
+          },
+          "supplier_onboarding": {
+            "before": 0.4479166666666667,
+            "after": 0.6520833333333333,
+            "delta": 0.20416666666666666,
+            "delta_95_ci": [
+              0.12708333333333333,
+              0.2833333333333333
+            ],
+            "groups": 160,
+            "questions": 480
+          },
+          "travel_reimbursement": {
+            "before": 0.41458333333333336,
+            "after": 0.74375,
+            "delta": 0.32916666666666666,
+            "delta_95_ci": [
+              0.22494791666666666,
+              0.43755208333333306
+            ],
+            "groups": 160,
+            "questions": 480
+          }
+        }
+      },
+      "uncertainty": {
+        "nll": {
+          "before": 1.0032852034561321,
+          "after": 0.8990933386979466,
+          "delta": -0.10419186475818557,
+          "delta_95_ci": [
+            -0.15039407746461655,
+            -0.05637557472088959
+          ],
+          "groups": 480,
+          "questions": 480
+        },
+        "brier": {
+          "before": 0.3239183465212667,
+          "after": 0.24512231711450333,
+          "delta": -0.07879602940676339,
+          "delta_95_ci": [
+            -0.10994547169413722,
+            -0.047838987789886406
+          ],
+          "groups": 480,
+          "questions": 480
+        },
+        "matched_coverage_cost": {
+          "coverage": 0.8,
+          "accepted": 384,
+          "before": 1.7865844238013697,
+          "after": 1.0111766983090753,
+          "delta": -0.7754077254922944,
+          "delta_95_ci": [
+            -0.9667000597665165,
+            -0.6029395115631243
+          ]
+        },
+        "condition_groups": {
+          "missing": 160,
+          "shifted_prior": 160,
+          "conflicting": 160
+        },
+        "conditions": {
+          "conflicting": {
+            "nll": {
+              "before": 0.9787370442470271,
+              "after": 0.8678403281026418,
+              "delta": -0.11089671614438537,
+              "delta_95_ci": [
+                -0.16071970759728868,
+                -0.061989609298997696
+              ],
+              "groups": 160,
+              "questions": 160
+            },
+            "brier": {
+              "before": 0.2616300857585789,
+              "after": 0.18361032346086706,
+              "delta": -0.07801976229771183,
+              "delta_95_ci": [
+                -0.11343991010731368,
+                -0.0466451426017512
+              ],
+              "groups": 160,
+              "questions": 160
+            },
+            "matched_coverage_cost": {
+              "coverage": 0.8,
+              "accepted": 128,
+              "before": 1.6297516112478596,
+              "after": 1.1669714463291951,
+              "delta": -0.46278016491866447,
+              "delta_95_ci": [
+                -0.7447016736889981,
+                -0.2364469981967037
+              ]
+            }
+          },
+          "missing": {
+            "nll": {
+              "before": 0.9987471974645695,
+              "after": 0.9027762038844196,
+              "delta": -0.09597099358014986,
+              "delta_95_ci": [
+                -0.15075450741671065,
+                -0.0379082262470786
+              ],
+              "groups": 160,
+              "questions": 160
+            },
+            "brier": {
+              "before": 0.2252735453594139,
+              "after": 0.15290367728152635,
+              "delta": -0.07236986807788756,
+              "delta_95_ci": [
+                -0.1094343854847727,
+                -0.035355349538156555
+              ],
+              "groups": 160,
+              "questions": 160
+            },
+            "matched_coverage_cost": {
+              "coverage": 0.8,
+              "accepted": 128,
+              "before": 1.8766049316406248,
+              "after": 1.1169162597656248,
+              "delta": -0.759688671875,
+              "delta_95_ci": [
+                -1.0380355175781253,
+                -0.5458479296875002
+              ]
+            }
+          },
+          "shifted_prior": {
+            "nll": {
+              "before": 1.0323713686567977,
+              "after": 0.9266634841067789,
+              "delta": -0.10570788455001878,
+              "delta_95_ci": [
+                -0.22659553585041478,
+                0.015616446895963901
+              ],
+              "groups": 160,
+              "questions": 160
+            },
+            "brier": {
+              "before": 0.48485140844580715,
+              "after": 0.39885295060111614,
+              "delta": -0.08599845784469098,
+              "delta_95_ci": [
+                -0.16637859647076583,
+                -0.0010338587695776734
+              ],
+              "groups": 160,
+              "questions": 160
+            },
+            "matched_coverage_cost": {
+              "coverage": 0.8,
+              "accepted": 128,
+              "before": 1.856072509765625,
+              "after": 0.807922216796875,
+              "delta": -1.0481502929687498,
+              "delta_95_ci": [
+                -1.4118163500976564,
+                -0.6626662768554692
+              ]
+            }
+          }
+        }
+      },
+      "retention": {
+        "photo_guard": {
+          "before": 0.9516666666666667,
+          "after": 0.9583333333333334,
+          "delta": 0.006666666666666667,
+          "delta_95_ci": [
+            -0.0033333333333333335,
+            0.018333333333333333
+          ],
+          "groups": 600,
+          "questions": 600
+        },
+        "text_nli": {
+          "before": 0.86,
+          "after": 0.8777777777777778,
+          "delta": 0.017777777777777778,
+          "delta_95_ci": [
+            -0.0022222222222222222,
+            0.03777777777777778
+          ],
+          "groups": 450,
+          "questions": 450
+        },
+        "text_intent": {
+          "before": 0.841991341991342,
+          "after": 0.854978354978355,
+          "delta": 0.012987012987012988,
+          "delta_95_ci": [
+            -0.004329004329004329,
+            0.030303030303030304
+          ],
+          "groups": 462,
+          "questions": 462
+        }
+      }
+    },
+    "official_regression": {
+      "questions": 2000,
+      "groups": 400,
+      "labeled_questions": 2000,
+      "correct": 1540,
+      "accuracy": 0.77,
+      "nll": 0.9089358583961407,
+      "brier_vs_soft": 0.07459714702564531,
+      "coverage": 0.308,
+      "accepted_accuracy": 0.9431818181818182,
+      "score_mae": 0.3036554121706278,
+      "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+      "ece_15_bins": 0.2518875242620706,
+      "group_bootstrap_accuracy_95_ci": [
+        0.749,
+        0.7905
+      ]
+    },
+    "legacy_regression": {
+      "image": {
+        "questions": 1528,
+        "groups": 764,
+        "labeled_questions": 1528,
+        "correct": 1494,
+        "accuracy": 0.9777486910994765,
+        "nll": 0.13076292754209473,
+        "brier_vs_soft": 0.05630520782789992,
+        "coverage": 0.9535340314136126,
+        "accepted_accuracy": 0.9849004804392587,
+        "score_mae": 0.09436547523611813,
+        "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+        "ece_15_bins": 0.07878559671771465,
+        "group_bootstrap_accuracy_95_ci": [
+          0.9685863874345549,
+          0.9856020942408377
+        ]
+      },
+      "text": {
+        "questions": 2048,
+        "groups": 1024,
+        "labeled_questions": 2048,
+        "correct": 1867,
+        "accuracy": 0.91162109375,
+        "nll": 0.2584043504505732,
+        "brier_vs_soft": 0.14028330219627477,
+        "coverage": 0.90869140625,
+        "accepted_accuracy": 0.939279957012359,
+        "score_mae": 0.206846722966526,
+        "score_mae_definition": "Absolute difference of ordinal expectations in index units",
+        "ece_15_bins": 0.06243461648409721,
+        "group_bootstrap_accuracy_95_ci": [
+          0.896484375,
+          0.9248168945312499
+        ]
+      }
+    },
+    "actual_final_policy": {
+      "overall": {
+        "accepted": 3054,
+        "coverage": 0.8898601398601399,
+        "abstention_rate": 0.1101398601398601,
+        "expected_error": 0.20492451551076066,
+        "expected_cost": 0.43226663621928574
+      },
+      "uncertain": {
+        "accepted": 252,
+        "coverage": 0.525,
+        "abstention_rate": 0.475,
+        "expected_error": 0.4557121840073929,
+        "expected_cost": 0.9569139167210262
+      },
+      "baseline_ece_15_bins": 0.067954337370751,
+      "recovery_ece_15_bins": 0.12576106654071229
+    },
+    "model_acceptance_checks": {
+      "workflow_generalization": true,
+      "uncertainty_probability": true,
+      "uncertainty_abstention": true,
+      "retention_development": true,
+      "legacy_text": true,
+      "legacy_image": true,
+      "official_workflow": true,
+      "runtime": true,
+      "single_network": true,
+      "provenance": true,
+      "recovery_study_provenance": true,
+      "fresh_data_provenance": true,
+      "independent_policy_validation": true,
+      "previous_calibration_policy_regression": true
+    },
+    "model_acceptance_passed": true,
+    "hf_package_verified": false,
+    "photo_http_p95_ms": 114.94054006761871
+  }
+}

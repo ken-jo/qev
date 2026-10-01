@@ -1,0 +1,826 @@
+{
+  "split": "dev",
+  "device": "cpu",
+  "checkpoint_sha256": "413e5e8d0ae1de0196727ae7032d8b73a2f3c4f7cd6c79476222ef49393b7dee",
+  "baseline_report_sha256": "62744eeb368ad85e05ce1367dfb84ccc1248859327f8c8815de9ce20aff8bb98",
+  "original_decisions": {
+    "questions": 32,
+    "accuracy": 0.75
+  },
+  "stages": {
+    "condition": {
+      "questions": 16,
+      "accuracy": 0.9375
+    },
+    "atomic_comparison": {
+      "questions": 36,
+      "accuracy": 0.9166666666666666
+    }
+  },
+  "predictions": [
+    {
+      "group": "policy-v3-20261002-dev-text-2",
+      "family": "text_disjunction",
+      "stage": "condition",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: (length >= 73) OR (entries >= 36)?"
+      },
+      "expected": "true",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.0008018608787097037,
+        "true": 0.9991981387138367
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-2",
+      "family": "text_disjunction",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: entries >= 36?"
+      },
+      "expected": "true",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.0022271706257015467,
+        "true": 0.997772753238678
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-2",
+      "family": "text_disjunction",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: length >= 73?"
+      },
+      "expected": "true",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.0019295243546366692,
+        "true": 0.9980705380439758
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-5",
+      "family": "text_conjunction",
+      "stage": "condition",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: (length >= 23) AND (entries >= 38)?"
+      },
+      "expected": "false",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.9983773231506348,
+        "true": 0.001622654963284731
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-5",
+      "family": "text_conjunction",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: entries >= 38?"
+      },
+      "expected": "false",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.9999715089797974,
+        "true": 2.853725709428545e-05
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-5",
+      "family": "text_conjunction",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: length >= 23?"
+      },
+      "expected": "true",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.0034501280169934034,
+        "true": 0.9965498447418213
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-8",
+      "family": "text_threshold",
+      "stage": "condition",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: length >= 84?"
+      },
+      "expected": "false",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.9998879432678223,
+        "true": 0.00011205155897187069
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-8",
+      "family": "text_threshold",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: length >= 84?"
+      },
+      "expected": "false",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.9998879432678223,
+        "true": 0.00011205155897187069
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-11",
+      "family": "text_ranges",
+      "stage": "condition",
+      "question": {
+        "type": "choice",
+        "instructions": "Which condition is satisfied by the observation?",
+        "criteria": {
+          "0": "length < 41",
+          "1": "41 <= length < 46",
+          "2": "length >= 46"
+        }
+      },
+      "expected": "2",
+      "correct": 1.0,
+      "probabilities": {
+        "0": 5.034144578530686e-06,
+        "1": 8.847627213981468e-06,
+        "2": 0.9999861717224121
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-11",
+      "family": "text_ranges",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: length < 41?"
+      },
+      "expected": "false",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.9606605768203735,
+        "true": 0.03933947905898094
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-11",
+      "family": "text_ranges",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: length < 46?"
+      },
+      "expected": "false",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.8478738069534302,
+        "true": 0.15212619304656982
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-11",
+      "family": "text_ranges",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: length >= 41?"
+      },
+      "expected": "true",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.0012730888556689024,
+        "true": 0.9987269043922424
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-11",
+      "family": "text_ranges",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: length >= 46?"
+      },
+      "expected": "true",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.002423512050881982,
+        "true": 0.9975765347480774
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-14",
+      "family": "text_disjunction",
+      "stage": "condition",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: (length >= 22) OR (entries >= 54)?"
+      },
+      "expected": "true",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.0010083685629069805,
+        "true": 0.9989916682243347
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-14",
+      "family": "text_disjunction",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: entries >= 54?"
+      },
+      "expected": "true",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.0014601459261029959,
+        "true": 0.9985398054122925
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-14",
+      "family": "text_disjunction",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: length >= 22?"
+      },
+      "expected": "true",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.002516054781153798,
+        "true": 0.9974839687347412
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-17",
+      "family": "text_conjunction",
+      "stage": "condition",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: (length >= 65) AND (entries >= 54)?"
+      },
+      "expected": "true",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.001246922300197184,
+        "true": 0.9987530708312988
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-17",
+      "family": "text_conjunction",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: entries >= 54?"
+      },
+      "expected": "true",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.0037620593793690205,
+        "true": 0.9962378740310669
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-17",
+      "family": "text_conjunction",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: length >= 65?"
+      },
+      "expected": "true",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.0017697899602353573,
+        "true": 0.9982302784919739
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-20",
+      "family": "text_threshold",
+      "stage": "condition",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: latency >= 47?"
+      },
+      "expected": "true",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.0037977194879204035,
+        "true": 0.996202290058136
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-20",
+      "family": "text_threshold",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: latency >= 47?"
+      },
+      "expected": "true",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.0037977194879204035,
+        "true": 0.996202290058136
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-23",
+      "family": "text_ranges",
+      "stage": "condition",
+      "question": {
+        "type": "choice",
+        "instructions": "Which condition is satisfied by the observation?",
+        "criteria": {
+          "0": "length < 36",
+          "1": "36 <= length < 39",
+          "2": "length >= 39"
+        }
+      },
+      "expected": "1",
+      "correct": 1.0,
+      "probabilities": {
+        "0": 0.00011285440268693492,
+        "1": 0.999762237071991,
+        "2": 0.00012488532229326665
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-23",
+      "family": "text_ranges",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: length < 36?"
+      },
+      "expected": "false",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.9570749402046204,
+        "true": 0.042924996465444565
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-23",
+      "family": "text_ranges",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: length < 39?"
+      },
+      "expected": "true",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.004196882247924805,
+        "true": 0.99580317735672
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-23",
+      "family": "text_ranges",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: length >= 36?"
+      },
+      "expected": "true",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.002060254802927375,
+        "true": 0.9979397654533386
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-23",
+      "family": "text_ranges",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: length >= 39?"
+      },
+      "expected": "false",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.9999109506607056,
+        "true": 8.903811976779252e-05
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-26",
+      "family": "text_disjunction",
+      "stage": "condition",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: (latency >= 21) OR (queue >= 12)?"
+      },
+      "expected": "false",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.9686510562896729,
+        "true": 0.03134896233677864
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-26",
+      "family": "text_disjunction",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: latency >= 21?"
+      },
+      "expected": "false",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.9994581341743469,
+        "true": 0.0005418416694737971
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-26",
+      "family": "text_disjunction",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: queue >= 12?"
+      },
+      "expected": "false",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.9998840093612671,
+        "true": 0.00011593348608585075
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-29",
+      "family": "text_conjunction",
+      "stage": "condition",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: (length >= 33) AND (entries >= 49)?"
+      },
+      "expected": "false",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.9999239444732666,
+        "true": 7.607585575897247e-05
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-29",
+      "family": "text_conjunction",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: entries >= 49?"
+      },
+      "expected": "true",
+      "correct": 0.0,
+      "probabilities": {
+        "false": 0.988069474697113,
+        "true": 0.011930526234209538
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-29",
+      "family": "text_conjunction",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: length >= 33?"
+      },
+      "expected": "false",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.9999384880065918,
+        "true": 6.15239841863513e-05
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-32",
+      "family": "text_threshold",
+      "stage": "condition",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: latency >= 38?"
+      },
+      "expected": "true",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.0018115901621058583,
+        "true": 0.9981884360313416
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-32",
+      "family": "text_threshold",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: latency >= 38?"
+      },
+      "expected": "true",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.0018115901621058583,
+        "true": 0.9981884360313416
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-35",
+      "family": "text_ranges",
+      "stage": "condition",
+      "question": {
+        "type": "choice",
+        "instructions": "Which condition is satisfied by the observation?",
+        "criteria": {
+          "0": "length < 16",
+          "1": "16 <= length < 42",
+          "2": "length >= 42"
+        }
+      },
+      "expected": "2",
+      "correct": 1.0,
+      "probabilities": {
+        "0": 1.81195300683612e-05,
+        "1": 4.888971307082102e-05,
+        "2": 0.9999330043792725
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-35",
+      "family": "text_ranges",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: length < 16?"
+      },
+      "expected": "false",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.9909877181053162,
+        "true": 0.009012235328555107
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-35",
+      "family": "text_ranges",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: length < 42?"
+      },
+      "expected": "false",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.9071314334869385,
+        "true": 0.09286854416131973
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-35",
+      "family": "text_ranges",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: length >= 16?"
+      },
+      "expected": "true",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.0021108766086399555,
+        "true": 0.9978891015052795
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-35",
+      "family": "text_ranges",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: length >= 42?"
+      },
+      "expected": "true",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.002372262068092823,
+        "true": 0.9976277947425842
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-38",
+      "family": "text_disjunction",
+      "stage": "condition",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: (latency >= 85) OR (queue >= 16)?"
+      },
+      "expected": "true",
+      "correct": 0.0,
+      "probabilities": {
+        "false": 0.9992268085479736,
+        "true": 0.0007732143276371062
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-38",
+      "family": "text_disjunction",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: latency >= 85?"
+      },
+      "expected": "false",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.9999446868896484,
+        "true": 5.527139364858158e-05
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-38",
+      "family": "text_disjunction",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: queue >= 16?"
+      },
+      "expected": "true",
+      "correct": 0.0,
+      "probabilities": {
+        "false": 0.9767201542854309,
+        "true": 0.02327979914844036
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-41",
+      "family": "text_conjunction",
+      "stage": "condition",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: (length >= 73) AND (entries >= 47)?"
+      },
+      "expected": "false",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.9999523162841797,
+        "true": 4.766818892676383e-05
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-41",
+      "family": "text_conjunction",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: entries >= 47?"
+      },
+      "expected": "false",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.9999393224716187,
+        "true": 6.065735942684114e-05
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-41",
+      "family": "text_conjunction",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: length >= 73?"
+      },
+      "expected": "false",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.9998886585235596,
+        "true": 0.00011137894762214273
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-44",
+      "family": "text_threshold",
+      "stage": "condition",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: latency >= 72?"
+      },
+      "expected": "true",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.0019140052609145641,
+        "true": 0.9980859756469727
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-44",
+      "family": "text_threshold",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: latency >= 72?"
+      },
+      "expected": "true",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.0019140052609145641,
+        "true": 0.9980859756469727
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-47",
+      "family": "text_ranges",
+      "stage": "condition",
+      "question": {
+        "type": "choice",
+        "instructions": "Which condition is satisfied by the observation?",
+        "criteria": {
+          "0": "length < 76",
+          "1": "76 <= length < 87",
+          "2": "length >= 87"
+        }
+      },
+      "expected": "2",
+      "correct": 1.0,
+      "probabilities": {
+        "0": 0.000161833202582784,
+        "1": 0.002007803414016962,
+        "2": 0.997830331325531
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-47",
+      "family": "text_ranges",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: length < 76?"
+      },
+      "expected": "false",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.7950841188430786,
+        "true": 0.20491589605808258
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-47",
+      "family": "text_ranges",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: length < 87?"
+      },
+      "expected": "false",
+      "correct": 0.0,
+      "probabilities": {
+        "false": 0.2825745940208435,
+        "true": 0.7174254059791565
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-47",
+      "family": "text_ranges",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: length >= 76?"
+      },
+      "expected": "true",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.0021670206915587187,
+        "true": 0.9978329539299011
+      }
+    },
+    {
+      "group": "policy-v3-20261002-dev-text-47",
+      "family": "text_ranges",
+      "stage": "atomic_comparison",
+      "question": {
+        "type": "noul",
+        "instructions": "Using the observation, is this condition true: length >= 87?"
+      },
+      "expected": "true",
+      "correct": 1.0,
+      "probabilities": {
+        "false": 0.0017427447019144893,
+        "true": 0.9982572197914124
+      }
+    }
+  ]
+}

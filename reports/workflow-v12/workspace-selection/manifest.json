@@ -1,0 +1,16 @@
+{
+  "files_sha256": {
+    "selection.json": "29f6adea6d407a3844ce849ec54e98c59491c30e8718a7d12151a6e49032ffad",
+    "matched-development-comparison.json": "2761acf5cfdd0ac684ba176ae6658a85ab85e621abf6d6681da6502c4271f509",
+    "confidence-ordering-diagnostic.json": "f3cde9c44bbb225e95c7d890bef88c0cb2af827725a0ace779146ff46eee335d",
+    "merged-baseline-dev.json": "f8c67a1b478ad54cb0344df05804cb94a8dc2e1f591aee0c9f8103ea72c39a8e",
+    "merged-dev-0.json": "323b42553771d5b7c94a8092fc14ae846f7a72fc690f394f39d29a1376fac4d2",
+    "merged-dev-1.json": "a1255a008ec062aff844ce77b9b2594c1a580620ca1a32062eabb8051513846f",
+    "merged-dev-2.json": "869c79665ce9086a29f18f4eae84c633eacabf0a630da140c8392f02c7f81ae5",
+    "merged-dev-3.json": "96d8b390b4a91db09f0c816de8a25bf275d78644b9b33e25491651e873acc8ce",
+    "merged-dev-4.json": "f8f8ec3dffe29df05cc8336eb1a5d4198d69b9c9ef238f7e1890dc4e0a34cda3",
+    "failure.json": "911a6b349cda9f92e2d87a694da552dfb9ab95f6d05968e1f8758cacead6925a"
+  },
+  "release_allowed": false,
+  "fresh_calibration_or_final_used": false
+}

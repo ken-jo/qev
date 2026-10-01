@@ -1,0 +1,13 @@
+{
+  "candidates": [
+    "runs\\foundation-v11-head\\ce-83\\checkpoint",
+    "runs\\foundation-v11-backbone\\epoch-0.5",
+    "runs\\foundation-v11-backbone\\epoch-1",
+    "runs\\foundation-v11-backbone\\head-final-midpoint"
+  ],
+  "dataset_sha256": "8f226fe90fb50e46c6a2e4c53020ed99db81a903f21317a96c66f27b6181d936",
+  "criterion": "Original release domain guards, then domain macro accuracy and NLL",
+  "split": "dev",
+  "final_or_calibration_used": false,
+  "midpoint_amendment_sha256": "f9505385f31626e4e1cc2dc97b31f3cb05a8080d47c6c73d2149ac052ba360a6"
+}

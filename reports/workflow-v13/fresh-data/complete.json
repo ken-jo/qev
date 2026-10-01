@@ -1,0 +1,26 @@
+{
+  "completed": true,
+  "outputs": {
+    "validation-1": {
+      "data\\workflow-v13g\\records.jsonl": "92dd176e5d5c4fc057f2ec86fc5f877c571549559179491180382f40991c08f7",
+      "data\\workflow-v13g\\protocol.json": "a968f25fc07e0cebd88c51a5312f1c4d4607b02826219926a12c66f4b93e0192",
+      "data\\workflow-v13g\\independent-target-audit.json": "00b85c216b4e767966861666dac544a70fa7dc52413e64d11cc8b84ae6dc81b3"
+    },
+    "validation-2": {
+      "data\\workflow-v13h\\records.jsonl": "def4d0b9063184f4fdc72ad759e7399c7d5d8e336c57a6634958db7b448f65d7",
+      "data\\workflow-v13h\\protocol.json": "827c412f6718d7e4cdd0622af9a9fc5156e4b559381c1a9491ffb4120dfd03c9",
+      "data\\workflow-v13h\\independent-target-audit.json": "802fb3915865071ed2ee0ae70316721ca90111b1fea9a55e263efb040590dfc1"
+    },
+    "final": {
+      "data\\workflow-v13-final\\records.jsonl": "4d3e808c3bd803629b058ac2110bd76ada9f1fa7fb897ce03a0d031409ef54b4",
+      "data\\workflow-v13-final\\protocol.json": "c9b6ed927479c1dbd06ba1cb2efb6001aaab16918870e8b961ff5b53ce4b4498",
+      "data\\workflow-v13-final\\independent-target-audit.json": "4f3b858f20e2713fbec3d563a88f6c935f1dfe4de99f8df6fa1d615393b9a4ed"
+    }
+  },
+  "repairs": [
+    "configs\\workflow-recovery-final-source-repair-v13.json",
+    "configs/workflow-recovery-data-source-repair-v13.json"
+  ],
+  "model_outputs_used": false,
+  "release_allowed": false
+}

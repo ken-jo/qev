@@ -1,0 +1,51 @@
+{
+  "config_kind": "implementation_baseline",
+  "schema_version": 1,
+  "backbone": {
+    "model_id": "Qwen/Qwen3.5-2B",
+    "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+    "processor_revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+    "model_class": "transformers.Qwen3_5Model",
+    "hidden_size": 2048,
+    "dtype": "bfloat16",
+    "freeze_initially": true,
+    "use_generation_head": false
+  },
+  "candidate_encoding": {
+    "strategy": "canonical_packed_single_prefill",
+    "pooling": "candidate_boundary_and_question_context",
+    "include_opaque_choice_ids_in_prompt": false,
+    "preserve_score_level_semantics": true
+  },
+  "decision_head": {
+    "kind": "permutation_equivariant_set_attention",
+    "projection_size": 256,
+    "layers": 2,
+    "attention_heads": 4,
+    "candidate_position_embeddings": false,
+    "shared_scalar_scorer": true,
+    "normalization": "masked_softmax_per_question"
+  },
+  "initial_resource_limits": {
+    "max_images_per_request": 1,
+    "max_questions_per_request": 4,
+    "min_choice_or_score_candidates": 2,
+    "max_choice_or_score_candidates": 16,
+    "max_total_tokens_per_request": 2048,
+    "image_max_pixels": 262144,
+    "on_over_budget": "reject_with_explicit_error"
+  },
+  "training_stages": [
+    "frozen_backbone_head_training",
+    "selective_lora_if_needed",
+    "held_out_calibration"
+  ],
+  "latency_target_ms": 300,
+  "latency_target_scope": "resident model; full request; no feature cache; p95",
+  "runtime_versions_locked": true,
+  "head_trained": true,
+  "calibration_fitted": true,
+  "measured_gpu_fit": true,
+  "measurement_scope": "reports/integration-starter-v2.json; trained head; resident serial inference and local HTTP",
+  "quality_status": "research_alpha; fresh policy accuracy 55.69%; confident OOD errors remain"
+}

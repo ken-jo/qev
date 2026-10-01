@@ -1,0 +1,19 @@
+{
+  "experiment": "workflow-consistency-pilot-v12",
+  "status": "declared_before_training",
+  "scope": "Exploratory training/development-only follow-up; not an added candidate in the frozen primary v12 experiment.",
+  "release_protocol": "configs/workflow-release-v12.json",
+  "parent": "checkpoints/veyra-foundation-v11",
+  "features": "data/features-workflow-v12",
+  "records": "data/workflow-v12/records.jsonl",
+  "control": "runs/workflow-v12-head/results.json",
+  "seeds": [131, 137, 139],
+  "epochs": 25,
+  "consistency_weights": [0.25, 1.0],
+  "objective": "Existing RLOO+CE objective and retention anchoring; add symmetric Jensen-Shannon agreement between choice/score outcome distributions and their HOLD projection versus noul.",
+  "eligible_groups": "Training-only workflow_new complete-evidence groups. All related typed views must have identical state and semantically aligned gold distributions. Uncertain views and unrelated official-workflow questions are excluded from the consistency term.",
+  "selection": "Same development eligibility and rank as primary study. Compare median across three seeds with the already completed matched RLOO control; representative seed 131. Results remain exploratory.",
+  "calibration_or_final_used": false,
+  "inference_modules_added": 0,
+  "publication": "No release approval follows from this pilot. A different selected model requires a separately declared complete evaluation cycle and unchanged release thresholds."
+}

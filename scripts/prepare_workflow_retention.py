@@ -1,0 +1,121 @@
+"""Choose unused retention observations before model access; optional pyarrow data tool."""
+
+import csv
+import hashlib
+import json
+from collections import defaultdict
+from pathlib import Path
+
+import pyarrow.parquet as pq
+
+
+def stable(text):
+    return hashlib.sha256(("veyra-workflow-v12-131:" + text).encode()).hexdigest()
+
+
+def normalize(text):
+    return " ".join(text.lower().split())
+
+
+def main():
+    root = Path("data/workflow-v12-source")
+    source = Path("data/foundation-v11-source")
+    output = root / "retention-selections.json"
+    if output.exists():
+        raise FileExistsError("retention selections are immutable")
+    old = json.loads((source / "selected-text.json").read_text(encoding="utf-8"))["rows"]
+    used = {
+        normalize(r["text"].split("\nHypothesis:")[0].removeprefix("Premise: "))
+        for r in old
+        if r["source"] == "snli"
+    }
+    selected = []
+    for upstream, quotas in (
+        ("validation", {"dev": 150, "calibration": 50}),
+        ("test", {"test": 150}),
+    ):
+        pools = defaultdict(list)
+        for row in pq.read_table(source / f"snli-{upstream}.parquet").to_pylist():
+            if row["label"] in (0, 1, 2) and normalize(row["premise"]) not in used:
+                pools[row["label"]].append(row)
+        for label, pool in sorted(pools.items()):
+            pool.sort(key=lambda r: stable(r["premise"] + "\n" + r["hypothesis"]))
+            cursor = 0
+            for split, count in quotas.items():
+                for _ in range(count):
+                    while normalize(pool[cursor]["premise"]) in used:
+                        cursor += 1
+                    row = pool[cursor]
+                    cursor += 1
+                    used.add(normalize(row["premise"]))
+                    selected.append(
+                        {
+                            "source": "snli",
+                            "upstream_split": upstream,
+                            "split": split,
+                            "id": stable(normalize(row["premise"]))[:24],
+                            "label": label,
+                            "text": "Premise: "
+                            + row["premise"]
+                            + "\nHypothesis: "
+                            + row["hypothesis"],
+                        }
+                    )
+    used_text = {normalize(r["text"]) for r in old if r["source"] != "snli"}
+    categories = json.loads((source / "banking-categories.json").read_text(encoding="utf-8"))
+    for upstream, quotas in (("train", {"dev": 6, "calibration": 2}), ("test", {"test": 6})):
+        with (source / f"banking-{upstream}.csv").open(encoding="utf-8", newline="") as stream:
+            pools = defaultdict(list)
+            for row in csv.DictReader(stream):
+                if normalize(row["text"]) not in used_text:
+                    pools[row["category"]].append(row)
+        for category in categories:
+            pool = sorted(pools[category], key=lambda r: stable(r["text"]))
+            cursor = 0
+            for split, count in quotas.items():
+                for _ in range(count):
+                    while normalize(pool[cursor]["text"]) in used_text:
+                        cursor += 1
+                    row = pool[cursor]
+                    cursor += 1
+                    used_text.add(normalize(row["text"]))
+                    selected.append(
+                        {
+                            "source": "banking77",
+                            "upstream_split": upstream,
+                            "split": split,
+                            "id": stable(normalize(row["text"]))[:24],
+                            "label": category,
+                            "text": row["text"],
+                        }
+                    )
+    pools = defaultdict(list)
+    for row in pq.read_table(root / "cifar-test.parquet").to_pylist():
+        raw = row["img"]["bytes"]
+        fingerprint = hashlib.sha256(raw).hexdigest()
+        pools[row["label"]].append((fingerprint, raw))
+    images = root / "cifar-images"
+    images.mkdir(exist_ok=True)
+    proposals = []
+    for label, pool in sorted(pools.items()):
+        unique = {fingerprint: raw for fingerprint, raw in pool}
+        for fingerprint in sorted(unique, key=stable)[:200]:
+            path = images / (fingerprint + ".png")
+            path.write_bytes(unique[fingerprint])
+            proposals.append({"sha256": fingerprint, "label": label, "path": str(path)})
+    result = {
+        "seed": 131,
+        "text_rows": selected,
+        "image_candidates": proposals,
+        "banking_categories": categories,
+        "no_model_outputs_used": True,
+        "previous_text_selection_sha256": hashlib.sha256(
+            (source / "selected-text.json").read_bytes()
+        ).hexdigest(),
+    }
+    output.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    print(json.dumps({"text_observations": len(selected), "image_candidates": len(proposals)}))
+
+
+if __name__ == "__main__":
+    main()

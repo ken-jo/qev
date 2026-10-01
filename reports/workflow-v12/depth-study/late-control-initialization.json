@@ -1,0 +1,20 @@
+{
+  "trainable_parameter_sha256": "391b6d361685b2e5db9f6f2a268ce31158579f1c4e494ee7964bcba1063d7bdb",
+  "parameter_group_sha256": {
+    "earlier_adapters": "48cf610d1d1276b10f847a4f105c6ae7a39d8d76df804628ed5ef0519b22b19a",
+    "later_adapters": "62806db2c43b0853afa2a8830b8cf8e0ed1acaf4927efe30113da721a6129e84",
+    "readout": "a3941df8aceb9e556a75533b1e7e2466e3024d48153612c6f1fa958f66b772cb"
+  },
+  "parameter_count_by_group": {
+    "earlier_adapters": 3907584,
+    "later_adapters": 3907584,
+    "readout": 171072
+  },
+  "expansion": {
+    "previous_layers": 12,
+    "expanded_layers": 24,
+    "boundary": 12
+  },
+  "configuration_sha256": "d96024a725b0935dd4b4fd528161adeceffbcd3522f0dfb03f4d743d8eb12380",
+  "earlier_learning_rate_multiplier": 0.0
+}

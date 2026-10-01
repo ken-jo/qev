@@ -1,0 +1,591 @@
+{
+  "passed": true,
+  "records_checked": 14524,
+  "maximum_cached_target_absolute_difference": 0.0,
+  "source_sha256": "cf5607ef147b1237ca820c494d7fc0790e25c3b1dc01699c9efcd5f7f2e847b1",
+  "records_sha256": "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571",
+  "feature_cache": {
+    "complete": true,
+    "rows": 14524,
+    "by_split": {
+      "train": 11212,
+      "dev": 3312
+    },
+    "features_sha256": "10304d3889d09c01c55f05fcba6d48068daed7f1f9a3a56cbeda8a25c9c2aff3",
+    "metadata_sha256": "4a81e5c10d1425ccdd1141fe7bece83609404b6d2d1274a964c84d45a6ae6378",
+    "specification_sha256": "3ff0186b30e46416428ca6acf79640d4a8fac8940182095986429f894375c640",
+    "elapsed_seconds": 964.4121443999466
+  },
+  "calibration_or_final_used": false,
+  "model_or_policy_changed": false,
+  "target_strata": {
+    "dev/photo_guard/choice": {
+      "questions": 600,
+      "gold_position_counts": {
+        "0": 60,
+        "1": 60,
+        "2": 60,
+        "3": 60,
+        "4": 60,
+        "5": 60,
+        "6": 60,
+        "7": 60,
+        "8": 60,
+        "9": 60
+      },
+      "candidate_count_histogram": {
+        "10": 600
+      },
+      "mean_target_max": 1.0,
+      "mean_target_entropy_nats": 0.0,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "dev/text_intent/choice": {
+      "questions": 462,
+      "gold_position_counts": {
+        "0": 57,
+        "1": 57,
+        "2": 57,
+        "3": 59,
+        "4": 64,
+        "5": 63,
+        "6": 55,
+        "7": 50
+      },
+      "candidate_count_histogram": {
+        "8": 462
+      },
+      "mean_target_max": 1.0,
+      "mean_target_entropy_nats": 0.0,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "dev/text_nli/choice": {
+      "questions": 450,
+      "gold_position_counts": {
+        "0": 150,
+        "1": 150,
+        "2": 150
+      },
+      "candidate_count_histogram": {
+        "3": 450
+      },
+      "mean_target_max": 1.0,
+      "mean_target_entropy_nats": 0.0,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "dev/uncertainty/choice": {
+      "questions": 100,
+      "gold_position_counts": {
+        "-1": 100
+      },
+      "candidate_count_histogram": {
+        "3": 100
+      },
+      "mean_target_max": 0.7555200145890412,
+      "mean_target_entropy_nats": 0.5416839902908238,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "dev/uncertainty/noul": {
+      "questions": 100,
+      "gold_position_counts": {
+        "-1": 100
+      },
+      "candidate_count_histogram": {
+        "2": 100
+      },
+      "mean_target_max": 0.8074843465753425,
+      "mean_target_entropy_nats": 0.43785379077891784,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "dev/uncertainty/score": {
+      "questions": 100,
+      "gold_position_counts": {
+        "-1": 100
+      },
+      "candidate_count_histogram": {
+        "3": 100
+      },
+      "mean_target_max": 0.7686104563356164,
+      "mean_target_entropy_nats": 0.5423948895426487,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "dev/workflow_known/choice": {
+      "questions": 180,
+      "gold_position_counts": {
+        "0": 38,
+        "1": 43,
+        "2": 34,
+        "3": 52,
+        "4": 13
+      },
+      "candidate_count_histogram": {
+        "4": 120,
+        "5": 60
+      },
+      "mean_target_max": 0.6517186024999095,
+      "mean_target_entropy_nats": 0.830764443591645,
+      "teacher_distribution_questions": 180,
+      "hard_gold_outside_target_modes": 0
+    },
+    "dev/workflow_known/noul": {
+      "questions": 180,
+      "gold_position_counts": {
+        "0": 83,
+        "1": 97
+      },
+      "candidate_count_histogram": {
+        "2": 180
+      },
+      "mean_target_max": 0.7956296555555555,
+      "mean_target_entropy_nats": 0.4263074402543818,
+      "teacher_distribution_questions": 180,
+      "hard_gold_outside_target_modes": 0
+    },
+    "dev/workflow_known/score": {
+      "questions": 240,
+      "gold_position_counts": {
+        "0": 25,
+        "1": 71,
+        "2": 59,
+        "3": 82,
+        "4": 3
+      },
+      "candidate_count_histogram": {
+        "4": 210,
+        "5": 30
+      },
+      "mean_target_max": 0.6151110992223131,
+      "mean_target_entropy_nats": 0.8993248765853428,
+      "teacher_distribution_questions": 240,
+      "hard_gold_outside_target_modes": 0
+    },
+    "dev/workflow_new/choice": {
+      "questions": 300,
+      "gold_position_counts": {
+        "0": 99,
+        "1": 102,
+        "2": 99
+      },
+      "candidate_count_histogram": {
+        "3": 300
+      },
+      "mean_target_max": 1.0,
+      "mean_target_entropy_nats": 0.0,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "dev/workflow_new/noul": {
+      "questions": 300,
+      "gold_position_counts": {
+        "0": 201,
+        "1": 99
+      },
+      "candidate_count_histogram": {
+        "2": 300
+      },
+      "mean_target_max": 1.0,
+      "mean_target_entropy_nats": 0.0,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "dev/workflow_new/score": {
+      "questions": 300,
+      "gold_position_counts": {
+        "0": 102,
+        "1": 99,
+        "2": 99
+      },
+      "candidate_count_histogram": {
+        "3": 300
+      },
+      "mean_target_max": 1.0,
+      "mean_target_entropy_nats": 0.0,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "train/image_leaf/choice": {
+      "questions": 100,
+      "gold_position_counts": {
+        "0": 28,
+        "1": 31,
+        "2": 41
+      },
+      "candidate_count_histogram": {
+        "3": 100
+      },
+      "mean_target_max": 1.0,
+      "mean_target_entropy_nats": 0.0,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "train/image_leaf/noul": {
+      "questions": 100,
+      "gold_position_counts": {
+        "0": 58,
+        "1": 42
+      },
+      "candidate_count_histogram": {
+        "2": 100
+      },
+      "mean_target_max": 1.0,
+      "mean_target_entropy_nats": 0.0,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "train/image_leaf/score": {
+      "questions": 100,
+      "gold_position_counts": {
+        "0": 27,
+        "1": 30,
+        "2": 43
+      },
+      "candidate_count_histogram": {
+        "3": 100
+      },
+      "mean_target_max": 1.0,
+      "mean_target_entropy_nats": 0.0,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "train/image_waste/choice": {
+      "questions": 304,
+      "gold_position_counts": {
+        "0": 51,
+        "1": 57,
+        "2": 40,
+        "3": 83,
+        "4": 60,
+        "5": 13
+      },
+      "candidate_count_histogram": {
+        "6": 304
+      },
+      "mean_target_max": 1.0,
+      "mean_target_entropy_nats": 0.0,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "train/image_waste/noul": {
+      "questions": 304,
+      "gold_position_counts": {
+        "0": 150,
+        "1": 154
+      },
+      "candidate_count_histogram": {
+        "2": 304
+      },
+      "mean_target_max": 1.0,
+      "mean_target_entropy_nats": 0.0,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "train/image_waste/score": {
+      "questions": 304,
+      "gold_position_counts": {
+        "0": 113,
+        "1": 106,
+        "2": 85
+      },
+      "candidate_count_histogram": {
+        "3": 304
+      },
+      "mean_target_max": 1.0,
+      "mean_target_entropy_nats": 0.0,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "train/retention/choice": {
+      "questions": 50,
+      "gold_position_counts": {
+        "0": 23,
+        "1": 25,
+        "2": 2
+      },
+      "candidate_count_histogram": {
+        "2": 44,
+        "3": 6
+      },
+      "mean_target_max": 1.0,
+      "mean_target_entropy_nats": 0.0,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "train/retention/noul": {
+      "questions": 50,
+      "gold_position_counts": {
+        "0": 25,
+        "1": 25
+      },
+      "candidate_count_histogram": {
+        "2": 50
+      },
+      "mean_target_max": 1.0,
+      "mean_target_entropy_nats": 0.0,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "train/retention/score": {
+      "questions": 60,
+      "gold_position_counts": {
+        "0": 30,
+        "1": 30
+      },
+      "candidate_count_histogram": {
+        "2": 54,
+        "3": 6
+      },
+      "mean_target_max": 1.0,
+      "mean_target_entropy_nats": 0.0,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "train/text_intent/choice": {
+      "questions": 300,
+      "gold_position_counts": {
+        "0": 41,
+        "1": 33,
+        "2": 41,
+        "3": 44,
+        "4": 40,
+        "5": 33,
+        "6": 29,
+        "7": 39
+      },
+      "candidate_count_histogram": {
+        "8": 300
+      },
+      "mean_target_max": 1.0,
+      "mean_target_entropy_nats": 0.0,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "train/text_intent/noul": {
+      "questions": 300,
+      "gold_position_counts": {
+        "0": 156,
+        "1": 144
+      },
+      "candidate_count_histogram": {
+        "2": 300
+      },
+      "mean_target_max": 1.0,
+      "mean_target_entropy_nats": 0.0,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "train/text_intent/score": {
+      "questions": 300,
+      "gold_position_counts": {
+        "0": 100,
+        "1": 111,
+        "2": 89
+      },
+      "candidate_count_histogram": {
+        "3": 300
+      },
+      "mean_target_max": 1.0,
+      "mean_target_entropy_nats": 0.0,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "train/text_nli/choice": {
+      "questions": 300,
+      "gold_position_counts": {
+        "0": 97,
+        "1": 102,
+        "2": 101
+      },
+      "candidate_count_histogram": {
+        "3": 300
+      },
+      "mean_target_max": 1.0,
+      "mean_target_entropy_nats": 0.0,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "train/text_nli/noul": {
+      "questions": 300,
+      "gold_position_counts": {
+        "0": 147,
+        "1": 153
+      },
+      "candidate_count_histogram": {
+        "2": 300
+      },
+      "mean_target_max": 1.0,
+      "mean_target_entropy_nats": 0.0,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "train/text_nli/score": {
+      "questions": 300,
+      "gold_position_counts": {
+        "0": 96,
+        "1": 96,
+        "2": 108
+      },
+      "candidate_count_histogram": {
+        "3": 300
+      },
+      "mean_target_max": 1.0,
+      "mean_target_entropy_nats": 0.0,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "train/uncertainty/choice": {
+      "questions": 320,
+      "gold_position_counts": {
+        "-1": 320
+      },
+      "candidate_count_histogram": {
+        "3": 320
+      },
+      "mean_target_max": 0.7693297843214897,
+      "mean_target_entropy_nats": 0.5342699048795415,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "train/uncertainty/noul": {
+      "questions": 320,
+      "gold_position_counts": {
+        "-1": 320
+      },
+      "candidate_count_histogram": {
+        "2": 320
+      },
+      "mean_target_max": 0.8049395105201199,
+      "mean_target_entropy_nats": 0.43978915644190203,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "train/uncertainty/score": {
+      "questions": 320,
+      "gold_position_counts": {
+        "-1": 320
+      },
+      "candidate_count_histogram": {
+        "3": 320
+      },
+      "mean_target_max": 0.7778686555543665,
+      "mean_target_entropy_nats": 0.5189623770632944,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "train/workflow_known/choice": {
+      "questions": 1260,
+      "gold_position_counts": {
+        "0": 333,
+        "1": 250,
+        "2": 233,
+        "3": 347,
+        "4": 97
+      },
+      "candidate_count_histogram": {
+        "4": 840,
+        "5": 420
+      },
+      "mean_target_max": 0.6507627721165237,
+      "mean_target_entropy_nats": 0.8415637404398207,
+      "teacher_distribution_questions": 1260,
+      "hard_gold_outside_target_modes": 0
+    },
+    "train/workflow_known/noul": {
+      "questions": 1260,
+      "gold_position_counts": {
+        "0": 649,
+        "1": 611
+      },
+      "candidate_count_histogram": {
+        "2": 1260
+      },
+      "mean_target_max": 0.7787764452380953,
+      "mean_target_entropy_nats": 0.44403806690195696,
+      "teacher_distribution_questions": 1260,
+      "hard_gold_outside_target_modes": 0
+    },
+    "train/workflow_known/score": {
+      "questions": 1680,
+      "gold_position_counts": {
+        "0": 216,
+        "1": 416,
+        "2": 526,
+        "3": 503,
+        "4": 19
+      },
+      "candidate_count_histogram": {
+        "4": 1470,
+        "5": 210
+      },
+      "mean_target_max": 0.608236097955464,
+      "mean_target_entropy_nats": 0.9128654436918944,
+      "teacher_distribution_questions": 1680,
+      "hard_gold_outside_target_modes": 0
+    },
+    "train/workflow_new/choice": {
+      "questions": 960,
+      "gold_position_counts": {
+        "0": 318,
+        "1": 324,
+        "2": 318
+      },
+      "candidate_count_histogram": {
+        "3": 960
+      },
+      "mean_target_max": 1.0,
+      "mean_target_entropy_nats": 0.0,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "train/workflow_new/noul": {
+      "questions": 960,
+      "gold_position_counts": {
+        "0": 642,
+        "1": 318
+      },
+      "candidate_count_histogram": {
+        "2": 960
+      },
+      "mean_target_max": 1.0,
+      "mean_target_entropy_nats": 0.0,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    },
+    "train/workflow_new/score": {
+      "questions": 960,
+      "gold_position_counts": {
+        "0": 324,
+        "1": 318,
+        "2": 318
+      },
+      "candidate_count_histogram": {
+        "3": 960
+      },
+      "mean_target_max": 1.0,
+      "mean_target_entropy_nats": 0.0,
+      "teacher_distribution_questions": 0,
+      "hard_gold_outside_target_modes": 0
+    }
+  },
+  "earlier_readout_only_typed_diagnostic": {
+    "checkpoint": "runs\\workflow-v12-head\\rloo-131\\checkpoint",
+    "weights_sha256": "8bea91f594aabcf35e3e9f517365ed5d1768956b8064620696d040a6e57a1679",
+    "manifest_sha256": "4187c64dc1e5b173090b0af88f255f991a594ea66a22dadb20a648131df50096",
+    "unchanged_backbone_verified": true,
+    "development_groups": 300,
+    "choice_score_semantic_disagreements": 108,
+    "correctness_counts_choice_then_score": {
+      "(False, True)": 56,
+      "(False, False)": 116,
+      "(True, True)": 97,
+      "(True, False)": 31
+    },
+    "scope": "Earlier unmerged readout-only model on frozen development representations; not the live continuation model."
+  },
+  "interpretation": "Correct candidate/target alignment excludes a mapping bug. Mixed hard and teacher-distribution targets and typed-view disagreements motivate further model diagnosis; they do not by themselves identify the cause of the live model's score ranking errors."
+}

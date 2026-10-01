@@ -1,0 +1,10 @@
+{
+  "completed": true,
+  "configuration_sha256": "05cbeb6125bdc7c081f7ba3e0dc1caaed52aaeeeccc85360bd0c05b76a621c79",
+  "completed_at_utc": "2026-09-30T12:52:59.764980+00:00",
+  "arms": [
+    "skill_curriculum",
+    "outcome_replay"
+  ],
+  "release_allowed": false
+}

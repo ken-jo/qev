@@ -1,0 +1,157 @@
+{
+  "selected_at_utc": "2026-09-29T20:26:29.811784+00:00",
+  "stage": "selected_before_final_evaluation",
+  "final_model_evaluated": false,
+  "frozen_final_sha256": "d59aded5a61bb7a4200f39b3e0aae30a7e401ba4d2a86846a74661accc715015",
+  "development_report": "reports/type-replay-v7-dev.json",
+  "legacy_regression_report": "reports/type-replay-v7-legacy-regression.json",
+  "raw_checkpoint_manifest_sha256": "d1f732e11757b220d6e4b5733892dfda94b849366f0ce7cda423110af86b0b30",
+  "checkpoint": {
+    "format_version": 2,
+    "architecture": "option_readout",
+    "decision_views": 1,
+    "backbone": {
+      "model_id": "Qwen/Qwen3.5-2B",
+      "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+    },
+    "encoder": {
+      "max_total_tokens": 2048,
+      "image_max_pixels": 262144,
+      "image_min_pixels": 65536,
+      "encoding": "option-v1"
+    },
+    "adaptation": {
+      "layers": 12,
+      "rank": 8,
+      "alpha": 16.0
+    },
+    "calibration": {
+      "temperatures": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "abstain_thresholds": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "fitted_types": [],
+      "abstention_fitted_types": [],
+      "always_abstain_types": []
+    },
+    "training": {
+      "completed": true,
+      "optimizer_steps": 1013,
+      "epochs": 1,
+      "selected_epoch": 1,
+      "selection_split": "dev",
+      "selection_metric": "min-modality-accuracy",
+      "initial_dev": {
+        "questions": 448,
+        "accuracy": 0.9129464285714286,
+        "nll": 0.32967309461752986,
+        "text_accuracy": 0.9140625,
+        "image_accuracy": 0.9114583333333334,
+        "by_family": {
+          "image_color_rule": 0.890625,
+          "image_count_rule": 0.875,
+          "image_shape_rule": 0.96875,
+          "text_conjunction": 0.9375,
+          "text_disjunction": 0.890625,
+          "text_ranges": 0.84375,
+          "text_threshold": 0.984375
+        },
+        "by_type": {
+          "choice": 0.9078947368421053,
+          "noul": 0.8958333333333334,
+          "score": 0.9342105263157895
+        }
+      },
+      "history": [
+        {
+          "epoch": 1,
+          "train_loss": 0.22340766611658136,
+          "dev": {
+            "questions": 448,
+            "accuracy": 0.9151785714285714,
+            "nll": 0.3071404593248627,
+            "text_accuracy": 0.91796875,
+            "image_accuracy": 0.9114583333333334,
+            "by_family": {
+              "image_color_rule": 0.921875,
+              "image_count_rule": 0.859375,
+              "image_shape_rule": 0.953125,
+              "text_conjunction": 0.921875,
+              "text_disjunction": 0.9375,
+              "text_ranges": 0.84375,
+              "text_threshold": 0.96875
+            },
+            "by_type": {
+              "choice": 0.9013157894736842,
+              "noul": 0.9027777777777778,
+              "score": 0.9407894736842105
+            }
+          }
+        }
+      ],
+      "seed": 37,
+      "initialization_sha256": "025fd383e8b85ac590d8b663790d2885f1a73d6f327e1c4113e02babccaf2131",
+      "optimizer_resumed": false,
+      "source_sha256": {
+        "C:\\tmp\\veyra\\scripts\\train_option.py": "9574e6b1e3d66f91e65180f01d61d64cda9be99a72ab45445bfada1c71257f62",
+        "src\\veyra\\option_model.py": "db8709e1b1fb4096b57255e297b70f048952ed01e212cba76fad95a289f6effb",
+        "src\\veyra\\interventions.py": "8539a61982757c6697af844e52ae5265842a451387319bf5353df5a6b61bbd13",
+        "src\\veyra\\evidence_data.py": "83d05a43fec14f1e92bae4ee36a461e275007dd5cf961030006d8bd91f761f7e",
+        "src\\veyra\\policy_data.py": "9590630f175c5d2c59a09ac8feffa3009105e3c6a0c6ba9fd0562f4c402ed635",
+        "src\\veyra\\replay.py": "7299219b38455e111c16b5130e36e07dbd133fcb3a9ab18f65417869fc180159"
+      },
+      "learning_rate": 1e-05,
+      "schedule": "cosine",
+      "warmup_steps": 20,
+      "interventions": true,
+      "type_interventions": true,
+      "consistency_weight": 0.25,
+      "epoch_records_including_auxiliary": 8100,
+      "readout_lr": 1.0000000000000002e-06,
+      "accumulation": 8,
+      "train_records": 4800,
+      "replay_requests_per_epoch": 900,
+      "replay_audit": {
+        "heldout_records_checked": 1792,
+        "replay_train_records_checked": 7008
+      },
+      "replay_dataset_sha256": "96414c7ee56cdb9edb7c91eb0ac0b6c85123cd5359e3a58a1047a59b1edbd2c7",
+      "smoke": false,
+      "dataset_sha256": "ad6c8b974df7e61b18463a748c18787c484edc770a6253ccb6520ed1e9cf143f",
+      "peak_allocated_mib": 5605.28125,
+      "elapsed_seconds": 1291.935519599996,
+      "intermediate": false,
+      "selection_reason": "V7 improves minimum merged development modality accuracy to 175/192 (91.1458 percent), versus v6 233/256 (91.0156 percent), and development NLL from 0.3310 to 0.3114. All selection uses development and legacy regression before calibration or final evaluation.",
+      "discarded_partial_epoch": null,
+      "run_arguments": {
+        "records": "data\\policy-v6\\records.jsonl",
+        "output": "runs\\type-replay-v7",
+        "epochs": 1,
+        "layers": 12,
+        "rank": 8,
+        "learning_rate": 1e-05,
+        "accumulation": 8,
+        "initialize": "runs\\intervention-v6\\checkpoint",
+        "seed": 37,
+        "selection": "min-modality-accuracy",
+        "schedule": "cosine",
+        "warmup_steps": 20,
+        "interventions": true,
+        "type_interventions": true,
+        "consistency_weight": 0.25,
+        "replay_records": "data\\starter-v2\\records.jsonl",
+        "replay_per_epoch": 900,
+        "smoke": false
+      },
+      "final_evaluated_at_selection": false
+    },
+    "weights_sha256": "5c86e81173ac5b5c8b508509df326112d30b02386fda3506875523274ed68157",
+    "merge_accumulation": "base"
+  }
+}

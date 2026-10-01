@@ -1,0 +1,26 @@
+[
+  {
+    "file": "build_foundation_data.py",
+    "original_sha256": "7a16faa5781000bb8a15a776a7dc25fcab7c86458f54185c75f4fb760881f5be",
+    "current_sha256": "28f79e46dc893c413623bee3eebe42d82329bdc02ea32e2268bb4a3960589f25",
+    "same_ast": true
+  },
+  {
+    "file": "cache_transfer_features.py",
+    "original_sha256": "ccca6bd847feed1482fd1a471c561e68835d0e35fd733e30da3f6bb90fad86e9",
+    "current_sha256": "ec8f1f8febb209e2bc390846fd53ff3534c9a0eada2c31679062ddc51fe74df8",
+    "same_ast": true
+  },
+  {
+    "file": "fetch_foundation_sources.py",
+    "original_sha256": "a986d5ceb842bd6f3eee4d43be01e88430bee801a6e09671649659d214ecaeab",
+    "current_sha256": "a986d5ceb842bd6f3eee4d43be01e88430bee801a6e09671649659d214ecaeab",
+    "same_ast": true
+  },
+  {
+    "file": "prepare_foundation_text.py",
+    "original_sha256": "19bca70ece83bb90991859278d98f3781ad03912556f3251c1011e78ff32a7b6",
+    "current_sha256": "5bef2ccf00cf998be8a74d1bf0c8ba7f4c63c0dadcebf760e897ee2e64bdd641",
+    "same_ast": true
+  }
+]

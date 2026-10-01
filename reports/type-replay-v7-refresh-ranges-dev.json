@@ -1,0 +1,72 @@
+{
+  "evaluation_role": "development_error_analysis",
+  "new_model_calls": 0,
+  "source_report": "reports\\type-replay-v7-refresh-dev.json",
+  "source_report_sha256": "ed68fec698c4a8a6de235047a542ef0a8f5d26d495a7a98d91190bb49969f23c",
+  "checkpoint_sha256": "5c86e81173ac5b5c8b508509df326112d30b02386fda3506875523274ed68157",
+  "evaluated_subset_sha256": "a94d0907b1d482faec4cf021cf6d8dca5c7d355a5aae6286a172b58e13118dfb",
+  "scope": "Numeric range policies from saved v7 predictions on fresh development data",
+  "by_branch_and_type": {
+    "branch-0": {
+      "questions": 94,
+      "correct": 86,
+      "accuracy": 0.9148936170212766
+    },
+    "branch-1": {
+      "questions": 92,
+      "correct": 45,
+      "accuracy": 0.4891304347826087
+    },
+    "branch-2": {
+      "questions": 70,
+      "correct": 64,
+      "accuracy": 0.9142857142857143
+    },
+    "choice/branch-0": {
+      "questions": 24,
+      "correct": 22,
+      "accuracy": 0.9166666666666666
+    },
+    "choice/branch-1": {
+      "questions": 48,
+      "correct": 17,
+      "accuracy": 0.3541666666666667
+    },
+    "choice/branch-2": {
+      "questions": 16,
+      "correct": 16,
+      "accuracy": 1.0
+    },
+    "noul/branch-0": {
+      "questions": 36,
+      "correct": 31,
+      "accuracy": 0.8611111111111112
+    },
+    "noul/branch-1": {
+      "questions": 16,
+      "correct": 13,
+      "accuracy": 0.8125
+    },
+    "noul/branch-2": {
+      "questions": 28,
+      "correct": 24,
+      "accuracy": 0.8571428571428571
+    },
+    "score/branch-0": {
+      "questions": 34,
+      "correct": 33,
+      "accuracy": 0.9705882352941176
+    },
+    "score/branch-1": {
+      "questions": 28,
+      "correct": 15,
+      "accuracy": 0.5357142857142857
+    },
+    "score/branch-2": {
+      "questions": 26,
+      "correct": 24,
+      "accuracy": 0.9230769230769231
+    }
+  },
+  "limitation": "A concentration of middle-interval errors does not establish a unique causal mechanism."
+}

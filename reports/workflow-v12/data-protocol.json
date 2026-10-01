@@ -1,0 +1,118 @@
+{
+  "records": 20600,
+  "groups": 7888,
+  "split_counts": {
+    "train": 11212,
+    "dev": 3312,
+    "calibration": 2644,
+    "test": 3432
+  },
+  "sources": [
+    {
+      "id": "AI-Lab-Makerere/beans",
+      "revision": "27aa014ce09b193e1a6f58112d4a66e0eddb69c5",
+      "license": "MIT"
+    },
+    {
+      "id": "LocalLLaMA/typed-decisions",
+      "revision": "d51d993547ad8355b1c25157fbc1fea0649e8ffa",
+      "license": "Apache-2.0"
+    },
+    {
+      "id": "PolyAI/banking77",
+      "revision": "57ec275d8078af65b7731c2a98be812d844a6d6b",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "id": "stanfordnlp/snli",
+      "revision": "cdb5c3d5eed6ead6e5a341c8e56e669bb666725b",
+      "license": "CC-BY-SA-4.0"
+    },
+    {
+      "id": "uoft-cs/cifar10",
+      "revision": "0b2714987fa478483af9968de7c934580d0bb9a2",
+      "license": "unknown"
+    },
+    {
+      "id": "veyra-policy-refresh-v8",
+      "revision": "sha256:b551bc1e88f12738a6379173991d2fed8aa80f7c25c65e899f5504f7c9b283c6",
+      "license": "Apache-2.0"
+    },
+    {
+      "id": "veyra-workflow-v12",
+      "revision": "sha256:5433c424ad7d2bea710c398899840d4a43a3608a9b7529a6cd8cbbe7a32bc4ca",
+      "license": "Apache-2.0"
+    },
+    {
+      "id": "vminhkhoi/trashnet",
+      "revision": "kaggle-version-1",
+      "license": "MIT"
+    }
+  ],
+  "records_sha256": "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571",
+  "release_protocol_sha256": "d0e6c454fc10cfa080523cfcc66706dfe73cb32524f4ce74bf87a5d4edde6776",
+  "generator_sha256": "5433c424ad7d2bea710c398899840d4a43a3608a9b7529a6cd8cbbe7a32bc4ca",
+  "family_split": {
+    "shipping_release": "train",
+    "staff_access": "train",
+    "purchase_return": "train",
+    "backup_restore": "train",
+    "content_publish": "train",
+    "hardware_dispatch": "train",
+    "grant_payment": "dev",
+    "warehouse_transfer": "dev",
+    "service_repair": "dev",
+    "laboratory_batch": "test",
+    "archive_loan": "test",
+    "utility_maintenance": "test"
+  },
+  "cifar_similar_images_excluded": 0,
+  "domain_split_questions": {
+    "image_leaf": {
+      "train": 300
+    },
+    "image_waste": {
+      "train": 912
+    },
+    "photo_guard": {
+      "dev": 600,
+      "calibration": 300,
+      "test": 600
+    },
+    "retention": {
+      "train": 160
+    },
+    "text_intent": {
+      "train": 900,
+      "dev": 462,
+      "calibration": 154,
+      "test": 462
+    },
+    "text_nli": {
+      "train": 900,
+      "dev": 450,
+      "calibration": 150,
+      "test": 450
+    },
+    "uncertainty": {
+      "train": 960,
+      "calibration": 360,
+      "dev": 300,
+      "test": 480
+    },
+    "workflow_known": {
+      "train": 4200,
+      "dev": 600,
+      "calibration": 600
+    },
+    "workflow_new": {
+      "train": 2880,
+      "calibration": 1080,
+      "dev": 900,
+      "test": 1440
+    }
+  },
+  "final_inference_performed": false,
+  "latent_targets_not_used_at_inference": true,
+  "conditional_target_audit_sha256": "9a73f3fd1eb4445045fcb13cd946118fbfa679a3113c4ef02fe32967c94142f7"
+}

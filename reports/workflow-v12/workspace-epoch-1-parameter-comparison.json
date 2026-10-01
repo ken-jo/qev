@@ -1,0 +1,57 @@
+{
+  "created_at_utc": "2026-09-30T08:37:26.286218+00:00",
+  "scope": "Descriptive matched first-epoch parameter audit; no model inference or candidate selection.",
+  "source_sha256": "8958237770397e060ad9f763fa176ab151397b8d1dbce3ffdcb24a05407f1478",
+  "bindings": {
+    "parent": {
+      "checkpoint": "runs\\workflow-v12-backbone\\high\\full",
+      "weights_sha256": "92b3cb9b7e3353b68b116e93b8074148227a4c4d57eed2efc2a1a5867b443959",
+      "manifest_sha256": "d2e62cd08e8b93d26a4212ec3616a9a9779777728d5f57aaad7e487f0bc01b65"
+    },
+    "primitive": {
+      "checkpoint": "runs\\workflow-v12-workspace-study\\primitive\\epoch-1\\checkpoint",
+      "weights_sha256": "0baf777a61e54f4283755238fba8cdc34522ee68857a1e5616ff182855894822",
+      "manifest_sha256": "7f538ca419998bb358c6a9b57fdafb175b8ba9c13a12193baa9584673fd00dac"
+    },
+    "control": {
+      "checkpoint": "runs\\workflow-v12-workspace-study\\continuation\\epoch-1\\checkpoint",
+      "weights_sha256": "a0a081d3a0cb34909113198a5f73fe272aedd1d41d77f6cf171be0ee6949f500",
+      "manifest_sha256": "9ab563a73c09763452b643c52f40a08e7ad1d850e549b1f9c528492de42ce433"
+    }
+  },
+  "parameter_differences": {
+    "backbone_adapters": {
+      "tensors": 150,
+      "parameters": 3907584,
+      "primitive_update_norm": 1.32140662922904,
+      "control_update_norm": 1.2823340103768825,
+      "between_arms_norm": 0.4093782698353931,
+      "between_arms_max_absolute": 0.006125213345512748,
+      "nonidentical_parameters": 3907581,
+      "update_cosine": 0.9509987012635919
+    },
+    "decision_readouts": {
+      "tensors": 6,
+      "parameters": 171072,
+      "primitive_update_norm": 0.018714830270431235,
+      "control_update_norm": 0.01842388357805104,
+      "between_arms_norm": 0.004530009539656291,
+      "between_arms_max_absolute": 0.00011467188596725464,
+      "nonidentical_parameters": 120402,
+      "update_cosine": 0.9703649287993888
+    },
+    "frozen": {
+      "tensors": 1,
+      "parameters": 6144,
+      "primitive_update_norm": 0.0,
+      "control_update_norm": 0.0,
+      "between_arms_norm": 0.0,
+      "between_arms_max_absolute": 0.0,
+      "nonidentical_parameters": 0,
+      "update_cosine": null
+    }
+  },
+  "calibration_or_final_used": false,
+  "release_allowed": false,
+  "interpretation": "The arms made distinct backbone updates, while frozen tensors stayed identical. Parameter displacement alone does not establish an accuracy advantage or causally faithful reasoning."
+}

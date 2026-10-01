@@ -1,0 +1,13 @@
+{
+  "stage": "initial_parent_reconstruction",
+  "optimizer_steps_before_failure": 0,
+  "cause": "Readout was in training mode, so dropout was active while comparing with evaluation-mode cached logits.",
+  "initial_max_error": 2.5694332122802734,
+  "repair": "Set the initial reconstructed readout to eval mode before comparison.",
+  "repaired_max_error": 4.76837158203125e-06,
+  "required_tolerance": 0.0005,
+  "reused_feature_cache": true,
+  "protocol_criteria_changed": false,
+  "failed_source_sha256": "4bb9f066d1d10d47f5f2a40a3aed9d5b524157363e67de028e514cba07afcd8c",
+  "failed_source_snapshot": "reports\\workflow-v12\\source-snapshots\\train_workflow_head.failed-init.py.txt"
+}

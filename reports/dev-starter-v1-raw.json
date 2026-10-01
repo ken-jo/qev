@@ -1,0 +1,278 @@
+{
+  "split": "dev",
+  "feature_fingerprint": "b37ff5a6533b425095626b610e6b2cab4876eb8b49cd0aff28f90fc607496d85",
+  "checkpoint_weights_sha256": "582f70a0cf53f5252e7cc62b02f0ffcc8aeac2db47940971f7c7c0baf8e50675",
+  "calibration": {
+    "temperatures": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "abstain_thresholds": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "fitted_types": [],
+    "abstention_fitted_types": [],
+    "always_abstain_types": []
+  },
+  "overall": {
+    "questions": 538,
+    "nll": 0.3329986084683837,
+    "brier": 0.19893584360889965,
+    "expected_accuracy": 0.8447955390334573,
+    "hard_label_accuracy": 0.8480300187617261,
+    "hard_label_questions": 533,
+    "ece_10_bins": 0.01992857658437388,
+    "score_mae": 0.2287404336288286,
+    "coverage": 1.0,
+    "accepted_questions": 538,
+    "accepted_expected_accuracy": 0.8447955390334573
+  },
+  "raw_overall": {
+    "questions": 538,
+    "nll": 0.3329986084683837,
+    "brier": 0.19893584360889965,
+    "expected_accuracy": 0.8447955390334573,
+    "hard_label_accuracy": 0.8480300187617261,
+    "hard_label_questions": 533,
+    "ece_10_bins": 0.01992857658437388,
+    "score_mae": 0.2287404336288286
+  },
+  "uniform_probability_baseline": {
+    "questions": 538,
+    "nll": 0.9653304348723157,
+    "brier": 0.5986059479553903,
+    "expected_accuracy": 0.39684014869888473,
+    "hard_label_accuracy": 0.39587242026266417,
+    "hard_label_questions": 533,
+    "ece_10_bins": 0.0723977695167286,
+    "score_mae": 0.6818181818181818
+  },
+  "random_choice_expected_accuracy": 0.3967472118959108,
+  "by_type": {
+    "choice": {
+      "questions": 181,
+      "nll": 0.3812236157294588,
+      "brier": 0.22005861288663803,
+      "expected_accuracy": 0.8232044198895028,
+      "hard_label_accuracy": 0.8232044198895028,
+      "hard_label_questions": 181,
+      "ece_10_bins": 0.06925095267892042,
+      "score_mae": null,
+      "coverage": 1.0,
+      "accepted_questions": 181,
+      "accepted_expected_accuracy": 0.8232044198895028
+    },
+    "score": {
+      "questions": 176,
+      "nll": 0.30643117789946034,
+      "brier": 0.18861588148684236,
+      "expected_accuracy": 0.8636363636363636,
+      "hard_label_accuracy": 0.8636363636363636,
+      "hard_label_questions": 176,
+      "ece_10_bins": 0.04534568483441737,
+      "score_mae": 0.2287404336288286,
+      "coverage": 1.0,
+      "accepted_questions": 176,
+      "accepted_expected_accuracy": 0.8636363636363636
+    },
+    "noul": {
+      "questions": 181,
+      "nll": 0.31060712485443837,
+      "brier": 0.1878479546266424,
+      "expected_accuracy": 0.8480662983425414,
+      "hard_label_accuracy": 0.8579545454545454,
+      "hard_label_questions": 176,
+      "ece_10_bins": 0.04782137026846915,
+      "score_mae": null,
+      "coverage": 1.0,
+      "accepted_questions": 181,
+      "accepted_expected_accuracy": 0.8480662983425414
+    }
+  },
+  "by_family": {
+    "diagram_attributes": {
+      "questions": 153,
+      "nll": 0.1238891910849534,
+      "brier": 0.03925687917928445,
+      "expected_accuracy": 0.9738562091503268,
+      "hard_label_accuracy": 0.9738562091503268,
+      "hard_label_questions": 153,
+      "ece_10_bins": 0.018724342216069514,
+      "score_mae": 8.602684368338943e-05,
+      "coverage": 1.0,
+      "accepted_questions": 153,
+      "accepted_expected_accuracy": 0.9738562091503268
+    },
+    "leaf_photo": {
+      "questions": 195,
+      "nll": 0.43952812122815754,
+      "brier": 0.29024740317749065,
+      "expected_accuracy": 0.7487179487179487,
+      "hard_label_accuracy": 0.7487179487179487,
+      "hard_label_questions": 195,
+      "ece_10_bins": 0.03648899673084642,
+      "score_mae": 0.40156854422687754,
+      "coverage": 1.0,
+      "accepted_questions": 195,
+      "accepted_expected_accuracy": 0.7487179487179487
+    },
+    "missing_evidence": {
+      "questions": 10,
+      "nll": 0.3542807422959952,
+      "brier": 0.007536053345157901,
+      "expected_accuracy": 0.75,
+      "hard_label_accuracy": 1.0,
+      "hard_label_questions": 5,
+      "ece_10_bins": 0.039426140639940425,
+      "score_mae": null,
+      "coverage": 1.0,
+      "accepted_questions": 10,
+      "accepted_expected_accuracy": 0.75
+    },
+    "text_policy": {
+      "questions": 180,
+      "nll": 0.394152300319677,
+      "brier": 0.24637542885608468,
+      "expected_accuracy": 0.8444444444444444,
+      "hard_label_accuracy": 0.8444444444444444,
+      "hard_label_questions": 180,
+      "ece_10_bins": 0.07831532738576495,
+      "score_mae": 0.2358662262483157,
+      "coverage": 1.0,
+      "accepted_questions": 180,
+      "accepted_expected_accuracy": 0.8444444444444444
+    }
+  },
+  "by_language": {
+    "en": {
+      "questions": 378,
+      "nll": 0.3193315724336976,
+      "brier": 0.18908858720008712,
+      "expected_accuracy": 0.8558201058201058,
+      "hard_label_accuracy": 0.8586666666666667,
+      "hard_label_questions": 375,
+      "ece_10_bins": 0.027809939192298568,
+      "score_mae": 0.22336774294032608,
+      "coverage": 1.0,
+      "accepted_questions": 378,
+      "accepted_expected_accuracy": 0.8558201058201058
+    },
+    "ko": {
+      "questions": 160,
+      "nll": 0.3652869811003296,
+      "brier": 0.22219998687471926,
+      "expected_accuracy": 0.81875,
+      "hard_label_accuracy": 0.8227848101265823,
+      "hard_label_questions": 158,
+      "ece_10_bins": 0.027977116577777596,
+      "score_mae": 0.24155223450141156,
+      "coverage": 1.0,
+      "accepted_questions": 160,
+      "accepted_expected_accuracy": 0.81875
+    }
+  },
+  "by_tag": {
+    "image_text_conflict": {
+      "questions": 33,
+      "nll": 0.03527054791831207,
+      "brier": 0.025142726128444128,
+      "expected_accuracy": 0.9696969696969697,
+      "hard_label_accuracy": 0.9696969696969697,
+      "hard_label_questions": 33,
+      "ece_10_bins": 0.023669423950424415,
+      "score_mae": 3.134328888508943e-05,
+      "coverage": 1.0,
+      "accepted_questions": 33,
+      "accepted_expected_accuracy": 0.9696969696969697
+    },
+    "missing_evidence": {
+      "questions": 10,
+      "nll": 0.3542807422959952,
+      "brier": 0.007536053345157901,
+      "expected_accuracy": 0.75,
+      "hard_label_accuracy": 1.0,
+      "hard_label_questions": 5,
+      "ece_10_bins": 0.039426140639940425,
+      "score_mae": null,
+      "coverage": 1.0,
+      "accepted_questions": 10,
+      "accepted_expected_accuracy": 0.75
+    },
+    "soft_target": {
+      "questions": 10,
+      "nll": 0.3542807422959952,
+      "brier": 0.007536053345157901,
+      "expected_accuracy": 0.75,
+      "hard_label_accuracy": 1.0,
+      "hard_label_questions": 5,
+      "ece_10_bins": 0.039426140639940425,
+      "score_mae": null,
+      "coverage": 1.0,
+      "accepted_questions": 10,
+      "accepted_expected_accuracy": 0.75
+    }
+  },
+  "by_cardinality": {
+    "2": {
+      "questions": 256,
+      "nll": 0.3040284878389019,
+      "brier": 0.18890393992819646,
+      "expected_accuracy": 0.853515625,
+      "hard_label_accuracy": 0.8605577689243028,
+      "hard_label_questions": 251,
+      "ece_10_bins": 0.031251801367443655,
+      "score_mae": null,
+      "coverage": 1.0,
+      "accepted_questions": 256,
+      "accepted_expected_accuracy": 0.853515625
+    },
+    "3": {
+      "questions": 210,
+      "nll": 0.4284712134842821,
+      "brier": 0.2692653792848935,
+      "expected_accuracy": 0.7857142857142857,
+      "hard_label_accuracy": 0.7857142857142857,
+      "hard_label_questions": 210,
+      "ece_10_bins": 0.042410382428181945,
+      "score_mae": 0.32203143159716785,
+      "coverage": 1.0,
+      "accepted_questions": 210,
+      "accepted_expected_accuracy": 0.7857142857142857
+    },
+    "4": {
+      "questions": 21,
+      "nll": 0.5399354536748612,
+      "brier": 0.10106337914020265,
+      "expected_accuracy": 0.9523809523809523,
+      "hard_label_accuracy": 0.9523809523809523,
+      "hard_label_questions": 21,
+      "ece_10_bins": 0.0590715446680548,
+      "score_mae": null,
+      "coverage": 1.0,
+      "accepted_questions": 21,
+      "accepted_expected_accuracy": 0.9523809523809523
+    },
+    "5": {
+      "questions": 51,
+      "nll": 8.547275216077629e-05,
+      "brier": 2.868274083702847e-07,
+      "expected_accuracy": 1.0,
+      "hard_label_accuracy": 1.0,
+      "hard_label_questions": 51,
+      "ece_10_bins": 8.540068297319017e-05,
+      "score_mae": 8.602684368338943e-05,
+      "coverage": 1.0,
+      "accepted_questions": 51,
+      "accepted_expected_accuracy": 1.0
+    }
+  },
+  "notes": [
+    "Soft targets contribute target mass at the selected alternative to expected accuracy.",
+    "Hard-label accuracy excludes soft target questions.",
+    "Uniform baseline argmax breaks ties at the first candidate; random choice is reported separately.",
+    "Coverage is empirical on this split and is not a guarantee for unseen inputs."
+  ]
+}

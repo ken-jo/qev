@@ -1,0 +1,18 @@
+{
+  "completed": true,
+  "study_sha256": "ee66ed106d54c72154ab30f4045f171b57b394b1281e4a31a91392ac6f7b7c01",
+  "outputs": {
+    "validation-1": {
+      "data\\workflow-v12e\\records.jsonl": "632af2eb5ecd6cc73c868d4043c0ea6d7fbb3ae2a9c8e10b84da878d5655c17d",
+      "data\\workflow-v12e\\protocol.json": "3587bba6b06ce4c8304e2729ec089f00a33ac979849ba7710e7344271704ae2a",
+      "data\\workflow-v12e\\independent-target-audit.json": "b2758402f85d616174d3c5fcda7fa944d3fdf6f3d86ab4008d14a1c1b41e9907"
+    },
+    "validation-2": {
+      "data\\workflow-v12f\\records.jsonl": "c057956998e948ab22cfceb969f7711bedada963372b31e5d45089bbb71fbf46",
+      "data\\workflow-v12f\\protocol.json": "a8819e2a17ee732c56e7db153d529ec31afc5a8d0d37aad1964932f617fa4ed0",
+      "data\\workflow-v12f\\independent-target-audit.json": "a0066239a78c4985c0ff3a0847fdb1aeafab9a369e7a6f5154b89ebe2f70e5fe"
+    }
+  },
+  "model_predictions_used": false,
+  "release_allowed": false
+}

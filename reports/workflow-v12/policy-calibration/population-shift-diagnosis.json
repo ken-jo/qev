@@ -1,0 +1,240 @@
+{
+  "source_sha256": "d24968ccadf852c8e6b8bd33ef8dbe91062d5210b59b53c7bbfd9cd3fe159f28",
+  "populations": {
+    "calibration": {
+      "choice": {
+        "all": {
+          "questions": 1264,
+          "groups": 1084,
+          "accepted": 1262,
+          "coverage": 0.9984177215189873,
+          "expected_error": 0.10681750314243536
+        },
+        "photo_guard": {
+          "questions": 300,
+          "groups": 300,
+          "accepted": 299,
+          "coverage": 0.9966666666666667,
+          "expected_error": 0.046822742474916385
+        },
+        "text_intent": {
+          "questions": 154,
+          "groups": 154,
+          "accepted": 153,
+          "coverage": 0.9935064935064936,
+          "expected_error": 0.10457516339869281
+        },
+        "text_nli": {
+          "questions": 150,
+          "groups": 150,
+          "accepted": 150,
+          "coverage": 1.0,
+          "expected_error": 0.10666666666666667
+        },
+        "uncertainty": {
+          "questions": 120,
+          "groups": 120,
+          "accepted": 120,
+          "coverage": 1.0,
+          "expected_error": 0.29003074138127855
+        },
+        "workflow_known": {
+          "questions": 180,
+          "groups": 120,
+          "accepted": 180,
+          "coverage": 1.0,
+          "expected_error": 0.2111111111111111
+        },
+        "workflow_new": {
+          "questions": 360,
+          "groups": 360,
+          "accepted": 360,
+          "coverage": 1.0,
+          "expected_error": 0.044444444444444446
+        }
+      },
+      "score": {
+        "all": {
+          "questions": 720,
+          "groups": 480,
+          "accepted": 695,
+          "coverage": 0.9652777777777778,
+          "expected_error": 0.12481842539666896
+        },
+        "uncertainty": {
+          "questions": 120,
+          "groups": 120,
+          "accepted": 107,
+          "coverage": 0.8916666666666667,
+          "expected_error": 0.25933463224939185
+        },
+        "workflow_known": {
+          "questions": 240,
+          "groups": 120,
+          "accepted": 228,
+          "coverage": 0.95,
+          "expected_error": 0.20614035087719298
+        },
+        "workflow_new": {
+          "questions": 360,
+          "groups": 360,
+          "accepted": 360,
+          "coverage": 1.0,
+          "expected_error": 0.03333333333333333
+        }
+      },
+      "noul": {
+        "all": {
+          "questions": 660,
+          "groups": 480,
+          "accepted": 640,
+          "coverage": 0.9696969696969697,
+          "expected_error": 0.13116250936429794
+        },
+        "uncertainty": {
+          "questions": 120,
+          "groups": 120,
+          "accepted": 110,
+          "coverage": 0.9166666666666666,
+          "expected_error": 0.19949096357409712
+        },
+        "workflow_known": {
+          "questions": 180,
+          "groups": 120,
+          "accepted": 170,
+          "coverage": 0.9444444444444444,
+          "expected_error": 0.3235294117647059
+        },
+        "workflow_new": {
+          "questions": 360,
+          "groups": 360,
+          "accepted": 360,
+          "coverage": 1.0,
+          "expected_error": 0.019444444444444445
+        }
+      }
+    },
+    "policy-validation": {
+      "choice": {
+        "all": {
+          "questions": 1264,
+          "groups": 1084,
+          "accepted": 1260,
+          "coverage": 0.9968354430379747,
+          "expected_error": 0.13666459216677537
+        },
+        "photo_guard": {
+          "questions": 300,
+          "groups": 300,
+          "accepted": 300,
+          "coverage": 1.0,
+          "expected_error": 0.04666666666666667
+        },
+        "text_intent": {
+          "questions": 154,
+          "groups": 154,
+          "accepted": 150,
+          "coverage": 0.974025974025974,
+          "expected_error": 0.16666666666666666
+        },
+        "text_nli": {
+          "questions": 150,
+          "groups": 150,
+          "accepted": 150,
+          "coverage": 1.0,
+          "expected_error": 0.19333333333333333
+        },
+        "uncertainty": {
+          "questions": 120,
+          "groups": 120,
+          "accepted": 120,
+          "coverage": 1.0,
+          "expected_error": 0.2933115510844749
+        },
+        "workflow_known": {
+          "questions": 180,
+          "groups": 120,
+          "accepted": 180,
+          "coverage": 1.0,
+          "expected_error": 0.2388888888888889
+        },
+        "workflow_new": {
+          "questions": 360,
+          "groups": 360,
+          "accepted": 360,
+          "coverage": 1.0,
+          "expected_error": 0.07222222222222222
+        }
+      },
+      "score": {
+        "all": {
+          "questions": 720,
+          "groups": 480,
+          "accepted": 700,
+          "coverage": 0.9722222222222222,
+          "expected_error": 0.13612827886497064
+        },
+        "uncertainty": {
+          "questions": 120,
+          "groups": 120,
+          "accepted": 108,
+          "coverage": 0.9,
+          "expected_error": 0.28046106671740234
+        },
+        "workflow_known": {
+          "questions": 240,
+          "groups": 120,
+          "accepted": 232,
+          "coverage": 0.9666666666666667,
+          "expected_error": 0.1810344827586207
+        },
+        "workflow_new": {
+          "questions": 360,
+          "groups": 360,
+          "accepted": 360,
+          "coverage": 1.0,
+          "expected_error": 0.06388888888888888
+        }
+      },
+      "noul": {
+        "all": {
+          "questions": 660,
+          "groups": 480,
+          "accepted": 636,
+          "coverage": 0.9636363636363636,
+          "expected_error": 0.17094803297579048
+        },
+        "uncertainty": {
+          "questions": 120,
+          "groups": 120,
+          "accepted": 103,
+          "coverage": 0.8583333333333333,
+          "expected_error": 0.24002863080196832
+        },
+        "workflow_known": {
+          "questions": 180,
+          "groups": 120,
+          "accepted": 173,
+          "coverage": 0.9611111111111111,
+          "expected_error": 0.3930635838150289
+        },
+        "workflow_new": {
+          "questions": 360,
+          "groups": 360,
+          "accepted": 360,
+          "coverage": 1.0,
+          "expected_error": 0.044444444444444446
+        }
+      }
+    }
+  },
+  "evidence_files": {
+    "runs\\workflow-v12-depth-policy-release\\calibration\\predictions.jsonl": "2fe27dee38605a82f317b52fadc61d0d39dfec910ddd9e369d73acf48e8221f7",
+    "runs\\workflow-v12-depth-policy-release\\policy-validation\\predictions.jsonl": "ec9821e78cf3708317fbdd451fd80058d05d3144b8d754e68d81e872676dcd79"
+  },
+  "policy_refitted": false,
+  "model_weights_changed": false,
+  "final_predictions_used": false,
+  "limitation": "Post-hoc subgroup diagnosis; differences do not establish a causal mechanism.",
+  "observed_failure": "Noul validation error exceeded 15%; final inference never started."
+}

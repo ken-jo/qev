@@ -1,0 +1,459 @@
+{
+  "created_at_utc": "2026-09-30T13:07:49.655035+00:00",
+  "selection_sha256": "a4033c8d7d5316954e2550bf3fe0ce46247e3c3c75aaff09592e930979e0a789",
+  "study_protocol_sha256": "05cbeb6125bdc7c081f7ba3e0dc1caaed52aaeeeccc85360bd0c05b76a621c79",
+  "source_sha256": {
+    "C:\\tmp\\veyra\\scripts\\train_workflow_curriculum.py": "913ece26aac6ab76885af9f8453335e885a56a89e2c9753f3dd65a5942b6ff5e",
+    "scripts\\workflow_skill_common.py": "e3b726d2074292c391b796cbc525c811de494bb941769a121005f595b6cf6991",
+    "scripts\\train_workflow_backbone.py": "c7ade8e49569de63c33a4552c554ab6ac035e90077f8c75cb4a13ca3c3f450cd",
+    "scripts\\train_workflow_workspace.py": "93dd647080074a3aa0f774d47ca776ed0bf08a4885eb5852b30583ab15bbffe5",
+    "src\\veyra\\option_model.py": "ac15e6e55108fc8ef69b57268bf004c6756305e21293d2a9683dfde9f6e79b48",
+    "src\\veyra\\proper_learning.py": "edcf97fed0c15b1e0219429a41963c27e6baae3890906d3c4a6829f51b3855a0",
+    "src\\veyra\\workflow_learning.py": "37cdb8d9d375938a5ac1a26ef53f1ccad949f141e2406caf232dab4df70a02d7",
+    "C:\\tmp\\veyra\\scripts\\select_curriculum_checkpoint.py": "efd75b118ab58a143d8524343417ed3392e07b76966ed308ea192175230dbca8",
+    "scripts\\workspace_development_diagnostics.py": "50410c204b38f051d5653d1dbdff8f5a04bae33828226a88f59da4fa9607b2ad",
+    "C:\\tmp\\veyra\\scripts\\compare_curriculum_development.py": "6c80f0f02c630efd2a6486af93a5b73391a20818adfea2e347ce3295869ff307",
+    "scripts\\compare_workspace_development.py": "8958237770397e060ad9f763fa176ab151397b8d1dbce3ffdcb24a05407f1478",
+    "scripts\\curriculum_release_checks.py": "2eecd7509df3992c122ca9aa837be84a3a755073051ac7deb3053d696cce8b47"
+  },
+  "bindings": {
+    "runs\\workflow-v12-workspace-study\\primitive\\epoch-2\\checkpoint\\head.safetensors": "4bb3c3187ec37e6ad7f6634c8aeec9bafbbb90ebea89ebae0d26f7c844a87c72",
+    "runs\\workflow-v12-workspace-study\\primitive\\epoch-2\\checkpoint\\manifest.json": "0afe95f9ea13945282e4438ee50373d5375c21a55e3235b5f58940ccf1661073",
+    "runs\\workflow-v12-workspace-selection\\merged-dev-2.safetensors": "2dbfa31ba1233e31855169c1e6fcfb655d94e627fc9c1f0c38a725af8af8801e",
+    "runs\\workflow-v12-curriculum-study\\skill_curriculum\\epoch-1\\checkpoint\\head.safetensors": "3e5235cdc71c032180e5ea8ac3c2388a184213fd1fec259ff41ed63172e3e215",
+    "runs\\workflow-v12-curriculum-study\\skill_curriculum\\epoch-1\\checkpoint\\manifest.json": "e24f36265aa69c021b09e6a129b7bc2b3e25fcaf447d0e7a9394a70d1b3c0050",
+    "runs\\workflow-v12-curriculum-selection\\merged-dev-1.safetensors": "032e27ed7a9585c77611f6b39ce8fa1a5898e1092958092397146d1a5e5e9ec3",
+    "runs\\workflow-v12-curriculum-study\\skill_curriculum\\epoch-2\\checkpoint\\head.safetensors": "a8384ccd73746888526e65b46f95dd531faafcf6d267e131e6205f8199e41342",
+    "runs\\workflow-v12-curriculum-study\\skill_curriculum\\epoch-2\\checkpoint\\manifest.json": "548f9dadb2e5daf1359864ccf590f70e06e01129b06cd3e10ffebfbe72d1b138",
+    "runs\\workflow-v12-curriculum-selection\\merged-dev-2.safetensors": "82176cf07c529242a7b3bc6942368c083d258155b62280594007d8ed465d9da6",
+    "runs\\workflow-v12-curriculum-study\\outcome_replay\\epoch-1\\checkpoint\\head.safetensors": "4af8850459b1a99d3131dde45509e6d5abfcc34bf42fe3c5fe731c53c1782962",
+    "runs\\workflow-v12-curriculum-study\\outcome_replay\\epoch-1\\checkpoint\\manifest.json": "c2e5f274cad473bb37f14e73a158ede3bba2fd284ac4ac9962f26f5431facafe",
+    "runs\\workflow-v12-curriculum-selection\\merged-dev-3.safetensors": "e6a9e5ddc9c07fb8a965fc9486ffb84dcef53f3b1dde7f298c11fe2e94c678eb",
+    "runs\\workflow-v12-curriculum-study\\outcome_replay\\epoch-2\\checkpoint\\head.safetensors": "a13b3ac3e715028181c56a8d34b60f2981eac42dd9f6ae242cc6df38c238d4a6",
+    "runs\\workflow-v12-curriculum-study\\outcome_replay\\epoch-2\\checkpoint\\manifest.json": "0ebfe37d7efaa5a4e6559e7db8858b2423df8a9f9d736745b01c73c839d0e8bd",
+    "runs\\workflow-v12-curriculum-selection\\merged-dev-4.safetensors": "858609ff5dc312b7fce6787853d709a542570b2bce33222979bb659e626a7d58"
+  },
+  "feature_cache": {
+    "complete": true,
+    "rows": 14524,
+    "by_split": {
+      "train": 11212,
+      "dev": 3312
+    },
+    "features_sha256": "10304d3889d09c01c55f05fcba6d48068daed7f1f9a3a56cbeda8a25c9c2aff3",
+    "metadata_sha256": "4a81e5c10d1425ccdd1141fe7bece83609404b6d2d1274a964c84d45a6ae6378",
+    "specification_sha256": "3ff0186b30e46416428ca6acf79640d4a8fac8940182095986429f894375c640",
+    "elapsed_seconds": 964.4121443999466
+  },
+  "development_metrics_recomputed_from_raw_outputs": true,
+  "bootstrap_seed": 191,
+  "bootstrap_replicates": 2000,
+  "comparisons": [
+    {
+      "epoch": 1,
+      "difference_direction": "curriculum minus matched outcome-replay control",
+      "by_domain": {
+        "workflow_new": {
+          "questions": 900,
+          "groups": 300,
+          "before_accuracy": 0.7388888597488403,
+          "after_accuracy": 0.7266666889190674,
+          "accuracy_delta": -0.012222222222222223,
+          "paired_group_bootstrap_95pct_interval": [
+            -0.03,
+            0.005555555555555556
+          ],
+          "paired_outcomes": {
+            "both_correct": 630,
+            "both_wrong": 211,
+            "improved": 24,
+            "regressed": 35
+          }
+        },
+        "workflow_known": {
+          "questions": 600,
+          "groups": 120,
+          "before_accuracy": 0.7400000095367432,
+          "after_accuracy": 0.7583333253860474,
+          "accuracy_delta": 0.018333333333333333,
+          "paired_group_bootstrap_95pct_interval": [
+            -0.008333333333333333,
+            0.043333333333333335
+          ],
+          "paired_outcomes": {
+            "both_correct": 419,
+            "both_wrong": 120,
+            "improved": 36,
+            "regressed": 25
+          }
+        },
+        "photo_guard": {
+          "questions": 600,
+          "groups": 600,
+          "before_accuracy": 0.9633333086967468,
+          "after_accuracy": 0.9649999737739563,
+          "accuracy_delta": 0.0016666666666666668,
+          "paired_group_bootstrap_95pct_interval": [
+            0.0,
+            0.005
+          ],
+          "paired_outcomes": {
+            "both_correct": 578,
+            "both_wrong": 21,
+            "improved": 1,
+            "regressed": 0
+          }
+        },
+        "text_nli": {
+          "questions": 450,
+          "groups": 450,
+          "before_accuracy": 0.8733333349227905,
+          "after_accuracy": 0.8666666746139526,
+          "accuracy_delta": -0.006666666666666667,
+          "paired_group_bootstrap_95pct_interval": [
+            -0.017777777777777778,
+            0.0022222222222222222
+          ],
+          "paired_outcomes": {
+            "both_correct": 389,
+            "both_wrong": 56,
+            "improved": 1,
+            "regressed": 4
+          }
+        },
+        "text_intent": {
+          "questions": 462,
+          "groups": 462,
+          "before_accuracy": 0.8419913649559021,
+          "after_accuracy": 0.8419913649559021,
+          "accuracy_delta": 0.0,
+          "paired_group_bootstrap_95pct_interval": [
+            -0.006493506493506494,
+            0.006493506493506494
+          ],
+          "paired_outcomes": {
+            "both_correct": 388,
+            "both_wrong": 72,
+            "improved": 1,
+            "regressed": 1
+          }
+        }
+      },
+      "by_type_coverage_under_15pct_error": {
+        "choice": {
+          "curriculum": 0.9617590822179732,
+          "control": 0.9732313575525813
+        },
+        "score": {
+          "curriculum": 0.2234375,
+          "control": 0.1828125
+        },
+        "noul": {
+          "curriculum": 0.5775862068965517,
+          "control": 0.7396551724137931
+        }
+      },
+      "uncertainty": {
+        "curriculum": {
+          "questions": 300,
+          "labeled_questions": 0,
+          "accuracy": null,
+          "nll": 0.8723867535591125,
+          "brier_vs_soft": 0.2192714363336563,
+          "score_mae": 0.38579925894737244,
+          "mean_confidence": 0.6433946490287781,
+          "matched_coverage": {
+            "0.5": {
+              "accepted": 150,
+              "expected_error": 0.3095947802066803,
+              "expected_cost": 0.6494520306587219
+            },
+            "0.8": {
+              "accepted": 240,
+              "expected_error": 0.3925166726112366,
+              "expected_cost": 0.8325633406639099
+            },
+            "0.9": {
+              "accepted": 270,
+              "expected_error": 0.4070453643798828,
+              "expected_cost": 0.852384090423584
+            },
+            "1.0": {
+              "accepted": 300,
+              "expected_error": 0.42567574977874756,
+              "expected_cost": 0.9280615448951721
+            }
+          }
+        },
+        "control": {
+          "questions": 300,
+          "labeled_questions": 0,
+          "accuracy": null,
+          "nll": 0.8582744598388672,
+          "brier_vs_soft": 0.20907628536224365,
+          "score_mae": 0.3614315688610077,
+          "mean_confidence": 0.6305428743362427,
+          "matched_coverage": {
+            "0.5": {
+              "accepted": 150,
+              "expected_error": 0.3084191381931305,
+              "expected_cost": 0.6339219808578491
+            },
+            "0.8": {
+              "accepted": 240,
+              "expected_error": 0.3572973906993866,
+              "expected_cost": 0.7383276224136353
+            },
+            "0.9": {
+              "accepted": 270,
+              "expected_error": 0.3950173258781433,
+              "expected_cost": 0.7990294098854065
+            },
+            "1.0": {
+              "accepted": 300,
+              "expected_error": 0.4114575982093811,
+              "expected_cost": 0.8533378839492798
+            }
+          }
+        }
+      },
+      "parameter_differences": {
+        "backbone_adapters": {
+          "tensors": 150,
+          "parameters": 3907584,
+          "control_update_norm": 1.5239121200073489,
+          "between_arms_norm": 1.4330114752659546,
+          "between_arms_max_absolute": 0.005145081086084247,
+          "nonidentical_parameters": 3907582,
+          "update_cosine": 0.5569214550358825,
+          "curriculum_update_norm": 1.5206400775281295
+        },
+        "decision_readouts": {
+          "tensors": 6,
+          "parameters": 171072,
+          "control_update_norm": 0.022756680144688173,
+          "between_arms_norm": 0.018488442935288518,
+          "between_arms_max_absolute": 0.00039814412593841553,
+          "nonidentical_parameters": 141268,
+          "update_cosine": 0.6613243621440281,
+          "curriculum_update_norm": 0.022152003971789645
+        },
+        "frozen": {
+          "tensors": 1,
+          "parameters": 6144,
+          "control_update_norm": 0.0,
+          "between_arms_norm": 0.0,
+          "between_arms_max_absolute": 0.0,
+          "nonidentical_parameters": 0,
+          "update_cosine": null,
+          "curriculum_update_norm": 0.0
+        }
+      }
+    },
+    {
+      "epoch": 2,
+      "difference_direction": "curriculum minus matched outcome-replay control",
+      "by_domain": {
+        "workflow_new": {
+          "questions": 900,
+          "groups": 300,
+          "before_accuracy": 0.7511110901832581,
+          "after_accuracy": 0.7644444704055786,
+          "accuracy_delta": 0.013333333333333334,
+          "paired_group_bootstrap_95pct_interval": [
+            -0.0011111111111111111,
+            0.027777777777777776
+          ],
+          "paired_outcomes": {
+            "both_correct": 658,
+            "both_wrong": 194,
+            "improved": 30,
+            "regressed": 18
+          }
+        },
+        "workflow_known": {
+          "questions": 600,
+          "groups": 120,
+          "before_accuracy": 0.7866666913032532,
+          "after_accuracy": 0.7950000166893005,
+          "accuracy_delta": 0.008333333333333333,
+          "paired_group_bootstrap_95pct_interval": [
+            -0.006666666666666667,
+            0.023333333333333334
+          ],
+          "paired_outcomes": {
+            "both_correct": 465,
+            "both_wrong": 116,
+            "improved": 12,
+            "regressed": 7
+          }
+        },
+        "photo_guard": {
+          "questions": 600,
+          "groups": 600,
+          "before_accuracy": 0.9633333086967468,
+          "after_accuracy": 0.9649999737739563,
+          "accuracy_delta": 0.0016666666666666668,
+          "paired_group_bootstrap_95pct_interval": [
+            -0.0033333333333333335,
+            0.008333333333333333
+          ],
+          "paired_outcomes": {
+            "both_correct": 577,
+            "both_wrong": 20,
+            "improved": 2,
+            "regressed": 1
+          }
+        },
+        "text_nli": {
+          "questions": 450,
+          "groups": 450,
+          "before_accuracy": 0.8755555748939514,
+          "after_accuracy": 0.8688889145851135,
+          "accuracy_delta": -0.006666666666666667,
+          "paired_group_bootstrap_95pct_interval": [
+            -0.022222222222222223,
+            0.006666666666666667
+          ],
+          "paired_outcomes": {
+            "both_correct": 387,
+            "both_wrong": 52,
+            "improved": 4,
+            "regressed": 7
+          }
+        },
+        "text_intent": {
+          "questions": 462,
+          "groups": 462,
+          "before_accuracy": 0.8398268222808838,
+          "after_accuracy": 0.8398268222808838,
+          "accuracy_delta": 0.0,
+          "paired_group_bootstrap_95pct_interval": [
+            -0.008658008658008658,
+            0.008658008658008658
+          ],
+          "paired_outcomes": {
+            "both_correct": 386,
+            "both_wrong": 72,
+            "improved": 2,
+            "regressed": 2
+          }
+        }
+      },
+      "by_type_coverage_under_15pct_error": {
+        "choice": {
+          "curriculum": 0.9875717017208413,
+          "control": 0.9894837476099426
+        },
+        "score": {
+          "curriculum": 0.29375,
+          "control": 0.2421875
+        },
+        "noul": {
+          "curriculum": 0.8344827586206897,
+          "control": 0.8137931034482758
+        }
+      },
+      "uncertainty": {
+        "curriculum": {
+          "questions": 300,
+          "labeled_questions": 0,
+          "accuracy": null,
+          "nll": 0.8764436841011047,
+          "brier_vs_soft": 0.21538294851779938,
+          "score_mae": 0.3867911994457245,
+          "mean_confidence": 0.6689077019691467,
+          "matched_coverage": {
+            "0.5": {
+              "accepted": 150,
+              "expected_error": 0.30376607179641724,
+              "expected_cost": 0.6304495334625244
+            },
+            "0.8": {
+              "accepted": 240,
+              "expected_error": 0.37736475467681885,
+              "expected_cost": 0.8633459210395813
+            },
+            "0.9": {
+              "accepted": 270,
+              "expected_error": 0.3932642638683319,
+              "expected_cost": 0.9055049419403076
+            },
+            "1.0": {
+              "accepted": 300,
+              "expected_error": 0.4141252338886261,
+              "expected_cost": 0.9554506540298462
+            }
+          }
+        },
+        "control": {
+          "questions": 300,
+          "labeled_questions": 0,
+          "accuracy": null,
+          "nll": 0.8631764650344849,
+          "brier_vs_soft": 0.2040865272283554,
+          "score_mae": 0.36557719111442566,
+          "mean_confidence": 0.6749728322029114,
+          "matched_coverage": {
+            "0.5": {
+              "accepted": 150,
+              "expected_error": 0.2876974940299988,
+              "expected_cost": 0.6485869884490967
+            },
+            "0.8": {
+              "accepted": 240,
+              "expected_error": 0.3607173264026642,
+              "expected_cost": 0.8771661520004272
+            },
+            "0.9": {
+              "accepted": 270,
+              "expected_error": 0.38348352909088135,
+              "expected_cost": 0.9285701513290405
+            },
+            "1.0": {
+              "accepted": 300,
+              "expected_error": 0.4093339443206787,
+              "expected_cost": 0.9911726117134094
+            }
+          }
+        }
+      },
+      "parameter_differences": {
+        "backbone_adapters": {
+          "tensors": 150,
+          "parameters": 3907584,
+          "control_update_norm": 1.7207138960741755,
+          "between_arms_norm": 1.5806766699532586,
+          "between_arms_max_absolute": 0.0066527933813631535,
+          "nonidentical_parameters": 3907583,
+          "update_cosine": 0.5844714714550785,
+          "curriculum_update_norm": 1.7467421710330253
+        },
+        "decision_readouts": {
+          "tensors": 6,
+          "parameters": 171072,
+          "control_update_norm": 0.025678432491634474,
+          "between_arms_norm": 0.021040416898587256,
+          "between_arms_max_absolute": 0.0004238933324813843,
+          "nonidentical_parameters": 143089,
+          "update_cosine": 0.6560898521867353,
+          "curriculum_update_norm": 0.025041915254190614
+        },
+        "frozen": {
+          "tensors": 1,
+          "parameters": 6144,
+          "control_update_norm": 0.0,
+          "between_arms_norm": 0.0,
+          "between_arms_max_absolute": 0.0,
+          "nonidentical_parameters": 0,
+          "update_cosine": null,
+          "curriculum_update_norm": 0.0
+        }
+      }
+    }
+  ],
+  "used_for_candidate_selection": false,
+  "calibration_or_final_used": false,
+  "release_allowed": false,
+  "limitations": "Descriptive merged development comparisons after the fixed selection. Accuracy intervals resample observation groups, not workflow families or training seeds, and have no multiple-comparison correction. Probability and cost values are point estimates without bootstrap intervals here. One matched training seed and repeatedly inspected development data do not establish broad robustness or independent final performance. Parameter differences do not establish causally faithful reasoning."
+}
