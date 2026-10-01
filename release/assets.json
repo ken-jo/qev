@@ -1,0 +1,12 @@
+{
+  "model": {
+    "file": "vision-qev-0.1.0.zip",
+    "sha256": "063f16ee4d4a45840798ae09c49a0fa296a32722f44e03c0f0833b9aedd115b6",
+    "bytes": 242534941
+  },
+  "dataset": {
+    "file": "vision-qev-data-0.1.0.zip",
+    "sha256": "6f3e241870885ec11f8ca85a141bf48c5320e62e8110efe5fd0fb590a48bcb00",
+    "bytes": 532087710
+  }
+}

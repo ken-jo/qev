@@ -1,0 +1,130 @@
+{
+  "passed": true,
+  "published_to_huggingface": false,
+  "source_sha256": "8d87d02948ad120c1a3ad3ec3a51fd994a480b9d72cb387f414a27878af93f0d",
+  "weights_sha256": "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee",
+  "manifest_sha256": "d83f9910196c6e801658ca3816c3d2bd4a849ba3da6ff059a0edf7c6028e898d",
+  "checksums_sha256": "717a2c73b9d588a772d1256b479dd94692678df2ac0382b40d409cd99e056c0d",
+  "verified_files": 187,
+  "wheel_sha256": "e3ae5a591e055b4ff88d42bb44365f6e5ab71859fc60029ab365bddc22650c5f",
+  "veyra_version": "0.3.0a4",
+  "vision_qev_version": "0.1.0",
+  "public_facade_preserves_model_class": true,
+  "python_isolated": true,
+  "modules_from_bundled_wheel": {
+    "veyra": "C:\\tmp\\vision-qev\\dist\\huggingface\\vision-qev\\runtime\\vision_qev-0.1.0-py3-none-any.whl\\veyra\\__init__.py",
+    "veyra.constants": "C:\\tmp\\vision-qev\\dist\\huggingface\\vision-qev\\runtime\\vision_qev-0.1.0-py3-none-any.whl\\veyra\\constants.py",
+    "veyra.schema": "C:\\tmp\\vision-qev\\dist\\huggingface\\vision-qev\\runtime\\vision_qev-0.1.0-py3-none-any.whl\\veyra\\schema.py",
+    "veyra.candidates": "C:\\tmp\\vision-qev\\dist\\huggingface\\vision-qev\\runtime\\vision_qev-0.1.0-py3-none-any.whl\\veyra\\candidates.py",
+    "veyra.packing": "C:\\tmp\\vision-qev\\dist\\huggingface\\vision-qev\\runtime\\vision_qev-0.1.0-py3-none-any.whl\\veyra\\packing.py",
+    "veyra.backbone": "C:\\tmp\\vision-qev\\dist\\huggingface\\vision-qev\\runtime\\vision_qev-0.1.0-py3-none-any.whl\\veyra\\backbone.py",
+    "veyra.binding_head": "C:\\tmp\\vision-qev\\dist\\huggingface\\vision-qev\\runtime\\vision_qev-0.1.0-py3-none-any.whl\\veyra\\binding_head.py",
+    "veyra.probability": "C:\\tmp\\vision-qev\\dist\\huggingface\\vision-qev\\runtime\\vision_qev-0.1.0-py3-none-any.whl\\veyra\\probability.py",
+    "veyra.reasoning_workspace": "C:\\tmp\\vision-qev\\dist\\huggingface\\vision-qev\\runtime\\vision_qev-0.1.0-py3-none-any.whl\\veyra\\reasoning_workspace.py",
+    "veyra.option_model": "C:\\tmp\\vision-qev\\dist\\huggingface\\vision-qev\\runtime\\vision_qev-0.1.0-py3-none-any.whl\\veyra\\option_model.py"
+  },
+  "dependencies": "Existing pinned Python 3.12 environment; not a clean dependency install",
+  "base_model": "Pinned locally cached Qwen base; no fresh base-weight download",
+  "gpu": "NVIDIA GeForce RTX 4060 Ti",
+  "photo_record_id": "waste:00e0bbcc0a75007fb79cb8e2:policy",
+  "results": {
+    "text": {
+      "backbone_forwards": 1,
+      "response": {
+        "model": "veyra-qwen3.5-2b",
+        "architecture": "option_readout",
+        "decision_views": 1,
+        "backbone": {
+          "model_id": "Qwen/Qwen3.5-2B",
+          "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+        },
+        "answers": {
+          "department": {
+            "type": "choice",
+            "probabilities": {
+              "billing": 0.9740437269210815,
+              "technical": 0.025956228375434875
+            },
+            "confidence": 0.9740437269210815,
+            "confidence_definition": "maximum_candidate_probability",
+            "calibrated": true,
+            "abstained": false,
+            "abstention_policy_fitted": true,
+            "choice": "billing"
+          }
+        },
+        "usage": {
+          "input_tokens": 115,
+          "output_tokens": 0
+        }
+      }
+    },
+    "photograph_three_questions": {
+      "backbone_forwards": 1,
+      "response": {
+        "model": "veyra-qwen3.5-2b",
+        "architecture": "option_readout",
+        "decision_views": 1,
+        "backbone": {
+          "model_id": "Qwen/Qwen3.5-2B",
+          "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+        },
+        "answers": {
+          "score": {
+            "type": "score",
+            "probabilities": {
+              "0": 0.6978408694267273,
+              "1": 0.17892900109291077,
+              "2": 0.12323009967803955
+            },
+            "confidence": 0.6978408694267273,
+            "confidence_definition": "maximum_candidate_probability",
+            "calibrated": true,
+            "abstained": false,
+            "abstention_policy_fitted": true,
+            "score": 0.42538920044898987,
+            "legend": {
+              "0": "Priority band 0: The item belongs to the glass material category. OR The item belongs to the plastic material category.",
+              "1": "Priority band 1: The item belongs to the metal material category. OR The item belongs to the trash material category.",
+              "2": "Priority band 2: The item belongs to the cardboard material category. OR The item belongs to the paper material category."
+            }
+          },
+          "noul": {
+            "type": "noul",
+            "probabilities": {
+              "false": 0.20968711376190186,
+              "true": 0.7903128862380981
+            },
+            "confidence": 0.7903128862380981,
+            "confidence_definition": "maximum_candidate_probability",
+            "calibrated": true,
+            "abstained": false,
+            "abstention_policy_fitted": true,
+            "noul": 0.7903128862380981
+          },
+          "choice": {
+            "type": "choice",
+            "probabilities": {
+              "c0": 0.0069309379905462265,
+              "c1": 0.008959797210991383,
+              "c2": 0.017233500257134438,
+              "c3": 0.006411705166101456,
+              "c4": 0.9361229538917542,
+              "c5": 0.02434111386537552
+            },
+            "confidence": 0.9361229538917542,
+            "confidence_definition": "maximum_candidate_probability",
+            "calibrated": true,
+            "abstained": false,
+            "abstention_policy_fitted": true,
+            "choice": "c4"
+          }
+        },
+        "usage": {
+          "input_tokens": 1103,
+          "output_tokens": 0
+        }
+      }
+    }
+  }
+}
