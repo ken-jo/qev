@@ -1,16 +1,16 @@
-# Vision QEV 0.1.0
+# Qwen3.5 Classification 0.1.0
 
-Final research release of the Qwen-based Veyra line, renamed **Vision QEV**.
+Final research release of the Qwen-based Veyra line, renamed **Qwen3.5 Classification**.
 The base is **Qwen/Qwen3.5-2B** at a pinned revision, with learned language LoRA and
 typed decision readouts. The vision encoder remains frozen. This is not a new base
 network or a JEV implementation.
 
 ## Downloads
 
-- [Hugging Face model](https://huggingface.co/ken-jo/vision-qev)
-- [Hugging Face dataset](https://huggingface.co/datasets/ken-jo/vision-qev-data)
-- `vision-qev-0.1.0.zip`: trained checkpoint, runtime wheel, English model card and acceptance evidence.
-- `vision-qev-data-0.1.0.zip`: 15 licensed historical corpus configurations, images, source attribution,
+- [Hugging Face model](https://huggingface.co/ken-jo/qwen3.5-classification)
+- [Hugging Face dataset](https://huggingface.co/datasets/ken-jo/qwen3.5-classification-data)
+- `qwen3.5-classification-0.1.0.zip`: trained checkpoint, runtime wheel, English model card and acceptance evidence.
+- `qwen3.5-classification-data-0.1.0.zip`: 15 licensed historical corpus configurations, images, source attribution,
   split/hash manifests and viewer records. Configurations overlap; do not concatenate them.
 - Each asset has a SHA-256 sidecar. Qwen base weights are downloaded separately.
 

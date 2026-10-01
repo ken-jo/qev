@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "project": "vision-qev",
+  "project": "qwen3.5-classification",
   "version": "0.1.0",
   "package_files": {
     "model": 188,
@@ -8,18 +8,18 @@
   },
   "dataset_configurations": 15,
   "dataset_records_including_cross_stage_repetition": 251457,
-  "dataset_archive_bytes": 515519847,
+  "dataset_archive_bytes": 515521407,
   "all_packaged_image_hashes_verified": true,
   "all_archives_include_license_notices": true,
   "source_license_allowlist_passed": true,
-  "public_markdown_files_checked": 47,
+  "public_markdown_files_checked": 48,
   "private_korean_documents_in_public_payload": 0,
-  "text_files_scanned": 1023,
+  "text_files_scanned": 1029,
   "credential_pattern_scan_passed": true,
   "active_documentation_links_passed": true,
   "real_packaged_text_and_three_type_image_inference_passed": true,
-  "source_sha256": "1f9df3d220b01500b75d9fc8ce2215778cdd5e73774048385a6b6f389cde5cdd",
-  "model_checksums_sha256": "f952e23569a3b25234febc3b3a807fec0879d6403311d577710e2ff12d0e835a",
-  "data_checksums_sha256": "9359c4402fd9f863551cb48c01ac0b219b8b8d89d011750359816a878793939b",
+  "source_sha256": "50b0e246acf5fec0c90c4849674dc093e301ff0d0ff7f5b9b97c8a0df72fa5a0",
+  "model_checksums_sha256": "57a628ab1dbfa8526e8025a39ad1a922ae5c34b7535528f858b38917a4b4478d",
+  "data_checksums_sha256": "745b6d7ade332ae122b0f6cb7b5705e327148a24b1f9ef2730759772e4a6abdc",
   "scope": "Publication package audit; not a new accuracy study or clean-machine install"
 }

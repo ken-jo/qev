@@ -1,12 +1,12 @@
 {
   "model": {
-    "file": "vision-qev-0.1.0.zip",
-    "sha256": "063f16ee4d4a45840798ae09c49a0fa296a32722f44e03c0f0833b9aedd115b6",
-    "bytes": 242534941
+    "file": "qwen3.5-classification-0.1.0.zip",
+    "sha256": "6a2bbc4301b42edee4a15bceffb11184f9ac83d6982cffb7e727ed097a2c9a68",
+    "bytes": 242539837
   },
   "dataset": {
-    "file": "vision-qev-data-0.1.0.zip",
-    "sha256": "6f3e241870885ec11f8ca85a141bf48c5320e62e8110efe5fd0fb590a48bcb00",
-    "bytes": 532087710
+    "file": "qwen3.5-classification-data-0.1.0.zip",
+    "sha256": "ddb86235793972fc4f8286f464972de91ad73701bcd129816aeeb0426eab87e2",
+    "bytes": 532092931
   }
 }

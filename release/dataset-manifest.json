@@ -1,6 +1,6 @@
 {
   "format_version": 1,
-  "project": "vision-qev",
+  "project": "qwen3.5-classification",
   "corpora": [
     {
       "corpus": "starter-v2",
@@ -26,9 +26,9 @@
       },
       "within_corpus_group_and_image_split_checks": true,
       "split_assignments_modified": false,
-      "archive": "corpora/starter-v2.zip",
-      "archive_sha256": "3013a996654e47e923cb6754956aa820f22e740e445010ede9c7c0a916c98030",
-      "archive_bytes": 181213121,
+      "archive": "corpora/qwen3.5-classification-starter-v2.zip",
+      "archive_sha256": "220b1fad8bcbceceae2528268724da6fafe9a25ba18e156392fba700f7c5f3b0",
+      "archive_bytes": 181213225,
       "image_files": 1962
     },
     {
@@ -54,9 +54,9 @@
       },
       "within_corpus_group_and_image_split_checks": true,
       "split_assignments_modified": false,
-      "archive": "corpora/policy-v3.zip",
-      "archive_sha256": "f41042555ccc5f3d3edfd7f5e38996d47b562570375e6ffda1da1803e5fa7b66",
-      "archive_bytes": 1080764,
+      "archive": "corpora/qwen3.5-classification-policy-v3.zip",
+      "archive_sha256": "d852b3381be72d2a8adacd7830664127b6f7e4aaab1d4a832d946396695958bf",
+      "archive_bytes": 1080868,
       "image_files": 784
     },
     {
@@ -83,9 +83,9 @@
       },
       "within_corpus_group_and_image_split_checks": true,
       "split_assignments_modified": false,
-      "archive": "corpora/policy-v6.zip",
-      "archive_sha256": "f8d0d8dd259d91d1d1d22eae21199ef8ffd1adc82e91919d8cf1b46e5b35a082",
-      "archive_bytes": 1610173,
+      "archive": "corpora/qwen3.5-classification-policy-v6.zip",
+      "archive_sha256": "db4477a5c4ac2d28287fbaf837400fba1a6ce15be79b37fda71f8e70b17a04dc",
+      "archive_bytes": 1610277,
       "image_files": 1184
     },
     {
@@ -111,9 +111,9 @@
       },
       "within_corpus_group_and_image_split_checks": true,
       "split_assignments_modified": false,
-      "archive": "corpora/policy-v8.zip",
-      "archive_sha256": "6b95d5ce39cf9fcd3f9ec40a21ca3ce5ab71bc83a0cbf1858dfb344c4ed67770",
-      "archive_bytes": 4319760,
+      "archive": "corpora/qwen3.5-classification-policy-v8.zip",
+      "archive_sha256": "6b6068cec68101a51e10661643c39782cea07292cdc6d578a2fffc20b1ad7e5d",
+      "archive_bytes": 4319864,
       "image_files": 3119
     },
     {
@@ -145,9 +145,9 @@
       },
       "within_corpus_group_and_image_split_checks": true,
       "split_assignments_modified": false,
-      "archive": "corpora/foundation-v11.zip",
-      "archive_sha256": "2ac749b441220bdeb104c9b46f70c7f3d61dc3fe078790f0a2d1552f14d47b2d",
-      "archive_bytes": 122333786,
+      "archive": "corpora/qwen3.5-classification-foundation-v11.zip",
+      "archive_sha256": "09dec6efa5c487b91002c0590805025041ddf8171939782870031e3c3147d8e8",
+      "archive_bytes": 122333890,
       "image_files": 3502
     },
     {
@@ -179,9 +179,9 @@
       },
       "within_corpus_group_and_image_split_checks": true,
       "split_assignments_modified": false,
-      "archive": "corpora/workflow-v12.zip",
-      "archive_sha256": "e6c5f1ae73b7123fd57122422a5f7c69bd1949a1891cbf32e9caa901acf154b0",
-      "archive_bytes": 20462733,
+      "archive": "corpora/qwen3.5-classification-workflow-v12.zip",
+      "archive_sha256": "db0bb1c9cddb6bf8e158d388ab8bb51861216e9e1c9fe1944498e18f319b377e",
+      "archive_bytes": 20462837,
       "image_files": 447
     },
     {
@@ -216,9 +216,9 @@
       },
       "within_corpus_group_and_image_split_checks": true,
       "split_assignments_modified": false,
-      "archive": "corpora/workflow-v12-cohort.zip",
-      "archive_sha256": "d9e96e1dc22f3e96e8a7c874ab47a69b0ad07463dfb7f8f627a77f437b7a3fb2",
-      "archive_bytes": 20769571,
+      "archive": "corpora/qwen3.5-classification-workflow-v12-cohort.zip",
+      "archive_sha256": "65615fbf69865a4e806a67ef79ecf806022c1542e6173f283dc4316ea2cca662",
+      "archive_bytes": 20769675,
       "image_files": 447
     },
     {
@@ -251,9 +251,9 @@
       },
       "within_corpus_group_and_image_split_checks": true,
       "split_assignments_modified": false,
-      "archive": "corpora/workflow-v12b.zip",
-      "archive_sha256": "e13749815268434c58fd29a60e50439f7398ec681b135971300b416f3a4c6e6b",
-      "archive_bytes": 20462698,
+      "archive": "corpora/qwen3.5-classification-workflow-v12b.zip",
+      "archive_sha256": "19493f6d46db6fbd31cacf4f260c69c20c261a96533db32d04cfee2bea6f06af",
+      "archive_bytes": 20462802,
       "image_files": 447
     },
     {
@@ -286,9 +286,9 @@
       },
       "within_corpus_group_and_image_split_checks": true,
       "split_assignments_modified": false,
-      "archive": "corpora/workflow-v12c.zip",
-      "archive_sha256": "105383e4e12e843a93813dd2cfa0d8bcaf5bb8f0ded7257ad23f485707adef00",
-      "archive_bytes": 20462286,
+      "archive": "corpora/qwen3.5-classification-workflow-v12c.zip",
+      "archive_sha256": "e6675e292300fc46b410e226175546824d59068822cd8c5beb92fa11da9f2073",
+      "archive_bytes": 20462390,
       "image_files": 447
     },
     {
@@ -321,9 +321,9 @@
       },
       "within_corpus_group_and_image_split_checks": true,
       "split_assignments_modified": false,
-      "archive": "corpora/workflow-v12d.zip",
-      "archive_sha256": "4730a38cbf61e608484be353b4582ebc96e7184077caf4d4cadc8b556325b30a",
-      "archive_bytes": 20462902,
+      "archive": "corpora/qwen3.5-classification-workflow-v12d.zip",
+      "archive_sha256": "a95380957aa1f9bb548b69ef452ec18928aed14082f0db54aaee374c6e88ccc6",
+      "archive_bytes": 20463006,
       "image_files": 447
     },
     {
@@ -356,9 +356,9 @@
       },
       "within_corpus_group_and_image_split_checks": true,
       "split_assignments_modified": false,
-      "archive": "corpora/workflow-v12e.zip",
-      "archive_sha256": "9cb08890154aa5d26b46b520086dc335283401608b7093fb801ef0e144e4c871",
-      "archive_bytes": 20462011,
+      "archive": "corpora/qwen3.5-classification-workflow-v12e.zip",
+      "archive_sha256": "bd8270d6587df9896a31941a8683673db752de160073af2395ebd56cfcd32d96",
+      "archive_bytes": 20462115,
       "image_files": 447
     },
     {
@@ -391,9 +391,9 @@
       },
       "within_corpus_group_and_image_split_checks": true,
       "split_assignments_modified": false,
-      "archive": "corpora/workflow-v12f.zip",
-      "archive_sha256": "b1e19f67d24027b57dc0e40a1979d2f5419e5b1223e4fac4e1f375668915a669",
-      "archive_bytes": 20462642,
+      "archive": "corpora/qwen3.5-classification-workflow-v12f.zip",
+      "archive_sha256": "41ab8074e94077dbac8bb80f26add250c6899bd380cf398225f6cecebc6decd3",
+      "archive_bytes": 20462746,
       "image_files": 447
     },
     {
@@ -426,9 +426,9 @@
       },
       "within_corpus_group_and_image_split_checks": true,
       "split_assignments_modified": false,
-      "archive": "corpora/workflow-v13g.zip",
-      "archive_sha256": "262a20aafc74071cabce591ac8320e440b9af058b2d79e79e74ddd031e9e5d66",
-      "archive_bytes": 20463175,
+      "archive": "corpora/qwen3.5-classification-workflow-v13g.zip",
+      "archive_sha256": "ae038b6bc985d8b0ddc2cbe36467539fb91dbadbdc63c8dd8cadc2e28b910ec1",
+      "archive_bytes": 20463279,
       "image_files": 447
     },
     {
@@ -461,9 +461,9 @@
       },
       "within_corpus_group_and_image_split_checks": true,
       "split_assignments_modified": false,
-      "archive": "corpora/workflow-v13h.zip",
-      "archive_sha256": "dc866525e946e252f685ea17af535314576bb58da9e75a935e527e9f1a71080d",
-      "archive_bytes": 20462488,
+      "archive": "corpora/qwen3.5-classification-workflow-v13h.zip",
+      "archive_sha256": "8f5bde766a4d182295e9a270d9a5958bb36aa08a520488c6d57b1cb3f90033f0",
+      "archive_bytes": 20462592,
       "image_files": 447
     },
     {
@@ -496,9 +496,9 @@
       },
       "within_corpus_group_and_image_split_checks": true,
       "split_assignments_modified": false,
-      "archive": "corpora/workflow-v13-final.zip",
-      "archive_sha256": "89e29904eee885b46d124884e9a016163ded6d7c58c23d1d0416bdc75bebda74",
-      "archive_bytes": 20491737,
+      "archive": "corpora/qwen3.5-classification-workflow-v13-final.zip",
+      "archive_sha256": "951b4befecb8ea7dc62ad9f7ef1e55e47dbe99f1fff35c6c165ef715fcd32ca6",
+      "archive_bytes": 20491841,
       "image_files": 447
     }
   ],
@@ -689,5 +689,5 @@
   "licenses_per_record": true,
   "cross_corpus_warning": "Configurations are historical stages with overlapping observations. Do not concatenate or claim disjointness across configurations.",
   "excluded_source": "CIFAR-10 image redistribution license unresolved; evaluation-only records/images omitted. No selected training rows excluded.",
-  "generator_source_sha256": "48a17b6118535a74a249333e228a08b3e2175d475dd699ae7f22d933b1b14af3"
+  "generator_source_sha256": "6a13143654810a40e668e64810efd82dbeb89ab9471eb16b2646e0072ba6512e"
 }

@@ -1,7 +1,7 @@
 {
   "passed": true,
   "frozen_runtime_modules_unchanged": 38,
-  "public_facade": "vision_qev",
+  "public_facade": "qwen3_5_classification",
   "frozen_internal_version": "0.3.0a4",
   "fixture_answer_objects_equal": {
     "text": true,
@@ -11,5 +11,6 @@
   "tests_passed": 163,
   "test_warning": "Starlette deprecation warning about httpx TestClient; no test failure",
   "clean_machine_install_tested": false,
-  "original_source_head": "bf08ccfba4244d2ee9cd9745cbdf397813107b95"
+  "original_source_head": "bf08ccfba4244d2ee9cd9745cbdf397813107b95",
+  "rename_preserves_all_15_corpus_record_hashes": true
 }

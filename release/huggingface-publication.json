@@ -1,15 +1,15 @@
 {
   "model": {
-    "url": "https://huggingface.co/ken-jo/vision-qev",
-    "revision": "f9d0103d6334b3f21aaec0aaac7ad0f638704350",
+    "url": "https://huggingface.co/ken-jo/qwen3.5-classification",
+    "revision": "0d2d13ffb3c392071ea00b6bdb903c4b84dff48d",
     "public": true,
     "all_remote_file_hashes_match": true,
     "anonymous_checksums_download_passed": true,
     "verified_files": 188
   },
   "dataset": {
-    "url": "https://huggingface.co/datasets/ken-jo/vision-qev-data",
-    "revision": "6e974e2d78e29413fdba7036f1090181df83a4e8",
+    "url": "https://huggingface.co/datasets/ken-jo/qwen3.5-classification-data",
+    "revision": "0b151a4c197bdfea971802b4d94a7df152fb8f78",
     "public": true,
     "all_remote_file_hashes_match": true,
     "anonymous_checksums_download_passed": true,
