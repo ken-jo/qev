@@ -23,7 +23,7 @@ function Get-QevPageTitle {
     $response = Invoke-WebRequest -UseBasicParsing -Uri "$baseUrl/config" -TimeoutSec 2
     # Gradio's config includes empty JSON property names. Windows PowerShell's
     # ConvertFrom-Json cannot represent these; use the already required Python.
-    $title = $response.Content | & $pythonPath -X utf8 -c 'import json,sys; print(json.load(sys.stdin).get("title", ""))'
+    $title = $response.Content | & $pythonPath -X utf8 -c 'import json,sys; print(json.load(sys.stdin).get(sys.argv[1],str()))' title
     if ($LASTEXITCODE -ne 0) { throw 'The server did not return a valid QEV configuration.' }
     return $title
 }

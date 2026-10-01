@@ -74,6 +74,13 @@ with choice, score and noul questions; results matched the recorded fixture. Lin
 build/install checks and authenticated PyPI Trusted Publishing succeeded. Published PyPI
 files were downloaded anonymously and checked against the CI artifact hashes.
 
+For SDK 0.2.1, the wheel and source distribution were inspected, and packaged GPU text
+and three-type image inference matched the previous fixture responses exactly. The live
+English GPU interface exposes Multilingual labeling and returns 404 for the retired game
+page and game API. The earlier unit-test suite was not rerun for this packaging patch.
+Current publication evidence is recorded in `release/sdk-verification.json`,
+`release/pypi-publication.json` and `release/huggingface-publication.json`.
+
 Separate image/workflow results: CIFAR-10 guard 95.83%, fresh procedural workflows
 69.38%, local-photo HTTP p95 114.94 ms on RTX 4060 Ti 8 GB. The latter excludes loading,
 WAN and concurrency. Visual 2048 remained unsolved: 0 wins in 72 exploratory games.

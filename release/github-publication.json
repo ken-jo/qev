@@ -1,5 +1,15 @@
 {
-  "published": false,
+  "published": true,
+  "url": "https://github.com/ken-jo/qev/releases/tag/v0.2.1",
   "tag": "v0.2.1",
-  "status": "prepared"
+  "release_id": 401170540,
+  "source_commit": "fa88a56a1c2a595f7cd6c0ccabb865ab0e435e94",
+  "draft": false,
+  "latest": true,
+  "assets_verified": 11,
+  "anonymous_downloads_verified": [
+    "qev-0.2.1-py3-none-any.whl",
+    "qev-skill-0.2.1.zip"
+  ],
+  "checked_at_utc": "2026-10-01T17:01:04.699903+00:00"
 }

@@ -16,5 +16,8 @@
   "browser_visual_inspection": false,
   "weights_and_calibration_unchanged": true,
   "/2048": 404,
-  "/api/2048/games/0091a429b05843cebfa90c0817b1984d": 404
+  "/api/2048/games/0091a429b05843cebfa90c0817b1984d": 404,
+  "public_uvx_install": "uv tool run --python 3.12 --torch-backend cu128 --from qev==0.2.1 qev --version: qev 0.2.1",
+  "linux_ci_build_and_install": "passed: https://github.com/ken-jo/qev/actions/runs/36895129248",
+  "pypi_anonymous_downloads_match_verified_build": true
 }
