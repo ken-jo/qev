@@ -1,49 +1,44 @@
-# QEV playground
+# QEV playground launcher
 
-The local playground uses the released Qwen3.5-2B-based checkpoint and keeps it resident
-on the GPU. It includes a Korean interface, uploaded or preset photos, choice/score/noul
-examples, image-resolution comparisons, actual API JSON and an exploratory 2048 page.
-The examples are demonstrations, not additional evaluation data.
+The supported playground is the English interface shipped in the `qev` package.
+It provides text and image decisions, `choice` / `score` / `noul`, sample photos,
+image resolution controls, probabilities, abstention and request/response JSON.
+The 2048 game has been retired from the playground.
 
-From the repository root, after the main README's installation and checkpoint download:
+## Run
 
 ```sh
-uv run python apps/playground/server.py --checkpoint checkpoints/qev --host 127.0.0.1 --port 8765
+qev playground
 ```
 
-Open `http://127.0.0.1:8765`. Use `--host 0.0.0.0` for a trusted network and open
-`http://<model-PC-IP>:8765`; inbound firewall policy still applies. The page appears while
-the GPU model loads. The server requires the pinned Qwen weights to be cached already.
+This opens a server at http://127.0.0.1:7860. For the earlier local address:
 
-Windows helpers are available:
+```sh
+qev playground --host 0.0.0.0 --port 8765
+```
+
+On Windows, from a checkout with `uv sync --frozen` completed:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File apps/playground/start.ps1 -NoBrowser
 powershell -ExecutionPolicy Bypass -File apps/playground/stop.ps1
 ```
 
-The default checkpoint path is `checkpoints/qev`. Tailscale helpers can configure a
-private HTTPS proxy with an exact peer allowlist. They must run under the user's own account;
-no saved device identity or peer configuration is distributed.
+The helper uses port 8765 and loopback by default. Add `-BindAddress 0.0.0.0` for
+access through the model PC's IP. Optional arguments are `-Port`, `-Device`,
+`-Checkpoint`, `-CacheDir`, and `-Offline`. The helper launches the packaged English
+application from this checkout's source and records its process for the stop helper.
+The first use downloads the pinned model if it is not already cached.
 
-## Inputs and measurements
+See [the package playground guide](../../docs/PLAYGROUND.md) for installation,
+GPU requirements, cache settings and input limits. The interface processes one
+question per request; the SDK supports up to four questions.
 
-- Upload JPG, PNG or WebP (up to 20 MB), or choose one of six licensed TrashNet samples.
-- Choose a long-edge resolution. Each variant is derived from the original, preserving ratio.
-  Source labels and filenames are not inserted into model input as answers.
-- A score preset returns an expected level, not image accuracy. Report both the typed value
-  and its probability distribution.
-- Model inference time and browser round-trip are separate. Resolution comparisons run
-  serially. They are local diagnostics, not fresh benchmark estimates.
+## Historical research code
 
-## 2048
-
-The image demo provides rendered board pixels and the declared instructions/history, without
-the numeric matrix or search results. Detailed instructions can be passed to the step API.
-The default stops on abstention; exploratory forced execution is recorded explicitly.
-The model has no game-specific training. Its published 72-game study achieved zero wins.
-Read [the study](../../reports/text2048/assistance-study-v1/README.md).
-
-The local server serializes GPU inference. Uploaded images are shared session resources,
-not isolated by user. It has no public multi-tenant authentication. Use a service gateway
-with authentication and isolation before offering an internet-facing product.
+The earlier `server.py`, its Korean static interface and the 2048 experiment code
+are retained only for reproducing historical API experiments. The Windows start
+helper no longer launches that server, its home page no longer links to 2048, and
+its `/2048` page returns HTTP 410. The supported English application has no game
+route or game controls. Recorded evaluations remain available in the
+[research report](../../reports/text2048/assistance-study-v1/README.md).

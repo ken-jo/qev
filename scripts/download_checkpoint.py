@@ -2,6 +2,7 @@
 
 import argparse
 import hashlib
+import tomllib
 import urllib.request
 import zipfile
 from pathlib import Path
@@ -11,13 +12,15 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=Path("checkpoints"))
     args = parser.parse_args()
-    url = "https://github.com/ken-jo/qev/releases/download/v0.1.1/qev-0.1.1.zip"
+    root = Path(__file__).resolve().parents[1]
+    version = tomllib.loads((root / "pyproject.toml").read_text("utf-8"))["project"]["version"]
+    url = f"https://github.com/ken-jo/qev/releases/download/v{version}/qev-{version}.zip"
     target = args.output.resolve()
     checkpoint = target / "qev"
     if checkpoint.exists():
         raise FileExistsError("Checkpoint destination already exists")
     target.mkdir(parents=True, exist_ok=True)
-    archive_path = target / "qev-0.1.1.zip"
+    archive_path = target / f"qev-{version}.zip"
     urllib.request.urlretrieve(url, archive_path)
     with urllib.request.urlopen(url + ".sha256", timeout=60) as response:
         expected = response.read().decode().split()[0]

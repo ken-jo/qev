@@ -9,11 +9,11 @@ It supports text, one image, or both. See [SKILL.md](../skills/qev/SKILL.md).
 Install the Python runtime with Python 3.12:
 
 ```sh
-python -m pip install qev==0.2.0
+python -m pip install qev==0.2.1
 ```
 
 Copy the complete `skills/qev` folder from this repository, or the `qev` folder inside
-`qev-skill-0.2.0.zip`, into your agent's skills directory. For Codex this installation uses
+`qev-skill-0.2.1.zip`, into your agent's skills directory. For Codex this installation uses
 `$CODEX_HOME/skills/qev`, or `~/.codex/skills/qev` when `CODEX_HOME` is unset. Restart or
 reload the agent's skill catalog after installation. The skill includes references,
 scripts, and photo assets; copying only SKILL.md omits its helper.

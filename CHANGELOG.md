@@ -1,5 +1,13 @@
 # Release history
 
+## 0.2.1 — English playground and multilingual labeling
+
+- Unified the Windows launcher with the packaged English playground.
+- Retired the 2048 web interface while preserving its recorded research results.
+- Replaced the model card's English/Korean language tags with Multilingual and documented
+  the English-focused evaluation scope.
+- Preserved the QEV 0.1.1 weights, calibration, inference modules and dataset records.
+
 ## 0.2.0 — SDK and local playground
 
 - Bundled the English playground, six licensed photos and all preset files in the wheel.

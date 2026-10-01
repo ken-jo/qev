@@ -3,7 +3,7 @@
 Use Python 3.12 and the released QEV SDK. If it is already installed, reuse that environment.
 
 ```sh
-python -m pip install https://huggingface.co/ken-jo/qev/resolve/main/runtime/qev-0.2.0-py3-none-any.whl
+python -m pip install https://huggingface.co/ken-jo/qev/resolve/main/runtime/qev-0.2.1-py3-none-any.whl
 qev serve --image-root <evidence-directory> --host 127.0.0.1 --port 8000
 ```
 
@@ -20,7 +20,7 @@ For an existing Python environment, invoke the skill helper with that environmen
 Python. For an isolated uv environment, `--with` installs the same SDK for the helper:
 
 ```sh
-uv run --python 3.12 --with https://huggingface.co/ken-jo/qev/resolve/main/runtime/qev-0.2.0-py3-none-any.whl python <skill-dir>/scripts/decide.py --request <request.json>
+uv run --python 3.12 --with https://huggingface.co/ken-jo/qev/resolve/main/runtime/qev-0.2.1-py3-none-any.whl python <skill-dir>/scripts/decide.py --request <request.json>
 ```
 
 For one call without a server:

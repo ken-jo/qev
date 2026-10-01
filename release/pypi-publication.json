@@ -1,27 +1,5 @@
 {
-  "project": "qev",
-  "version": "0.2.0",
-  "published": true,
-  "url": "https://pypi.org/project/qev/0.2.0/",
-  "workflow": ".github/workflows/publish-pypi.yml",
-  "repository": "ken-jo/qev",
-  "environment": "pypi",
-  "trusted_publishing": true,
-  "workflow_run": "https://github.com/ken-jo/qev/actions/runs/36886892608",
-  "checked_at_utc": "2026-10-01T15:59:42.989583+00:00",
-  "distributions": [
-    {
-      "file": "qev-0.2.0-py3-none-any.whl",
-      "sha256": "b8a769ec18edce91f9699373df058df92c2297461ec49b327382cbc21dd31ef8",
-      "bytes": 185279,
-      "anonymous_download_verified": true
-    },
-    {
-      "file": "qev-0.2.0.tar.gz",
-      "sha256": "3f571a0e49407c696fc34e8d6ab0f7b4ea3250231974989b9e4a6c1586c5d3ba",
-      "bytes": 171784,
-      "anonymous_download_verified": true
-    }
-  ],
-  "note": "Linux CI distribution contents match the tested Windows wheel and sdist; archive container bytes differ by build platform."
+  "published": false,
+  "version": "0.2.1",
+  "status": "prepared"
 }

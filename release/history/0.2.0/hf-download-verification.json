@@ -1,0 +1,31 @@
+{
+  "model": {
+    "repo_id": "ken-jo/qev",
+    "revision": "6cb324af251dff85b708dc48ede44a16cc2ab266",
+    "anonymous": true,
+    "obsolete_files_absent": true,
+    "downloads": {
+      "head.safetensors": "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee",
+      "manifest.json": "d83f9910196c6e801658ca3816c3d2bd4a849ba3da6ff059a0edf7c6028e898d",
+      "README.md": "49312ed1a0fb147f7327c00618165f1c6a5803f78734d049430bd48e2b6273a5",
+      "runtime/qev-0.2.0-py3-none-any.whl": "33ca132521cf9ec7f5bc9405816cd65e9c4626853cfb21a82da7a4549ebbe576",
+      "runtime/qev-0.1.1-py3-none-any.whl": "f1f4c54175ce213e98399cc8a3db91298e25aa1450f2306195614c80c87da8a2",
+      "examples/photograph/item.jpg": "00e0bbcc0a75007fb79cb8e2e96a48c3d32941ee9ae8918590f846261d5aaac1",
+      "examples/photograph/request.json": "4c91ad23d276a5e046fc45b505cd119d894f6f7cfc943afc78554f4a89893f64",
+      "examples/photograph/response.json": "963c9d7e7e8c0f6c89110019c9dcd163dd27e1f565a562c772891725fc7b2ccf"
+    },
+    "checked_at_utc": "2026-10-01T15:43:53.245630+00:00"
+  },
+  "dataset": {
+    "repo_id": "ken-jo/qev-data",
+    "revision": "02a1dd2ef454bd3bda4a3bac7e218f401fa0c85d",
+    "anonymous": true,
+    "obsolete_files_absent": true,
+    "downloads": {
+      "README.md": "08da69a3a76d6ba93dc1f5d2559d44cbfe14caea4d384a0939c2fcf0e5a58b62",
+      "dataset-manifest.json": "ea356c19ffc40c93837d671c229db0998597dab1b82c8487a65d4d78082790b1",
+      "corpora/qev-policy-v3.zip": "d852b3381be72d2a8adacd7830664127b6f7e4aaab1d4a832d946396695958bf"
+    },
+    "checked_at_utc": "2026-10-01T15:09:12.028103+00:00"
+  }
+}

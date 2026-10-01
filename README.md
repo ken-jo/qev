@@ -1,5 +1,7 @@
 # QEV
 
+[![Multilingual](https://img.shields.io/badge/languages-Multilingual-2563eb)](#language-support)
+
 [![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-GitHub-ea4aaa?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/ken-jo)
 [![PyPI](https://img.shields.io/pypi/v/qev)](https://pypi.org/project/qev/)
 
@@ -22,22 +24,28 @@ are not embedded in this checkpoint, and the current training recipe is supervis
 adaptation with calibration. RLCD remains a research direction. QEV is independently
 maintained; upstream model attribution is preserved.
 
+## Language support
+
+**Multilingual inputs** use Qwen3.5-2B's multilingual text backbone. The playground and
+documentation are in English. Published QEV task and calibration evaluations focus on
+English; equivalent accuracy across languages has not been established.
+
 ## Install and run
 
-The **QEV 0.2.0 Python SDK includes the English playground**, six licensed example
+The **QEV 0.2.1 Python SDK includes the English playground**, six licensed example
 photographs, image resolution controls, and the inference API. Use Python 3.12.
 
 ### pip
 
 ```sh
-python -m pip install qev==0.2.0
+python -m pip install qev==0.2.1
 qev playground
 ```
 
 Open **http://127.0.0.1:7860**. The first launch downloads the pinned QEV adaptation and
 Qwen3.5-2B backbone (about 4.6 GB), then loads the model. Later launches reuse the cache.
 CUDA is used when available; `--device cpu` and `--device cuda` select a device explicitly.
-Published on [PyPI](https://pypi.org/project/qev/0.2.0/) through GitHub Trusted Publishing.
+Published on [PyPI](https://pypi.org/project/qev/0.2.1/) through GitHub Trusted Publishing.
 The same runtime is also available as a wheel with the Hugging Face model.
 
 ### uv
@@ -45,7 +53,7 @@ The same runtime is also available as a wheel with the Hugging Face model.
 Run the published package without cloning the repository:
 
 ```sh
-uvx --python 3.12 --from qev==0.2.0 qev playground
+uvx --python 3.12 --from qev==0.2.1 qev playground
 ```
 
 Or use the source checkout and its frozen CUDA dependency lock:
@@ -87,7 +95,7 @@ QEV's persistent data directory or `QEV_CACHE_DIR` for the Hugging Face cache.
 
 The Python distribution contains code, UI and example photos. Model tensors are downloaded
 separately. The inference weights and 38 internal `veyra` modules remain the evaluated
-QEV 0.1.1 model; SDK 0.2.0 adds installation and application features.
+QEV 0.1.1 model; SDK 0.2.1 adds installation and application features.
 See [the playground guide](https://github.com/ken-jo/qev/blob/main/docs/PLAYGROUND.md)
 and [API schema](https://github.com/ken-jo/qev/blob/main/docs/API.md).
 
@@ -215,8 +223,9 @@ The second serves `POST /v1/systemone`; image paths resolve under the selected i
 The playground serializes model requests. Send API requests one at a time.
 These are local interfaces; they do not provide a public multi-tenant service.
 
-The historical Korean interface and 2048 experiments remain in `apps/playground/`.
-See [its instructions](https://github.com/ken-jo/qev/blob/main/apps/playground/README.md).
+The supported playground is the English interface included in the package. The Windows
+helpers in `apps/playground/` launch the same interface. The retired 2048 experiments remain
+research records and are not part of the playground.
 
 ## Agent skill
 
@@ -226,7 +235,7 @@ an authorized next step. It includes a validated helper, three-type image exampl
 runtime instructions. A resident model server avoids loading weights for every decision.
 
 The skill is distributed separately from the pip runtime, in `skills/qev` and the release's
-`qev-skill-0.2.0.zip`. Copy that complete folder into your agent's skills directory and use
+`qev-skill-0.2.1.zip`. Copy that complete folder into your agent's skills directory and use
 `$qev`. See [installation and examples](docs/AGENT_SKILL.md). The skill adds orchestration;
 it does not change the model or establish Jev-equivalent performance.
 

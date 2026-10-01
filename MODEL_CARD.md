@@ -4,9 +4,9 @@ base_model: Qwen/Qwen3.5-2B
 base_model_relation: adapter
 library_name: pytorch
 language:
-- en
-- ko
+- multilingual
 tags:
+- multilingual
 - multimodal
 - dynamic-classification
 - qwen3_5
@@ -24,6 +24,8 @@ inference: false
 
 # QEV
 
+[![Multilingual](https://img.shields.io/badge/languages-Multilingual-2563eb)](#language-support)
+
 **Your evidence. Your criteria. A decision with probabilities.**
 
 QEV is an open multimodal decision model inspired by
@@ -35,12 +37,19 @@ Receive probabilities and a structured answer in one batched backbone forward.
 
 [Training data](https://huggingface.co/datasets/ken-jo/qev-data)
 
+## Language support
+
+**Multilingual inputs** use Qwen3.5-2B's multilingual text backbone. The interface and
+documentation are in English. QEV's published task and calibration evaluations are
+English-focused; equivalent accuracy across languages has not been established.
+
 ## At a glance
 
 | | QEV 0.1.1 |
 | --- | --- |
 | Evidence | Text, one photo, or text and a photo together |
 | Decision types | `choice`, ordered `score`, and true/false `noul` |
+| Languages | Multilingual inputs; reported evaluations focus on English |
 | Request limits | 1-4 questions; 2-16 choice/score candidates; 2,048 processed tokens |
 | Inference | One batched backbone forward; zero generated answer tokens |
 | Base model | Qwen3.5-2B, with its vision encoder frozen |
@@ -48,7 +57,7 @@ Receive probabilities and a structured answer in one batched backbone forward.
 | Precision | BF16 backbone and FP32 readouts on CUDA |
 | License | Apache-2.0 for code and adaptation; source-specific dataset licenses |
 
-Model version **0.1.1**, final Qwen-based research snapshot; Python SDK **0.2.0**. Previously developed as Veyra
+Model version **0.1.1**, final Qwen-based research snapshot; Python SDK **0.2.1**. Previously developed as Veyra
 Workflow Recovery v13. This release changes the public identity and packaging, not the
 learned weights, candidate encoding, calibration or inference mathematics.
 QEV is independently maintained. Its design draws on LAYA's typed decision interface;
@@ -101,7 +110,7 @@ Use Python 3.12 and the custom QEV runtime from the
 adaptation and decision heads; its Qwen backbone is downloaded separately.
 
 ```sh
-python -m pip install https://huggingface.co/ken-jo/qev/resolve/main/runtime/qev-0.2.0-py3-none-any.whl
+python -m pip install https://huggingface.co/ken-jo/qev/resolve/main/runtime/qev-0.2.1-py3-none-any.whl
 qev playground
 ```
 

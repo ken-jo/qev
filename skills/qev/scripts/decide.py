@@ -201,7 +201,7 @@ def main(argv=None):
         return 2 if result["status"] == "review" else 0
     except ImportError:
         print(
-            "Install QEV SDK 0.2.0 in the Python environment used for this helper.", file=sys.stderr
+            "Install the QEV SDK in the Python environment used for this helper.", file=sys.stderr
         )
     except HTTPError as error:
         print(

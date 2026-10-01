@@ -8,14 +8,14 @@ license notices and the SDK. You do not need to clone the repository to use the 
 Python 3.12 is required. The public runtime wheel is available with the model:
 
 ```sh
-python -m pip install https://huggingface.co/ken-jo/qev/resolve/main/runtime/qev-0.2.0-py3-none-any.whl
+python -m pip install https://huggingface.co/ken-jo/qev/resolve/main/runtime/qev-0.2.1-py3-none-any.whl
 qev playground
 ```
 
 Or use uv's isolated tool environment:
 
 ```sh
-uvx --python 3.12 --from https://huggingface.co/ken-jo/qev/resolve/main/runtime/qev-0.2.0-py3-none-any.whl qev playground
+uvx --python 3.12 --from https://huggingface.co/ken-jo/qev/resolve/main/runtime/qev-0.2.1-py3-none-any.whl qev playground
 ```
 
 From a source checkout:
@@ -81,10 +81,15 @@ approximately ten minutes and are swept every five minutes. Analytics is disable
 Sample photographs overlap development data and are examples, not independent benchmarks.
 The packaged implementation and asset notices live in `src/qev/playground/`.
 
-## Earlier interfaces
+## Windows launcher and earlier experiments
 
-`apps/hf_space/app.py` is a compatibility launcher for the packaged English UI. The
-historical Korean interface and 2048 experiment remain in `apps/playground/` and are
-available from the source checkout. See [its instructions](../apps/playground/README.md).
+`apps/hf_space/app.py` and `apps/playground/start.ps1` launch the same packaged English
+interface. The Windows helper uses port 8765 by default for existing local bookmarks;
+`qev playground` uses port 7860 by default. Both accept an explicit port.
+
+The earlier Korean server is retained for experimental API reproducibility. It is not
+the supported playground. The 2048 game has been removed from the playground; its
+recorded evaluation results remain in the research reports. See the
+[Windows launcher instructions](../apps/playground/README.md).
 
 [GitHub: ken-jo/qev](https://github.com/ken-jo/qev)

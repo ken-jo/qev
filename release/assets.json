@@ -1,8 +1,8 @@
 {
   "model": {
-    "file": "qev-0.2.0.zip",
-    "sha256": "94b47b1dce2c0f1478926d800090a817575081e5dd6c4f373f56f8f0a06a2cc4",
-    "bytes": 242925751
+    "file": "qev-0.2.1.zip",
+    "sha256": "ffded27f25dd59782c390a1e788abdddcc4c12f658cbea19a65a4889b516c024",
+    "bytes": 243108153
   },
   "dataset": {
     "file": "qev-data-0.1.1.zip",
@@ -10,18 +10,18 @@
     "bytes": 532087907
   },
   "wheel": {
-    "file": "qev-0.2.0-py3-none-any.whl",
-    "sha256": "33ca132521cf9ec7f5bc9405816cd65e9c4626853cfb21a82da7a4549ebbe576",
-    "bytes": 185279
+    "file": "qev-0.2.1-py3-none-any.whl",
+    "sha256": "d5270e05a748d9e965c8e2a2a7e54fae83abad6c4da4e76127d7c503a2543c81",
+    "bytes": 185847
   },
   "sdist": {
-    "file": "qev-0.2.0.tar.gz",
-    "sha256": "3f571a0e49407c696fc34e8d6ab0f7b4ea3250231974989b9e4a6c1586c5d3ba",
-    "bytes": 171784
+    "file": "qev-0.2.1.tar.gz",
+    "sha256": "ced9ba0c8414fba32ac67cfd03cfbcf41c9126e1a00914235b0b15e0052f6cf8",
+    "bytes": 172655
   },
   "skill": {
-    "file": "qev-skill-0.2.0.zip",
-    "sha256": "30ee8d3650d2d420691a36f2540cba83c575784a1d1e7971deb63cd22eab9f89",
-    "bytes": 27266
+    "file": "qev-skill-0.2.1.zip",
+    "sha256": "293941a05d7fd28abc49ec2bd2204e735c9ab94d3718eb822d45e7b4e93149e4",
+    "bytes": 27261
   }
 }

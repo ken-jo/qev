@@ -1,6 +1,6 @@
 # QEV request and response
 
-QEV SDK 0.2.0 exposes the frozen model 0.1.1 contract. Validate with
+QEV SDK 0.2.1 exposes the frozen model 0.1.1 contract. Validate with
 `qev.DecisionRequest.from_json(...)`; do not copy another provider's wire format.
 
 ```json

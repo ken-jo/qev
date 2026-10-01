@@ -65,9 +65,14 @@ def main():
     previous_wheel = root / "dist/runtime/qev-0.1.1-py3-none-any.whl"
     if previous_wheel.exists() and previous_wheel != wheel:
         shutil.copy2(previous_wheel, args.output / "runtime" / previous_wheel.name)
+    for earlier_wheel in sorted((args.prepared / "runtime").glob("qev-*.whl")):
+        if earlier_wheel.name != wheel.name:
+            shutil.copy2(earlier_wheel, args.output / "runtime" / earlier_wheel.name)
     for name in ("pyproject.toml", "uv.lock"):
         shutil.copy2(root / name, args.output / "reproducibility" / name)
-    shutil.copytree(root / "reports/release-comparison", args.output / "release-comparison")
+    shutil.copytree(
+        root / "reports/release-comparison", args.output / "release-comparison", dirs_exist_ok=True
+    )
     (args.output / "docs").mkdir(exist_ok=True)
     for name in (
         "LAYA_COMPARISON.md",

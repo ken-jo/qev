@@ -1,9 +1,9 @@
 {
   "passed": true,
   "project": "qev",
-  "version": "0.2.1",
+  "version": "0.2.0",
   "package_files": {
-    "model": 209,
+    "model": 208,
     "dataset": 115
   },
   "dataset_configurations": 15,
@@ -12,14 +12,14 @@
   "all_packaged_image_hashes_verified": true,
   "all_archives_include_license_notices": true,
   "source_license_allowlist_passed": true,
-  "public_markdown_files_checked": 72,
+  "public_markdown_files_checked": 71,
   "private_korean_documents_in_public_payload": 0,
-  "text_files_scanned": 1129,
+  "text_files_scanned": 1117,
   "credential_pattern_scan_passed": true,
   "active_documentation_links_passed": true,
   "real_packaged_text_and_three_type_image_inference_passed": true,
   "source_sha256": "42114c99d28c19aadd55ea3862cb26d2aa4581cc301337def55be83b95689034",
-  "model_checksums_sha256": "7ad3cc9239bb92e5e743ae225b8baff0c35718fe17e9625dfe7d20d05f699d61",
+  "model_checksums_sha256": "5769d4f6637e4a6a95fd09d829818d7c16f4ed01003d9c8cf0b5ceb6826cb066",
   "data_checksums_sha256": "0485d8df4cecbc69c38cb89cc8c1263e71c1c1cfade3c8d4c63e7fba2f4c44e0",
   "scope": "Publication package audit; not a new accuracy study or clean-machine install"
 }

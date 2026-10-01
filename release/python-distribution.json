@@ -1,18 +1,1 @@
-{
-  "passed": true,
-  "project": "qev",
-  "version": "0.2.0",
-  "frozen_modules": 38,
-  "distributions": [
-    {
-      "file": "qev-0.2.0-py3-none-any.whl",
-      "bytes": 185279,
-      "sha256": "33ca132521cf9ec7f5bc9405816cd65e9c4626853cfb21a82da7a4549ebbe576"
-    },
-    {
-      "file": "qev-0.2.0.tar.gz",
-      "bytes": 171784,
-      "sha256": "3f571a0e49407c696fc34e8d6ab0f7b4ea3250231974989b9e4a6c1586c5d3ba"
-    }
-  ]
-}
+{"passed": true, "project": "qev", "version": "0.2.1", "frozen_modules": 38, "distributions": [{"file": "qev-0.2.1-py3-none-any.whl", "bytes": 185847, "sha256": "d5270e05a748d9e965c8e2a2a7e54fae83abad6c4da4e76127d7c503a2543c81"}, {"file": "qev-0.2.1.tar.gz", "bytes": 172655, "sha256": "ced9ba0c8414fba32ac67cfd03cfbcf41c9126e1a00914235b0b15e0052f6cf8"}]}

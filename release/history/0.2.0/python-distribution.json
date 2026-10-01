@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "project": "qev",
+  "version": "0.2.0",
+  "frozen_modules": 38,
+  "distributions": [
+    {
+      "file": "qev-0.2.0-py3-none-any.whl",
+      "bytes": 185279,
+      "sha256": "33ca132521cf9ec7f5bc9405816cd65e9c4626853cfb21a82da7a4549ebbe576"
+    },
+    {
+      "file": "qev-0.2.0.tar.gz",
+      "bytes": 171784,
+      "sha256": "3f571a0e49407c696fc34e8d6ab0f7b4ea3250231974989b9e4a6c1586c5d3ba"
+    }
+  ]
+}

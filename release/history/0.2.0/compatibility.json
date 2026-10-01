@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "frozen_runtime_modules_unchanged": 38,
+  "public_facade": "qev",
+  "version": "0.1.1",
+  "frozen_internal_version": "0.3.0a4",
+  "fixture_answer_objects_equal": {
+    "text": true,
+    "photograph_three_questions": true
+  },
+  "maximum_probability_change": 0.0,
+  "tests_passed": 173,
+  "test_warning": "Starlette httpx deprecation; no test failure",
+  "clean_machine_install_tested": false,
+  "benchmark_wheel_inference_modules_equal": true,
+  "rename_preserves_all_15_corpus_record_hashes": true
+}

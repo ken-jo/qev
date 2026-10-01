@@ -397,7 +397,7 @@ def create_playground(
 
     @app.get("/2048")
     async def game_page():
-        return FileResponse(STATIC / "game2048.html")
+        raise HTTPException(410, "The 2048 playground has been retired. Use the QEV decision playground.")
 
     @app.get("/api/status")
     async def status():

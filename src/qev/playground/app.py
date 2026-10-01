@@ -100,7 +100,7 @@ def build_demo(engine):
         gr.Markdown(
             "# QEV\n"
             "Provide the evidence. Define your candidates. Inspect the probabilities.\n\n"
-            "Dynamic text and image decisions with **Qwen3.5-2B**. "
+            "**Multilingual inputs** · Dynamic text and image decisions with **Qwen3.5-2B**. "
             "[Model](https://huggingface.co/ken-jo/qev) · "
             "[Data](https://huggingface.co/datasets/ken-jo/qev-data) · "
             "[Source](https://github.com/ken-jo/qev)",
@@ -171,8 +171,9 @@ def build_demo(engine):
                     gr.Markdown(
                         "One image, one question and 2–16 candidates per demo request. "
                         "The full API supports up to four questions. OCR and spatial reasoning "
-                        "are weak; 2048 experiments produced no wins. English is the main "
-                        "evaluated language. Inputs are processed on the machine running QEV. "
+                        "remain limited. Published evaluations focus on English; equivalent "
+                        "accuracy across languages has not been established. "
+                        "Inputs are processed on the machine running QEV. "
                         "Per-request image files are removed after inference; cached uploads "
                         "expire after approximately 10 minutes."
                     )
