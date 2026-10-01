@@ -1,0 +1,4 @@
+interface:
+  display_name: "QEV Decisions"
+  short_description: "Typed decisions over text and images with QEV"
+  default_prompt: "Use $qev to make a typed decision from the evidence and supplied candidates."

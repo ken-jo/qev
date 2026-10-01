@@ -37,5 +37,22 @@
   "final_sponsors_link": "https://github.com/sponsors/ken-jo",
   "sponsors_listing_verified": true,
   "final_targeted_tests_passed": 21,
-  "final_packaged_fixture_probability_match": true
+  "final_packaged_fixture_probability_match": true,
+  "linux_ci_build_and_installed_cli": "passed",
+  "linux_ci_run": "https://github.com/ken-jo/qev/actions/runs/36886892608",
+  "linux_ci_wheel_files_byte_identical_to_tested_windows_wheel": 63,
+  "linux_ci_sdist_files_byte_identical_to_windows_sdist": 71,
+  "archive_container_bytes_differ_by_build_platform": true,
+  "linux_ci_distributions": [
+    {
+      "file": "qev-0.2.0-py3-none-any.whl",
+      "sha256": "b8a769ec18edce91f9699373df058df92c2297461ec49b327382cbc21dd31ef8",
+      "bytes": 185279
+    },
+    {
+      "file": "qev-0.2.0.tar.gz",
+      "sha256": "3f571a0e49407c696fc34e8d6ab0f7b4ea3250231974989b9e4a6c1586c5d3ba",
+      "bytes": 171784
+    }
+  ]
 }

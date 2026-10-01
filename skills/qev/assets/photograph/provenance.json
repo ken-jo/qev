@@ -1,0 +1,23 @@
+{
+  "source": {
+    "id": "vminhkhoi/trashnet",
+    "revision": "kaggle-version-1",
+    "license": "MIT",
+    "url": "https://www.kaggle.com/datasets/vminhkhoi/trashnet",
+    "upstream_split": "unsplit"
+  },
+  "source_group_id": "trashnet:00e0bbcc0a75007fb79cb8e2",
+  "image_sha256": "00e0bbcc0a75007fb79cb8e2e96a48c3d32941ee9ae8918590f846261d5aaac1",
+  "source_record_ids": [
+    "waste:00e0bbcc0a75007fb79cb8e2:policy",
+    "waste:00e0bbcc0a75007fb79cb8e2:proposition",
+    "waste:00e0bbcc0a75007fb79cb8e2:recognition"
+  ],
+  "image_modified": false,
+  "fixture_selection": "First sorted test photograph in the existing package verification; not selected for this page based on prediction confidence.",
+  "evaluation_scope": "Previously inspected verification fixture; not an independent accuracy estimate.",
+  "weights_sha256": "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee",
+  "manifest_sha256": "d83f9910196c6e801658ca3816c3d2bd4a849ba3da6ff059a0edf7c6028e898d",
+  "verification_report": "release/model-inference.json",
+  "request_changes": "Image file relocated to item.jpg; image bytes, state text, question names and candidate descriptions preserve the verification request."
+}

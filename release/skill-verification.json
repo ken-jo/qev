@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "skill": "qev",
+  "unit_tests_passed": 14,
+  "skill_structure_validation": "passed",
+  "sdk_version": "0.2.0 installed from public PyPI",
+  "live_server": "Existing local QEV playground with its frozen model loaded on RTX 4060 Ti",
+  "live_requests": 2,
+  "live_questions": 4,
+  "live_types": [
+    "choice",
+    "score",
+    "noul"
+  ],
+  "photo_probabilities_equal_to_recorded_fixture": true,
+  "dry_run_returns_no_probabilities": true,
+  "model_abstention_preserved": true,
+  "error_does_not_invent_prediction": true,
+  "validation_scope": "Functionality and contract checks; not a model accuracy benchmark"
+}

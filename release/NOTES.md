@@ -12,6 +12,8 @@ backbone, language adapters and trained decision heads. The vision encoder is fr
 - `qev predict`, `qev serve`, `qev download` and `python -m qev` share the same runtime.
 - uv can run the package as an isolated tool or from the locked source checkout.
 - Star and support links are optional. No install hook authenticates to GitHub or stars a repo.
+- An English QEV agent skill adds typed text/image judgments, dry runs, validated responses
+  and review handling. It is a separate installable skill folder and ZIP using this SDK.
 
 This release changes packaging and launch behavior. Model weights, inference modules,
 calibration and the evaluation results below remain those of QEV 0.1.1.
@@ -44,22 +46,29 @@ is a previously inspected verification fixture, not a new benchmark claim.
 - `qev-0.2.0.zip`: checkpoint, custom runtime and evaluation evidence.
 - `qev-data-0.1.1.zip`: 15 historical corpus snapshots with source-specific licenses.
 - `qev-0.2.0-py3-none-any.whl` and `qev-0.2.0.tar.gz`: Python SDK distributions.
+- `qev-skill-0.2.0.zip`: agent skill, helper, reference material and licensed example photo.
 
 The SDK contains code and playground assets. Initial loading, or `qev download`, retrieves
 the adaptation and pinned Qwen base.
 The adaptation file is 32.01 MB; the full inference model is 2.213B parameters and the
 upstream weight download is approximately 4.55 GB. Python 3.12 is required.
-PyPI account configuration is pending; the release wheel can be installed directly.
+Available on [PyPI](https://pypi.org/project/qev/0.2.0/): `pip install qev==0.2.0`.
+Run `qev playground`, or use `uvx --python 3.12 --from qev==0.2.0 qev playground`.
 
 ## Verification and limitations
 
-184 tests passed. All 38 frozen inference modules, learned weights and calibration
+184 SDK/runtime tests and 14 skill tests passed. All 38 frozen inference modules, learned weights and calibration
 remain unchanged. Packaged text and three-type photograph inference preserve fixture
 answer probabilities exactly. A fresh Python 3.12 dependency environment, pip installation
 of the wheel, `uvx` text inference and `uv run` playground execution passed. Seven UI
 presets, two image resolutions and HTTP downloads of all six sample images passed.
 The upstream backbone reused an existing cache; it was not downloaded again. Browser
 visual inspection was unavailable. See `release/sdk-verification.json` for the exact scope.
+
+The skill was also run against the local model server for a text request and a photograph
+with choice, score and noul questions; results matched the recorded fixture. Linux CI
+build/install checks and authenticated PyPI Trusted Publishing succeeded. Published PyPI
+files were downloaded anonymously and checked against the CI artifact hashes.
 
 Separate image/workflow results: CIFAR-10 guard 95.83%, fresh procedural workflows
 69.38%, local-photo HTTP p95 114.94 ms on RTX 4060 Ti 8 GB. The latter excludes loading,

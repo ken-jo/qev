@@ -1,0 +1,41 @@
+{
+  "state": {
+    "text": "Use the photograph as evidence about the visible item.",
+    "images": [
+      {
+        "path": "item.jpg"
+      }
+    ]
+  },
+  "questions": {
+    "score": {
+      "type": "score",
+      "instructions": "Apply the supplied priority policy to the evidence. The band meanings are specific to this request.",
+      "criteria": [
+        "Priority band 0: The item belongs to the glass material category. OR The item belongs to the plastic material category.",
+        "Priority band 1: The item belongs to the metal material category. OR The item belongs to the trash material category.",
+        "Priority band 2: The item belongs to the cardboard material category. OR The item belongs to the paper material category."
+      ]
+    },
+    "noul": {
+      "type": "noul",
+      "instructions": "Does the evidence satisfy any of these descriptions? The item belongs to the glass material category. OR The item belongs to the paper material category. OR The item belongs to the plastic material category.",
+      "criteria": {
+        "true": "The proposition is true.",
+        "false": "The proposition is false."
+      }
+    },
+    "choice": {
+      "type": "choice",
+      "instructions": "Which description best matches the evidence?",
+      "criteria": {
+        "c0": "The item belongs to the cardboard material category.",
+        "c1": "The item belongs to the glass material category.",
+        "c2": "The item belongs to the metal material category.",
+        "c3": "The item belongs to the paper material category.",
+        "c4": "The item belongs to the plastic material category.",
+        "c5": "The item belongs to the trash material category."
+      }
+    }
+  }
+}

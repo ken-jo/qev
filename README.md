@@ -1,5 +1,8 @@
 # QEV
 
+[![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-GitHub-ea4aaa?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/ken-jo)
+[![PyPI](https://img.shields.io/pypi/v/qev)](https://pypi.org/project/qev/)
+
 **Your evidence. Your criteria. A decision with probabilities.**
 
 [Model on Hugging Face](https://huggingface.co/ken-jo/qev) ·
@@ -27,22 +30,22 @@ photographs, image resolution controls, and the inference API. Use Python 3.12.
 ### pip
 
 ```sh
-python -m pip install https://huggingface.co/ken-jo/qev/resolve/main/runtime/qev-0.2.0-py3-none-any.whl
+python -m pip install qev==0.2.0
 qev playground
 ```
 
 Open **http://127.0.0.1:7860**. The first launch downloads the pinned QEV adaptation and
 Qwen3.5-2B backbone (about 4.6 GB), then loads the model. Later launches reuse the cache.
 CUDA is used when available; `--device cpu` and `--device cuda` select a device explicitly.
-For availability of the shorter `pip install qev` command, see
-[PyPI publication status](https://github.com/ken-jo/qev/blob/main/release/pypi-publication.json).
+Published on [PyPI](https://pypi.org/project/qev/0.2.0/) through GitHub Trusted Publishing.
+The same runtime is also available as a wheel with the Hugging Face model.
 
 ### uv
 
-Run the published wheel without cloning the repository:
+Run the published package without cloning the repository:
 
 ```sh
-uvx --python 3.12 --from https://huggingface.co/ken-jo/qev/resolve/main/runtime/qev-0.2.0-py3-none-any.whl qev playground
+uvx --python 3.12 --from qev==0.2.0 qev playground
 ```
 
 Or use the source checkout and its frozen CUDA dependency lock:
@@ -182,7 +185,7 @@ These failures are published alongside the successful measurements. Read the
 | --- | --- | --- |
 | QEV adaptation and decision heads | Hugging Face `ken-jo/qev` | The learned QEV weights and calibration |
 | Qwen3.5-2B backbone | Hugging Face `Qwen/Qwen3.5-2B` | The pinned upstream text and vision model |
-| `qev` Python SDK | Release wheel; see publication status above | Loading, typed inference, downloads, serving and playground |
+| `qev` Python SDK | PyPI and release wheel | Loading, typed inference, downloads, serving and playground |
 | Research and application source | GitHub `ken-jo/qev` | Training scripts, evaluations and local interfaces |
 
 Installing the SDK installs code, the playground, samples and dependencies. First use
@@ -213,6 +216,18 @@ The interfaces serialize model requests. They do not provide a public multi-tena
 
 The historical Korean interface and 2048 experiments remain in `apps/playground/`.
 See [its instructions](https://github.com/ken-jo/qev/blob/main/apps/playground/README.md).
+
+## Agent skill
+
+The [QEV skill](skills/qev/SKILL.md) lets Codex and other skill-capable agents compose
+text/image judgments, call QEV, preserve probability and abstention fields, and choose
+an authorized next step. It includes a validated helper, three-type image example and
+runtime instructions. A resident model server avoids loading weights for every decision.
+
+The skill is distributed separately from the pip runtime, in `skills/qev` and the release's
+`qev-skill-0.2.0.zip`. Copy that complete folder into your agent's skills directory and use
+`$qev`. See [installation and examples](docs/AGENT_SKILL.md). The skill adds orchestration;
+it does not change the model or establish Jev-equivalent performance.
 
 ## Data, evidence and attribution
 

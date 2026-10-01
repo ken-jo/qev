@@ -1,0 +1,10 @@
+{
+  "state": {"text": "The customer was charged twice and requests a refund."},
+  "questions": {
+    "department": {
+      "type": "choice",
+      "instructions": "Which department should handle this request?",
+      "criteria": {"billing": "Payments, invoices and refunds", "technical": "Software faults"}
+    }
+  }
+}

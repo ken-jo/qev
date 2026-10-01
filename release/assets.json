@@ -18,5 +18,10 @@
     "file": "qev-0.2.0.tar.gz",
     "sha256": "3f571a0e49407c696fc34e8d6ab0f7b4ea3250231974989b9e4a6c1586c5d3ba",
     "bytes": 171784
+  },
+  "skill": {
+    "file": "qev-skill-0.2.0.zip",
+    "sha256": "30ee8d3650d2d420691a36f2540cba83c575784a1d1e7971deb63cd22eab9f89",
+    "bytes": 27266
   }
 }
