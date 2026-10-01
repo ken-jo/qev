@@ -212,7 +212,8 @@ qev serve --image-root examples --host 127.0.0.1 --port 8000
 
 The first command makes the UI accessible through your PC's IP on a trusted network.
 The second serves `POST /v1/systemone`; image paths resolve under the selected image root.
-The interfaces serialize model requests. They do not provide a public multi-tenant service.
+The playground serializes model requests. Send API requests one at a time.
+These are local interfaces; they do not provide a public multi-tenant service.
 
 The historical Korean interface and 2048 experiments remain in `apps/playground/`.
 See [its instructions](https://github.com/ken-jo/qev/blob/main/apps/playground/README.md).

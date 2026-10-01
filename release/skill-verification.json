@@ -16,5 +16,6 @@
   "dry_run_returns_no_probabilities": true,
   "model_abstention_preserved": true,
   "error_does_not_invent_prediction": true,
-  "validation_scope": "Functionality and contract checks; not a model accuracy benchmark"
+  "validation_scope": "Functionality and contract checks; not a model accuracy benchmark",
+  "local_codex_installation": "Installed into the qev skill directory; installed skill validator and dry run passed"
 }

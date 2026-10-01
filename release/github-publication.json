@@ -1,0 +1,17 @@
+{
+  "published": true,
+  "url": "https://github.com/ken-jo/qev/releases/tag/v0.2.0",
+  "tag": "v0.2.0",
+  "source_commit": "05e2f1009b5812426e81ce76ea762dd1512393d6",
+  "draft": false,
+  "latest": true,
+  "assets_verified": 11,
+  "anonymous_downloads_verified": [
+    "qev-0.2.0-py3-none-any.whl",
+    "qev-skill-0.2.0.zip"
+  ],
+  "previous_release_removed": true,
+  "checked_at_utc": "2026-10-01T16:05:38.382324+00:00",
+  "removed_release_tag": "v0.1.0",
+  "only_public_release": "v0.2.0"
+}

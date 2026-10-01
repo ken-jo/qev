@@ -54,5 +54,8 @@
       "sha256": "3f571a0e49407c696fc34e8d6ab0f7b4ea3250231974989b9e4a6c1586c5d3ba",
       "bytes": 171784
     }
-  ]
+  ],
+  "public_pypi_install": "qev==0.2.0 installed with pip; CLI version verified",
+  "public_uvx_install": "qev==0.2.0 resolved from PyPI; version and playground command checked",
+  "tests_including_agent_skill_passed": 198
 }
