@@ -1,5 +1,14 @@
 # Release history
 
+## 0.2.0 — SDK and local playground
+
+- Bundled the English playground, six licensed photos and all preset files in the wheel.
+- Added `qev playground` and `qev.load()` with pinned model preparation on first use.
+- Added persistent caches, offline operation and automatic CUDA/CPU selection.
+- Kept `qev predict`, `qev serve`, `qev download` and the low-level `QEV.load` API.
+- Added voluntary GitHub Star and support links; browser opening requires `--open`.
+- Preserved the QEV 0.1.1 learned model, calibration and all 38 inference modules.
+
 ## 0.1.1 — QEV packaging release
 
 - Renamed the public GitHub project, Hugging Face model and dataset to QEV / qev-data.

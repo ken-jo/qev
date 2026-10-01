@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "sdk_version": "0.2.0",
+  "model_version": "0.1.1",
+  "tests_passed": 184,
+  "ruff_check": "passed",
+  "fresh_python_3_12_dependency_install": "uv sync --frozen; CUDA 12.8 wheels",
+  "pip_install": "Non-editable wheel installed with pip into the fresh dependency environment; pip check passed",
+  "uvx_isolated_tool_install": "63 dependencies installed; qev predict --offline passed on CUDA",
+  "uv_run_playground": {
+    "passed": true,
+    "launcher": "uv run --no-sync qev playground --offline",
+    "http_status": 200,
+    "ui_title": "QEV",
+    "sample_assets_in_wheel": 6,
+    "sample_asset_http_downloads": 6,
+    "cases": 9,
+    "browser_visual_inspection": false
+  },
+  "inference": {
+    "passed": true,
+    "sdk_version": "0.2.0",
+    "torch": "2.10.0+cu128",
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "dependency_environment": "Fresh Python 3.12 environment populated with uv sync --frozen; SDK replaced by pip-installed non-editable wheel",
+    "download_scope": "New QEV home prepared automatically; pinned backbone reused existing local cache; adaptation downloaded anonymously in preceding download command",
+    "offline_cache_reuse": true,
+    "base_download_repeated": false,
+    "max_probability_difference_vs_0_1_1": 0.0
+  },
+  "tested_platform": "Windows x86_64, NVIDIA RTX 4060 Ti 8 GB",
+  "other_platforms_inference_tested": false,
+  "model_training_changed": false,
+  "note": "SDK tests and HTTP/Gradio client checks; not a new accuracy benchmark. The upstream model cache was reused.",
+  "final_wheel_sha256": "33ca132521cf9ec7f5bc9405816cd65e9c4626853cfb21a82da7a4549ebbe576",
+  "final_wheel_reinstalled": true,
+  "final_sponsors_link": "https://github.com/sponsors/ken-jo",
+  "sponsors_listing_verified": true,
+  "final_targeted_tests_passed": 21,
+  "final_packaged_fixture_probability_match": true
+}

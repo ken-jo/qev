@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 import re
+import tomllib
 import zipfile
 from pathlib import Path
 
@@ -34,6 +35,7 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
+    version = tomllib.loads((root / "pyproject.toml").read_text("utf-8"))["project"]["version"]
     counts = {"model": verify_package(args.model), "dataset": verify_package(args.data)}
     corpora = json.loads((args.data / "dataset-manifest.json").read_text("utf-8"))["corpora"]
     for corpus in corpora:
@@ -114,17 +116,14 @@ def main():
             if not (path.parent / link.split("#")[0]).exists():
                 raise ValueError("Broken active documentation link: " + str(path) + ": " + link)
     inference = json.loads((root / "release/model-inference.json").read_text("utf-8"))
-    if (
-        inference.get("passed") is not True
-        or inference.get("qev_version") != "0.1.1"
-    ):
+    if inference.get("passed") is not True or inference.get("qev_version") != version:
         raise ValueError("Real packaged model inference has not passed")
     if inference.get("checksums_sha256") != digest((args.model / "checksums.json").read_bytes()):
         raise ValueError("Inference report belongs to a different model package")
     report = {
         "passed": True,
         "project": "qev",
-        "version": "0.1.1",
+        "version": version,
         "package_files": counts,
         "dataset_configurations": len(corpora),
         "dataset_records_including_cross_stage_repetition": sum(

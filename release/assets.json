@@ -1,22 +1,22 @@
 {
   "model": {
-    "file": "qev-0.1.1.zip",
-    "sha256": "e21bac99389c5332df52b5c3a2f9ab904d0b72af91bd929c2f6ec57a05330578",
-    "bytes": 242732804
+    "file": "qev-0.2.0.zip",
+    "sha256": "94b47b1dce2c0f1478926d800090a817575081e5dd6c4f373f56f8f0a06a2cc4",
+    "bytes": 242925751
   },
   "dataset": {
     "file": "qev-data-0.1.1.zip",
-    "sha256": "100d334760e0f6e709a48464b0086e61905ecea321903a027f50971e4da049d7",
+    "sha256": "c8b3c2edbf787d48bdef69c5a3d72c30ec825ffb26098d8ee1c19a087eba49e7",
     "bytes": 532087907
   },
-  "python_wheel": {
-    "file": "qev-0.1.1-py3-none-any.whl",
-    "bytes": 86334,
-    "sha256": "f1f4c54175ce213e98399cc8a3db91298e25aa1450f2306195614c80c87da8a2"
+  "wheel": {
+    "file": "qev-0.2.0-py3-none-any.whl",
+    "sha256": "33ca132521cf9ec7f5bc9405816cd65e9c4626853cfb21a82da7a4549ebbe576",
+    "bytes": 185279
   },
-  "python_sdist": {
-    "file": "qev-0.1.1.tar.gz",
-    "bytes": 75791,
-    "sha256": "3f2966ab3730c06d4a62fae5b31d83ddf825001dae31d46471b613c273a93516"
+  "sdist": {
+    "file": "qev-0.2.0.tar.gz",
+    "sha256": "3f571a0e49407c696fc34e8d6ab0f7b4ea3250231974989b9e4a6c1586c5d3ba",
+    "bytes": 171784
   }
 }

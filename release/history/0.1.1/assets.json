@@ -1,0 +1,22 @@
+{
+  "model": {
+    "file": "qev-0.1.1.zip",
+    "sha256": "e21bac99389c5332df52b5c3a2f9ab904d0b72af91bd929c2f6ec57a05330578",
+    "bytes": 242732804
+  },
+  "dataset": {
+    "file": "qev-data-0.1.1.zip",
+    "sha256": "100d334760e0f6e709a48464b0086e61905ecea321903a027f50971e4da049d7",
+    "bytes": 532087907
+  },
+  "python_wheel": {
+    "file": "qev-0.1.1-py3-none-any.whl",
+    "bytes": 86334,
+    "sha256": "f1f4c54175ce213e98399cc8a3db91298e25aa1450f2306195614c80c87da8a2"
+  },
+  "python_sdist": {
+    "file": "qev-0.1.1.tar.gz",
+    "bytes": 75791,
+    "sha256": "3f2966ab3730c06d4a62fae5b31d83ddf825001dae31d46471b613c273a93516"
+  }
+}

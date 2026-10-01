@@ -3,6 +3,7 @@
 import argparse
 import hashlib
 import json
+import tomllib
 import zipfile
 from pathlib import Path
 
@@ -13,6 +14,8 @@ def main():
     parser.add_argument("--data", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
+    root = Path(__file__).resolve().parents[1]
+    version = tomllib.loads((root / "pyproject.toml").read_text("utf-8"))["project"]["version"]
     args.output.mkdir(parents=True, exist_ok=True)
     outputs = {}
     for kind, folder, name in (
@@ -20,7 +23,8 @@ def main():
         ("dataset", args.data, "qev-data"),
     ):
         checks = json.loads((folder / "checksums.json").read_text("utf-8"))
-        destination = args.output / f"{name}-0.1.1.zip"
+        artifact_version = version if kind == "model" else "0.1.1"
+        destination = args.output / f"{name}-{artifact_version}.zip"
         with zipfile.ZipFile(destination, "x") as archive:
             for relative in sorted([*checks, "checksums.json"]):
                 path = (folder / relative).resolve()

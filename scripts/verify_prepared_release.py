@@ -29,10 +29,17 @@ def main():
         path = (folder / name).resolve()
         if not path.is_relative_to(folder) or digest(path) != expected:
             raise ValueError("package checksum mismatch: " + name)
-    wheels = list((folder / "runtime").glob("*.whl"))
-    if len(wheels) != 1:
-        raise ValueError("expected exactly one runtime wheel")
-    wheel = wheels[0]
+    publication = json.loads((folder / "publication.json").read_text("utf-8"))
+    wheel_name = publication.get("runtime_wheel_file")
+    if wheel_name:
+        wheel = (folder / wheel_name).resolve()
+        if not wheel.is_relative_to(folder) or not wheel.is_file():
+            raise ValueError("invalid declared runtime wheel")
+    else:
+        wheels = list((folder / "runtime").glob("*.whl"))
+        if len(wheels) != 1:
+            raise ValueError("expected one runtime wheel or an explicit publication selection")
+        wheel = wheels[0]
     sys.path.insert(0, str(wheel))
     import torch
 

@@ -102,7 +102,7 @@ def main():
             allow_patterns=[*checks, "checksums.json"],
             delete_patterns=deletions or None,
             parent_commit=parent_commit,
-            commit_message="Release QEV 0.1.1: Qwen3.5-2B typed decisions",
+            commit_message=f"QEV SDK {audit['version']}: packaged playground and typed decisions",
             commit_description=(
                 "Audited English release with exact runtime/weight provenance, "
                 "source-specific data licenses and published limitations."

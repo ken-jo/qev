@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "qev"
-version = "0.1.1"
+version = "0.2.0"
 description = "LAYA-inspired typed decisions over text and images with Qwen3.5-2B"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
@@ -29,6 +29,9 @@ dependencies = [
   "pillow==12.3.0",
   "fastapi==0.141.1",
   "uvicorn==0.54.0",
+  "gradio==6.29.0",
+  "huggingface-hub>=1.0,<2",
+  "filelock>=3.16,<5",
 ]
 
 [project.scripts]
@@ -53,7 +56,7 @@ packages = ["src/veyra", "src/qev"]
 include = [
   "/src", "/examples/request.json", "/pyproject.toml", "/README.md",
   "/LICENSE", "/NOTICE", "/CHANGELOG.md", "/MODEL_CARD.md", "/docs/API.md",
-  "/docs/ARCHITECTURE.md", "/docs/MODEL_SIZE.md",
+  "/docs/ARCHITECTURE.md", "/docs/MODEL_SIZE.md", "/docs/PLAYGROUND.md", "/SUPPORT.md",
 ]
 
 [[tool.uv.index]]
@@ -62,8 +65,8 @@ url = "https://download.pytorch.org/whl/cu128"
 explicit = true
 
 [tool.uv.sources]
-torch = { index = "pytorch-cu128" }
-torchvision = { index = "pytorch-cu128" }
+torch = { index = "pytorch-cu128", marker = "sys_platform == 'linux' or sys_platform == 'win32'" }
+torchvision = { index = "pytorch-cu128", marker = "sys_platform == 'linux' or sys_platform == 'win32'" }
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

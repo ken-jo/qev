@@ -1,28 +1,90 @@
-# Local QEV playgrounds
+# QEV playground and SDK
 
-Public Hugging Face Space creation was cancelled on 2026-10-01. No hosted Space was
-created. The publication helper exits without making network or account changes.
+The `qev` Python wheel includes the English playground, its presets, six sample photos,
+license notices and the SDK. You do not need to clone the repository to use the UI.
 
-The existing English Gradio application remains in `apps/hf_space/` for local use.
-Its directory name records the earlier hosting experiment. It offers editable text/image
-examples, six licensed sample photos, image resolution controls, choice/score/noul,
-probabilities, abstention and request/response inspection.
+## Install
 
-Install Python 3.12, QEV and `gradio==6.29.0`; then run `python apps/hf_space/app.py`.
-CPU is the default. For the GPU runtime, set `QEV_DEVICE=cuda`. The current checkpoint
-and upstream revisions are pinned. A local checkpoint path can be supplied through
-`QEV_CHECKPOINT_PATH`; the model cache through `QEV_CACHE_DIR`.
+Python 3.12 is required. The public runtime wheel is available with the model:
 
-The original local interface in `apps/playground/` includes the historical 2048 experiment.
-See [its instructions](../apps/playground/README.md).
+```sh
+python -m pip install https://huggingface.co/ken-jo/qev/resolve/main/runtime/qev-0.2.0-py3-none-any.whl
+qev playground
+```
 
-## Timing and scope
+Or use uv's isolated tool environment:
 
-CPU requests can take several seconds. GPU execution can reduce model processing time,
-while input size, uploads, queues and startup affect the total wait. Runtime notices show
-the server's configured device. The model itself uses BF16 backbone weights on GPU and
-FP32 on CPU; readouts use FP32. Local CPU verification is not a GPU latency benchmark.
+```sh
+uvx --python 3.12 --from https://huggingface.co/ken-jo/qev/resolve/main/runtime/qev-0.2.0-py3-none-any.whl qev playground
+```
 
-Sample photos overlap development data and are demonstrations, not evaluation results.
-The public documentation remains English. No public hosted demo is required to install
-or use the QEV Python package.
+From a source checkout:
+
+```sh
+uv sync --frozen
+uv run qev playground
+```
+
+Open http://127.0.0.1:7860. `--open` opens that page automatically. Use `--port 7870`
+for another port. `--host 0.0.0.0` makes the interface reachable through the machine's IP
+on a trusted network. No public hosted Space is created.
+
+## First launch and caches
+
+The first model use fetches the checksum-verified QEV adaptation and pinned Qwen3.5-2B
+backbone: about 4.6 GB of model files, in addition to Python dependencies. A progress
+message appears while the model is being prepared. Later launches use the same cache;
+starting from a different working directory does not trigger another model download.
+
+| Setting | Purpose |
+| --- | --- |
+| `QEV_HOME` | QEV checkpoint/cache root; Windows defaults to `%LOCALAPPDATA%/qev`, Linux/macOS to the XDG cache or `~/.cache/qev` |
+| `QEV_CACHE_DIR` or `--cache-dir` | Override the Hugging Face model cache |
+| `--checkpoint` | Use an explicit folder containing the released QEV head and manifest |
+| `--offline` or `QEV_OFFLINE=1` | Require complete local files; never fetch missing files |
+| `qev download` | Prepare both model components without opening the UI |
+
+`qev predict`, `qev serve` and Python's `qev.load()` use the same bootstrap path. The
+low-level `QEV.load()` API is retained for callers that manage checkpoint loading directly.
+An existing checkpoint with a different checksum is rejected and preserved.
+
+## CPU and GPU
+
+The default `--device auto` uses CUDA when it is available, otherwise CPU. Use
+`--device cuda` to require CUDA or `--device cpu` to select CPU. The source checkout's
+uv lock selects CUDA 12.8 wheels. For uvx, add `--torch-backend cu128`
+before `--from` to use that CUDA wheel index. For pip GPU installations:
+
+```sh
+python -m pip install torch==2.10.0 torchvision==0.25.0 --index-url https://download.pytorch.org/whl/cu128
+```
+
+CPU inference uses FP32 and can take seconds. CUDA uses a BF16 backbone with FP32
+readouts. UI timings report model computation; uploads, startup and queueing add to the
+user's wait. Published RTX 4060 Ti timings have their own recorded workload and scope.
+
+## Included interface
+
+- Editable text, image and image-plus-policy examples.
+- Six unmodified TrashNet sample photographs with MIT notices and hash provenance.
+- `choice`, ordered `score`, and `noul` decisions.
+- Image long-edge controls from 64 to 1,024 pixels, preserving aspect ratio.
+- Probabilities, abstention and exact request/response JSON.
+- Optional Star and support links. Installing or running QEV never stars a repository.
+
+Each UI request contains one question and at most one image; the SDK supports up to
+four questions. The model allows 2-16 candidates and a 2,048 processed-token budget.
+Requests run one at a time, with up to eight waiting. Uploads are limited to 10 MB / 16
+megapixels. Per-inference temporary images are removed; upload caches expire after
+approximately ten minutes and are swept every five minutes. Analytics is disabled by default.
+
+Sample photographs overlap development data and are examples, not independent benchmarks.
+The packaged implementation and asset notices live in `src/qev/playground/`.
+
+## Earlier interfaces
+
+`apps/hf_space/app.py` is a compatibility launcher for the packaged English UI. The
+historical Korean interface and 2048 experiment remain in `apps/playground/` and are
+available from the source checkout. See [its instructions](../apps/playground/README.md).
+
+[GitHub: ken-jo/qev](https://github.com/ken-jo/qev)

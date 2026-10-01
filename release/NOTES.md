@@ -1,8 +1,20 @@
-# QEV 0.1.1
+# QEV SDK 0.2.0
 
-Final release of the current Qwen-based research model and its Python SDK.
+An integrated Python SDK and English local playground for the released QEV 0.1.1 model.
 QEV is inspired by LAYA's typed decisions and built with Qwen3.5-2B's text and vision
 backbone, language adapters and trained decision heads. The vision encoder is frozen.
+
+## SDK and playground
+
+- The pip wheel includes the playground, presets, six sample photographs and license notices.
+- `qev playground` starts the interface; `qev.load()` provides Python inference.
+- First use downloads missing, pinned model files; subsequent launches reuse the cache.
+- `qev predict`, `qev serve`, `qev download` and `python -m qev` share the same runtime.
+- uv can run the package as an isolated tool or from the locked source checkout.
+- Star and support links are optional. No install hook authenticates to GitHub or stars a repo.
+
+This release changes packaging and launch behavior. Model weights, inference modules,
+calibration and the evaluation results below remain those of QEV 0.1.1.
 
 ## Same-input comparison
 
@@ -29,21 +41,25 @@ is a previously inspected verification fixture, not a new benchmark claim.
 
 - Model: https://huggingface.co/ken-jo/qev
 - Data: https://huggingface.co/datasets/ken-jo/qev-data
-- `qev-0.1.1.zip`: checkpoint, custom runtime and evaluation evidence.
+- `qev-0.2.0.zip`: checkpoint, custom runtime and evaluation evidence.
 - `qev-data-0.1.1.zip`: 15 historical corpus snapshots with source-specific licenses.
-- `qev-0.1.1-py3-none-any.whl` and `qev-0.1.1.tar.gz`: Python SDK distributions.
+- `qev-0.2.0-py3-none-any.whl` and `qev-0.2.0.tar.gz`: Python SDK distributions.
 
-The SDK contains code. `qev download` retrieves the adaptation and pinned Qwen base.
+The SDK contains code and playground assets. Initial loading, or `qev download`, retrieves
+the adaptation and pinned Qwen base.
 The adaptation file is 32.01 MB; the full inference model is 2.213B parameters and the
 upstream weight download is approximately 4.55 GB. Python 3.12 is required.
 PyPI account configuration is pending; the release wheel can be installed directly.
 
 ## Verification and limitations
 
-173 tests passed. All 38 frozen inference modules, learned weights and calibration
+184 tests passed. All 38 frozen inference modules, learned weights and calibration
 remain unchanged. Packaged text and three-type photograph inference preserve fixture
-answer probabilities exactly. Wheel metadata and an isolated no-dependency installation
-passed; a fresh installation of all model dependencies was not performed.
+answer probabilities exactly. A fresh Python 3.12 dependency environment, pip installation
+of the wheel, `uvx` text inference and `uv run` playground execution passed. Seven UI
+presets, two image resolutions and HTTP downloads of all six sample images passed.
+The upstream backbone reused an existing cache; it was not downloaded again. Browser
+visual inspection was unavailable. See `release/sdk-verification.json` for the exact scope.
 
 Separate image/workflow results: CIFAR-10 guard 95.83%, fresh procedural workflows
 69.38%, local-photo HTTP p95 114.94 ms on RTX 4060 Ti 8 GB. The latter excludes loading,

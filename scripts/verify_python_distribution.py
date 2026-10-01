@@ -47,6 +47,12 @@ def main():
         for module in (root / "src/qev").glob("*.py"):
             if archive.read("qev/" + module.name) != module.read_bytes():
                 raise ValueError("Public API changed while packaging")
+        for asset in (root / "src/qev/playground").rglob("*"):
+            if not asset.is_file() or "__pycache__" in asset.parts:
+                continue
+            name = "qev/playground/" + asset.relative_to(root / "src/qev/playground").as_posix()
+            if name not in names or archive.read(name) != asset.read_bytes():
+                raise ValueError("Packaged playground asset is missing or changed: " + name)
     with tarfile.open(source, "r:gz") as archive:
         names = archive.getnames()
         prefix = f"qev-{version}/"

@@ -48,7 +48,7 @@ Receive probabilities and a structured answer in one batched backbone forward.
 | Precision | BF16 backbone and FP32 readouts on CUDA |
 | License | Apache-2.0 for code and adaptation; source-specific dataset licenses |
 
-Version **0.1.1**, final Qwen-based research snapshot. Previously developed as Veyra
+Model version **0.1.1**, final Qwen-based research snapshot; Python SDK **0.2.0**. Previously developed as Veyra
 Workflow Recovery v13. This release changes the public identity and packaging, not the
 learned weights, candidate encoding, calibration or inference mathematics.
 QEV is independently maintained. Its design draws on LAYA's typed decision interface;
@@ -101,15 +101,15 @@ Use Python 3.12 and the custom QEV runtime from the
 adaptation and decision heads; its Qwen backbone is downloaded separately.
 
 ```sh
-python -m pip install https://huggingface.co/ken-jo/qev/resolve/main/runtime/qev-0.1.1-py3-none-any.whl
-qev download --output checkpoints/qev
+python -m pip install https://huggingface.co/ken-jo/qev/resolve/main/runtime/qev-0.2.0-py3-none-any.whl
+qev playground
 ```
 
 ```python
 from pathlib import Path
-from qev import QEV, DecisionRequest
+from qev import load, DecisionRequest
 
-model = QEV.load(Path("checkpoints/qev"), local_files_only=True, merge=True)
+model = load()  # Prepares the pinned weights on first use.
 request = DecisionRequest.model_validate({
     "state": {"text": "I was charged twice. Please refund the duplicate payment."},
     "questions": {
@@ -141,6 +141,10 @@ in the question, and call `model.predict(request, Path("images").resolve())`. Th
 path is resolved under that directory. Text can supply context or a policy for the same image.
 Use the [API guide](https://github.com/ken-jo/qev/blob/main/docs/API.md) for score and noul
 schemas and the local HTTP server.
+
+The SDK includes the English playground and six sample photographs. `qev playground`
+opens a local server at http://127.0.0.1:7860. First use downloads about 4.6 GB of model
+files; subsequent launches use the persistent cache. Use `--offline` for a prepared cache.
 
 ## Base and modifications
 
@@ -297,8 +301,8 @@ documentation.
 
 The package contains a calibrated manifest, adaptation weights and a custom runtime wheel.
 Qwen backbone weights must be downloaded separately at the pinned revision. Install the
-wheel from `runtime/`, run `qev download --base-only`, then use `load_qev.py` or the Python
-API in the [repository](https://github.com/ken-jo/qev). A standard Transformers
+wheel from `runtime/`, then run `qev playground`, `qev predict`, or use the Python
+`load()` API in the [repository](https://github.com/ken-jo/qev). A standard Transformers
 auto-model loader cannot directly load this custom adapter/head layout.
 
 Historical stage flags in the unchanged manifest record when those stages were run.

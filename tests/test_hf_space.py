@@ -14,7 +14,7 @@ SPEC.loader.exec_module(engine)
 
 
 def test_english_presets_produce_valid_requests():
-    presets = json.loads((ROOT / "apps/hf_space/presets.json").read_text("utf-8"))
+    presets = json.loads((ROOT / "src/qev/playground/presets.json").read_text("utf-8"))
     count = 0
     for preset in presets.values():
         for question in preset["questions"]:

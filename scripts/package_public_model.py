@@ -5,6 +5,7 @@ import hashlib
 import json
 import re
 import shutil
+import tomllib
 import zipfile
 from pathlib import Path
 
@@ -19,13 +20,14 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
+    version = tomllib.loads((root / "pyproject.toml").read_text("utf-8"))["project"]["version"]
     if args.output.exists():
         raise FileExistsError(args.output)
     expected = json.loads((args.prepared / "checksums.json").read_text("utf-8"))
     for name, sha in expected.items():
         if digest(args.prepared / name) != sha:
             raise ValueError("Original prepared package changed: " + name)
-    wheel = root / "dist/runtime/qev-0.1.1-py3-none-any.whl"
+    wheel = root / f"dist/runtime/qev-{version}-py3-none-any.whl"
     with zipfile.ZipFile(wheel) as archive:
         modules = sorted((root / "src/veyra").glob("*.py"))
         for module in modules:
@@ -60,11 +62,20 @@ def main():
     for directory in ("runtime", "reproducibility"):
         (args.output / directory).mkdir(exist_ok=True)
     shutil.copy2(wheel, args.output / "runtime" / wheel.name)
+    previous_wheel = root / "dist/runtime/qev-0.1.1-py3-none-any.whl"
+    if previous_wheel.exists() and previous_wheel != wheel:
+        shutil.copy2(previous_wheel, args.output / "runtime" / previous_wheel.name)
     for name in ("pyproject.toml", "uv.lock"):
         shutil.copy2(root / name, args.output / "reproducibility" / name)
     shutil.copytree(root / "reports/release-comparison", args.output / "release-comparison")
     (args.output / "docs").mkdir(exist_ok=True)
-    for name in ("LAYA_COMPARISON.md", "MODEL_SIZE.md", "COMPACT_MODEL.md"):
+    for name in (
+        "LAYA_COMPARISON.md",
+        "MODEL_SIZE.md",
+        "COMPACT_MODEL.md",
+        "PLAYGROUND.md",
+        "API.md",
+    ):
         shutil.copy2(root / "docs" / name, args.output / "docs" / name)
     shutil.copy2(root / "examples/request.json", args.output / "sample_request.json")
     photo = args.output / "examples/photograph"
@@ -79,19 +90,21 @@ def main():
     ):
         shutil.copy2(root / "examples/photograph" / name, photo / name)
     (args.output / "load_qev.py").write_text(
-        '"""Run the packaged example after installing runtime/*.whl and the pinned base."""\n'
+        '"""Run the packaged example with the latest bundled qev wheel."""\n'
         "import json\nfrom pathlib import Path\nimport torch\n"
-        "from qev import QEV, DecisionRequest\n\n"
+        "from qev import load, DecisionRequest\n\n"
         "root = Path(__file__).resolve().parent\n"
         "torch.set_num_threads(4)\n"
-        "model = QEV.load(root, local_files_only=True, merge=True)\n"
+        "model = load(root)\n"
         'request = DecisionRequest.from_json((root / "sample_request.json").read_text("utf-8"))\n'
         "print(json.dumps(model.predict(request, root), indent=2))\n",
         encoding="utf-8",
     )
     publication = {
         "project": "qev",
-        "version": "0.1.1",
+        "version": version,
+        "model_version": "0.1.1",
+        "runtime_wheel_file": "runtime/" + wheel.name,
         "source_repository": "https://github.com/ken-jo/qev",
         "backbone": "Qwen/Qwen3.5-2B",
         "base_revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
