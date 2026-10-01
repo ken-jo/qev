@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "project": "qev",
+  "version": "0.1.1",
+  "twine_strict": true,
+  "structural_verification": true,
+  "isolated_no_dependency_install_and_cli_passed": true,
+  "full_fresh_dependency_install": false,
+  "frozen_runtime_modules_unchanged": 38,
+  "recorded_example_response_preserved_exactly": true,
+  "linux_build_ci": "https://github.com/ken-jo/qev/actions/runs/36880807575",
+  "distributions": [
+    {
+      "file": "qev-0.1.1-py3-none-any.whl",
+      "bytes": 86334,
+      "sha256": "f1f4c54175ce213e98399cc8a3db91298e25aa1450f2306195614c80c87da8a2"
+    },
+    {
+      "file": "qev-0.1.1.tar.gz",
+      "bytes": 75791,
+      "sha256": "3f2966ab3730c06d4a62fae5b31d83ddf825001dae31d46471b613c273a93516"
+    }
+  ]
+}

@@ -21,6 +21,10 @@ to the audited QEV adaptation sources; backbone pretraining overlap is unknown.
 LAYA was smaller and faster, with better probability quality on typed-decisions.
 Full metrics, confidence intervals, training exposure and source hashes are published.
 
+The model introduction includes an actual photograph with all three typed answers,
+downloadable inputs and recorded outputs, and coverage-versus-accuracy tables. The example
+is a previously inspected verification fixture, not a new benchmark claim.
+
 ## Downloads and installation
 
 - Model: https://huggingface.co/ken-jo/qev

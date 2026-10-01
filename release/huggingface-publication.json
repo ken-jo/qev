@@ -1,11 +1,11 @@
 {
   "model": {
     "url": "https://huggingface.co/ken-jo/qev",
-    "revision": "f996835b930568dd0ccd36fad4c606c4922cc09f",
+    "revision": "14fe0d79726b036c033a27cc1ae7d37f1ddbcda1",
     "public": true,
     "all_remote_file_hashes_match": true,
     "anonymous_checksums_download_passed": true,
-    "verified_files": 199
+    "verified_files": 205
   },
   "dataset": {
     "url": "https://huggingface.co/datasets/ken-jo/qev-data",

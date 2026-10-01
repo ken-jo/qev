@@ -67,6 +67,17 @@ def main():
     for name in ("LAYA_COMPARISON.md", "MODEL_SIZE.md", "COMPACT_MODEL.md"):
         shutil.copy2(root / "docs" / name, args.output / "docs" / name)
     shutil.copy2(root / "examples/request.json", args.output / "sample_request.json")
+    photo = args.output / "examples/photograph"
+    photo.mkdir(parents=True, exist_ok=True)
+    for name in (
+        "item.jpg",
+        "request.json",
+        "response.json",
+        "provenance.json",
+        "README.md",
+        "LICENSE.txt",
+    ):
+        shutil.copy2(root / "examples/photograph" / name, photo / name)
     (args.output / "load_qev.py").write_text(
         '"""Run the packaged example after installing runtime/*.whl and the pinned base."""\n'
         "import json\nfrom pathlib import Path\nimport torch\n"

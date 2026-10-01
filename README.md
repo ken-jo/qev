@@ -70,6 +70,23 @@ lower probability errors and 23.71 ms resident p50 versus QEV's 77.70 ms on the 
 QEV adds image input; that capability has its own evaluations and limitations.
 See [the full protocol, probability metrics and results](https://github.com/ken-jo/qev/blob/main/docs/LAYA_COMPARISON.md).
 
+## A photo, three typed answers
+
+The release includes a reproducible photograph example: one plastic bottle, six material
+candidates, a three-level handling policy, and a true/false proposition.
+
+<img src="https://raw.githubusercontent.com/ken-jo/qev/main/examples/photograph/item.jpg" alt="TrashNet verification photograph of a plastic bottle" width="360" />
+
+| Type | Recorded output |
+| --- | --- |
+| `choice` | Plastic: **0.9361** probability |
+| `score` | Expected policy level: **0.4254** on a 0-2 scale |
+| `noul` | Glass, paper or plastic: **0.7903** probability true |
+
+One batched forward, zero generated answer tokens. These are actual outputs on a previously
+inspected verification fixture, not an independent accuracy estimate. Photo: TrashNet,
+Gary Thung, MIT. [Request, output, image and reproduction](https://github.com/ken-jo/qev/tree/main/examples/photograph).
+
 ## Image and workflow evaluation
 
 | Evaluation | Result | What it covers |
@@ -109,7 +126,9 @@ pending; `pip install qev` will become the shorter installation command once pub
 See [publication status](https://github.com/ken-jo/qev/blob/main/release/pypi-publication.json).
 
 Measured environment: Python 3.12, Windows, CUDA 12.8 wheels and RTX 4060 Ti 8 GB.
-Other platforms and fresh dependency installation are not yet validated.
+Linux CI also validates package building, metadata and the installed CLI without model
+dependencies. Model inference on other platforms and a fresh full dependency installation
+are not yet validated.
 
 ```sh
 git clone https://github.com/ken-jo/qev.git

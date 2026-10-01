@@ -1,23 +1,30 @@
 {
   "model": {
-    "revision": "0d2d13ffb3c392071ea00b6bdb903c4b84dff48d",
+    "repo_id": "ken-jo/qev",
+    "revision": "14fe0d79726b036c033a27cc1ae7d37f1ddbcda1",
     "anonymous": true,
     "obsolete_files_absent": true,
     "downloads": {
       "head.safetensors": "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee",
       "manifest.json": "d83f9910196c6e801658ca3816c3d2bd4a849ba3da6ff059a0edf7c6028e898d",
-      "runtime/qwen3_5_classification-0.1.0-py3-none-any.whl": "d5ea3840d8618563e78bbb88fa6dde27369bd203b41dd4c6c3b22b8f4021a6f8",
-      "README.md": "a8278677faf83335f88d475335d2f028c6c244f9f1b8cdb67df7f80c75de9ca5"
-    }
+      "README.md": "083262cdf22b88bcee6003569afbd60beb971757a6b68bd4ceb03c2058af66ce",
+      "runtime/qev-0.1.1-py3-none-any.whl": "f1f4c54175ce213e98399cc8a3db91298e25aa1450f2306195614c80c87da8a2",
+      "examples/photograph/item.jpg": "00e0bbcc0a75007fb79cb8e2e96a48c3d32941ee9ae8918590f846261d5aaac1",
+      "examples/photograph/request.json": "4c91ad23d276a5e046fc45b505cd119d894f6f7cfc943afc78554f4a89893f64",
+      "examples/photograph/response.json": "963c9d7e7e8c0f6c89110019c9dcd163dd27e1f565a562c772891725fc7b2ccf"
+    },
+    "checked_at_utc": "2026-10-01T15:09:07.921231+00:00"
   },
   "dataset": {
-    "revision": "0b151a4c197bdfea971802b4d94a7df152fb8f78",
+    "repo_id": "ken-jo/qev-data",
+    "revision": "02a1dd2ef454bd3bda4a3bac7e218f401fa0c85d",
     "anonymous": true,
     "obsolete_files_absent": true,
     "downloads": {
-      "README.md": "cc4d525df1b910f497537d27a34d9afd235f10413d762af359450ef9c424ee17",
-      "dataset-manifest.json": "35ea56b02962917fc6502f30129b1c89c2b61d35b35df97fba03bb8ad354ae44",
-      "corpora/qwen3.5-classification-policy-v3.zip": "d852b3381be72d2a8adacd7830664127b6f7e4aaab1d4a832d946396695958bf"
-    }
+      "README.md": "08da69a3a76d6ba93dc1f5d2559d44cbfe14caea4d384a0939c2fcf0e5a58b62",
+      "dataset-manifest.json": "ea356c19ffc40c93837d671c229db0998597dab1b82c8487a65d4d78082790b1",
+      "corpora/qev-policy-v3.zip": "d852b3381be72d2a8adacd7830664127b6f7e4aaab1d4a832d946396695958bf"
+    },
+    "checked_at_utc": "2026-10-01T15:09:12.028103+00:00"
   }
 }

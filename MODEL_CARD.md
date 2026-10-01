@@ -35,6 +35,19 @@ Receive probabilities and a structured answer in one batched backbone forward.
 
 [Training data](https://huggingface.co/datasets/ken-jo/qev-data)
 
+## At a glance
+
+| | QEV 0.1.1 |
+| --- | --- |
+| Evidence | Text, one photo, or text and a photo together |
+| Decision types | `choice`, ordered `score`, and true/false `noul` |
+| Request limits | 1-4 questions; 2-16 choice/score candidates; 2,048 processed tokens |
+| Inference | One batched backbone forward; zero generated answer tokens |
+| Base model | Qwen3.5-2B, with its vision encoder frozen |
+| Full model / adaptation | 2.213B merged parameters / 7.992M stored adapter and head parameters |
+| Precision | BF16 backbone and FP32 readouts on CUDA |
+| License | Apache-2.0 for code and adaptation; source-specific dataset licenses |
+
 Version **0.1.1**, final Qwen-based research snapshot. Previously developed as Veyra
 Workflow Recovery v13. This release changes the public identity and packaging, not the
 learned weights, candidate encoding, calibration or inference mathematics.
@@ -54,6 +67,32 @@ calibration; it is not an RLCD-trained compact model.
 All three include confidence and an abstention signal. Candidate definitions can change
 between requests. The output is computed directly from decision heads, so inference does
 not generate an answer sentence or a JSON string that needs parsing.
+
+## One photo, three decisions
+
+Recognize a material, apply your own handling policy, and evaluate a proposition in the
+same request. The example below is an existing release verification fixture with its
+actual recorded output.
+
+<img src="https://huggingface.co/ken-jo/qev/resolve/main/examples/photograph/item.jpg" alt="TrashNet verification photograph of a plastic bottle" width="420" />
+
+| Question | Definition supplied with the request | QEV's recorded answer |
+| --- | --- | --- |
+| `choice` | Choose among cardboard, glass, metal, paper, plastic and trash | Plastic (`c4`), probability **0.9361** |
+| `score` | Band 0: glass/plastic; band 1: metal/trash; band 2: cardboard/paper | Expected level **0.4254** on the 0-2 scale; most likely band 0, probability **0.6978** |
+| `noul` | Does the item belong to glass, paper or plastic? | Probability true **0.7903** |
+
+All three answers were accepted by the released abstention policy. They used one batched
+forward and generated zero answer tokens. An expected level is a weighted average over
+the ordered levels. The probability on a single fixture is not an accuracy measurement.
+
+[Exact request](https://huggingface.co/ken-jo/qev/blob/main/examples/photograph/request.json)
+· [Full recorded response](https://huggingface.co/ken-jo/qev/blob/main/examples/photograph/response.json)
+· [Reproduction and provenance](https://github.com/ken-jo/qev/tree/main/examples/photograph)
+
+Photo: TrashNet, Gary Thung, MIT. Image bytes and the original verification question
+definitions are preserved. This previously inspected example illustrates the interface;
+aggregate performance is reported below.
 
 ## Quickstart
 
@@ -83,6 +122,18 @@ request = DecisionRequest.model_validate({
 })
 result = model.predict(request)
 print(result["answers"]["department"])
+```
+
+Recorded output for this request, shortened:
+
+```json
+{
+  "type": "choice",
+  "choice": "billing",
+  "probabilities": {"billing": 0.974044, "technical": 0.025956},
+  "confidence": 0.974044,
+  "abstained": false
+}
 ```
 
 For a photo, set `state.images` to `[{"path": "item.jpg"}]`, describe the visual decision
@@ -165,6 +216,23 @@ multilingual router or a live JEV service.
 [Full comparison, source revisions and zero-shot definitions](https://github.com/ken-jo/qev/blob/main/docs/LAYA_COMPARISON.md)
 · [Machine-readable evidence](https://github.com/ken-jo/qev/tree/main/reports/release-comparison)
 
+## Accuracy and the decisions accepted
+
+QEV reports an abstention flag from its released fitted policy. An application can route
+flagged requests for review. The table shows both the whole evaluation and the portion
+accepted by that policy, with no threshold retuning for these measurements.
+
+| Evaluation | Accuracy on all questions | Questions accepted | Accuracy among accepted questions |
+| --- | ---: | ---: | ---: |
+| Typed-decisions, 2,000 questions | 77.00% | 30.80% | 94.32% |
+| AG News, 400 questions | 82.50% | 98.00% | 83.16% |
+| DAIR Emotion, 400 questions | 50.25% | 63.75% | 60.78% |
+
+Coverage and reliability change substantially across tasks. The 94.32% figure applies
+only to the accepted typed-decisions subset. It is not the accuracy of all requests or
+a guarantee for a new workflow. The `abstained` field is a policy decision based on model
+confidence; QEV does not return a separately trained `unknown_probability` class.
+
 ## Separate image and workflow evaluation
 
 | Fresh final metric | Veyra Foundation v11 (Qwen3.5-2B) | QEV 0.1.1 (Workflow Recovery v13) |
@@ -217,9 +285,10 @@ steps (half of the declared one-pass schedule), selected on development data bef
 evaluation. Calibration and abstention use separate recorded groups.
 
 Code/adaptation weights are Apache-2.0; dataset material retains its separate per-source
-licenses. The model package does not contain original third-party training records or
-photos. Eligible corpus snapshots are published separately, with CIFAR-10 excluded pending
-redistribution rights. Read the repository's data and training documentation.
+licenses. The model package includes one MIT-licensed verification photograph with its
+source notice and request. Training corpus snapshots are published separately, with
+CIFAR-10 excluded pending redistribution rights. Read the repository's data and training
+documentation.
 
 ## Integrity and loading
 
