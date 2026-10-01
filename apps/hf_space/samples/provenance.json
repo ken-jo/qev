@@ -1,0 +1,75 @@
+{
+  "dataset": "TrashNet",
+  "authors": [
+    "Gary Thung",
+    "Mindy Yang"
+  ],
+  "source": "https://github.com/garythung/trashnet",
+  "source_revision": "94cd17ebfd6702bf62281d3c89f22ff649815b46",
+  "license": "MIT",
+  "copyright": "Copyright (c) 2017 Gary Thung",
+  "purpose": "Interactive demonstration. Not an independent benchmark; source dataset overlaps Veyra development data.",
+  "selection": "First numbered photograph of each source category; selected without model predictions.",
+  "images": [
+    {
+      "id": "sample-01",
+      "file": "sample-01.jpg",
+      "source_member": "dataset-resized/glass/glass1.jpg",
+      "sha256": "084511aff76ddb2668538ed7a25fe803d53e625cd3734f5a5656e00a76fb7a92",
+      "bytes": 8296,
+      "width": 512,
+      "height": 384,
+      "modified": false
+    },
+    {
+      "id": "sample-02",
+      "file": "sample-02.jpg",
+      "source_member": "dataset-resized/paper/paper1.jpg",
+      "sha256": "25063c2320fd0fff4dc04317a7627418695c9970618a48073bb79cb3e542859c",
+      "bytes": 17487,
+      "width": 512,
+      "height": 384,
+      "modified": false
+    },
+    {
+      "id": "sample-03",
+      "file": "sample-03.jpg",
+      "source_member": "dataset-resized/cardboard/cardboard1.jpg",
+      "sha256": "9573fd98a5aca2ab9a4c5b9ebcdfa4dcf9719b216c2025ee4305c4df611c885f",
+      "bytes": 17333,
+      "width": 512,
+      "height": 384,
+      "modified": false
+    },
+    {
+      "id": "sample-04",
+      "file": "sample-04.jpg",
+      "source_member": "dataset-resized/plastic/plastic1.jpg",
+      "sha256": "5a81a13c442580a6839e0d350f98d6a6712f6dff47afbc5b436945327ca9ad37",
+      "bytes": 9713,
+      "width": 512,
+      "height": 384,
+      "modified": false
+    },
+    {
+      "id": "sample-05",
+      "file": "sample-05.jpg",
+      "source_member": "dataset-resized/metal/metal1.jpg",
+      "sha256": "c9e3856e65f887bd3b04edf686e6e1d265a67306a0b3a3c7a05edb83af2447b3",
+      "bytes": 17249,
+      "width": 512,
+      "height": 384,
+      "modified": false
+    },
+    {
+      "id": "sample-06",
+      "file": "sample-06.jpg",
+      "source_member": "dataset-resized/trash/trash1.jpg",
+      "sha256": "befe03db44ad0923b3f88239c071084950190e54381dc51679007917cfd315fa",
+      "bytes": 16718,
+      "width": 512,
+      "height": 384,
+      "modified": false
+    }
+  ]
+}

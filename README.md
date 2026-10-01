@@ -91,6 +91,10 @@ See [architecture and compatibility](docs/ARCHITECTURE.md).
 
 ## Playground and API
 
+The [English Spaces application](apps/hf_space/README.md) includes editable text/image
+examples, six sample photos and choice/score/noul decisions. See [hosting and readiness
+details](docs/PLAYGROUND.md). Public hosting requires the publisher's Spaces eligibility.
+
 ```sh
 uv run python apps/playground/server.py --checkpoint checkpoints/qwen3.5-classification --host 127.0.0.1 --port 8765
 ```

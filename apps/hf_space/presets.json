@@ -1,0 +1,270 @@
+{
+  "support": {
+    "text": "Hi, I was charged twice for my subscription this month. Both payments have cleared. Could you check the duplicate charge and help me get a refund?",
+    "questions": [
+      {
+        "name": "department",
+        "type": "choice",
+        "instructions": "Which team should handle this customer request?",
+        "options": [
+          {
+            "key": "billing",
+            "text": "Billing: payments, invoices, charges and refunds."
+          },
+          {
+            "key": "technical",
+            "text": "Technical support: bugs, login problems and product errors."
+          },
+          {
+            "key": "sales",
+            "text": "Sales: pricing, plans and new purchases."
+          },
+          {
+            "key": "other",
+            "text": "Other: requests unrelated to billing, technical support or sales."
+          }
+        ]
+      }
+    ]
+  },
+  "policy": {
+    "text": "Policy: Approve an order only if payment is confirmed AND stock is available. If payment is unconfirmed, hold the order. If payment is confirmed but stock is unavailable, request restocking.\n\nOrder: Payment is confirmed. Stock is unavailable. The customer is a long-term customer.",
+    "questions": [
+      {
+        "name": "next_action",
+        "type": "choice",
+        "instructions": "Which action follows the stated order policy?",
+        "options": [
+          {
+            "key": "approve",
+            "text": "Approve the order for dispatch."
+          },
+          {
+            "key": "hold",
+            "text": "Hold the order until payment is confirmed."
+          },
+          {
+            "key": "restock",
+            "text": "Request restocking before dispatch."
+          }
+        ]
+      }
+    ]
+  },
+  "uncertain": {
+    "text": "A customer says they may have been charged twice. Only one payment receipt is attached. No bank statement or payment processor log is available. The support team has not investigated yet.",
+    "questions": [
+      {
+        "name": "duplicate_charge",
+        "type": "noul",
+        "instructions": "Does the available evidence establish that two payments were collected?",
+        "options": [
+          {
+            "key": "false",
+            "text": "The available evidence does not establish that two payments were collected."
+          },
+          {
+            "key": "true",
+            "text": "The available evidence establishes that two payments were collected."
+          }
+        ]
+      }
+    ]
+  },
+  "photo": {
+    "requiresImage": true,
+    "sampleId": "sample-01",
+    "text": "Use the attached photograph as evidence. Identify the material of the main item.",
+    "questions": [
+      {
+        "name": "material",
+        "type": "choice",
+        "instructions": "What material category best describes the main item in the photograph?",
+        "options": [
+          {
+            "key": "glass",
+            "text": "Glass."
+          },
+          {
+            "key": "paper",
+            "text": "Paper."
+          },
+          {
+            "key": "cardboard",
+            "text": "Cardboard."
+          },
+          {
+            "key": "plastic",
+            "text": "Plastic."
+          },
+          {
+            "key": "metal",
+            "text": "Metal."
+          },
+          {
+            "key": "other",
+            "text": "Other material or not enough visual evidence."
+          }
+        ]
+      }
+    ]
+  },
+  "photo_score": {
+    "requiresImage": true,
+    "sampleId": "sample-05",
+    "text": "Use only the attached photograph to rate how well the main object can be inspected. Consider visible shape and surface details, including blur, darkness, cropping, and occlusion. Apply the supplied 0 to 3 visibility rubric.",
+    "questions": [
+      {
+        "name": "object_visibility",
+        "type": "score",
+        "instructions": "How clearly can the main object's shape and surface details be inspected? Use the ordered visibility grades; do not score your confidence in another answer.",
+        "options": [
+          {
+            "key": "0",
+            "text": "Unusable: the main object cannot be distinguished well enough to inspect its shape."
+          },
+          {
+            "key": "1",
+            "text": "Limited: the object can be located, but most of its shape or surface detail is hidden by blur, darkness, cropping, or occlusion."
+          },
+          {
+            "key": "2",
+            "text": "Usable: the main shape and some surface details are visible, but blur, darkness, cropping, or occlusion prevents a clear view of nearly the whole object."
+          },
+          {
+            "key": "3",
+            "text": "Clear: nearly the whole main object and its surface details are clearly visible, with little blur, darkness, cropping, or occlusion."
+          }
+        ]
+      }
+    ]
+  },
+  "photo_policy": {
+    "requiresImage": true,
+    "sampleId": "sample-03",
+    "text": "Demo sorting policy: Put paper and cardboard in the paper bin. Put glass in the glass bin. Put metal and plastic in the container bin. Send mixed materials or items that cannot be identified confidently for manual review. Apply this stated policy to the main item in the photograph.",
+    "questions": [
+      {
+        "name": "sorting_action",
+        "type": "choice",
+        "instructions": "Which action follows the stated demo sorting policy for the photographed item?",
+        "options": [
+          {
+            "key": "paper_bin",
+            "text": "Place the item in the paper and cardboard bin."
+          },
+          {
+            "key": "glass_bin",
+            "text": "Place the item in the glass bin."
+          },
+          {
+            "key": "container_bin",
+            "text": "Place the item in the metal and plastic container bin."
+          },
+          {
+            "key": "manual_review",
+            "text": "Send the item for manual review because its material is mixed or unclear."
+          }
+        ]
+      }
+    ]
+  },
+  "photo_truth": {
+    "requiresImage": true,
+    "sampleId": "sample-05",
+    "text": "Use the attached photograph as the evidence for the proposition. Judge the main object's material, rather than the background or a small label.",
+    "questions": [
+      {
+        "name": "made_of_metal",
+        "type": "noul",
+        "instructions": "Is the main object in the photograph primarily made of metal?",
+        "options": [
+          {
+            "key": "false",
+            "text": "The main object is not primarily made of metal."
+          },
+          {
+            "key": "true",
+            "text": "The main object is primarily made of metal."
+          }
+        ]
+      }
+    ]
+  },
+  "photo_all": {
+    "requiresImage": true,
+    "sampleId": "sample-05",
+    "text": "Use the attached photograph as evidence for all three questions about the main object. Judge its primary material, how clearly its shape and surface details can be inspected, and whether it is primarily made of metal. Apply each question's own criteria using only visible evidence.",
+    "questions": [
+      {
+        "name": "material",
+        "type": "choice",
+        "instructions": "What material category best describes the main item in the photograph?",
+        "options": [
+          {
+            "key": "glass",
+            "text": "Glass."
+          },
+          {
+            "key": "paper",
+            "text": "Paper."
+          },
+          {
+            "key": "cardboard",
+            "text": "Cardboard."
+          },
+          {
+            "key": "plastic",
+            "text": "Plastic."
+          },
+          {
+            "key": "metal",
+            "text": "Metal."
+          },
+          {
+            "key": "other",
+            "text": "Other material or not enough visual evidence."
+          }
+        ]
+      },
+      {
+        "name": "object_visibility",
+        "type": "score",
+        "instructions": "How clearly can the main object's shape and surface details be inspected? Use the ordered visibility grades; do not score your confidence in another answer.",
+        "options": [
+          {
+            "key": "0",
+            "text": "Unusable: the main object cannot be distinguished well enough to inspect its shape."
+          },
+          {
+            "key": "1",
+            "text": "Limited: the object can be located, but most of its shape or surface detail is hidden by blur, darkness, cropping, or occlusion."
+          },
+          {
+            "key": "2",
+            "text": "Usable: the main shape and some surface details are visible, but blur, darkness, cropping, or occlusion prevents a clear view of nearly the whole object."
+          },
+          {
+            "key": "3",
+            "text": "Clear: nearly the whole main object and its surface details are clearly visible, with little blur, darkness, cropping, or occlusion."
+          }
+        ]
+      },
+      {
+        "name": "made_of_metal",
+        "type": "noul",
+        "instructions": "Is the main object in the photograph primarily made of metal?",
+        "options": [
+          {
+            "key": "false",
+            "text": "The main object is not primarily made of metal."
+          },
+          {
+            "key": "true",
+            "text": "The main object is primarily made of metal."
+          }
+        ]
+      }
+    ]
+  }
+}

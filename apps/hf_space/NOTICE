@@ -1,0 +1,71 @@
+Qwen3.5 Classification (formerly Veyra)
+Copyright 2026 Qwen3.5 Classification contributors
+Copyright 2026 Veyra contributors
+
+Qwen3.5 Classification is an independent open-source research project for dynamic typed
+decisions over images and text.
+
+The backbone is Qwen/Qwen3.5-2B, published by the Qwen team under Apache-2.0.
+Model weights are not included in this repository and retain their upstream
+license and attribution requirements.
+https://huggingface.co/Qwen/Qwen3.5-2B
+
+The design takes inspiration from LAYA's typed decision interfaces and
+candidate scoring. No LAYA source code or model weights are included in
+this implementation.
+https://github.com/NandhaKishorM/laya
+
+TypeSafe JEV's public API is a reference for typed question and answer
+contracts. This repository does not contain JEV source code or weights.
+https://api.typesafe.ai/openapi.json
+
+Starter head training uses the MIT-licensed Beans dataset from AIR Lab,
+Makerere University. Its copyright and permission notice are preserved in
+docs/data-licenses/beans-MIT.txt. Dataset images are downloaded separately.
+https://github.com/AI-Lab-Makerere/ibean
+
+Foundation training also uses the following separately licensed datasets.
+Original records and photographs are not redistributed with the model package.
+
+TrashNet: Gary Thung and Mindy Yang, MIT.
+Kaggle redistribution: vminhkhoi/trashnet, version 1. Image/class byte hashes
+were matched against the original-author dataset before split construction.
+The original notice is preserved in docs/data-licenses/trashnet-MIT.txt.
+https://github.com/garythung/trashnet
+https://www.kaggle.com/datasets/vminhkhoi/trashnet
+
+SNLI: Stanford Natural Language Inference corpus, Stanford NLP Group,
+Samuel R. Bowman et al. (2015), CC-BY-SA-4.0.
+Selected premise/hypothesis pairs were converted into dynamic decision views;
+derived dataset material retains the applicable share-alike requirements.
+https://nlp.stanford.edu/projects/snli/
+https://huggingface.co/datasets/stanfordnlp/snli
+https://creativecommons.org/licenses/by-sa/4.0/
+
+BANKING77: PolyAI, Casanueva et al. (2020), CC-BY-4.0.
+Utterances and category names were converted into sampled eight-candidate
+questions and request-specific policy views; this is not the standard 77-way
+evaluation. Attribution and source revisions accompany the data protocol.
+https://github.com/PolyAI-LDN/task-specific-datasets
+https://huggingface.co/datasets/PolyAI/banking77
+https://creativecommons.org/licenses/by/4.0/
+
+CC-BY-4.0 and CC-BY-SA-4.0 legal texts in docs/data-licenses were obtained
+from the SPDX license-list-data text distribution. In the Hugging Face
+package these notices are under data-licenses/ instead of docs/data-licenses/.
+
+The LocalLLaMA/typed-decisions dataset is used for an external text benchmark.
+Its Apache-2.0 teacher-agreement targets are not objective ground-truth labels.
+https://huggingface.co/datasets/LocalLLaMA/typed-decisions
+
+Workflow v12 additionally adapts on the recorded training partition of that
+dataset; development, calibration and official test remain separate. Newly
+generated workflow tasks are controlled procedural examples, not recorded
+business outcomes. Their conditional probabilities follow their stated model.
+
+CIFAR-10: Alex Krizhevsky, Vinod Nair and Geoffrey Hinton.
+Used only as a 32-by-32 image transfer evaluation guard in Workflow v12.
+The uoft-cs/cifar10 dataset card marks the license as unknown. No CIFAR-10
+images are redistributed. This does not establish permission for redistribution.
+https://www.cs.toronto.edu/~kriz/cifar.html
+https://huggingface.co/datasets/uoft-cs/cifar10
