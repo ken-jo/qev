@@ -67,6 +67,23 @@ def default_criteria(kind):
     return "yes | The evidence meets the criterion.\nno | The evidence does not meet the criterion."
 
 
+def runtime_notice(device, shared_gpu=False):
+    if shared_gpu:
+        return (
+            "**Shared GPU demo.** GPU acceleration is enabled. Response time depends on "
+            "GPU availability, input size and the queue. Daily usage limits apply."
+        )
+    if device == "cuda":
+        return (
+            "**GPU demo.** GPU acceleration is enabled. "
+            "Response time depends on input size and the queue."
+        )
+    return (
+        "**CPU demo.** Responses may take several seconds. GPU hosting can make model "
+        "processing faster; input size and queue time also affect how long you wait."
+    )
+
+
 def build_demo(engine):
     def predict(*args):
         try:
@@ -93,12 +110,7 @@ def build_demo(engine):
             "[Source](https://github.com/ken-jo/qwen3.5-classification)",
             elem_id="intro",
         )
-        gr.Markdown(
-            "**Shared GPU demo.** Requests may queue and usage quotas apply."
-            if ZERO_GPU
-            else "**CPU demo.** Requests run one at a time and can take several seconds. "
-            "This is not the measured RTX 4060 Ti latency."
-        )
+        gr.Markdown(runtime_notice(engine.device, shared_gpu=ZERO_GPU))
         with gr.Row(equal_height=False):
             with gr.Column(scale=6):
                 example = gr.Dropdown(

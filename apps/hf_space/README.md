@@ -35,6 +35,11 @@ cache, set `QEV_CACHE_DIR`. Maintainers can set `QEV_CHECKPOINT_PATH` to a verif
 checkpoint and `QEV_OFFLINE=1` for local verification. `QEV_DEVICE=cuda` selects a local GPU.
 For eligible ZeroGPU Spaces, select ZeroGPU hardware and set `QEV_ZERO_GPU=1`.
 
+The notice reflects the server's CPU, GPU, or shared GPU mode. GPU hosting can reduce
+model processing time; end-to-end response time also depends on input size, uploads,
+startup and queues. Visitors do not need a GPU in their own computer. Shared ZeroGPU
+hosting has daily usage limits and can involve a wait for available GPU capacity.
+
 Public requests are serialized, with up to eight waiting requests. One image and one question
 are accepted per request, with at most 16 candidates and the runtime's 2,048-token budget.
 Image uploads are limited to 10 MB / 16 megapixels. Per-inference temporary files are deleted;

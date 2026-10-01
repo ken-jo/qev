@@ -4,7 +4,7 @@
   "tests_passed": 173,
   "text_and_three_image_types_passed": true,
   "source_hashes": {
-    "app.py": "ad58277c830432b015615b34d3c3cbe0bf4dab758c6c12ab065aed952007810e",
+    "app.py": "8897ad33f9a31d81dcc76d49ccc0a29e49919b598b7a9664d034f7ecee20cce8",
     "engine.py": "5406367fd9c0bd5358af4bb7c76facaf54f5096f3624e307c6c0325738302684",
     "presets.json": "4a7d6ce27cc1ea57ac91c5df3af6c99c1c615dd61232518fe6b1ddf09239ae61",
     "requirements.txt": "c0815ce836626147fa5f6ec86b871c1a529da11e829c7bf17e50c441df0d9442"
@@ -13,20 +13,20 @@
   "local_cpu_peak_working_set_gb": 9.94,
   "http_examples": {
     "support": {
-      "round_trip_ms": 2984.03,
-      "summary": "Answer accepted\nTop candidate: billing (90.1%)\nModel computation: 2886 ms on CPU\nImage: No image\nQueue, upload and network time are excluded."
+      "round_trip_ms": 3235.15,
+      "summary": "Answer accepted\nTop candidate: billing (90.1%)\nModel computation: 3115 ms on CPU\nImage: No image\nQueue, upload and network time are excluded."
     },
     "photo": {
-      "round_trip_ms": 7662.9,
-      "summary": "Answer accepted\nTop candidate: glass (84.3%)\nModel computation: 7532 ms on CPU\nImage: 512 x 384 -> 512 x 384\nQueue, upload and network time are excluded."
+      "round_trip_ms": 7862.2,
+      "summary": "Answer accepted\nTop candidate: glass (84.3%)\nModel computation: 7686 ms on CPU\nImage: 512 x 384 -> 512 x 384\nQueue, upload and network time are excluded."
     },
     "photo_score": {
-      "round_trip_ms": 9397.68,
-      "summary": "ABSTAINED - review the evidence\nExpected score: 1.670 (levels start at 0)\nModel computation: 9259 ms on CPU\nImage: 512 x 384 -> 512 x 384\nQueue, upload and network time are excluded."
+      "round_trip_ms": 9970.66,
+      "summary": "ABSTAINED - review the evidence\nExpected score: 1.670 (levels start at 0)\nModel computation: 9832 ms on CPU\nImage: 512 x 384 -> 512 x 384\nQueue, upload and network time are excluded."
     },
     "photo_truth": {
-      "round_trip_ms": 7581.25,
-      "summary": "Answer accepted\nProbability true: 78.7%\nModel computation: 7465 ms on CPU\nImage: 512 x 384 -> 512 x 384\nQueue, upload and network time are excluded."
+      "round_trip_ms": 8225.78,
+      "summary": "Answer accepted\nProbability true: 78.7%\nModel computation: 8077 ms on CPU\nImage: 512 x 384 -> 512 x 384\nQueue, upload and network time are excluded."
     }
   },
   "timing_scope": "Local Windows CPU demo, two threads; not Hugging Face or a repeated latency benchmark",
@@ -43,5 +43,10 @@
     }
   },
   "private_pc_connection_required": false,
-  "paid_hardware_requested": false
+  "paid_hardware_requested": false,
+  "runtime_notice_checks": {
+    "cpu_gpu_and_shared_gpu_copy_passed": true,
+    "live_cpu_notice_verified": true,
+    "checked_at": "2026-10-01T13:55:34.033813+00:00"
+  }
 }
