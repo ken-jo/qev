@@ -8,3 +8,4 @@ NOTICE text eol=lf
 # These evidence files include raw-byte SHA-256 provenance across platforms.
 reports/** -text
 apps/playground/static/samples/provenance.json -text
+src/qev/playground/samples/provenance.json -text
