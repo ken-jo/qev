@@ -1,3 +1,1 @@
 https://huggingface.co/ken-jo/qwen3.5-classification/resolve/0d2d13ffb3c392071ea00b6bdb903c4b84dff48d/runtime/qwen3_5_classification-0.1.0-py3-none-any.whl
-gradio==6.29.0
-spaces==0.51.3; sys_platform == "linux"

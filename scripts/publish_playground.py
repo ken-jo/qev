@@ -12,7 +12,7 @@ from huggingface_hub.errors import RepositoryNotFoundError
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--hardware", choices=["cpu-basic", "zero-a10g"], default="cpu-basic")
+    parser.add_argument("--hardware", choices=["cpu-basic", "zero-a10g"], default="zero-a10g")
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     folder = root / "apps/hf_space"

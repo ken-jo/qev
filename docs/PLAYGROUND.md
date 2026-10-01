@@ -48,9 +48,9 @@ After the publishing account is eligible, the maintainer can run:
 
 ```sh
 python scripts/verify_playground.py --url http://127.0.0.1:7860/
-python scripts/publish_playground.py --hardware cpu-basic
-# Or, for an eligible free ZeroGPU account:
 python scripts/publish_playground.py --hardware zero-a10g
+# CPU Basic has no hourly hardware charge, but requires a paid account plan:
+python scripts/publish_playground.py --hardware cpu-basic
 ```
 
 The publisher accepts only these hardware tiers, checks the original photo hashes and
@@ -61,3 +61,27 @@ status and exercise its public API before advertising it as live.
 No public-PC tunnel or private-network connection is needed. Hosting is independent of
 the maintainer's resident GPU playground. Temporary uploads expire; the app does not add
 visitor images or text to the released dataset.
+
+## Official agent workflow
+
+The [new-Space agent instructions](https://huggingface.co/new-space/agents.md) link to
+the official [Hugging Face Spaces skill](https://github.com/huggingface/skills/tree/main/skills/huggingface-spaces).
+Its CLI creation command is equivalent to this project's `HfApi.create_repo` call:
+
+```sh
+hf repos create ken-jo/qwen3.5-classification --type space --space-sdk gradio \
+  --flavor zero-a10g --env QEV_ZERO_GPU=1 --public --exist-ok
+```
+
+On 2026-10-01, that CLI path also returned HTTP 402 before any app files were uploaded.
+This confirms a creation gate, but the response does not disclose which account
+eligibility condition failed. The daily ZeroGPU usage allowance describes running
+existing demos and does not confirm permission to host a new one.
+
+The Spaces requirements leave `gradio` to README `sdk_version` and `spaces` to the
+platform, as the official skill requires. The frozen model wheel and its PyTorch version
+are retained. After creation is accepted, inspect the build and startup logs, then run
+real text and image requests against the hosted API. In particular, verify the frozen
+encoder's `device_map` loading path against ZeroGPU; the official skill recommends
+eager `.to("cuda")` placement for ordinary Transformers models. Hosted startup,
+inference, and latency remain unverified until those checks pass.

@@ -29,11 +29,18 @@ between devices are possible. This demo is not a new accuracy or latency benchma
 
 ## Running
 
-Install `requirements.txt` under Python 3.12 and run `python app.py`. CPU is the default.
+On Hugging Face Spaces, Gradio is selected by `sdk_version` above and the platform manages
+the `spaces` package. They are intentionally omitted from `requirements.txt` to avoid
+overriding the ZeroGPU runtime.
+
+For a local CPU or dedicated GPU preview under Python 3.12, install `requirements.txt`
+and `gradio==6.29.0`, then run `python app.py`. CPU is the default.
 The first launch downloads the public model and the pinned Qwen base. For an existing
 cache, set `QEV_CACHE_DIR`. Maintainers can set `QEV_CHECKPOINT_PATH` to a verified local
 checkpoint and `QEV_OFFLINE=1` for local verification. `QEV_DEVICE=cuda` selects a local GPU.
 For eligible ZeroGPU Spaces, select ZeroGPU hardware and set `QEV_ZERO_GPU=1`.
+The hosted ZeroGPU build and inference are pending verification after Space creation
+is accepted. Local CPU checks do not establish ZeroGPU compatibility.
 
 The notice reflects the server's CPU, GPU, or shared GPU mode. GPU hosting can reduce
 model processing time; end-to-end response time also depends on input size, uploads,
