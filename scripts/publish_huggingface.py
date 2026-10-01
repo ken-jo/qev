@@ -44,8 +44,8 @@ def main():
     )
     published = {}
     for kind, name, folder in (
-        ("model", "qwen3.5-classification", args.model),
-        ("dataset", "qwen3.5-classification-data", args.data),
+        ("model", "qev", args.model),
+        ("dataset", "qev-data", args.data),
     ):
         check_key = "model_checksums_sha256" if kind == "model" else "data_checksums_sha256"
         if sha(folder / "checksums.json") != audit[check_key]:
@@ -102,7 +102,7 @@ def main():
             allow_patterns=[*checks, "checksums.json"],
             delete_patterns=deletions or None,
             parent_commit=parent_commit,
-            commit_message="Release Qwen3.5 Classification 0.1.0: Qwen3.5-2B typed decisions",
+            commit_message="Release QEV 0.1.1: Qwen3.5-2B typed decisions",
             commit_description=(
                 "Audited English release with exact runtime/weight provenance, "
                 "source-specific data licenses and published limitations."

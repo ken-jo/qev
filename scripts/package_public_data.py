@@ -142,7 +142,7 @@ def main():
             "within_corpus_group_and_image_split_checks": True,
             "split_assignments_modified": False,
         }
-        archive_name = f"qwen3.5-classification-{corpus}.zip"
+        archive_name = f"qev-{corpus}.zip"
         zip_path = output / "corpora" / archive_name
         with zipfile.ZipFile(zip_path, "x", compression=zipfile.ZIP_DEFLATED) as archive:
             project = Path(__file__).resolve().parents[1]
@@ -189,7 +189,7 @@ def main():
         output / "dataset-manifest.json",
         {
             "format_version": 1,
-            "project": "qwen3.5-classification",
+            "project": "qev",
             "corpora": summaries,
             "sources": list(sources.values()),
             "licenses_per_record": True,

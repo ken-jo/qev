@@ -1,5 +1,15 @@
 # Release history
 
+## 0.1.1 — QEV packaging release
+
+- Renamed the public GitHub project, Hugging Face model and dataset to QEV / qev-data.
+- Added the `qev` Python package, `QEV` interface and checkpoint-aware download command.
+- Prepared a PyPI wheel and source distribution with a GitHub Trusted Publisher workflow.
+- Documented measured tensor dtypes, stored adaptation size and exact backbone counts.
+- Cancelled public Space creation; retained the existing local playground source.
+- Preserved the trained weights, calibration, 38 inference modules and dataset records.
+- Preserved prior publication evidence under `release/history/0.1.0/`.
+
 ## 0.1.0 — Qwen3.5 Classification research release
 
 - Renamed the public project from Veyra to Qwen3.5 Classification and explicitly attributed Qwen3.5-2B.

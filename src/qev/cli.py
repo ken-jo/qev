@@ -6,10 +6,13 @@ from pathlib import Path
 
 
 def main():
-    parser = argparse.ArgumentParser(prog="qwen3.5-classification")
+    parser = argparse.ArgumentParser(prog="qev")
     commands = parser.add_subparsers(dest="command", required=True)
-    download = commands.add_parser("download", help="Download the pinned Qwen3.5-2B backbone")
+    download = commands.add_parser("download", help="Download QEV checkpoint and pinned backbone")
     download.add_argument("--cache-dir", default=".cache/huggingface")
+    download.add_argument("--output", type=Path, default=Path("checkpoints/qev"))
+    download.add_argument("--checkpoint-only", action="store_true")
+    download.add_argument("--base-only", action="store_true")
     for name in ("predict", "serve"):
         command = commands.add_parser(name)
         command.add_argument("--checkpoint", type=Path, required=True)
@@ -23,26 +26,24 @@ def main():
             command.add_argument("--port", type=int, default=8000)
     args = parser.parse_args()
     if args.command == "download":
-        from huggingface_hub import snapshot_download
+        from qev.download import download_backbone, download_checkpoint
 
-        from veyra.constants import MODEL_ID, MODEL_REVISION
-
-        print(
-            snapshot_download(
-                MODEL_ID,
-                revision=MODEL_REVISION,
-                cache_dir=args.cache_dir,
-                allow_patterns=["*.json", "*.safetensors", "*.jinja", "*.txt"],
-            )
-        )
+        if args.base_only and args.checkpoint_only:
+            parser.error("--base-only and --checkpoint-only cannot be combined")
+        result = {}
+        if not args.base_only:
+            result["checkpoint"] = str(download_checkpoint(args.output, args.cache_dir))
+        if not args.checkpoint_only:
+            result["backbone_cache"] = download_backbone(args.cache_dir)
+        print(json.dumps(result, indent=2))
         return
     import torch
 
-    from qwen3_5_classification import DecisionRequest, QwenClassification
+    from qev import QEV, DecisionRequest
 
     torch.set_num_threads(4)
     if args.command == "predict":
-        model = QwenClassification.load(
+        model = QEV.load(
             args.checkpoint,
             device=args.device,
             cache_dir=args.cache_dir,
@@ -56,7 +57,7 @@ def main():
 
         from veyra.server import create_app
 
-        model = QwenClassification.load(
+        model = QEV.load(
             args.checkpoint,
             device=args.device,
             cache_dir=args.cache_dir,

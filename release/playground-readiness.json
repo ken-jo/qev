@@ -1,5 +1,5 @@
 {
-  "status": "local-ready-hosting-blocked",
+  "status": "public-hosting-cancelled-by-maintainer",
   "language": "en",
   "tests_passed": 173,
   "text_and_three_image_types_passed": true,
@@ -66,5 +66,7 @@
       "text and image inference",
       "latency"
     ]
-  }
+  },
+  "cancellation_date": "2026-10-01",
+  "previous_verification_scope": "Historical local CPU demo verification before the QEV rename"
 }

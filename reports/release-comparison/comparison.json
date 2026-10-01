@@ -1,0 +1,114 @@
+{
+  "passed": true,
+  "models": {
+    "qev": {
+      "evaluation_sha256": "18e600d2762c06c4ecc7aa07a08055a1a67ca121ec53776e081faed74526ca82",
+      "predictions_sha256": "2b404c1dccf9459438ebb9303929b1368678307a5d72fdbd2fb82b44ebbba100"
+    },
+    "laya-base": {
+      "evaluation_sha256": "5c69751621bd4a5f00262943ddbc087b3cc68fd00d957ab709547c7a17cf9a95",
+      "predictions_sha256": "c769919177ae6fb1248e21d0dde16c6b67c473bc068c37631a95f3dceafb9d70"
+    },
+    "laya-specialist": {
+      "evaluation_sha256": "3ebfc3b3a38fb1d30616feea28376e60ebcc4b0ae935cf3a84ba4a95e21ff79c",
+      "predictions_sha256": "885cb7317dbe422bcb2b05ff2d93f50273ab3d373797d59d556cadf851964cfe"
+    }
+  },
+  "paired_accuracy": {
+    "laya-base": {
+      "typed_decisions": {
+        "qev_minus_reference_accuracy": 0.4095,
+        "paired_group_bootstrap_95_ci": [
+          0.3745,
+          0.4435
+        ],
+        "groups": 400,
+        "questions": 2000,
+        "bootstrap_replicates": 10000,
+        "seed": 20261001,
+        "descriptive_not_multiple_comparison_adjusted": true,
+        "qev_only_correct": 993,
+        "reference_only_correct": 174
+      },
+      "ag_news": {
+        "qev_minus_reference_accuracy": -0.125,
+        "paired_group_bootstrap_95_ci": [
+          -0.1625,
+          -0.0875
+        ],
+        "groups": 400,
+        "questions": 400,
+        "bootstrap_replicates": 10000,
+        "seed": 20261001,
+        "descriptive_not_multiple_comparison_adjusted": true,
+        "qev_only_correct": 10,
+        "reference_only_correct": 60
+      },
+      "emotion": {
+        "qev_minus_reference_accuracy": -0.085,
+        "paired_group_bootstrap_95_ci": [
+          -0.1325,
+          -0.035
+        ],
+        "groups": 400,
+        "questions": 400,
+        "bootstrap_replicates": 10000,
+        "seed": 20261001,
+        "descriptive_not_multiple_comparison_adjusted": true,
+        "qev_only_correct": 34,
+        "reference_only_correct": 68
+      }
+    },
+    "laya-specialist": {
+      "typed_decisions": {
+        "qev_minus_reference_accuracy": 0.0005,
+        "paired_group_bootstrap_95_ci": [
+          -0.0185,
+          0.0195
+        ],
+        "groups": 400,
+        "questions": 2000,
+        "bootstrap_replicates": 10000,
+        "seed": 20261001,
+        "descriptive_not_multiple_comparison_adjusted": true,
+        "qev_only_correct": 166,
+        "reference_only_correct": 165
+      },
+      "ag_news": {
+        "qev_minus_reference_accuracy": -0.1275,
+        "paired_group_bootstrap_95_ci": [
+          -0.1675,
+          -0.09
+        ],
+        "groups": 400,
+        "questions": 400,
+        "bootstrap_replicates": 10000,
+        "seed": 20261001,
+        "descriptive_not_multiple_comparison_adjusted": true,
+        "qev_only_correct": 10,
+        "reference_only_correct": 61
+      },
+      "emotion": {
+        "qev_minus_reference_accuracy": -0.0975,
+        "paired_group_bootstrap_95_ci": [
+          -0.1475,
+          -0.0475
+        ],
+        "groups": 400,
+        "questions": 400,
+        "bootstrap_replicates": 10000,
+        "seed": 20261001,
+        "descriptive_not_multiple_comparison_adjusted": true,
+        "qev_only_correct": 33,
+        "reference_only_correct": 72
+      }
+    }
+  },
+  "requests_sha256": "585850d575d9dbdf943683936dda7e07b9e5525b60875906926e9915c557d1d6",
+  "input_protocol_sha256": "98b677278157506b94c52c5d449d1f6b805279914e92542781952b42477de4aa",
+  "aggregator_sha256": "e5802fd38ccdee3d85718faa1c5ac664f0173ed3e84115342445a6712f09d7d2",
+  "same_cases_questions_labels_and_metrics": true,
+  "all_input_truncation_counts_zero": true,
+  "new_training_or_test_temperature_fitting": false,
+  "scope": "Paired release regression and two task-held-out English suites, not general parity"
+}

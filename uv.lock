@@ -601,8 +601,8 @@ wheels = [
 ]
 
 [[package]]
-name = "qwen3-5-classification"
-version = "0.1.0"
+name = "qev"
+version = "0.1.1"
 source = { editable = "." }
 dependencies = [
     { name = "accelerate" },

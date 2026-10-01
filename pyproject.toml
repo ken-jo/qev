@@ -3,12 +3,21 @@ requires = ["hatchling>=1.27"]
 build-backend = "hatchling.build"
 
 [project]
-name = "qwen3.5-classification"
-version = "0.1.0"
-description = "Dynamic typed decisions over images and text with Qwen3.5-2B"
+name = "qev"
+version = "0.1.1"
+description = "LAYA-inspired typed decisions over text and images with Qwen3.5-2B"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{ name = "ken-jo" }]
+keywords = ["classification", "multimodal", "probabilities", "typed-decisions"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 dependencies = [
   "torch==2.10.0",
   "torchvision==0.25.0",
@@ -23,14 +32,29 @@ dependencies = [
 ]
 
 [project.scripts]
-"qwen3.5-classification" = "qwen3_5_classification.cli:main"
+qev = "qev.cli:main"
 veyra = "veyra.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/ken-jo/qev"
+Documentation = "https://github.com/ken-jo/qev#readme"
+Repository = "https://github.com/ken-jo/qev"
+Issues = "https://github.com/ken-jo/qev/issues"
+Model = "https://huggingface.co/ken-jo/qev"
+Dataset = "https://huggingface.co/datasets/ken-jo/qev-data"
 
 [dependency-groups]
 dev = ["pytest==9.1.1", "httpx>=0.28,<1", "ruff>=0.15,<1"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/veyra", "src/qwen3_5_classification"]
+packages = ["src/veyra", "src/qev"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/src", "/examples/request.json", "/pyproject.toml", "/README.md",
+  "/LICENSE", "/NOTICE", "/CHANGELOG.md", "/MODEL_CARD.md", "/docs/API.md",
+  "/docs/ARCHITECTURE.md", "/docs/MODEL_SIZE.md",
+]
 
 [[tool.uv.index]]
 name = "pytorch-cu128"

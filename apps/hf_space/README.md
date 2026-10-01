@@ -1,5 +1,5 @@
 ---
-title: Qwen3.5 Classification
+title: QEV
 emoji: "Q"
 colorFrom: blue
 colorTo: gray
@@ -10,13 +10,15 @@ app_file: app.py
 pinned: false
 license: apache-2.0
 models:
-- ken-jo/qwen3.5-classification
+- ken-jo/qev
 datasets:
-- ken-jo/qwen3.5-classification-data
+- ken-jo/qev-data
 short_description: Dynamic text and image decisions with Qwen3.5-2B
 ---
 
-# Qwen3.5 Classification playground
+# QEV local playground
+
+Public Space creation is cancelled. This source remains available for local use.
 
 English interface for the released Qwen3.5-2B adaptation. Upload a photograph, choose a
 licensed example or supply text, then define a choice, ordinal score or binary noul task.
@@ -59,9 +61,9 @@ Source category labels are not inserted into inference requests as answers.
 
 ## Links
 
-- [Model and evaluation](https://huggingface.co/ken-jo/qwen3.5-classification)
-- [Training data](https://huggingface.co/datasets/ken-jo/qwen3.5-classification-data)
-- [Source code](https://github.com/ken-jo/qwen3.5-classification)
+- [Model and evaluation](https://huggingface.co/ken-jo/qev)
+- [Training data](https://huggingface.co/datasets/ken-jo/qev-data)
+- [Source code](https://github.com/ken-jo/qev)
 - [Maintainer GitHub](https://github.com/ken-jo)
 - [Maintainer LinkedIn](https://www.linkedin.com/in/ik-chan-jo)
 

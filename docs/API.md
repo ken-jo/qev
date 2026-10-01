@@ -1,6 +1,6 @@
 # Inference API
 
-The public request schema is `qwen3_5_classification.DecisionRequest`. Text and one local image can be
+The public request schema is `qev.DecisionRequest`. Text and one local image can be
 combined. Image paths are resolved under the configured image root; remote URLs are not
 fetched by the inference API.
 

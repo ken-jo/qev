@@ -13,7 +13,7 @@ tags:
 - calibrated-decisions
 - custom-runtime
 datasets:
-- ken-jo/qwen3.5-classification-data
+- ken-jo/qev-data
 - LocalLLaMA/typed-decisions
 - stanfordnlp/snli
 - PolyAI/banking77
@@ -22,17 +22,74 @@ datasets:
 inference: false
 ---
 
-# Qwen3.5 Classification — Qwen3.5-2B typed decisions
+# QEV
 
-[Source code](https://github.com/ken-jo/qwen3.5-classification) ·
-[Training data](https://huggingface.co/datasets/ken-jo/qwen3.5-classification-data)
+**Your evidence. Your criteria. A decision with probabilities.**
 
-Maintainer: [GitHub](https://github.com/ken-jo) ·
-[LinkedIn](https://www.linkedin.com/in/ik-chan-jo).
+QEV is an open multimodal decision model inspired by
+[LAYA](https://huggingface.co/convaiinnovations/laya), combining request-defined typed
+decisions with the text and vision backbone of
+[Qwen3.5-2B](https://huggingface.co/Qwen/Qwen3.5-2B).
+Provide text, an image, or both, plus the choices or criteria you want evaluated.
+Receive probabilities and a structured answer in one batched backbone forward.
 
-Version **0.1.0**, final Qwen-based research snapshot. Previously developed as Veyra
+[Training data](https://huggingface.co/datasets/ken-jo/qev-data)
+
+Version **0.1.1**, final Qwen-based research snapshot. Previously developed as Veyra
 Workflow Recovery v13. This release changes the public identity and packaging, not the
 learned weights, candidate encoding, calibration or inference mathematics.
+QEV is independently maintained. Its design draws on LAYA's typed decision interface;
+its neural backbone and vision encoder come from Qwen3.5-2B. No LAYA checkpoint is
+merged into the weights. The released training recipe is supervised adaptation and
+calibration; it is not an RLCD-trained compact model.
+
+## What it returns
+
+| Primitive | Define in the request | Receive |
+| --- | --- | --- |
+| `choice` | Candidate names and descriptions | A probability for each candidate and a selected name |
+| `score` | Ordered descriptions, such as severity levels | Level probabilities and the expected zero-based level |
+| `noul` | A yes/no proposition | The probability that the proposition is true |
+
+All three include confidence and an abstention signal. Candidate definitions can change
+between requests. The output is computed directly from decision heads, so inference does
+not generate an answer sentence or a JSON string that needs parsing.
+
+## Quickstart
+
+Use Python 3.12 and the custom QEV runtime from the
+[release page](https://github.com/ken-jo/qev/releases). The checkpoint consists of an
+adaptation and decision heads; its Qwen backbone is downloaded separately.
+
+```sh
+python -m pip install https://huggingface.co/ken-jo/qev/resolve/main/runtime/qev-0.1.1-py3-none-any.whl
+qev download --output checkpoints/qev
+```
+
+```python
+from pathlib import Path
+from qev import QEV, DecisionRequest
+
+model = QEV.load(Path("checkpoints/qev"), local_files_only=True, merge=True)
+request = DecisionRequest.model_validate({
+    "state": {"text": "I was charged twice. Please refund the duplicate payment."},
+    "questions": {
+        "department": {
+            "type": "choice",
+            "instructions": "Which team should handle this request?",
+            "criteria": {"billing": "Payments and refunds", "technical": "Software faults"},
+        }
+    },
+})
+result = model.predict(request)
+print(result["answers"]["department"])
+```
+
+For a photo, set `state.images` to `[{"path": "item.jpg"}]`, describe the visual decision
+in the question, and call `model.predict(request, Path("images").resolve())`. The image
+path is resolved under that directory. Text can supply context or a policy for the same image.
+Use the [API guide](https://github.com/ken-jo/qev/blob/main/docs/API.md) for score and noul
+schemas and the local HTTP server.
 
 ## Base and modifications
 
@@ -44,6 +101,12 @@ learned weights, candidate encoding, calibration or inference mathematics.
 - Final recovery updates only adapters in language layers 18-23 and existing readout/
   binding parameters. All 24 stored adapter layers merge for inference in BF16.
 - Stored adaptation/readout: 7,992,384 parameters; 32,009,800-byte safetensors file.
+- Runtime backbone: 2,213,241,664 parameters (331,416,576 vision; 1,881,825,088 language).
+- Storage format: safetensors. Adaptation/readout tensors are FP32. GPU inference uses
+  BF16 backbone weights and FP32 readouts; CPU inference uses FP32.
+- LoRA contributes 7,815,168 stored parameters, merged into existing weights at inference.
+  The remaining 177,216 readout/binding parameters stay separate; merged inference has
+  2,213,418,880 parameters. The upstream 4.55 GB download also includes unused MTP tensors.
 - One batched backbone forward per request; zero autoregressively generated answer tokens.
   Questions are encoded as separate batch entries, so adding questions still costs compute.
 
@@ -63,9 +126,48 @@ Returns probabilities, selected label/expected score/probability true, and abste
 Probabilities are estimates; a direction probability in a game is not a game-win probability.
 The trained prompt marker `VeyraResult:` and internal `veyra` package remain unchanged.
 
-## Evaluation
+## QEV and LAYA: matched text evaluation
 
-| Fresh final metric | Foundation reference | This checkpoint |
+All three frozen models answered the same English inputs on an RTX 4060 Ti 8 GB.
+Weights, prompts and temperatures were not tuned on this evaluation.
+
+| Test | Questions | LAYA English | LAYA Typed Decisions | QEV 0.1.1 |
+| --- | ---: | ---: | ---: | ---: |
+| Official typed-decisions | 2,000 | 36.05% | 76.95% | 77.00% |
+| AG News, 4 candidates | 400 | 95.00% | 95.25% | 82.50% |
+| DAIR Emotion, 6 candidates | 400 | 58.75% | 60.00% | 50.25% |
+
+![Accuracy on identical inputs](https://huggingface.co/ken-jo/qev/resolve/main/release-comparison/accuracy.png)
+
+Typed-decisions is an adapted, previously inspected benchmark for QEV and LAYA's
+specialist. QEV's one-question advantage is not evidence of superiority: the paired 95%
+interval is -1.85 to +1.95 percentage points. News and emotion have no QEV task-specific
+adaptation in the audited release sources, making them task-held-out zero-shot tests
+for QEV. Upstream pretraining overlap is unknown. LAYA reports news in its training
+mix and emotion held out, so the training exposure is not identical.
+
+| typed-decisions metric | LAYA Typed Decisions | QEV 0.1.1 | Better direction |
+| --- | ---: | ---: | --- |
+| Brier against soft targets | 0.06149 | 0.07460 | Lower |
+| NLL / soft-target cross-entropy | 0.88445 | 0.90894 | Lower |
+| ECE, 15 bins | 21.67% | 25.19% | Lower |
+| Ordinal expectation MAE | 0.24251 | 0.30366 | Lower |
+| Resident SDK p50 | 23.71 ms | 77.70 ms | Lower |
+| Resident SDK p95 | 30.06 ms | 97.70 ms | Lower |
+
+The specialist has better probability quality on this benchmark and is faster here.
+Both LAYA English checkpoints are reported as 421M parameters; QEV uses 2.213B after
+merging adapters. Timings are serial, one question per call after warmup; loading,
+network transport and queueing are excluded. All state, instruction and option
+truncation counts are zero. These measurements do not establish parity with LAYA's
+multilingual router or a live JEV service.
+
+[Full comparison, source revisions and zero-shot definitions](https://github.com/ken-jo/qev/blob/main/docs/LAYA_COMPARISON.md)
+· [Machine-readable evidence](https://github.com/ken-jo/qev/tree/main/reports/release-comparison)
+
+## Separate image and workflow evaluation
+
+| Fresh final metric | Veyra Foundation v11 (Qwen3.5-2B) | QEV 0.1.1 (Workflow Recovery v13) |
 | --- | ---: | ---: |
 | Authored workflow accuracy, 1,440 questions / 480 groups | 44.31% | 69.38% |
 | CIFAR-10 guard, 600 questions | 95.17% | 95.83% |
@@ -92,7 +194,7 @@ or accuracy comparison was run.
 
 ## Limitations and negative results
 
-- Final overall ECE is 12.58%, worse than the Foundation reference's 6.80%.
+- Final overall ECE is 12.58%, worse than Veyra Foundation v11's 6.80%.
 - Final overall accepted expected error is 20.49% at 88.99% coverage. For uncertain
   requests it is 45.57% at 52.50% coverage. Fitted abstention is not a shifted-domain guarantee.
 - 72 exploratory 2048 games produced no 2048 wins. Engine-assisted variants supplied legal
@@ -126,10 +228,14 @@ redistribution rights. Read the repository's data and training documentation.
 
 The package contains a calibrated manifest, adaptation weights and a custom runtime wheel.
 Qwen backbone weights must be downloaded separately at the pinned revision. Install the
-wheel from `runtime/`, run `qwen3.5-classification download`, then use `load_qwen3_5_classification.py` or the Python
-API in the [repository](https://github.com/ken-jo/qwen3.5-classification). A standard Transformers
+wheel from `runtime/`, run `qev download --base-only`, then use `load_qev.py` or the Python
+API in the [repository](https://github.com/ken-jo/qev). A standard Transformers
 auto-model loader cannot directly load this custom adapter/head layout.
 
 Historical stage flags in the unchanged manifest record when those stages were run.
 The exact-model acceptance report and publication verification are separate evidence;
 packaging does not retroactively alter a stage's provenance.
+
+---
+
+[GitHub: ken-jo/qev](https://github.com/ken-jo/qev)

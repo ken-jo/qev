@@ -1,87 +1,28 @@
-# English public playground
+# Local QEV playgrounds
 
-The English Spaces application is in [`apps/hf_space/`](../apps/hf_space/README.md).
-It provides seven editable text/image examples, six licensed sample photos, image-resolution
-selection, `choice` / `score` / `noul`, candidate probabilities, abstention and request/response
-inspection. Samples overlap development data and are explicitly labeled as demonstrations.
+Public Hugging Face Space creation was cancelled on 2026-10-01. No hosted Space was
+created. The publication helper exits without making network or account changes.
 
-The frozen model, inference modules and calibration are unchanged. The public demo adapter
-limits each request to one image and one question. The model API still supports four questions.
-CPU mode uses the original float32 runtime path; CUDA uses the original bfloat16 path.
+The existing English Gradio application remains in `apps/hf_space/` for local use.
+Its directory name records the earlier hosting experiment. It offers editable text/image
+examples, six licensed sample photos, image resolution controls, choice/score/noul,
+probabilities, abstention and request/response inspection.
 
-## Response time
+Install Python 3.12, QEV and `gradio==6.29.0`; then run `python apps/hf_space/app.py`.
+CPU is the default. For the GPU runtime, set `QEV_DEVICE=cuda`. The current checkpoint
+and upstream revisions are pinned. A local checkpoint path can be supplied through
+`QEV_CHECKPOINT_PATH`; the model cache through `QEV_CACHE_DIR`.
 
-The notice identifies the server's execution mode: CPU, GPU, or shared GPU. Inference
-runs on the server; visitors do not need a GPU in their own computer. CPU requests can
-take several seconds. GPU hosting can reduce model processing time, but the full wait
-also includes upload, network, queue, and any startup or shared-GPU allocation delay.
-Input length, image resolution, and candidate count affect the work required.
+The original local interface in `apps/playground/` includes the historical 2048 experiment.
+See [its instructions](../apps/playground/README.md).
 
-The result panel reports model processing time only. No speedup ratio or Hugging Face
-response-time guarantee is established by the local GPU measurements. A shared GPU can
-finish computation faster while still taking longer overall when its queue is busy.
+## Timing and scope
 
-## Readiness checks
+CPU requests can take several seconds. GPU execution can reduce model processing time,
+while input size, uploads, queues and startup affect the total wait. Runtime notices show
+the server's configured device. The model itself uses BF16 backbone weights on GPU and
+FP32 on CPU; readouts use FP32. Local CPU verification is not a GPU latency benchmark.
 
-The source test suite includes request validation, all preset schemas, image resizing and
-rejection of unsupported candidates. Actual local CPU inference is exercised with a text
-request and all three photo decision types. The Gradio HTTP queue is also checked with real
-requests, including photo upload. These checks do not establish deployment availability or
-performance on Hugging Face hardware.
-
-## Hosting
-
-As of 2026-10-01, Hugging Face's documentation says CPU Basic has no hourly hardware charge,
-but creating a Gradio/Docker Space requires a paid plan. Eligible free personal accounts
-can host up to two ZeroGPU Spaces; email verification and an account older than 30 days
-are required. The account API remains the authority on actual eligibility.
-
-Visitors can use an existing ZeroGPU Space without a PRO subscription. Daily GPU-time
-allowances and queue priority depend on the visitor's account tier; these are separate
-from the requirements for creating a Space. A paid dedicated GPU is a separate hosting
-choice, and this project's publisher does not select or purchase one.
-
-See [Spaces overview](https://huggingface.co/docs/hub/spaces-overview) and
-[ZeroGPU eligibility](https://huggingface.co/docs/hub/spaces-zerogpu).
-
-After the publishing account is eligible, the maintainer can run:
-
-```sh
-python scripts/verify_playground.py --url http://127.0.0.1:7860/
-python scripts/publish_playground.py --hardware zero-a10g
-# CPU Basic has no hourly hardware charge, but requires a paid account plan:
-python scripts/publish_playground.py --hardware cpu-basic
-```
-
-The publisher accepts only these hardware tiers, checks the original photo hashes and
-English source, and requires successful local HTTP inference evidence. It does not change
-subscriptions or request paid GPU hardware. After upload, inspect the Space's build/runtime
-status and exercise its public API before advertising it as live.
-
-No public-PC tunnel or private-network connection is needed. Hosting is independent of
-the maintainer's resident GPU playground. Temporary uploads expire; the app does not add
-visitor images or text to the released dataset.
-
-## Official agent workflow
-
-The [new-Space agent instructions](https://huggingface.co/new-space/agents.md) link to
-the official [Hugging Face Spaces skill](https://github.com/huggingface/skills/tree/main/skills/huggingface-spaces).
-Its CLI creation command is equivalent to this project's `HfApi.create_repo` call:
-
-```sh
-hf repos create ken-jo/qwen3.5-classification --type space --space-sdk gradio \
-  --flavor zero-a10g --env QEV_ZERO_GPU=1 --public --exist-ok
-```
-
-On 2026-10-01, that CLI path also returned HTTP 402 before any app files were uploaded.
-This confirms a creation gate, but the response does not disclose which account
-eligibility condition failed. The daily ZeroGPU usage allowance describes running
-existing demos and does not confirm permission to host a new one.
-
-The Spaces requirements leave `gradio` to README `sdk_version` and `spaces` to the
-platform, as the official skill requires. The frozen model wheel and its PyTorch version
-are retained. After creation is accepted, inspect the build and startup logs, then run
-real text and image requests against the hosted API. In particular, verify the frozen
-encoder's `device_map` loading path against ZeroGPU; the official skill recommends
-eager `.to("cuda")` placement for ordinary Transformers models. Hosted startup,
-inference, and latency remain unverified until those checks pass.
+Sample photos overlap development data and are demonstrations, not evaluation results.
+The public documentation remains English. No public hosted demo is required to install
+or use the QEV Python package.

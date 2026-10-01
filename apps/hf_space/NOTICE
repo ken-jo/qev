@@ -1,8 +1,8 @@
-Qwen3.5 Classification (formerly Veyra)
-Copyright 2026 Qwen3.5 Classification contributors
+QEV (formerly Veyra)
+Copyright 2026 QEV contributors
 Copyright 2026 Veyra contributors
 
-Qwen3.5 Classification is an independent open-source research project for dynamic typed
+QEV is an independent open-source research project for dynamic typed
 decisions over images and text.
 
 The backbone is Qwen/Qwen3.5-2B, published by the Qwen team under Apache-2.0.

@@ -1,0 +1,693 @@
+{
+  "format_version": 1,
+  "project": "qwen3.5-classification",
+  "corpora": [
+    {
+      "corpus": "starter-v2",
+      "source_records_sha256": "96414c7ee56cdb9edb7c91eb0ac0b6c85123cd5359e3a58a1047a59b1edbd2c7",
+      "published_records_sha256": "43f13aec02974f2440a5bfaf5bb59882ab6326cc0e4652dc42dcee0410ba78e5",
+      "source_rows": 8972,
+      "published_rows": 8972,
+      "excluded_rows": 0,
+      "split_counts": {
+        "train": 7008,
+        "dev": 771,
+        "test": 479,
+        "calibration": 714
+      },
+      "groups": 3242,
+      "languages": {
+        "ko": 3068,
+        "en": 5904
+      },
+      "source_counts": {
+        "veyra-original-generator": 5343,
+        "AI-Lab-Makerere/beans": 3629
+      },
+      "within_corpus_group_and_image_split_checks": true,
+      "split_assignments_modified": false,
+      "archive": "corpora/qwen3.5-classification-starter-v2.zip",
+      "archive_sha256": "220b1fad8bcbceceae2528268724da6fafe9a25ba18e156392fba700f7c5f3b0",
+      "archive_bytes": 181213225,
+      "image_files": 1962
+    },
+    {
+      "corpus": "policy-v3",
+      "source_records_sha256": "42deb625c5130fd5e3cd4cee2774282efaca3f8eaa5661f5d3ab85bf042bf91b",
+      "published_records_sha256": "d6b6aaa32d82022696a945de6cec2aca3e095ca59397a29cb11041c26b6cb18f",
+      "source_rows": 4192,
+      "published_rows": 4192,
+      "excluded_rows": 0,
+      "split_counts": {
+        "train": 2400,
+        "dev": 448,
+        "calibration": 448,
+        "test": 896
+      },
+      "groups": 2096,
+      "languages": {
+        "ko": 1048,
+        "en": 3144
+      },
+      "source_counts": {
+        "veyra-policy-generator-v3": 4192
+      },
+      "within_corpus_group_and_image_split_checks": true,
+      "split_assignments_modified": false,
+      "archive": "corpora/qwen3.5-classification-policy-v3.zip",
+      "archive_sha256": "d852b3381be72d2a8adacd7830664127b6f7e4aaab1d4a832d946396695958bf",
+      "archive_bytes": 1080868,
+      "image_files": 784
+    },
+    {
+      "corpus": "policy-v6",
+      "source_records_sha256": "ad6c8b974df7e61b18463a748c18787c484edc770a6253ccb6520ed1e9cf143f",
+      "published_records_sha256": "fc6abfef2d5dd897e612c20bf573cde11c0c3eedaaae6207d42b435fcfd658a4",
+      "source_rows": 6592,
+      "published_rows": 6592,
+      "excluded_rows": 0,
+      "split_counts": {
+        "train": 4800,
+        "dev": 448,
+        "calibration": 448,
+        "test": 896
+      },
+      "groups": 3296,
+      "languages": {
+        "ko": 1648,
+        "en": 4944
+      },
+      "source_counts": {
+        "veyra-policy-generator-v3": 4192,
+        "veyra-evidence-interventions-v6": 2400
+      },
+      "within_corpus_group_and_image_split_checks": true,
+      "split_assignments_modified": false,
+      "archive": "corpora/qwen3.5-classification-policy-v6.zip",
+      "archive_sha256": "db4477a5c4ac2d28287fbaf837400fba1a6ce15be79b37fda71f8e70b17a04dc",
+      "archive_bytes": 1610277,
+      "image_files": 1184
+    },
+    {
+      "corpus": "policy-v8",
+      "source_records_sha256": "43d5f8f31d5cfef33fe3721685ad9008209d1b3becb21742ba1ced1ab2557070",
+      "published_records_sha256": "c4b04e57074e1a8e817866bbeddb859d7307b54d61f0b0de5af69498b9e2cb6e",
+      "source_rows": 16734,
+      "published_rows": 16734,
+      "excluded_rows": 0,
+      "split_counts": {
+        "train": 9582,
+        "dev": 1790,
+        "calibration": 1786,
+        "test": 3576
+      },
+      "groups": 8367,
+      "languages": {
+        "ko": 4180,
+        "en": 12554
+      },
+      "source_counts": {
+        "veyra-policy-refresh-v8": 16734
+      },
+      "within_corpus_group_and_image_split_checks": true,
+      "split_assignments_modified": false,
+      "archive": "corpora/qwen3.5-classification-policy-v8.zip",
+      "archive_sha256": "6b6068cec68101a51e10661643c39782cea07292cdc6d578a2fffc20b1ad7e5d",
+      "archive_bytes": 4319864,
+      "image_files": 3119
+    },
+    {
+      "corpus": "foundation-v11",
+      "source_records_sha256": "8f226fe90fb50e46c6a2e4c53020ed99db81a903f21317a96c66f27b6181d936",
+      "published_records_sha256": "8f226fe90fb50e46c6a2e4c53020ed99db81a903f21317a96c66f27b6181d936",
+      "source_rows": 19279,
+      "published_rows": 19279,
+      "excluded_rows": 0,
+      "split_counts": {
+        "train": 10841,
+        "test": 3866,
+        "calibration": 2132,
+        "dev": 2440
+      },
+      "groups": 7077,
+      "languages": {
+        "en": 18164,
+        "ko": 1115
+      },
+      "source_counts": {
+        "PolyAI/banking77": 4044,
+        "veyra/conditional-probability": 480,
+        "AI-Lab-Makerere/beans": 1683,
+        "veyra-original-generator": 129,
+        "veyra-policy-refresh-v8": 1960,
+        "stanfordnlp/snli": 3420,
+        "vminhkhoi/trashnet": 7563
+      },
+      "within_corpus_group_and_image_split_checks": true,
+      "split_assignments_modified": false,
+      "archive": "corpora/qwen3.5-classification-foundation-v11.zip",
+      "archive_sha256": "09dec6efa5c487b91002c0590805025041ddf8171939782870031e3c3147d8e8",
+      "archive_bytes": 122333890,
+      "image_files": 3502
+    },
+    {
+      "corpus": "workflow-v12",
+      "source_records_sha256": "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571",
+      "published_records_sha256": "1c09b3ba829757ddb037f65868e74b9f3d82e3cfa76f80eabac65a68a23a93f8",
+      "source_rows": 20600,
+      "published_rows": 19100,
+      "excluded_rows": 1500,
+      "split_counts": {
+        "train": 11212,
+        "calibration": 2344,
+        "dev": 2712,
+        "test": 2832
+      },
+      "groups": 6388,
+      "languages": {
+        "en": 18969,
+        "ko": 131
+      },
+      "source_counts": {
+        "veyra-workflow-v12": 8400,
+        "LocalLLaMA/typed-decisions": 5400,
+        "vminhkhoi/trashnet": 912,
+        "AI-Lab-Makerere/beans": 300,
+        "stanfordnlp/snli": 1950,
+        "PolyAI/banking77": 1978,
+        "veyra-policy-refresh-v8": 160
+      },
+      "within_corpus_group_and_image_split_checks": true,
+      "split_assignments_modified": false,
+      "archive": "corpora/qwen3.5-classification-workflow-v12.zip",
+      "archive_sha256": "db0bb1c9cddb6bf8e158d388ab8bb51861216e9e1c9fe1944498e18f319b377e",
+      "archive_bytes": 20462837,
+      "image_files": 447
+    },
+    {
+      "corpus": "workflow-v12-cohort",
+      "source_records_sha256": "c22d9140b3f934de4bb41fe65d73ef6180553202c39bd1e874fd545b2c1c82d2",
+      "published_records_sha256": "fac7c4127a3c1c43f0a1bbd114628ac3fc536d5d59709ff828b4dd3724b62562",
+      "source_rows": 25888,
+      "published_rows": 23788,
+      "excluded_rows": 2100,
+      "split_counts": {
+        "train": 11212,
+        "dev": 2712,
+        "test": 2832,
+        "calibration": 7032
+      },
+      "groups": 7956,
+      "languages": {
+        "en": 23657,
+        "ko": 131
+      },
+      "source_counts": {
+        "veyra-workflow-v12": 6960,
+        "LocalLLaMA/typed-decisions": 4800,
+        "vminhkhoi/trashnet": 912,
+        "AI-Lab-Makerere/beans": 300,
+        "stanfordnlp/snli": 2250,
+        "PolyAI/banking77": 2286,
+        "veyra-policy-refresh-v8": 160,
+        "veyra-workspace-calibration-v12": 2040,
+        "workflow-depth-policy-fit-data-v12": 2040,
+        "workflow-depth-policy-validation-data-v12": 2040
+      },
+      "within_corpus_group_and_image_split_checks": true,
+      "split_assignments_modified": false,
+      "archive": "corpora/qwen3.5-classification-workflow-v12-cohort.zip",
+      "archive_sha256": "65615fbf69865a4e806a67ef79ecf806022c1542e6173f283dc4316ea2cca662",
+      "archive_bytes": 20769675,
+      "image_files": 447
+    },
+    {
+      "corpus": "workflow-v12b",
+      "source_records_sha256": "e3c3c10301f6c34561cd5281713152b3df4df0d093738c078b3d4fddde2196fb",
+      "published_records_sha256": "6543630735f8cb99b7368b383e13ced13a480da273381df584d428c582ead807",
+      "source_rows": 20600,
+      "published_rows": 19100,
+      "excluded_rows": 1500,
+      "split_counts": {
+        "train": 11212,
+        "dev": 2712,
+        "test": 2832,
+        "calibration": 2344
+      },
+      "groups": 6388,
+      "languages": {
+        "en": 18969,
+        "ko": 131
+      },
+      "source_counts": {
+        "veyra-workflow-v12": 6960,
+        "LocalLLaMA/typed-decisions": 4800,
+        "vminhkhoi/trashnet": 912,
+        "AI-Lab-Makerere/beans": 300,
+        "stanfordnlp/snli": 1950,
+        "PolyAI/banking77": 1978,
+        "veyra-policy-refresh-v8": 160,
+        "veyra-workspace-calibration-v12": 2040
+      },
+      "within_corpus_group_and_image_split_checks": true,
+      "split_assignments_modified": false,
+      "archive": "corpora/qwen3.5-classification-workflow-v12b.zip",
+      "archive_sha256": "19493f6d46db6fbd31cacf4f260c69c20c261a96533db32d04cfee2bea6f06af",
+      "archive_bytes": 20462802,
+      "image_files": 447
+    },
+    {
+      "corpus": "workflow-v12c",
+      "source_records_sha256": "7449ca694bc88e20fed7b1389cb659191f5af088226ef609fac753589056ad07",
+      "published_records_sha256": "bb0dd1404eb9c17e21eff6e34646d9c540cb1f694088fb2f461d211914ec515b",
+      "source_rows": 20600,
+      "published_rows": 19100,
+      "excluded_rows": 1500,
+      "split_counts": {
+        "train": 11212,
+        "dev": 2712,
+        "test": 2832,
+        "calibration": 2344
+      },
+      "groups": 6388,
+      "languages": {
+        "en": 18969,
+        "ko": 131
+      },
+      "source_counts": {
+        "veyra-workflow-v12": 6960,
+        "LocalLLaMA/typed-decisions": 4800,
+        "vminhkhoi/trashnet": 912,
+        "AI-Lab-Makerere/beans": 300,
+        "stanfordnlp/snli": 1950,
+        "PolyAI/banking77": 1978,
+        "veyra-policy-refresh-v8": 160,
+        "workflow-depth-policy-fit-data-v12": 2040
+      },
+      "within_corpus_group_and_image_split_checks": true,
+      "split_assignments_modified": false,
+      "archive": "corpora/qwen3.5-classification-workflow-v12c.zip",
+      "archive_sha256": "e6675e292300fc46b410e226175546824d59068822cd8c5beb92fa11da9f2073",
+      "archive_bytes": 20462390,
+      "image_files": 447
+    },
+    {
+      "corpus": "workflow-v12d",
+      "source_records_sha256": "f6cf512f9fe2f386adec99be7647677bec68afc8708f1236c5130fb257be9391",
+      "published_records_sha256": "41884f84dcf823a897740f9841ea60a4909afbe9be7298efc97e1a360658a164",
+      "source_rows": 20600,
+      "published_rows": 19100,
+      "excluded_rows": 1500,
+      "split_counts": {
+        "train": 11212,
+        "dev": 2712,
+        "test": 2832,
+        "calibration": 2344
+      },
+      "groups": 6388,
+      "languages": {
+        "en": 18969,
+        "ko": 131
+      },
+      "source_counts": {
+        "veyra-workflow-v12": 6960,
+        "LocalLLaMA/typed-decisions": 4800,
+        "vminhkhoi/trashnet": 912,
+        "AI-Lab-Makerere/beans": 300,
+        "stanfordnlp/snli": 1950,
+        "PolyAI/banking77": 1978,
+        "veyra-policy-refresh-v8": 160,
+        "workflow-depth-policy-validation-data-v12": 2040
+      },
+      "within_corpus_group_and_image_split_checks": true,
+      "split_assignments_modified": false,
+      "archive": "corpora/qwen3.5-classification-workflow-v12d.zip",
+      "archive_sha256": "a95380957aa1f9bb548b69ef452ec18928aed14082f0db54aaee374c6e88ccc6",
+      "archive_bytes": 20463006,
+      "image_files": 447
+    },
+    {
+      "corpus": "workflow-v12e",
+      "source_records_sha256": "632af2eb5ecd6cc73c868d4043c0ea6d7fbb3ae2a9c8e10b84da878d5655c17d",
+      "published_records_sha256": "a83a14eb9e74ae323e904fcd91c2dc8d41ad4a1d8be22b3b07646e32ea14f0e7",
+      "source_rows": 20600,
+      "published_rows": 19100,
+      "excluded_rows": 1500,
+      "split_counts": {
+        "train": 11212,
+        "dev": 2712,
+        "test": 2832,
+        "calibration": 2344
+      },
+      "groups": 6388,
+      "languages": {
+        "en": 18969,
+        "ko": 131
+      },
+      "source_counts": {
+        "veyra-workflow-v12": 6960,
+        "LocalLLaMA/typed-decisions": 4800,
+        "vminhkhoi/trashnet": 912,
+        "AI-Lab-Makerere/beans": 300,
+        "stanfordnlp/snli": 1950,
+        "PolyAI/banking77": 1978,
+        "veyra-policy-refresh-v8": 160,
+        "workflow-cohort-policy-validation-1-v12": 2040
+      },
+      "within_corpus_group_and_image_split_checks": true,
+      "split_assignments_modified": false,
+      "archive": "corpora/qwen3.5-classification-workflow-v12e.zip",
+      "archive_sha256": "bd8270d6587df9896a31941a8683673db752de160073af2395ebd56cfcd32d96",
+      "archive_bytes": 20462115,
+      "image_files": 447
+    },
+    {
+      "corpus": "workflow-v12f",
+      "source_records_sha256": "c057956998e948ab22cfceb969f7711bedada963372b31e5d45089bbb71fbf46",
+      "published_records_sha256": "dfdcc03463ca1eeb03f3ac1e0e831ffcac2800563cbb7a7cebaa1609103aa240",
+      "source_rows": 20600,
+      "published_rows": 19100,
+      "excluded_rows": 1500,
+      "split_counts": {
+        "train": 11212,
+        "dev": 2712,
+        "test": 2832,
+        "calibration": 2344
+      },
+      "groups": 6388,
+      "languages": {
+        "en": 18969,
+        "ko": 131
+      },
+      "source_counts": {
+        "veyra-workflow-v12": 6960,
+        "LocalLLaMA/typed-decisions": 4800,
+        "vminhkhoi/trashnet": 912,
+        "AI-Lab-Makerere/beans": 300,
+        "stanfordnlp/snli": 1950,
+        "PolyAI/banking77": 1978,
+        "veyra-policy-refresh-v8": 160,
+        "workflow-cohort-policy-validation-2-v12": 2040
+      },
+      "within_corpus_group_and_image_split_checks": true,
+      "split_assignments_modified": false,
+      "archive": "corpora/qwen3.5-classification-workflow-v12f.zip",
+      "archive_sha256": "41ab8074e94077dbac8bb80f26add250c6899bd380cf398225f6cecebc6decd3",
+      "archive_bytes": 20462746,
+      "image_files": 447
+    },
+    {
+      "corpus": "workflow-v13g",
+      "source_records_sha256": "92dd176e5d5c4fc057f2ec86fc5f877c571549559179491180382f40991c08f7",
+      "published_records_sha256": "1a58e93d08aa847c1db7b3f010a864184f8f0e2327cd88bae71347f9013a59bd",
+      "source_rows": 20600,
+      "published_rows": 19100,
+      "excluded_rows": 1500,
+      "split_counts": {
+        "train": 11212,
+        "dev": 2712,
+        "test": 2832,
+        "calibration": 2344
+      },
+      "groups": 6388,
+      "languages": {
+        "en": 18969,
+        "ko": 131
+      },
+      "source_counts": {
+        "veyra-workflow-v12": 6960,
+        "LocalLLaMA/typed-decisions": 4800,
+        "vminhkhoi/trashnet": 912,
+        "AI-Lab-Makerere/beans": 300,
+        "stanfordnlp/snli": 1950,
+        "PolyAI/banking77": 1978,
+        "veyra-policy-refresh-v8": 160,
+        "workflow-recovery-policy-validation-1-v13": 2040
+      },
+      "within_corpus_group_and_image_split_checks": true,
+      "split_assignments_modified": false,
+      "archive": "corpora/qwen3.5-classification-workflow-v13g.zip",
+      "archive_sha256": "ae038b6bc985d8b0ddc2cbe36467539fb91dbadbdc63c8dd8cadc2e28b910ec1",
+      "archive_bytes": 20463279,
+      "image_files": 447
+    },
+    {
+      "corpus": "workflow-v13h",
+      "source_records_sha256": "def4d0b9063184f4fdc72ad759e7399c7d5d8e336c57a6634958db7b448f65d7",
+      "published_records_sha256": "8be7a7976c78c11d6c976edf60bdb5b46c97a38ff9e25fe9cd62b3d7dc56c70e",
+      "source_rows": 20600,
+      "published_rows": 19100,
+      "excluded_rows": 1500,
+      "split_counts": {
+        "train": 11212,
+        "dev": 2712,
+        "test": 2832,
+        "calibration": 2344
+      },
+      "groups": 6388,
+      "languages": {
+        "en": 18969,
+        "ko": 131
+      },
+      "source_counts": {
+        "veyra-workflow-v12": 6960,
+        "LocalLLaMA/typed-decisions": 4800,
+        "vminhkhoi/trashnet": 912,
+        "AI-Lab-Makerere/beans": 300,
+        "stanfordnlp/snli": 1950,
+        "PolyAI/banking77": 1978,
+        "veyra-policy-refresh-v8": 160,
+        "workflow-recovery-policy-validation-2-v13": 2040
+      },
+      "within_corpus_group_and_image_split_checks": true,
+      "split_assignments_modified": false,
+      "archive": "corpora/qwen3.5-classification-workflow-v13h.zip",
+      "archive_sha256": "8f5bde766a4d182295e9a270d9a5958bb36aa08a520488c6d57b1cb3f90033f0",
+      "archive_bytes": 20462592,
+      "image_files": 447
+    },
+    {
+      "corpus": "workflow-v13-final",
+      "source_records_sha256": "4d3e808c3bd803629b058ac2110bd76ada9f1fa7fb897ce03a0d031409ef54b4",
+      "published_records_sha256": "50c3c36b0c0fef365296a832beef9c2804b3849ffff7298838afa116f118a05a",
+      "source_rows": 20600,
+      "published_rows": 19100,
+      "excluded_rows": 1500,
+      "split_counts": {
+        "train": 11212,
+        "calibration": 2344,
+        "dev": 2712,
+        "test": 2832
+      },
+      "groups": 6388,
+      "languages": {
+        "en": 18969,
+        "ko": 131
+      },
+      "source_counts": {
+        "veyra-workflow-v12": 6480,
+        "LocalLLaMA/typed-decisions": 5400,
+        "vminhkhoi/trashnet": 912,
+        "AI-Lab-Makerere/beans": 300,
+        "stanfordnlp/snli": 1950,
+        "PolyAI/banking77": 1978,
+        "veyra-policy-refresh-v8": 160,
+        "workflow-recovery-fresh-final-v13": 1920
+      },
+      "within_corpus_group_and_image_split_checks": true,
+      "split_assignments_modified": false,
+      "archive": "corpora/qwen3.5-classification-workflow-v13-final.zip",
+      "archive_sha256": "951b4befecb8ea7dc62ad9f7ef1e55e47dbe99f1fff35c6c165ef715fcd32ca6",
+      "archive_bytes": 20491841,
+      "image_files": 447
+    }
+  ],
+  "sources": [
+    {
+      "id": "veyra-original-generator",
+      "revision": "sha256:08b4d436e455ff4156bb51809847487c139f9f9bca85ea803005c4630dd185fc",
+      "license": "Apache-2.0",
+      "url": "https://github.com/ken-jo/veyra",
+      "upstream_split": null
+    },
+    {
+      "id": "AI-Lab-Makerere/beans",
+      "revision": "27aa014ce09b193e1a6f58112d4a66e0eddb69c5",
+      "license": "MIT",
+      "url": "https://github.com/AI-Lab-Makerere/ibean",
+      "upstream_split": "train"
+    },
+    {
+      "id": "AI-Lab-Makerere/beans",
+      "revision": "27aa014ce09b193e1a6f58112d4a66e0eddb69c5",
+      "license": "MIT",
+      "url": "https://github.com/AI-Lab-Makerere/ibean",
+      "upstream_split": "validation"
+    },
+    {
+      "id": "AI-Lab-Makerere/beans",
+      "revision": "27aa014ce09b193e1a6f58112d4a66e0eddb69c5",
+      "license": "MIT",
+      "url": "https://github.com/AI-Lab-Makerere/ibean",
+      "upstream_split": "test"
+    },
+    {
+      "id": "veyra-policy-generator-v3",
+      "revision": "sha256:9590630f175c5d2c59a09ac8feffa3009105e3c6a0c6ba9fd0562f4c402ed635",
+      "license": "Apache-2.0",
+      "url": "https://github.com/ken-jo/veyra",
+      "upstream_split": null
+    },
+    {
+      "id": "veyra-evidence-interventions-v6",
+      "revision": "sha256:83d05a43fec14f1e92bae4ee36a461e275007dd5cf961030006d8bd91f761f7e",
+      "license": "Apache-2.0",
+      "url": "https://github.com/ken-jo/veyra",
+      "upstream_split": null
+    },
+    {
+      "id": "veyra-policy-refresh-v8",
+      "revision": "sha256:b551bc1e88f12738a6379173991d2fed8aa80f7c25c65e899f5504f7c9b283c6",
+      "license": "Apache-2.0",
+      "url": "https://github.com/ken-jo/veyra",
+      "upstream_split": null
+    },
+    {
+      "id": "PolyAI/banking77",
+      "revision": "57ec275d8078af65b7731c2a98be812d844a6d6b",
+      "license": "CC-BY-4.0",
+      "url": "https://github.com/PolyAI-LDN/task-specific-datasets",
+      "upstream_split": "train"
+    },
+    {
+      "id": "PolyAI/banking77",
+      "revision": "57ec275d8078af65b7731c2a98be812d844a6d6b",
+      "license": "CC-BY-4.0",
+      "url": "https://github.com/PolyAI-LDN/task-specific-datasets",
+      "upstream_split": "test"
+    },
+    {
+      "id": "veyra/conditional-probability",
+      "revision": "7a16faa5781000bb8a15a776a7dc25fcab7c86458f54185c75f4fb760881f5be",
+      "license": "Apache-2.0",
+      "url": "https://github.com/ken-jo/veyra",
+      "upstream_split": null
+    },
+    {
+      "id": "stanfordnlp/snli",
+      "revision": "cdb5c3d5eed6ead6e5a341c8e56e669bb666725b",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://huggingface.co/datasets/stanfordnlp/snli",
+      "upstream_split": "train"
+    },
+    {
+      "id": "stanfordnlp/snli",
+      "revision": "cdb5c3d5eed6ead6e5a341c8e56e669bb666725b",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://huggingface.co/datasets/stanfordnlp/snli",
+      "upstream_split": "validation"
+    },
+    {
+      "id": "stanfordnlp/snli",
+      "revision": "cdb5c3d5eed6ead6e5a341c8e56e669bb666725b",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://huggingface.co/datasets/stanfordnlp/snli",
+      "upstream_split": "test"
+    },
+    {
+      "id": "vminhkhoi/trashnet",
+      "revision": "kaggle-version-1",
+      "license": "MIT",
+      "url": "https://www.kaggle.com/datasets/vminhkhoi/trashnet",
+      "upstream_split": "unsplit"
+    },
+    {
+      "id": "veyra-workflow-v12",
+      "revision": "sha256:5433c424ad7d2bea710c398899840d4a43a3608a9b7529a6cd8cbbe7a32bc4ca",
+      "license": "Apache-2.0",
+      "url": "https://github.com/ken-jo/veyra",
+      "upstream_split": null
+    },
+    {
+      "id": "LocalLLaMA/typed-decisions",
+      "revision": "d51d993547ad8355b1c25157fbc1fea0649e8ffa",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/datasets/LocalLLaMA/typed-decisions",
+      "upstream_split": "train"
+    },
+    {
+      "id": "PolyAI/banking77",
+      "revision": "57ec275d8078af65b7731c2a98be812d844a6d6b",
+      "license": "CC-BY-4.0",
+      "url": "https://huggingface.co/datasets/PolyAI/banking77",
+      "upstream_split": "train"
+    },
+    {
+      "id": "PolyAI/banking77",
+      "revision": "57ec275d8078af65b7731c2a98be812d844a6d6b",
+      "license": "CC-BY-4.0",
+      "url": "https://huggingface.co/datasets/PolyAI/banking77",
+      "upstream_split": "test"
+    },
+    {
+      "id": "veyra-workspace-calibration-v12",
+      "revision": "sha256:9f4d1b3c3b737848b1b841d98f8a69563a71ff7f31cc837b0702a2ab249d8aab",
+      "license": "Apache-2.0",
+      "url": "https://github.com/ken-jo/veyra",
+      "upstream_split": null
+    },
+    {
+      "id": "workflow-depth-policy-fit-data-v12",
+      "revision": "sha256:88e8185002db5d7df22526a73cbad926a9d085abedf9b47564e1f8343fde018a",
+      "license": "Apache-2.0",
+      "url": "https://github.com/ken-jo/veyra",
+      "upstream_split": null
+    },
+    {
+      "id": "workflow-depth-policy-validation-data-v12",
+      "revision": "sha256:88e8185002db5d7df22526a73cbad926a9d085abedf9b47564e1f8343fde018a",
+      "license": "Apache-2.0",
+      "url": "https://github.com/ken-jo/veyra",
+      "upstream_split": null
+    },
+    {
+      "id": "workflow-cohort-policy-validation-1-v12",
+      "revision": "sha256:88e8185002db5d7df22526a73cbad926a9d085abedf9b47564e1f8343fde018a",
+      "license": "Apache-2.0",
+      "url": "https://github.com/ken-jo/veyra",
+      "upstream_split": null
+    },
+    {
+      "id": "workflow-cohort-policy-validation-2-v12",
+      "revision": "sha256:88e8185002db5d7df22526a73cbad926a9d085abedf9b47564e1f8343fde018a",
+      "license": "Apache-2.0",
+      "url": "https://github.com/ken-jo/veyra",
+      "upstream_split": null
+    },
+    {
+      "id": "workflow-recovery-policy-validation-1-v13",
+      "revision": "sha256:65e459fdf8d871b6ac58290bdbc9a445d8850f8db90c100412621204ecccfef7",
+      "license": "Apache-2.0",
+      "url": "https://github.com/ken-jo/veyra",
+      "upstream_split": null
+    },
+    {
+      "id": "workflow-recovery-policy-validation-2-v13",
+      "revision": "sha256:65e459fdf8d871b6ac58290bdbc9a445d8850f8db90c100412621204ecccfef7",
+      "license": "Apache-2.0",
+      "url": "https://github.com/ken-jo/veyra",
+      "upstream_split": null
+    },
+    {
+      "id": "workflow-recovery-fresh-final-v13",
+      "revision": "sha256:4eaba42e59734080cf710ead6edc43c178d8a290be63793a4aa8a23354c08e46",
+      "license": "Apache-2.0",
+      "url": "https://github.com/ken-jo/veyra",
+      "upstream_split": null
+    }
+  ],
+  "licenses_per_record": true,
+  "cross_corpus_warning": "Configurations are historical stages with overlapping observations. Do not concatenate or claim disjointness across configurations.",
+  "excluded_source": "CIFAR-10 image redistribution license unresolved; evaluation-only records/images omitted. No selected training rows excluded.",
+  "generator_source_sha256": "6a13143654810a40e668e64810efd82dbeb89ab9471eb16b2646e0072ba6512e"
+}

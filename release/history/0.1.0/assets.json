@@ -1,0 +1,12 @@
+{
+  "model": {
+    "file": "qwen3.5-classification-0.1.0.zip",
+    "sha256": "6a2bbc4301b42edee4a15bceffb11184f9ac83d6982cffb7e727ed097a2c9a68",
+    "bytes": 242539837
+  },
+  "dataset": {
+    "file": "qwen3.5-classification-data-0.1.0.zip",
+    "sha256": "ddb86235793972fc4f8286f464972de91ad73701bcd129816aeeb0426eab87e2",
+    "bytes": 532092931
+  }
+}

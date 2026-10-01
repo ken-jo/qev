@@ -116,15 +116,15 @@ def main():
     inference = json.loads((root / "release/model-inference.json").read_text("utf-8"))
     if (
         inference.get("passed") is not True
-        or inference.get("qwen3_5_classification_version") != "0.1.0"
+        or inference.get("qev_version") != "0.1.1"
     ):
         raise ValueError("Real packaged model inference has not passed")
     if inference.get("checksums_sha256") != digest((args.model / "checksums.json").read_bytes()):
         raise ValueError("Inference report belongs to a different model package")
     report = {
         "passed": True,
-        "project": "qwen3.5-classification",
-        "version": "0.1.0",
+        "project": "qev",
+        "version": "0.1.1",
         "package_files": counts,
         "dataset_configurations": len(corpora),
         "dataset_records_including_cross_stage_repetition": sum(

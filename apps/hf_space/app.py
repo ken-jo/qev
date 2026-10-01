@@ -100,14 +100,14 @@ def build_demo(engine):
         predict = spaces.GPU(duration=30)(predict)
 
     initial = preset_values("support")
-    with gr.Blocks(title="Qwen3.5 Classification", delete_cache=(300, 600)) as demo:
+    with gr.Blocks(title="QEV", delete_cache=(300, 600)) as demo:
         gr.Markdown(
-            "# Qwen3.5 Classification\n"
+            "# QEV\n"
             "Provide the evidence. Define your candidates. Inspect the probabilities.\n\n"
             "Dynamic text and image decisions with **Qwen3.5-2B**. "
-            "[Model](https://huggingface.co/ken-jo/qwen3.5-classification) · "
-            "[Data](https://huggingface.co/datasets/ken-jo/qwen3.5-classification-data) · "
-            "[Source](https://github.com/ken-jo/qwen3.5-classification)",
+            "[Model](https://huggingface.co/ken-jo/qev) · "
+            "[Data](https://huggingface.co/datasets/ken-jo/qev-data) · "
+            "[Source](https://github.com/ken-jo/qev)",
             elem_id="intro",
         )
         gr.Markdown(runtime_notice(engine.device, shared_gpu=ZERO_GPU))

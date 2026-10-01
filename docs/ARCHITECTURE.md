@@ -1,6 +1,6 @@
 # Architecture and compatibility
 
-Qwen3.5 Classification 0.1.0 freezes the Qwen-based research line. Base identity and revision are fixed
+QEV 0.1.1 freezes the Qwen-based research line. Base identity and revision are fixed
 in `src/veyra/constants.py`. We use Qwen's vision encoder and language model, merged learned
 language LoRA, a pretrained-letter-initialized 16-position readout and a learned conditioned
 binding residual. Four internal positions support condition supervision.
@@ -13,7 +13,7 @@ levels. Noul is the probability of true under the supplied proposition criteria.
 
 ## Public rename without model changes
 
-The distribution and command are `qwen3.5-classification`; `qwen3_5_classification` exposes `QwenClassification` and
+The distribution and command are `qev`; `qev` exposes `QEV` and
 `DecisionRequest`. The 38 original `veyra` runtime modules remain byte-identical to the
 evaluated 0.3.0a4 wheel. `VeyraResult:` is a trained input marker and must not be renamed.
 The legacy `veyra` CLI, checkpoint field names and historical evidence identifiers remain

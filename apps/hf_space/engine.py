@@ -13,9 +13,9 @@ import torch
 from huggingface_hub import snapshot_download
 from PIL import Image, ImageOps
 
-from qwen3_5_classification import DecisionRequest, QwenClassification
+from qev import DecisionRequest, QEV
 
-MODEL_ID = "ken-jo/qwen3.5-classification"
+MODEL_ID = "ken-jo/qev"
 MODEL_REVISION = "0d2d13ffb3c392071ea00b6bdb903c4b84dff48d"
 WEIGHTS_SHA = "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee"
 MANIFEST_SHA = "d83f9910196c6e801658ca3816c3d2bd4a849ba3da6ff059a0edf7c6028e898d"
@@ -101,7 +101,7 @@ class DemoEngine:
             local_files_only=os.environ.get("QEV_OFFLINE") == "1",
             token=False,
         )
-        self.model = QwenClassification.load(
+        self.model = QEV.load(
             folder,
             device=self.device,
             cache_dir=self.cache_dir,

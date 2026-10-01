@@ -16,11 +16,11 @@ def main():
     args.output.mkdir(parents=True, exist_ok=True)
     outputs = {}
     for kind, folder, name in (
-        ("model", args.model, "qwen3.5-classification"),
-        ("dataset", args.data, "qwen3.5-classification-data"),
+        ("model", args.model, "qev"),
+        ("dataset", args.data, "qev-data"),
     ):
         checks = json.loads((folder / "checksums.json").read_text("utf-8"))
-        destination = args.output / f"{name}-0.1.0.zip"
+        destination = args.output / f"{name}-0.1.1.zip"
         with zipfile.ZipFile(destination, "x") as archive:
             for relative in sorted([*checks, "checksums.json"]):
                 path = (folder / relative).resolve()

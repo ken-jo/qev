@@ -333,7 +333,7 @@ def create_playground(
         upload_session.cleanup()
 
     app = FastAPI(
-        title="Qwen3.5 Classification Playground",
+        title="QEV Playground",
         version=__version__,
         lifespan=lifespan,
         docs_url=None,
@@ -619,7 +619,7 @@ def create_playground(
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
-        "--checkpoint", type=Path, default=ROOT / "checkpoints/qwen3.5-classification"
+        "--checkpoint", type=Path, default=ROOT / "checkpoints/qev"
     )
     parser.add_argument("--cache-dir", type=Path, default=ROOT / ".cache/huggingface")
     parser.add_argument("--device", choices=("cuda", "cpu"), default="cuda")

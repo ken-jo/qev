@@ -1,0 +1,111 @@
+{
+  "version": "qev-0.1.1-final-comparison",
+  "official_dataset_revision": "d51d993547ad8355b1c25157fbc1fea0649e8ffa",
+  "official_dataset_sha256": "4881baae1cfd752311a58064cb2095c0457ee2c0b8914d1cfe2590e19933e7b3",
+  "sources": {
+    "ag_news": {
+      "repo": "fancyzhx/ag_news",
+      "revision": "eb185aade064a813bc0b7f42de02595523103ca4",
+      "file": "data/test-00000-of-00001.parquet",
+      "criteria": {
+        "world": "world news and international politics",
+        "sports": "sports",
+        "business": "business and economy",
+        "sci_tech": "science and technology"
+      },
+      "field": "article",
+      "question": "topic",
+      "instructions": "What is the topic of `article`?",
+      "laya_training_status": "In training according to upstream bench_apps.py",
+      "download_sha256": "71de87ec66bc5737752a2502204dfa6d7fe9856ade3ea444dc6317789a4f13fb",
+      "selected": "first 400 test rows",
+      "class_counts": {
+        "2": 72,
+        "3": 102,
+        "1": 123,
+        "0": 103
+      }
+    },
+    "emotion": {
+      "repo": "dair-ai/emotion",
+      "revision": "cab853a1dbdf4c42c2b3ef2173804746df8825fe",
+      "file": "split/test-00000-of-00001.parquet",
+      "criteria": {
+        "sadness": "sadness",
+        "joy": "joy",
+        "love": "love",
+        "anger": "anger",
+        "fear": "fear",
+        "surprise": "surprise"
+      },
+      "field": "text",
+      "question": "emotion",
+      "instructions": "Which emotion is most strongly expressed in `text`?",
+      "laya_training_status": "Held out according to upstream bench_apps.py",
+      "download_sha256": "6f8407fa1ca9c310f55781f082ed73812f6551e8dda2c61973123a121869245b",
+      "selected": "first 400 test rows",
+      "class_counts": {
+        "0": 119,
+        "1": 118,
+        "4": 52,
+        "3": 64,
+        "2": 37,
+        "5": 10
+      }
+    }
+  },
+  "requests_sha256": "585850d575d9dbdf943683936dda7e07b9e5525b60875906926e9915c557d1d6",
+  "questions": {
+    "typed_decisions": 2000,
+    "ag_news": 400,
+    "emotion": 400
+  },
+  "script_sha256": "83bcc709680109b9c9f4c86a84e7c7659f34a30408de90af2695a6d1924edd0b",
+  "adaptation_data_audit": {
+    "corpora": 15,
+    "rows_including_repeated_stages": 251457,
+    "source_counts": {
+      "veyra-original-generator": 5472,
+      "AI-Lab-Makerere/beans": 8312,
+      "veyra-policy-generator-v3": 8384,
+      "veyra-evidence-interventions-v6": 2400,
+      "veyra-policy-refresh-v8": 20294,
+      "PolyAI/banking77": 24132,
+      "veyra/conditional-probability": 480,
+      "stanfordnlp/snli": 23220,
+      "vminhkhoi/trashnet": 16683,
+      "veyra-workflow-v12": 70560,
+      "LocalLLaMA/typed-decisions": 49200,
+      "veyra-workspace-calibration-v12": 4080,
+      "workflow-depth-policy-fit-data-v12": 4080,
+      "workflow-depth-policy-validation-data-v12": 4080,
+      "workflow-cohort-policy-validation-1-v12": 2040,
+      "workflow-cohort-policy-validation-2-v12": 2040,
+      "workflow-recovery-policy-validation-1-v13": 2040,
+      "workflow-recovery-policy-validation-2-v13": 2040,
+      "workflow-recovery-fresh-final-v13": 1920
+    },
+    "normalized_substring_matches": [],
+    "scope": "Released adaptation snapshots; unknown backbone pretraining overlap"
+  },
+  "selection": "All 2000 typed decisions; first 400 AG News and Emotion test rows",
+  "upstream_alignment": "Application sample count, row selection and instructions follow LAYA bench_apps.py. Emotion null descriptions become label names for both SDKs. State JSON is identical.",
+  "evaluation": {
+    "models": [
+      "qev",
+      "laya-base",
+      "laya-specialist"
+    ],
+    "one_question_per_call": true,
+    "laya_max_len": 1024,
+    "qev_max_tokens": 2048,
+    "warmups_per_suite": 3,
+    "torch_threads": 4,
+    "device": "Single RTX 4060 Ti 8 GB, models run sequentially",
+    "no_parameter_or_temperature_or_prompt_selection": true,
+    "headline_accuracy": "All questions including abstained answers, explicit hard gold",
+    "probability_metrics": "Same frozen decision_metrics.py for all models",
+    "zero_shot": "No task-specific QEV adaptation or examples; not pretraining-clean",
+    "typed_decisions": "Both QEV and specialist adapted; reused regression benchmark"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "project": "qev",
+  "version": "0.1.1",
+  "published": false,
+  "status": "awaiting-PyPI-trusted-publisher-account-configuration",
+  "workflow": ".github/workflows/publish-pypi.yml",
+  "repository": "ken-jo/qev",
+  "environment": "pypi"
+}
