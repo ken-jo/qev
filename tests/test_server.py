@@ -1,3 +1,5 @@
+import json
+
 import pytest
 from fastapi.testclient import TestClient
 
@@ -53,3 +55,39 @@ def test_image_decode_error_is_a_client_error(tmp_path):
 
     client = TestClient(create_app(InvalidImageModel(), tmp_path))
     assert client.post("/v1/systemone", json=payload()).status_code == 422
+
+
+def test_systemone_compatible_bodies_are_normalized(tmp_path):
+    seen = []
+
+    class Recording(StubTrainedModel):
+        def predict(self, request, image_root):
+            seen.append(request)
+            return super().predict(request, image_root)
+
+    client = TestClient(create_app(Recording(), tmp_path))
+    body = {
+        "model": "qev",
+        "state": {"invoice": {"vendor": "Acme", "total": 1250.0}},
+        "questions": {
+            "large": {"type": "noul"},
+            "urgency": {"type": "score", "criteria": ["Can wait", "Today"]},
+        },
+    }
+    assert client.post("/v1/systemone", json=body).status_code == 200
+    request = seen[-1]
+    assert json.loads(request.state.text) == {"invoice": {"vendor": "Acme", "total": 1250.0}}
+    assert request.questions["large"].instructions == "large"
+    body["state"] = "Checkout is returning errors."
+    assert client.post("/v1/systemone", json=body).status_code == 200
+    assert seen[-1].state.text == "Checkout is returning errors."
+
+
+def test_systemone_normalization_keeps_native_requests_and_rejections(tmp_path):
+    client = TestClient(create_app(StubTrainedModel(), tmp_path))
+    native = payload()
+    assert client.post("/v1/systemone", json=native).status_code == 200
+    assert client.post("/v1/systemone", json={**native, "model": "other"}).status_code == 422
+    assert client.post("/v1/systemone", json={**native, "state": ""}).status_code == 422
+    assert client.post("/v1/systemone", json={**native, "state": {}}).status_code == 422
+    assert client.post("/v1/systemone", json={**native, "extra": 1}).status_code == 422

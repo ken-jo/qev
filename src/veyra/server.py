@@ -43,7 +43,7 @@ def create_app(model: VeyraModel, image_root: Path) -> FastAPI:
             if len(body) > 1024 * 1024:
                 raise HTTPException(413, "request body exceeds 1 MiB")
         try:
-            payload = DecisionRequest.from_json(body.decode("utf-8"))
+            payload = DecisionRequest.from_systemone_json(body.decode("utf-8"))
             for image in payload.state.images:
                 path = (root / image.path).resolve()
                 if not path.is_relative_to(root):

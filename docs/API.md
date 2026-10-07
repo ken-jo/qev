@@ -55,7 +55,10 @@ fetched by the inference API.
 }
 ```
 
-Send JSON to `POST /v1/systemone`. `score.criteria` is an ordered list of descriptions;
+Send JSON to `POST /v1/systemone`. The endpoint also accepts a Jev/SystemOne-style body:
+`state` as a plain string or any JSON value (JSON is serialized to text), `instructions`
+omitted (the question ID is used) and `"model": "qev"`. Bodies valid under the native schema
+are handled exactly as before; the response is unchanged and images are still local paths. `score.criteria` is an ordered list of descriptions;
 the result is an expected zero-based level. `noul.criteria` has `true` and `false` strings.
 The maximum is four questions, 16 alternatives per choice/score and one image. Processed
 inputs exceeding the configured token budget fail instead of silently truncating.
