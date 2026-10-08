@@ -44,3 +44,17 @@ as a new SDK. Hugging Face documentation publication has separate provenance.
 `ui_preview.py` is a model-free preview helper. `extract_english_ui.cjs` records the
 one-time extraction from the pinned Gradio frontend; the application uses the owned
 JSON resource and does not import or parse private frontend assets at runtime.
+
+## HF documentation publication
+
+After PR #1 merged as `5e5cf9b310ead30d3fe6b72d4d59508e5c2545b3`, the model card
+and its README checksum were published in one parent-guarded HF commit,
+`c4503db4d09be56c6a7bf73b7fb7a356d9850deb`. Anonymous downloads match the merged
+source. The complete 210-file tree retained the same paths; only `README.md` and
+`checksums.json` changed. All other 208 file identities and all other 207 checksum
+entries were preserved. See `hf-docs-publication.json` for exact hashes and inherited
+historical publication identity. No model execution or SDK publication occurred.
+
+`publish_hf_docs.py` defaults to read-only preflight and refuses a changed parent or
+candidate. It is a bounded publisher for this recorded transition, not a general
+release command; it will refuse to republish now that HF main has advanced.

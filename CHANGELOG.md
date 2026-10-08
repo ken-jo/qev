@@ -10,8 +10,9 @@
 - Playground controls remain English even when the browser language is Korean or
   another supported locale; multilingual model inputs remain available.
 - Model card: highlights, request format and file tables, `pip install qev`, citation, and
-  earlier Veyra names moved to a Provenance section. The published Hugging Face README is
-  not yet updated.
+  earlier Veyra names moved to a Provenance section. The Hugging Face README was updated
+  on 2026-10-08 with a separate documentation-only publication receipt; model and SDK
+  artifacts remain unchanged.
 
 ## 0.2.1 — English playground and multilingual labeling
 

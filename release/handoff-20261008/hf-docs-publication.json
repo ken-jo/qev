@@ -1,0 +1,76 @@
+{
+  "scope": "documentation-only",
+  "source_commit": "5e5cf9b310ead30d3fe6b72d4d59508e5c2545b3",
+  "source_card_sha256": "af65ab9704867e93b10f06813d69e2c7ce94fc9f9e7e27a60b0f2f81cac46323",
+  "parent_hf_commit": "1b801c0a596d931a2fa2f587bf5e5eb70f096fea",
+  "repo_id": "ken-jo/qev",
+  "planned_changed_paths": [
+    "README.md",
+    "checksums.json"
+  ],
+  "frontmatter_changes": [
+    "pipeline_tag: image-text-to-text",
+    "tag: classification",
+    "tag: structured-output"
+  ],
+  "before_tree_sha256": "3a35dc23c59b6cb303ba43a52834b309db5c4ceabbadd8b61498f5b3ee2a4baa",
+  "file_count": 210,
+  "checksum_entries": 208,
+  "before_files": {
+    "README.md": {
+      "sha256": "97ca455a2014bde4aefe8380cb65a9f690ad09f2dbd91c25580f988ab443037f",
+      "size": 16733
+    },
+    "checksums.json": {
+      "sha256": "7ad3cc9239bb92e5e743ae225b8baff0c35718fe17e9625dfe7d20d05f699d61",
+      "size": 25663
+    },
+    "publication.json": {
+      "sha256": "b1452a1e57cbc6cdfcc6a7095552cb6c6f25b734eb1e96e442c260218bca60c9",
+      "size": 915
+    }
+  },
+  "candidate_files": {
+    "README.md": {
+      "sha256": "af65ab9704867e93b10f06813d69e2c7ce94fc9f9e7e27a60b0f2f81cac46323",
+      "size": 19780
+    },
+    "checksums.json": {
+      "sha256": "36ff6b54591e4fd241a4690d5cfc140a841f369d14f510533f549c3ce4f8945b",
+      "size": 25663
+    }
+  },
+  "inherited_publication": {
+    "hf_commit": "1b801c0a596d931a2fa2f587bf5e5eb70f096fea",
+    "path": "publication.json",
+    "sha256": "b1452a1e57cbc6cdfcc6a7095552cb6c6f25b734eb1e96e442c260218bca60c9",
+    "package_checksums_sha256": "7ad3cc9239bb92e5e743ae225b8baff0c35718fe17e9625dfe7d20d05f699d61",
+    "local_receipts": [
+      "release/model-inference.json",
+      "release/verification.json",
+      "release/huggingface-publication.json"
+    ]
+  },
+  "preserved_model_identity": {
+    "head.safetensors": "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee",
+    "manifest.json": "d83f9910196c6e801658ca3816c3d2bd4a849ba3da6ff059a0edf7c6028e898d",
+    "runtime/qev-0.2.1-py3-none-any.whl": "d5270e05a748d9e965c8e2a2a7e54fae83abad6c4da4e76127d7c503a2543c81"
+  },
+  "model_execution_performed": false,
+  "sdk_published": false,
+  "dataset_changed": false,
+  "status": "published-and-verified",
+  "created_at_utc": "2026-10-08T13:24:11.978384+00:00",
+  "hf_commit": "c4503db4d09be56c6a7bf73b7fb7a356d9850deb",
+  "commit_url": "https://huggingface.co/ken-jo/qev/commit/c4503db4d09be56c6a7bf73b7fb7a356d9850deb",
+  "changed_paths": [
+    "README.md",
+    "checksums.json"
+  ],
+  "after_tree_sha256": "4756327690233720e64862c4b281b2e3056477fe68380111245cffa7d161796a",
+  "unchanged_other_files": 208,
+  "unchanged_other_checksum_entries": 207,
+  "anonymous_downloads_match": true,
+  "live_main_matches": true,
+  "mutation_performed": true
+}
