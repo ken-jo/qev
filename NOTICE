@@ -19,6 +19,11 @@ TypeSafe JEV's public API is a reference for typed question and answer
 contracts. This repository does not contain JEV source code or weights.
 https://api.typesafe.ai/openapi.json
 
+English playground control labels in src/qev/playground/english_ui.json are
+adapted from Gradio 6.29.0's English translations, Apache-2.0.
+Copyright Gradio contributors. The snapshot records the upstream asset hash.
+https://github.com/gradio-app/gradio
+
 Starter head training uses the MIT-licensed Beans dataset from AIR Lab,
 Makerere University. Its copyright and permission notice are preserved in
 docs/data-licenses/beans-MIT.txt. Dataset images are downloaded separately.
