@@ -103,7 +103,8 @@ def normalize_systemone(body: object) -> object:
     if body.get("model") == "qev":
         del body["model"]
     state = body.get("state")
-    if isinstance(state, dict) and set(state) <= {"text", "images"}:
+    if isinstance(state, dict) and (not state or "text" in state or "images" in state):
+        # Reserve native fields for strict validation instead of losing image evidence.
         pass
     elif isinstance(state, str):
         body["state"] = {"text": state}

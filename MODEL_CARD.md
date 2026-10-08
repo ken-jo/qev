@@ -179,10 +179,15 @@ schemas and the local HTTP server.
 | `instructions` | What to decide |
 | `criteria` | `choice`: option ID to description (2-16); `score`: ordered list (2-16); `noul`: optional `true`/`false` descriptions |
 
-`POST /v1/systemone` (from `qev serve`) also accepts the looser Jev/SystemOne-style body: a
-plain-string or JSON `state`, `instructions` omitted (the question ID is used) and
-`"model": "qev"`. This covers the request shape only; it has not been checked against the
-Jev service, images remain local paths, and the response is QEV's own.
+**Unreleased; source checkout only:** `POST /v1/systemone` (from `qev serve`) also accepts
+a Jev/SystemOne-style body: a plain-string or structured JSON `state`, `instructions`
+omitted (the question ID is used) and `"model": "qev"`. The published SDK **0.2.1** and
+the attached 0.2.1 wheel require the native request format shown above.
+
+State objects containing `text` or `images` use strict native validation; additional
+fields are rejected instead of silently discarding an image. Other JSON states are
+serialized to text. This covers the request shape only; it has not been checked against
+the Jev service, images remain local paths, and the response is QEV's own.
 
 ### Files
 
