@@ -74,13 +74,48 @@ class DecisionRequest(StrictModel):
     @classmethod
     def from_json(cls, text: str) -> DecisionRequest:
         """Reject duplicate keys before a JSON parser silently discards an alternative."""
+        return cls.model_validate(_parse_unique(text))
 
-        def unique_object(pairs: list[tuple[str, object]]) -> dict:
-            result = {}
-            for key, value in pairs:
-                if key in result:
-                    raise ValueError(f"duplicate JSON key: {key}")
-                result[key] = value
-            return result
+    @classmethod
+    def from_systemone_json(cls, text: str) -> DecisionRequest:
+        """Accept Jev/SystemOne-style bodies; requests valid for `from_json` are unchanged."""
+        return cls.model_validate(normalize_systemone(_parse_unique(text)))
 
-        return cls.model_validate(json.loads(text, object_pairs_hook=unique_object))
+
+def _parse_unique(text: str) -> object:
+    def unique_object(pairs: list[tuple[str, object]]) -> dict:
+        result = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError(f"duplicate JSON key: {key}")
+            result[key] = value
+        return result
+
+    return json.loads(text, object_pairs_hook=unique_object)
+
+
+def normalize_systemone(body: object) -> object:
+    """Rewrite only inputs the native schema rejects: a bare or JSON `state`, an omitted
+    `instructions` (the question ID is used) and the short model name `qev`."""
+    if not isinstance(body, dict):
+        return body
+    body = dict(body)
+    if body.get("model") == "qev":
+        del body["model"]
+    state = body.get("state")
+    if isinstance(state, dict) and (not state or "text" in state or "images" in state):
+        # Reserve native fields for strict validation instead of losing image evidence.
+        pass
+    elif isinstance(state, str):
+        body["state"] = {"text": state}
+    elif state is not None:
+        body["state"] = {"text": json.dumps(state, ensure_ascii=False)}
+    questions = body.get("questions")
+    if isinstance(questions, dict):
+        body["questions"] = {
+            name: {"instructions": name, **question}
+            if isinstance(question, dict) and "instructions" not in question
+            else question
+            for name, question in questions.items()
+        }
+    return body

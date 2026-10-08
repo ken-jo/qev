@@ -3,6 +3,7 @@ license: apache-2.0
 base_model: Qwen/Qwen3.5-2B
 base_model_relation: adapter
 library_name: pytorch
+pipeline_tag: image-text-to-text
 language:
 - multilingual
 tags:
@@ -11,6 +12,8 @@ tags:
 - dynamic-classification
 - qwen3_5
 - calibrated-decisions
+- classification
+- structured-output
 - custom-runtime
 datasets:
 - ken-jo/qev-data
@@ -37,6 +40,20 @@ Receive probabilities and a structured answer in one batched backbone forward.
 
 [Training data](https://huggingface.co/datasets/ken-jo/qev-data)
 
+## Highlights
+
+- **Small and local:** 2.213B merged parameters. Measured on an RTX 4060 Ti 8 GB with the
+  model resident: p50 **77.70 ms** per text question (SDK) and p95 **114.94 ms** for a
+  photo question over local HTTP. Loading and network time are excluded.
+- **Text, a photo, or both:** `choice`, ordered `score` and true/false `noul` in one request,
+  each answered with probabilities and an abstention flag. No generated answer text.
+- **Matches a specialist on its own benchmark:** 77.00% on the 2,000-question typed-decisions
+  test, against 76.95% for LAYA Typed Decisions (paired 95% interval -1.85 to +1.95
+  points, so a tie rather than a win).
+- **Honest limits:** LAYA's specialist has better probability quality (Brier, NLL, ECE) and
+  is faster on that benchmark, and QEV is behind it on zero-shot news and emotion. QEV has
+  not yet been run on a public decision leaderboard; see [Limitations](#limitations-and-negative-results).
+
 ## Language support
 
 **Multilingual inputs** use Qwen3.5-2B's multilingual text backbone. The interface and
@@ -57,13 +74,12 @@ English-focused; equivalent accuracy across languages has not been established.
 | Precision | BF16 backbone and FP32 readouts on CUDA |
 | License | Apache-2.0 for code and adaptation; source-specific dataset licenses |
 
-Model version **0.1.1**, final Qwen-based research snapshot; Python SDK **0.2.1**. Previously developed as Veyra
-Workflow Recovery v13. This release changes the public identity and packaging, not the
-learned weights, candidate encoding, calibration or inference mathematics.
-QEV is independently maintained. Its design draws on LAYA's typed decision interface;
-its neural backbone and vision encoder come from Qwen3.5-2B. No LAYA checkpoint is
-merged into the weights. The released training recipe is supervised adaptation and
-calibration; it is not an RLCD-trained compact model.
+Model version **0.1.1**, final Qwen-based research snapshot; Python SDK **0.2.1**. The
+SDK release changes packaging, not the learned weights, candidate encoding, calibration or
+inference mathematics. QEV is independently maintained; its neural backbone and vision
+encoder come from Qwen3.5-2B, and no LAYA checkpoint is merged into the weights. The
+released recipe is supervised adaptation and calibration, not RLCD. See
+[Provenance](#provenance) for the model's earlier names and internal identifiers.
 
 ## What it returns
 
@@ -105,14 +121,17 @@ aggregate performance is reported below.
 
 ## Quickstart
 
-Use Python 3.12 and the custom QEV runtime from the
-[release page](https://github.com/ken-jo/qev/releases). The checkpoint consists of an
-adaptation and decision heads; its Qwen backbone is downloaded separately.
+Use Python 3.12. The checkpoint consists of an adaptation and decision heads; its Qwen
+backbone is downloaded separately on first use. Tested on an RTX 4060 Ti 8 GB; CPU
+inference is supported (FP32) and slower.
 
 ```sh
-python -m pip install https://huggingface.co/ken-jo/qev/resolve/main/runtime/qev-0.2.1-py3-none-any.whl
+python -m pip install qev==0.2.1
 qev playground
 ```
+
+A wheel for SDK 0.2.1 is also attached to this model repository under `runtime/`.
+It is a separately built artifact; its checksum differs from the PyPI wheel.
 
 ```python
 from pathlib import Path
@@ -151,6 +170,34 @@ path is resolved under that directory. Text can supply context or a policy for t
 Use the [API guide](https://github.com/ken-jo/qev/blob/main/docs/API.md) for score and noul
 schemas and the local HTTP server.
 
+### Request format
+
+| Field | Description |
+| --- | --- |
+| `state.text`, `state.images` | Text, and at most one image given as `{"path": ...}` under the server's image root |
+| `questions` | 1-4 questions keyed by an ID you choose |
+| `type` | `choice` (named options), `score` (ordered options) or `noul` (true/false) |
+| `instructions` | What to decide |
+| `criteria` | `choice`: option ID to description (2-16); `score`: ordered list (2-16); `noul`: optional `true`/`false` descriptions |
+
+**Unreleased; source checkout only:** `POST /v1/systemone` (from `qev serve`) also accepts
+a Jev/SystemOne-style body: a plain-string or structured JSON `state`, `instructions`
+omitted (the question ID is used) and `"model": "qev"`. The published SDK **0.2.1** and
+the attached 0.2.1 wheel require the native request format shown above.
+
+State objects containing `text` or `images` use strict native validation; additional
+fields are rejected instead of silently discarding an image. Other JSON states are
+serialized to text. This covers the request shape only; it has not been checked against
+the Jev service, images remain local paths, and the response is QEV's own.
+
+### Files
+
+| File | Purpose |
+| --- | --- |
+| `head.safetensors`, `manifest.json` | Adaptation, readout heads, and the calibrated abstention policy (hashes below) |
+| `runtime/qev-0.2.1-py3-none-any.whl` | Runtime, SDK, server and English playground |
+| `examples/` | Photograph request, recorded response and provenance |
+
 The SDK includes the English playground and six sample photographs. `qev playground`
 opens a local server at http://127.0.0.1:7860. First use downloads about 4.6 GB of model
 files; subsequent launches use the persistent cache. Use `--offline` for a prepared cache.
@@ -188,7 +235,6 @@ for small text, tiny objects or spatial tasks.
 
 Returns probabilities, selected label/expected score/probability true, and abstention.
 Probabilities are estimates; a direction probability in a game is not a game-win probability.
-The trained prompt marker `VeyraResult:` and internal `veyra` package remain unchanged.
 
 ## QEV and LAYA: matched text evaluation
 
@@ -317,6 +363,24 @@ auto-model loader cannot directly load this custom adapter/head layout.
 Historical stage flags in the unchanged manifest record when those stages were run.
 The exact-model acceptance report and publication verification are separate evidence;
 packaging does not retroactively alter a stage's provenance.
+
+## Provenance
+
+QEV was previously developed as Veyra, and this checkpoint as Veyra Workflow Recovery v13.
+The public rename did not change the weights. The trained prompt marker `VeyraResult:` and
+the internal `veyra` package keep their original names because the learned model depends
+on them; model ID `Qwen/Qwen3.5-2B` in the request contract identifies the actual base.
+
+## Citation
+
+```bibtex
+@misc{qev_2026,
+  title        = {{QEV}: A Calibrated Multimodal Decision Model on Qwen3.5-2B},
+  author       = {{ken-jo}},
+  year         = {2026},
+  howpublished = {\url{https://huggingface.co/ken-jo/qev}}
+}
+```
 
 ---
 

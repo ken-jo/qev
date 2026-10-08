@@ -91,3 +91,19 @@ Corpus archives retain their original bytes, record IDs and splits; historical s
 overlap. No public demo Space is created by this release.
 
 [GitHub: ken-jo/qev](https://github.com/ken-jo/qev)
+
+## Source follow-up — 2026-10-08 (unreleased)
+
+The Jev/SystemOne request adapter and model-card reorganization were reviewed in
+PR #1. Mixed native image state with extra fields now fails validation rather than
+silently dropping image evidence. Compatibility is documented as source-only;
+the published 0.2.1 SDK is unchanged. Gradio controls now remain English across
+supported browser locales, while model inputs remain multilingual.
+
+The complete CPU suite was rerun: 223 tests passed, with one existing
+Starlette/httpx deprecation warning. Browser inspection checked seven presets,
+six sample photos, choice/score/noul switching, Korean/Japanese/German locales
+and a 390-pixel mobile viewport. The screenshots were visually inspected.
+These checks used a model-free preview and do not measure inference accuracy or
+latency. See `release/handoff-20261008/` for commands, stdout, screenshots and
+hashes. Earlier release verification and publication records remain historical.

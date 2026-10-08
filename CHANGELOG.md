@@ -1,5 +1,18 @@
 # Release history
 
+## Unreleased
+
+- `POST /v1/systemone` accepts Jev/SystemOne-style request bodies (string or JSON `state`,
+  optional `instructions`, `"model": "qev"`); native requests and responses are unchanged.
+- State objects containing `text` or `images` retain strict native validation. Mixed
+  objects with additional fields are rejected rather than converted into photo-free text.
+- The compatibility extension is available from source; published SDK 0.2.1 remains native-only.
+- Playground controls remain English even when the browser language is Korean or
+  another supported locale; multilingual model inputs remain available.
+- Model card: highlights, request format and file tables, `pip install qev`, citation, and
+  earlier Veyra names moved to a Provenance section. The published Hugging Face README is
+  not yet updated.
+
 ## 0.2.1 — English playground and multilingual labeling
 
 - Unified the Windows launcher with the packaged English playground.

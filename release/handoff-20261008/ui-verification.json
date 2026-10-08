@@ -1,0 +1,39 @@
+{
+  "title": "QEV",
+  "hasKoreanText": false,
+  "has2048": false,
+  "controls": 2,
+  "radios": [
+    "",
+    "",
+    ""
+  ],
+  "locale": "ko-KR",
+  "checkedPresets": [
+    "support",
+    "policy",
+    "uncertain",
+    "photo",
+    "photo_score",
+    "photo_truth",
+    "photo_policy"
+  ],
+  "decisionTypes": [
+    "choice",
+    "score",
+    "noul"
+  ],
+  "samplesLoaded": 6,
+  "localeChecks": [
+    "ko-KR",
+    "ja-JP",
+    "de-DE"
+  ],
+  "mobile": {
+    "width": 390,
+    "contentWidth": 390
+  },
+  "inferenceCalls": 0,
+  "errors": [],
+  "scope": "UI rendering only; model loading and inference disabled"
+}

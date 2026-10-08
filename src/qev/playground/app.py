@@ -43,6 +43,17 @@ footer { display: none !important; }
 """
 
 
+def english_ui_i18n():
+    """Keep Gradio controls English while evidence may use any supported language.
+
+    Flat translation keys take precedence over Gradio's lazy-loaded nested locale
+    dictionaries. The owned dictionary matches the pinned Gradio 6.29.0 release.
+    """
+    translations = json.loads((ROOT / "english_ui.json").read_text("utf-8"))
+    messages = translations["messages"]
+    return gr.I18n(**{locale: dict(messages) for locale in translations["locales"]})
+
+
 def preset_values(key):
     preset = PRESETS[key]
     question = preset["questions"][0]
@@ -237,6 +248,7 @@ def launch(
         max_file_size="10mb",
         css=CSS,
         theme=gr.themes.Base(primary_hue="blue"),
+        i18n=english_ui_i18n(),
     )
 
 
