@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-10-08T13:26:19.808526+00:00",
+  "qevHead": "a131d0d4a04618c0c403ff9964a93e1f1a255395",
+  "qevTrackedChanges": [
+    "M ROADMAP.md",
+    " M apps/playground/start.ps1",
+    " M docs/COMPACT_MODEL.md"
+  ],
+  "qevHashes": {
+    "MODEL_CARD.md": "97ca455a2014bde4aefe8380cb65a9f690ad09f2dbd91c25580f988ab443037f",
+    "ROADMAP.md": "6a59cbf2edf5a6067b321802f72617d07183d70e78780daa4b328ae3aa9c1ff4",
+    "apps/playground/start.ps1": "f47ecefe1d6282083a73216471299f92da1b09091a199890d72baffc9d2fe142",
+    "docs/COMPACT_MODEL.md": "3d9247e578e583aae267825e52d9bd5710d9bf67eac519015dcef246b9272299",
+    "dist/huggingface/qev-sdk-0.2.1/README.md": "97ca455a2014bde4aefe8380cb65a9f690ad09f2dbd91c25580f988ab443037f",
+    "dist/huggingface/qev-sdk-0.2.1/runtime/qev-0.2.1-py3-none-any.whl": "d5270e05a748d9e965c8e2a2a7e54fae83abad6c4da4e76127d7c503a2543c81"
+  },
+  "vegaHead": "d90ca9de2309e64409d9b45839ec196de813c46f",
+  "vegaTrackedChanges": [
+    "M experiments/HISTORY.md",
+    " M experiments/executions.jsonl"
+  ],
+  "protectedQevHashesMatch": true,
+  "protectedQevHeadMatches": true,
+  "vegaHeadMatches": true,
+  "vegaTrackedPathsUnchanged": true,
+  "scope": "Source HEAD, tracked dirty paths and six protected QEV file hashes; no training/model/dataset payloads accessed."
+}
