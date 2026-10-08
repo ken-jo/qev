@@ -130,7 +130,8 @@ python -m pip install qev==0.2.1
 qev playground
 ```
 
-The same wheel is also attached to this model repository under `runtime/`.
+A wheel for SDK 0.2.1 is also attached to this model repository under `runtime/`.
+It is a separately built artifact; its checksum differs from the PyPI wheel.
 
 ```python
 from pathlib import Path

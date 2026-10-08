@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-08T13:18:11Z",
+  "repository": "https://github.com/ken-jo/qev",
+  "pullRequest": 1,
+  "testedSourceCommit": "e0f68e2d8ac20261ba0e456de23a257d3ece01e4",
+  "environment": {
+    "python": "3.12.13",
+    "packages": {
+      "torch": "2.10.0+cu128",
+      "gradio": "6.29.0",
+      "pytest": "9.1.1",
+      "pydantic": "2.13.5",
+      "fastapi": "0.141.1",
+      "httpx": "0.28.1",
+      "ruff": "0.16.9"
+    }
+  },
+  "cpuTests": {
+    "passed": 223,
+    "failed": 0,
+    "warnings": 1,
+    "warning": "Existing Starlette/httpx TestClient deprecation",
+    "durationSeconds": 8.32,
+    "exitCode": 0,
+    "command": "python -B -m pytest -q -p no:cacheprovider --basetemp=C:/tmp/qev-handoff-test-receipt-20261008",
+    "interpreter": "C:/tmp/vision-qev/.venv/Scripts/python.exe",
+    "stdout": "cpu-tests.txt",
+    "nativeFinalChunk": "138e6e"
+  },
+  "lint": {
+    "command": "python -B -m ruff check src/veyra/schema.py src/veyra/server.py src/qev/playground/app.py tests/test_server.py tests/test_playground_locale.py release/handoff-20261008/ui_preview.py",
+    "exitCode": 0,
+    "result": "All checks passed",
+    "nativeChunk": "b5a5af"
+  },
+  "environmentOverrides": {
+    "CUDA_VISIBLE_DEVICES": "-1",
+    "HF_HUB_OFFLINE": "1",
+    "TRANSFORMERS_OFFLINE": "1",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+    "PYTHONPATH": "C:/tmp/qev-handoff-20261008/src"
+  },
+  "ui": {
+    "title": "QEV",
+    "hasKoreanText": false,
+    "has2048": false,
+    "controls": 2,
+    "radios": [
+      "",
+      "",
+      ""
+    ],
+    "locale": "ko-KR",
+    "checkedPresets": [
+      "support",
+      "policy",
+      "uncertain",
+      "photo",
+      "photo_score",
+      "photo_truth",
+      "photo_policy"
+    ],
+    "decisionTypes": [
+      "choice",
+      "score",
+      "noul"
+    ],
+    "samplesLoaded": 6,
+    "localeChecks": [
+      "ko-KR",
+      "ja-JP",
+      "de-DE"
+    ],
+    "mobile": {
+      "width": 390,
+      "contentWidth": 390
+    },
+    "inferenceCalls": 0,
+    "errors": [],
+    "scope": "UI rendering only; model loading and inference disabled"
+  },
+  "uiCommand": "node release/handoff-20261008/verify_ui.cjs",
+  "uiNativeChunk": "5ab4ec; final repeated verification also passed",
+  "screenshotsVisuallyInspected": [
+    "playground-desktop.png",
+    "playground-photo.png",
+    "playground-mobile.png"
+  ],
+  "sha256": {
+    "src/veyra/schema.py": "7d9605e25678d3702e8725fa14f18ec42cc9a876bc4ef6a276a4a4f658049e6a",
+    "src/veyra/server.py": "b26cd0f82c6efaf28223f31af200d7caa355a1bd131ac3a91f70491a7c1a90c5",
+    "tests/test_server.py": "b84a0ca20ad5f4d9c636274c4bb33538003453ced93f97e1a82dfffc1cc93c0a",
+    "src/qev/playground/app.py": "08ab4134151a50741422593eba2e391da2a6220f192efa5ffac450b19d696198",
+    "src/qev/playground/english_ui.json": "1aeca82c6b98a425b56865529d3ce8427ba07be4a3cde9763072364fe36f7e14",
+    "tests/test_playground_locale.py": "25255fe60cd7819157502d527a2b1c4e83763613c60f55ad05cb3a101084f7d6",
+    ".github/workflows/tests.yml": "e0639a91b3ab711227c95a6012d8e665113915d867b5ac0e90e7fe72ce5b5acd",
+    "release/handoff-20261008/cpu-tests.txt": "7890cd4c2fca7fb4c76c12a53b6dbcc21a0bafd9d15b5c60ea652014591a5ca5",
+    "release/handoff-20261008/extract_english_ui.cjs": "b94800dfc2c024e4145bbe1afa6e53091d86352d1da96760090a8f1119ba8df1",
+    "release/handoff-20261008/playground-desktop.png": "d828f8feae16d3e555402ab95b0bb6c5438982c3bdc5083fec7e53a534854043",
+    "release/handoff-20261008/playground-mobile.png": "eb55ea9472110c89a946ad2b89d4c57c146d58b744fbe1c363d66db28e05eedd",
+    "release/handoff-20261008/playground-photo.png": "a7bde5b22eb77da620f6ef72ed5aed2d53cc355cab3e5001f8f7d358a3e0ca83",
+    "release/handoff-20261008/README.md": "6f2f700606e729d4e8e723c018c97247c911f127fe183144baa0d2c6d2363f5e",
+    "release/handoff-20261008/ui-verification.json": "3ac9a79c3ff8f632ad907b9d9817b7d8f5e6625bacf60cd7bd545e83c961e4cd",
+    "release/handoff-20261008/ui_preview.py": "446e4aca3f28859ec942c43afe444719e2c796d80935e49422ada8362a0dfa06",
+    "release/handoff-20261008/verify_ui.cjs": "c3b92169301db3b85a0730bb5e22f2c0aab2f1f0cb60643ff24a930d8b79443e"
+  },
+  "protectedOriginal": {
+    "checkout": "C:/tmp/vision-qev",
+    "head": "a131d0d4a04618c0c403ff9964a93e1f1a255395",
+    "beforeSha256": {
+      "MODEL_CARD.md": "97ca455a2014bde4aefe8380cb65a9f690ad09f2dbd91c25580f988ab443037f",
+      "ROADMAP.md": "6a59cbf2edf5a6067b321802f72617d07183d70e78780daa4b328ae3aa9c1ff4",
+      "apps/playground/start.ps1": "f47ecefe1d6282083a73216471299f92da1b09091a199890d72baffc9d2fe142",
+      "docs/COMPACT_MODEL.md": "3d9247e578e583aae267825e52d9bd5710d9bf67eac519015dcef246b9272299",
+      "dist/huggingface/qev-sdk-0.2.1/README.md": "97ca455a2014bde4aefe8380cb65a9f690ad09f2dbd91c25580f988ab443037f",
+      "dist/huggingface/qev-sdk-0.2.1/runtime/qev-0.2.1-py3-none-any.whl": "d5270e05a748d9e965c8e2a2a7e54fae83abad6c4da4e76127d7c503a2543c81"
+    },
+    "status": "Preservation will be checked again after remote merge."
+  },
+  "scope": {
+    "modelLoads": 0,
+    "modelInferenceCalls": 0,
+    "newAccuracy": null,
+    "newLatency": null,
+    "trainingOrVegaChanges": false,
+    "sdkRelease": false,
+    "huggingFacePublication": "Separate docs-only procedure and receipt; not part of this CPU/UI verification."
+  }
+}
