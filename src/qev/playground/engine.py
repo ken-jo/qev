@@ -1,4 +1,4 @@
-"""Public demo adapter around the released, unchanged decision runtime."""
+"""Public demo adapter with ordered image evidence."""
 
 from __future__ import annotations
 
@@ -13,12 +13,13 @@ from PIL import Image, ImageOps
 
 from qev import DecisionRequest
 from qev.runtime import load_model, resolve_cache, resolve_device
+from veyra.constants import MAX_IMAGES
 
 MAX_IMAGE_PIXELS = 16_000_000
 RESOLUTIONS = (64, 128, 192, 256, 384, 512, 768, 1024)
 
 
-def build_request(text, question, kind, criteria, has_image):
+def build_request(text, question, kind, criteria, has_image, *, image_count=None):
     if len(text) > 6000 or len(question) > 1000 or len(criteria) > 6000:
         raise ValueError("Please shorten the evidence, question or candidate descriptions.")
     lines = [line.strip() for line in criteria.splitlines() if line.strip()]
@@ -37,9 +38,13 @@ def build_request(text, question, kind, criteria, has_image):
             raise ValueError("A noul question needs exactly the labels false and true.")
     else:
         raise ValueError("Choose choice, score or noul.")
+    count = int(has_image) if image_count is None else image_count
+    if type(count) is not int or not 0 <= count <= MAX_IMAGES:
+        raise ValueError(f"Use at most {MAX_IMAGES} images.")
+    paths = ["image.png"] + [f"image-{index}.png" for index in range(2, count + 1)]
     return DecisionRequest.model_validate(
         {
-            "state": {"text": text, "images": [{"path": "image.png"}] if has_image else []},
+            "state": {"text": text, "images": [{"path": path} for path in paths[:count]]},
             "questions": {
                 "decision": {"type": kind, "instructions": question, "criteria": choices}
             },
@@ -81,15 +86,49 @@ class DemoEngine:
         )
         return self
 
-    def predict(self, text, image, question, kind, criteria, resolution="Original"):
+    def predict(
+        self,
+        text,
+        image,
+        question,
+        kind,
+        criteria,
+        resolution="Original",
+        image_2=None,
+        image_3=None,
+        image_4=None,
+    ):
         if self.model is None:
             raise RuntimeError("The model is not ready yet. Please try again shortly.")
-        request = build_request(text, question, kind, criteria, image is not None)
-        prepared, geometry = prepare_image(image, resolution)
+        originals = []
+        empty_slot = False
+        for item in (image, image_2, image_3, image_4):
+            if item is None:
+                empty_slot = True
+            elif empty_slot:
+                raise ValueError("Add images in order starting with Image 1; do not skip a slot.")
+            else:
+                originals.append(item)
+        request = build_request(
+            text, question, kind, criteria, bool(originals), image_count=len(originals)
+        )
+        prepared, geometries = [], []
         try:
+            for item in originals:
+                converted, geometry = prepare_image(item, resolution)
+                prepared.append(converted)
+                geometries.append(geometry)
+            if not geometries:
+                geometry = "No image"
+            elif len(geometries) == 1:
+                geometry = geometries[0]
+            else:
+                geometry = "; ".join(
+                    f"Image {index}: {value}" for index, value in enumerate(geometries, 1)
+                )
             with tempfile.TemporaryDirectory(prefix="qev-") as temporary:
-                if prepared is not None:
-                    prepared.save(Path(temporary) / "image.png")
+                for item, image_input in zip(prepared, request.state.images, strict=True):
+                    item.save(Path(temporary) / image_input.path)
                 if self.device == "cuda":
                     torch.cuda.synchronize()
                 start = time.perf_counter()
@@ -98,8 +137,8 @@ class DemoEngine:
                     torch.cuda.synchronize()
                 elapsed = (time.perf_counter() - start) * 1000
         finally:
-            if prepared is not None:
-                prepared.close()
+            for item in prepared:
+                item.close()
         answer = result["answers"]["decision"]
         probabilities = answer["probabilities"]
         top = max(probabilities, key=probabilities.get)
@@ -116,6 +155,11 @@ class DemoEngine:
             f"Model computation: {elapsed:.0f} ms on {self.device.upper()}\n"
             f"Image: {geometry}\nQueue, upload and network time are excluded."
         )
-        result["demo"] = {"device": self.device, "model_ms": round(elapsed, 2), "image": geometry}
+        result["demo"] = {
+            "device": self.device,
+            "model_ms": round(elapsed, 2),
+            "image": geometry,
+            "image_count": len(originals),
+        }
         # Keep schema paths as JSON text: Gradio clients otherwise interpret them as files.
         return summary, probabilities, json.dumps(request.model_dump(), indent=2), result

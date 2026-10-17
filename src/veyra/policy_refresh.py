@@ -8,9 +8,8 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
-from PIL import Image
-
 from veyra.data import TrainingRecord, read_records, write_records
+from veyra.image_inputs import fingerprint_context, pixel_fingerprints
 from veyra.packing import pack_request
 from veyra.policy_data import DOMAINS, LABELS, build_policy_data
 
@@ -105,18 +104,11 @@ def build_refresh(output: Path, exclude: list[Path]) -> dict:
     seen_pixels, seen_tasks, pixel_cache = set(), set(), {}
 
     def fingerprints(record, root):
-        pixel = None
-        if record.request.state.images:
-            path = (root / record.request.state.images[0].path).resolve()
-            if path not in pixel_cache:
-                with Image.open(path) as source:
-                    rgb = source.convert("RGB")
-                    pixel_cache[path] = hashlib.sha256(
-                        str(rgb.size).encode() + rgb.tobytes()
-                    ).hexdigest()
-            pixel = pixel_cache[path]
-        task = hashlib.sha256((pack_request(record.request).text + str(pixel)).encode()).hexdigest()
-        return pixel, task
+        pixels = pixel_fingerprints(record.request.state.images, root, pixel_cache)
+        task = hashlib.sha256(
+            (pack_request(record.request).text + fingerprint_context(pixels)).encode()
+        ).hexdigest()
+        return pixels, task
 
     excluded_sources = []
     for path in exclude:
@@ -130,9 +122,8 @@ def build_refresh(output: Path, exclude: list[Path]) -> dict:
             }
         )
         for record in old:
-            pixel, task = fingerprints(record, path.parent)
-            if pixel:
-                seen_pixels.add(pixel)
+            pixels, task = fingerprints(record, path.parent)
+            seen_pixels.update(pixels)
             seen_tasks.add(task)
     records, rejected = [], []
     for seed in SEEDS:
@@ -146,7 +137,7 @@ def build_refresh(output: Path, exclude: list[Path]) -> dict:
         for name, group in groups.items():
             pairs = [fingerprints(record, output) for record in group]
             duplicate = any(
-                (pixel and pixel in seen_pixels) or task in seen_tasks for pixel, task in pairs
+                seen_pixels.intersection(pixels) or task in seen_tasks for pixels, task in pairs
             )
             if duplicate:
                 rejected.append(
@@ -154,9 +145,8 @@ def build_refresh(output: Path, exclude: list[Path]) -> dict:
                 )
                 continue
             records.extend(group)
-            for pixel, task in pairs:
-                if pixel:
-                    seen_pixels.add(pixel)
+            for pixels, task in pairs:
+                seen_pixels.update(pixels)
                 seen_tasks.add(task)
     summary = write_records(output / "records.jsonl", records)
     report = {

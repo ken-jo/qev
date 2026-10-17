@@ -14,10 +14,21 @@ levels. Noul is the probability of true under the supplied proposition criteria.
 ## Public rename without model changes
 
 The distribution and command are `qev`; `qev` exposes `QEV` and
-`DecisionRequest`. The 38 original `veyra` runtime modules remain byte-identical to the
-evaluated 0.3.0a4 wheel. `VeyraResult:` is a trained input marker and must not be renamed.
+`DecisionRequest`. Published SDK 0.2.1 retains the evaluated inference modules.
+`VeyraResult:` is a trained input marker and must not be renamed.
 The legacy `veyra` CLI, checkpoint field names and historical evidence identifiers remain
 for compatibility. These internal names do not denote a separate running model.
+
+## Ordered multi-image source extension
+
+The unreleased source supports zero to four images in both packed and option encoder
+paths. Multiple images receive `Image 1:`, `Image 2:`, etc. boundaries before their
+individual visual placeholders. Every question/view receives the complete image group
+in the same order. Zero/one-image prompt construction retains its previous format.
+The learned weights, base revision and configured token/pixel budgets are unchanged.
+Replay and refresh audits check every image for overlap with excluded observations.
+Multi-image runtime correctness, accuracy, calibration and latency need independent
+validation; historical single-image results do not qualify this extension.
 
 The public source history starts with curated release commits. Original author copyright,
 source hashes, experiment identifiers and negative results remain attributable. Prior

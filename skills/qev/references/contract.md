@@ -25,6 +25,12 @@ to local files under the configured image root. HTTP calls send a path, not imag
 the file must exist on the server. Remote image URLs are unsupported. For local SDK calls,
 use `--image-root` or place the JSON beside its referenced image.
 
+The unreleased multi-image source extension accepts up to four entries in `images`.
+Each stays a separate visual input. Refer to their one-based list order as `Image 1`,
+`Image 2`, etc.; describe their roles (reference/current, before/after) in `state.text`.
+Published SDK 0.2.1 still accepts one image. All images and questions share the same
+processed-token limit. Multi-image accuracy, calibration and latency are unmeasured.
+
 For a score, `criteria` is a list of descriptions from level 0 upward. For noul it is an
 object with `false` and `true` descriptions. Every question has a string `instructions`.
 The optional `model` field, if present, must be `Qwen/Qwen3.5-2B` to identify the backbone.

@@ -78,6 +78,13 @@ Requests run one at a time, with up to eight waiting. Uploads are limited to 10 
 megapixels. Per-inference temporary images are removed; upload caches expire after
 approximately ten minutes and are swept every five minutes. Analytics is disabled by default.
 
+The unreleased source extension adds three upload slots under **Additional images**,
+for a total of four ordered images. Fill slots from Image 1 onward and refer to those
+numbers in the question. Selecting a preset clears all additional image slots.
+The resolution setting applies to each image; all images and questions share the existing
+processed-token budget. Published SDK 0.2.1 still has the one-image interface.
+See [multi-image input and evaluation scope](MULTI_IMAGE.md).
+
 Sample photographs overlap development data and are examples, not independent benchmarks.
 The packaged implementation and asset notices live in `src/qev/playground/`.
 

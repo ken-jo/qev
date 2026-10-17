@@ -80,5 +80,9 @@ class VeyraModel(nn.Module):
                 name: typed_answer(question, logits[name], self.calibration)
                 for name, question in request.questions.items()
             },
-            "usage": {"input_tokens": tokens, "output_tokens": 0},
+            "usage": {
+                "input_tokens": tokens,
+                "output_tokens": 0,
+                "input_images": len(request.state.images),
+            },
         }

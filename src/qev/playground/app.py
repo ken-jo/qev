@@ -132,9 +132,24 @@ def build_demo(engine):
                     type="pil",
                     image_mode="RGB",
                     sources=["upload", "clipboard"],
-                    label="Image (optional)",
+                    label="Image 1 (optional)",
                     height=250,
                 )
+                with gr.Accordion("Additional images", open=False):
+                    gr.Markdown(
+                        "Add up to four images in order. Refer to **Image 1**, **Image 2**, "
+                        "and so on in your question. Fill earlier slots first."
+                    )
+                    additional_images = [
+                        gr.Image(
+                            type="pil",
+                            image_mode="RGB",
+                            sources=["upload", "clipboard"],
+                            label=f"Image {index} (optional)",
+                            height=180,
+                        )
+                        for index in range(2, 5)
+                    ]
                 gr.Examples(
                     examples=[[str(ROOT / "samples" / name)] for name, _ in SAMPLES],
                     inputs=[image],
@@ -180,8 +195,10 @@ def build_demo(engine):
                     response = gr.JSON(label="Response")
                 with gr.Accordion("Scope and limitations", open=False):
                     gr.Markdown(
-                        "One image, one question and 2–16 candidates per demo request. "
-                        "The full API supports up to four questions. OCR and spatial reasoning "
+                        "Up to four ordered images, one question and 2–16 candidates per "
+                        "demo request. The full API supports up to four questions. "
+                        "Multi-image accuracy and calibration have not been evaluated. "
+                        "OCR and spatial reasoning "
                         "remain limited. Published evaluations focus on English; equivalent "
                         "accuracy across languages has not been established. "
                         "Inputs are processed on the machine running QEV. "
@@ -193,19 +210,23 @@ def build_demo(engine):
             return "Inputs changed. Run a decision to see the new result.", None, None, None
 
         result_outputs = [summary, distribution, request, response]
+
+        def preset_inputs(key):
+            return (*preset_values(key), None, None, None)
+
         example.change(
-            preset_values,
+            preset_inputs,
             [example],
-            [evidence, image, question, kind, criteria],
+            [evidence, image, question, kind, criteria, *additional_images],
             queue=False,
             api_name=False,
         ).then(clear_results, [], result_outputs, queue=False, api_name=False)
         kind.input(default_criteria, [kind], [criteria], queue=False, api_name=False)
-        for control in (evidence, image, question, kind, criteria, resolution):
+        for control in (evidence, image, question, kind, criteria, resolution, *additional_images):
             control.input(clear_results, [], result_outputs, queue=False, api_name=False)
         run.click(
             predict,
-            [evidence, image, question, kind, criteria, resolution],
+            [evidence, image, question, kind, criteria, resolution, *additional_images],
             [summary, distribution, request, response],
             api_name="predict",
             concurrency_limit=1,

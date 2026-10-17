@@ -26,8 +26,10 @@ with repeated decisions, keep a resident server so each call avoids model loadin
 ## Prepare and call
 
 1. Read [the request contract and examples](references/contract.md) when composing a new
-   request. Put observed facts and relevant policy in `state.text`; attach at most one
-   image. Keep evidence separate from the instructions that define the judgment.
+   request. Put observed facts and relevant policy in `state.text`. Published SDK 0.2.1
+   accepts one image; the unreleased multi-image source accepts up to four in list order.
+   Refer to `Image 1`, `Image 2`, etc. when comparing them. Keep evidence separate from
+   the instructions that define the judgment.
 2. Supply a complete candidate set with distinct descriptions. Include a review/no-match
    option if the task needs one. For action selection, offer only actions available in
    the observed state. Do not infer hidden state or insert a desired answer into evidence.

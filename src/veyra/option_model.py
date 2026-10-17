@@ -10,7 +10,6 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 
 import torch
-from PIL import Image, ImageOps
 from safetensors.torch import load_file, save_file
 from torch import nn
 from torch.nn import functional as F
@@ -19,6 +18,7 @@ from veyra.backbone import QwenEncoder
 from veyra.binding_head import ConditionedReadout
 from veyra.candidates import candidates_for
 from veyra.constants import MODEL_ID, MODEL_REVISION
+from veyra.image_inputs import image_content, open_images
 from veyra.probability import Calibration, typed_answer
 from veyra.reasoning_workspace import RESULT_MARKER, condition_positions, workspace_suffix
 from veyra.schema import DecisionRequest
@@ -198,22 +198,8 @@ class OptionModel(nn.Module):
     def encode(
         self, request: DecisionRequest, image_root: Path | None = None, capture_condition=False
     ):
-        image = None
-        if request.state.images:
-            path = Path(request.state.images[0].path)
-            if image_root is not None:
-                root = image_root.resolve()
-                path = (root / path).resolve()
-                if not path.is_relative_to(root):
-                    raise ValueError("image path is outside the configured image root")
-            if not path.is_file() or path.stat().st_size > 20 * 1024 * 1024:
-                raise ValueError("image must be a local file no larger than 20 MiB")
-            with Image.open(path) as source:
-                if source.width * source.height > 40_000_000:
-                    raise ValueError("source image exceeds the 40 megapixel decode limit")
-                image = ImageOps.exif_transpose(source).convert("RGB")
         texts, mappings = [], {}
-        try:
+        with open_images(request.state.images, image_root) as images:
             variants = []
             views = getattr(self, "decision_views", 1)
             for name, question in request.questions.items():
@@ -224,7 +210,7 @@ class OptionModel(nn.Module):
             for name, question, view, rotation in variants:
                 text, positions = option_prompt(request, question, rotation)
                 mappings[(name, view) if views > 1 else name] = positions
-                content = ([{"type": "image"}] if image else []) + [{"type": "text", "text": text}]
+                content = image_content(len(images), text)
                 texts.append(
                     self.encoder.processor.apply_chat_template(
                         [
@@ -245,14 +231,13 @@ class OptionModel(nn.Module):
                     texts[-1] += workspace_suffix(self.reasoning_slots)
             inputs = self.encoder.processor(
                 text=texts,
-                images=[image] * len(texts) if image else None,
+                # The processor consumes image placeholders in text-row order.
+                # Repeat the complete ordered image group for every question/view.
+                images=images * len(texts) if images else None,
                 return_tensors="pt",
                 padding=True,
                 truncation=False,
             )
-        finally:
-            if image is not None:
-                image.close()
         lengths = inputs["attention_mask"].sum(-1)
         tokens = int(lengths.sum())
         if tokens > self.encoder.config.max_total_tokens:
@@ -338,7 +323,11 @@ class OptionModel(nn.Module):
                 name: typed_answer(q, logits[name], self.calibration)
                 for name, q in request.questions.items()
             },
-            "usage": {"input_tokens": tokens, "output_tokens": 0},
+            "usage": {
+                "input_tokens": tokens,
+                "output_tokens": 0,
+                "input_images": len(request.state.images),
+            },
         }
 
     def trainable_state(self):

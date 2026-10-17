@@ -2,7 +2,9 @@
 
 The English `qev` skill teaches an agent to define a narrow judgment, call the local QEV
 model, read its typed result, and apply application policy before choosing a next step.
-It supports text, one image, or both. See [SKILL.md](../skills/qev/SKILL.md).
+Published SDK 0.2.1 supports text, one image, or both. The unreleased multi-image source
+accepts up to four ordered images. See [SKILL.md](../skills/qev/SKILL.md) and
+[the multi-image guide](MULTI_IMAGE.md).
 
 ## Install
 

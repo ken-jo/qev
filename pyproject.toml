@@ -54,7 +54,8 @@ packages = ["src/veyra", "src/qev"]
 
 [tool.hatch.build.targets.sdist]
 include = [
-  "/src", "/examples/request.json", "/pyproject.toml", "/README.md",
+  "/src", "/examples/request.json", "/examples/multi_image/request.json",
+  "/pyproject.toml", "/README.md",
   "/LICENSE", "/NOTICE", "/CHANGELOG.md", "/MODEL_CARD.md", "/docs/API.md",
   "/docs/ARCHITECTURE.md", "/docs/MODEL_SIZE.md", "/docs/PLAYGROUND.md", "/SUPPORT.md",
 ]
