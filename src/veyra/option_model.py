@@ -18,6 +18,7 @@ from veyra.backbone import QwenEncoder
 from veyra.binding_head import ConditionedReadout
 from veyra.candidates import candidates_for
 from veyra.constants import MODEL_ID, MODEL_REVISION
+from veyra.exit_head import ExitHead, parse_early_exit, truncate_text_stack
 from veyra.image_inputs import image_content, open_images
 from veyra.probability import Calibration, typed_answer
 from veyra.reasoning_workspace import RESULT_MARKER, condition_positions, workspace_suffix
@@ -164,6 +165,8 @@ class OptionModel(nn.Module):
             raise ValueError("binding requires an internal condition representation")
         self.binding_rank = binding_rank
         self.binding_mode = binding_mode
+        self.exit_head = None
+        self.early_exit_layer = None
         self._request_lock = threading.RLock()
         self.adaptation = {"layers": layers, "rank": rank, "alpha": alpha}
         self.adapter_names = install_adapters(encoder.model, layers, rank, alpha)
@@ -283,6 +286,10 @@ class OptionModel(nn.Module):
             if condition_logits is None:
                 raise ValueError("binding requires predicted condition logits")
             all_logits = all_logits + self.binding_head(states, condition_logits)
+        return self._group(all_logits, mappings)
+
+    @staticmethod
+    def _group(all_logits, mappings):
         grouped = {}
         for i, (key, positions) in enumerate(mappings.items()):
             name = key[0] if isinstance(key, tuple) else key
@@ -291,6 +298,12 @@ class OptionModel(nn.Module):
 
     def forward(self, request: DecisionRequest, image_root: Path | None = None):
         with self._request_lock:
+            if getattr(self, "exit_head", None) is not None:
+                # Early exit replaces the readout, condition readout and binding head.
+                states, mappings, tokens, condition_states = self.encode(
+                    request, image_root, capture_condition=True
+                )
+                return self._group(self.exit_head(states, condition_states), mappings), tokens
             if getattr(self, "binding_rank", 0):
                 states, mappings, tokens, condition_states = self.encode(
                     request, image_root, capture_condition=True
@@ -344,7 +357,28 @@ class OptionModel(nn.Module):
             or name.startswith("binding_head.")
         }
 
+    def enable_early_exit(self, layer: int, tensors: dict):
+        """Truncate the text stack to ``layer`` layers and read options with an exit head."""
+        if not getattr(self, "reasoning_slots", 0):
+            raise ValueError("early exit requires the internal condition position")
+        language_model = self.encoder.model.language_model
+        layer, _, _ = parse_early_exit(
+            {"layer": layer, "head": "exit.safetensors"}, len(language_model.layers)
+        )
+        head = ExitHead(language_model.config.hidden_size)
+        if set(tensors) != set(head.state_dict()):
+            raise ValueError("early exit head keys mismatch")
+        try:
+            head.load_state_dict(tensors)
+        except RuntimeError as error:
+            raise ValueError("early exit head does not match the backbone hidden size") from error
+        truncate_text_stack(language_model, layer)
+        self.exit_head = head.to(device=self.encoder.device, dtype=torch.float32).eval()
+        self.early_exit_layer = layer
+
     def save(self, directory: Path, training: dict):
+        if getattr(self, "exit_head", None) is not None:
+            raise ValueError("early-exit models are truncated for inference only")
         if self.adaptation["layers"] and not self.adapter_names:
             raise ValueError("save unmerged adapters; merged models are for inference only")
         if directory.exists() and any(directory.iterdir()):
@@ -381,7 +415,9 @@ class OptionModel(nn.Module):
         local_files_only=False,
         merge=True,
         merge_accumulation=None,
+        early_exit=False,
     ):
+        """Load a checkpoint; ``early_exit=True`` opts into its manifest ``early_exit`` head."""
         directory = Path(directory)
         manifest = json.loads((directory / "manifest.json").read_text(encoding="utf-8"))
         if manifest.get("format_version") != 2 or manifest.get("architecture") != "option_readout":
@@ -422,5 +458,15 @@ class OptionModel(nn.Module):
                 module = encoder.model.get_submodule(name)
                 setattr(encoder.model.get_submodule(parent), child, module.merge(accumulation))
             model.adapter_names = []
+        if early_exit:
+            if "early_exit" not in manifest:
+                raise ValueError("checkpoint has no early_exit head")
+            layer, head, digest = parse_early_exit(
+                manifest["early_exit"], len(encoder.model.language_model.layers)
+            )
+            head_path = directory / head
+            if digest is not None and hashlib.sha256(head_path.read_bytes()).hexdigest() != digest:
+                raise ValueError("early exit head checksum mismatch")
+            model.enable_early_exit(layer, load_file(head_path))
         model.trained = True
         return model.eval()
