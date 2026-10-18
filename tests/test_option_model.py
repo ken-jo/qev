@@ -1,6 +1,7 @@
 import torch
 from torch import nn
 
+from veyra.constants import MODEL_ID, MODEL_REVISION
 from veyra.option_model import LoRALinear, OptionConfig, OptionModel, option_prompt
 from veyra.policy_data import typed_decision
 from veyra.schema import DecisionRequest
@@ -90,6 +91,7 @@ def test_option_checkpoint_roundtrip_and_integrity(tmp_path, monkeypatch):
         base.language_model = nn.Module()
         base.language_model.layers = nn.ModuleList([nn.Linear(1, 1)])
         base.language_model.embed_tokens = nn.Embedding(16, 2048)
+        base.language_model.config = SimpleNamespace(hidden_size=2048)
         processor = SimpleNamespace(
             tokenizer=SimpleNamespace(encode=lambda value, **kwargs: [ord(value) - 65])
         )
@@ -138,7 +140,7 @@ def fake_exit_backbone(config, layers=4, hidden=2048):
     base.language_model = nn.Module()
     base.language_model.layers = nn.ModuleList([nn.Linear(1, 1) for _ in range(layers)])
     base.language_model.norm = nn.LayerNorm(hidden)
-    base.language_model.embed_tokens = nn.Embedding(16, 2048)
+    base.language_model.embed_tokens = nn.Embedding(16, hidden)
     base.language_model.config = SimpleNamespace(
         hidden_size=hidden,
         num_hidden_layers=layers,
@@ -306,3 +308,111 @@ def test_truncated_qwen_stack_reproduces_the_distilled_layer_output():
         short = model(input_ids=ids, use_cache=False).last_hidden_state
     # hidden_states[0] is the embedding output, so index L is the raw residual after L layers.
     assert torch.allclose(full[2], short, atol=1e-6)
+
+
+def head_shapes(hidden):
+    """trainable_state shapes of a reasoning-slot, rank-64 binding option head."""
+    return {
+        "readout.weight": (16, hidden),
+        "condition_readout.weight": (3, hidden),
+        "binding_head.normalize.weight": (hidden,),
+        "binding_head.normalize.bias": (hidden,),
+        "binding_head.project.weight": (64, hidden),
+        "binding_head.project.bias": (64,),
+        "binding_head.experts.weight": (48, 64),
+    }
+
+
+def test_released_2b_head_layout_is_unchanged():
+    model = OptionModel(fake_exit_backbone(OptionConfig()), reasoning_slots=4, binding_rank=64)
+    state = model.trainable_state()
+    assert {name: tuple(value.shape) for name, value in state.items()} == head_shapes(2048)
+    assert all(value.dtype == torch.float32 for value in state.values())
+    # The readout still starts from the backbone's option-letter embeddings.
+    embed = model.encoder.model.language_model.embed_tokens.weight
+    assert torch.equal(model.readout.weight, embed[:16].float())
+    assert model.backbone == {"model_id": MODEL_ID, "revision": MODEL_REVISION}
+
+
+def test_head_widths_follow_the_backbone_hidden_size():
+    for hidden in (1024, 2048):
+        model = OptionModel(
+            fake_exit_backbone(OptionConfig(), hidden=hidden), reasoning_slots=4, binding_rank=64
+        )
+        shapes = {name: tuple(value.shape) for name, value in model.trainable_state().items()}
+        assert shapes == head_shapes(hidden)
+        states, conditions = torch.randn(2, hidden), torch.randn(2, 3)
+        assert model.binding_head(states, conditions).shape == (2, 16)
+
+
+MERGED = {
+    "model_id": "example/qev-small-merged",
+    "revision": "0123456789abcdef0123456789abcdef01234567",
+    "weights": "merged",
+}
+
+
+def test_backbone_manifest_block_is_validated():
+    import pytest
+
+    from veyra.option_model import backbone_identity
+
+    default = {"model_id": MODEL_ID, "revision": MODEL_REVISION}
+    assert backbone_identity(default) == default
+    assert backbone_identity(MERGED) == MERGED
+    for block in (
+        {"model_id": "example/other", "revision": MERGED["revision"]},
+        dict(MERGED, revision="main"),
+        dict(MERGED, revision=MERGED["revision"].upper()),
+        dict(MERGED, weights="lora"),
+        dict(MERGED, model_id=" "),
+        dict(MERGED, extra=1),
+        {"model_id": MODEL_ID, "revision": "0" * 40},
+        None,
+    ):
+        with pytest.raises(ValueError, match="revision"):
+            backbone_identity(block)
+
+
+def test_merged_backbone_checkpoint_loads_without_lora(tmp_path, monkeypatch):
+    import json
+
+    import pytest
+
+    from veyra.backbone import QwenEncoder
+
+    requested = {}
+
+    def fake_load(config, *_args, model_id=MODEL_ID, revision=MODEL_REVISION, **_kwargs):
+        requested.update(model_id=model_id, revision=revision)
+        return fake_exit_backbone(config, hidden=1024)
+
+    monkeypatch.setattr(QwenEncoder, "load", fake_load)
+    model = OptionModel(
+        fake_exit_backbone(OptionConfig(), hidden=1024),
+        reasoning_slots=4,
+        binding_rank=64,
+        backbone=MERGED,
+    )
+    manifest = model.save(tmp_path, {"completed": True, "optimizer_steps": 1})
+    assert manifest["backbone"] == MERGED
+    manifest_path = tmp_path / "manifest.json"
+    for adaptation in (None, {}):
+        if adaptation is None:
+            manifest.pop("adaptation", None)
+        else:
+            manifest["adaptation"] = adaptation
+        manifest_path.write_text(json.dumps(manifest))
+        restored = OptionModel.load(tmp_path, device="cpu")
+        assert requested == {"model_id": MERGED["model_id"], "revision": MERGED["revision"]}
+        assert restored.adapter_names == [] and restored.adaptation["layers"] == 0
+        assert restored.backbone == MERGED
+        for name, value in model.trainable_state().items():
+            assert torch.equal(restored.trainable_state()[name], value)
+
+    # A 2B-width head cannot be loaded onto a hidden-1024 backbone.
+    wide = OptionModel(fake_exit_backbone(OptionConfig()), reasoning_slots=4, binding_rank=64)
+    wide.backbone = MERGED
+    wide.save(tmp_path / "wide", {"completed": True, "optimizer_steps": 1})
+    with pytest.raises(ValueError, match="hidden size"):
+        OptionModel.load(tmp_path / "wide", device="cpu")

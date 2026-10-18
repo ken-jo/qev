@@ -12,8 +12,9 @@ class TransferReadout(nn.Module):
     def __init__(self, parent_manifest, parent_state):
         super().__init__()
         binding = parent_manifest["binding_head"]
-        self.readout = nn.Linear(2048, 16, bias=False)
-        self.binding_head = ConditionedReadout(binding["rank"], binding["mode"])
+        hidden = parent_state["readout.weight"].shape[1]
+        self.readout = nn.Linear(hidden, 16, bias=False)
+        self.binding_head = ConditionedReadout(binding["rank"], binding["mode"], hidden)
         self.load_state_dict(
             {
                 key: value

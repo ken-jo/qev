@@ -46,6 +46,16 @@ decoded pixels and outputs as before.
   40 megapixel limit is checked on the original size first, other formats are unaffected,
   and audit fingerprints still hash the full-resolution decode. Decoded pixels are close
   to, but not bit-identical with, a full decode followed by the processor resize.
+- **Backbone-sized heads and merged backbones.** The readout, condition readout,
+  binding head and exit head take their width from the backbone text configuration's
+  `hidden_size` (1024 for Qwen3.5-0.8B, 2048 for Qwen3.5-2B); the released 2B head layout
+  is unchanged. The manifest `backbone` block is either the pinned Qwen3.5-2B or
+  `{"model_id": "<repo>", "revision": "<40-hex commit>", "weights": "merged"}` for a
+  repository whose root holds full merged Qwen3.5 weights with config, tokenizer and
+  processor files. The `adaptation` block may be absent or empty when no LoRA is stored
+  with the heads, for example because it is already merged into those weights. The `qev`
+  SDK download command still fetches only the pinned released checkpoint and Qwen3.5-2B;
+  other checkpoints load through `OptionModel.load`.
 - **Early exit.** A manifest may declare
   `"early_exit": {"layer": 16, "head": "exit16.safetensors", "sha256": "..."}`
   (`sha256` optional). `OptionModel.load(..., early_exit=True)` keeps only the first

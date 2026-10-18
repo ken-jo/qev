@@ -14,7 +14,7 @@ from safetensors.torch import load_file, save_file
 from torch import nn
 from torch.nn import functional as F
 
-from veyra.backbone import QwenEncoder
+from veyra.backbone import QwenEncoder, text_hidden_size
 from veyra.binding_head import ConditionedReadout
 from veyra.candidates import candidates_for
 from veyra.constants import MODEL_ID, MODEL_REVISION
@@ -23,6 +23,37 @@ from veyra.image_inputs import image_content, open_images
 from veyra.probability import Calibration, typed_answer
 from veyra.reasoning_workspace import RESULT_MARKER, condition_positions, workspace_suffix
 from veyra.schema import DecisionRequest
+
+DEFAULT_BACKBONE = {"model_id": MODEL_ID, "revision": MODEL_REVISION}
+
+
+def backbone_identity(block):
+    """Validate a manifest backbone block.
+
+    The default is the pinned Qwen3.5-2B, whose learned LoRA is stored with the heads.
+    Otherwise the block must name a repository whose root holds full merged weights with
+    config, tokenizer and processor files, pinned to a 40-hex commit, and declare
+    ``"weights": "merged"``.
+    """
+    if block == DEFAULT_BACKBONE:
+        return dict(block)
+    revision = block.get("revision") if isinstance(block, dict) else None
+    if (
+        not isinstance(block, dict)
+        or set(block) != {"model_id", "revision", "weights"}
+        or block["weights"] != "merged"
+        or not isinstance(block["model_id"], str)
+        or not block["model_id"].strip()
+        or not isinstance(revision, str)
+        or len(revision) != 40
+        or any(c not in "0123456789abcdef" for c in revision)
+    ):
+        raise ValueError(
+            "checkpoint backbone revision mismatch: use the pinned Qwen3.5-2B or a merged "
+            "backbone with model_id, a 40-hex revision and weights=merged"
+        )
+    return dict(block)
+
 
 # Largest per-image budget a manifest may request (1.6 MP); the default stays 262,144.
 MAX_IMAGE_PIXELS = 1638400
@@ -152,9 +183,11 @@ class OptionModel(nn.Module):
         reasoning_slots=0,
         binding_rank=0,
         binding_mode="condition",
+        backbone=None,
     ):
         super().__init__()
         self.encoder = encoder
+        self.backbone = backbone_identity(backbone or DEFAULT_BACKBONE)
         self.calibration = calibration
         self.trained = False
         if type(decision_views) is not int or not 1 <= decision_views <= 3:
@@ -184,7 +217,9 @@ class OptionModel(nn.Module):
         ]
         if any(len(ids) != 1 for ids in token_ids):
             raise ValueError("option letters must each tokenize to one token")
-        self.readout = nn.Linear(2048, 16, bias=False, device=encoder.device, dtype=torch.float32)
+        # Head widths follow the backbone (1024 for Qwen3.5-0.8B, 2048 for Qwen3.5-2B).
+        hidden = text_hidden_size(encoder.model)
+        self.readout = nn.Linear(hidden, 16, bias=False, device=encoder.device, dtype=torch.float32)
         with torch.no_grad():
             self.readout.weight.copy_(
                 encoder.model.language_model.embed_tokens.weight[
@@ -193,12 +228,12 @@ class OptionModel(nn.Module):
             )
         if reasoning_slots:
             self.condition_readout = nn.Linear(
-                2048, 3, bias=False, device=encoder.device, dtype=torch.float32
+                hidden, 3, bias=False, device=encoder.device, dtype=torch.float32
             )
             with torch.no_grad():
                 self.condition_readout.weight.copy_(self.readout.weight[:3])
         if binding_rank:
-            self.binding_head = ConditionedReadout(binding_rank, binding_mode).to(
+            self.binding_head = ConditionedReadout(binding_rank, binding_mode, hidden).to(
                 device=encoder.device, dtype=torch.float32
             )
 
@@ -346,7 +381,10 @@ class OptionModel(nn.Module):
             "model": "veyra-qwen3.5-2b",
             "architecture": "option_readout",
             "decision_views": self.decision_views,
-            "backbone": {"model_id": MODEL_ID, "revision": MODEL_REVISION},
+            "backbone": {
+                "model_id": self.backbone["model_id"],
+                "revision": self.backbone["revision"],
+            },
             "answers": {
                 name: typed_answer(q, logits[name], self.calibration)
                 for name, q in request.questions.items()
@@ -404,7 +442,7 @@ class OptionModel(nn.Module):
             "decision_views": self.decision_views,
             "reasoning_slots": self.reasoning_slots,
             "binding_head": {"rank": self.binding_rank, "mode": self.binding_mode},
-            "backbone": {"model_id": MODEL_ID, "revision": MODEL_REVISION},
+            "backbone": self.backbone,
             "encoder": self.encoder.config.to_dict(),
             "adaptation": self.adaptation,
             "calibration": self.calibration.to_dict(),
@@ -432,8 +470,9 @@ class OptionModel(nn.Module):
         manifest = json.loads((directory / "manifest.json").read_text(encoding="utf-8"))
         if manifest.get("format_version") != 2 or manifest.get("architecture") != "option_readout":
             raise ValueError("unsupported option checkpoint")
-        if manifest["backbone"] != {"model_id": MODEL_ID, "revision": MODEL_REVISION}:
-            raise ValueError("checkpoint backbone revision mismatch")
+        backbone = backbone_identity(manifest["backbone"])
+        # Absent or empty adaptation: no LoRA, e.g. when it is merged into the backbone.
+        adaptation = manifest.get("adaptation") or {}
         if (
             not manifest["training"].get("completed")
             or manifest["training"].get("optimizer_steps", 0) < 1
@@ -443,11 +482,17 @@ class OptionModel(nn.Module):
         if hashlib.sha256(weights.read_bytes()).hexdigest() != manifest["weights_sha256"]:
             raise ValueError("checkpoint weight checksum mismatch")
         encoder = QwenEncoder.load(
-            OptionConfig(**manifest["encoder"]), device, cache_dir, local_files_only
+            OptionConfig(**manifest["encoder"]),
+            device,
+            cache_dir,
+            local_files_only,
+            model_id=backbone["model_id"],
+            revision=backbone["revision"],
         )
         model = cls(
             encoder,
-            **manifest["adaptation"],
+            **adaptation,
+            backbone=backbone,
             calibration=Calibration.from_dict(manifest["calibration"]),
             decision_views=manifest.get("decision_views", 1),
             reasoning_slots=manifest.get("reasoning_slots", 0),
@@ -455,9 +500,11 @@ class OptionModel(nn.Module):
             binding_mode=manifest.get("binding_head", {}).get("mode", "condition"),
         )
         tensors = load_file(weights)
-        expected = set(model.trainable_state())
-        if set(tensors) != expected:
+        expected = model.trainable_state()
+        if set(tensors) != set(expected):
             raise ValueError("checkpoint adapter/readout keys mismatch")
+        if any(tensors[name].shape != value.shape for name, value in expected.items()):
+            raise ValueError("checkpoint head widths do not match the backbone hidden size")
         model.load_state_dict(tensors, strict=False)
         accumulation = merge_accumulation or manifest.get("merge_accumulation", "base")
         if accumulation not in {"base", "float32"}:

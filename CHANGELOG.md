@@ -11,6 +11,11 @@
 - Optional early exit: a manifest `early_exit` block and `OptionModel.load(...,
   early_exit=True)` serve a truncated text stack with a distilled `ExitHead`. Off by
   default; manifests without the field load exactly as before.
+- Option head widths follow the backbone's text `hidden_size`, so hidden-1024
+  (Qwen3.5-0.8B) and hidden-2048 backbones load; the released 2B head layout is unchanged.
+- Option manifests may name a pinned repository of merged full weights
+  (`"weights": "merged"`, 40-hex revision) as the backbone and may omit `adaptation` when
+  no LoRA is stored with the heads. Existing manifests load as before.
 - Research recipes `scripts/train_option_mix.py` (resolution-elastic, option-permuted mix
   training) and `scripts/train_exit_head.py` (exit-head distillation). Results are not yet
   published.

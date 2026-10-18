@@ -53,6 +53,7 @@ def test_workspace_checkpoint_roundtrip(tmp_path, monkeypatch, binding_rank, bin
         base.language_model = nn.Module()
         base.language_model.layers = nn.ModuleList([nn.Linear(1, 1)])
         base.language_model.embed_tokens = nn.Embedding(16, 2048)
+        base.language_model.config = SimpleNamespace(hidden_size=2048)
         processor = SimpleNamespace(
             tokenizer=SimpleNamespace(encode=lambda value, **kwargs: [ord(value) - 65])
         )
