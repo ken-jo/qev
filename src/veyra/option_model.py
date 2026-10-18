@@ -17,7 +17,7 @@ from torch.nn import functional as F
 from veyra.backbone import QwenEncoder, text_hidden_size
 from veyra.binding_head import ConditionedReadout
 from veyra.candidates import candidates_for
-from veyra.constants import MODEL_ID, MODEL_REVISION
+from veyra.constants import DECISION_MODEL_ID, MODEL_ID, MODEL_REVISION
 from veyra.exit_head import ExitHead, parse_early_exit, truncate_text_stack
 from veyra.image_inputs import image_content, open_images
 from veyra.probability import Calibration, typed_answer
@@ -412,7 +412,7 @@ class OptionModel(nn.Module):
         self.eval()
         logits, tokens = self(request, image_root)
         result = {
-            "model": "veyra-qwen3.5-2b",
+            "model": DECISION_MODEL_ID,
             "architecture": "option_readout",
             "decision_views": self.decision_views,
             "backbone": {

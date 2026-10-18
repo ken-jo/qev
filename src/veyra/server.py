@@ -10,7 +10,7 @@ from pydantic import ValidationError
 from starlette.concurrency import run_in_threadpool
 
 from veyra import __version__
-from veyra.constants import MODEL_ID
+from veyra.constants import DECISION_MODEL_ID
 from veyra.model import VeyraModel
 from veyra.schema import DecisionRequest
 
@@ -21,7 +21,7 @@ def create_app(model: VeyraModel, image_root: Path) -> FastAPI:
     root = image_root.resolve(strict=True)
     if not root.is_dir():
         raise ValueError("image_root must be a directory")
-    app = FastAPI(title="Veyra", version=__version__)
+    app = FastAPI(title="QEV", version=__version__)
 
     @app.get("/health")
     def health() -> dict:
@@ -29,7 +29,7 @@ def create_app(model: VeyraModel, image_root: Path) -> FastAPI:
 
     @app.get("/v1/models")
     def models() -> dict:
-        return {"models": [{"id": MODEL_ID, "decision_model": "veyra-qwen3.5-2b"}]}
+        return {"models": [{"id": DECISION_MODEL_ID, "decision_model": DECISION_MODEL_ID}]}
 
     @app.get("/v1/schema")
     def schema() -> dict:
