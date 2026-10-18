@@ -1,5 +1,5 @@
 {
-  "model": "veyra-qwen3.5-2b",
+  "model": "qev",
   "architecture": "option_readout",
   "decision_views": 1,
   "backbone": {
