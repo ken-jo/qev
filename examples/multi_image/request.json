@@ -1,0 +1,20 @@
+{
+  "state": {
+    "text": "Image 1 is the reference state. Image 2 is the current state. Compare the visible equipment state, ignoring changes in viewpoint and lighting.",
+    "images": [
+      {"path": "reference.png"},
+      {"path": "current.png"}
+    ]
+  },
+  "questions": {
+    "same_state": {
+      "type": "choice",
+      "instructions": "Do Image 1 and Image 2 show the same equipment state? Select review when the relevant parts are hidden or unclear.",
+      "criteria": {
+        "yes": "The visible equipment state matches the reference.",
+        "no": "The visible equipment state differs from the reference.",
+        "review": "The images do not provide enough visible evidence to decide."
+      }
+    }
+  }
+}

@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+- Source SDK, HTTP request schema and playground accept up to four ordered images.
+  Both encoder paths include every image, with explicit image numbers for multi-image
+  requests; zero/one-image prompt formatting is preserved.
+- File-root checks, decode/file limits and cleanup apply to every input image; the
+  configured request token budget remains shared across all images and questions/views.
+- Replay and refresh overlap audits inspect all images, including later list entries.
+- Multi-image input is a source feature with unmeasured accuracy, calibration and latency.
+  Published SDK 0.2.1 and current training executions are unchanged.
+
 - `POST /v1/systemone` accepts Jev/SystemOne-style request bodies (string or JSON `state`,
   optional `instructions`, `"model": "qev"`); native requests and responses are unchanged.
 - State objects containing `text` or `images` retain strict native validation. Mixed

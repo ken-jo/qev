@@ -7,9 +7,8 @@ import random
 from collections import defaultdict
 from pathlib import Path
 
-from PIL import Image
-
 from veyra.data import TrainingRecord
+from veyra.image_inputs import fingerprint_context, pixel_fingerprints
 from veyra.packing import pack_request
 from veyra.schema import DecisionRequest
 
@@ -25,32 +24,25 @@ def audit_replay(primary, primary_root: Path, replay, replay_root: Path) -> dict
     cache = {}
 
     def fingerprints(record, root):
-        pixel = None
-        if record.request.state.images:
-            path = (root / record.request.state.images[0].path).resolve()
-            if path not in cache:
-                with Image.open(path) as source:
-                    rgb = source.convert("RGB")
-                    cache[path] = hashlib.sha256(str(rgb.size).encode() + rgb.tobytes()).hexdigest()
-                    rgb.close()
-            pixel = cache[path]
+        pixels = pixel_fingerprints(record.request.state.images, root, cache)
         tasks = []
         for question in record.request.questions.values():
             request = DecisionRequest(state=record.request.state, questions={"q": question})
             tasks.append(
-                hashlib.sha256((pack_request(request).text + str(pixel)).encode()).hexdigest()
+                hashlib.sha256(
+                    (pack_request(request).text + fingerprint_context(pixels)).encode()
+                ).hexdigest()
             )
-        return pixel, tasks
+        return pixels, tasks
 
     forbidden_pixels, forbidden_tasks = set(), set()
     for record in heldout:
-        pixel, tasks = fingerprints(record, primary_root)
-        if pixel:
-            forbidden_pixels.add(pixel)
+        pixels, tasks = fingerprints(record, primary_root)
+        forbidden_pixels.update(pixels)
         forbidden_tasks.update(tasks)
     for record in replay:
-        pixel, tasks = fingerprints(record, replay_root)
-        if pixel and pixel in forbidden_pixels:
+        pixels, tasks = fingerprints(record, replay_root)
+        if forbidden_pixels.intersection(pixels):
             raise ValueError("replay pixels overlap a held-out observation")
         if forbidden_tasks.intersection(tasks):
             raise ValueError("replay question overlaps a held-out request")

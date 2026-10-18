@@ -7,11 +7,11 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 
 import torch
-from PIL import Image, ImageOps
 from torch import Tensor, nn
 
 from veyra.candidates import SYSTEM_PROMPT, type_index
 from veyra.constants import MODEL_ID, MODEL_REVISION
+from veyra.image_inputs import image_content, open_images
 from veyra.packing import CANDIDATE_MARKER, QUESTION_MARKER, marker_positions, pack_request
 from veyra.schema import DecisionRequest
 
@@ -98,41 +98,21 @@ class QwenEncoder(nn.Module):
 
     def forward(self, request: DecisionRequest, image_root: Path | None = None) -> EncodedRequest:
         packed = pack_request(request)
-        image = None
-        if request.state.images:
-            path = Path(request.state.images[0].path)
-            if image_root is not None:
-                root = image_root.resolve()
-                path = (root / path).resolve()
-                if not path.is_relative_to(root):
-                    raise ValueError("image path is outside the configured image root")
-            if not path.is_file() or path.stat().st_size > 20 * 1024 * 1024:
-                raise ValueError("image must be a local file no larger than 20 MiB")
-            with Image.open(path) as source:
-                if source.width * source.height > 40_000_000:
-                    raise ValueError("source image exceeds the 40 megapixel decode limit")
-                image = ImageOps.exif_transpose(source).convert("RGB")
-        content = ([{"type": "image"}] if image is not None else []) + [
-            {"type": "text", "text": packed.text}
-        ]
-        messages = [
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": content},
-        ]
-        prompt = self.processor.apply_chat_template(
-            messages, tokenize=False, add_generation_prompt=False, enable_thinking=False
-        )
-        try:
+        with open_images(request.state.images, image_root) as images:
+            messages = [
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": image_content(len(images), packed.text)},
+            ]
+            prompt = self.processor.apply_chat_template(
+                messages, tokenize=False, add_generation_prompt=False, enable_thinking=False
+            )
             inputs = self.processor(
                 text=[prompt],
-                images=[image] if image is not None else None,
+                images=images or None,
                 return_tensors="pt",
                 padding=False,
                 truncation=False,
             )
-        finally:
-            if image is not None:
-                image.close()
         ids = inputs["input_ids"][0].tolist()
         if len(ids) > self.config.max_total_tokens:
             raise ValueError(

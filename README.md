@@ -94,8 +94,8 @@ can fetch weights in advance; `--offline` requires a complete cache. Set `QEV_HO
 QEV's persistent data directory or `QEV_CACHE_DIR` for the Hugging Face cache.
 
 The Python distribution contains code, UI and example photos. Model tensors are downloaded
-separately. The inference weights and 38 internal `veyra` modules remain the evaluated
-QEV 0.1.1 model; SDK 0.2.1 adds installation and application features.
+separately. Published SDK 0.2.1 retains the evaluated QEV 0.1.1 inference modules and
+weights. This source branch extends image handling without changing the learned weights.
 See [the playground guide](https://github.com/ken-jo/qev/blob/main/docs/PLAYGROUND.md)
 and [API schema](https://github.com/ken-jo/qev/blob/main/docs/API.md).
 
@@ -117,8 +117,11 @@ current scope, including failures in visual reasoning and unfamiliar tasks.
 | `score` | 2-16 ordered level descriptions | Level probabilities and expected level |
 | `noul` | A proposition, with true/false criteria | True/false probabilities |
 
-Accepts text, one image, or both; 1-4 questions per request. Candidate meanings are supplied
-at inference time. This does not imply reliable generalization to every unseen task.
+Published SDK 0.2.1 accepts text, one image, or both; 1-4 questions per request.
+The **unreleased source extension** accepts up to four ordered images. Refer to them as
+`Image 1`, `Image 2`, etc. in the question; the images remain separate inputs to Qwen.
+Candidate meanings are supplied at inference time. Multi-image accuracy, calibration and
+latency have not been evaluated. See [the multi-image guide](docs/MULTI_IMAGE.md).
 
 ```mermaid
 flowchart LR

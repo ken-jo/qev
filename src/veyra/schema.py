@@ -7,7 +7,7 @@ from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
 
-from veyra.constants import MODEL_ID
+from veyra.constants import MAX_IMAGES, MODEL_ID
 
 Text = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=8000)]
 Identifier = Annotated[
@@ -25,7 +25,7 @@ class ImageInput(StrictModel):
 
 class State(StrictModel):
     text: Annotated[str, StringConstraints(max_length=100_000)] = ""
-    images: list[ImageInput] = Field(default_factory=list, max_length=1)
+    images: list[ImageInput] = Field(default_factory=list, max_length=MAX_IMAGES)
 
     @model_validator(mode="after")
     def has_content(self) -> State:

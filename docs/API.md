@@ -38,9 +38,10 @@ See [playground installation, uv and GPU instructions](PLAYGROUND.md).
 
 ## Request and response
 
-The public request schema is `qev.DecisionRequest`. Text and one local image can be
-combined. Image paths are resolved under the configured image root; remote URLs are not
-fetched by the inference API.
+The public request schema is `qev.DecisionRequest`. The unreleased source extension
+combines text with up to four ordered local images. Published SDK 0.2.1 accepts one image.
+Image paths are resolved under the configured image root; remote URLs are not fetched
+by the inference API. See [multi-image requests](MULTI_IMAGE.md).
 
 ```json
 {
@@ -66,8 +67,10 @@ and responses are unchanged, and images remain local paths.
 
 `score.criteria` is an ordered list of descriptions;
 the result is an expected zero-based level. `noul.criteria` has `true` and `false` strings.
-The maximum is four questions, 16 alternatives per choice/score and one image. Processed
-inputs exceeding the configured token budget fail instead of silently truncating.
+The source maximum is four questions, 16 alternatives per choice/score and four images.
+The configured token budget covers the complete request, including every image and every
+question/view. Inputs exceeding it fail instead of silently truncating or dropping images.
+`usage.input_images` reports the supplied image count in the source extension.
 
 Inspect `answers`, `probabilities`, abstention fields and `usage` in the returned object.
 The model ID remains `Qwen/Qwen3.5-2B` in the validated contract to identify the actual base.

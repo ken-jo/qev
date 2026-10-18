@@ -95,6 +95,12 @@ not generate an answer sentence or a JSON string that needs parsing.
 
 ## One photo, three decisions
 
+**Unreleased source extension:** the development SDK accepts up to four ordered images
+without changing this checkpoint's learned weights. Published SDK 0.2.1 accepts one.
+Multi-image correctness, accuracy, calibration and latency have not been evaluated;
+the recorded results below retain their original single-image scope. See
+[the source guide](docs/MULTI_IMAGE.md).
+
 Recognize a material, apply your own handling policy, and evaluate a proposition in the
 same request. The example below is an existing release verification fixture with its
 actual recorded output.
