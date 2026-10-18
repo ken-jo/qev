@@ -10,14 +10,18 @@ CAP = 262144
 
 
 def images(*paths):
+    return request(*paths).state.images
+
+
+def request(*paths):
     return DecisionRequest.model_validate(
         {
-            "state": {"images": [{"path": str(path)} for path in paths]},
+            "state": {"text": "Evidence.", "images": [{"path": str(path)} for path in paths]},
             "questions": {
                 "q": {"type": "choice", "instructions": "Pick.", "criteria": {"a": "a", "b": "b"}}
             },
         }
-    ).state.images
+    )
 
 
 def test_option_config_accepts_the_larger_resolution_ceiling_only_on_request():
@@ -57,3 +61,64 @@ def test_decode_limit_is_checked_before_any_draft(tmp_path):
     with pytest.raises(ValueError, match="40 megapixel"):
         with open_images(images(path), max_pixels=CAP):
             pass
+
+
+class StopEncoding(Exception):
+    pass
+
+
+def captured_budget(monkeypatch, module, call):
+    """Run an encoder up to image decoding and report the draft budget it requested."""
+    seen = {}
+
+    def fake_open_images(images, image_root=None, *, max_pixels=None):
+        seen["max_pixels"] = max_pixels
+        raise StopEncoding
+
+    monkeypatch.setattr(module, "open_images", fake_open_images)
+    with pytest.raises(StopEncoding):
+        call()
+    return seen["max_pixels"]
+
+
+def encoders(config):
+    from types import SimpleNamespace
+
+    from veyra.backbone import QwenEncoder
+
+    processor = SimpleNamespace(
+        image_processor=SimpleNamespace(size={"shortest_edge": 65536, "longest_edge": 524288})
+    )
+    return QwenEncoder(None, processor, config)
+
+
+@pytest.mark.parametrize("enabled", [False, True])
+def test_fast_jpeg_decode_is_opt_in_for_the_option_encoder(monkeypatch, enabled):
+    import veyra.option_model as option_model
+
+    model = option_model.OptionModel.__new__(option_model.OptionModel)
+    option_model.nn.Module.__init__(model)
+    model.encoder = encoders(OptionConfig(fast_jpeg_decode=enabled))
+    budget = captured_budget(monkeypatch, option_model, lambda: model.encode(request()))
+    assert budget == (524288 if enabled else None)
+
+
+@pytest.mark.parametrize("enabled", [False, True])
+def test_fast_jpeg_decode_is_opt_in_for_the_packed_encoder(monkeypatch, enabled):
+    import veyra.backbone as backbone
+
+    encoder = encoders(backbone.EncoderConfig(fast_jpeg_decode=enabled))
+    budget = captured_budget(monkeypatch, backbone, lambda: encoder(request()))
+    assert budget == (524288 if enabled else None)
+
+
+def test_fast_jpeg_decode_flag_only_appears_in_manifests_when_enabled():
+    from veyra.backbone import EncoderConfig
+
+    for config_type in (OptionConfig, EncoderConfig):
+        assert "fast_jpeg_decode" not in config_type().to_dict()
+        enabled = config_type(fast_jpeg_decode=True)
+        assert enabled.to_dict()["fast_jpeg_decode"] is True
+        assert config_type(**enabled.to_dict()) == enabled
+        with pytest.raises(ValueError, match="boolean"):
+            config_type(fast_jpeg_decode=1)

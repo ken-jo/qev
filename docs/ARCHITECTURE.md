@@ -32,13 +32,16 @@ validation; historical single-image results do not qualify this extension.
 
 ## Serving options in the unreleased source
 
-These options are off or unchanged by default; the released manifest behaves as before.
+These options are off or unchanged by default; the released manifest produces the same
+decoded pixels and outputs as before.
 
 - **Resolution.** An option checkpoint manifest may set `encoder.image_max_pixels` up to
   1,638,400 (1.6 MP). The default per-image budget remains 262,144 pixels, and a larger
   budget also spends more of the shared request token budget.
-- **JPEG draft decode.** When a JPEG has more than twice the processor's per-image budget,
-  libjpeg decodes it at a 1/2, 1/4 or 1/8 DCT scale chosen so that the decoded image still
+- **JPEG draft decode (opt-in).** With `"fast_jpeg_decode": true` in the manifest
+  `encoder` block (`OptionConfig` or, for the packed path, `EncoderConfig`; default
+  `false`), a JPEG with more than twice the processor's per-image budget is decoded by
+  libjpeg at a 1/2, 1/4 or 1/8 DCT scale chosen so that the decoded image still
   covers the budget. The processor resize then sets the final image grid as before. The
   40 megapixel limit is checked on the original size first, other formats are unaffected,
   and audit fingerprints still hash the full-resolution decode. Decoded pixels are close

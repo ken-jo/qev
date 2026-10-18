@@ -34,15 +34,23 @@ class OptionConfig:
     image_max_pixels: int = 262144
     image_min_pixels: int = 65536
     encoding: str = "option-v1"
+    # Opt-in DCT-domain JPEG downscale; off keeps decoded pixels identical to earlier releases.
+    fast_jpeg_decode: bool = False
 
     def __post_init__(self):
         if self.encoding != "option-v1" or not 1 <= self.max_total_tokens <= 8192:
             raise ValueError("invalid option encoder configuration")
         if not 1024 <= self.image_min_pixels <= self.image_max_pixels <= MAX_IMAGE_PIXELS:
             raise ValueError("invalid image pixel budget")
+        if type(self.fast_jpeg_decode) is not bool:
+            raise ValueError("fast_jpeg_decode must be a boolean")
 
     def to_dict(self):
-        return asdict(self)
+        # Omit the opt-in flag while off, so existing manifests and hashes stay identical.
+        values = asdict(self)
+        if not self.fast_jpeg_decode:
+            del values["fast_jpeg_decode"]
+        return values
 
 
 class LoRALinear(nn.Module):
@@ -205,8 +213,10 @@ class OptionModel(nn.Module):
         self, request: DecisionRequest, image_root: Path | None = None, capture_condition=False
     ):
         texts, mappings = [], {}
-        # Draft against the processor's effective budget, which a caller may raise or lower.
-        budget = self.encoder.processor.image_processor.size["longest_edge"]
+        # When enabled, draft against the processor's effective budget, which may change.
+        budget = None
+        if getattr(self.encoder.config, "fast_jpeg_decode", False):
+            budget = self.encoder.processor.image_processor.size["longest_edge"]
         with open_images(request.state.images, image_root, max_pixels=budget) as images:
             variants = []
             views = getattr(self, "decision_views", 1)

@@ -209,6 +209,8 @@ def test_early_exit_is_opt_in_and_truncates_the_text_stack(tmp_path, monkeypatch
 
     default = OptionModel.load(tmp_path, device="cpu")
     assert default.exit_head is None
+    assert default.encoder.config.fast_jpeg_decode is False
+    assert "fast_jpeg_decode" not in manifest["encoder"]
     assert len(default.encoder.model.language_model.layers) == 4
     assert isinstance(default.encoder.model.language_model.norm, nn.LayerNorm)
 
