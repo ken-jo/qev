@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import re
 import sys
 from pathlib import Path
 from urllib.error import HTTPError, URLError
@@ -18,10 +19,17 @@ class NoRedirect(HTTPRedirectHandler):
 
 
 def validate_response(request, response):
-    if not isinstance(response, dict) or response.get("model") != "veyra-qwen3.5-2b":
+    # SDK 0.2.1 servers still return the legacy decision-model name.
+    if not isinstance(response, dict) or response.get("model") not in ("qev", "veyra-qwen3.5-2b"):
         raise ValueError("The endpoint did not return the expected QEV model identity")
     backbone = response.get("backbone")
-    if not isinstance(backbone, dict) or backbone.get("model_id") != "Qwen/Qwen3.5-2B":
+    if (
+        not isinstance(backbone, dict)
+        or not isinstance(backbone.get("model_id"), str)
+        or not backbone["model_id"].strip()
+        or not isinstance(backbone.get("revision"), str)
+        or re.fullmatch(r"[0-9a-fA-F]{40}", backbone["revision"]) is None
+    ):
         raise ValueError("Unexpected QEV backbone identity")
     answers = response.get("answers")
     if not isinstance(answers, dict) or set(answers) != set(request.questions):

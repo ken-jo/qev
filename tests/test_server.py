@@ -4,7 +4,7 @@ from unittest.mock import Mock
 import pytest
 from fastapi.testclient import TestClient
 
-from veyra.constants import MODEL_ID
+from veyra.constants import MODEL_ID, MODEL_REVISION
 from veyra.server import create_app
 
 
@@ -30,6 +30,30 @@ def test_api_contract_and_duplicate_keys(tmp_path):
     response = client.post("/v1/systemone", content='{"state":{},"state":{}}')
     assert response.status_code == 422
     assert "duplicate JSON key" in response.text
+
+
+def test_models_reports_qev_with_default_backbone(tmp_path):
+    client = TestClient(create_app(StubTrainedModel(), tmp_path))
+    response = client.get("/v1/models")
+    assert response.status_code == 200
+    assert response.json() == {
+        "models": [
+            {
+                "id": "qev",
+                "decision_model": "qev",
+                "backbone": {"model_id": MODEL_ID, "revision": MODEL_REVISION},
+            }
+        ]
+    }
+
+
+def test_models_reports_the_loaded_merged_backbone(tmp_path):
+    model = StubTrainedModel()
+    model.backbone = {"model_id": "ken-jo/QEV-0.8B", "revision": "a" * 40, "weights": "merged"}
+    client = TestClient(create_app(model, tmp_path))
+    entry = client.get("/v1/models").json()["models"][0]
+    assert entry["id"] == entry["decision_model"] == "qev"
+    assert entry["backbone"] == {"model_id": "ken-jo/QEV-0.8B", "revision": "a" * 40}
 
 
 def test_api_image_root_and_request_size(tmp_path):

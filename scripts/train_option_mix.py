@@ -48,17 +48,30 @@ def evaluate(model, examples, pixels, total_pixels):
     for index, example in enumerate(examples):
         images = len(example["request"].state.images)
         set_pixel_budget(model, pixels[index % len(pixels)], images, total_pixels)
+        total = counts.setdefault(
+            example["kind"], {"right": 0, "n": 0, "completed": 0, "failed": 0}
+        )
+        questions = example["request"].questions
+        total["n"] += len(questions)
         try:
             logits, _ = model(example["request"], example["root"])
         except ValueError:
+            total["failed"] += len(questions)
             continue
-        for name, question in example["request"].questions.items():
+        for name, question in questions.items():
             keys = [candidate.key for candidate in candidates_for(question)]
             correct = keys[int(logits[name].argmax())] == example["gold"][name]
-            total = counts.setdefault(example["kind"], [0, 0])
-            total[0] += int(correct)
-            total[1] += 1
-    result = {kind: {"accuracy": right / n, "n": n} for kind, (right, n) in counts.items()}
+            total["right"] += int(correct)
+            total["completed"] += 1
+    result = {
+        kind: {
+            "accuracy": value["right"] / value["n"] if value["n"] else 0.0,
+            "n": value["n"],
+            "completed": value["completed"],
+            "failed": value["failed"],
+        }
+        for kind, value in counts.items()
+    }
     result["select"] = sum(value["accuracy"] for value in result.values()) / max(1, len(counts))
     return result
 

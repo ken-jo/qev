@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- Source predictions and `/v1/models` use the decision-model name `qev`, with backbone
+  provenance reported separately. The QEV skill also accepts the legacy SDK 0.2.1 response
+  name and validates pinned merged-backbone metadata.
+- `train_option_mix.py` evaluation keeps failed questions in each source's denominator and
+  reports `completed`/`failed` counts. Its `select` scores are not directly comparable with
+  earlier run records that excluded failed requests; compare only after scoring both sets
+  with the same denominator policy.
+
 - Option checkpoint manifests may request per-image budgets up to 1,638,400 pixels
   (1.6 MP); the default remains 262,144.
 - Opt-in `fast_jpeg_decode` encoder setting (default off, so published outputs are
@@ -33,7 +41,7 @@
   Published SDK 0.2.1 and current training executions are unchanged.
 
 - `POST /v1/systemone` accepts Jev/SystemOne-style request bodies (string or JSON `state`,
-  optional `instructions`, `"model": "qev"`); native requests and responses are unchanged.
+  optional `instructions`, `"model": "qev"`); native request validation is unchanged.
 - State objects containing `text` or `images` retain strict native validation. Mixed
   objects with additional fields are rejected rather than converted into photo-free text.
 - The compatibility extension is available from source; published SDK 0.2.1 remains native-only.
