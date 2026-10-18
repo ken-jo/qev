@@ -98,9 +98,9 @@ class QwenEncoder(nn.Module):
 
     def forward(self, request: DecisionRequest, image_root: Path | None = None) -> EncodedRequest:
         packed = pack_request(request)
-        with open_images(
-            request.state.images, image_root, max_pixels=self.config.image_max_pixels
-        ) as images:
+        # Draft against the processor's effective budget, which a caller may raise or lower.
+        budget = self.processor.image_processor.size["longest_edge"]
+        with open_images(request.state.images, image_root, max_pixels=budget) as images:
             messages = [
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": image_content(len(images), packed.text)},

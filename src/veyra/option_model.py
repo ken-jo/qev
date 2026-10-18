@@ -205,9 +205,9 @@ class OptionModel(nn.Module):
         self, request: DecisionRequest, image_root: Path | None = None, capture_condition=False
     ):
         texts, mappings = [], {}
-        with open_images(
-            request.state.images, image_root, max_pixels=self.encoder.config.image_max_pixels
-        ) as images:
+        # Draft against the processor's effective budget, which a caller may raise or lower.
+        budget = self.encoder.processor.image_processor.size["longest_edge"]
+        with open_images(request.state.images, image_root, max_pixels=budget) as images:
             variants = []
             views = getattr(self, "decision_views", 1)
             for name, question in request.questions.items():
