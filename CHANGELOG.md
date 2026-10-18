@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+- Option checkpoint manifests may request per-image budgets up to 1,638,400 pixels
+  (1.6 MP); the default remains 262,144.
+- Large JPEGs are decoded at a reduced libjpeg DCT scale that still covers the processor's
+  per-image budget before the usual resize; the 40 MP guard and audit fingerprints are kept.
+- Optional early exit: a manifest `early_exit` block and `OptionModel.load(...,
+  early_exit=True)` serve a truncated text stack with a distilled `ExitHead`. Off by
+  default; manifests without the field load exactly as before.
+- Research recipes `scripts/train_option_mix.py` (resolution-elastic, option-permuted mix
+  training) and `scripts/train_exit_head.py` (exit-head distillation). Results are not yet
+  published.
+
 - Source SDK, HTTP request schema and playground accept up to four ordered images.
   Both encoder paths include every image, with explicit image numbers for multi-image
   requests; zero/one-image prompt formatting is preserved.

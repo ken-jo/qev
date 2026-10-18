@@ -37,6 +37,7 @@ placeholders for user-supplied files, and it contains no measured prediction.
 
 - Maximum four images and four questions; 2-16 candidates per choice/score.
 - Existing per-image preprocessing budgets remain 65,536-262,144 pixels by default.
+  A checkpoint manifest may raise the per-image maximum to 1,638,400 pixels.
 - Each source file must be local, at most 20 MiB and at most 40 megapixels before decode.
   Every image is checked against the configured root, including resolved symlinks.
 - The default 2,048 processed-token budget is for the complete request, including

@@ -40,6 +40,31 @@ Intermediate teacher/checkpoint/cache inputs are recorded by hash but are not al
 Do not describe the current upload as a turnkey, byte-identical full retraining pipeline.
 The trained release is usable independently of those intermediate research artifacts.
 
+## Mix-training and early-exit recipes
+
+Two research recipes continue from a released option checkpoint. They need a CUDA GPU,
+are not run in CI and have no published results yet.
+
+`scripts/train_option_mix.py` merges the released LoRA, installs fresh rank-8 LoRA on every
+text layer and trains it together with the readout, condition readout and binding heads.
+`--pixels 262144,655360,1638400` draws a per-image budget for each request
+(resolution-elastic training); multi-image requests share `--total-pixels`. `--permute`
+shuffles option order on every visit so the readout binds to option content rather than
+letter position; `--fixed-order-sources` lists sources whose options refer to letters or
+boxes drawn in the image. Inputs are one or more `items.jsonl` files with
+`{"id", "source", "question", "options", "gold", "images"}` per line, where `gold` is an
+option letter and image paths are absolute or relative to the file. `--records` adds
+soft-target replay from public `TrainingRecord` files. About 5% of each items file (at most
+`--dev-per-source`, chosen by ID hash) is held out for selection; benchmarks must never be
+used for selection. Deltas are saved as `delta-E<epoch>.safetensors` twice per epoch.
+
+`scripts/train_exit_head.py` records the raw residual after each `--layers` entry at the
+answer and condition positions together with the full-depth option logits (optionally after
+a `--delta`). It distills one `ExitHead` per layer with KL to the teacher plus
+`--gold-weight` gold cross-entropy and writes `exit<L>.safetensors` with a ready
+`early_exit` manifest block in `summary.json`. Mix-training deltas are a research format;
+packaging them with an exit head as a released checkpoint is a separate, verified step.
+
 ## Avoid contamination
 
 Keep train, dev, calibration and test assignments intact within a configuration. Do not merge
