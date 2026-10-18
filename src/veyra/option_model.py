@@ -23,6 +23,9 @@ from veyra.probability import Calibration, typed_answer
 from veyra.reasoning_workspace import RESULT_MARKER, condition_positions, workspace_suffix
 from veyra.schema import DecisionRequest
 
+# Largest per-image budget a manifest may request (1.6 MP); the default stays 262,144.
+MAX_IMAGE_PIXELS = 1638400
+
 
 @dataclass(frozen=True)
 class OptionConfig:
@@ -34,7 +37,7 @@ class OptionConfig:
     def __post_init__(self):
         if self.encoding != "option-v1" or not 1 <= self.max_total_tokens <= 8192:
             raise ValueError("invalid option encoder configuration")
-        if not 1024 <= self.image_min_pixels <= self.image_max_pixels <= 1048576:
+        if not 1024 <= self.image_min_pixels <= self.image_max_pixels <= MAX_IMAGE_PIXELS:
             raise ValueError("invalid image pixel budget")
 
     def to_dict(self):
@@ -199,7 +202,9 @@ class OptionModel(nn.Module):
         self, request: DecisionRequest, image_root: Path | None = None, capture_condition=False
     ):
         texts, mappings = [], {}
-        with open_images(request.state.images, image_root) as images:
+        with open_images(
+            request.state.images, image_root, max_pixels=self.encoder.config.image_max_pixels
+        ) as images:
             variants = []
             views = getattr(self, "decision_views", 1)
             for name, question in request.questions.items():
