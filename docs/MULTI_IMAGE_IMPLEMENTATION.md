@@ -1,15 +1,9 @@
 # QEV multi-image implementation status — 2026-10-09
 
-## Location and state
+## State
 
-- Checkout: `C:/tmp/qev-multi-image-20261009`.
-- Branch: `feat/multi-image-input`.
 - Base: `bdd57b6346581be3d8a00089fc34eb10ce0931ff`, including merged QEV PRs 1 and 2.
-- Implementation is local and uncommitted. No package installation, commit, push,
-  publication, experiment registration, training or inference was performed.
-- `C:/tmp/vision-qev` has no source/package changes relative to its existing HEAD;
-  its previously present roadmap/research changes were retained. The active study's
-  source, environment, processes, data and checkpoints were not modified.
+- Multi-image input is part of the released package from this commit onward.
 
 ## Implemented
 
