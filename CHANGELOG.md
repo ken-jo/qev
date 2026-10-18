@@ -16,6 +16,9 @@
 - Option manifests may name a pinned repository of merged full weights
   (`"weights": "merged"`, 40-hex revision) as the backbone and may omit `adaptation` when
   no LoRA is stored with the heads. Existing manifests load as before.
+- Optional manifest serving `modes` (per-image pixel budget and early exit) with
+  `default_mode`, selected by `OptionModel.load(..., mode=...)`; predictions report the
+  active `mode` only for checkpoints that declare modes.
 - Research recipes `scripts/train_option_mix.py` (resolution-elastic, option-permuted mix
   training) and `scripts/train_exit_head.py` (exit-head distillation). Results are not yet
   published.

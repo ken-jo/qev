@@ -21,6 +21,13 @@ complete local files. `QEV_HOME` sets the checkpoint/cache root; `QEV_CACHE_DIR`
 the Hub cache. The lower-level `qev.QEV.load(...)` remains available for explicit checkpoint
 management and retains the original inference contract.
 
+For a local checkpoint whose manifest declares serving `modes`,
+`qev.QEV.load(checkpoint_dir, device="cuda", mode="fast")` selects a preset (per-image
+pixel budget, optional early exit); `mode=None` uses the manifest `default_mode`. Such
+predictions include a `mode` field. `early_exit=True` loads a declared early-exit head
+directly. The released checkpoint declares neither, so `qev.load()` is unchanged. See
+[architecture](ARCHITECTURE.md#serving-options-in-the-unreleased-source).
+
 ## Commands
 
 ```sh

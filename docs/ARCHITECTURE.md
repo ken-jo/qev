@@ -68,6 +68,17 @@ decoded pixels and outputs as before.
   logits. Exit heads are produced by `scripts/train_exit_head.py`; see
   [training](TRAINING.md#mix-training-and-early-exit-recipes). Accuracy and latency of
   these options require separate measurement.
+- **Serving modes.** One checkpoint can offer named presets, for example
+  `"modes": {"accurate": {"image_max_pixels": 1638400}, "fast": {"image_max_pixels":
+  262144, "early_exit": true}}` with an optional `"default_mode": "accurate"`. A mode may
+  only set `image_max_pixels` (between the encoder's `image_min_pixels` and 1,638,400) and
+  `early_exit` (which requires the manifest `early_exit` block).
+  `OptionModel.load(..., mode="fast")` selects a preset; `mode=None` uses `default_mode`
+  when present and otherwise the manifest encoder settings. An explicit `early_exit=`
+  argument must agree with the selected mode. Predictions from a checkpoint with modes
+  carry a `mode` field (`null` when none is selected); checkpoints without modes,
+  including the released one, load and answer exactly as before. Models loaded in a mode
+  are for inference only.
 
 The public source history starts with curated release commits. Original author copyright,
 source hashes, experiment identifiers and negative results remain attributable. Prior

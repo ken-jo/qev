@@ -416,3 +416,127 @@ def test_merged_backbone_checkpoint_loads_without_lora(tmp_path, monkeypatch):
     wide.save(tmp_path / "wide", {"completed": True, "optimizer_steps": 1})
     with pytest.raises(ValueError, match="hidden size"):
         OptionModel.load(tmp_path / "wide", device="cpu")
+
+
+def mode_checkpoint(tmp_path, monkeypatch, **manifest_fields):
+    """A hidden-2048 fake checkpoint with an exit head and the given manifest fields."""
+    import json
+    from types import SimpleNamespace
+
+    from safetensors.torch import save_file
+
+    from veyra.backbone import QwenEncoder
+    from veyra.exit_head import ExitHead
+
+    def fake_load(config, *_args, **_kwargs):
+        encoder = fake_exit_backbone(config)
+        size = {"shortest_edge": config.image_min_pixels, "longest_edge": config.image_max_pixels}
+        encoder.processor.image_processor = SimpleNamespace(size=size)
+        return encoder
+
+    monkeypatch.setattr(QwenEncoder, "load", fake_load)
+    model = OptionModel(fake_exit_backbone(OptionConfig()), reasoning_slots=4)
+    manifest = model.save(tmp_path, {"completed": True, "optimizer_steps": 1})
+    save_file(ExitHead(2048).state_dict(), tmp_path / "exit2.safetensors")
+    manifest["early_exit"] = {"layer": 2, "head": "exit2.safetensors"}
+    manifest.update(manifest_fields)
+    (tmp_path / "manifest.json").write_text(json.dumps(manifest))
+    return tmp_path
+
+
+MODES = {
+    "accurate": {"image_max_pixels": 1638400},
+    "fast": {"image_max_pixels": 262144, "early_exit": True},
+}
+
+
+def stub_prediction(model):
+    model.encode = lambda *_args, capture_condition=False: (
+        (
+            torch.zeros(1, 2048),
+            {"q": [0, 1]},
+            12,
+        )
+        + ((torch.zeros(1, 2048),) if capture_condition else ())
+    )
+    request = DecisionRequest.model_validate(
+        {
+            "state": {"text": "Evidence."},
+            "questions": {
+                "q": {"type": "choice", "instructions": "Pick.", "criteria": {"a": "a", "b": "b"}}
+            },
+        }
+    )
+    return model.predict(request)
+
+
+def test_manifests_without_modes_load_and_predict_as_before(tmp_path, monkeypatch):
+    import pytest
+
+    folder = mode_checkpoint(tmp_path, monkeypatch)
+    model = OptionModel.load(folder, device="cpu")
+    assert model.serving_modes is None and model.serving_mode is None
+    assert model.exit_head is None
+    assert model.encoder.config.image_max_pixels == 262144
+    assert "mode" not in stub_prediction(model)
+    assert OptionModel.load(folder, device="cpu", early_exit=True).early_exit_layer == 2
+    with pytest.raises(ValueError, match="no serving modes"):
+        OptionModel.load(folder, device="cpu", mode="fast")
+
+
+def test_serving_modes_select_budget_and_early_exit(tmp_path, monkeypatch):
+    import pytest
+
+    folder = mode_checkpoint(tmp_path, monkeypatch, modes=MODES, default_mode="accurate")
+    accurate = OptionModel.load(folder, device="cpu")
+    assert accurate.serving_mode == "accurate" and accurate.exit_head is None
+    assert accurate.encoder.config.image_max_pixels == 1638400
+    assert accurate.encoder.processor.image_processor.size["longest_edge"] == 1638400
+    assert stub_prediction(accurate)["mode"] == "accurate"
+    with pytest.raises(ValueError, match="inference only"):
+        accurate.save(tmp_path / "copy", {"completed": True, "optimizer_steps": 1})
+
+    fast = OptionModel.load(folder, device="cpu", mode="fast")
+    assert fast.serving_mode == "fast" and fast.early_exit_layer == 2
+    assert fast.encoder.processor.image_processor.size["longest_edge"] == 262144
+    assert stub_prediction(fast)["mode"] == "fast"
+    assert OptionModel.load(folder, device="cpu", mode="fast", early_exit=True).exit_head
+
+    with pytest.raises(ValueError, match="conflicts"):
+        OptionModel.load(folder, device="cpu", mode="fast", early_exit=False)
+    with pytest.raises(ValueError, match="conflicts"):
+        OptionModel.load(folder, device="cpu", early_exit=True)
+    with pytest.raises(ValueError, match="unknown serving mode"):
+        OptionModel.load(folder, device="cpu", mode="tiny")
+
+
+def test_modes_without_a_default_keep_the_manifest_budget(tmp_path, monkeypatch):
+    folder = mode_checkpoint(tmp_path, monkeypatch, modes=MODES)
+    model = OptionModel.load(folder, device="cpu")
+    assert model.serving_mode is None and model.exit_head is None
+    assert model.encoder.config.image_max_pixels == 262144
+    assert stub_prediction(model)["mode"] is None
+
+
+def test_serving_mode_block_is_validated():
+    import pytest
+
+    from veyra.option_model import parse_modes
+
+    config = OptionConfig()
+    with_exit = {"early_exit": {"layer": 2, "head": "exit2.safetensors"}}
+    assert parse_modes({}, config) == (None, None)
+    assert parse_modes({"modes": MODES, **with_exit}, config) == (MODES, None)
+    for manifest, message in (
+        ({"default_mode": "fast"}, "requires a modes block"),
+        ({"modes": {}}, "non-empty"),
+        ({"modes": {"fast": {"threads": 2}}}, "only set"),
+        ({"modes": {"big": {"image_max_pixels": 1638401}}}, "allowed budget"),
+        ({"modes": {"small": {"image_max_pixels": 1024}}}, "allowed budget"),
+        ({"modes": {"fast": {"image_max_pixels": True}}}, "allowed budget"),
+        ({"modes": {"fast": {"early_exit": 1}}}, "boolean"),
+        ({"modes": {"fast": {"early_exit": True}}}, "early_exit block"),
+        ({"modes": MODES, "default_mode": "other", **with_exit}, "declared mode"),
+    ):
+        with pytest.raises(ValueError, match=message):
+            parse_modes(manifest, config)

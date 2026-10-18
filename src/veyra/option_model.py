@@ -59,6 +59,38 @@ def backbone_identity(block):
 MAX_IMAGE_PIXELS = 1638400
 
 
+MODE_SETTINGS = {"image_max_pixels", "early_exit"}
+
+
+def parse_modes(manifest, config):
+    """Validate optional serving presets; returns ({name: settings}, default name or None).
+
+    Each mode may set ``image_max_pixels`` (within the encoder's minimum and
+    ``MAX_IMAGE_PIXELS``) and ``early_exit`` (which needs the manifest ``early_exit`` block).
+    """
+    modes, default = manifest.get("modes"), manifest.get("default_mode")
+    if modes is None:
+        if default is not None:
+            raise ValueError("default_mode requires a modes block")
+        return None, None
+    if not isinstance(modes, dict) or not modes:
+        raise ValueError("modes must be a non-empty object of named presets")
+    for name, settings in modes.items():
+        if not name.strip() or not isinstance(settings, dict) or set(settings) - MODE_SETTINGS:
+            raise ValueError(f"mode {name!r} may only set image_max_pixels and early_exit")
+        pixels = settings.get("image_max_pixels", config.image_max_pixels)
+        if type(pixels) is not int or not config.image_min_pixels <= pixels <= MAX_IMAGE_PIXELS:
+            raise ValueError(f"mode {name!r} image_max_pixels is outside the allowed budget")
+        exit_enabled = settings.get("early_exit", False)
+        if type(exit_enabled) is not bool:
+            raise ValueError(f"mode {name!r} early_exit must be a boolean")
+        if exit_enabled and "early_exit" not in manifest:
+            raise ValueError(f"mode {name!r} needs the manifest early_exit block")
+    if default is not None and default not in modes:
+        raise ValueError("default_mode must name a declared mode")
+    return modes, default
+
+
 @dataclass(frozen=True)
 class OptionConfig:
     max_total_tokens: int = 2048
@@ -208,6 +240,8 @@ class OptionModel(nn.Module):
         self.binding_mode = binding_mode
         self.exit_head = None
         self.early_exit_layer = None
+        self.serving_modes = None
+        self.serving_mode = None
         self._request_lock = threading.RLock()
         self.adaptation = {"layers": layers, "rank": rank, "alpha": alpha}
         self.adapter_names = install_adapters(encoder.model, layers, rank, alpha)
@@ -377,7 +411,7 @@ class OptionModel(nn.Module):
             raise RuntimeError("prediction requires a trained head checkpoint")
         self.eval()
         logits, tokens = self(request, image_root)
-        return {
+        result = {
             "model": "veyra-qwen3.5-2b",
             "architecture": "option_readout",
             "decision_views": self.decision_views,
@@ -395,6 +429,10 @@ class OptionModel(nn.Module):
                 "input_images": len(request.state.images),
             },
         }
+        # Only checkpoints that declare serving modes report one; others keep their output.
+        if getattr(self, "serving_modes", None) is not None:
+            result["mode"] = self.serving_mode
+        return result
 
     def trainable_state(self):
         return {
@@ -427,6 +465,8 @@ class OptionModel(nn.Module):
     def save(self, directory: Path, training: dict):
         if getattr(self, "exit_head", None) is not None:
             raise ValueError("early-exit models are truncated for inference only")
+        if getattr(self, "serving_mode", None) is not None:
+            raise ValueError("models loaded in a serving mode are for inference only")
         if self.adaptation["layers"] and not self.adapter_names:
             raise ValueError("save unmerged adapters; merged models are for inference only")
         if directory.exists() and any(directory.iterdir()):
@@ -463,13 +503,34 @@ class OptionModel(nn.Module):
         local_files_only=False,
         merge=True,
         merge_accumulation=None,
-        early_exit=False,
+        early_exit=None,
+        mode=None,
     ):
-        """Load a checkpoint; ``early_exit=True`` opts into its manifest ``early_exit`` head."""
+        """Load a checkpoint, optionally in one of its manifest serving ``modes``.
+
+        ``mode=None`` selects the manifest ``default_mode`` when present. A mode sets the
+        per-image pixel budget and whether the manifest ``early_exit`` head is used.
+        ``early_exit=True`` opts into that head directly; it must agree with the mode.
+        """
         directory = Path(directory)
         manifest = json.loads((directory / "manifest.json").read_text(encoding="utf-8"))
         if manifest.get("format_version") != 2 or manifest.get("architecture") != "option_readout":
             raise ValueError("unsupported option checkpoint")
+        config = OptionConfig(**manifest["encoder"])
+        modes, default_mode = parse_modes(manifest, config)
+        if mode is not None and modes is None:
+            raise ValueError("checkpoint declares no serving modes")
+        mode = mode if mode is not None else default_mode
+        if mode is not None:
+            if mode not in modes:
+                raise ValueError(f"unknown serving mode {mode!r}; choose from {sorted(modes)}")
+            settings = modes[mode]
+            if early_exit is not None and early_exit != settings.get("early_exit", False):
+                raise ValueError(f"early_exit={early_exit} conflicts with serving mode {mode!r}")
+            early_exit = settings.get("early_exit", False)
+            if "image_max_pixels" in settings:
+                values = config.to_dict() | {"image_max_pixels": settings["image_max_pixels"]}
+                config = OptionConfig(**values)
         backbone = backbone_identity(manifest["backbone"])
         # Absent or empty adaptation: no LoRA, e.g. when it is merged into the backbone.
         adaptation = manifest.get("adaptation") or {}
@@ -481,8 +542,9 @@ class OptionModel(nn.Module):
         weights = directory / "head.safetensors"
         if hashlib.sha256(weights.read_bytes()).hexdigest() != manifest["weights_sha256"]:
             raise ValueError("checkpoint weight checksum mismatch")
+        # QwenEncoder.load also sets the processor's longest_edge from this budget.
         encoder = QwenEncoder.load(
-            OptionConfig(**manifest["encoder"]),
+            config,
             device,
             cache_dir,
             local_files_only,
@@ -525,5 +587,6 @@ class OptionModel(nn.Module):
             if digest is not None and hashlib.sha256(head_path.read_bytes()).hexdigest() != digest:
                 raise ValueError("early exit head checksum mismatch")
             model.enable_early_exit(layer, load_file(head_path))
+        model.serving_modes, model.serving_mode = modes, mode
         model.trained = True
         return model.eval()
