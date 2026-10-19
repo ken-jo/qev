@@ -46,6 +46,16 @@ decoded pixels and outputs as before.
   40 megapixel limit is checked on the original size first, other formats are unaffected,
   and audit fingerprints still hash the full-resolution decode. Decoded pixels are close
   to, but not bit-identical with, a full decode followed by the processor resize.
+- **Backbone-sized heads and merged backbones.** The readout, condition readout,
+  binding head and exit head take their width from the backbone text configuration's
+  `hidden_size` (1024 for Qwen3.5-0.8B, 2048 for Qwen3.5-2B); the released 2B head layout
+  is unchanged. The manifest `backbone` block is either the pinned Qwen3.5-2B or
+  `{"model_id": "<repo>", "revision": "<40-hex commit>", "weights": "merged"}` for a
+  repository whose root holds full merged Qwen3.5 weights with config, tokenizer and
+  processor files. The `adaptation` block may be absent or empty when no LoRA is stored
+  with the heads, for example because it is already merged into those weights. The `qev`
+  SDK download command still fetches only the pinned released checkpoint and Qwen3.5-2B;
+  other checkpoints load through `OptionModel.load`.
 - **Early exit.** A manifest may declare
   `"early_exit": {"layer": 16, "head": "exit16.safetensors", "sha256": "..."}`
   (`sha256` optional). `OptionModel.load(..., early_exit=True)` keeps only the first
@@ -58,6 +68,17 @@ decoded pixels and outputs as before.
   logits. Exit heads are produced by `scripts/train_exit_head.py`; see
   [training](TRAINING.md#mix-training-and-early-exit-recipes). Accuracy and latency of
   these options require separate measurement.
+- **Serving modes.** One checkpoint can offer named presets, for example
+  `"modes": {"accurate": {"image_max_pixels": 1638400}, "fast": {"image_max_pixels":
+  262144, "early_exit": true}}` with an optional `"default_mode": "accurate"`. A mode may
+  only set `image_max_pixels` (between the encoder's `image_min_pixels` and 1,638,400) and
+  `early_exit` (which requires the manifest `early_exit` block).
+  `OptionModel.load(..., mode="fast")` selects a preset; `mode=None` uses `default_mode`
+  when present and otherwise the manifest encoder settings. An explicit `early_exit=`
+  argument must agree with the selected mode. Predictions from a checkpoint with modes
+  carry a `mode` field (`null` when none is selected); checkpoints without modes,
+  including the released one, load and answer exactly as before. Models loaded in a mode
+  are for inference only.
 
 The public source history starts with curated release commits. Original author copyright,
 source hashes, experiment identifiers and negative results remain attributable. Prior

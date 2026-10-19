@@ -21,6 +21,13 @@ complete local files. `QEV_HOME` sets the checkpoint/cache root; `QEV_CACHE_DIR`
 the Hub cache. The lower-level `qev.QEV.load(...)` remains available for explicit checkpoint
 management and retains the original inference contract.
 
+For a local checkpoint whose manifest declares serving `modes`,
+`qev.QEV.load(checkpoint_dir, device="cuda", mode="fast")` selects a preset (per-image
+pixel budget, optional early exit); `mode=None` uses the manifest `default_mode`. Such
+predictions include a `mode` field. `early_exit=True` loads a declared early-exit head
+directly. The released checkpoint declares neither, so `qev.load()` is unchanged. See
+[architecture](ARCHITECTURE.md#serving-options-in-the-unreleased-source).
+
 ## Commands
 
 ```sh
@@ -63,7 +70,10 @@ body: `state` as a plain string or structured JSON, `instructions` omitted (the 
 ID is used) and `"model": "qev"`. The published SDK 0.2.1 requires the native format.
 State objects containing `text` or `images` use strict native validation, including the
 rejection of unknown fields. Other JSON states are serialized to text. Native requests
-and responses are unchanged, and images remain local paths.
+keep their validation rules, and images remain local paths.
+
+Native `DecisionRequest.model` (including `qev predict --request`) remains
+`"Qwen/Qwen3.5-2B"` or omitted; `"qev"` is normalized only by `/v1/systemone`.
 
 `score.criteria` is an ordered list of descriptions;
 the result is an expected zero-based level. `noul.criteria` has `true` and `false` strings.
@@ -73,7 +83,10 @@ question/view. Inputs exceeding it fail instead of silently truncating or droppi
 `usage.input_images` reports the supplied image count in the source extension.
 
 Inspect `answers`, `probabilities`, abstention fields and `usage` in the returned object.
-The model ID remains `Qwen/Qwen3.5-2B` in the validated contract to identify the actual base.
+Source predictions return `"model": "qev"`; `/v1/models` lists the same decision-model ID.
+Both include a separate `backbone` object with the actual `model_id` and pinned `revision`.
+The QEV skill accepts both `qev` and the SDK 0.2.1 response name `veyra-qwen3.5-2b`,
+and accepts merged backbones with a nonempty ID and a 40-hex revision.
 See `src/veyra/schema.py`, `src/veyra/probability.py` and `examples/request.json`.
 
 The playground adds image-upload and resolution endpoints around the same model. A single

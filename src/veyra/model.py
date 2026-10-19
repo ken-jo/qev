@@ -11,7 +11,7 @@ from torch import nn
 
 from veyra.backbone import QwenEncoder
 from veyra.checkpoint import load_head
-from veyra.constants import MODEL_ID, MODEL_REVISION
+from veyra.constants import DECISION_MODEL_ID, MODEL_ID, MODEL_REVISION
 from veyra.head import DecisionHead
 from veyra.probability import Calibration, typed_answer
 from veyra.schema import DecisionRequest
@@ -74,7 +74,7 @@ class VeyraModel(nn.Module):
         self.eval()
         logits, tokens = self(request, image_root=image_root)
         return {
-            "model": "veyra-qwen3.5-2b",
+            "model": DECISION_MODEL_ID,
             "backbone": {"model_id": MODEL_ID, "revision": MODEL_REVISION},
             "answers": {
                 name: typed_answer(question, logits[name], self.calibration)

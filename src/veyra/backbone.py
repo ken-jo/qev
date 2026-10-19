@@ -43,6 +43,14 @@ class EncoderConfig:
         return values
 
 
+def text_hidden_size(model: nn.Module) -> int:
+    """Width of every option head: 1024 for Qwen3.5-0.8B, 2048 for Qwen3.5-2B."""
+    hidden = model.language_model.config.hidden_size
+    if type(hidden) is not int or hidden < 1:
+        raise ValueError("backbone text config has no valid hidden size")
+    return hidden
+
+
 @dataclass
 class EncodedQuestion:
     features: Tensor
@@ -71,14 +79,18 @@ class QwenEncoder(nn.Module):
         device: str = "cuda",
         cache_dir: str = ".cache/huggingface",
         local_files_only: bool = False,
+        *,
+        model_id: str = MODEL_ID,
+        revision: str = MODEL_REVISION,
     ) -> QwenEncoder:
+        """Load the pinned Qwen3.5-2B, or another pinned repository with full Qwen3.5 weights."""
         from transformers import AutoProcessor, Qwen3_5Model
 
         if device.startswith("cuda") and not torch.cuda.is_available():
             raise RuntimeError("CUDA is unavailable; use --device cpu explicitly for CPU execution")
         processor = AutoProcessor.from_pretrained(
-            MODEL_ID,
-            revision=MODEL_REVISION,
+            model_id,
+            revision=revision,
             cache_dir=cache_dir,
             local_files_only=local_files_only,
             trust_remote_code=False,
@@ -88,8 +100,8 @@ class QwenEncoder(nn.Module):
             "longest_edge": config.image_max_pixels,
         }
         model = Qwen3_5Model.from_pretrained(
-            MODEL_ID,
-            revision=MODEL_REVISION,
+            model_id,
+            revision=revision,
             cache_dir=cache_dir,
             local_files_only=local_files_only,
             trust_remote_code=False,

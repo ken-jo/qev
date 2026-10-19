@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import option_mix_common as common  # noqa: E402
+import train_option_mix as mix  # noqa: E402
 
 
 @pytest.mark.parametrize("script", ["train_option_mix.py", "train_exit_head.py"])
@@ -94,6 +95,46 @@ def test_multi_image_requests_share_the_total_pixel_budget():
     assert processor.size["longest_edge"] == 524288
     common.set_pixel_budget(model, 1638400, 4, 131072)
     assert processor.size["longest_edge"] == 65536
+
+
+@pytest.mark.parametrize("failures", [False, True])
+def test_mix_evaluation_retains_failed_questions_and_sources(failures):
+    class FixedModel:
+        encoder = SimpleNamespace(
+            processor=SimpleNamespace(
+                image_processor=SimpleNamespace(size={"shortest_edge": 65536})
+            )
+        )
+
+        def eval(self):
+            pass
+
+        def __call__(self, request, root):
+            if failures and root == "fail":
+                raise ValueError("invalid request")
+            return {name: torch.tensor([0.0, 5.0, 0.0]) for name in request.questions}, 0
+
+    example = common.item_example(item("ok"))
+    examples = [
+        dict(example, root="ok"),
+        dict(example, root="fail"),
+        dict(example, root="fail", kind="other"),
+    ]
+    result = mix.evaluate(FixedModel(), examples, [262144], 2097152)
+    kind = example["kind"]
+    assert result[kind] == {
+        "accuracy": 0.5 if failures else 1.0,
+        "n": 2,
+        "completed": 1 if failures else 2,
+        "failed": 1 if failures else 0,
+    }
+    assert result["other"] == {
+        "accuracy": 0.0 if failures else 1.0,
+        "n": 1,
+        "completed": 0 if failures else 1,
+        "failed": 1 if failures else 0,
+    }
+    assert result["select"] == (0.25 if failures else 1.0)
 
 
 def test_exit_distillation_learns_a_separable_teacher():

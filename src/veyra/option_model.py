@@ -14,18 +14,81 @@ from safetensors.torch import load_file, save_file
 from torch import nn
 from torch.nn import functional as F
 
-from veyra.backbone import QwenEncoder
+from veyra.backbone import QwenEncoder, text_hidden_size
 from veyra.binding_head import ConditionedReadout
 from veyra.candidates import candidates_for
-from veyra.constants import MODEL_ID, MODEL_REVISION
+from veyra.constants import DECISION_MODEL_ID, MODEL_ID, MODEL_REVISION
 from veyra.exit_head import ExitHead, parse_early_exit, truncate_text_stack
 from veyra.image_inputs import image_content, open_images
 from veyra.probability import Calibration, typed_answer
 from veyra.reasoning_workspace import RESULT_MARKER, condition_positions, workspace_suffix
 from veyra.schema import DecisionRequest
 
+DEFAULT_BACKBONE = {"model_id": MODEL_ID, "revision": MODEL_REVISION}
+
+
+def backbone_identity(block):
+    """Validate a manifest backbone block.
+
+    The default is the pinned Qwen3.5-2B, whose learned LoRA is stored with the heads.
+    Otherwise the block must name a repository whose root holds full merged weights with
+    config, tokenizer and processor files, pinned to a 40-hex commit, and declare
+    ``"weights": "merged"``.
+    """
+    if block == DEFAULT_BACKBONE:
+        return dict(block)
+    revision = block.get("revision") if isinstance(block, dict) else None
+    if (
+        not isinstance(block, dict)
+        or set(block) != {"model_id", "revision", "weights"}
+        or block["weights"] != "merged"
+        or not isinstance(block["model_id"], str)
+        or not block["model_id"].strip()
+        or not isinstance(revision, str)
+        or len(revision) != 40
+        or any(c not in "0123456789abcdef" for c in revision)
+    ):
+        raise ValueError(
+            "checkpoint backbone revision mismatch: use the pinned Qwen3.5-2B or a merged "
+            "backbone with model_id, a 40-hex revision and weights=merged"
+        )
+    return dict(block)
+
+
 # Largest per-image budget a manifest may request (1.6 MP); the default stays 262,144.
 MAX_IMAGE_PIXELS = 1638400
+
+
+MODE_SETTINGS = {"image_max_pixels", "early_exit"}
+
+
+def parse_modes(manifest, config):
+    """Validate optional serving presets; returns ({name: settings}, default name or None).
+
+    Each mode may set ``image_max_pixels`` (within the encoder's minimum and
+    ``MAX_IMAGE_PIXELS``) and ``early_exit`` (which needs the manifest ``early_exit`` block).
+    """
+    modes, default = manifest.get("modes"), manifest.get("default_mode")
+    if modes is None:
+        if default is not None:
+            raise ValueError("default_mode requires a modes block")
+        return None, None
+    if not isinstance(modes, dict) or not modes:
+        raise ValueError("modes must be a non-empty object of named presets")
+    for name, settings in modes.items():
+        if not name.strip() or not isinstance(settings, dict) or set(settings) - MODE_SETTINGS:
+            raise ValueError(f"mode {name!r} may only set image_max_pixels and early_exit")
+        pixels = settings.get("image_max_pixels", config.image_max_pixels)
+        if type(pixels) is not int or not config.image_min_pixels <= pixels <= MAX_IMAGE_PIXELS:
+            raise ValueError(f"mode {name!r} image_max_pixels is outside the allowed budget")
+        exit_enabled = settings.get("early_exit", False)
+        if type(exit_enabled) is not bool:
+            raise ValueError(f"mode {name!r} early_exit must be a boolean")
+        if exit_enabled and "early_exit" not in manifest:
+            raise ValueError(f"mode {name!r} needs the manifest early_exit block")
+    if default is not None and default not in modes:
+        raise ValueError("default_mode must name a declared mode")
+    return modes, default
 
 
 @dataclass(frozen=True)
@@ -152,9 +215,11 @@ class OptionModel(nn.Module):
         reasoning_slots=0,
         binding_rank=0,
         binding_mode="condition",
+        backbone=None,
     ):
         super().__init__()
         self.encoder = encoder
+        self.backbone = backbone_identity(backbone or DEFAULT_BACKBONE)
         self.calibration = calibration
         self.trained = False
         if type(decision_views) is not int or not 1 <= decision_views <= 3:
@@ -175,6 +240,8 @@ class OptionModel(nn.Module):
         self.binding_mode = binding_mode
         self.exit_head = None
         self.early_exit_layer = None
+        self.serving_modes = None
+        self.serving_mode = None
         self._request_lock = threading.RLock()
         self.adaptation = {"layers": layers, "rank": rank, "alpha": alpha}
         self.adapter_names = install_adapters(encoder.model, layers, rank, alpha)
@@ -184,7 +251,9 @@ class OptionModel(nn.Module):
         ]
         if any(len(ids) != 1 for ids in token_ids):
             raise ValueError("option letters must each tokenize to one token")
-        self.readout = nn.Linear(2048, 16, bias=False, device=encoder.device, dtype=torch.float32)
+        # Head widths follow the backbone (1024 for Qwen3.5-0.8B, 2048 for Qwen3.5-2B).
+        hidden = text_hidden_size(encoder.model)
+        self.readout = nn.Linear(hidden, 16, bias=False, device=encoder.device, dtype=torch.float32)
         with torch.no_grad():
             self.readout.weight.copy_(
                 encoder.model.language_model.embed_tokens.weight[
@@ -193,12 +262,12 @@ class OptionModel(nn.Module):
             )
         if reasoning_slots:
             self.condition_readout = nn.Linear(
-                2048, 3, bias=False, device=encoder.device, dtype=torch.float32
+                hidden, 3, bias=False, device=encoder.device, dtype=torch.float32
             )
             with torch.no_grad():
                 self.condition_readout.weight.copy_(self.readout.weight[:3])
         if binding_rank:
-            self.binding_head = ConditionedReadout(binding_rank, binding_mode).to(
+            self.binding_head = ConditionedReadout(binding_rank, binding_mode, hidden).to(
                 device=encoder.device, dtype=torch.float32
             )
 
@@ -342,11 +411,14 @@ class OptionModel(nn.Module):
             raise RuntimeError("prediction requires a trained head checkpoint")
         self.eval()
         logits, tokens = self(request, image_root)
-        return {
-            "model": "veyra-qwen3.5-2b",
+        result = {
+            "model": DECISION_MODEL_ID,
             "architecture": "option_readout",
             "decision_views": self.decision_views,
-            "backbone": {"model_id": MODEL_ID, "revision": MODEL_REVISION},
+            "backbone": {
+                "model_id": self.backbone["model_id"],
+                "revision": self.backbone["revision"],
+            },
             "answers": {
                 name: typed_answer(q, logits[name], self.calibration)
                 for name, q in request.questions.items()
@@ -357,6 +429,10 @@ class OptionModel(nn.Module):
                 "input_images": len(request.state.images),
             },
         }
+        # Only checkpoints that declare serving modes report one; others keep their output.
+        if getattr(self, "serving_modes", None) is not None:
+            result["mode"] = self.serving_mode
+        return result
 
     def trainable_state(self):
         return {
@@ -389,6 +465,8 @@ class OptionModel(nn.Module):
     def save(self, directory: Path, training: dict):
         if getattr(self, "exit_head", None) is not None:
             raise ValueError("early-exit models are truncated for inference only")
+        if getattr(self, "serving_mode", None) is not None:
+            raise ValueError("models loaded in a serving mode are for inference only")
         if self.adaptation["layers"] and not self.adapter_names:
             raise ValueError("save unmerged adapters; merged models are for inference only")
         if directory.exists() and any(directory.iterdir()):
@@ -404,7 +482,7 @@ class OptionModel(nn.Module):
             "decision_views": self.decision_views,
             "reasoning_slots": self.reasoning_slots,
             "binding_head": {"rank": self.binding_rank, "mode": self.binding_mode},
-            "backbone": {"model_id": MODEL_ID, "revision": MODEL_REVISION},
+            "backbone": self.backbone,
             "encoder": self.encoder.config.to_dict(),
             "adaptation": self.adaptation,
             "calibration": self.calibration.to_dict(),
@@ -425,15 +503,37 @@ class OptionModel(nn.Module):
         local_files_only=False,
         merge=True,
         merge_accumulation=None,
-        early_exit=False,
+        early_exit=None,
+        mode=None,
     ):
-        """Load a checkpoint; ``early_exit=True`` opts into its manifest ``early_exit`` head."""
+        """Load a checkpoint, optionally in one of its manifest serving ``modes``.
+
+        ``mode=None`` selects the manifest ``default_mode`` when present. A mode sets the
+        per-image pixel budget and whether the manifest ``early_exit`` head is used.
+        ``early_exit=True`` opts into that head directly; it must agree with the mode.
+        """
         directory = Path(directory)
         manifest = json.loads((directory / "manifest.json").read_text(encoding="utf-8"))
         if manifest.get("format_version") != 2 or manifest.get("architecture") != "option_readout":
             raise ValueError("unsupported option checkpoint")
-        if manifest["backbone"] != {"model_id": MODEL_ID, "revision": MODEL_REVISION}:
-            raise ValueError("checkpoint backbone revision mismatch")
+        config = OptionConfig(**manifest["encoder"])
+        modes, default_mode = parse_modes(manifest, config)
+        if mode is not None and modes is None:
+            raise ValueError("checkpoint declares no serving modes")
+        mode = mode if mode is not None else default_mode
+        if mode is not None:
+            if mode not in modes:
+                raise ValueError(f"unknown serving mode {mode!r}; choose from {sorted(modes)}")
+            settings = modes[mode]
+            if early_exit is not None and early_exit != settings.get("early_exit", False):
+                raise ValueError(f"early_exit={early_exit} conflicts with serving mode {mode!r}")
+            early_exit = settings.get("early_exit", False)
+            if "image_max_pixels" in settings:
+                values = config.to_dict() | {"image_max_pixels": settings["image_max_pixels"]}
+                config = OptionConfig(**values)
+        backbone = backbone_identity(manifest["backbone"])
+        # Absent or empty adaptation: no LoRA, e.g. when it is merged into the backbone.
+        adaptation = manifest.get("adaptation") or {}
         if (
             not manifest["training"].get("completed")
             or manifest["training"].get("optimizer_steps", 0) < 1
@@ -442,12 +542,19 @@ class OptionModel(nn.Module):
         weights = directory / "head.safetensors"
         if hashlib.sha256(weights.read_bytes()).hexdigest() != manifest["weights_sha256"]:
             raise ValueError("checkpoint weight checksum mismatch")
+        # QwenEncoder.load also sets the processor's longest_edge from this budget.
         encoder = QwenEncoder.load(
-            OptionConfig(**manifest["encoder"]), device, cache_dir, local_files_only
+            config,
+            device,
+            cache_dir,
+            local_files_only,
+            model_id=backbone["model_id"],
+            revision=backbone["revision"],
         )
         model = cls(
             encoder,
-            **manifest["adaptation"],
+            **adaptation,
+            backbone=backbone,
             calibration=Calibration.from_dict(manifest["calibration"]),
             decision_views=manifest.get("decision_views", 1),
             reasoning_slots=manifest.get("reasoning_slots", 0),
@@ -455,9 +562,11 @@ class OptionModel(nn.Module):
             binding_mode=manifest.get("binding_head", {}).get("mode", "condition"),
         )
         tensors = load_file(weights)
-        expected = set(model.trainable_state())
-        if set(tensors) != expected:
+        expected = model.trainable_state()
+        if set(tensors) != set(expected):
             raise ValueError("checkpoint adapter/readout keys mismatch")
+        if any(tensors[name].shape != value.shape for name, value in expected.items()):
+            raise ValueError("checkpoint head widths do not match the backbone hidden size")
         model.load_state_dict(tensors, strict=False)
         accumulation = merge_accumulation or manifest.get("merge_accumulation", "base")
         if accumulation not in {"base", "float32"}:
@@ -478,5 +587,6 @@ class OptionModel(nn.Module):
             if digest is not None and hashlib.sha256(head_path.read_bytes()).hexdigest() != digest:
                 raise ValueError("early exit head checksum mismatch")
             model.enable_early_exit(layer, load_file(head_path))
+        model.serving_modes, model.serving_mode = modes, mode
         model.trained = True
         return model.eval()

@@ -31,6 +31,39 @@ def test_skill_preserves_three_typed_probabilities():
     assert set(item["type"] for item in result["decisions"].values()) == {"choice", "score", "noul"}
 
 
+@pytest.mark.parametrize("model", ["qev", "veyra-qwen3.5-2b"])
+@pytest.mark.parametrize("backbone", ["Qwen/Qwen3.5-2B", "ken-jo/QEV-0.8B"])
+def test_skill_accepts_current_and_legacy_names_with_pinned_backbones(model, backbone):
+    request, response = fixture()
+    response["model"] = model
+    response["backbone"] = {"model_id": backbone, "revision": "aB" * 20}
+    assert helper.validate_response(request, response) is response["answers"]
+
+
+@pytest.mark.parametrize(
+    "backbone",
+    [
+        {},
+        {"model_id": "", "revision": "a" * 40},
+        {"model_id": " \t", "revision": "a" * 40},
+        {"model_id": None, "revision": "a" * 40},
+        {"model_id": 8, "revision": "a" * 40},
+        {"model_id": "ken-jo/QEV-0.8B"},
+        {"model_id": "ken-jo/QEV-0.8B", "revision": None},
+        {"model_id": "ken-jo/QEV-0.8B", "revision": 40},
+        {"model_id": "ken-jo/QEV-0.8B", "revision": "a" * 39},
+        {"model_id": "ken-jo/QEV-0.8B", "revision": "a" * 41},
+        {"model_id": "ken-jo/QEV-0.8B", "revision": "g" * 40},
+        {"model_id": "ken-jo/QEV-0.8B", "revision": "a" * 40 + "\n"},
+    ],
+)
+def test_skill_rejects_invalid_backbone_metadata(backbone):
+    request, response = fixture()
+    response["backbone"] = backbone
+    with pytest.raises(ValueError, match="backbone identity"):
+        helper.validate_response(request, response)
+
+
 def test_skill_cannot_relax_model_abstention():
     request, response = fixture()
     response["answers"]["choice"]["abstained"] = True
@@ -53,6 +86,7 @@ def test_skill_can_add_explicit_review_policy():
     "mutation",
     [
         lambda r: r.update(model="other-model"),
+        lambda r: r.update(model=[]),
         lambda r: r.update(backbone=[]),
         lambda r: r["answers"].pop("choice"),
         lambda r: r["answers"]["choice"].update(choice=[]),
