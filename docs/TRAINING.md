@@ -42,8 +42,8 @@ The trained release is usable independently of those intermediate research artif
 
 ## Mix-training and early-exit recipes
 
-Two research recipes continue from a released option checkpoint. They need a CUDA GPU,
-are not run in CI and have no published results yet.
+Two research recipes continue from a released option checkpoint. They need a CUDA GPU and
+are not run in CI. QEV-2B and QEV-0.8B (October 2026) were trained with them; see the section below.
 
 `scripts/train_option_mix.py` merges the released LoRA, installs fresh rank-8 LoRA on every
 text layer and trains it together with the readout, condition readout and binding heads.
@@ -64,6 +64,31 @@ a `--delta`). It distills one `ExitHead` per layer with KL to the teacher plus
 `--gold-weight` gold cross-entropy and writes `exit<L>.safetensors` with a ready
 `early_exit` manifest block in `summary.json`. Mix-training deltas are a research format;
 packaging them with an exit head as a released checkpoint is a separate, verified step.
+
+## October 2026 release: QEV-2B and QEV-0.8B
+
+Both models were trained with the mix recipe above on the [October 2026 vision mix](https://huggingface.co/datasets/ken-jo/qev-data/tree/main/vision-mix-2026-10).
+
+- **Data:** 51,138 coverage-mix items from 18 sources, 2,048 NLVR2 train items and 4,658
+  internal replay items (about 56k items in total). 1,859 coverage items, 256 NLVR2 dev items
+  and internal diagnostics were held out for selection.
+- **Teacher:** QEV 0.2.1 ([ken-jo/qev](https://huggingface.co/ken-jo/qev), revision 0d2d13f)
+  provides option probabilities for NLVR2 and replay. A teacher target is kept only where the
+  teacher's top option matches the gold answer; otherwise only the gold label is trained on.
+  Coverage-mix items are trained on gold labels with label smoothing 0.05.
+- **QEV-2B:** continued from QEV 0.2.1 with its LoRA merged into Qwen3.5-2B, then trained with a
+  fresh LoRA (rank 8, alpha 16) on all text layers plus the heads.
+- **QEV-0.8B:** the same recipe on Qwen3.5-0.8B, distilled from the same teacher.
+- **Schedule:** cosine schedule; the released checkpoints are at optimizer step 3,616 (the end of
+  the schedule). Resolution-elastic batches use 0.26, 1.05 and 1.64 MP per image. Options are
+  permuted on every visit, except for Mind2Web, Mind2Web-keyed and options-in-image.
+- **Fast mode:** an exit head at layer 16, distilled from full depth with KL plus 0.3 gold CE
+  (`train_exit_head.py`).
+- **Selection:** on the held-out DEV data only. Public benchmarks were never used for selection.
+
+The models were trained with a maintainer script that follows this recipe and also reads the
+private replay workspace. Without replay, the public script and the published mix reproduce the
+recipe, but not the exact weights.
 
 ## Avoid contamination
 

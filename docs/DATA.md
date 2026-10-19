@@ -1,6 +1,6 @@
 # Public dataset
 
-`qev-data` packages 15 historical corpus configurations, not 15 disjoint datasets.
+`qev-data` holds the October 2026 vision mix (below) and 15 historical corpus configurations, not 15 disjoint datasets.
 Each archive contains original eligible JSONL records, referenced image bytes and a
 publication manifest. Viewer JSONL exposes the same requests and targets as JSON strings
 to avoid incompatible nested candidate schemas. Original train/dev/calibration/test values
@@ -10,7 +10,32 @@ Public corpus files use `qev-<stage>.zip`. Their extracted stage
 folders and original record/source IDs preserve the recorded training provenance.
 For example, `qev-starter-v2.zip` extracts to `starter-v2/`.
 
-## Attribution and licenses
+## October 2026 vision mix (QEV-2B, QEV-0.8B)
+
+[QEV-2B](https://huggingface.co/ken-jo/QEV-2B) and [QEV-0.8B](https://huggingface.co/ken-jo/QEV-0.8B)
+were trained on a separate vision mix, published under [`vision-mix-2026-10/`](https://huggingface.co/datasets/ken-jo/qev-data/tree/main/vision-mix-2026-10) in `qev-data`.
+It has three parts.
+
+| Part | Items | What is published |
+| --- | ---: | --- |
+| Coverage mix, 17 third-party train splits | 46,997 | Item id, gold letter, option-string SHA-256, image SHA-256 and dHash, holdout flag |
+| Coverage mix, synthetic set | 6,000 | Full items and images (Apache-2.0) |
+| NLVR2 subset of the official train split | 2,048 train, 256 dev, 512 test | NLVR2 ids, labels, image SHA-256 and QEV 0.2.1 teacher probabilities |
+
+Sources: ScienceQA, A-OKVQA, ChartQA, CORD v2, FUNSD, Hateful Memes, Multimodal-Mind2Web and eight
+subsets of HuggingFaceM4/the_cauldron (AI2D, DocVQA, IconQA, InfographicVQA, Screen2Words, TallyQA,
+Visual7W, VSR). Their licenses differ, and some (FUNSD: non-commercial; Hateful Memes: research only)
+do not allow redistribution. For that reason no third-party image, question or option text is
+published, and every third-party source is treated the same way. Instead, the folder includes the
+download and build scripts. Every random choice in them is seeded, so a rebuild from the recorded
+upstream revisions gives the same items. You can check a rebuild against the hashes.
+The [folder README](https://huggingface.co/datasets/ken-jo/qev-data/blob/main/vision-mix-2026-10/README.md) lists each source, its revision and
+its stated license.
+
+1,859 coverage items (5% per source, at most 120) were held out for checkpoint selection and never
+trained on. The 4,658 internal replay items used in training are not published.
+
+## Historical corpora: attribution and licenses
 
 | Source | License | Conversion |
 | --- | --- | --- |
