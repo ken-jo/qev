@@ -245,8 +245,9 @@ it does not change the model or establish Jev-equivalent performance.
 ## Data, evidence and attribution
 
 - [Training and reproduction](https://github.com/ken-jo/qev/blob/main/docs/TRAINING.md): staged training, provenance and limits.
-- [Dataset publication](https://github.com/ken-jo/qev/blob/main/docs/DATA.md): 15 historical corpus configurations, original splits,
-  image hashes and source-specific licenses. Configurations overlap; do not concatenate them.
+- [Dataset publication](https://github.com/ken-jo/qev/blob/main/docs/DATA.md): the October 2026 vision mix for QEV-2B and QEV-0.8B, and
+  15 historical corpus configurations with original splits, image hashes and source-specific licenses.
+  Historical configurations overlap; do not concatenate them.
 - [Research evidence](https://github.com/ken-jo/qev/blob/main/reports/README.md): successful and failed experiments.
 - [Release history](https://github.com/ken-jo/qev/blob/main/CHANGELOG.md) and [future research](https://github.com/ken-jo/qev/blob/main/ROADMAP.md).
 
