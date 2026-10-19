@@ -30,6 +30,35 @@ Replay and refresh audits check every image for overlap with excluded observatio
 Multi-image runtime correctness, accuracy, calibration and latency need independent
 validation; historical single-image results do not qualify this extension.
 
+## Serving options in the unreleased source
+
+These options are off or unchanged by default; the released manifest produces the same
+decoded pixels and outputs as before.
+
+- **Resolution.** An option checkpoint manifest may set `encoder.image_max_pixels` up to
+  1,638,400 (1.6 MP). The default per-image budget remains 262,144 pixels, and a larger
+  budget also spends more of the shared request token budget.
+- **JPEG draft decode (opt-in).** With `"fast_jpeg_decode": true` in the manifest
+  `encoder` block (`OptionConfig` or, for the packed path, `EncoderConfig`; default
+  `false`), a JPEG with more than twice the processor's per-image budget is decoded by
+  libjpeg at a 1/2, 1/4 or 1/8 DCT scale chosen so that the decoded image still
+  covers the budget. The processor resize then sets the final image grid as before. The
+  40 megapixel limit is checked on the original size first, other formats are unaffected,
+  and audit fingerprints still hash the full-resolution decode. Decoded pixels are close
+  to, but not bit-identical with, a full decode followed by the processor resize.
+- **Early exit.** A manifest may declare
+  `"early_exit": {"layer": 16, "head": "exit16.safetensors", "sha256": "..."}`
+  (`sha256` optional). `OptionModel.load(..., early_exit=True)` keeps only the first
+  `layer` text layers, removes the final text norm and replaces the readout, condition
+  readout and binding head with an `ExitHead`: LayerNorm(2*hidden), Linear(2*hidden, 1024),
+  GELU and Linear(1024, 16) over the raw residual at the answer position concatenated with
+  the `VeyraResult:` condition position. `hidden` comes from the backbone configuration.
+  Early exit requires internal condition slots, is inference-only (the truncated model
+  cannot be saved) and reuses the checkpoint calibration, which was fitted on full-depth
+  logits. Exit heads are produced by `scripts/train_exit_head.py`; see
+  [training](TRAINING.md#mix-training-and-early-exit-recipes). Accuracy and latency of
+  these options require separate measurement.
+
 The public source history starts with curated release commits. Original author copyright,
 source hashes, experiment identifiers and negative results remain attributable. Prior
 development history and personal Korean notes are archived privately.

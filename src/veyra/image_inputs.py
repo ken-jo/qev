@@ -27,9 +27,26 @@ def image_paths(images, image_root: Path | None = None) -> list[Path]:
     return paths
 
 
+def draft_jpeg(source: Image.Image, max_pixels: int | None) -> None:
+    """Let libjpeg decode a large JPEG at a reduced 1/2, 1/4 or 1/8 DCT scale.
+
+    PIL only picks scales whose result still covers the requested size, so the decoded image
+    keeps at least ``max_pixels`` pixels and the processor's own resize still sets the final
+    size. Other formats, small JPEGs and ``max_pixels=None`` decode at full resolution.
+    """
+    width, height = source.size
+    if max_pixels is None or source.format != "JPEG" or width * height <= 2 * max_pixels:
+        return
+    ratio = (max_pixels / (width * height)) ** 0.5
+    source.draft("RGB", (max(1, int(width * ratio)), max(1, int(height * ratio))))
+
+
 @contextmanager
-def open_images(images, image_root: Path | None = None):
-    """Release every decoded image, including when a later image or processor fails."""
+def open_images(images, image_root: Path | None = None, *, max_pixels: int | None = None):
+    """Release every decoded image, including when a later image or processor fails.
+
+    ``max_pixels`` is the processor's per-image budget; it only enables the JPEG draft decode.
+    """
     paths = image_paths(images, image_root)
     with ExitStack() as stack:
         decoded = []
@@ -37,6 +54,8 @@ def open_images(images, image_root: Path | None = None):
             with Image.open(path) as source:
                 if source.width * source.height > 40_000_000:
                     raise ValueError("source image exceeds the 40 megapixel decode limit")
+                # Draft must precede EXIF transposition, which loads the pixels.
+                draft_jpeg(source, max_pixels)
                 oriented = ImageOps.exif_transpose(source)
                 try:
                     image = oriented.convert("RGB")

@@ -127,3 +127,182 @@ def test_view_consensus_maps_each_internal_order_back_to_candidate_meanings():
     logits, tokens = model(None)
     assert torch.equal(logits["q"], torch.tensor([3.5, 1.5]))
     assert tokens == 200
+
+
+def fake_exit_backbone(config, layers=4, hidden=2048):
+    from types import SimpleNamespace
+
+    from veyra.backbone import QwenEncoder
+
+    base = nn.Module()
+    base.language_model = nn.Module()
+    base.language_model.layers = nn.ModuleList([nn.Linear(1, 1) for _ in range(layers)])
+    base.language_model.norm = nn.LayerNorm(hidden)
+    base.language_model.embed_tokens = nn.Embedding(16, 2048)
+    base.language_model.config = SimpleNamespace(
+        hidden_size=hidden,
+        num_hidden_layers=layers,
+        layer_types=["linear_attention", "linear_attention", "linear_attention", "full_attention"],
+    )
+    processor = SimpleNamespace(
+        tokenizer=SimpleNamespace(encode=lambda value, **kwargs: [ord(value) - 65])
+    )
+    return QwenEncoder(base, processor, config)
+
+
+def test_exit_head_width_follows_the_backbone_hidden_size():
+    from veyra.exit_head import ExitHead
+
+    for hidden in (1024, 2048):
+        head = ExitHead(hidden)
+        assert head.n.normalized_shape == (2 * hidden,)
+        logits = head(torch.randn(3, hidden), torch.randn(3, hidden))
+        assert logits.shape == (3, 16)
+
+
+def test_early_exit_manifest_block_is_validated():
+    import pytest
+
+    from veyra.exit_head import parse_early_exit
+
+    assert parse_early_exit({"layer": 16, "head": "exit16.safetensors"}, 24) == (
+        16,
+        "exit16.safetensors",
+        None,
+    )
+    for block in (
+        {"layer": 0, "head": "exit.safetensors"},
+        {"layer": 25, "head": "exit.safetensors"},
+        {"layer": True, "head": "exit.safetensors"},
+        {"layer": 16, "head": "../exit.safetensors"},
+        {"layer": 16, "head": "exit16.pt"},
+        {"layer": 16},
+        {"layer": 16, "head": "exit.safetensors", "extra": 1},
+    ):
+        with pytest.raises(ValueError, match="early_exit"):
+            parse_early_exit(block, 24)
+
+
+def test_early_exit_is_opt_in_and_truncates_the_text_stack(tmp_path, monkeypatch):
+    import hashlib
+    import json
+
+    import pytest
+    from safetensors.torch import save_file
+
+    from veyra.backbone import QwenEncoder
+    from veyra.exit_head import ExitHead
+
+    monkeypatch.setattr(QwenEncoder, "load", lambda config, *_a, **_k: fake_exit_backbone(config))
+    model = OptionModel(fake_exit_backbone(OptionConfig()), reasoning_slots=4)
+    model.save(tmp_path, {"completed": True, "optimizer_steps": 3})
+    with pytest.raises(ValueError, match="no early_exit"):
+        OptionModel.load(tmp_path, device="cpu", early_exit=True)
+
+    torch.manual_seed(3)
+    head = ExitHead(2048)
+    save_file(head.state_dict(), tmp_path / "exit2.safetensors")
+    manifest_path = tmp_path / "manifest.json"
+    manifest = json.loads(manifest_path.read_text())
+    manifest["early_exit"] = {"layer": 2, "head": "exit2.safetensors"}
+    manifest_path.write_text(json.dumps(manifest))
+
+    default = OptionModel.load(tmp_path, device="cpu")
+    assert default.exit_head is None
+    assert default.encoder.config.fast_jpeg_decode is False
+    assert "fast_jpeg_decode" not in manifest["encoder"]
+    assert len(default.encoder.model.language_model.layers) == 4
+    assert isinstance(default.encoder.model.language_model.norm, nn.LayerNorm)
+
+    exiting = OptionModel.load(tmp_path, device="cpu", early_exit=True)
+    language_model = exiting.encoder.model.language_model
+    assert exiting.early_exit_layer == 2
+    assert len(language_model.layers) == 2
+    assert language_model.config.num_hidden_layers == 2
+    assert language_model.config.layer_types == ["linear_attention", "linear_attention"]
+    assert isinstance(language_model.norm, nn.Identity)
+    for name, value in head.state_dict().items():
+        assert torch.equal(exiting.exit_head.state_dict()[name], value)
+    with pytest.raises(ValueError, match="inference only"):
+        exiting.save(tmp_path / "copy", {"completed": True, "optimizer_steps": 1})
+
+    manifest["early_exit"]["sha256"] = "0" * 64
+    manifest_path.write_text(json.dumps(manifest))
+    with pytest.raises(ValueError, match="checksum"):
+        OptionModel.load(tmp_path, device="cpu", early_exit=True)
+    digest = hashlib.sha256((tmp_path / "exit2.safetensors").read_bytes()).hexdigest()
+    manifest["early_exit"]["sha256"] = digest
+    manifest_path.write_text(json.dumps(manifest))
+    assert OptionModel.load(tmp_path, device="cpu", early_exit=True).early_exit_layer == 2
+
+    save_file(ExitHead(1024).state_dict(), tmp_path / "exit2.safetensors")
+    del manifest["early_exit"]["sha256"]
+    manifest_path.write_text(json.dumps(manifest))
+    with pytest.raises(ValueError, match="hidden size"):
+        OptionModel.load(tmp_path, device="cpu", early_exit=True)
+
+
+def test_early_exit_requires_the_condition_position():
+    import pytest
+
+    from veyra.exit_head import ExitHead
+
+    model = OptionModel(fake_exit_backbone(OptionConfig()))
+    with pytest.raises(ValueError, match="condition position"):
+        model.enable_early_exit(2, ExitHead(2048).state_dict())
+
+
+def test_early_exit_forward_reads_answer_and_condition_states():
+    import threading
+
+    from veyra.exit_head import ExitHead
+
+    torch.manual_seed(5)
+    model = OptionModel.__new__(OptionModel)
+    nn.Module.__init__(model)
+    model._request_lock = threading.RLock()
+    model.exit_head = ExitHead(8)
+    model.readout = None  # the full-depth readout must not be used
+    states, conditions = torch.randn(2, 8), torch.randn(2, 8)
+    model.encode = lambda *_args, capture_condition=False: (
+        (
+            states,
+            {"a": [2, 0], "b": [1, 3]},
+            90,
+        )
+        + ((conditions,) if capture_condition else ())
+    )
+    logits, tokens = model(None)
+    expected = model.exit_head(states, conditions)
+    assert torch.equal(logits["a"], expected[0, [2, 0]])
+    assert torch.equal(logits["b"], expected[1, [1, 3]])
+    assert tokens == 90
+
+
+def test_truncated_qwen_stack_reproduces_the_distilled_layer_output():
+    from transformers import Qwen3_5TextConfig, Qwen3_5TextModel
+
+    from veyra.exit_head import truncate_text_stack
+
+    config = Qwen3_5TextConfig(
+        vocab_size=64,
+        hidden_size=32,
+        intermediate_size=64,
+        num_hidden_layers=4,
+        num_attention_heads=2,
+        num_key_value_heads=1,
+        head_dim=16,
+        linear_num_key_heads=2,
+        linear_num_value_heads=2,
+        linear_key_head_dim=8,
+        linear_value_head_dim=8,
+    )
+    torch.manual_seed(0)
+    model = Qwen3_5TextModel(config).eval()
+    ids = torch.randint(0, 64, (2, 7))
+    with torch.no_grad():
+        full = model(input_ids=ids, output_hidden_states=True, use_cache=False).hidden_states
+        truncate_text_stack(model, 2)
+        short = model(input_ids=ids, use_cache=False).last_hidden_state
+    # hidden_states[0] is the embedding output, so index L is the raw residual after L layers.
+    assert torch.allclose(full[2], short, atol=1e-6)
