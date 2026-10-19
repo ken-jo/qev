@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- `qev_decision_index:QEVEngine`: Decision Index vision engine for the released QEV-0.8B and
+  QEV-2B checkpoints (one forward pass, native resolution up to 1.6 MP per image, at most 4
+  images and 8,192 input tokens; longer requests are reported as unsupported). Needs
+  `decision-index[vision]` installed.
 - Source predictions and `/v1/models` use the decision-model name `qev`, with backbone
   provenance reported separately. The QEV skill also accepts the legacy SDK 0.2.1 response
   name and validates pinned merged-backbone metadata.

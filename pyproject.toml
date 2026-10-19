@@ -50,7 +50,7 @@ Dataset = "https://huggingface.co/datasets/ken-jo/qev-data"
 dev = ["pytest==9.1.1", "httpx>=0.28,<1", "ruff>=0.15,<1"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/veyra", "src/qev"]
+packages = ["src/veyra", "src/qev", "src/qev_decision_index"]
 
 [tool.hatch.build.targets.sdist]
 include = [
