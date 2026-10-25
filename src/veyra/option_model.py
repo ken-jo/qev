@@ -18,6 +18,7 @@ from veyra.backbone import QwenEncoder, text_hidden_size
 from veyra.binding_head import ConditionedReadout
 from veyra.candidates import candidates_for
 from veyra.constants import DECISION_MODEL_ID, MODEL_ID, MODEL_REVISION
+from veyra.cuda_graph import enable_short_input_graphs
 from veyra.exit_head import ExitHead, parse_early_exit, truncate_text_stack
 from veyra.image_inputs import image_content, open_images
 from veyra.probability import Calibration, typed_answer
@@ -505,12 +506,15 @@ class OptionModel(nn.Module):
         merge_accumulation=None,
         early_exit=None,
         mode=None,
+        cuda_graph=False,
     ):
         """Load a checkpoint, optionally in one of its manifest serving ``modes``.
 
         ``mode=None`` selects the manifest ``default_mode`` when present. A mode sets the
         per-image pixel budget and whether the manifest ``early_exit`` head is used.
         ``early_exit=True`` opts into that head directly; it must agree with the mode.
+        ``cuda_graph=True`` replays captured CUDA graphs for short single requests (up to
+        768 tokens); probabilities can differ from eager by bfloat16 rounding.
         """
         directory = Path(directory)
         manifest = json.loads((directory / "manifest.json").read_text(encoding="utf-8"))
@@ -587,6 +591,9 @@ class OptionModel(nn.Module):
             if digest is not None and hashlib.sha256(head_path.read_bytes()).hexdigest() != digest:
                 raise ValueError("early exit head checksum mismatch")
             model.enable_early_exit(layer, load_file(head_path))
+        if cuda_graph:
+            # After early exit, so the graphs capture the truncated stack.
+            enable_short_input_graphs(encoder.model.language_model)
         model.serving_modes, model.serving_mode = modes, mode
         model.trained = True
         return model.eval()
