@@ -23,6 +23,10 @@
 - Optional early exit: a manifest `early_exit` block and `OptionModel.load(...,
   early_exit=True)` serve a truncated text stack with a distilled `ExitHead`. Off by
   default; manifests without the field load exactly as before.
+- Optional CUDA graphs: `OptionModel.load(..., cuda_graph=True)` replays captured graphs of the
+  text stack for single requests up to 768 tokens (right-padded to a length bucket); longer
+  requests run eagerly. Off by default. Short text requests ran 1.6-2.4x faster on an RTX 4060 Ti;
+  probabilities can differ from eager by bfloat16 rounding.
 - Option head widths follow the backbone's text `hidden_size`, so hidden-1024
   (Qwen3.5-0.8B) and hidden-2048 backbones load; the released 2B head layout is unchanged.
 - Option manifests may name a pinned repository of merged full weights
