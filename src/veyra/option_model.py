@@ -16,6 +16,7 @@ from torch.nn import functional as F
 
 from veyra.backbone import QwenEncoder, text_hidden_size
 from veyra.binding_head import ConditionedReadout
+from veyra.bundled_backbone import bundled_identity, load_bundle
 from veyra.candidates import candidates_for
 from veyra.constants import DECISION_MODEL_ID, MODEL_ID, MODEL_REVISION
 from veyra.cuda_graph import enable_short_input_graphs
@@ -32,10 +33,13 @@ def backbone_identity(block):
     """Validate a manifest backbone block.
 
     The default is the pinned Qwen3.5-2B, whose learned LoRA is stored with the heads.
+    A bundled format-3 block declares a local file inventory and source provenance.
     Otherwise the block must name a repository whose root holds full merged weights with
     config, tokenizer and processor files, pinned to a 40-hex commit, and declare
     ``"weights": "merged"``.
     """
+    if isinstance(block, dict) and block.get("bundled") is True:
+        return bundled_identity(block)
     if block == DEFAULT_BACKBONE:
         return dict(block)
     revision = block.get("revision") if isinstance(block, dict) else None
@@ -464,6 +468,10 @@ class OptionModel(nn.Module):
         self.early_exit_layer = layer
 
     def save(self, directory: Path, training: dict):
+        if self.backbone.get("bundled"):
+            raise ValueError(
+                "bundled checkpoints are for inference only; package the backbone explicitly"
+            )
         if getattr(self, "exit_head", None) is not None:
             raise ValueError("early-exit models are truncated for inference only")
         if getattr(self, "serving_mode", None) is not None:
@@ -510,6 +518,9 @@ class OptionModel(nn.Module):
     ):
         """Load a checkpoint, optionally in one of its manifest serving ``modes``.
 
+        Format 3 bundles a dense backbone under ``backbone/``; its complete SHA-256
+        inventory is verified before offline loading. It supports only ``accurate``.
+
         ``mode=None`` selects the manifest ``default_mode`` when present. A mode sets the
         per-image pixel budget and whether the manifest ``early_exit`` head is used.
         ``early_exit=True`` opts into that head directly; it must agree with the mode.
@@ -518,8 +529,25 @@ class OptionModel(nn.Module):
         """
         directory = Path(directory)
         manifest = json.loads((directory / "manifest.json").read_text(encoding="utf-8"))
-        if manifest.get("format_version") != 2 or manifest.get("architecture") != "option_readout":
+        version = manifest.get("format_version")
+        bundled = (
+            isinstance(manifest.get("backbone"), dict)
+            and manifest["backbone"].get("bundled") is True
+        )
+        if (version not in (2, 3) or manifest.get("architecture") != "option_readout"
+                or (version == 3) != bundled):
             raise ValueError("unsupported option checkpoint")
+        if bundled and (
+            manifest.get("adaptation") or manifest.get("early_exit")
+            or set(manifest.get("modes", {})) != {"accurate"}
+            or manifest.get("default_mode") != "accurate"
+            or manifest["modes"]["accurate"].get("early_exit", False)
+        ):
+            raise ValueError(
+                "bundled checkpoints support only accurate mode and no adapters or early exit"
+            )
+        if bundled and manifest.get("head_key_prefix", "") not in ("", "head."):
+            raise ValueError("unsupported bundled head key prefix")
         config = OptionConfig(**manifest["encoder"])
         modes, default_mode = parse_modes(manifest, config)
         if mode is not None and modes is None:
@@ -547,14 +575,17 @@ class OptionModel(nn.Module):
         if hashlib.sha256(weights.read_bytes()).hexdigest() != manifest["weights_sha256"]:
             raise ValueError("checkpoint weight checksum mismatch")
         # QwenEncoder.load also sets the processor's longest_edge from this budget.
-        encoder = QwenEncoder.load(
-            config,
-            device,
-            cache_dir,
-            local_files_only,
-            model_id=backbone["model_id"],
-            revision=backbone["revision"],
-        )
+        if bundled:
+            encoder = load_bundle(directory, backbone, config, device)
+        else:
+            encoder = QwenEncoder.load(
+                config,
+                device,
+                cache_dir,
+                local_files_only,
+                model_id=backbone["model_id"],
+                revision=backbone["revision"],
+            )
         model = cls(
             encoder,
             **adaptation,
@@ -566,6 +597,11 @@ class OptionModel(nn.Module):
             binding_mode=manifest.get("binding_head", {}).get("mode", "condition"),
         )
         tensors = load_file(weights)
+        if bundled and manifest.get("head_key_prefix"):
+            prefix = manifest["head_key_prefix"]
+            if not all(name.startswith(prefix) for name in tensors):
+                raise ValueError("bundled head key prefix mismatch")
+            tensors = {name.removeprefix(prefix): value for name, value in tensors.items()}
         expected = model.trainable_state()
         if set(tensors) != set(expected):
             raise ValueError("checkpoint adapter/readout keys mismatch")
