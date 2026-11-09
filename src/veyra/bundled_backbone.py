@@ -8,15 +8,14 @@ import re
 import struct
 from pathlib import Path, PurePosixPath
 
-
-def _multimodal_fields(values):
-    # All multimodal IDs used by the pinned Qwen3.5 model, plus any additional
-    # top-level token IDs a later config declares. Text generation IDs are separate.
-    return {"image_token_id", "video_token_id", "vision_start_token_id", "vision_end_token_id"} | {
-        key
-        for key in values
-        if key.endswith("_token_id") and key not in {"bos_token_id", "eos_token_id", "pad_token_id"}
-    }
+# The pinned Qwen3.5 model and processor use these IDs for multimodal placeholders
+# and boundaries. Other token metadata, such as sep_token_id, is textual.
+_MULTIMODAL_FIELDS = (
+    "image_token_id",
+    "video_token_id",
+    "vision_start_token_id",
+    "vision_end_token_id",
+)
 
 
 def _relative_file_name(name):
@@ -53,9 +52,12 @@ def _verify_config_references(root, files):
     def walk(value):
         if isinstance(value, dict):
             for key, item in value.items():
-                # name_or_path alone is inert save_pretrained provenance. Component
-                # *_name_or_path references, such as audio tokenizers, are not inert.
-                if key != "name_or_path" and (
+                # These exact keys are inert save_pretrained provenance, including
+                # in nested model configs. Do not inspect their metadata values.
+                # Component *_name_or_path references still require verified files.
+                if key in {"name_or_path", "_name_or_path"}:
+                    continue
+                if (
                     key
                     in {
                         "file",
@@ -126,7 +128,7 @@ def _verify_weight_state(root, files, expected):
 def _verify_multimodal_tokens(model_config, processor, vocabulary):
     values = model_config if isinstance(model_config, dict) else model_config.to_dict()
     tokenizer = processor.tokenizer
-    for field in sorted(_multimodal_fields(values)):
+    for field in _MULTIMODAL_FIELDS:
         value = values.get(field)
         token = getattr(processor, field.removesuffix("_id"), None)
         processor_id = getattr(processor, field, None)
@@ -211,7 +213,7 @@ def verify_bundle(directory, block):
         or text.get("vocab_size") != block["vocabulary"]
     ):
         raise ValueError("bundled depth/vocabulary does not match Qwen3.5 config")
-    for field in _multimodal_fields(config):
+    for field in _MULTIMODAL_FIELDS:
         value = config.get(field)
         if type(value) is not int or not 0 <= value < block["vocabulary"]:
             raise ValueError(f"bundled multimodal token mismatch: {field}")

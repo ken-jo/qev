@@ -140,6 +140,64 @@ def test_real_bundled_roundtrip_is_offline_and_predicts(bundled, monkeypatch):
         restored.save(path / "resave", {})
 
 
+def test_transformers_full_config_serialization_loads(bundled):
+    from transformers import Qwen3_5Config
+
+    path, manifest, original = bundled
+    config = path / "backbone/config.json"
+    values = json.loads(config.read_text())
+    serialized = Qwen3_5Config.from_dict(values).to_json_string(use_diff=False)
+    full = json.loads(serialized)
+    for scope in (full, full["text_config"], full["vision_config"]):
+        assert scope["_name_or_path"] == ""
+    config.write_text(serialized)
+    rehash(path, manifest, "config.json")
+    restored = OptionModel.load(path, device="cpu")
+    for name, value in original.state_dict().items():
+        torch.testing.assert_close(value, restored.state_dict()[name], rtol=0, atol=0)
+
+
+@pytest.mark.parametrize("scope", [None, "text_config", "vision_config"])
+@pytest.mark.parametrize("provenance", ["example/Qwen3.5-tiny", "", {"file": "../unused"}])
+def test_model_config_provenance_is_inert(bundled, scope, provenance):
+    path, manifest, _ = bundled
+    config = path / "backbone/config.json"
+    values = json.loads(config.read_text())
+    target = values if scope is None else values[scope]
+    target["_name_or_path"] = provenance
+    config.write_text(json.dumps(values))
+    rehash(path, manifest, "config.json")
+    assert OptionModel.load(path, device="cpu").serving_mode == "accurate"
+
+
+def test_textual_sep_token_metadata_preserves_probabilities(bundled):
+    path, manifest, _ = bundled
+    baseline = OptionModel.load(path, device="cpu")
+    config = path / "backbone/config.json"
+    values = json.loads(config.read_text())
+    values["sep_token_id"] = 259
+    config.write_text(json.dumps(values))
+    rehash(path, manifest, "config.json")
+    restored = OptionModel.load(path, device="cpu")
+    assert restored.encoder.model.config.sep_token_id == 259
+    request = DecisionRequest.model_validate(
+        {
+            "state": {"text": "Test evidence"},
+            "questions": {
+                "q": {
+                    "type": "choice",
+                    "instructions": "Which?",
+                    "criteria": {"a": "alpha", "b": "beta"},
+                }
+            },
+        }
+    )
+    with torch.inference_mode():
+        expected = baseline.predict(request)["answers"]["q"]["probabilities"]
+        actual = restored.predict(request)["answers"]["q"]["probabilities"]
+    assert actual == expected
+
+
 @pytest.mark.parametrize(
     "fault",
     [
@@ -270,6 +328,25 @@ def test_malformed_fast_tokenizer_reference_is_rejected(bundled, monkeypatch, re
     monkeypatch.setattr(
         "transformers.AutoProcessor.from_pretrained",
         lambda *_a, **_k: pytest.fail("processor opened a malformed reference"),
+    )
+    with pytest.raises(ValueError, match="bundled file reference"):
+        OptionModel.load(path, device="cpu")
+
+
+@pytest.mark.parametrize("scope", [None, "text_config", "vision_config"])
+@pytest.mark.parametrize("reference", ["../audio-tokenizer.json", "", "unlisted.json"])
+def test_component_name_or_path_is_validated(bundled, monkeypatch, scope, reference):
+    path, manifest, _ = bundled
+    config = path / "backbone/config.json"
+    values = json.loads(config.read_text())
+    target = values if scope is None else values[scope]
+    target["_name_or_path"] = "example/Qwen3.5-tiny"
+    target["audio_tokenizer_name_or_path"] = reference
+    config.write_text(json.dumps(values))
+    rehash(path, manifest, "config.json")
+    monkeypatch.setattr(
+        "transformers.AutoProcessor.from_pretrained",
+        lambda *_a, **_k: pytest.fail("processor opened an unverified component reference"),
     )
     with pytest.raises(ValueError, match="bundled file reference"):
         OptionModel.load(path, device="cpu")
