@@ -39,6 +39,15 @@ file in `backbone/`, including chat templates and vocabulary maps when present,
 must be listed. Sharded safetensors use a hashed `model.safetensors.index.json`
 whose shard set matches the inventory. Missing files, unlisted files, changed
 hashes, incompatible depth/vocabulary and incomplete weights are errors.
+Tokenizer/processor configuration file references, including versioned
+`fast_tokenizer_files`, must be normalized relative names in that verified
+inventory. Absolute paths, traversal and unlisted targets are rejected before
+the processor loads; file symlinks continue to be checked by their target bytes.
+All raw safetensors headers must contain exactly the dense model's tensor names
+and shapes, including across shards. Duplicate keys, incorrect index mappings
+and extra tensors that Transformers would normally ignore are errors.
+The model's multimodal token IDs must match the loaded tokenizer and processor
+and fit within its embedding vocabulary.
 The manifest is the trust root; hashes detect corruption relative to it.
 
 `model_id` and `revision` identify the source, not a download target. Loading uses

@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+import struct
 
 import pytest
 import torch
@@ -18,6 +19,11 @@ def sha(path):
 
 def write_manifest(path, manifest):
     (path / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
+
+
+def rehash(path, manifest, name):
+    manifest["backbone"]["files"][name] = sha(path / "backbone" / name)
+    write_manifest(path, manifest)
 
 
 @pytest.fixture
@@ -220,6 +226,207 @@ def test_hashed_but_incomplete_weights_are_rejected(bundled):
     write_manifest(path, manifest)
     with pytest.raises(ValueError, match="weight keys or shapes mismatch"):
         OptionModel.load(path, device="cpu")
+
+
+@pytest.mark.parametrize(
+    "reference",
+    [
+        "../tokenizer.5.0.0.json",
+        "/tmp/tokenizer.5.0.0.json",
+        "tokenizer.5.0.0.json",
+        "./tokenizer.json",
+        r"..\tokenizer.json",
+    ],
+)
+@pytest.mark.parametrize("filename", ["tokenizer_config.json", "processor_config.json"])
+def test_config_file_indirections_are_rejected_before_processor(
+    bundled, monkeypatch, filename, reference
+):
+    path, manifest, _ = bundled
+    config = path / "backbone" / filename
+    values = json.loads(config.read_text())
+    if filename == "tokenizer_config.json":
+        values["fast_tokenizer_files"] = [reference]
+    else:
+        values["image_processor"]["vocab_file"] = reference
+    config.write_text(json.dumps(values))
+    rehash(path, manifest, filename)
+    monkeypatch.setattr(
+        "transformers.AutoProcessor.from_pretrained",
+        lambda *_a, **_k: pytest.fail("processor opened an unverified reference"),
+    )
+    with pytest.raises(ValueError, match="bundled file reference"):
+        OptionModel.load(path, device="cpu")
+
+
+@pytest.mark.parametrize("reference", [{"../tokenizer.5.0.0.json": "tokenizer.json"}, None, [42]])
+def test_malformed_fast_tokenizer_reference_is_rejected(bundled, monkeypatch, reference):
+    path, manifest, _ = bundled
+    config = path / "backbone/tokenizer_config.json"
+    values = json.loads(config.read_text())
+    values["fast_tokenizer_files"] = reference
+    config.write_text(json.dumps(values))
+    rehash(path, manifest, "tokenizer_config.json")
+    monkeypatch.setattr(
+        "transformers.AutoProcessor.from_pretrained",
+        lambda *_a, **_k: pytest.fail("processor opened a malformed reference"),
+    )
+    with pytest.raises(ValueError, match="bundled file reference"):
+        OptionModel.load(path, device="cpu")
+
+
+@pytest.mark.parametrize("extra", ["mtp.extra.weight", "rotary_emb.inv_freq"])
+def test_hashed_transformers_ignored_weights_are_rejected(bundled, extra):
+    from safetensors.torch import load_file, save_file
+
+    path, manifest, _ = bundled
+    weights = path / "backbone/model.safetensors"
+    state = load_file(weights)
+    state[extra] = torch.zeros(1)
+    save_file(state, weights)
+    rehash(path, manifest, "model.safetensors")
+    with pytest.raises(ValueError, match="weight keys or shapes mismatch"):
+        OptionModel.load(path, device="cpu")
+
+
+def test_hashed_weight_shape_mismatch_is_rejected_before_model_load(bundled, monkeypatch):
+    from safetensors.torch import load_file, save_file
+
+    path, manifest, _ = bundled
+    weights = path / "backbone/model.safetensors"
+    state = load_file(weights)
+    key = next(iter(state))
+    state[key] = state[key].flatten()[:1]
+    save_file(state, weights)
+    rehash(path, manifest, "model.safetensors")
+    monkeypatch.setattr(
+        "transformers.Qwen3_5Model.from_pretrained",
+        lambda *_a, **_k: pytest.fail("model loaded before header validation"),
+    )
+    with pytest.raises(ValueError, match="weight keys or shapes mismatch"):
+        OptionModel.load(path, device="cpu")
+
+
+@pytest.mark.parametrize(
+    "fault", [None, "duplicate", "duplicate_index", "wrong_shard", "missing_key", "extra_key"]
+)
+def test_sharded_bundle_checks_raw_keys_and_index(bundled, fault):
+    from safetensors.torch import load_file, save_file
+
+    path, manifest, original = bundled
+    root = path / "backbone"
+    state = load_file(root / "model.safetensors")
+    names = ["model-00001-of-00002.safetensors", "model-00002-of-00002.safetensors"]
+    items = list(state.items())
+    shards = [dict(items[::2]), dict(items[1::2])]
+    mapping = {key: name for name, shard in zip(names, shards) for key in shard}
+    if fault == "duplicate":
+        key = next(iter(shards[0]))
+        shards[1][key] = shards[0][key]
+    elif fault == "wrong_shard":
+        key = next(iter(shards[0]))
+        mapping[key] = names[1]
+    elif fault == "missing_key":
+        mapping.pop(next(iter(shards[0])))
+    elif fault == "extra_key":
+        mapping["mtp.not_in_any_shard"] = names[0]
+    for name, shard in zip(names, shards):
+        save_file(shard, root / name)
+        rehash(path, manifest, name)
+    (root / "model.safetensors").unlink()
+    del manifest["backbone"]["files"]["model.safetensors"]
+    index = "model.safetensors.index.json"
+    (root / index).write_text(json.dumps({"metadata": {}, "weight_map": mapping}))
+    if fault == "duplicate_index":
+        key, name = next(iter(mapping.items()))
+        text = (root / index).read_text()
+        text = text.replace(
+            '"weight_map": {', f'"weight_map": {{{json.dumps(key)}: {json.dumps(name)},'
+        )
+        (root / index).write_text(text)
+    rehash(path, manifest, index)
+    if fault:
+        with pytest.raises(ValueError, match="duplicate|index mapping mismatch"):
+            OptionModel.load(path, device="cpu")
+    else:
+        restored = OptionModel.load(path, device="cpu")
+        for name, value in original.state_dict().items():
+            torch.testing.assert_close(value, restored.state_dict()[name], rtol=0, atol=0)
+
+
+def test_duplicate_raw_safetensors_header_key_is_rejected(bundled):
+    path, manifest, _ = bundled
+    weights = path / "backbone/model.safetensors"
+    data = weights.read_bytes()
+    length = struct.unpack("<Q", data[:8])[0]
+    header = data[8 : 8 + length].decode()
+    key, value = next((k, v) for k, v in json.loads(header).items() if k != "__metadata__")
+    header = "{" + json.dumps(key) + ":" + json.dumps(value) + "," + header[1:].rstrip()
+    header += " " * (-len(header) % 8)
+    weights.write_bytes(struct.pack("<Q", len(header)) + header.encode() + data[8 + length :])
+    rehash(path, manifest, "model.safetensors")
+    with pytest.raises(ValueError, match="duplicate keys"):
+        OptionModel.load(path, device="cpu")
+
+
+def test_verified_versioned_tokenizer_symlink_loads_and_hashes_target(bundled, tmp_path):
+    path, manifest, _ = bundled
+    root = path / "backbone"
+    name = "tokenizer.5.0.0.json"
+    blob = tmp_path / "tokenizer-blob"
+    blob.write_bytes((root / "tokenizer.json").read_bytes() + b"\n")
+    (root / name).symlink_to(blob)
+    rehash(path, manifest, name)
+    config = root / "tokenizer_config.json"
+    values = json.loads(config.read_text())
+    values["fast_tokenizer_files"] = [name]
+    config.write_text(json.dumps(values))
+    rehash(path, manifest, "tokenizer_config.json")
+    assert OptionModel.load(path, device="cpu").serving_mode == "accurate"
+    blob.write_bytes(blob.read_bytes() + b" ")
+    with pytest.raises(ValueError, match="checksum mismatch"):
+        OptionModel.load(path, device="cpu")
+
+
+@pytest.mark.parametrize(
+    "field", ["image_token_id", "video_token_id", "vision_start_token_id", "vision_end_token_id"]
+)
+@pytest.mark.parametrize("invalid", ["other_token", "out_of_bounds", "boolean"])
+def test_hashed_multimodal_token_mismatch_is_rejected(bundled, field, invalid):
+    path, manifest, _ = bundled
+    config = path / "backbone/config.json"
+    values = json.loads(config.read_text())
+    values[field] = {
+        "other_token": (values[field] + 1) % manifest["backbone"]["vocabulary"],
+        "out_of_bounds": manifest["backbone"]["vocabulary"],
+        "boolean": True,
+    }[invalid]
+    config.write_text(json.dumps(values))
+    rehash(path, manifest, "config.json")
+    with pytest.raises(ValueError, match="multimodal token"):
+        OptionModel.load(path, device="cpu")
+
+
+def test_loaded_bundle_processes_image_and_runs_vision_forward(bundled):
+    from PIL import Image
+
+    path, _, _ = bundled
+    restored = OptionModel.load(path, device="cpu")
+    encoder = restored.encoder
+    processor = encoder.processor
+    processor.image_processor.size = {"shortest_edge": 1024, "longest_edge": 1024}
+    inputs = processor(
+        text=["<|vision_start|><|image_pad|><|vision_end|> Test"],
+        images=[Image.new("RGB", (32, 32), "red")],
+        return_tensors="pt",
+    )
+    image_id = encoder.model.config.image_token_id
+    expected = inputs.image_grid_thw.prod().item() // processor.image_processor.merge_size**2
+    assert (inputs.input_ids == image_id).sum().item() == expected > 0
+    with torch.inference_mode():
+        hidden = encoder.model(**inputs, use_cache=False).last_hidden_state
+    assert hidden.shape[:2] == inputs.input_ids.shape
+    assert torch.isfinite(hidden).all()
 
 
 @pytest.mark.parametrize("hub", [False, True])

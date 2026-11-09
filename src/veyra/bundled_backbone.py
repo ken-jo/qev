@@ -5,7 +5,142 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import struct
 from pathlib import Path, PurePosixPath
+
+
+def _multimodal_fields(values):
+    # All multimodal IDs used by the pinned Qwen3.5 model, plus any additional
+    # top-level token IDs a later config declares. Text generation IDs are separate.
+    return {"image_token_id", "video_token_id", "vision_start_token_id", "vision_end_token_id"} | {
+        key
+        for key in values
+        if key.endswith("_token_id") and key not in {"bos_token_id", "eos_token_id", "pad_token_id"}
+    }
+
+
+def _relative_file_name(name):
+    if not isinstance(name, str) or not name or "\\" in name or ":" in name:
+        return False
+    path = PurePosixPath(name)
+    return not path.is_absolute() and ".." not in path.parts and str(path) == name != "."
+
+
+def _unique_weight_keys(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError("bundled weight inventory contains duplicate keys")
+        result[key] = value
+    return result
+
+
+def _verify_config_references(root, files):
+    """Check indirections before Transformers can select or open another file."""
+
+    def reference(value, *, mapping=False):
+        if value is None:
+            return
+        if isinstance(value, dict) and mapping:
+            for item in value.values():
+                reference(item)
+        elif isinstance(value, list):
+            for item in value:
+                reference(item)
+        elif not _relative_file_name(value) or value not in files:
+            raise ValueError(f"invalid bundled file reference: {value!r}")
+
+    def walk(value):
+        if isinstance(value, dict):
+            for key, item in value.items():
+                # name_or_path alone is inert save_pretrained provenance. Component
+                # *_name_or_path references, such as audio tokenizers, are not inert.
+                if key != "name_or_path" and (
+                    key
+                    in {
+                        "file",
+                        "files",
+                        "filename",
+                        "filenames",
+                        "path",
+                        "paths",
+                        "vocab_files_names",
+                    }
+                    or key.endswith(
+                        ("_file", "_files", "_filename", "_filenames", "_path", "_paths")
+                    )
+                ):
+                    if key == "fast_tokenizer_files" and (
+                        not isinstance(item, list) or any(not isinstance(v, str) for v in item)
+                    ):
+                        raise ValueError("invalid bundled file reference: fast_tokenizer_files")
+                    reference(item, mapping=key == "vocab_files_names")
+                elif key == "subfolder" and item:
+                    raise ValueError("invalid bundled file reference: subfolder")
+                else:
+                    walk(item)
+        elif isinstance(value, list):
+            for item in value:
+                walk(item)
+
+    for name in files:
+        if name.endswith("config.json"):
+            walk(json.loads((root / name).read_text()))
+
+
+def _verify_weight_state(root, files, expected):
+    """Read every verified safetensors header, without Transformers' key filtering."""
+    from safetensors import safe_open
+
+    actual, locations = {}, {}
+    for name in sorted(files):
+        if not name.endswith(".safetensors"):
+            continue
+        # JSON duplicate members must not disappear when a header is decoded.
+        # Safetensors caps headers at 100 MB; never read tensor payloads here.
+        with (root / name).open("rb") as stream:
+            length_bytes = stream.read(8)
+            if len(length_bytes) != 8:
+                raise ValueError("invalid bundled safetensors header")
+            length = struct.unpack("<Q", length_bytes)[0]
+            if length > 100_000_000 or length > (root / name).stat().st_size - 8:
+                raise ValueError("invalid bundled safetensors header length")
+            json.loads(stream.read(length), object_pairs_hook=_unique_weight_keys)
+        with safe_open(root / name, framework="pt", device="cpu") as shard:
+            for key in shard.keys():
+                if key in actual:
+                    raise ValueError(f"bundled weight keys or shapes mismatch: duplicate {key}")
+                actual[key] = tuple(shard.get_slice(key).get_shape())
+                locations[key] = name
+    index = root / "model.safetensors.index.json"
+    if index.exists():
+        mapping = json.loads(index.read_text(), object_pairs_hook=_unique_weight_keys).get(
+            "weight_map"
+        )
+        if mapping != locations:
+            raise ValueError("bundled weight index mapping mismatch")
+    if actual != {key: tuple(value.shape) for key, value in expected.items()}:
+        raise ValueError("bundled backbone weight keys or shapes mismatch")
+
+
+def _verify_multimodal_tokens(model_config, processor, vocabulary):
+    values = model_config if isinstance(model_config, dict) else model_config.to_dict()
+    tokenizer = processor.tokenizer
+    for field in sorted(_multimodal_fields(values)):
+        value = values.get(field)
+        token = getattr(processor, field.removesuffix("_id"), None)
+        processor_id = getattr(processor, field, None)
+        if (
+            type(value) is not int
+            or not 0 <= value < vocabulary
+            or not isinstance(token, str)
+            or token not in tokenizer.get_vocab()
+            or tokenizer.convert_tokens_to_ids(token) != value
+            or tokenizer.encode(token, add_special_tokens=False) != [value]
+            or type(processor_id) is not int
+            or processor_id != value
+        ):
+            raise ValueError(f"bundled multimodal token mismatch: {field}")
 
 
 def bundled_identity(block):
@@ -27,12 +162,8 @@ def bundled_identity(block):
     ):
         raise ValueError("invalid bundled backbone identity")
     for name, digest in block["files"].items():
-        path = PurePosixPath(name)
         if (
-            path.is_absolute()
-            or ".." in path.parts
-            or str(path) != name
-            or "\\" in name
+            not _relative_file_name(name)
             or not isinstance(digest, str)
             or not re.fullmatch(r"[0-9a-f]{64}", digest)
         ):
@@ -71,6 +202,7 @@ def verify_bundle(directory, block):
             digest = hashlib.file_digest(stream, "sha256").hexdigest()
         if digest != expected:
             raise ValueError(f"bundled file checksum mismatch: {name}")
+    _verify_config_references(root, actual)
     config = json.loads((root / "config.json").read_text())
     text = config.get("text_config", {})
     if (
@@ -79,10 +211,24 @@ def verify_bundle(directory, block):
         or text.get("vocab_size") != block["vocabulary"]
     ):
         raise ValueError("bundled depth/vocabulary does not match Qwen3.5 config")
+    for field in _multimodal_fields(config):
+        value = config.get(field)
+        if type(value) is not int or not 0 <= value < block["vocabulary"]:
+            raise ValueError(f"bundled multimodal token mismatch: {field}")
     index = root / "model.safetensors.index.json"
     weights = {n for n in actual if n.endswith(".safetensors")}
     if index.exists():
-        shards = set(json.loads(index.read_text())["weight_map"].values())
+        mapping = json.loads(index.read_text()).get("weight_map")
+        if (
+            not isinstance(mapping, dict)
+            or not mapping
+            or any(
+                not isinstance(key, str) or not _relative_file_name(name)
+                for key, name in mapping.items()
+            )
+        ):
+            raise ValueError("invalid bundled weight index mapping")
+        shards = set(mapping.values())
         if shards != weights:
             raise ValueError("bundled weight shard inventory mismatch")
     elif weights != {"model.safetensors"}:
@@ -93,25 +239,35 @@ def verify_bundle(directory, block):
 def load_bundle(directory, block, config, device):
     """Load only verified local bytes, rejecting incomplete or incompatible weights."""
     import torch
-    from transformers import AutoProcessor, Qwen3_5Model
+    from transformers import AutoProcessor, Qwen3_5Config, Qwen3_5Model
 
     from veyra.backbone import QwenEncoder
 
     root = verify_bundle(directory, block)
     if device.startswith("cuda") and not torch.cuda.is_available():
         raise RuntimeError("CUDA is unavailable; use --device cpu explicitly for CPU execution")
+    model_values = json.loads((root / "config.json").read_text())
     processor = AutoProcessor.from_pretrained(root, local_files_only=True, trust_remote_code=False)
     exported = json.loads((root / "tokenizer.json").read_text())
     if json.loads(processor.tokenizer.backend_tokenizer.to_str()) != exported:
         raise ValueError("processor changed bundled tokenizer IDs or merge rules")
     if len(processor.tokenizer) != block["vocabulary"]:
         raise ValueError("bundled tokenizer vocabulary mismatch")
+    _verify_multimodal_tokens(model_values, processor, block["vocabulary"])
+    model_config = Qwen3_5Config.from_dict(model_values)
+    # A meta model provides the dense architecture's exact state without allocating
+    # another copy of the backbone or trusting filtered loading diagnostics.
+    with torch.device("meta"):
+        expected = Qwen3_5Model(model_config)
+    _verify_weight_state(root, block["files"], expected.state_dict())
+    del expected
     processor.image_processor.size = {
         "shortest_edge": config.image_min_pixels,
         "longest_edge": config.image_max_pixels,
     }
     model, info = Qwen3_5Model.from_pretrained(
         root,
+        config=model_config,
         local_files_only=True,
         trust_remote_code=False,
         use_safetensors=True,
@@ -130,5 +286,6 @@ def load_bundle(directory, block, config, device):
         or language.embed_tokens.num_embeddings != block["vocabulary"]
     ):
         raise ValueError("loaded bundled depth/vocabulary mismatch")
+    _verify_multimodal_tokens(model.config, processor, language.embed_tokens.num_embeddings)
     model.eval().requires_grad_(False)
     return QwenEncoder(model, processor, config)
