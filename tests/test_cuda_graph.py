@@ -1,7 +1,7 @@
 import pytest
 import torch
 
-from veyra.cuda_graph import ShortInputGraphs, enable_short_input_graphs, pad_to_bucket
+from qev_runtime.cuda_graph import ShortInputGraphs, enable_short_input_graphs, pad_to_bucket
 
 
 def tiny_text_model(layers=4):

@@ -2,7 +2,7 @@ import copy
 
 import pytest
 
-from veyra.release_gate import audit_release
+from qev_runtime.release_gate import audit_release
 
 
 def evidence():

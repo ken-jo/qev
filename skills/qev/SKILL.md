@@ -65,5 +65,4 @@ available with `--backend sdk`; it loads the model for that process.
 
 For integration patterns and evaluation boundaries, read
 [workflow recipes](references/workflows.md). English has the strongest evaluation coverage.
-OCR, fine spatial reasoning and visual 2048 remain weak; this skill does not change weights
-or establish Jev-equivalent accuracy or latency.
+OCR and fine spatial reasoning remain weak; this skill does not change weights or establish Jev-equivalent accuracy or latency.

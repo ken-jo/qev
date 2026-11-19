@@ -1,8 +1,8 @@
 import pytest
 import torch
 
-from veyra.probability import Calibration, typed_answer
-from veyra.schema import ChoiceQuestion, NoulQuestion, ScoreQuestion
+from qev_runtime.probability import Calibration, typed_answer
+from qev_runtime.schema import ChoiceQuestion, NoulQuestion, ScoreQuestion
 
 
 def test_choice_ids_and_abstention():

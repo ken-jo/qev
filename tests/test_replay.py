@@ -2,8 +2,8 @@ import random
 
 import pytest
 
-from veyra.build_data import text_records
-from veyra.replay import audit_replay, replay_pool, sample_replay
+from qev_runtime.build_data import text_records
+from qev_runtime.replay import audit_replay, replay_pool, sample_replay
 
 
 def test_replay_has_only_single_questions_and_preserves_targets():

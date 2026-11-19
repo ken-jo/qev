@@ -1,7 +1,7 @@
 # Architecture and compatibility
 
 QEV 0.1.1 freezes the Qwen-based research line. Base identity and revision are fixed
-in `src/veyra/constants.py`. We use Qwen's vision encoder and language model, merged learned
+in `src/qev_runtime/constants.py`. We use Qwen's vision encoder and language model, merged learned
 language LoRA, a pretrained-letter-initialized 16-position readout and a learned conditioned
 binding residual. Four internal positions support condition supervision.
 
@@ -15,8 +15,10 @@ levels. Noul is the probability of true under the supplied proposition criteria.
 
 The distribution and command are `qev`; `qev` exposes `QEV` and
 `DecisionRequest`. Published SDK 0.2.1 retains the evaluated inference modules.
-`VeyraResult:` is a trained input marker and must not be renamed.
-The legacy `veyra` CLI, checkpoint field names and historical evidence identifiers remain
+The result marker in `src/qev_runtime/frozen_identifiers.py` is the trained read position
+and must not change. Releases through 0.2.1 bundled the evaluated runtime as a separate package
+with its own command; the runtime now ships as the companion `qev_runtime` package and
+that command is retired. Checkpoint field names remain
 for compatibility. These internal names do not denote a separate running model.
 
 ## Ordered multi-image source extension
@@ -62,7 +64,7 @@ decoded pixels and outputs as before.
   `layer` text layers, removes the final text norm and replaces the readout, condition
   readout and binding head with an `ExitHead`: LayerNorm(2*hidden), Linear(2*hidden, 1024),
   GELU and Linear(1024, 16) over the raw residual at the answer position concatenated with
-  the `VeyraResult:` condition position. `hidden` comes from the backbone configuration.
+  the result-marker condition position. `hidden` comes from the backbone configuration.
   Early exit requires internal condition slots, is inference-only (the truncated model
   cannot be saved) and reuses the checkpoint calibration, which was fitted on full-depth
   logits. Exit heads are produced by `scripts/train_exit_head.py`; see

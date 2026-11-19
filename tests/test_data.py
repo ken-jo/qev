@@ -1,6 +1,6 @@
 import pytest
 
-from veyra.data import TrainingRecord, audit_records, read_records, write_records
+from qev_runtime.data import TrainingRecord, audit_records, read_records, write_records
 
 
 def record(name="r", group="g", split="train"):
@@ -20,7 +20,7 @@ def record(name="r", group="g", split="train"):
                 "id": "original",
                 "revision": "1",
                 "license": "Apache-2.0",
-                "url": "https://github.com/ken-jo/veyra",
+                "url": "https://github.com/ken-jo/qev",
             },
         }
     )

@@ -8,11 +8,11 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageColor
 
-from veyra.candidates import candidates_for
-from veyra.data import read_records
-from veyra.evidence_data import policy_branches
-from veyra.interventions import training_units
-from veyra.policy_data import COLORS
+from qev_runtime.candidates import candidates_for
+from qev_runtime.data import read_records
+from qev_runtime.evidence_data import policy_branches
+from qev_runtime.interventions import training_units
+from qev_runtime.policy_data import COLORS
 
 path = Path("data/policy-v6/records.jsonl")
 records = read_records(path)

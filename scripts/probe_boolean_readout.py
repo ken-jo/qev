@@ -7,9 +7,9 @@ from unittest.mock import patch
 
 import torch
 
-from veyra.candidates import candidates_for
-from veyra.data import read_records
-from veyra.option_model import OptionModel
+from qev_runtime.candidates import candidates_for
+from qev_runtime.data import read_records
+from qev_runtime.option_model import OptionModel
 
 
 @torch.inference_mode()
@@ -82,7 +82,7 @@ def main():
         rows = []
         for index, record in enumerate(records):
             if words:
-                with patch("veyra.option_model.option_prompt", native_prompt):
+                with patch("qev_runtime.option_model.option_prompt", native_prompt):
                     states, _, _ = model.encode(record.request, args.records.parent)
                 values = states @ readout.T
                 logits = {name: values[i] for i, name in enumerate(record.request.questions)}

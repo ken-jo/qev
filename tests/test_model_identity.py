@@ -2,14 +2,14 @@ import pytest
 import torch
 from torch import nn
 
-from veyra.constants import MODEL_ID, MODEL_REVISION
-from veyra.model import VeyraModel
-from veyra.option_model import OptionModel
-from veyra.probability import Calibration
-from veyra.schema import DecisionRequest
+from qev_runtime.constants import MODEL_ID, MODEL_REVISION
+from qev_runtime.model import DecisionModel
+from qev_runtime.option_model import OptionModel
+from qev_runtime.probability import Calibration
+from qev_runtime.schema import DecisionRequest
 
 
-@pytest.mark.parametrize("model_class", [VeyraModel, OptionModel])
+@pytest.mark.parametrize("model_class", [DecisionModel, OptionModel])
 def test_predict_reports_qev_and_separate_backbone_provenance(model_class, monkeypatch):
     # Exercise the real prediction serializers with fixed CPU logits, without loading weights.
     model = model_class.__new__(model_class)

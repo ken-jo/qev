@@ -12,10 +12,10 @@ from pathlib import Path
 
 import torch
 
-from veyra.data import read_records
-from veyra.evidence_data import policy_branches
-from veyra.option_model import OptionModel
-from veyra.schema import DecisionRequest
+from qev_runtime.data import read_records
+from qev_runtime.evidence_data import policy_branches
+from qev_runtime.option_model import OptionModel
+from qev_runtime.schema import DecisionRequest
 
 
 def truth(expression, values):

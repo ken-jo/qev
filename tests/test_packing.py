@@ -1,7 +1,10 @@
+import hashlib
+
 import pytest
 
-from veyra.packing import marker_positions, pack_request
-from veyra.schema import DecisionRequest
+from qev_runtime.packing import CANDIDATE_MARKER, QUESTION_MARKER, marker_positions, pack_request
+from qev_runtime.reasoning_workspace import RESULT_MARKER
+from qev_runtime.schema import DecisionRequest
 
 
 def make_request(criteria):
@@ -35,7 +38,7 @@ def test_marker_alignment_and_collision():
     with pytest.raises(ValueError, match="alignment mismatch"):
         marker_positions([1, 2], [5], 1)
     request = make_request({"x": "red", "y": "blue"})
-    request.state.text = "[VEYRA_CANDIDATE]"
+    request.state.text = CANDIDATE_MARKER
     with pytest.raises(ValueError, match="reserved"):
         pack_request(request)
 
@@ -43,3 +46,11 @@ def test_marker_alignment_and_collision():
 def test_duplicate_choice_descriptions_rejected():
     with pytest.raises(ValueError, match="distinct"):
         make_request({"x": "same", "y": "same"})
+
+
+def test_markers_keep_their_exact_bytes():
+    # RESULT_MARKER is the trained read position of every published checkpoint.
+    joined = "\n".join((CANDIDATE_MARKER, QUESTION_MARKER, RESULT_MARKER)).encode()
+    assert hashlib.sha256(joined).hexdigest() == (
+        "240cb5c163c12020e98008deea6f92bfed4b870a8971d6b9fa9f1bd879d01a54"
+    )

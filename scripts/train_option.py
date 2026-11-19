@@ -12,12 +12,12 @@ from pathlib import Path
 import torch
 from safetensors.torch import load_file
 
-from veyra.candidates import candidates_for
-from veyra.constants import MODEL_ID, MODEL_REVISION
-from veyra.data import read_records
-from veyra.interventions import augment_unit, retype_unit, training_units
-from veyra.option_model import OptionModel
-from veyra.replay import audit_replay, replay_pool, sample_replay
+from qev_runtime.candidates import candidates_for
+from qev_runtime.constants import MODEL_ID, MODEL_REVISION
+from qev_runtime.data import read_records
+from qev_runtime.interventions import augment_unit, retype_unit, training_units
+from qev_runtime.option_model import OptionModel
+from qev_runtime.replay import audit_replay, replay_pool, sample_replay
 
 
 @torch.inference_mode()
@@ -97,12 +97,12 @@ def main():
         str(path): hashlib.sha256(path.read_bytes()).hexdigest()
         for path in (
             Path(__file__),
-            Path("src/veyra/option_model.py"),
-            Path("src/veyra/interventions.py"),
-            Path("src/veyra/evidence_data.py"),
-            Path("src/veyra/policy_data.py"),
-            Path("src/veyra/replay.py"),
-            Path("src/veyra/reasoning_workspace.py"),
+            Path("src/qev_runtime/option_model.py"),
+            Path("src/qev_runtime/interventions.py"),
+            Path("src/qev_runtime/evidence_data.py"),
+            Path("src/qev_runtime/policy_data.py"),
+            Path("src/qev_runtime/replay.py"),
+            Path("src/qev_runtime/reasoning_workspace.py"),
         )
     }
     (args.output / "run.json").write_text(

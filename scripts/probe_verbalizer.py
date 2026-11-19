@@ -7,9 +7,9 @@ from pathlib import Path
 import torch
 from PIL import Image, ImageOps
 
-from veyra.backbone import QwenEncoder
-from veyra.candidates import candidates_for
-from veyra.data import read_records
+from qev_runtime.backbone import QwenEncoder
+from qev_runtime.candidates import candidates_for
+from qev_runtime.data import read_records
 
 
 @torch.inference_mode()

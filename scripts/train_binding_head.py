@@ -11,7 +11,7 @@ from pathlib import Path
 import torch
 from safetensors.torch import load_file, save_file
 
-from veyra.binding_head import ConditionedReadout
+from qev_runtime.binding_head import ConditionedReadout
 
 
 def file_hash(path):
@@ -106,8 +106,8 @@ def main():
         str(path): file_hash(path)
         for path in (
             Path(__file__),
-            Path("src/veyra/binding_head.py"),
-            Path("src/veyra/option_model.py"),
+            Path("src/qev_runtime/binding_head.py"),
+            Path("src/qev_runtime/option_model.py"),
         )
     }
     (args.output / "run.json").write_text(

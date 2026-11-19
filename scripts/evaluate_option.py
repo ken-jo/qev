@@ -9,14 +9,14 @@ from pathlib import Path
 import numpy as np
 import torch
 
-from veyra.calibrate import fit_abstention, fit_temperature
-from veyra.candidates import candidates_for
-from veyra.constants import QUESTION_TYPES
-from veyra.data import read_records
-from veyra.features import FeatureSample
-from veyra.option_model import OptionModel
-from veyra.probability import Calibration
-from veyra.training import summarize_predictions
+from qev_runtime.calibrate import fit_abstention, fit_temperature
+from qev_runtime.candidates import candidates_for
+from qev_runtime.constants import QUESTION_TYPES
+from qev_runtime.data import read_records
+from qev_runtime.features import FeatureSample
+from qev_runtime.option_model import OptionModel
+from qev_runtime.probability import Calibration
+from qev_runtime.training import summarize_predictions
 
 
 @torch.inference_mode()

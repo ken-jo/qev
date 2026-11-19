@@ -85,9 +85,9 @@ question/view. Inputs exceeding it fail instead of silently truncating or droppi
 Inspect `answers`, `probabilities`, abstention fields and `usage` in the returned object.
 Source predictions return `"model": "qev"`; `/v1/models` lists the same decision-model ID.
 Both include a separate `backbone` object with the actual `model_id` and pinned `revision`.
-The QEV skill accepts both `qev` and the SDK 0.2.1 response name `veyra-qwen3.5-2b`,
-and accepts merged backbones with a nonempty ID and a 40-hex revision.
-See `src/veyra/schema.py`, `src/veyra/probability.py` and `examples/request.json`.
+The QEV skill accepts the `qev` response name and merged backbones with a nonempty ID
+and a 40-hex revision.
+See `src/qev_runtime/schema.py`, `src/qev_runtime/probability.py` and `examples/request.json`.
 
 The playground adds image-upload and resolution endpoints around the same model. A single
 resident worker serializes inference. It is a trusted local demo; uploads are shared within

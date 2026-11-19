@@ -16,10 +16,10 @@ import torch
 from option_mix_common import load_items, load_student, record_examples, set_pixel_budget
 from safetensors.torch import save_file
 
-from veyra.candidates import candidates_for
-from veyra.exit_head import ExitHead
-from veyra.option_model import option_prompt
-from veyra.reasoning_workspace import RESULT_MARKER, condition_positions
+from qev_runtime.candidates import candidates_for
+from qev_runtime.exit_head import ExitHead
+from qev_runtime.option_model import option_prompt
+from qev_runtime.reasoning_workspace import RESULT_MARKER, condition_positions
 
 
 @torch.no_grad()

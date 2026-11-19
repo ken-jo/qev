@@ -1,7 +1,7 @@
 import pytest
 import torch
 
-from veyra.binding_head import ConditionedReadout
+from qev_runtime.binding_head import ConditionedReadout
 
 
 def test_initial_residual_is_exactly_zero():

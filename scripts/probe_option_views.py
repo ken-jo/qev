@@ -8,9 +8,9 @@ from pathlib import Path
 import numpy as np
 import torch
 
-from veyra.data import read_records
-from veyra.option_model import OptionModel
-from veyra.schema import DecisionRequest
+from qev_runtime.data import read_records
+from qev_runtime.option_model import OptionModel
+from qev_runtime.schema import DecisionRequest
 
 
 @torch.inference_mode()

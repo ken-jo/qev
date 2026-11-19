@@ -3,8 +3,8 @@ import json
 import pytest
 from pydantic import ValidationError
 
-from veyra.candidates import candidates_for, render_candidate
-from veyra.schema import DecisionRequest, State
+from qev_runtime.candidates import candidates_for, render_candidate
+from qev_runtime.schema import DecisionRequest, State
 
 
 def request(criteria=None, **question):

@@ -7,10 +7,10 @@ import re
 from collections import Counter
 from pathlib import Path
 
-from veyra.candidates import candidates_for
-from veyra.data import read_records
-from veyra.evidence_data import policy_branches
-from veyra.synthetic_audit import diagram_objects, numeric_predicate, visual_predicate
+from qev_runtime.candidates import candidates_for
+from qev_runtime.data import read_records
+from qev_runtime.evidence_data import policy_branches
+from qev_runtime.synthetic_audit import diagram_objects, numeric_predicate, visual_predicate
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--records", type=Path, required=True)

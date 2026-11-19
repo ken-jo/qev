@@ -105,12 +105,12 @@ Starlette/httpx deprecation warning. Browser inspection checked seven presets,
 six sample photos, choice/score/noul switching, Korean/Japanese/German locales
 and a 390-pixel mobile viewport. The screenshots were visually inspected.
 These checks used a model-free preview and do not measure inference accuracy or
-latency. See `release/handoff-20261008/` for commands, stdout, screenshots and
+latency. See `release/handoff-20261008/` (archived at the `archive/pre-qev` tag) for commands, stdout, screenshots and
 hashes. Earlier release verification and publication records remain historical.
 
 The reorganized model card was then published to Hugging Face with its README
 checksum in one documentation-only commit. Anonymous download verification and
 the full remote tree comparison confirmed that only those two files changed.
 All weights, runtime, datasets and historical evidence remain unchanged.
-See `release/handoff-20261008/hf-docs-publication.json`; no new inference claim or
+See `release/handoff-20261008/hf-docs-publication.json` (archived at `archive/pre-qev`); no new inference claim or
 SDK release accompanies this documentation update.

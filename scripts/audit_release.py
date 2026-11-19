@@ -5,7 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 
-from veyra.release_gate import audit_release, evidence_hashes
+from qev_runtime.release_gate import audit_release, evidence_hashes
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--checkpoint", type=Path, required=True)

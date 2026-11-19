@@ -13,7 +13,7 @@ from PIL import Image, ImageOps
 
 from qev import DecisionRequest
 from qev.runtime import load_model, resolve_cache, resolve_device
-from veyra.constants import MAX_IMAGES
+from qev_runtime.constants import MAX_IMAGES
 
 MAX_IMAGE_PIXELS = 16_000_000
 RESOLUTIONS = (64, 128, 192, 256, 384, 512, 768, 1024)

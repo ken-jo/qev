@@ -3,7 +3,7 @@
 import json
 from pathlib import Path
 
-from veyra.benchmark import write_fixture
+from qev_runtime.benchmark import write_fixture
 
 path = write_fixture(Path("data/example"))
 request = json.loads(path.read_text(encoding="utf-8"))

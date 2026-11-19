@@ -7,9 +7,9 @@ from pathlib import Path
 
 from PIL import Image
 
-from veyra.candidates import candidates_for
-from veyra.data import read_records
-from veyra.packing import pack_request
+from qev_runtime.candidates import candidates_for
+from qev_runtime.data import read_records
+from qev_runtime.packing import pack_request
 
 path = Path("data/policy-v3/records.jsonl")
 records = read_records(path)

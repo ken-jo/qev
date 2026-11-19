@@ -5,9 +5,9 @@ import pytest
 import torch
 from torch import nn
 
-from veyra.backbone import QwenEncoder
-from veyra.option_model import OptionConfig, OptionModel
-from veyra.reasoning_workspace import condition_positions, workspace_suffix
+from qev_runtime.backbone import QwenEncoder
+from qev_runtime.option_model import OptionConfig, OptionModel
+from qev_runtime.reasoning_workspace import condition_positions, workspace_suffix
 
 
 def test_internal_marker_uses_appended_occurrence_and_respects_padding():
@@ -81,7 +81,7 @@ def test_workspace_checkpoint_roundtrip(tmp_path, monkeypatch, binding_rank, bin
 
 
 def test_binding_inference_uses_the_same_single_forward_as_diagnostics():
-    from veyra.binding_head import ConditionedReadout
+    from qev_runtime.binding_head import ConditionedReadout
 
     model = OptionModel.__new__(OptionModel)
     nn.Module.__init__(model)

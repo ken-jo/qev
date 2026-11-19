@@ -38,13 +38,21 @@ def main():
         entrypoints.read_string(archive.read(f"qev-{version}.dist-info/entry_points.txt").decode())
         if entrypoints["console_scripts"]["qev"] != "qev.cli:main":
             raise ValueError("Missing QEV command")
-        modules = sorted((root / "src/veyra").glob("*.py"))
-        if len(modules) != 38:
-            raise ValueError("Unexpected frozen runtime module count")
+        if entrypoints["console_scripts"].get("qev-research") != "qev_runtime.research_cli:main":
+            raise ValueError("Missing QEV research command")
+        for package in ("qev", "qev_runtime", "qev_decision_index"):
+            if f"{package}/py.typed" not in names:
+                raise ValueError("Missing py.typed marker: " + package)
+        modules = sorted((root / "src/qev_runtime").glob("*.py"))
+        if len(modules) != 43:
+            raise ValueError("Unexpected runtime module count")
         for module in modules:
-            if archive.read("veyra/" + module.name) != module.read_bytes():
-                raise ValueError("Frozen runtime changed while packaging")
-        for module in (root / "src/qev").glob("*.py"):
+            if archive.read("qev_runtime/" + module.name) != module.read_bytes():
+                raise ValueError("Packaged runtime changed while packaging")
+        public = sorted((root / "src/qev").glob("*.py"))
+        if len(public) != 6:
+            raise ValueError("Unexpected public module count")
+        for module in public:
             if archive.read("qev/" + module.name) != module.read_bytes():
                 raise ValueError("Public API changed while packaging")
         for asset in (root / "src/qev/playground").rglob("*"):

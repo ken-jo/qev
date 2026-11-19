@@ -8,13 +8,13 @@ from pathlib import Path
 
 import torch
 
-from veyra.candidates import candidates_for
-from veyra.data import read_records
-from veyra.evidence_data import policy_branches
-from veyra.option_model import OptionModel
-from veyra.policy_data import COLORS, SHAPES
-from veyra.schema import DecisionRequest
-from veyra.synthetic_audit import diagram_objects, visual_predicate
+from qev_runtime.candidates import candidates_for
+from qev_runtime.data import read_records
+from qev_runtime.evidence_data import policy_branches
+from qev_runtime.option_model import OptionModel
+from qev_runtime.policy_data import COLORS, SHAPES
+from qev_runtime.schema import DecisionRequest
+from qev_runtime.synthetic_audit import diagram_objects, visual_predicate
 
 
 @torch.inference_mode()
