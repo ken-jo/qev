@@ -36,6 +36,7 @@ dependencies = [
 
 [project.scripts]
 qev = "qev.cli:main"
+qev-research = "qev_runtime.research_cli:main"
 
 [project.urls]
 Homepage = "https://github.com/ken-jo/qev"

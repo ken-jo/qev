@@ -12,6 +12,8 @@
   inputs or recorded data; they live in `qev_runtime/frozen_identifiers.py`. Frozen
   evidence under `reports/` and `release/` and hash-pinned configs and scripts are
   unchanged.
+- Packaging: the research CLI is installed as `qev-research` (it already used that program
+  name), and `qev`, `qev_runtime` and `qev_decision_index` ship PEP 561 `py.typed` markers.
 - `qev_decision_index:QEVEngine`: Decision Index vision engine for the released QEV-0.8B and
   QEV-2B checkpoints (one forward pass, native resolution up to 1.6 MP per image, at most 4
   images and 8,192 input tokens; longer requests are reported as unsupported). Needs

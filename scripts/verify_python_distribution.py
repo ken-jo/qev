@@ -38,6 +38,11 @@ def main():
         entrypoints.read_string(archive.read(f"qev-{version}.dist-info/entry_points.txt").decode())
         if entrypoints["console_scripts"]["qev"] != "qev.cli:main":
             raise ValueError("Missing QEV command")
+        if entrypoints["console_scripts"].get("qev-research") != "qev_runtime.research_cli:main":
+            raise ValueError("Missing QEV research command")
+        for package in ("qev", "qev_runtime", "qev_decision_index"):
+            if f"{package}/py.typed" not in names:
+                raise ValueError("Missing py.typed marker: " + package)
         modules = sorted((root / "src/qev_runtime").glob("*.py"))
         if len(modules) != 43:
             raise ValueError("Unexpected runtime module count")
