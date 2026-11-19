@@ -26,7 +26,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--features", type=Path, default=Path("data/features-workflow-v12"))
     parser.add_argument("--records", type=Path, default=Path("data/workflow-v12/records.jsonl"))
-    parser.add_argument("--parent", type=Path, default=Path("checkpoints/veyra-foundation-v11"))
+    parser.add_argument("--parent", type=Path, default=Path("checkpoints/qev-foundation-v11"))
     parser.add_argument("--output", type=Path, default=Path("runs/workflow-v12-head"))
     args = parser.parse_args()
     if args.output.exists():

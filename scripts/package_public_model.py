@@ -9,6 +9,8 @@ import tomllib
 import zipfile
 from pathlib import Path
 
+from qev_runtime.frozen_identifiers import LEGACY_BUNDLE_LOADER
+
 
 def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -39,7 +41,7 @@ def main():
         "ROADMAP.md",
         "checksums.json",
         "NOTICE",
-        "load_veyra.py",
+        LEGACY_BUNDLE_LOADER,
         "load_vision_qev.py",
         "load_qwen3_5_classification.py",
         "load_qev.py",

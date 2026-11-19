@@ -85,11 +85,10 @@ def build_policy_data(output: Path, seed: int = 20261002, scale: int = 1) -> dic
     image_dir = output / "images"
     image_dir.mkdir()
     source = {
-        # Published corpus records embed this generator identity; renaming breaks audits.
-        "id": "veyra-policy-generator-v3",
+        "id": "qev-policy-generator-v3",
         "revision": "sha256:" + hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         "license": "Apache-2.0",
-        "url": "https://github.com/ken-jo/veyra",
+        "url": "https://github.com/ken-jo/qev",
     }
     sizes = {
         "train": (800 * scale, 400 * scale),

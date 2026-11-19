@@ -88,10 +88,10 @@ def make_record(base, state_hash, kind, index, probability, rng):
             },
             "targets": {"decision": target},
             "source": {
-                "id": "veyra-workflow-prerequisite-curriculum",
+                "id": "qev-workflow-prerequisite-curriculum",
                 "revision": "sha256:" + digest(__file__),
                 "license": "Apache-2.0",
-                "url": "https://github.com/ken-jo/veyra",
+                "url": "https://github.com/ken-jo/qev",
             },
             "tags": tags,
         }

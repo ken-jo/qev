@@ -1,3 +1,6 @@
+# Frozen release reproducer. It builds, installs or audits the 0.3.0a runtime wheels and
+# Hugging Face bundles under the file names they were published with, so it cannot run
+# against this tree and keeps those historical names. Kept for provenance only.
 """Refresh the existing unpublished Foundation documentation without changing its model."""
 
 import hashlib
@@ -52,7 +55,7 @@ def main():
     checks = {name: digest(root / name) for name in checks}
     write(checks_path, checks)
     metadata["documentation_commit"] = subprocess.check_output(
-        ["git", "-c", "safe.directory=C:/tmp/veyra", "rev-parse", "HEAD"], text=True
+        ["git", "-c", f"safe.directory={Path.cwd().as_posix()}", "rev-parse", "HEAD"], text=True
     ).strip()
     metadata["checksums_sha256"] = digest(checks_path)
     write(metadata_path, metadata)

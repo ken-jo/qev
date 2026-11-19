@@ -15,6 +15,7 @@ from build_workflow_v12 import ACTION, FAMILIES, decision, distribution, wording
 from train_foundation_head import write
 
 from qev_runtime.data import Source, TrainingRecord, audit_records, read_records
+from qev_runtime.frozen_identifiers import WORKSPACE_CALIBRATION_ID_SALT
 from qev_runtime.schema import DecisionRequest
 
 
@@ -27,7 +28,7 @@ def digest(path):
 
 
 def stable(text):
-    return hashlib.sha256(("veyra-workspace-calibration-157:" + text).encode()).hexdigest()
+    return hashlib.sha256((WORKSPACE_CALIBRATION_ID_SALT + ":" + text).encode()).hexdigest()
 
 
 def normalized_state(text):
@@ -80,10 +81,10 @@ def main():
                 target.parent.mkdir(parents=True, exist_ok=True)
                 os.link(origin, target)
     source = Source(
-        id="veyra-workspace-calibration-v12",
+        id="qev-workspace-calibration-v12",
         revision="sha256:" + digest(Path(__file__)),
         license="Apache-2.0",
-        url="https://github.com/ken-jo/veyra",
+        url="https://github.com/ken-jo/qev",
     )
     fresh, latent = [], []
 

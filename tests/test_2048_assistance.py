@@ -157,7 +157,7 @@ def test_image_step_api_uses_override_and_transient_png(monkeypatch, tmp_path):
     monkeypatch.setattr(server.Resident, "predict", fake_predict)
     app = server.create_playground(tmp_path / "checkpoint", "cpu", tmp_path / "cache")
     with TestClient(app, base_url="http://127.0.0.1", client=("127.0.0.1", 50000)) as client:
-        headers = {"X-Veyra-Playground": "1"}
+        headers = {"X-QEV-Playground": "1"}
         game = client.post("/api/2048/games", json={"seed": 11}, headers=headers).json()
         url = f"/api/2048/games/{game['id']}/step"
         response = client.post(

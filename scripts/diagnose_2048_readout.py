@@ -62,7 +62,7 @@ def upload(url, png):
     request = urllib.request.Request(
         url + "/api/images",
         data=png,
-        headers={"Content-Type": "image/png", "X-Veyra-Playground": "1"},
+        headers={"Content-Type": "image/png", "X-QEV-Playground": "1"},
     )
     with urllib.request.urlopen(request, timeout=45) as response:
         return json.loads(response.read())
@@ -84,7 +84,7 @@ def main():
     write(
         args.output / "protocol.json",
         {
-            "schema": "veyra.2048-cell-readout.v1",
+            "schema": "qev.2048-cell-readout.v1",
             "values": VALUES,
             "cases_per_value": 4,
             "cases_sha256": sha256(args.output / "cases.json"),
@@ -139,7 +139,7 @@ def main():
                     "request": request,
                     "response": response,
                     "image_sha256": hashlib.sha256(png).hexdigest(),
-                    "inference_ms": float(headers["X-Veyra-Inference-Ms"]),
+                    "inference_ms": float(headers["X-QEV-Inference-Ms"]),
                     "http_ms": (time.perf_counter() - started) * 1000,
                 }
                 stream.write(json.dumps(record) + "\n")

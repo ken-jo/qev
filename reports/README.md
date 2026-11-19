@@ -1,7 +1,7 @@
 # Research evidence
 
 These reports preserve the original experiment names, timestamps, source hashes and
-results. Veyra is the former name of Vision QEV. Historical statements such as "not
+results. Historical statements such as "not
 published" describe their time of creation; current publication status is in the release.
 Historical filesystem references and intermediate caches are provenance, not promised
 downloadable artifacts. Personal notes are not included in the public history.

@@ -1,4 +1,4 @@
-"""Local Veyra playground using the frozen runtime and a resident checkpoint."""
+"""Local QEV playground using the installed runtime and a resident checkpoint."""
 
 from __future__ import annotations
 
@@ -8,7 +8,6 @@ import io
 import ipaddress
 import json
 import logging
-import sys
 import tempfile
 import time
 import uuid
@@ -30,11 +29,8 @@ from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 ROOT = Path(__file__).resolve().parents[2]
 STATIC = Path(__file__).resolve().parent / "static"
-WHEEL = ROOT / "dist/workflow-runtime/veyra-0.3.0a4-py3-none-any.whl"
-if WHEEL.is_file():
-    sys.path.insert(0, str(WHEEL))
-
 from qev import __version__  # noqa: E402
+from qev_runtime.frozen_identifiers import LEGACY_PLAYGROUND_HEADER  # noqa: E402
 from qev_runtime.schema import DecisionRequest  # noqa: E402
 
 if __package__:
@@ -42,7 +38,7 @@ if __package__:
 else:
     from game2048 import MAX_EVENTS, Game2048, GameConfig, MoveInput, StepInput, image_digest
 
-LOG = logging.getLogger("veyra.playground")
+LOG = logging.getLogger("qev.playground")
 IMAGE_BYTES = 20 * 1024 * 1024
 IMAGE_PIXELS = 40_000_000
 SESSION_BYTES = 256 * 1024 * 1024
@@ -151,7 +147,7 @@ class Resident:
         self.busy = False
         self.image_policy = None
         self.smart_resize = None
-        self.executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix="veyra-inference")
+        self.executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix="qev-inference")
 
     def load(self):
         try:
@@ -376,9 +372,12 @@ def create_playground(
                 return JSONResponse(
                     {"detail": "접속한 플레이그라운드와 같은 주소에서 요청하세요."}, status_code=403
                 )
-            if request.headers.get("x-veyra-playground") != "1":
+            if "1" not in (
+                request.headers.get("x-qev-playground"),
+                request.headers.get(LEGACY_PLAYGROUND_HEADER),
+            ):
                 return JSONResponse(
-                    {"detail": "X-Veyra-Playground: 1 헤더가 필요합니다."}, status_code=403
+                    {"detail": "X-QEV-Playground: 1 헤더가 필요합니다."}, status_code=403
                 )
         response = await call_next(request)
         response.headers["X-Content-Type-Options"] = "nosniff"
@@ -402,7 +401,7 @@ def create_playground(
     @app.get("/api/status")
     async def status():
         return {
-            "app": "veyra-playground",
+            "app": "qev-playground",
             "phase": runtime.phase,
             "busy": runtime.busy,
             "error": runtime.error,
@@ -411,7 +410,7 @@ def create_playground(
             "device": runtime.gpu or device,
             "load_ms": runtime.load_ms,
             "completed": runtime.completed,
-            "runtime_source": "bundled-wheel" if WHEEL.is_file() else "installed-package",
+            "runtime_source": "installed-package",
             "bind_host": bind_host,
             "remote_url": tailnet.origin if tailnet else None,
             "image_policy": runtime.image_policy,
@@ -606,8 +605,8 @@ def create_playground(
         return JSONResponse(
             result,
             headers={
-                "X-Veyra-Inference-Ms": str(elapsed),
-                "X-Veyra-Request-Id": uuid.uuid4().hex,
+                "X-QEV-Inference-Ms": str(elapsed),
+                "X-QEV-Request-Id": uuid.uuid4().hex,
                 "Server-Timing": f"inference;dur={elapsed}",
             },
         )

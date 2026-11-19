@@ -5,7 +5,7 @@ candidate selection and declared before generation. These files describe data co
 they contain no model calibration result. The release remains blocked.
 
 The original public typed-decisions train split has 1,200 cases, all already partitioned in
-earlier Veyra work. The latest upstream revision retained the same train Parquet bytes and had
+earlier QEV work. The latest upstream revision retained the same train Parquet bytes and had
 no unused validation split. The author describes the generator as sponsor-accessible. We used
 freshly authored explicit policies for the familiar workflow calibration portion and disclosed
 the change in label provenance.

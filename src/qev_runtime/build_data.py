@@ -88,11 +88,10 @@ def make_record(
 
 def original_source() -> dict:
     return {
-        # Published corpus records embed this generator identity; renaming breaks audits.
-        "id": "veyra-original-generator",
+        "id": "qev-original-generator",
         "revision": "sha256:" + hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         "license": "Apache-2.0",
-        "url": "https://github.com/ken-jo/veyra",
+        "url": "https://github.com/ken-jo/qev",
     }
 
 

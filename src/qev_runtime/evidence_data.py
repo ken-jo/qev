@@ -140,11 +140,10 @@ def build_evidence_data(parent: Path, output: Path, seed=20261003):
     forbidden_pixels = set(pixels_seen.values())
     new_records, observations = [], []
     source = {
-        # Published corpus records embed this generator identity; renaming breaks audits.
-        "id": "veyra-evidence-interventions-v6",
+        "id": "qev-evidence-interventions-v6",
         "revision": "sha256:" + hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         "license": "Apache-2.0",
-        "url": "https://github.com/ken-jo/veyra",
+        "url": "https://github.com/ken-jo/qev",
     }
     for group_id, group in groups.items():
         group.sort(key=lambda r: r.id)

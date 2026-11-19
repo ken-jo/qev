@@ -300,7 +300,7 @@ confidence; QEV does not return a separately trained `unknown_probability` class
 
 ## Separate image and workflow evaluation
 
-| Fresh final metric | Veyra Foundation v11 (Qwen3.5-2B) | QEV 0.1.1 (Workflow Recovery v13) |
+| Fresh final metric | Foundation v11 (Qwen3.5-2B) | QEV 0.1.1 (Workflow Recovery v13) |
 | --- | ---: | ---: |
 | Authored workflow accuracy, 1,440 questions / 480 groups | 44.31% | 69.38% |
 | CIFAR-10 guard, 600 questions | 95.17% | 95.83% |
@@ -327,7 +327,7 @@ or accuracy comparison was run.
 
 ## Limitations and negative results
 
-- Final overall ECE is 12.58%, worse than Veyra Foundation v11's 6.80%.
+- Final overall ECE is 12.58%, worse than Foundation v11's 6.80%.
 - Final overall accepted expected error is 20.49% at 88.99% coverage. For uncertain
   requests it is 45.57% at 52.50% coverage. Fitted abstention is not a shifted-domain guarantee.
 - 72 exploratory 2048 games produced no 2048 wins. Engine-assisted variants supplied legal
@@ -372,12 +372,11 @@ packaging does not retroactively alter a stage's provenance.
 
 ## Provenance
 
-QEV was previously developed as Veyra, and this checkpoint as Veyra Workflow Recovery v13.
-The public rename did not change the weights. The trained prompt marker `VeyraResult:`
-keeps its original name because the learned model depends on it. Releases through 0.2.1
-bundled the evaluated runtime as a separate `veyra` package; it now ships as the companion
-`qev_runtime` package, while published corpus identifiers and historical evidence names
-keep their original spellings. Model ID `Qwen/Qwen3.5-2B` in the request contract
+QEV was previously developed under an earlier project name, and this checkpoint as
+Workflow Recovery v13. The public rename did not change the weights. The trained prompt
+markers keep their original spelling because the learned model depends on them. Releases
+through 0.2.1 bundled the evaluated runtime as a separate package; it now ships as the
+companion `qev_runtime` package, while historical evidence keeps its recorded names. Model ID `Qwen/Qwen3.5-2B` in the request contract
 identifies the actual base.
 
 ## Citation

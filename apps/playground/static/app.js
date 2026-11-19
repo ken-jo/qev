@@ -366,7 +366,7 @@ async function resolutionImage(edge, source = state.sourceImage) {
   const response = edge === "original"
     ? await fetch(`/api/images/${source.path}/info`, { cache: "no-store", signal: AbortSignal.timeout(30000) })
     : await fetch(`/api/images/${source.path}/resize`, {
-      method: "POST", headers: { "X-Veyra-Playground": "1", "Content-Type": "application/json" },
+      method: "POST", headers: { "X-QEV-Playground": "1", "Content-Type": "application/json" },
       body: JSON.stringify({ long_edge: edge }), signal: AbortSignal.timeout(30000),
     });
   return { ...await responseData(response), name: source.name, sampleId: source.sampleId };
@@ -431,7 +431,7 @@ async function selectPreset(key) {
 }
 
 async function storeImage(bytes, name) {
-  const response = await fetch("/api/images", { method: "POST", headers: { "X-Veyra-Playground": "1", "Content-Type": bytes.type || "application/octet-stream" }, body: bytes, signal: AbortSignal.timeout(30000) });
+  const response = await fetch("/api/images", { method: "POST", headers: { "X-QEV-Playground": "1", "Content-Type": bytes.type || "application/octet-stream" }, body: bytes, signal: AbortSignal.timeout(30000) });
   return { ...await responseData(response), name };
 }
 
@@ -513,11 +513,11 @@ function draftSnapshot(image = state.image, sourceImage = state.sourceImage) {
 async function requestDecision(request, draft) {
   const started = performance.now();
   const response = await fetch("/v1/systemone", { method: "POST",
-    headers: { "Content-Type": "application/json", "X-Veyra-Playground": "1" },
+    headers: { "Content-Type": "application/json", "X-QEV-Playground": "1" },
     body: JSON.stringify(request) });
   const result = await responseData(response);
   const elapsed = performance.now() - started;
-  const duration = response.headers.get("X-Veyra-Inference-Ms");
+  const duration = response.headers.get("X-QEV-Inference-Ms");
   return { request, response: result, draft, at: new Date().toISOString(),
     inferenceMs: duration === null ? null : Number(duration), roundTripMs: elapsed };
 }
@@ -764,7 +764,7 @@ function exportComparison() {
   const url = URL.createObjectURL(blob);
   const link = element("a");
   link.href = url;
-  link.download = `veyra-resolution-${state.comparison.at.replace(/[:.]/g, "-")}.json`;
+  link.download = `qev-resolution-${state.comparison.at.replace(/[:.]/g, "-")}.json`;
   document.body.append(link);
   link.click();
   link.remove();
@@ -795,7 +795,7 @@ async function pollStatus() {
     $("connection").className = `connection ${info.phase}`;
     $("connection-label").textContent = info.phase === "ready" ? (info.busy ? "판단 중" : "모델 연결됨") : info.phase === "error" ? "모델 준비 실패" : "모델 준비 중";
     $("device-label").textContent = info.device && info.device !== "cuda" ? `${info.device} · 모델 서버에서 실행` : "Qwen3.5-2B · 메모리에 준비 중";
-    if (info.checkpoint !== "veyra-backbone-recovery-v13") $("model-name").textContent = info.checkpoint;
+    if (info.checkpoint !== "qev") $("model-name").textContent = info.checkpoint;
     if (info.phase === "error") showError(`모델을 준비하지 못했습니다.\n${info.error}`, "connection");
     else if (state.errorKind === "connection") showError();
   } catch {

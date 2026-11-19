@@ -5,9 +5,9 @@ $baseUrl = "http://127.0.0.1:$Port"
 # Allow an existing legacy process to shut down cleanly during migration.
 $legacy = $null
 try { $legacy = Invoke-RestMethod -Uri "$baseUrl/api/status" -TimeoutSec 2 } catch {}
-if ($null -ne $legacy -and $legacy.app -eq 'veyra-playground') {
+if ($null -ne $legacy -and $legacy.app -eq 'qev-playground') {
     Invoke-RestMethod -Method Post -Uri "$baseUrl/api/shutdown" `
-        -Headers @{ 'X-Veyra-Playground' = '1' } -TimeoutSec 3 | Out-Null
+        -Headers @{ 'X-QEV-Playground' = '1' } -TimeoutSec 3 | Out-Null
     Write-Output 'Legacy playground shutdown requested; active inference finishes first.'
     return
 }

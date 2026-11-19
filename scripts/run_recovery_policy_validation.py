@@ -15,7 +15,7 @@ def read(path):
 
 
 def main(root):
-    checkpoint = Path("checkpoints/veyra-backbone-recovery-v13")
+    checkpoint = Path("checkpoints/qev-backbone-recovery-v13")
     data = Path("data/workflow-v12-cohort/records.jsonl")
     selection_path = Path("runs/backbone-recovery-policy-selection-v13/selection.json")
 

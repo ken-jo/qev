@@ -37,7 +37,7 @@ def main():
         req = urllib.request.Request(
             args.url.rstrip("/") + path,
             data=json.dumps(body).encode() if body is not None else None,
-            headers={"Content-Type": "application/json", "X-Veyra-Playground": "1"},
+            headers={"Content-Type": "application/json", "X-QEV-Playground": "1"},
         )
         try:
             with urllib.request.urlopen(req, timeout=45) as response:

@@ -14,6 +14,7 @@ import numpy as np
 from PIL import Image, ImageOps
 
 from qev_runtime.data import Source, TrainingRecord, audit_records, read_records
+from qev_runtime.frozen_identifiers import FOUNDATION_V11_ID_SALT
 from qev_runtime.schema import DecisionRequest
 
 LABELS = ["cardboard", "glass", "metal", "paper", "plastic", "trash"]
@@ -29,7 +30,7 @@ def digest(value):
 
 
 def stable(value):
-    return digest(("veyra-foundation-v11-83:" + value).encode())
+    return digest((FOUNDATION_V11_ID_SALT + ":" + value).encode())
 
 
 def image_signature(raw):
@@ -392,10 +393,10 @@ def main():
                 copy_record(record, policy_root, "retention")
 
     synthetic = Source(
-        id="veyra/conditional-probability",
+        id="qev/conditional-probability",
         revision=digest(Path(__file__).read_bytes()),
         license="Apache-2.0",
-        url="https://github.com/ken-jo/veyra",
+        url="https://github.com/ken-jo/qev",
     )
     for split, count in (("train", 240), ("dev", 60), ("calibration", 60), ("test", 120)):
         for index in range(count):
@@ -463,7 +464,7 @@ def main():
             ),
             "pretraining_overlap": (
                 "Unknown overlap with the backbone's original pretraining; "
-                "only Veyra adaptation splits are audited"
+                "only QEV adaptation splits are audited"
             ),
         }
     )

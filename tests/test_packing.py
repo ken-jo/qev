@@ -1,6 +1,9 @@
+import hashlib
+
 import pytest
 
-from qev_runtime.packing import marker_positions, pack_request
+from qev_runtime.packing import CANDIDATE_MARKER, QUESTION_MARKER, marker_positions, pack_request
+from qev_runtime.reasoning_workspace import RESULT_MARKER
 from qev_runtime.schema import DecisionRequest
 
 
@@ -35,7 +38,7 @@ def test_marker_alignment_and_collision():
     with pytest.raises(ValueError, match="alignment mismatch"):
         marker_positions([1, 2], [5], 1)
     request = make_request({"x": "red", "y": "blue"})
-    request.state.text = "[VEYRA_CANDIDATE]"
+    request.state.text = CANDIDATE_MARKER
     with pytest.raises(ValueError, match="reserved"):
         pack_request(request)
 
@@ -43,3 +46,11 @@ def test_marker_alignment_and_collision():
 def test_duplicate_choice_descriptions_rejected():
     with pytest.raises(ValueError, match="distinct"):
         make_request({"x": "same", "y": "same"})
+
+
+def test_trained_markers_keep_their_exact_bytes():
+    # Every published checkpoint was trained on these exact marker strings.
+    joined = "\n".join((CANDIDATE_MARKER, QUESTION_MARKER, RESULT_MARKER)).encode()
+    assert hashlib.sha256(joined).hexdigest() == (
+        "772247417e12aea7e601a4e4b2ace7d35da2ddafead30761c5d29ccaa176bda9"
+    )

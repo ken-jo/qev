@@ -17,7 +17,7 @@ accuracy; it is not the proportion of all incorrect predictions.
 
 ## Claims we can support
 
-The new procedural workflows improved over the recorded Veyra Foundation v11 (Qwen3.5-2B), while the
+The new procedural workflows improved over the recorded Foundation v11 (Qwen3.5-2B), while the
 declared retention, latency and recovery acceptance gates passed. The original acceptance
 contains 14 checks bound to source/evidence hashes. The selected model used development
 data for selection, later separate calibration/policy populations, then new final groups.

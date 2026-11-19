@@ -72,11 +72,10 @@ def remap_record(record: TrainingRecord, prefix: str, revision: str) -> Training
 
     raw = record.model_dump()
     raw["source"] = {
-        # Published corpus records embed this generator identity; renaming breaks audits.
-        "id": "veyra-policy-refresh-v8",
+        "id": "qev-policy-refresh-v8",
         "revision": revision,
         "license": "Apache-2.0",
-        "url": "https://github.com/ken-jo/veyra",
+        "url": "https://github.com/ken-jo/qev",
     }
     raw["request"]["state"]["text"] = rewrite(raw["request"]["state"]["text"])
     for image in raw["request"]["state"]["images"]:

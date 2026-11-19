@@ -62,7 +62,7 @@ populations as fitting data and requires two entirely new validation populations
 - `development-oracle.json`: annotation-aware ideal reference using development records only.
   With perfect agreement to hard annotations and the stated conditional evidence model, each
   type could satisfy the 15% error/60% coverage requirement. The uncertainty-only ideal risk is
-  12.04% at 60% coverage and 16.98% at 80% coverage. These are reference limits, not Veyra results
+  12.04% at 60% coverage and 16.98% at 80% coverage. These are reference limits, not QEV results
   or empirically observed business event rates; no deployed policy was fitted.
 - [Exploratory pilots](pilots/README.md): typed-view agreement and training-only primitive
   condition supervision improve some development accuracy but leave abstention weaknesses.

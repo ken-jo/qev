@@ -2,7 +2,9 @@
 
 import torch
 
-RESULT_MARKER = "VeyraResult:"  # trained input marker; renaming changes model inputs
+from qev_runtime.frozen_identifiers import TRAINED_RESULT_MARKER
+
+RESULT_MARKER = TRAINED_RESULT_MARKER  # trained input marker
 
 
 def workspace_suffix(slots: int) -> str:

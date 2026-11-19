@@ -12,7 +12,7 @@ from qev_runtime.release_gate import evidence_matches
 parser = argparse.ArgumentParser()
 parser.add_argument("--checkpoint", type=Path, required=True)
 parser.add_argument("--output", type=Path, required=True)
-parser.add_argument("--name", default="veyra-starter-v2")
+parser.add_argument("--name", default="qev-starter-v2")
 parser.add_argument("--acceptance-audit", type=Path)
 args = parser.parse_args()
 if not args.name or any(char in args.name for char in ("/", "\\", ":")) or args.name in {".", ".."}:

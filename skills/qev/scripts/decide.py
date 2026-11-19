@@ -12,6 +12,9 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 
+# Decision-model name returned by SDK 0.2.1 servers; accepted on read only.
+LEGACY_SDK_MODEL_NAME = "veyra-qwen3.5-2b"
+
 
 class NoRedirect(HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):
@@ -19,8 +22,10 @@ class NoRedirect(HTTPRedirectHandler):
 
 
 def validate_response(request, response):
-    # SDK 0.2.1 servers still return the legacy decision-model name.
-    if not isinstance(response, dict) or response.get("model") not in ("qev", "veyra-qwen3.5-2b"):
+    if not isinstance(response, dict) or response.get("model") not in (
+        "qev",
+        LEGACY_SDK_MODEL_NAME,
+    ):
         raise ValueError("The endpoint did not return the expected QEV model identity")
     backbone = response.get("backbone")
     if (
@@ -133,8 +138,8 @@ def http_predict(endpoint, payload, timeout):
         headers={
             "Content-Type": "application/json",
             "Accept": "application/json",
-            # Earlier QEV playground servers require this explicit API-client marker.
-            "X-Veyra-Playground": "1",
+            # The QEV playground requires this explicit API-client marker.
+            "X-QEV-Playground": "1",
         },
         method="POST",
     )

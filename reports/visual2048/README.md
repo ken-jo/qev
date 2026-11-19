@@ -1,6 +1,6 @@
 # Visual 2048: first exploratory runs
 
-The playground now renders a 2048 board, sends that exact PNG to the resident Veyra v13
+The playground now renders a 2048 board, sends that exact PNG to the resident QEV v13
 checkpoint, executes its chosen direction, and records the actual resulting game state.
 No model training or checkpoint changes were made. This is an executable image/action demo;
 the current model did **not** demonstrate competent 2048 play.
@@ -88,6 +88,6 @@ No gameplay fine-tuning or performance claim is hidden in the demo implementatio
 
 ## Text-only follow-up
 
-[LAYA and Veyra text-board runs](../text2048/README.md) use the exact numeric board as text.
+[LAYA and QEV text-board runs](../text2048/README.md) use the exact numeric board as text.
 They isolate a text-input application from this image-input experiment. That first text
 protocol is our own harness, not a reproduction of the original `jev-use` demonstration.

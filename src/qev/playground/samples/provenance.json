@@ -8,7 +8,7 @@
   "source_revision": "94cd17ebfd6702bf62281d3c89f22ff649815b46",
   "license": "MIT",
   "copyright": "Copyright (c) 2017 Gary Thung",
-  "purpose": "Interactive demonstration. Not an independent benchmark; source dataset overlaps Veyra development data.",
+  "purpose": "Interactive demonstration. Not an independent benchmark; source dataset overlaps QEV development data.",
   "selection": "First numbered photograph of each source category; selected without model predictions.",
   "images": [
     {

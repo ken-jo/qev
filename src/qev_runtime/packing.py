@@ -6,12 +6,12 @@ import json
 from dataclasses import dataclass
 
 from qev_runtime.candidates import Candidate, candidates_for
+from qev_runtime.frozen_identifiers import TRAINED_CANDIDATE_MARKER, TRAINED_QUESTION_MARKER
 from qev_runtime.schema import ChoiceQuestion, DecisionRequest, Question
 
-# Trained wire markers: the learned backbone was fit with these exact strings, so
-# renaming them changes model inputs. The historical spelling is intentional.
-CANDIDATE_MARKER = "[VEYRA_CANDIDATE]"
-QUESTION_MARKER = "[VEYRA_QUESTION]"
+# Trained wire markers: the learned backbone was fit with these exact strings.
+CANDIDATE_MARKER = TRAINED_CANDIDATE_MARKER
+QUESTION_MARKER = TRAINED_QUESTION_MARKER
 
 
 @dataclass(frozen=True)

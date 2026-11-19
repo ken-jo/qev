@@ -49,5 +49,5 @@ a claim to its reported gains.
 [Pause-token research](https://research.google/pubs/think-before-you-speak-training-language-models-with-pause-tokens/)
 studies extra internal computation positions. The authors report that pause pretraining matters;
 adding positions or only fine-tuning a standard model does not by itself establish an improvement.
-Consequently, expanding Veyra's four positions remains a hypothesis, not a promised speed or
+Consequently, expanding QEV's four positions remains a hypothesis, not a promised speed or
 accuracy improvement.

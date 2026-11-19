@@ -94,7 +94,7 @@ def main():
         id=config["protocol"],
         revision="sha256:" + digest(Path(__file__)),
         license="Apache-2.0",
-        url="https://github.com/ken-jo/veyra",
+        url="https://github.com/ken-jo/qev",
     )
     fresh, latent = [], []
 

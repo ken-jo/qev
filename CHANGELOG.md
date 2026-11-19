@@ -2,13 +2,16 @@
 
 ## Unreleased
 
-- The research runtime package `veyra` is rebranded as the companion package `qev_runtime`
-  (a sibling of `qev` and `qev_decision_index`); the legacy `veyra` command is retired.
-  The public `qev` package keeps only the SDK surface: CLI, download, playground and serve.
-  Trained prompt markers (`[VEYRA_CANDIDATE]`,
-  `[VEYRA_QUESTION]`, `VeyraResult:`), published corpus generator identifiers and
-  historical checkpoint, evidence and report names keep their original spellings; they are
-  frozen inputs or recorded outputs of the runs that produced the published artifacts.
+- The research runtime moves into this repository as the companion package `qev_runtime`
+  (a sibling of `qev` and `qev_decision_index`); its separate console command is retired.
+  The public `qev` package keeps only the SDK surface: CLI, download, playground and
+  serve. The package version is the QEV version (`qev.__version__`). Code, scripts, docs and apps use QEV names only; corpus
+  generators, the playground headers (`X-QEV-Playground`, `X-QEV-Inference-Ms`) and the
+  status app id (`qev-playground`) now write QEV names. Trained prompt markers, record-ID
+  salts and names inside already published bundles cannot change without changing model
+  inputs or recorded data; they live in `qev_runtime/frozen_identifiers.py`. Frozen
+  evidence under `reports/` and `release/` and hash-pinned configs and scripts are
+  unchanged.
 - `qev_decision_index:QEVEngine`: Decision Index vision engine for the released QEV-0.8B and
   QEV-2B checkpoints (one forward pass, native resolution up to 1.6 MP per image, at most 4
   images and 8,192 input tokens; longer requests are reported as unsupported). Needs
@@ -63,7 +66,7 @@
 - Playground controls remain English even when the browser language is Korean or
   another supported locale; multilingual model inputs remain available.
 - Model card: highlights, request format and file tables, `pip install qev`, citation, and
-  earlier Veyra names moved to a Provenance section. The Hugging Face README was updated
+  earlier project names moved to a Provenance section. The Hugging Face README was updated
   on 2026-10-08 with a separate documentation-only publication receipt; model and SDK
   artifacts remain unchanged.
 

@@ -31,7 +31,7 @@ def test_skill_preserves_three_typed_probabilities():
     assert set(item["type"] for item in result["decisions"].values()) == {"choice", "score", "noul"}
 
 
-@pytest.mark.parametrize("model", ["qev", "veyra-qwen3.5-2b"])
+@pytest.mark.parametrize("model", ["qev", helper.LEGACY_SDK_MODEL_NAME])
 @pytest.mark.parametrize("backbone", ["Qwen/Qwen3.5-2B", "ken-jo/QEV-0.8B"])
 def test_skill_accepts_current_and_legacy_names_with_pinned_backbones(model, backbone):
     request, response = fixture()

@@ -16,7 +16,7 @@ def read(path):
 
 def main():
     root = Path("runs/workflow-v12-workspace-evaluation")
-    checkpoint = Path("checkpoints/veyra-workspace-v12")
+    checkpoint = Path("checkpoints/qev-workspace-v12")
     data = Path("data/workflow-v12b/records.jsonl")
     selection_path = Path("runs/workflow-v12-workspace-selection/selection.json")
     root.mkdir(parents=True, exist_ok=False)
@@ -127,7 +127,7 @@ def main():
         "--output",
         root / "final-freeze.json",
     )
-    for name, model in (("baseline", "checkpoints/veyra-foundation-v11"), ("final", checkpoint)):
+    for name, model in (("baseline", "checkpoints/qev-foundation-v11"), ("final", checkpoint)):
         options = ["--baseline"] if name == "baseline" else ["--selection", selection_path]
         run(
             name,

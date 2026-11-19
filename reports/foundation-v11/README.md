@@ -1,4 +1,4 @@
-# Veyra Foundation evidence
+# Foundation v11 evidence
 
 This directory contains aggregate reports and frozen protocols. Original photographs and text
 datasets are downloaded separately. Local `runs/`, `data/` and checkpoint paths in the reports
@@ -25,7 +25,7 @@ describe the exercised workspace; the scripts and source snapshots preserve repr
   after adaptation. Fresh and legacy groups, domains and question views are reported separately.
 - `paired-comparison.json`: paired group bootstrap differences against Dynamic v2 and the two
   LAYA checkpoints on the shared text subset. These descriptive intervals are not adjusted for
-  multiple comparisons. Veyra was adapted on these task families; LAYA was not.
+  multiple comparisons. QEV was adapted on these task families; LAYA was not.
 - `typed-regression.json`: official typed-decisions test, 2,000 teacher-labeled questions,
   previously inspected and excluded from this training/selection/calibration.
 - `typed-baseline-standardized.json` and `typed-regression-audit.json`: preserved Dynamic v2
@@ -49,7 +49,7 @@ Use `laya-official-original-base.json`, `laya-official-original-specialist.json`
 Original question dictionaries preserve the reference SDK's defaults when criteria are absent.
 
 The earlier `laya-official-base.json` and `laya-official-specialist.json` are retained as diagnostics.
-Those runs inserted Veyra's default truth descriptions into 200 originally criteria-free questions.
+Those runs inserted QEV's default truth descriptions into 200 originally criteria-free questions.
 They must not be substituted for the corrected original-input results.
 
 The stock base context limit truncates state text in 34 official questions. The 1,024-token
@@ -58,8 +58,8 @@ The corresponding input audits document zero truncation at 1,024 tokens, zero tr
 specialist and zero truncation on the foundation text corpus. LAYA receives no image input.
 
 `laya-foundation-base.json` and `laya-foundation-specialist.json` use the same 2,141 text questions
-as Veyra Foundation. This includes soft uncertainty targets, so the hard-label accuracy denominator
-is smaller. The specialist's official workflow training differs from Veyra's foundation adaptation.
+as Foundation v11. This includes soft uncertainty targets, so the hard-label accuracy denominator
+is smaller. The specialist's official workflow training differs from QEV's foundation adaptation.
 
 `export-manifest.json` binds the exported evaluation reports to their source files and SHA-256.
 Release packaging and post-publication verification reports were generated afterward and are

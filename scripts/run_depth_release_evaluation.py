@@ -1,3 +1,6 @@
+# Frozen release reproducer. It builds, installs or audits the 0.3.0a runtime wheels and
+# Hugging Face bundles under the file names they were published with, so it cannot run
+# against this tree and keeps those historical names. Kept for provenance only.
 """Finish the depth release evaluation and HF preparation after eligible selection."""
 
 import hashlib

@@ -34,7 +34,7 @@ def main():
         "runs/foundation-v11-selection",
     )
     selected = json.loads(Path("runs/foundation-v11-selection/selection.json").read_text())
-    checkpoint = "checkpoints/veyra-foundation-v11"
+    checkpoint = "checkpoints/qev-foundation-v11"
     run(
         "evaluate_foundation.py",
         "--checkpoint",
@@ -49,7 +49,7 @@ def main():
         checkpoint,
     )
     for name, candidate in (
-        ("baseline-final", "checkpoints/veyra-dynamic-v2"),
+        ("baseline-final", "checkpoints/qev-dynamic-v2"),
         ("foundation-final", checkpoint),
     ):
         run(

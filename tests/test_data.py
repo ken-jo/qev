@@ -20,7 +20,7 @@ def record(name="r", group="g", split="train"):
                 "id": "original",
                 "revision": "1",
                 "license": "Apache-2.0",
-                "url": "https://github.com/ken-jo/veyra",
+                "url": "https://github.com/ken-jo/qev",
             },
         }
     )

@@ -11,6 +11,7 @@ from pathlib import Path
 from build_foundation_data import image_signature
 
 from qev_runtime.data import Source, TrainingRecord, audit_records, read_records
+from qev_runtime.frozen_identifiers import WORKFLOW_V12_ID_SALT
 from qev_runtime.schema import DecisionRequest
 
 ROOT = Path("data/workflow-v12")
@@ -112,7 +113,7 @@ def digest(raw):
 
 
 def stable(text):
-    return digest(("veyra-workflow-v12-131:" + text).encode())
+    return digest((WORKFLOW_V12_ID_SALT + ":" + text).encode())
 
 
 def truth(expression, facts):
@@ -160,10 +161,10 @@ def main():
     config_path = Path("configs/workflow-release-v12.json")
     protocol = json.loads(config_path.read_text(encoding="utf-8"))
     source = Source(
-        id="veyra-workflow-v12",
+        id="qev-workflow-v12",
         revision="sha256:" + digest(Path(__file__).read_bytes()),
         license="Apache-2.0",
-        url="https://github.com/ken-jo/veyra",
+        url="https://github.com/ken-jo/qev",
     )
     records, latent = [], []
 

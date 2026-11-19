@@ -18,7 +18,7 @@ def read(path):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, default=Path("runs/workflow-v12-evaluation"))
-    parser.add_argument("--checkpoint", type=Path, default=Path("checkpoints/veyra-workflow-v12"))
+    parser.add_argument("--checkpoint", type=Path, default=Path("checkpoints/qev-workflow-v12"))
     args = parser.parse_args()
     root, checkpoint = args.output, args.checkpoint
     root.mkdir(parents=True, exist_ok=False)
@@ -99,7 +99,7 @@ def main():
         "--output",
         root / "final-freeze.json",
     )
-    for name, model in (("baseline", "checkpoints/veyra-foundation-v11"), ("final", checkpoint)):
+    for name, model in (("baseline", "checkpoints/qev-foundation-v11"), ("final", checkpoint)):
         options = ["--baseline"] if name == "baseline" else ["--selection", selection_path]
         run(
             name,

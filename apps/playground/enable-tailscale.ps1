@@ -44,7 +44,7 @@ if ($serve.AllowFunnel -and $serve.AllowFunnel.PSObject.Properties[$serveKey].Va
 
 $existingApp = $null
 try { $existingApp = Invoke-RestMethod -Uri "$baseUrl/api/status" -TimeoutSec 3 } catch {}
-if ($existingApp -and ($existingApp.app -ne 'veyra-playground' -or $existingApp.busy)) {
+if ($existingApp -and ($existingApp.app -ne 'qev-playground' -or $existingApp.busy)) {
     throw 'The local port is serving another application or an inference is active. Retry when idle.'
 }
 
