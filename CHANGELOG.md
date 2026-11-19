@@ -1,7 +1,13 @@
 # Release history
 
-## Unreleased
+## 0.2.2 — SDK runtime as qev_runtime
 
+- SDK runtime now ships as qev_runtime; legacy veyra modules removed; no model weight change.
+  The model package keeps `head.safetensors` and `manifest.json` byte-identical to 0.2.1 and
+  adds `runtime/qev-0.2.2-py3-none-any.whl`; packaged text and photograph inference is
+  recorded in `release/model-inference.json`. The earlier wheels and the evidence and
+  release files that name the legacy runtime leave the model package; they
+  remain at Hugging Face revision `1b801c0a`. The agent skill installs the 0.2.2 wheel.
 - The research runtime moves into this repository as the companion package `qev_runtime`
   (a sibling of `qev` and `qev_decision_index`); its separate console command is retired.
   The public `qev` package keeps only the SDK surface: CLI, download, playground and

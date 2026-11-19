@@ -27,6 +27,8 @@ inference: false
 
 # QEV
 
+> **Previous model release (QEV 0.1.1).** This model has been superseded by [QEV-2B](https://huggingface.co/ken-jo/QEV-2B) and [QEV-0.8B](https://huggingface.co/ken-jo/QEV-0.8B) (October 2026). They are more accurate, calibrated and faster; see the [QEV collection](https://huggingface.co/collections/ken-jo/qev-6ad5726f9909b608646111a6). This repository keeps its weights unchanged for two reasons: it is the distillation teacher of the new models (revision 0d2d13f), and the published package loads it. SDK 0.2.2 changes only the attached runtime wheel and documentation.
+
 [![Multilingual](https://img.shields.io/badge/languages-Multilingual-2563eb)](#language-support)
 
 **Your evidence. Your criteria. A decision with probabilities.**
@@ -74,8 +76,8 @@ English-focused; equivalent accuracy across languages has not been established.
 | Precision | BF16 backbone and FP32 readouts on CUDA |
 | License | Apache-2.0 for code and adaptation; source-specific dataset licenses |
 
-Model version **0.1.1**, final Qwen-based research snapshot; Python SDK **0.2.1**. The
-SDK release changes packaging, not the learned weights, candidate encoding, calibration or
+Model version **0.1.1**, final Qwen-based research snapshot; Python SDK **0.2.2** (attached
+wheel; PyPI provides 0.2.1). The SDK releases change packaging, not the learned weights, candidate encoding, calibration or
 inference mathematics. QEV is independently maintained; its neural backbone and vision
 encoder come from Qwen3.5-2B, and no LAYA checkpoint is merged into the weights. The
 released recipe is supervised adaptation and calibration, not RLCD. See
@@ -95,8 +97,8 @@ not generate an answer sentence or a JSON string that needs parsing.
 
 ## One photo, three decisions
 
-**Unreleased source extension:** the development SDK accepts up to four ordered images
-without changing this checkpoint's learned weights. Published SDK 0.2.1 accepts one.
+**Unevaluated extension:** the attached SDK 0.2.2 wheel accepts up to four ordered images
+without changing this checkpoint's learned weights. SDK 0.2.1 on PyPI accepts one.
 Multi-image correctness, accuracy, calibration and latency have not been evaluated;
 the recorded results below retain their original single-image scope. See
 [the source guide](docs/MULTI_IMAGE.md).
@@ -109,9 +111,9 @@ actual recorded output.
 
 | Question | Definition supplied with the request | QEV's recorded answer |
 | --- | --- | --- |
-| `choice` | Choose among cardboard, glass, metal, paper, plastic and trash | Plastic (`c4`), probability **0.9361** |
-| `score` | Band 0: glass/plastic; band 1: metal/trash; band 2: cardboard/paper | Expected level **0.4254** on the 0-2 scale; most likely band 0, probability **0.6978** |
-| `noul` | Does the item belong to glass, paper or plastic? | Probability true **0.7903** |
+| `choice` | Choose among cardboard, glass, metal, paper, plastic and trash | Plastic (`c4`), probability **0.9333** |
+| `score` | Band 0: glass/plastic; band 1: metal/trash; band 2: cardboard/paper | Expected level **0.4355** on the 0-2 scale; most likely band 0, probability **0.6903** |
+| `noul` | Does the item belong to glass, paper or plastic? | Probability true **0.7861** |
 
 All three answers were accepted by the released abstention policy. They used one batched
 forward and generated zero answer tokens. An expected level is a weighted average over
@@ -136,8 +138,11 @@ python -m pip install qev==0.2.1
 qev playground
 ```
 
-A wheel for SDK 0.2.1 is also attached to this model repository under `runtime/`.
-It is a separately built artifact; its checksum differs from the PyPI wheel.
+A wheel for SDK 0.2.2 is attached to this model repository under `runtime/`; it ships the
+runtime as the `qev_runtime` package. PyPI currently provides SDK 0.2.1. Earlier wheels
+(0.1.1, 0.2.0, 0.2.1) and the complete historical training evidence remain available at
+[revision 1b801c0a](https://huggingface.co/ken-jo/qev/tree/1b801c0a596d931a2fa2f587bf5e5eb70f096fea)
+of this repository.
 
 ```python
 from pathlib import Path
@@ -164,8 +169,8 @@ Recorded output for this request, shortened:
 {
   "type": "choice",
   "choice": "billing",
-  "probabilities": {"billing": 0.974044, "technical": 0.025956},
-  "confidence": 0.974044,
+  "probabilities": {"billing": 0.974126, "technical": 0.025874},
+  "confidence": 0.974126,
   "abstained": false
 }
 ```
@@ -186,10 +191,10 @@ schemas and the local HTTP server.
 | `instructions` | What to decide |
 | `criteria` | `choice`: option ID to description (2-16); `score`: ordered list (2-16); `noul`: optional `true`/`false` descriptions |
 
-**Unreleased; source checkout only:** `POST /v1/systemone` (from `qev serve`) also accepts
+**SDK 0.2.2 wheel and source checkout:** `POST /v1/systemone` (from `qev serve`) also accepts
 a Jev/SystemOne-style body: a plain-string or structured JSON `state`, `instructions`
-omitted (the question ID is used) and `"model": "qev"`. The published SDK **0.2.1** and
-the attached 0.2.1 wheel require the native request format shown above.
+omitted (the question ID is used) and `"model": "qev"`. SDK **0.2.1** (PyPI) requires
+the native request format shown above.
 
 State objects containing `text` or `images` use strict native validation; additional
 fields are rejected instead of silently discarding an image. Other JSON states are
@@ -201,8 +206,9 @@ the Jev service, images remain local paths, and the response is QEV's own.
 | File | Purpose |
 | --- | --- |
 | `head.safetensors`, `manifest.json` | Adaptation, readout heads, and the calibrated abstention policy (hashes below) |
-| `runtime/qev-0.2.1-py3-none-any.whl` | Runtime, SDK, server and English playground |
+| `runtime/qev-0.2.2-py3-none-any.whl` | Runtime (`qev_runtime`), SDK, server and English playground |
 | `examples/` | Photograph request, recorded response and provenance |
+| `evidence/`, `release-comparison/` | Historical training and comparison records; files that name the legacy runtime were removed and remain at [revision 1b801c0a](https://huggingface.co/ken-jo/qev/tree/1b801c0a596d931a2fa2f587bf5e5eb70f096fea), so some kept records cite files that are only there |
 
 The SDK includes the English playground and six sample photographs. `qev playground`
 opens a local server at http://127.0.0.1:7860. First use downloads about 4.6 GB of model
@@ -363,8 +369,11 @@ wheel from `runtime/`, then run `qev playground`, `qev predict`, or use the Pyth
 auto-model loader cannot directly load this custom adapter/head layout.
 
 Historical stage flags in the unchanged manifest record when those stages were run.
-The exact-model acceptance report and publication verification are separate evidence;
-packaging does not retroactively alter a stage's provenance.
+The exact-model acceptance report and publication verification are separate evidence,
+kept with the training records at
+[revision 1b801c0a](https://huggingface.co/ken-jo/qev/tree/1b801c0a596d931a2fa2f587bf5e5eb70f096fea)
+and the [archived source](https://github.com/ken-jo/qev/tree/archive/pre-qev); packaging
+does not retroactively alter a stage's provenance.
 
 ## Provenance
 
@@ -372,7 +381,9 @@ QEV was previously developed under an earlier project name, and this checkpoint 
 Workflow Recovery v13. The public rename did not change the weights. The trained prompt
 markers keep their original spelling because the learned model depends on them. Releases
 through 0.2.1 bundled the evaluated runtime as a separate package; it now ships as the
-companion `qev_runtime` package, while historical evidence keeps its recorded names. Model ID `Qwen/Qwen3.5-2B` in the request contract
+companion `qev_runtime` package. From SDK 0.2.2, packaged historical evidence that names
+the legacy runtime is kept only at revision 1b801c0a; the unchanged manifest keeps its
+recorded source names. Model ID `Qwen/Qwen3.5-2B` in the request contract
 identifies the actual base.
 
 ## Citation

@@ -1,37 +1,57 @@
 {
   "passed": true,
   "published_to_huggingface": false,
-  "source_sha256": "7bda09cdfdb14a37bf6884bd37adbc04823a64bd677fe5a0f34ee9541c89f286",
+  "source_sha256": "700447c6422c8c7756c9db2d1d1458ec189eb804847b7f7757b320c83980a286",
   "weights_sha256": "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee",
   "manifest_sha256": "d83f9910196c6e801658ca3816c3d2bd4a849ba3da6ff059a0edf7c6028e898d",
-  "checksums_sha256": "7ad3cc9239bb92e5e743ae225b8baff0c35718fe17e9625dfe7d20d05f699d61",
-  "verified_files": 208,
-  "wheel_sha256": "d5270e05a748d9e965c8e2a2a7e54fae83abad6c4da4e76127d7c503a2543c81",
-  "veyra_version": "0.3.0a4",
-  "qev_version": "0.2.1",
+  "checksums_sha256": "5404b9b07e6e3a3c04437baf4e29149a74633012ee7ff15562491e40692d5d1b",
+  "verified_files": 90,
+  "wheel_file": "runtime/qev-0.2.2-py3-none-any.whl",
+  "wheel_sha256": "489ff7f73ed52944b8e602aa300c53d16754fda37391ff6f1fed51e9187bf43f",
+  "built_wheel_matches_packaged_wheel": true,
+  "qev_version": "0.2.2",
   "public_facade_preserves_model_class": true,
   "python_isolated": true,
   "modules_from_bundled_wheel": {
-    "veyra": "C:\\tmp\\vision-qev\\dist\\huggingface\\qev-sdk-0.2.1\\runtime\\qev-0.2.1-py3-none-any.whl\\veyra\\__init__.py",
-    "veyra.constants": "C:\\tmp\\vision-qev\\dist\\huggingface\\qev-sdk-0.2.1\\runtime\\qev-0.2.1-py3-none-any.whl\\veyra\\constants.py",
-    "veyra.schema": "C:\\tmp\\vision-qev\\dist\\huggingface\\qev-sdk-0.2.1\\runtime\\qev-0.2.1-py3-none-any.whl\\veyra\\schema.py",
-    "veyra.candidates": "C:\\tmp\\vision-qev\\dist\\huggingface\\qev-sdk-0.2.1\\runtime\\qev-0.2.1-py3-none-any.whl\\veyra\\candidates.py",
-    "veyra.packing": "C:\\tmp\\vision-qev\\dist\\huggingface\\qev-sdk-0.2.1\\runtime\\qev-0.2.1-py3-none-any.whl\\veyra\\packing.py",
-    "veyra.backbone": "C:\\tmp\\vision-qev\\dist\\huggingface\\qev-sdk-0.2.1\\runtime\\qev-0.2.1-py3-none-any.whl\\veyra\\backbone.py",
-    "veyra.binding_head": "C:\\tmp\\vision-qev\\dist\\huggingface\\qev-sdk-0.2.1\\runtime\\qev-0.2.1-py3-none-any.whl\\veyra\\binding_head.py",
-    "veyra.probability": "C:\\tmp\\vision-qev\\dist\\huggingface\\qev-sdk-0.2.1\\runtime\\qev-0.2.1-py3-none-any.whl\\veyra\\probability.py",
-    "veyra.reasoning_workspace": "C:\\tmp\\vision-qev\\dist\\huggingface\\qev-sdk-0.2.1\\runtime\\qev-0.2.1-py3-none-any.whl\\veyra\\reasoning_workspace.py",
-    "veyra.option_model": "C:\\tmp\\vision-qev\\dist\\huggingface\\qev-sdk-0.2.1\\runtime\\qev-0.2.1-py3-none-any.whl\\veyra\\option_model.py"
+    "qev": "qev/__init__.py",
+    "qev_runtime": "qev_runtime/__init__.py",
+    "qev_runtime.backbone": "qev_runtime/backbone.py",
+    "qev_runtime.binding_head": "qev_runtime/binding_head.py",
+    "qev_runtime.bundled_backbone": "qev_runtime/bundled_backbone.py",
+    "qev_runtime.candidates": "qev_runtime/candidates.py",
+    "qev_runtime.constants": "qev_runtime/constants.py",
+    "qev_runtime.cuda_graph": "qev_runtime/cuda_graph.py",
+    "qev_runtime.exit_head": "qev_runtime/exit_head.py",
+    "qev_runtime.frozen_identifiers": "qev_runtime/frozen_identifiers.py",
+    "qev_runtime.image_inputs": "qev_runtime/image_inputs.py",
+    "qev_runtime.option_model": "qev_runtime/option_model.py",
+    "qev_runtime.packing": "qev_runtime/packing.py",
+    "qev_runtime.probability": "qev_runtime/probability.py",
+    "qev_runtime.reasoning_workspace": "qev_runtime/reasoning_workspace.py",
+    "qev_runtime.schema": "qev_runtime/schema.py"
   },
-  "dependencies": "Existing pinned Python 3.12 environment; not a clean dependency install",
+  "platform": "linux",
+  "python_version": "3.12.3",
+  "dependency_versions": {
+    "torch": "2.10.0+cu128",
+    "transformers": "5.17.0",
+    "pillow": "12.3.0",
+    "tokenizers": "0.23.2",
+    "safetensors": "0.8.0",
+    "accelerate": "1.15.0",
+    "numpy": "2.5.3"
+  },
+  "dependencies_match_packaged_uv_lock": true,
   "base_model": "Pinned locally cached Qwen base; no fresh base-weight download",
   "gpu": "NVIDIA GeForce RTX 4060 Ti",
-  "photo_record_id": "waste:00e0bbcc0a75007fb79cb8e2:policy",
+  "photo_request": "examples/photograph/request.json",
+  "photo_sha256": "00e0bbcc0a75007fb79cb8e2e96a48c3d32941ee9ae8918590f846261d5aaac1",
+  "packaged_example_response_matches": true,
   "results": {
     "text": {
       "backbone_forwards": 1,
       "response": {
-        "model": "veyra-qwen3.5-2b",
+        "model": "qev",
         "architecture": "option_readout",
         "decision_views": 1,
         "backbone": {
@@ -42,10 +62,10 @@
           "department": {
             "type": "choice",
             "probabilities": {
-              "billing": 0.9740437269210815,
-              "technical": 0.025956228375434875
+              "billing": 0.9741263389587402,
+              "technical": 0.025873705744743347
             },
-            "confidence": 0.9740437269210815,
+            "confidence": 0.9741263389587402,
             "confidence_definition": "maximum_candidate_probability",
             "calibrated": true,
             "abstained": false,
@@ -55,14 +75,15 @@
         },
         "usage": {
           "input_tokens": 115,
-          "output_tokens": 0
+          "output_tokens": 0,
+          "input_images": 0
         }
       }
     },
     "photograph_three_questions": {
       "backbone_forwards": 1,
       "response": {
-        "model": "veyra-qwen3.5-2b",
+        "model": "qev",
         "architecture": "option_readout",
         "decision_views": 1,
         "backbone": {
@@ -73,16 +94,16 @@
           "score": {
             "type": "score",
             "probabilities": {
-              "0": 0.6978408694267273,
-              "1": 0.17892900109291077,
-              "2": 0.12323009967803955
+              "0": 0.6903237104415894,
+              "1": 0.18380945920944214,
+              "2": 0.1258668452501297
             },
-            "confidence": 0.6978408694267273,
+            "confidence": 0.6903237104415894,
             "confidence_definition": "maximum_candidate_probability",
             "calibrated": true,
             "abstained": false,
             "abstention_policy_fitted": true,
-            "score": 0.42538920044898987,
+            "score": 0.43554314970970154,
             "legend": {
               "0": "Priority band 0: The item belongs to the glass material category. OR The item belongs to the plastic material category.",
               "1": "Priority band 1: The item belongs to the metal material category. OR The item belongs to the trash material category.",
@@ -92,27 +113,27 @@
           "noul": {
             "type": "noul",
             "probabilities": {
-              "false": 0.20968711376190186,
-              "true": 0.7903128862380981
+              "false": 0.2138858288526535,
+              "true": 0.7861142158508301
             },
-            "confidence": 0.7903128862380981,
+            "confidence": 0.7861142158508301,
             "confidence_definition": "maximum_candidate_probability",
             "calibrated": true,
             "abstained": false,
             "abstention_policy_fitted": true,
-            "noul": 0.7903128862380981
+            "noul": 0.7861142158508301
           },
           "choice": {
             "type": "choice",
             "probabilities": {
-              "c0": 0.0069309379905462265,
-              "c1": 0.008959797210991383,
-              "c2": 0.017233500257134438,
-              "c3": 0.006411705166101456,
-              "c4": 0.9361229538917542,
-              "c5": 0.02434111386537552
+              "c0": 0.0075210384093225,
+              "c1": 0.008950072340667248,
+              "c2": 0.017981449142098427,
+              "c3": 0.006954255048185587,
+              "c4": 0.9333148002624512,
+              "c5": 0.025278327986598015
             },
-            "confidence": 0.9361229538917542,
+            "confidence": 0.9333148002624512,
             "confidence_definition": "maximum_candidate_probability",
             "calibrated": true,
             "abstained": false,
@@ -122,10 +143,50 @@
         },
         "usage": {
           "input_tokens": 1103,
-          "output_tokens": 0
+          "output_tokens": 0,
+          "input_images": 1
         }
       }
     }
   },
-  "exact_fixture_match_to_model_0_1_1": true
+  "same_environment_control": {
+    "wheel_file": "qev-0.2.1-py3-none-any.whl",
+    "wheel_sha256": "d5270e05a748d9e965c8e2a2a7e54fae83abad6c4da4e76127d7c503a2543c81",
+    "wheel_matches_previous_record": true,
+    "answers_identical": {
+      "text": true,
+      "photograph_three_questions": true
+    }
+  },
+  "comparison_with_previous_record": {
+    "previous_qev_version": "0.2.1",
+    "previous_wheel_sha256": "d5270e05a748d9e965c8e2a2a7e54fae83abad6c4da4e76127d7c503a2543c81",
+    "weights_and_manifest_identical": true,
+    "requests": {
+      "text": {
+        "answers_identical": false,
+        "max_abs_probability_difference": 8.26120376586914e-05,
+        "selected_answers_identical": true,
+        "input_tokens_equal": true,
+        "usage_fields_added": [
+          "input_images"
+        ],
+        "model_id_changed": true,
+        "model": "qev",
+        "response_fields_identical_except_model_answers_usage": true
+      },
+      "photograph_three_questions": {
+        "answers_identical": false,
+        "max_abs_probability_difference": 0.0075171589851379395,
+        "selected_answers_identical": true,
+        "input_tokens_equal": true,
+        "usage_fields_added": [
+          "input_images"
+        ],
+        "model_id_changed": true,
+        "model": "qev",
+        "response_fields_identical_except_model_answers_usage": true
+      }
+    }
+  }
 }
