@@ -1,6 +1,6 @@
 # QEV SDK 0.2.2 (prepared; not yet published)
 
-SDK runtime now ships as `qev_runtime`; legacy veyra modules removed; no model weight
+SDK runtime now ships as `qev_runtime`; legacy runtime modules removed; no model weight
 change. The Hugging Face model package adds `runtime/qev-0.2.2-py3-none-any.whl` and
 updates the card and documentation. `head.safetensors`, `manifest.json`, the evidence
 folder, the release comparison and the earlier wheels are copied byte-for-byte from the
@@ -11,8 +11,9 @@ loaded only from the bundled 0.2.2 wheel (isolated Python, Linux, RTX 4060 Ti). 
 tokens (115 and 1103), selected answers and abstentions match the 0.2.1 record; the
 response `model` is now `qev`. Probabilities differ from the 0.2.1 record, which was made
 on Windows, by at most 0.0076. The 0.2.1 wheel from the same package, run in the same Linux
-environment, returned answers identical to 0.2.2, so the difference comes from the
-platform build rather than the runtime rename. The photograph example now carries the
+environment, returned answers identical to 0.2.2, so the difference is not caused by the
+code; it comes from the environment, most likely the platform build (the locked
+dependency versions are the same). The photograph example now carries the
 0.2.2 recorded response.
 
 # QEV SDK 0.2.1
