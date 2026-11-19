@@ -1,6 +1,6 @@
 """QEV public interface to the evaluated multimodal decision runtime."""
 
-__version__ = "0.2.1"
+__version__ = "0.2.2"
 __all__ = ["DecisionRequest", "QEV", "load", "__version__"]
 
 

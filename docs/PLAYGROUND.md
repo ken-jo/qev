@@ -8,14 +8,14 @@ license notices and the SDK. You do not need to clone the repository to use the 
 Python 3.12 is required. The public runtime wheel is available with the model:
 
 ```sh
-python -m pip install https://huggingface.co/ken-jo/qev/resolve/main/runtime/qev-0.2.1-py3-none-any.whl
+python -m pip install https://huggingface.co/ken-jo/qev/resolve/main/runtime/qev-0.2.2-py3-none-any.whl
 qev playground
 ```
 
 Or use uv's isolated tool environment:
 
 ```sh
-uvx --python 3.12 --from https://huggingface.co/ken-jo/qev/resolve/main/runtime/qev-0.2.1-py3-none-any.whl qev playground
+uvx --python 3.12 --from https://huggingface.co/ken-jo/qev/resolve/main/runtime/qev-0.2.2-py3-none-any.whl qev playground
 ```
 
 From a source checkout:
@@ -78,11 +78,11 @@ Requests run one at a time, with up to eight waiting. Uploads are limited to 10 
 megapixels. Per-inference temporary images are removed; upload caches expire after
 approximately ten minutes and are swept every five minutes. Analytics is disabled by default.
 
-The unreleased source extension adds three upload slots under **Additional images**,
+SDK 0.2.2 (the attached wheel) and the source checkout add three upload slots under **Additional images**,
 for a total of four ordered images. Fill slots from Image 1 onward and refer to those
 numbers in the question. Selecting a preset clears all additional image slots.
 The resolution setting applies to each image; all images and questions share the existing
-processed-token budget. Published SDK 0.2.1 still has the one-image interface.
+processed-token budget. SDK 0.2.1 on PyPI still has the one-image interface.
 See [multi-image input and evaluation scope](MULTI_IMAGE.md).
 
 Sample photographs overlap development data and are examples, not independent benchmarks.
