@@ -79,7 +79,12 @@ def main():
     parser.add_argument(
         "--control",
         type=Path,
-        help="answers from another packaged wheel run in this same environment",
+        help="answers from the previous release's wheel run in this same environment",
+    )
+    parser.add_argument(
+        "--control-wheel",
+        type=Path,
+        help="the wheel the control ran; must be the previous record's wheel",
     )
     parser.add_argument(
         "--require-example-match",
@@ -211,13 +216,19 @@ def main():
         "results": results,
     }
     if args.control:
+        if not (args.control_wheel and args.previous_record):
+            raise ValueError("--control needs --control-wheel and --previous-record")
         control = json.loads(args.control.read_text("utf-8"))
-        control_wheel = (folder / control["wheel_file"]).resolve()
-        if not control_wheel.is_relative_to(folder) or control_wheel == wheel:
-            raise ValueError("control must use another wheel of this package")
+        control_sha = digest(args.control_wheel)
+        previous = json.loads(args.previous_record.read_text("utf-8"))
+        if control_sha != previous["wheel_sha256"] or control_sha == result["wheel_sha256"]:
+            raise ValueError("control must run the previous record's wheel")
+        if control["wheel_file"] != args.control_wheel.name:
+            raise ValueError("control answers belong to another wheel")
         result["same_environment_control"] = {
-            "wheel_file": control["wheel_file"],
-            "wheel_sha256": digest(control_wheel),
+            "wheel_file": args.control_wheel.name,
+            "wheel_sha256": control_sha,
+            "wheel_matches_previous_record": True,
             "answers_identical": {
                 name: control["answers"][name] == entry["response"]["answers"]
                 for name, entry in results.items()

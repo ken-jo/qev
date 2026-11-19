@@ -1,11 +1,11 @@
 {
   "passed": true,
   "published_to_huggingface": false,
-  "source_sha256": "a3f11ea8ee94d4605187a98f5a93b9d2200b4febb6592bdf90c87d4b27f1fa5c",
+  "source_sha256": "700447c6422c8c7756c9db2d1d1458ec189eb804847b7f7757b320c83980a286",
   "weights_sha256": "84b57aeeb987f73416ac0f796150957d1c5beb1ed373733053e46438f77a8fee",
   "manifest_sha256": "d83f9910196c6e801658ca3816c3d2bd4a849ba3da6ff059a0edf7c6028e898d",
-  "checksums_sha256": "7c235a0e52b02f322544d16551410887ed3382bb4af92e0d49ab311db93c6fae",
-  "verified_files": 209,
+  "checksums_sha256": "e0ef3b0629e636b052fd6ae47ea7c7bea0e31adf369ac563e68974c692e2ff45",
+  "verified_files": 32,
   "wheel_file": "runtime/qev-0.2.2-py3-none-any.whl",
   "wheel_sha256": "489ff7f73ed52944b8e602aa300c53d16754fda37391ff6f1fed51e9187bf43f",
   "built_wheel_matches_packaged_wheel": true,
@@ -150,8 +150,9 @@
     }
   },
   "same_environment_control": {
-    "wheel_file": "runtime/qev-0.2.1-py3-none-any.whl",
+    "wheel_file": "qev-0.2.1-py3-none-any.whl",
     "wheel_sha256": "d5270e05a748d9e965c8e2a2a7e54fae83abad6c4da4e76127d7c503a2543c81",
+    "wheel_matches_previous_record": true,
     "answers_identical": {
       "text": true,
       "photograph_three_questions": true

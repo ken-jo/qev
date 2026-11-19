@@ -140,7 +140,9 @@ qev playground
 
 A wheel for SDK 0.2.2 is attached to this model repository under `runtime/`; it ships the
 runtime as the `qev_runtime` package. PyPI currently provides SDK 0.2.1. Earlier wheels
-(0.1.1, 0.2.0, 0.2.1) remain under `runtime/` for reproducibility.
+(0.1.1, 0.2.0, 0.2.1) and the historical training evidence remain available at
+[revision 1b801c0a](https://huggingface.co/ken-jo/qev/tree/1b801c0a596d931a2fa2f587bf5e5eb70f096fea)
+of this repository.
 
 ```python
 from pathlib import Path
@@ -191,8 +193,8 @@ schemas and the local HTTP server.
 
 **SDK 0.2.2 wheel and source checkout:** `POST /v1/systemone` (from `qev serve`) also accepts
 a Jev/SystemOne-style body: a plain-string or structured JSON `state`, `instructions`
-omitted (the question ID is used) and `"model": "qev"`. SDK **0.2.1** (PyPI and the
-attached 0.2.1 wheel) requires the native request format shown above.
+omitted (the question ID is used) and `"model": "qev"`. SDK **0.2.1** (PyPI) requires
+the native request format shown above.
 
 State objects containing `text` or `images` use strict native validation; additional
 fields are rejected instead of silently discarding an image. Other JSON states are
@@ -205,7 +207,6 @@ the Jev service, images remain local paths, and the response is QEV's own.
 | --- | --- |
 | `head.safetensors`, `manifest.json` | Adaptation, readout heads, and the calibrated abstention policy (hashes below) |
 | `runtime/qev-0.2.2-py3-none-any.whl` | Runtime (`qev_runtime`), SDK, server and English playground |
-| `runtime/qev-0.1.1`, `0.2.0`, `0.2.1` wheels | Earlier SDK builds, kept for reproducibility |
 | `examples/` | Photograph request, recorded response and provenance |
 
 The SDK includes the English playground and six sample photographs. `qev playground`
@@ -367,8 +368,11 @@ wheel from `runtime/`, then run `qev playground`, `qev predict`, or use the Pyth
 auto-model loader cannot directly load this custom adapter/head layout.
 
 Historical stage flags in the unchanged manifest record when those stages were run.
-The exact-model acceptance report and publication verification are separate evidence;
-packaging does not retroactively alter a stage's provenance.
+The exact-model acceptance report and publication verification are separate evidence,
+kept with the training records at
+[revision 1b801c0a](https://huggingface.co/ken-jo/qev/tree/1b801c0a596d931a2fa2f587bf5e5eb70f096fea)
+and the [archived source](https://github.com/ken-jo/qev/tree/archive/pre-qev); packaging
+does not retroactively alter a stage's provenance.
 
 ## Provenance
 
@@ -376,7 +380,8 @@ QEV was previously developed under an earlier project name, and this checkpoint 
 Workflow Recovery v13. The public rename did not change the weights. The trained prompt
 markers keep their original spelling because the learned model depends on them. Releases
 through 0.2.1 bundled the evaluated runtime as a separate package; it now ships as the
-companion `qev_runtime` package, while historical evidence keeps its recorded names. Model ID `Qwen/Qwen3.5-2B` in the request contract
+companion `qev_runtime` package. From SDK 0.2.2 the historical evidence is no longer
+packaged here; the unchanged manifest keeps its recorded source names. Model ID `Qwen/Qwen3.5-2B` in the request contract
 identifies the actual base.
 
 ## Citation
