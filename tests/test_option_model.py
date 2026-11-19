@@ -1,10 +1,10 @@
 import torch
 from torch import nn
 
-from veyra.constants import MODEL_ID, MODEL_REVISION
-from veyra.option_model import LoRALinear, OptionConfig, OptionModel, option_prompt
-from veyra.policy_data import typed_decision
-from veyra.schema import DecisionRequest
+from qev.constants import MODEL_ID, MODEL_REVISION
+from qev.option_model import LoRALinear, OptionConfig, OptionModel, option_prompt
+from qev.policy_data import typed_decision
+from qev.schema import DecisionRequest
 
 
 def test_lora_starts_as_identity_then_merges_exactly():
@@ -83,8 +83,8 @@ def test_option_checkpoint_roundtrip_and_integrity(tmp_path, monkeypatch):
 
     import pytest
 
-    from veyra.backbone import QwenEncoder
-    from veyra.model import VeyraModel
+    from qev.backbone import QwenEncoder
+    from qev.model import DecisionModel
 
     def fake_load(config, *_args, **_kwargs):
         base = nn.Module()
@@ -100,7 +100,7 @@ def test_option_checkpoint_roundtrip_and_integrity(tmp_path, monkeypatch):
     monkeypatch.setattr(QwenEncoder, "load", fake_load)
     model = OptionModel(fake_load(OptionConfig()))
     model.save(tmp_path, {"completed": True, "optimizer_steps": 3})
-    restored = VeyraModel.load(tmp_path, device="cpu")
+    restored = DecisionModel.load(tmp_path, device="cpu")
     assert isinstance(restored, OptionModel)
     assert restored.trained
     assert restored.decision_views == 1
@@ -134,7 +134,7 @@ def test_view_consensus_maps_each_internal_order_back_to_candidate_meanings():
 def fake_exit_backbone(config, layers=4, hidden=2048):
     from types import SimpleNamespace
 
-    from veyra.backbone import QwenEncoder
+    from qev.backbone import QwenEncoder
 
     base = nn.Module()
     base.language_model = nn.Module()
@@ -153,7 +153,7 @@ def fake_exit_backbone(config, layers=4, hidden=2048):
 
 
 def test_exit_head_width_follows_the_backbone_hidden_size():
-    from veyra.exit_head import ExitHead
+    from qev.exit_head import ExitHead
 
     for hidden in (1024, 2048):
         head = ExitHead(hidden)
@@ -165,7 +165,7 @@ def test_exit_head_width_follows_the_backbone_hidden_size():
 def test_early_exit_manifest_block_is_validated():
     import pytest
 
-    from veyra.exit_head import parse_early_exit
+    from qev.exit_head import parse_early_exit
 
     assert parse_early_exit({"layer": 16, "head": "exit16.safetensors"}, 24) == (
         16,
@@ -192,8 +192,8 @@ def test_early_exit_is_opt_in_and_truncates_the_text_stack(tmp_path, monkeypatch
     import pytest
     from safetensors.torch import save_file
 
-    from veyra.backbone import QwenEncoder
-    from veyra.exit_head import ExitHead
+    from qev.backbone import QwenEncoder
+    from qev.exit_head import ExitHead
 
     monkeypatch.setattr(QwenEncoder, "load", lambda config, *_a, **_k: fake_exit_backbone(config))
     model = OptionModel(fake_exit_backbone(OptionConfig()), reasoning_slots=4)
@@ -247,7 +247,7 @@ def test_early_exit_is_opt_in_and_truncates_the_text_stack(tmp_path, monkeypatch
 def test_early_exit_requires_the_condition_position():
     import pytest
 
-    from veyra.exit_head import ExitHead
+    from qev.exit_head import ExitHead
 
     model = OptionModel(fake_exit_backbone(OptionConfig()))
     with pytest.raises(ValueError, match="condition position"):
@@ -257,7 +257,7 @@ def test_early_exit_requires_the_condition_position():
 def test_early_exit_forward_reads_answer_and_condition_states():
     import threading
 
-    from veyra.exit_head import ExitHead
+    from qev.exit_head import ExitHead
 
     torch.manual_seed(5)
     model = OptionModel.__new__(OptionModel)
@@ -284,7 +284,7 @@ def test_early_exit_forward_reads_answer_and_condition_states():
 def test_truncated_qwen_stack_reproduces_the_distilled_layer_output():
     from transformers import Qwen3_5TextConfig, Qwen3_5TextModel
 
-    from veyra.exit_head import truncate_text_stack
+    from qev.exit_head import truncate_text_stack
 
     config = Qwen3_5TextConfig(
         vocab_size=64,
@@ -355,7 +355,7 @@ MERGED = {
 def test_backbone_manifest_block_is_validated():
     import pytest
 
-    from veyra.option_model import backbone_identity
+    from qev.option_model import backbone_identity
 
     default = {"model_id": MODEL_ID, "revision": MODEL_REVISION}
     assert backbone_identity(default) == default
@@ -379,7 +379,7 @@ def test_merged_backbone_checkpoint_loads_without_lora(tmp_path, monkeypatch):
 
     import pytest
 
-    from veyra.backbone import QwenEncoder
+    from qev.backbone import QwenEncoder
 
     requested = {}
 
@@ -425,8 +425,8 @@ def mode_checkpoint(tmp_path, monkeypatch, **manifest_fields):
 
     from safetensors.torch import save_file
 
-    from veyra.backbone import QwenEncoder
-    from veyra.exit_head import ExitHead
+    from qev.backbone import QwenEncoder
+    from qev.exit_head import ExitHead
 
     def fake_load(config, *_args, **_kwargs):
         encoder = fake_exit_backbone(config)
@@ -521,7 +521,7 @@ def test_modes_without_a_default_keep_the_manifest_budget(tmp_path, monkeypatch)
 def test_serving_mode_block_is_validated():
     import pytest
 
-    from veyra.option_model import parse_modes
+    from qev.option_model import parse_modes
 
     config = OptionConfig()
     with_exit = {"early_exit": {"layer": 2, "head": "exit2.safetensors"}}

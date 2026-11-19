@@ -23,7 +23,7 @@ class QEVEngine(Engine):
     def __init__(self, model="ken-jo/QEV-2B", revision=None, mode="accurate", device="cuda", image_root=None, **options):
         super().__init__(**options)
         self.root = Path(image_root) if image_root else None
-        from veyra.option_model import OptionModel
+        from qev.option_model import OptionModel
         path = Path(model)
         if not path.is_dir():
             from huggingface_hub import snapshot_download
@@ -39,7 +39,7 @@ class QEVEngine(Engine):
         pass
 
     def __call__(self, state=None, questions=None, images=(), prompt=None):
-        from veyra.schema import DecisionRequest
+        from qev.schema import DecisionRequest
         key, q, keys = single_choice(questions)
         if not images:
             raise Unsupported("no image")

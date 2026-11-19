@@ -10,10 +10,10 @@ import torch
 from train_foundation_head import write
 from transformers import AutoTokenizer
 
-from veyra.constants import MODEL_ID, MODEL_REVISION
-from veyra.data import read_records
-from veyra.option_model import option_prompt
-from veyra.reasoning_workspace import RESULT_MARKER, condition_positions, workspace_suffix
+from qev.constants import MODEL_ID, MODEL_REVISION
+from qev.data import read_records
+from qev.option_model import option_prompt
+from qev.reasoning_workspace import RESULT_MARKER, condition_positions, workspace_suffix
 
 
 def digest(path):
@@ -98,8 +98,8 @@ def main():
                 Path(__file__),
                 Path("scripts/train_workflow_workspace.py"),
                 Path("scripts/workflow_workspace_supervision.py"),
-                Path("src/veyra/option_model.py"),
-                Path("src/veyra/reasoning_workspace.py"),
+                Path("src/qev/option_model.py"),
+                Path("src/qev/reasoning_workspace.py"),
             )
         },
         "calibration_or_final_used": False,

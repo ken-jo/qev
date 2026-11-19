@@ -4,15 +4,15 @@ import argparse
 import json
 from pathlib import Path
 
-from veyra.data import read_records
-from veyra.model import VeyraModel
-from veyra.schema import DecisionRequest
+from qev.data import read_records
+from qev.model import DecisionModel
+from qev.schema import DecisionRequest
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--checkpoint", required=True)
 args = parser.parse_args()
 root = Path("data/starter-v1")
-model = VeyraModel.load(args.checkpoint, local_files_only=True)
+model = DecisionModel.load(args.checkpoint, local_files_only=True)
 records = read_records(root / "records.jsonl")
 results = []
 for family in ("diagram_attributes", "text_policy", "leaf_photo", "missing_evidence"):

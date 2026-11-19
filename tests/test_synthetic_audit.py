@@ -1,7 +1,7 @@
 import pytest
 from PIL import Image, ImageDraw
 
-from veyra.synthetic_audit import diagram_objects, visual_predicate
+from qev.synthetic_audit import diagram_objects, visual_predicate
 
 
 def test_pixel_oracle_recovers_count_order_color_and_shape(tmp_path):

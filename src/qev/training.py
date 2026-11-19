@@ -11,11 +11,11 @@ from pathlib import Path
 import torch
 from torch import Tensor
 
-from veyra.backbone import EncoderConfig
-from veyra.checkpoint import save_checkpoint
-from veyra.features import FeatureSample, collate, load_features
-from veyra.head import DecisionHead, HeadConfig
-from veyra.probability import Calibration
+from qev.backbone import EncoderConfig
+from qev.checkpoint import save_checkpoint
+from qev.features import FeatureSample, collate, load_features
+from qev.head import DecisionHead, HeadConfig
+from qev.probability import Calibration
 
 
 def distribution_loss(logits: Tensor, targets: Tensor, valid: Tensor, types: Tensor) -> Tensor:

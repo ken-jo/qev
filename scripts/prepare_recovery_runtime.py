@@ -40,9 +40,9 @@ def main():
             b'name = "veyra"\nversion = "0.3.0a3"',
             b'name = "veyra"\nversion = "0.3.0a4"',
         ),
-        Path("src/veyra/__init__.py"): (b'__version__ = "0.3.0a3"', b'__version__ = "0.3.0a4"'),
+        Path("src/qev/__init__.py"): (b'__version__ = "0.3.0a3"', b'__version__ = "0.3.0a4"'),
     }
-    changes[Path("src/veyra/workflow_release_gate.py")] = (
+    changes[Path("src/qev/workflow_release_gate.py")] = (
         b"EXTENSION_CHECKS = {\n",
         b'EXTENSION_CHECKS = {\n    "workflow_recovery_v13": (\n'
         b'        "recovery_study_provenance", "fresh_data_provenance",\n'

@@ -8,7 +8,7 @@ from pathlib import Path
 from safetensors.torch import load_file, save_file
 from train_foundation_head import digest, write
 
-from veyra.probability import Calibration
+from qev.probability import Calibration
 
 
 def main():

@@ -10,8 +10,8 @@ from pathlib import Path
 
 from build_foundation_data import image_signature
 
-from veyra.data import Source, TrainingRecord, audit_records, read_records
-from veyra.schema import DecisionRequest
+from qev.data import Source, TrainingRecord, audit_records, read_records
+from qev.schema import DecisionRequest
 
 ROOT = Path("data/workflow-v12")
 ACTION = ["PROCEED", "REVIEW", "HOLD"]

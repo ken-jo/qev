@@ -1,7 +1,7 @@
 import pytest
 import torch
 
-from veyra.head import DecisionHead, HeadConfig
+from qev.head import DecisionHead, HeadConfig
 
 
 @pytest.fixture

@@ -2,7 +2,7 @@
 
 import torch
 
-RESULT_MARKER = "VeyraResult:"
+RESULT_MARKER = "VeyraResult:"  # trained input marker; renaming changes model inputs
 
 
 def workspace_suffix(slots: int) -> str:

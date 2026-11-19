@@ -1,9 +1,9 @@
 import torch
 from test_training import sample
 
-from veyra.calibrate import fit_abstention, fit_temperature
-from veyra.probability import Calibration, typed_answer
-from veyra.schema import NoulQuestion
+from qev.calibrate import fit_abstention, fit_temperature
+from qev.probability import Calibration, typed_answer
+from qev.schema import NoulQuestion
 
 
 def test_overconfident_errors_increase_temperature():

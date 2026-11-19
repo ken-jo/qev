@@ -7,11 +7,11 @@ from pathlib import Path
 
 import torch
 
-from veyra.checkpoint import load_head, save_checkpoint
-from veyra.constants import QUESTION_TYPES
-from veyra.features import FeatureSample, load_features
-from veyra.probability import Calibration
-from veyra.training import predict_features
+from qev.checkpoint import load_head, save_checkpoint
+from qev.constants import QUESTION_TYPES
+from qev.features import FeatureSample, load_features
+from qev.probability import Calibration
+from qev.training import predict_features
 
 
 def fit_temperature(samples: list[FeatureSample], logits: list[torch.Tensor]) -> float:

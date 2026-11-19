@@ -12,9 +12,9 @@ from train_foundation_head import write
 from verify_workspace_calibration_data import expression
 from workflow_skill_common import canonical_target
 
-from veyra.candidates import candidates_for
-from veyra.data import read_records
-from veyra.workflow_facts import stated_probabilities
+from qev.candidates import candidates_for
+from qev.data import read_records
+from qev.workflow_facts import stated_probabilities
 
 
 def digest(path):
@@ -107,7 +107,7 @@ def main():
             for p in (
                 Path(__file__),
                 Path("scripts/verify_workspace_calibration_data.py"),
-                Path("src/veyra/workflow_facts.py"),
+                Path("src/qev/workflow_facts.py"),
                 Path("scripts/workflow_skill_common.py"),
             )
         },

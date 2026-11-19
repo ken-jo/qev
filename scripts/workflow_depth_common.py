@@ -2,7 +2,7 @@
 
 import torch
 
-from veyra.option_model import LoRALinear, install_adapters
+from qev.option_model import LoRALinear, install_adapters
 
 
 def layer_number(name):

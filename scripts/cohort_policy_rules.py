@@ -6,8 +6,8 @@ import math
 from functools import lru_cache
 from pathlib import Path
 
-from veyra.candidates import candidates_for
-from veyra.data import read_records
+from qev.candidates import candidates_for
+from qev.data import read_records
 
 
 @lru_cache(maxsize=1)

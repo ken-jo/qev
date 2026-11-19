@@ -10,9 +10,9 @@ from pathlib import Path
 import torch
 from train_foundation_head import write
 
-from veyra.data import Source, TrainingRecord, read_records
-from veyra.decision_metrics import observation, report
-from veyra.schema import DecisionRequest
+from qev.data import Source, TrainingRecord, read_records
+from qev.decision_metrics import observation, report
+from qev.schema import DecisionRequest
 
 
 def official_records(path):

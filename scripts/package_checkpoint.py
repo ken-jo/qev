@@ -6,8 +6,8 @@ import json
 from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile
 
-from veyra.checkpoint import load_head
-from veyra.release_gate import evidence_matches
+from qev.checkpoint import load_head
+from qev.release_gate import evidence_matches
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--checkpoint", type=Path, required=True)
@@ -37,7 +37,7 @@ if manifest.get("architecture") == "option_readout":
         if not evidence_matches(path.read_bytes(), evidence):
             raise ValueError("acceptance evidence changed after its audit")
         evidence_assets[f"reports/{name}.json"] = path
-    from veyra.option_model import OptionModel
+    from qev.option_model import OptionModel
 
     model = OptionModel.load(args.checkpoint, local_files_only=True)
     del model

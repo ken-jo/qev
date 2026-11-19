@@ -5,9 +5,11 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass
 
-from veyra.candidates import Candidate, candidates_for
-from veyra.schema import ChoiceQuestion, DecisionRequest, Question
+from qev.candidates import Candidate, candidates_for
+from qev.schema import ChoiceQuestion, DecisionRequest, Question
 
+# Trained wire markers: the learned backbone was fit with these exact strings, so
+# renaming them changes model inputs. The historical spelling is intentional.
 CANDIDATE_MARKER = "[VEYRA_CANDIDATE]"
 QUESTION_MARKER = "[VEYRA_QUESTION]"
 
@@ -31,7 +33,7 @@ class PackedPrompt:
 def pack_request(request: DecisionRequest) -> PackedPrompt:
     serialized = request.model_dump_json()
     if any(marker in serialized for marker in (CANDIDATE_MARKER, QUESTION_MARKER)):
-        raise ValueError("input contains a reserved Veyra boundary marker")
+        raise ValueError("input contains a reserved decision boundary marker")
 
     grouped: dict[str, list[tuple[str, Question, list[Candidate]]]] = {}
     for name, question in request.questions.items():

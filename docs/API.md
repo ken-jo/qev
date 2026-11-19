@@ -87,7 +87,7 @@ Source predictions return `"model": "qev"`; `/v1/models` lists the same decision
 Both include a separate `backbone` object with the actual `model_id` and pinned `revision`.
 The QEV skill accepts both `qev` and the SDK 0.2.1 response name `veyra-qwen3.5-2b`,
 and accepts merged backbones with a nonempty ID and a 40-hex revision.
-See `src/veyra/schema.py`, `src/veyra/probability.py` and `examples/request.json`.
+See `src/qev/schema.py`, `src/qev/probability.py` and `examples/request.json`.
 
 The playground adds image-upload and resolution endpoints around the same model. A single
 resident worker serializes inference. It is a trusted local demo; uploads are shared within

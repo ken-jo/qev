@@ -4,7 +4,7 @@ import argparse
 import json
 from pathlib import Path
 
-from veyra.policy_refresh import build_refresh
+from qev.policy_refresh import build_refresh
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--output", type=Path, default=Path("data/policy-v8"))

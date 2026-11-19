@@ -39,7 +39,7 @@ def main():
             b'name = "veyra"\nversion = "0.3.0a2"',
             b'name = "veyra"\nversion = "0.3.0a3"',
         ),
-        Path("src/veyra/__init__.py"): (b'__version__ = "0.3.0a2"', b'__version__ = "0.3.0a3"'),
+        Path("src/qev/__init__.py"): (b'__version__ = "0.3.0a2"', b'__version__ = "0.3.0a3"'),
     }
     pending, hashes = {}, {}
     for path, (before, after) in changes.items():

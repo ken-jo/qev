@@ -2,9 +2,9 @@
 
 import torch
 
-from veyra.candidates import candidates_for
-from veyra.option_model import option_prompt
-from veyra.transfer_learning import transfer_metrics
+from qev.candidates import candidates_for
+from qev.option_model import option_prompt
+from qev.transfer_learning import transfer_metrics
 
 SHARES = {
     "workflow_known": 0.30,

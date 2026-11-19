@@ -9,7 +9,7 @@ from zipfile import ZipFile
 
 from PIL import Image, ImageDraw
 
-from veyra.data import TrainingRecord, write_records
+from qev.data import TrainingRecord, write_records
 
 BEANS_ID = "AI-Lab-Makerere/beans"
 BEANS_REVISION = "27aa014ce09b193e1a6f58112d4a66e0eddb69c5"
@@ -88,6 +88,7 @@ def make_record(
 
 def original_source() -> dict:
     return {
+        # Published corpus records embed this generator identity; renaming breaks audits.
         "id": "veyra-original-generator",
         "revision": "sha256:" + hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         "license": "Apache-2.0",

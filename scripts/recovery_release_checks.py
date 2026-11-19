@@ -11,7 +11,7 @@ from safetensors.torch import load_file
 from study_readout_recovery import decide
 from workflow_depth_common import layer_number
 
-from veyra.data import read_records
+from qev.data import read_records
 
 DESIGN = Path("configs/workflow-backbone-recovery-v13.json")
 MEMORY_REPAIR = Path("configs/workflow-backbone-memory-repair-v13.json")
@@ -81,7 +81,7 @@ def bind_source(path, expected, evidence):
         return
     normalized = Path(path).resolve().relative_to(Path.cwd()).as_posix()
     require(
-        normalized in {"src/veyra/__init__.py", "src/veyra/workflow_release_gate.py"},
+        normalized in {"src/qev/__init__.py", "src/qev/workflow_release_gate.py"},
         "executed source changed: " + str(path),
     )
     transition_path = Path("runs/backbone-recovery-release-v13/runtime-transition.json")

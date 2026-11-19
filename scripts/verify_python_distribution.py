@@ -38,15 +38,12 @@ def main():
         entrypoints.read_string(archive.read(f"qev-{version}.dist-info/entry_points.txt").decode())
         if entrypoints["console_scripts"]["qev"] != "qev.cli:main":
             raise ValueError("Missing QEV command")
-        modules = sorted((root / "src/veyra").glob("*.py"))
-        if len(modules) != 38:
-            raise ValueError("Unexpected frozen runtime module count")
+        modules = sorted((root / "src/qev").glob("*.py"))
+        if len(modules) != 47:
+            raise ValueError("Unexpected runtime module count")
         for module in modules:
-            if archive.read("veyra/" + module.name) != module.read_bytes():
-                raise ValueError("Frozen runtime changed while packaging")
-        for module in (root / "src/qev").glob("*.py"):
             if archive.read("qev/" + module.name) != module.read_bytes():
-                raise ValueError("Public API changed while packaging")
+                raise ValueError("Packaged runtime changed while packaging")
         for asset in (root / "src/qev/playground").rglob("*"):
             if not asset.is_file() or "__pycache__" in asset.parts:
                 continue

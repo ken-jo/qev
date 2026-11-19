@@ -15,14 +15,14 @@ import torch
 from recovery_policy_rules import fit_policy
 from train_foundation_head import write
 
-from veyra.calibrate import fit_temperature
-from veyra.candidates import candidates_for
-from veyra.constants import QUESTION_TYPES
-from veyra.data import read_records
-from veyra.decision_metrics import observation, report, summarize
-from veyra.features import FeatureSample
-from veyra.option_model import OptionModel
-from veyra.probability import Calibration, typed_answer
+from qev.calibrate import fit_temperature
+from qev.candidates import candidates_for
+from qev.constants import QUESTION_TYPES
+from qev.data import read_records
+from qev.decision_metrics import observation, report, summarize
+from qev.features import FeatureSample
+from qev.option_model import OptionModel
+from qev.probability import Calibration, typed_answer
 
 
 def digest(path):
@@ -225,10 +225,10 @@ def main():
         "dependency_source_sha256": {
             str(path): digest(path)
             for path in (
-                Path("src/veyra/decision_metrics.py"),
-                Path("src/veyra/probability.py"),
-                Path("src/veyra/option_model.py"),
-                Path("src/veyra/calibrate.py"),
+                Path("src/qev/decision_metrics.py"),
+                Path("src/qev/probability.py"),
+                Path("src/qev/option_model.py"),
+                Path("src/qev/calibrate.py"),
                 Path("scripts/recovery_policy_rules.py"),
             )
         },

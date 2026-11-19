@@ -2,7 +2,7 @@
 
 Multiple-choice items are JSON lines with ``id``, ``source``, ``question``, ``options`` (2-16
 strings), ``gold`` (an option letter) and ``images`` (paths, relative to the items file or
-absolute). Optional replay uses the public ``TrainingRecord`` format from ``veyra.data``.
+absolute). Optional replay uses the public ``TrainingRecord`` format from ``qev.data``.
 """
 
 import json
@@ -14,10 +14,10 @@ from pathlib import Path
 import torch
 from safetensors.torch import load_file
 
-from veyra.candidates import candidates_for
-from veyra.data import read_records
-from veyra.option_model import OptionModel, install_adapters
-from veyra.schema import DecisionRequest
+from qev.candidates import candidates_for
+from qev.data import read_records
+from qev.option_model import OptionModel, install_adapters
+from qev.schema import DecisionRequest
 
 LETTERS = "ABCDEFGHIJKLMNOP"
 # Options that name letters or boxes drawn in the image must keep their order.

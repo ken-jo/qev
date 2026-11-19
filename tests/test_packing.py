@@ -1,7 +1,7 @@
 import pytest
 
-from veyra.packing import marker_positions, pack_request
-from veyra.schema import DecisionRequest
+from qev.packing import marker_positions, pack_request
+from qev.schema import DecisionRequest
 
 
 def make_request(criteria):

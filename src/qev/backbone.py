@@ -9,11 +9,11 @@ from pathlib import Path
 import torch
 from torch import Tensor, nn
 
-from veyra.candidates import SYSTEM_PROMPT, type_index
-from veyra.constants import MODEL_ID, MODEL_REVISION
-from veyra.image_inputs import image_content, open_images
-from veyra.packing import CANDIDATE_MARKER, QUESTION_MARKER, marker_positions, pack_request
-from veyra.schema import DecisionRequest
+from qev.candidates import SYSTEM_PROMPT, type_index
+from qev.constants import MODEL_ID, MODEL_REVISION
+from qev.image_inputs import image_content, open_images
+from qev.packing import CANDIDATE_MARKER, QUESTION_MARKER, marker_positions, pack_request
+from qev.schema import DecisionRequest
 
 
 @dataclass(frozen=True)

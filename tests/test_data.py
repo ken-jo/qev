@@ -1,6 +1,6 @@
 import pytest
 
-from veyra.data import TrainingRecord, audit_records, read_records, write_records
+from qev.data import TrainingRecord, audit_records, read_records, write_records
 
 
 def record(name="r", group="g", split="train"):

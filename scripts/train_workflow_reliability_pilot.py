@@ -14,11 +14,11 @@ from torch import nn
 from torch.nn import functional as F
 from train_foundation_head import write
 
-from veyra.constants import QUESTION_TYPES
-from veyra.data import read_records
-from veyra.proper_learning import distribution_losses, grouped_batches, retention_losses
-from veyra.transfer_learning import TransferReadout
-from veyra.workflow_learning import SHARES, annotate
+from qev.constants import QUESTION_TYPES
+from qev.data import read_records
+from qev.proper_learning import distribution_losses, grouped_batches, retention_losses
+from qev.transfer_learning import TransferReadout
+from qev.workflow_learning import SHARES, annotate
 
 
 def read(path):
@@ -163,9 +163,9 @@ def main():
             str(path): digest(path)
             for path in (
                 Path(__file__),
-                Path("src/veyra/proper_learning.py"),
-                Path("src/veyra/transfer_learning.py"),
-                Path("src/veyra/workflow_learning.py"),
+                Path("src/qev/proper_learning.py"),
+                Path("src/qev/transfer_learning.py"),
+                Path("src/qev/workflow_learning.py"),
             )
         },
         "feature_cache": cache,

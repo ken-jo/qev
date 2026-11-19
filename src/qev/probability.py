@@ -8,9 +8,9 @@ from math import isfinite
 import torch
 from torch import Tensor
 
-from veyra.candidates import candidates_for
-from veyra.constants import QUESTION_TYPES
-from veyra.schema import ChoiceQuestion, NoulQuestion, Question
+from qev.candidates import candidates_for
+from qev.constants import QUESTION_TYPES
+from qev.schema import ChoiceQuestion, NoulQuestion, Question
 
 
 @dataclass(frozen=True)

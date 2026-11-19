@@ -11,9 +11,9 @@ from safetensors.torch import load_file
 from train_foundation_head import write
 from train_workflow_backbone import assess
 
-from veyra.data import read_records
-from veyra.option_model import OptionModel
-from veyra.workflow_learning import annotate, selection_key
+from qev.data import read_records
+from qev.option_model import OptionModel
+from qev.workflow_learning import annotate, selection_key
 
 
 def digest(path):

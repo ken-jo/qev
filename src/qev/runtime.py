@@ -56,7 +56,7 @@ def prepare_checkpoint(checkpoint=None, *, cache_dir=None, offline=False, progre
 
 
 def load_model(checkpoint=None, *, device="auto", cache_dir=None, offline=False, progress=None):
-    from veyra.option_model import OptionModel
+    from qev.option_model import OptionModel
 
     selected = resolve_device(device)
     folder, cache = prepare_checkpoint(

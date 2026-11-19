@@ -13,11 +13,11 @@ from safetensors import safe_open
 from safetensors.torch import load_file, save_file
 from torch import Tensor
 
-from veyra.backbone import EncoderConfig, QwenEncoder
-from veyra.candidates import candidates_for
-from veyra.checkpoint import sha256_file
-from veyra.constants import MODEL_ID, MODEL_REVISION
-from veyra.data import TrainingRecord, read_records
+from qev.backbone import EncoderConfig, QwenEncoder
+from qev.candidates import candidates_for
+from qev.checkpoint import sha256_file
+from qev.constants import MODEL_ID, MODEL_REVISION
+from qev.data import TrainingRecord, read_records
 
 
 @dataclass

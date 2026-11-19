@@ -6,7 +6,7 @@ import os
 from datetime import datetime, timezone
 from pathlib import Path
 
-from veyra.data import read_records
+from qev.data import read_records
 
 
 def read(path):

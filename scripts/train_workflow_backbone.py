@@ -13,10 +13,10 @@ import torch
 from safetensors.torch import load_file
 from train_foundation_head import write
 
-from veyra.data import read_records
-from veyra.option_model import OptionModel
-from veyra.proper_learning import distribution_losses, retention_losses
-from veyra.workflow_learning import SHARES, annotate, selection_key, summarize_logits
+from qev.data import read_records
+from qev.option_model import OptionModel
+from qev.proper_learning import distribution_losses, retention_losses
+from qev.workflow_learning import SHARES, annotate, selection_key, summarize_logits
 
 
 def digest(path):
@@ -102,9 +102,9 @@ def main():
             str(p): digest(p)
             for p in (
                 Path(__file__),
-                Path("src/veyra/workflow_learning.py"),
-                Path("src/veyra/proper_learning.py"),
-                Path("src/veyra/option_model.py"),
+                Path("src/qev/workflow_learning.py"),
+                Path("src/qev/proper_learning.py"),
+                Path("src/qev/option_model.py"),
             )
         },
         "condition_readout_frozen": True,

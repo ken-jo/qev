@@ -17,10 +17,10 @@ import torch
 import uvicorn
 from PIL import Image, ImageDraw
 
-from veyra.data import read_records
-from veyra.model import VeyraModel
-from veyra.schema import DecisionRequest
-from veyra.server import create_app
+from qev.data import read_records
+from qev.model import DecisionModel
+from qev.schema import DecisionRequest
+from qev.server import create_app
 
 
 def latency_summary(values):
@@ -73,7 +73,7 @@ def main():
                 draw.rectangle((x, y, x + size // 5, y + size // 5), fill=colors[i % 4])
                 image.save(fixtures / f"{size}-{i}.png")
     start = time.perf_counter()
-    model = VeyraModel.load(args.checkpoint, local_files_only=True)
+    model = DecisionModel.load(args.checkpoint, local_files_only=True)
     load_seconds = time.perf_counter() - start
     manifest = json.loads((args.checkpoint / "manifest.json").read_text(encoding="utf-8"))
     report = {

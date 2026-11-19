@@ -7,10 +7,10 @@ import random
 from collections import defaultdict
 from pathlib import Path
 
-from veyra.data import TrainingRecord
-from veyra.image_inputs import fingerprint_context, pixel_fingerprints
-from veyra.packing import pack_request
-from veyra.schema import DecisionRequest
+from qev.data import TrainingRecord
+from qev.image_inputs import fingerprint_context, pixel_fingerprints
+from qev.packing import pack_request
+from qev.schema import DecisionRequest
 
 
 def audit_replay(primary, primary_root: Path, replay, replay_root: Path) -> dict:

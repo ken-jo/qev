@@ -9,9 +9,9 @@ from pathlib import Path
 import torch
 from train_foundation_head import write
 
-from veyra.data import read_records
-from veyra.option_model import OptionModel
-from veyra.schema import DecisionRequest
+from qev.data import read_records
+from qev.option_model import OptionModel
+from qev.schema import DecisionRequest
 
 
 def digest(path):

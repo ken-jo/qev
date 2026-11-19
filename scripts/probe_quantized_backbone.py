@@ -11,12 +11,12 @@ import numpy as np
 import torch
 from transformers import AutoProcessor, BitsAndBytesConfig, Qwen3_5Model
 
-from veyra.backbone import QwenEncoder
-from veyra.candidates import candidates_for
-from veyra.data import read_records
-from veyra.option_model import OptionConfig, OptionModel
-from veyra.probability import Calibration, typed_answer
-from veyra.schema import DecisionRequest
+from qev.backbone import QwenEncoder
+from qev.candidates import candidates_for
+from qev.data import read_records
+from qev.option_model import OptionConfig, OptionModel
+from qev.probability import Calibration, typed_answer
+from qev.schema import DecisionRequest
 
 MODEL = "Qwen/Qwen3.5-4B"
 REVISION = "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a"

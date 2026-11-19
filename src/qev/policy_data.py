@@ -9,8 +9,8 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw
 
-from veyra.build_data import make_record
-from veyra.data import write_records
+from qev.build_data import make_record
+from qev.data import write_records
 
 DOMAINS = {
     "train": [
@@ -85,6 +85,7 @@ def build_policy_data(output: Path, seed: int = 20261002, scale: int = 1) -> dic
     image_dir = output / "images"
     image_dir.mkdir()
     source = {
+        # Published corpus records embed this generator identity; renaming breaks audits.
         "id": "veyra-policy-generator-v3",
         "revision": "sha256:" + hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         "license": "Apache-2.0",

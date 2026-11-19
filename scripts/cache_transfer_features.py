@@ -10,10 +10,10 @@ from pathlib import Path
 import torch
 from safetensors.torch import save_file
 
-from veyra.candidates import candidates_for
-from veyra.constants import QUESTION_TYPES
-from veyra.data import read_records
-from veyra.option_model import OptionModel
+from qev.candidates import candidates_for
+from qev.constants import QUESTION_TYPES
+from qev.data import read_records
+from qev.option_model import OptionModel
 
 
 def digest(path):
@@ -38,7 +38,7 @@ def main():
         "parent_weights_sha256": digest(args.checkpoint / "head.safetensors"),
         "parent_manifest_sha256": digest(args.checkpoint / "manifest.json"),
         "script_sha256": digest(Path(__file__)),
-        "option_model_sha256": digest(Path("src/veyra/option_model.py")),
+        "option_model_sha256": digest(Path("src/qev/option_model.py")),
         "calibration_or_final_encoded": False,
         "items": len(records),
     }

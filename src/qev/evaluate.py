@@ -7,10 +7,10 @@ from pathlib import Path
 
 import torch
 
-from veyra.checkpoint import load_head
-from veyra.constants import QUESTION_TYPES
-from veyra.features import load_features
-from veyra.training import predict_features, summarize_predictions
+from qev.checkpoint import load_head
+from qev.constants import QUESTION_TYPES
+from qev.features import load_features
+from qev.training import predict_features, summarize_predictions
 
 
 def evaluate_checkpoint(

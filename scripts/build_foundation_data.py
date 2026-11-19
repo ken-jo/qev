@@ -13,8 +13,8 @@ from zipfile import ZipFile
 import numpy as np
 from PIL import Image, ImageOps
 
-from veyra.data import Source, TrainingRecord, audit_records, read_records
-from veyra.schema import DecisionRequest
+from qev.data import Source, TrainingRecord, audit_records, read_records
+from qev.schema import DecisionRequest
 
 LABELS = ["cardboard", "glass", "metal", "paper", "plastic", "trash"]
 RELATIONS = [

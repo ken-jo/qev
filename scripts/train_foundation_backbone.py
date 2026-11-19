@@ -13,9 +13,9 @@ import torch
 from safetensors.torch import load_file
 from train_foundation_head import SHARES, evaluate, write
 
-from veyra.data import read_records
-from veyra.option_model import OptionModel, option_prompt
-from veyra.proper_learning import distribution_losses, foundation_selection, retention_losses
+from qev.data import read_records
+from qev.option_model import OptionModel, option_prompt
+from qev.proper_learning import distribution_losses, foundation_selection, retention_losses
 
 
 def digest(path):
@@ -100,8 +100,8 @@ def main():
             str(p): digest(p)
             for p in (
                 Path(__file__),
-                Path("src/veyra/proper_learning.py"),
-                Path("src/veyra/option_model.py"),
+                Path("src/qev/proper_learning.py"),
+                Path("src/qev/option_model.py"),
             )
         },
     }

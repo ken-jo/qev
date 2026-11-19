@@ -7,10 +7,10 @@ import struct
 import pytest
 import torch
 
-from veyra.backbone import QwenEncoder
-from veyra.bundled_backbone import verify_bundle
-from veyra.option_model import OptionConfig, OptionModel
-from veyra.schema import DecisionRequest
+from qev.backbone import QwenEncoder
+from qev.bundled_backbone import verify_bundle
+from qev.option_model import OptionConfig, OptionModel
+from qev.schema import DecisionRequest
 
 
 def sha(path):
@@ -532,7 +532,7 @@ def test_v3_style_manifest_load_path_and_bytes_unchanged(tmp_path, monkeypatch, 
     from safetensors.torch import save_file
     from test_option_model import MERGED, MODES, fake_exit_backbone
 
-    from veyra.exit_head import ExitHead
+    from qev.exit_head import ExitHead
 
     requested = []
 

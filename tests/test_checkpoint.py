@@ -3,10 +3,10 @@ import json
 import pytest
 import torch
 
-from veyra.backbone import EncoderConfig
-from veyra.checkpoint import load_head, save_checkpoint
-from veyra.head import DecisionHead, HeadConfig
-from veyra.probability import Calibration
+from qev.backbone import EncoderConfig
+from qev.checkpoint import load_head, save_checkpoint
+from qev.head import DecisionHead, HeadConfig
+from qev.probability import Calibration
 
 
 def test_round_trip_and_guard(tmp_path):

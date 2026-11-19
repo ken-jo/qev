@@ -16,12 +16,12 @@ from train_foundation_head import write
 from train_workflow_backbone import forward
 from workflow_workspace_supervision import WorkspaceSupervisor
 
-from veyra.constants import QUESTION_TYPES
-from veyra.data import read_records
-from veyra.option_model import OptionModel
-from veyra.proper_learning import distribution_losses, retention_losses
-from veyra.workflow_facts import auxiliary_targets
-from veyra.workflow_learning import SHARES, annotate, selection_key, summarize_logits
+from qev.constants import QUESTION_TYPES
+from qev.data import read_records
+from qev.option_model import OptionModel
+from qev.proper_learning import distribution_losses, retention_losses
+from qev.workflow_facts import auxiliary_targets
+from qev.workflow_learning import SHARES, annotate, selection_key, summarize_logits
 
 
 def read(path):
@@ -165,10 +165,10 @@ def main():
                 Path(__file__),
                 Path("scripts/workflow_workspace_supervision.py"),
                 Path("scripts/train_workflow_backbone.py"),
-                Path("src/veyra/workflow_facts.py"),
-                Path("src/veyra/workflow_learning.py"),
-                Path("src/veyra/proper_learning.py"),
-                Path("src/veyra/option_model.py"),
+                Path("src/qev/workflow_facts.py"),
+                Path("src/qev/workflow_learning.py"),
+                Path("src/qev/proper_learning.py"),
+                Path("src/qev/option_model.py"),
             )
         },
         "feature_cache": cache,

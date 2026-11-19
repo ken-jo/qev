@@ -12,9 +12,9 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw
 
-from veyra.candidates import candidates_for
-from veyra.data import TrainingRecord, read_records, write_records
-from veyra.policy_data import COLORS, SHAPES
+from qev.candidates import candidates_for
+from qev.data import TrainingRecord, read_records, write_records
+from qev.policy_data import COLORS, SHAPES
 
 
 def policy_branches(record):
@@ -140,6 +140,7 @@ def build_evidence_data(parent: Path, output: Path, seed=20261003):
     forbidden_pixels = set(pixels_seen.values())
     new_records, observations = [], []
     source = {
+        # Published corpus records embed this generator identity; renaming breaks audits.
         "id": "veyra-evidence-interventions-v6",
         "revision": "sha256:" + hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         "license": "Apache-2.0",

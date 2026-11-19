@@ -9,8 +9,8 @@ import torch
 from safetensors.torch import load_file
 from train_foundation_head import write
 
-from veyra.constants import QUESTION_TYPES
-from veyra.transfer_learning import TransferReadout
+from qev.constants import QUESTION_TYPES
+from qev.transfer_learning import TransferReadout
 
 
 def digest(path):

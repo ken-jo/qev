@@ -3,8 +3,8 @@ import math
 import pytest
 import torch
 
-from veyra.features import FeatureSample, collate
-from veyra.training import distribution_loss, summarize_predictions
+from qev.features import FeatureSample, collate
+from qev.training import distribution_loss, summarize_predictions
 
 
 def sample(target, type_id=0):

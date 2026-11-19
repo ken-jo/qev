@@ -4,11 +4,11 @@ import argparse
 import json
 from pathlib import Path
 
-from veyra.constants import MODEL_ID, MODEL_REVISION
+from qev.constants import MODEL_ID, MODEL_REVISION
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(prog="veyra")
+    parser = argparse.ArgumentParser(prog="qev-research")
     commands = parser.add_subparsers(dest="command", required=True)
     download = commands.add_parser("download", help="Download the pinned backbone and processor")
     download.add_argument("--cache-dir", default=".cache/huggingface")
@@ -85,7 +85,7 @@ def main() -> None:
             flush=True,
         )
     elif args.command == "profile":
-        from veyra.benchmark import profile, write_fixture
+        from qev.benchmark import profile, write_fixture
 
         request = args.request or write_fixture(Path("data/profile"))
         profile(
@@ -98,24 +98,24 @@ def main() -> None:
             iterations=args.iterations,
         )
     elif args.command == "augment-data":
-        from veyra.augment_data import augment_dataset
+        from qev.augment_data import augment_dataset
 
         print(json.dumps(augment_dataset(args.records, args.output, args.seed), indent=2))
     elif args.command == "evaluate":
-        from veyra.evaluate import evaluate_checkpoint
+        from qev.evaluate import evaluate_checkpoint
 
         evaluate_checkpoint(
             args.records, args.features, args.checkpoint, args.output, args.split, args.device
         )
     elif args.command == "calibrate":
-        from veyra.calibrate import calibrate_checkpoint
+        from qev.calibrate import calibrate_checkpoint
 
         result = calibrate_checkpoint(
             args.records, args.features, args.checkpoint, args.output, args.device, args.max_error
         )
         print(json.dumps(result["calibration"], indent=2))
     elif args.command == "train":
-        from veyra.training import train_head
+        from qev.training import train_head
 
         train_head(
             args.records,
@@ -128,7 +128,7 @@ def main() -> None:
             args.seed,
         )
     elif args.command == "extract":
-        from veyra.features import extract_features
+        from qev.features import extract_features
 
         print(
             json.dumps(
@@ -136,7 +136,7 @@ def main() -> None:
             )
         )
     elif args.command == "build-data":
-        from veyra.build_data import build_dataset
+        from qev.build_data import build_dataset
 
         print(
             json.dumps(
@@ -152,17 +152,17 @@ def main() -> None:
             )
         )
     elif args.command in {"predict", "serve"}:
-        from veyra.model import VeyraModel
-        from veyra.schema import DecisionRequest
+        from qev.model import DecisionModel
+        from qev.schema import DecisionRequest
 
-        model = VeyraModel.load(args.checkpoint, args.device, args.cache_dir)
+        model = DecisionModel.load(args.checkpoint, args.device, args.cache_dir)
         if args.command == "predict":
             request = DecisionRequest.from_json(args.request.read_text(encoding="utf-8"))
             print(json.dumps(model.predict(request), indent=2, ensure_ascii=False))
         else:
             import uvicorn
 
-            from veyra.server import create_app
+            from qev.server import create_app
 
             uvicorn.run(create_app(model, args.image_root), host=args.host, port=args.port)
 

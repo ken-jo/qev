@@ -13,9 +13,9 @@ from depth_training_checks import audit_training
 from safetensors.torch import load_file
 from train_foundation_head import write
 
-from veyra.constants import QUESTION_TYPES
-from veyra.data import TrainingRecord
-from veyra.workflow_learning import annotate
+from qev.constants import QUESTION_TYPES
+from qev.data import TrainingRecord
+from qev.workflow_learning import annotate
 
 
 def compare(output):

@@ -9,15 +9,15 @@ from pathlib import Path
 import torch
 from torch import nn
 
-from veyra.backbone import QwenEncoder
-from veyra.checkpoint import load_head
-from veyra.constants import DECISION_MODEL_ID, MODEL_ID, MODEL_REVISION
-from veyra.head import DecisionHead
-from veyra.probability import Calibration, typed_answer
-from veyra.schema import DecisionRequest
+from qev.backbone import QwenEncoder
+from qev.checkpoint import load_head
+from qev.constants import DECISION_MODEL_ID, MODEL_ID, MODEL_REVISION
+from qev.head import DecisionHead
+from qev.probability import Calibration, typed_answer
+from qev.schema import DecisionRequest
 
 
-class VeyraModel(nn.Module):
+class DecisionModel(nn.Module):
     def __init__(
         self,
         encoder: QwenEncoder,
@@ -39,10 +39,10 @@ class VeyraModel(nn.Module):
         device: str = "cuda",
         cache_dir: str = ".cache/huggingface",
         local_files_only: bool = False,
-    ) -> VeyraModel:
+    ) -> DecisionModel:
         manifest = json.loads((Path(checkpoint) / "manifest.json").read_text(encoding="utf-8"))
         if manifest.get("architecture") == "option_readout":
-            from veyra.option_model import OptionModel
+            from qev.option_model import OptionModel
 
             return OptionModel.load(checkpoint, device, cache_dir, local_files_only)
         head, config, calibration, _ = load_head(checkpoint)

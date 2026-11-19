@@ -8,10 +8,10 @@ from pathlib import Path
 
 import torch
 
-from veyra.candidates import candidates_for
-from veyra.data import read_records
-from veyra.evidence_data import original_branch
-from veyra.option_model import OptionModel
+from qev.candidates import candidates_for
+from qev.data import read_records
+from qev.evidence_data import original_branch
+from qev.option_model import OptionModel
 
 
 def development_conditions(records):

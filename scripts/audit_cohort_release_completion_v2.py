@@ -9,8 +9,8 @@ from pathlib import Path
 
 from train_foundation_head import write
 
-from veyra.constants import QUESTION_TYPES
-from veyra.workflow_release_gate import REQUIRED_CHECKS
+from qev.constants import QUESTION_TYPES
+from qev.workflow_release_gate import REQUIRED_CHECKS
 
 
 def digest(path):

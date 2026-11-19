@@ -1,5 +1,5 @@
-from veyra.build_data import build_dataset
-from veyra.data import read_records
+from qev.build_data import build_dataset
+from qev.data import read_records
 
 
 def test_original_generator_is_grounded_and_reproducible(tmp_path):

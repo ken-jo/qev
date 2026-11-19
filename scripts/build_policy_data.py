@@ -4,7 +4,7 @@ import argparse
 import json
 from pathlib import Path
 
-from veyra.policy_data import build_policy_data
+from qev.policy_data import build_policy_data
 
 
 def main():

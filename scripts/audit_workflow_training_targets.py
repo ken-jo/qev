@@ -10,11 +10,11 @@ import torch
 from safetensors.torch import load_file
 from train_foundation_head import write
 
-from veyra.candidates import candidates_for
-from veyra.constants import QUESTION_TYPES
-from veyra.data import read_records
-from veyra.option_model import option_prompt
-from veyra.transfer_learning import TransferReadout
+from qev.candidates import candidates_for
+from qev.constants import QUESTION_TYPES
+from qev.data import read_records
+from qev.option_model import option_prompt
+from qev.transfer_learning import TransferReadout
 
 
 def digest(path):

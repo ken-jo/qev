@@ -7,8 +7,8 @@ from pathlib import Path
 
 import torch
 
-from veyra.data import read_records
-from veyra.option_model import OptionModel
+from qev.data import read_records
+from qev.option_model import OptionModel
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--checkpoint", type=Path, required=True)

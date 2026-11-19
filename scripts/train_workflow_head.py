@@ -12,10 +12,10 @@ import torch
 from safetensors.torch import load_file, save_file
 from train_foundation_head import write
 
-from veyra.data import read_records
-from veyra.proper_learning import distribution_losses, grouped_batches, retention_losses
-from veyra.transfer_learning import TransferReadout
-from veyra.workflow_learning import SHARES, annotate, evaluate, selection_key
+from qev.data import read_records
+from qev.proper_learning import distribution_losses, grouped_batches, retention_losses
+from qev.transfer_learning import TransferReadout
+from qev.workflow_learning import SHARES, annotate, evaluate, selection_key
 
 
 def digest(path):
@@ -87,8 +87,8 @@ def main():
             str(p): digest(p)
             for p in (
                 Path(__file__),
-                Path("src/veyra/workflow_learning.py"),
-                Path("src/veyra/proper_learning.py"),
+                Path("src/qev/workflow_learning.py"),
+                Path("src/qev/proper_learning.py"),
             )
         },
         "calibration_or_final_used": False,

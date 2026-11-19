@@ -19,9 +19,9 @@ from workflow_depth_common import expand_depth, optimizer_groups, training_mode
 from workflow_depth_execution import configure_checkpointing
 from workflow_skill_common import canonical_target
 
-from veyra.data import TrainingRecord
-from veyra.option_model import OptionModel
-from veyra.proper_learning import distribution_losses
+from qev.data import TrainingRecord
+from qev.option_model import OptionModel
+from qev.proper_learning import distribution_losses
 
 CONFIG = Path("configs/workflow-depth-execution-v12.json")
 OUTPUT = Path("runs/workflow-v12-depth-execution")
@@ -175,8 +175,8 @@ def main():
             Path("scripts/workflow_depth_common.py"),
             Path("scripts/probe_workflow_depth.py"),
             Path("scripts/workflow_skill_common.py"),
-            Path("src/veyra/option_model.py"),
-            Path("src/veyra/proper_learning.py"),
+            Path("src/qev/option_model.py"),
+            Path("src/qev/proper_learning.py"),
         )
     }
     write(

@@ -14,17 +14,17 @@ from safetensors.torch import load_file, save_file
 from torch import nn
 from torch.nn import functional as F
 
-from veyra.backbone import QwenEncoder, text_hidden_size
-from veyra.binding_head import ConditionedReadout
-from veyra.bundled_backbone import bundled_identity, load_bundle
-from veyra.candidates import candidates_for
-from veyra.constants import DECISION_MODEL_ID, MODEL_ID, MODEL_REVISION
-from veyra.cuda_graph import enable_short_input_graphs
-from veyra.exit_head import ExitHead, parse_early_exit, truncate_text_stack
-from veyra.image_inputs import image_content, open_images
-from veyra.probability import Calibration, typed_answer
-from veyra.reasoning_workspace import RESULT_MARKER, condition_positions, workspace_suffix
-from veyra.schema import DecisionRequest
+from qev.backbone import QwenEncoder, text_hidden_size
+from qev.binding_head import ConditionedReadout
+from qev.bundled_backbone import bundled_identity, load_bundle
+from qev.candidates import candidates_for
+from qev.constants import DECISION_MODEL_ID, MODEL_ID, MODEL_REVISION
+from qev.cuda_graph import enable_short_input_graphs
+from qev.exit_head import ExitHead, parse_early_exit, truncate_text_stack
+from qev.image_inputs import image_content, open_images
+from qev.probability import Calibration, typed_answer
+from qev.reasoning_workspace import RESULT_MARKER, condition_positions, workspace_suffix
+from qev.schema import DecisionRequest
 
 DEFAULT_BACKBONE = {"model_id": MODEL_ID, "revision": MODEL_REVISION}
 

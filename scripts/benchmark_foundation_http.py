@@ -16,10 +16,10 @@ from PIL import Image
 from train_foundation_head import write
 from validate_model import latency_summary
 
-from veyra.candidates import candidates_for
-from veyra.data import read_records
-from veyra.model import VeyraModel
-from veyra.server import create_app
+from qev.candidates import candidates_for
+from qev.data import read_records
+from qev.model import DecisionModel
+from qev.server import create_app
 
 
 def digest(path):
@@ -84,7 +84,7 @@ def main():
     write(args.output.with_suffix(".protocol.json"), protocol)
     torch.set_num_threads(4)
     started = time.perf_counter()
-    model = VeyraModel.load(args.checkpoint, local_files_only=True)
+    model = DecisionModel.load(args.checkpoint, local_files_only=True)
     load_seconds = time.perf_counter() - started
     torch.cuda.reset_peak_memory_stats()
     sock = socket.socket()

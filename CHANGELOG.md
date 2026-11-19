@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- The research runtime package `veyra` is merged into the `qev` package and the legacy
+  `veyra` command is retired. Trained prompt markers (`[VEYRA_CANDIDATE]`,
+  `[VEYRA_QUESTION]`, `VeyraResult:`), published corpus generator identifiers and
+  historical checkpoint, evidence and report names keep their original spellings; they are
+  frozen inputs or recorded outputs of the runs that produced the published artifacts.
 - `qev_decision_index:QEVEngine`: Decision Index vision engine for the released QEV-0.8B and
   QEV-2B checkpoints (one forward pass, native resolution up to 1.6 MP per image, at most 4
   images and 8,192 input tokens; longer requests are reported as unsupported). Needs

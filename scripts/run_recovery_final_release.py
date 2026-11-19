@@ -92,7 +92,7 @@ def main(root, evaluate_only=False):
         python=False,
     )
     with zipfile.ZipFile(wheel) as archive:
-        modules = sorted(Path("src/veyra").rglob("*.py"))
+        modules = sorted(Path("src/qev").rglob("*.py"))
         for path in modules:
             if archive.read(path.relative_to("src").as_posix()) != path.read_bytes():
                 raise ValueError("Built wheel differs from source: " + str(path))

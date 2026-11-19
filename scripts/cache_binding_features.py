@@ -11,11 +11,11 @@ from pathlib import Path
 import torch
 from safetensors.torch import save_file
 
-from veyra.candidates import candidates_for
-from veyra.data import read_records
-from veyra.interventions import augment_unit, retype_unit, training_units
-from veyra.option_model import OptionModel
-from veyra.replay import audit_replay, replay_pool, sample_replay
+from qev.candidates import candidates_for
+from qev.data import read_records
+from qev.interventions import augment_unit, retype_unit, training_units
+from qev.option_model import OptionModel
+from qev.replay import audit_replay, replay_pool, sample_replay
 
 
 def controlled_training(records, rng):
@@ -64,10 +64,10 @@ def main():
         str(path): hashlib.sha256(path.read_bytes()).hexdigest()
         for path in (
             Path(__file__),
-            Path("src/veyra/option_model.py"),
-            Path("src/veyra/reasoning_workspace.py"),
-            Path("src/veyra/interventions.py"),
-            Path("src/veyra/replay.py"),
+            Path("src/qev/option_model.py"),
+            Path("src/qev/reasoning_workspace.py"),
+            Path("src/qev/interventions.py"),
+            Path("src/qev/replay.py"),
         )
     }
     specification = {

@@ -13,8 +13,8 @@ from safetensors.torch import load_file, save_file
 from train_foundation_head import write
 from train_workflow_workspace import development_risk
 
-from veyra.transfer_learning import TransferReadout, transfer_metrics
-from veyra.workflow_learning import selection_key, summarize_logits
+from qev.transfer_learning import TransferReadout, transfer_metrics
+from qev.workflow_learning import selection_key, summarize_logits
 
 CONFIG = Path("configs/workflow-readout-recovery-v13.json")
 CACHE = Path("data/features-readout-recovery-v13")

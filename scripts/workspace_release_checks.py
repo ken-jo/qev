@@ -5,8 +5,8 @@ import json
 from datetime import datetime
 from pathlib import Path
 
-from veyra.constants import QUESTION_TYPES
-from veyra.data import read_records
+from qev.constants import QUESTION_TYPES
+from qev.data import read_records
 
 
 def digest(path):

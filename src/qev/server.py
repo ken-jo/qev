@@ -9,13 +9,13 @@ from fastapi import FastAPI, HTTPException, Request
 from pydantic import ValidationError
 from starlette.concurrency import run_in_threadpool
 
-from veyra import __version__
-from veyra.constants import DECISION_MODEL_ID, MODEL_ID, MODEL_REVISION
-from veyra.model import VeyraModel
-from veyra.schema import DecisionRequest
+from qev import __version__
+from qev.constants import DECISION_MODEL_ID, MODEL_ID, MODEL_REVISION
+from qev.model import DecisionModel
+from qev.schema import DecisionRequest
 
 
-def create_app(model: VeyraModel, image_root: Path) -> FastAPI:
+def create_app(model: DecisionModel, image_root: Path) -> FastAPI:
     if not model.trained:
         raise ValueError("the inference API requires a trained checkpoint")
     root = image_root.resolve(strict=True)

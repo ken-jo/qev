@@ -44,12 +44,9 @@ def main():
     import torch
 
     import qev
-    import veyra
-    from veyra.option_model import OptionModel
-    from veyra.schema import DecisionRequest
+    from qev.option_model import OptionModel
+    from qev.schema import DecisionRequest
 
-    if not str(veyra.__file__).startswith(str(wheel)):
-        raise RuntimeError("Veyra was imported from outside the bundled wheel")
     if not str(qev.__file__).startswith(str(wheel)):
         raise RuntimeError("QEV facade was imported outside the bundled wheel")
     if qev.QEV is not OptionModel:
@@ -102,7 +99,7 @@ def main():
     modules = {
         name: str(getattr(module, "__file__", ""))
         for name, module in sys.modules.items()
-        if name == "veyra" or name.startswith("veyra.")
+        if name == "qev" or name.startswith("qev.")
     }
     if not all(path.startswith(str(wheel)) for path in modules.values()):
         raise RuntimeError("source-directory modules leaked into wheel verification")
@@ -115,7 +112,6 @@ def main():
         "checksums_sha256": digest(folder / "checksums.json"),
         "verified_files": len(checksums),
         "wheel_sha256": digest(wheel),
-        "veyra_version": veyra.__version__,
         "qev_version": qev.__version__,
         "public_facade_preserves_model_class": True,
         "python_isolated": True,

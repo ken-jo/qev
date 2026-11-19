@@ -18,10 +18,10 @@ from train_workflow_backbone import forward
 from train_workflow_workspace import development_risk
 from workflow_depth_common import layer_number, training_mode
 
-from veyra.data import read_records
-from veyra.option_model import OptionModel
-from veyra.transfer_learning import transfer_metrics
-from veyra.workflow_learning import summarize_logits
+from qev.data import read_records
+from qev.option_model import OptionModel
+from qev.transfer_learning import transfer_metrics
+from qev.workflow_learning import summarize_logits
 
 
 def digest(path):
@@ -113,7 +113,7 @@ def main():
         Path("scripts/train_workflow_backbone.py"),
         Path("scripts/train_workflow_workspace.py"),
         Path("scripts/workflow_depth_common.py"),
-        *Path("src/veyra").glob("*.py"),
+        *Path("src/qev").glob("*.py"),
     ]
     protocol = {
         "declared_at_utc": datetime.now(timezone.utc).isoformat(),

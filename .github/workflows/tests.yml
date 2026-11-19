@@ -29,6 +29,6 @@ jobs:
           python -m pip install torch==2.10.0 torchvision==0.25.0 --index-url https://download.pytorch.org/whl/cpu
           python -m pip install . pytest==9.1.1 "httpx>=0.28,<1" "ruff>=0.15,<1"
       - name: Check changed API and playground files
-        run: python -m ruff check src/veyra/schema.py src/veyra/server.py src/qev/playground/app.py tests/test_server.py tests/test_playground_locale.py
+        run: python -m ruff check src/qev/schema.py src/qev/server.py src/qev/playground/app.py tests/test_server.py tests/test_playground_locale.py
       - name: Run CPU regression suite
         run: python -B -m pytest -q

@@ -12,8 +12,8 @@ from pathlib import Path
 from train_foundation_head import write
 from verify_workspace_calibration_data import expression
 
-from veyra.data import TrainingRecord
-from veyra.workflow_facts import stated_probabilities
+from qev.data import TrainingRecord
+from qev.workflow_facts import stated_probabilities
 
 RECORDS = Path("data/workflow-v12/records.jsonl")
 RECORDS_SHA = "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571"
@@ -111,7 +111,7 @@ def main():
     source_files = (
         Path(__file__),
         Path("scripts/verify_workspace_calibration_data.py"),
-        Path("src/veyra/workflow_facts.py"),
+        Path("src/qev/workflow_facts.py"),
     )
     protocol = {
         "created_at_utc": datetime.now(timezone.utc).isoformat(),

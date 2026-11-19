@@ -9,10 +9,10 @@ from pathlib import Path
 
 from safetensors.torch import load_file, save_file
 
-from veyra.backbone import EncoderConfig
-from veyra.constants import MODEL_ID, MODEL_REVISION
-from veyra.head import DecisionHead, HeadConfig
-from veyra.probability import Calibration
+from qev.backbone import EncoderConfig
+from qev.constants import MODEL_ID, MODEL_REVISION
+from qev.head import DecisionHead, HeadConfig
+from qev.probability import Calibration
 
 
 def sha256_file(path: Path) -> str:

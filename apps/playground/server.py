@@ -34,8 +34,8 @@ WHEEL = ROOT / "dist/workflow-runtime/veyra-0.3.0a4-py3-none-any.whl"
 if WHEEL.is_file():
     sys.path.insert(0, str(WHEEL))
 
-from veyra import __version__  # noqa: E402
-from veyra.schema import DecisionRequest  # noqa: E402
+from qev import __version__  # noqa: E402
+from qev.schema import DecisionRequest  # noqa: E402
 
 if __package__:
     from .game2048 import MAX_EVENTS, Game2048, GameConfig, MoveInput, StepInput, image_digest
@@ -157,7 +157,7 @@ class Resident:
         try:
             import torch
 
-            from veyra.option_model import OptionModel
+            from qev.option_model import OptionModel
 
             torch.set_num_threads(4)
             if not (self.checkpoint / "manifest.json").is_file():

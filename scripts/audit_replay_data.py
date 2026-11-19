@@ -4,8 +4,8 @@ import hashlib
 import json
 from pathlib import Path
 
-from veyra.data import read_records
-from veyra.replay import audit_replay, replay_pool
+from qev.data import read_records
+from qev.replay import audit_replay, replay_pool
 
 primary_path = Path("data/policy-v6/records.jsonl")
 replay_path = Path("data/starter-v2/records.jsonl")

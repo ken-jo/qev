@@ -10,10 +10,10 @@ import torch
 from safetensors.torch import save_file
 from train_foundation_head import write
 
-from veyra.candidates import candidates_for
-from veyra.constants import QUESTION_TYPES
-from veyra.data import read_records
-from veyra.option_model import OptionModel
+from qev.candidates import candidates_for
+from qev.constants import QUESTION_TYPES
+from qev.data import read_records
+from qev.option_model import OptionModel
 
 
 def digest(path):
@@ -71,7 +71,7 @@ def main():
         if digest(parent / filename) != config["parent_" + name + "_sha256"]:
             raise ValueError("Declared parent changed")
     items = prepare(config)
-    source_paths = [Path(__file__), *Path("src/veyra").glob("*.py")]
+    source_paths = [Path(__file__), *Path("src/qev").glob("*.py")]
     specification = {
         "design": str(config_path),
         "design_sha256": digest(config_path),

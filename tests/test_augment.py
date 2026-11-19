@@ -1,6 +1,6 @@
-from veyra.augment_data import variants
-from veyra.build_data import text_records
-from veyra.data import audit_records
+from qev.augment_data import variants
+from qev.build_data import text_records
+from qev.data import audit_records
 
 
 def test_context_variants_preserve_targets_and_groups():

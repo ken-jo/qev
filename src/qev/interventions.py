@@ -6,10 +6,10 @@ import random
 import re
 from collections import defaultdict
 
-from veyra.candidates import candidates_for
-from veyra.data import TrainingRecord
-from veyra.evidence_data import original_branch, policy_branches
-from veyra.policy_data import typed_decision
+from qev.candidates import candidates_for
+from qev.data import TrainingRecord
+from qev.evidence_data import original_branch, policy_branches
+from qev.policy_data import typed_decision
 
 
 def retype_unit(unit: list[TrainingRecord], rng: random.Random) -> list[TrainingRecord]:

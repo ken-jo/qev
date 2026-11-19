@@ -19,10 +19,10 @@ from workflow_depth_common import expand_depth, optimizer_groups, training_mode
 from workflow_depth_training import group_hash, install_memory_policy
 from workflow_skill_common import assess_skills, canonical_target
 
-from veyra.data import TrainingRecord, read_records
-from veyra.option_model import OptionModel
-from veyra.proper_learning import distribution_losses, retention_losses
-from veyra.workflow_learning import SHARES, annotate, selection_key, summarize_logits
+from qev.data import TrainingRecord, read_records
+from qev.option_model import OptionModel
+from qev.proper_learning import distribution_losses, retention_losses
+from qev.workflow_learning import SHARES, annotate, selection_key, summarize_logits
 
 
 def read(path):
@@ -137,9 +137,9 @@ def main():
         Path("scripts/probe_workflow_depth.py"),
         Path("scripts/train_workflow_backbone.py"),
         Path("scripts/train_workflow_workspace.py"),
-        Path("src/veyra/option_model.py"),
-        Path("src/veyra/proper_learning.py"),
-        Path("src/veyra/workflow_learning.py"),
+        Path("src/qev/option_model.py"),
+        Path("src/qev/proper_learning.py"),
+        Path("src/qev/workflow_learning.py"),
     ]
     source_hashes = {str(path): digest(path) for path in source_files}
     write(

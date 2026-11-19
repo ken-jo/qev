@@ -125,6 +125,6 @@ def run(args):
     else:
         import uvicorn
 
-        from veyra.server import create_app
+        from qev.server import create_app
 
         uvicorn.run(create_app(model, args.image_root), host=args.host, port=args.port)

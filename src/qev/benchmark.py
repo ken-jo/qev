@@ -10,12 +10,12 @@ import numpy as np
 import torch
 from PIL import Image, ImageDraw
 
-from veyra.backbone import EncoderConfig, QwenEncoder
-from veyra.constants import MODEL_ID, MODEL_REVISION
-from veyra.head import DecisionHead
-from veyra.model import VeyraModel
-from veyra.probability import typed_answer
-from veyra.schema import DecisionRequest
+from qev.backbone import EncoderConfig, QwenEncoder
+from qev.constants import MODEL_ID, MODEL_REVISION
+from qev.head import DecisionHead
+from qev.model import DecisionModel
+from qev.probability import typed_answer
+from qev.schema import DecisionRequest
 
 
 def write_fixture(directory: Path) -> Path:
@@ -61,9 +61,9 @@ def profile(
     request = DecisionRequest.from_json(text)
     print("Loading pinned Qwen3.5-2B...", flush=True)
     if checkpoint:
-        model = VeyraModel.load(checkpoint, device, cache_dir, local_files_only=True)
+        model = DecisionModel.load(checkpoint, device, cache_dir, local_files_only=True)
     else:
-        model = VeyraModel(
+        model = DecisionModel(
             QwenEncoder.load(EncoderConfig(), device, cache_dir, local_files_only=True),
             DecisionHead(),
         ).eval()

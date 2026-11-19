@@ -10,8 +10,8 @@ from pathlib import Path
 
 from train_foundation_head import write
 
-from veyra.data import read_records
-from veyra.workflow_facts import stated_probabilities
+from qev.data import read_records
+from qev.workflow_facts import stated_probabilities
 
 
 def digest(path):
@@ -131,7 +131,7 @@ def main():
         "passed": True,
         "records_sha256": digest(root / "records.jsonl"),
         "source_sha256": digest(Path(__file__)),
-        "primitive_parser_sha256": digest("src/veyra/workflow_facts.py"),
+        "primitive_parser_sha256": digest("src/qev/workflow_facts.py"),
         "fresh_policy_targets_recomputed": checked,
         "maximum_target_absolute_error": maximum_error,
         "fresh_calibration_domain_counts": dict(domains),

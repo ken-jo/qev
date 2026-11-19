@@ -48,7 +48,7 @@ def main():
             if name not in previous or previous[name]["sha256"] != checksum:
                 raise ValueError(f"unverified existing source: {name}")
             return name, previous[name]
-        request = urllib.request.Request(url, headers={"User-Agent": "Veyra-research/0.3"})
+        request = urllib.request.Request(url, headers={"User-Agent": "QEV-research/0.3"})
         temporary = target.with_suffix(target.suffix + ".part")
         with urllib.request.urlopen(request, timeout=90) as response, temporary.open("wb") as out:
             content_type = response.headers.get("Content-Type", "")

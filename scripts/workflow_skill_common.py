@@ -5,9 +5,9 @@ from collections import defaultdict
 import torch
 from train_workflow_backbone import forward
 
-from veyra.candidates import candidates_for
-from veyra.constants import QUESTION_TYPES
-from veyra.option_model import option_prompt
+from qev.candidates import candidates_for
+from qev.constants import QUESTION_TYPES
+from qev.option_model import option_prompt
 
 
 def canonical_target(record):

@@ -13,10 +13,10 @@ from train_workflow_backbone import forward
 from train_workflow_workspace import development_risk
 from workspace_development_diagnostics import diagnose
 
-from veyra.constants import QUESTION_TYPES
-from veyra.data import read_records
-from veyra.option_model import OptionModel
-from veyra.workflow_learning import annotate, selection_key, summarize_logits
+from qev.constants import QUESTION_TYPES
+from qev.data import read_records
+from qev.option_model import OptionModel
+from qev.workflow_learning import annotate, selection_key, summarize_logits
 
 
 def read(path):
@@ -101,7 +101,7 @@ def main():
                 Path("scripts/train_workflow_workspace.py"),
                 Path("scripts/workflow_workspace_supervision.py"),
                 Path("scripts/workspace_development_diagnostics.py"),
-                Path("src/veyra/workflow_learning.py"),
+                Path("src/qev/workflow_learning.py"),
             )
         },
         "calibration_or_final_used_for_selection": False,

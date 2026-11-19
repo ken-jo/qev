@@ -9,8 +9,8 @@ from pathlib import Path
 
 from train_foundation_head import write
 
-from veyra.constants import QUESTION_TYPES
-from veyra.data import read_records
+from qev.constants import QUESTION_TYPES
+from qev.data import read_records
 
 
 def digest(path):
@@ -91,7 +91,7 @@ def main():
         Path("scripts/verify_workflow_contract.py"),
         Path("scripts/audit_workflow_release.py"),
         Path("reports/workflow-v12/source-snapshots/build_workflow_v12.py.txt"),
-        *sorted(Path("src/veyra").glob("*.py")),
+        *sorted(Path("src/qev").glob("*.py")),
     ]
     continuation = None
     if selected.get("release_extensions"):

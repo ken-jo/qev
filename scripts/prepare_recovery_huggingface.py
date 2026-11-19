@@ -13,7 +13,7 @@ from pathlib import Path
 
 from safetensors.torch import load_file
 
-from veyra.workflow_release_gate import require_release_acceptance
+from qev.workflow_release_gate import require_release_acceptance
 
 
 def digest(path):
@@ -123,7 +123,7 @@ def main():
         raise FileExistsError("prepared package is immutable")
     # A locally built wheel must contain the exact implementation used for evaluation.
     with zipfile.ZipFile(args.wheel) as archive:
-        for path in sorted(Path("src/veyra").glob("*.py")):
+        for path in sorted(Path("src/qev").glob("*.py")):
             if archive.read("veyra/" + path.name) != path.read_bytes():
                 raise ValueError("runtime wheel does not match the evaluated source: " + str(path))
     final = read(args.evaluation / "final/evaluation.json")

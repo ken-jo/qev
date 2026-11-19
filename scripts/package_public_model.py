@@ -29,10 +29,10 @@ def main():
             raise ValueError("Original prepared package changed: " + name)
     wheel = root / f"dist/runtime/qev-{version}-py3-none-any.whl"
     with zipfile.ZipFile(wheel) as archive:
-        modules = sorted((root / "src/veyra").glob("*.py"))
+        modules = sorted((root / "src/qev").glob("*.py"))
         for module in modules:
-            if archive.read("veyra/" + module.name) != module.read_bytes():
-                raise ValueError("Renamed wheel runtime differs from frozen source")
+            if archive.read("qev/" + module.name) != module.read_bytes():
+                raise ValueError("Wheel runtime differs from frozen source")
     skip = {
         "README.md",
         "ROADMAP.ko.md",

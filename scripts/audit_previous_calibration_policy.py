@@ -8,7 +8,7 @@ from pathlib import Path
 
 from train_foundation_head import write
 
-from veyra.constants import QUESTION_TYPES
+from qev.constants import QUESTION_TYPES
 
 
 def digest(path):
