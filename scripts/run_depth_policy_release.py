@@ -194,7 +194,7 @@ def main(root):
         python=False,
     )
     with zipfile.ZipFile(wheel) as archive:
-        modules = sorted(Path("src/qev").rglob("*.py"))
+        modules = sorted(Path("src/qev_runtime").rglob("*.py"))
         for path in modules:
             if archive.read(path.relative_to("src").as_posix()) != path.read_bytes():
                 raise ValueError("Built wheel differs from source: " + str(path))

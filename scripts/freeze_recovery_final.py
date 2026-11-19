@@ -100,7 +100,7 @@ def main():
         Path("scripts/prepare_recovery_huggingface.py"),
         Path("scripts/verify_prepared_release.py"),
         Path("reports/workflow-v12/source-snapshots/build_workflow_v12.py.txt"),
-        *sorted(Path("src/qev").glob("*.py")),
+        *sorted(Path("src/qev_runtime").glob("*.py")),
     ]
     if set(selected.get("release_extensions", {})) != {"workflow_recovery_v13"}:
         raise ValueError("recovery extension missing")

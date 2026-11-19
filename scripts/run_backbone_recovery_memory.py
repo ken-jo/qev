@@ -113,7 +113,7 @@ def main():
         Path("scripts/train_workflow_backbone.py"),
         Path("scripts/train_workflow_workspace.py"),
         Path("scripts/workflow_depth_common.py"),
-        *Path("src/qev").glob("*.py"),
+        *Path("src/qev_runtime").glob("*.py"),
     ]
     protocol = {
         "declared_at_utc": datetime.now(timezone.utc).isoformat(),

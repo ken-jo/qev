@@ -91,7 +91,7 @@ def main():
         Path("scripts/verify_workflow_contract.py"),
         Path("scripts/audit_workflow_release.py"),
         Path("reports/workflow-v12/source-snapshots/build_workflow_v12.py.txt"),
-        *sorted(Path("src/qev").glob("*.py")),
+        *sorted(Path("src/qev_runtime").glob("*.py")),
     ]
     continuation = None
     if selected.get("release_extensions"):

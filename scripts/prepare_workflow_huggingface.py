@@ -115,8 +115,8 @@ def main():
         raise FileExistsError("prepared package is immutable")
     # A locally built wheel must contain the exact implementation used for evaluation.
     with zipfile.ZipFile(args.wheel) as archive:
-        for path in sorted(Path("src/qev").glob("*.py")):
-            if archive.read("veyra/" + path.name) != path.read_bytes():
+        for path in sorted(Path("src/qev_runtime").glob("*.py")):
+            if archive.read("qev_runtime/" + path.name) != path.read_bytes():
                 raise ValueError("runtime wheel does not match the evaluated source: " + str(path))
     final = read(args.evaluation / "final/evaluation.json")
     baseline = read(args.evaluation / "baseline/evaluation.json")

@@ -71,7 +71,7 @@ def main():
         if digest(parent / filename) != config["parent_" + name + "_sha256"]:
             raise ValueError("Declared parent changed")
     items = prepare(config)
-    source_paths = [Path(__file__), *Path("src/qev").glob("*.py")]
+    source_paths = [Path(__file__), *Path("src/qev_runtime").glob("*.py")]
     specification = {
         "design": str(config_path),
         "design_sha256": digest(config_path),
