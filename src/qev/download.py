@@ -74,7 +74,7 @@ def download_backbone(cache_dir: str, *, local_files_only=False) -> str:
     """Download the exact upstream weights and preprocessing files."""
     from huggingface_hub import snapshot_download
 
-    from qev.constants import MODEL_ID, MODEL_REVISION
+    from qev_runtime.constants import MODEL_ID, MODEL_REVISION
 
     folder = Path(
         snapshot_download(

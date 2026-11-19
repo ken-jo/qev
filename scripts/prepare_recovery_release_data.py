@@ -33,7 +33,7 @@ def main():
         Path("scripts/build_recovery_final.py"),
         Path("scripts/verify_recovery_final_data.py"),
         Path("scripts/build_workflow_v12.py"),
-        Path("src/qev/workflow_facts.py"),
+        Path("src/qev_runtime/workflow_facts.py"),
     ]
     hashes = {str(p): digest(p) for p in sources}
     write(

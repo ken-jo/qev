@@ -44,8 +44,8 @@ def main():
     import torch
 
     import qev
-    from qev.option_model import OptionModel
-    from qev.schema import DecisionRequest
+    from qev_runtime.option_model import OptionModel
+    from qev_runtime.schema import DecisionRequest
 
     if not str(qev.__file__).startswith(str(wheel)):
         raise RuntimeError("QEV facade was imported outside the bundled wheel")
@@ -99,7 +99,7 @@ def main():
     modules = {
         name: str(getattr(module, "__file__", ""))
         for name, module in sys.modules.items()
-        if name == "qev" or name.startswith("qev.")
+        if name == "qev" or name.startswith(("qev.", "qev_runtime"))
     }
     if not all(path.startswith(str(wheel)) for path in modules.values()):
         raise RuntimeError("source-directory modules leaked into wheel verification")

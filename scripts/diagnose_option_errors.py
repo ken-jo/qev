@@ -5,7 +5,7 @@ import json
 from collections import Counter
 from pathlib import Path
 
-from qev.data import read_records
+from qev_runtime.data import read_records
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--predictions", type=Path, required=True)

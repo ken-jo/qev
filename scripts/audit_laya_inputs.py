@@ -10,7 +10,7 @@ from pathlib import Path
 from evaluate_laya_reference import official_records
 from train_foundation_head import write
 
-from qev.data import read_records
+from qev_runtime.data import read_records
 
 
 def main():

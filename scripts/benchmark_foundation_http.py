@@ -16,10 +16,10 @@ from PIL import Image
 from train_foundation_head import write
 from validate_model import latency_summary
 
-from qev.candidates import candidates_for
-from qev.data import read_records
-from qev.model import DecisionModel
-from qev.server import create_app
+from qev_runtime.candidates import candidates_for
+from qev_runtime.data import read_records
+from qev_runtime.model import DecisionModel
+from qev_runtime.server import create_app
 
 
 def digest(path):

@@ -7,10 +7,10 @@ from pathlib import Path
 
 import torch
 
-from qev.checkpoint import load_head
-from qev.constants import QUESTION_TYPES
-from qev.features import load_features
-from qev.training import predict_features, summarize_predictions
+from qev_runtime.checkpoint import load_head
+from qev_runtime.constants import QUESTION_TYPES
+from qev_runtime.features import load_features
+from qev_runtime.training import predict_features, summarize_predictions
 
 
 def evaluate_checkpoint(

@@ -7,11 +7,11 @@ from pathlib import Path
 
 import torch
 
-from qev.checkpoint import load_head, save_checkpoint
-from qev.constants import QUESTION_TYPES
-from qev.features import FeatureSample, load_features
-from qev.probability import Calibration
-from qev.training import predict_features
+from qev_runtime.checkpoint import load_head, save_checkpoint
+from qev_runtime.constants import QUESTION_TYPES
+from qev_runtime.features import FeatureSample, load_features
+from qev_runtime.probability import Calibration
+from qev_runtime.training import predict_features
 
 
 def fit_temperature(samples: list[FeatureSample], logits: list[torch.Tensor]) -> float:

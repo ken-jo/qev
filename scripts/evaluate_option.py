@@ -9,14 +9,14 @@ from pathlib import Path
 import numpy as np
 import torch
 
-from qev.calibrate import fit_abstention, fit_temperature
-from qev.candidates import candidates_for
-from qev.constants import QUESTION_TYPES
-from qev.data import read_records
-from qev.features import FeatureSample
-from qev.option_model import OptionModel
-from qev.probability import Calibration
-from qev.training import summarize_predictions
+from qev_runtime.calibrate import fit_abstention, fit_temperature
+from qev_runtime.candidates import candidates_for
+from qev_runtime.constants import QUESTION_TYPES
+from qev_runtime.data import read_records
+from qev_runtime.features import FeatureSample
+from qev_runtime.option_model import OptionModel
+from qev_runtime.probability import Calibration
+from qev_runtime.training import summarize_predictions
 
 
 @torch.inference_mode()

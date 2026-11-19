@@ -8,7 +8,7 @@ from pathlib import Path
 import torch
 from depth_policy_checks import DESIGN_PATH, collect_policy_study, digest, read, require
 
-from qev.constants import QUESTION_TYPES
+from qev_runtime.constants import QUESTION_TYPES
 
 
 def main():

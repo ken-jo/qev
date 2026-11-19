@@ -10,9 +10,9 @@ from pydantic import ValidationError
 from starlette.concurrency import run_in_threadpool
 
 from qev import __version__
-from qev.constants import DECISION_MODEL_ID, MODEL_ID, MODEL_REVISION
-from qev.model import DecisionModel
-from qev.schema import DecisionRequest
+from qev_runtime.constants import DECISION_MODEL_ID, MODEL_ID, MODEL_REVISION
+from qev_runtime.model import DecisionModel
+from qev_runtime.schema import DecisionRequest
 
 
 def create_app(model: DecisionModel, image_root: Path) -> FastAPI:

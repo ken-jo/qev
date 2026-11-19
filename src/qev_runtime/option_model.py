@@ -14,17 +14,17 @@ from safetensors.torch import load_file, save_file
 from torch import nn
 from torch.nn import functional as F
 
-from qev.backbone import QwenEncoder, text_hidden_size
-from qev.binding_head import ConditionedReadout
-from qev.bundled_backbone import bundled_identity, load_bundle
-from qev.candidates import candidates_for
-from qev.constants import DECISION_MODEL_ID, MODEL_ID, MODEL_REVISION
-from qev.cuda_graph import enable_short_input_graphs
-from qev.exit_head import ExitHead, parse_early_exit, truncate_text_stack
-from qev.image_inputs import image_content, open_images
-from qev.probability import Calibration, typed_answer
-from qev.reasoning_workspace import RESULT_MARKER, condition_positions, workspace_suffix
-from qev.schema import DecisionRequest
+from qev_runtime.backbone import QwenEncoder, text_hidden_size
+from qev_runtime.binding_head import ConditionedReadout
+from qev_runtime.bundled_backbone import bundled_identity, load_bundle
+from qev_runtime.candidates import candidates_for
+from qev_runtime.constants import DECISION_MODEL_ID, MODEL_ID, MODEL_REVISION
+from qev_runtime.cuda_graph import enable_short_input_graphs
+from qev_runtime.exit_head import ExitHead, parse_early_exit, truncate_text_stack
+from qev_runtime.image_inputs import image_content, open_images
+from qev_runtime.probability import Calibration, typed_answer
+from qev_runtime.reasoning_workspace import RESULT_MARKER, condition_positions, workspace_suffix
+from qev_runtime.schema import DecisionRequest
 
 DEFAULT_BACKBONE = {"model_id": MODEL_ID, "revision": MODEL_REVISION}
 

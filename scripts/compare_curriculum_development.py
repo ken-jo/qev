@@ -12,9 +12,9 @@ from curriculum_release_checks import digest, read_plain, recompute_development,
 from safetensors.torch import load_file
 from train_foundation_head import write
 
-from qev.constants import QUESTION_TYPES
-from qev.data import TrainingRecord
-from qev.workflow_learning import annotate
+from qev_runtime.constants import QUESTION_TYPES
+from qev_runtime.data import TrainingRecord
+from qev_runtime.workflow_learning import annotate
 
 
 def compare(output):

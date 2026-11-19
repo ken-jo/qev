@@ -17,10 +17,10 @@ import torch
 import uvicorn
 from PIL import Image, ImageDraw
 
-from qev.data import read_records
-from qev.model import DecisionModel
-from qev.schema import DecisionRequest
-from qev.server import create_app
+from qev_runtime.data import read_records
+from qev_runtime.model import DecisionModel
+from qev_runtime.schema import DecisionRequest
+from qev_runtime.server import create_app
 
 
 def latency_summary(values):

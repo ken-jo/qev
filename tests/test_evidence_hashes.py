@@ -1,4 +1,4 @@
-from qev.release_gate import evidence_hashes, evidence_matches
+from qev_runtime.release_gate import evidence_hashes, evidence_matches
 
 
 def test_published_newlines_preserve_report_evidence_identity():

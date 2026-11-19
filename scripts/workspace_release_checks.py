@@ -5,8 +5,8 @@ import json
 from datetime import datetime
 from pathlib import Path
 
-from qev.constants import QUESTION_TYPES
-from qev.data import read_records
+from qev_runtime.constants import QUESTION_TYPES
+from qev_runtime.data import read_records
 
 
 def digest(path):

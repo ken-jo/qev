@@ -11,8 +11,8 @@ from pathlib import Path
 
 from train_foundation_head import write
 
-from qev.data import read_records
-from qev.workflow_facts import stated_probabilities
+from qev_runtime.data import read_records
+from qev_runtime.workflow_facts import stated_probabilities
 
 
 def digest(path):
@@ -139,7 +139,7 @@ def main():
         "final_design_sha256": digest(args.config),
         "excluded_record_files": {p: digest(p) for p in config["exclude_records"]},
         "source_sha256": digest(Path(__file__)),
-        "primitive_parser_sha256": digest("src/qev/workflow_facts.py"),
+        "primitive_parser_sha256": digest("src/qev_runtime/workflow_facts.py"),
         "fresh_policy_targets_recomputed": checked,
         "maximum_target_absolute_error": maximum_error,
         "fresh_final_domain_counts": dict(domains),

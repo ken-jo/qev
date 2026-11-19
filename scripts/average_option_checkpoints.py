@@ -8,8 +8,8 @@ from pathlib import Path
 
 from safetensors.torch import load_file, save_file
 
-from qev.average_adapters import average_states
-from qev.probability import Calibration
+from qev_runtime.average_adapters import average_states
+from qev_runtime.probability import Calibration
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--sources", type=Path, nargs="+", required=True)
@@ -66,7 +66,7 @@ result["training"] = {
         "source_checkpoints": [str(path) for path in args.sources],
         "source_manifests": manifests,
         "source_sha256": hashlib.sha256(
-            Path("src/qev/average_adapters.py").read_bytes()
+            Path("src/qev_runtime/average_adapters.py").read_bytes()
         ).hexdigest(),
     },
 }

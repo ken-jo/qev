@@ -11,9 +11,9 @@ from train_foundation_head import write
 from workflow_depth_common import expand_depth, optimizer_groups, training_mode
 from workflow_skill_common import canonical_target
 
-from qev.data import TrainingRecord
-from qev.option_model import OptionModel
-from qev.proper_learning import distribution_losses
+from qev_runtime.data import TrainingRecord
+from qev_runtime.option_model import OptionModel
+from qev_runtime.proper_learning import distribution_losses
 
 
 def read(path):
@@ -66,8 +66,8 @@ def main(output):
             Path(__file__),
             Path("scripts/workflow_depth_common.py"),
             Path("scripts/workflow_skill_common.py"),
-            Path("src/qev/option_model.py"),
-            Path("src/qev/proper_learning.py"),
+            Path("src/qev_runtime/option_model.py"),
+            Path("src/qev_runtime/proper_learning.py"),
         )
     }
     write(

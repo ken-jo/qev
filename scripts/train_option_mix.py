@@ -26,7 +26,7 @@ from option_mix_common import (
 )
 from safetensors.torch import save_file
 
-from qev.candidates import candidates_for
+from qev_runtime.candidates import candidates_for
 
 
 def pixel_list(value):

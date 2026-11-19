@@ -8,7 +8,7 @@ from pathlib import Path
 
 from PIL import Image, ImageOps
 
-from qev.constants import MAX_IMAGES
+from qev_runtime.constants import MAX_IMAGES
 
 
 def image_paths(images, image_root: Path | None = None) -> list[Path]:

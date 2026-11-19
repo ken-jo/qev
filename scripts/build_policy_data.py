@@ -4,7 +4,7 @@ import argparse
 import json
 from pathlib import Path
 
-from qev.policy_data import build_policy_data
+from qev_runtime.policy_data import build_policy_data
 
 
 def main():

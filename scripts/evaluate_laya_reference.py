@@ -10,9 +10,9 @@ from pathlib import Path
 import torch
 from train_foundation_head import write
 
-from qev.data import Source, TrainingRecord, read_records
-from qev.decision_metrics import observation, report
-from qev.schema import DecisionRequest
+from qev_runtime.data import Source, TrainingRecord, read_records
+from qev_runtime.decision_metrics import observation, report
+from qev_runtime.schema import DecisionRequest
 
 
 def official_records(path):

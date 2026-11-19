@@ -10,8 +10,8 @@ from pathlib import Path
 
 from build_foundation_data import image_signature
 
-from qev.data import Source, TrainingRecord, audit_records, read_records
-from qev.schema import DecisionRequest
+from qev_runtime.data import Source, TrainingRecord, audit_records, read_records
+from qev_runtime.schema import DecisionRequest
 
 ROOT = Path("data/workflow-v12")
 ACTION = ["PROCEED", "REVIEW", "HOLD"]

@@ -29,6 +29,7 @@ dist/
 /wandb/
 /logs/
 /.cache/
+/scripts/.cache/
 *.safetensors
 *.pt
 *.pth

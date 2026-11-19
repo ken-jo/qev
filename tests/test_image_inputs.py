@@ -2,9 +2,9 @@ import pytest
 from PIL import Image
 from transformers.models.qwen2_vl.image_processing_qwen2_vl import smart_resize
 
-from qev.image_inputs import open_images
-from qev.option_model import MAX_IMAGE_PIXELS, OptionConfig
-from qev.schema import DecisionRequest
+from qev_runtime.image_inputs import open_images
+from qev_runtime.option_model import MAX_IMAGE_PIXELS, OptionConfig
+from qev_runtime.schema import DecisionRequest
 
 CAP = 262144
 
@@ -84,7 +84,7 @@ def captured_budget(monkeypatch, module, call):
 def encoders(config):
     from types import SimpleNamespace
 
-    from qev.backbone import QwenEncoder
+    from qev_runtime.backbone import QwenEncoder
 
     processor = SimpleNamespace(
         image_processor=SimpleNamespace(size={"shortest_edge": 65536, "longest_edge": 524288})
@@ -94,7 +94,7 @@ def encoders(config):
 
 @pytest.mark.parametrize("enabled", [False, True])
 def test_fast_jpeg_decode_is_opt_in_for_the_option_encoder(monkeypatch, enabled):
-    import qev.option_model as option_model
+    import qev_runtime.option_model as option_model
 
     model = option_model.OptionModel.__new__(option_model.OptionModel)
     option_model.nn.Module.__init__(model)
@@ -105,7 +105,7 @@ def test_fast_jpeg_decode_is_opt_in_for_the_option_encoder(monkeypatch, enabled)
 
 @pytest.mark.parametrize("enabled", [False, True])
 def test_fast_jpeg_decode_is_opt_in_for_the_packed_encoder(monkeypatch, enabled):
-    import qev.backbone as backbone
+    import qev_runtime.backbone as backbone
 
     encoder = encoders(backbone.EncoderConfig(fast_jpeg_decode=enabled))
     budget = captured_budget(monkeypatch, backbone, lambda: encoder(request()))
@@ -113,7 +113,7 @@ def test_fast_jpeg_decode_is_opt_in_for_the_packed_encoder(monkeypatch, enabled)
 
 
 def test_fast_jpeg_decode_flag_only_appears_in_manifests_when_enabled():
-    from qev.backbone import EncoderConfig
+    from qev_runtime.backbone import EncoderConfig
 
     for config_type in (OptionConfig, EncoderConfig):
         assert "fast_jpeg_decode" not in config_type().to_dict()

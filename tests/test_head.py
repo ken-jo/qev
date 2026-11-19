@@ -1,7 +1,7 @@
 import pytest
 import torch
 
-from qev.head import DecisionHead, HeadConfig
+from qev_runtime.head import DecisionHead, HeadConfig
 
 
 @pytest.fixture

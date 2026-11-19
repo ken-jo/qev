@@ -4,8 +4,8 @@ from collections import defaultdict
 
 import torch
 
-from qev.candidates import candidates_for
-from qev.option_model import option_prompt
+from qev_runtime.candidates import candidates_for
+from qev_runtime.option_model import option_prompt
 
 
 def aligned_training_groups(rows, records):

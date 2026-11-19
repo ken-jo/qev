@@ -3,7 +3,7 @@
 import torch
 from torch import nn
 
-from qev.binding_head import ConditionedReadout
+from qev_runtime.binding_head import ConditionedReadout
 
 
 class TransferReadout(nn.Module):

@@ -10,11 +10,11 @@ import torch
 from safetensors.torch import load_file
 from train_foundation_head import write
 
-from qev.candidates import candidates_for
-from qev.constants import QUESTION_TYPES
-from qev.data import read_records
-from qev.option_model import option_prompt
-from qev.transfer_learning import TransferReadout
+from qev_runtime.candidates import candidates_for
+from qev_runtime.constants import QUESTION_TYPES
+from qev_runtime.data import read_records
+from qev_runtime.option_model import option_prompt
+from qev_runtime.transfer_learning import TransferReadout
 
 
 def digest(path):

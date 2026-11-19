@@ -4,8 +4,8 @@ from unittest.mock import Mock
 import pytest
 from fastapi.testclient import TestClient
 
-from qev.constants import MODEL_ID, MODEL_REVISION
-from qev.server import create_app
+from qev_runtime.constants import MODEL_ID, MODEL_REVISION
+from qev_runtime.server import create_app
 
 
 class StubTrainedModel:

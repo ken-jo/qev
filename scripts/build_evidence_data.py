@@ -2,7 +2,7 @@ import argparse
 import json
 from pathlib import Path
 
-from qev.evidence_data import build_evidence_data
+from qev_runtime.evidence_data import build_evidence_data
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--parent", type=Path, default=Path("data/policy-v3/records.jsonl"))

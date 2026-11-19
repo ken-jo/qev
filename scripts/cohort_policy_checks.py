@@ -14,8 +14,8 @@ from depth_policy_checks import (
     require,
 )
 
-from qev.constants import QUESTION_TYPES
-from qev.data import read_records
+from qev_runtime.constants import QUESTION_TYPES
+from qev_runtime.data import read_records
 
 DESIGN_PATH = Path("configs/workflow-cohort-policy-v12.json")
 REPAIR_PATH = Path("configs/workflow-cohort-policy-data-repair-v12.json")

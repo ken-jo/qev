@@ -10,8 +10,8 @@ from safetensors.torch import load_file
 from train_foundation_head import write
 from train_workflow_reliability_pilot import rank_report
 
-from qev.data import TrainingRecord
-from qev.workflow_learning import annotate
+from qev_runtime.data import TrainingRecord
+from qev_runtime.workflow_learning import annotate
 
 
 def read(path):
@@ -109,7 +109,7 @@ def main():
             for path in (
                 Path(__file__),
                 Path("scripts/train_workflow_reliability_pilot.py"),
-                Path("src/qev/workflow_learning.py"),
+                Path("src/qev_runtime/workflow_learning.py"),
             )
         },
         "bindings": bindings,

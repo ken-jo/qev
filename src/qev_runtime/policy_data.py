@@ -9,8 +9,8 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw
 
-from qev.build_data import make_record
-from qev.data import write_records
+from qev_runtime.build_data import make_record
+from qev_runtime.data import write_records
 
 DOMAINS = {
     "train": [

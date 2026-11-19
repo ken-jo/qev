@@ -2,9 +2,9 @@ import random
 
 import pytest
 
-from qev.build_data import make_record
-from qev.interventions import augment_unit, primitive_question, retype_unit, training_units
-from qev.policy_data import typed_decision
+from qev_runtime.build_data import make_record
+from qev_runtime.interventions import augment_unit, primitive_question, retype_unit, training_units
+from qev_runtime.policy_data import typed_decision
 
 
 def record(kind="choice", split="train", version=0):
@@ -65,7 +65,7 @@ def test_held_out_records_cannot_be_transformed():
 def test_evidence_values_really_change_the_condition(desired):
     import re
 
-    from qev.evidence_data import text_observation
+    from qev_runtime.evidence_data import text_observation
 
     for seed in range(30):
         text = text_observation(record(), desired, random.Random(seed))
@@ -84,7 +84,7 @@ def test_condition_annotation_can_supervise_false_noul_probe():
 def test_type_interventions_preserve_policy_outcomes(source_kind):
     import re
 
-    from qev.candidates import candidates_for
+    from qev_runtime.candidates import candidates_for
 
     seen = set()
     original = [record(source_kind, version=0), record(source_kind, version=1)]
@@ -115,7 +115,7 @@ def test_type_interventions_reject_held_out_records():
 def test_type_interventions_follow_all_three_range_branches(branch):
     import re
 
-    from qev.candidates import candidates_for
+    from qev_runtime.candidates import candidates_for
 
     originals = []
     labels = ["low", "middle", "high"]

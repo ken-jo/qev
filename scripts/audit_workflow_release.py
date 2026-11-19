@@ -9,8 +9,8 @@ from pathlib import Path
 
 from train_foundation_head import write
 
-from qev.constants import QUESTION_TYPES
-from qev.workflow_release_gate import REQUIRED_CHECKS
+from qev_runtime.constants import QUESTION_TYPES
+from qev_runtime.workflow_release_gate import REQUIRED_CHECKS
 
 
 def digest(path):

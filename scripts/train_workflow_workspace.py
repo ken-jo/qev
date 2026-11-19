@@ -16,12 +16,12 @@ from train_foundation_head import write
 from train_workflow_backbone import forward
 from workflow_workspace_supervision import WorkspaceSupervisor
 
-from qev.constants import QUESTION_TYPES
-from qev.data import read_records
-from qev.option_model import OptionModel
-from qev.proper_learning import distribution_losses, retention_losses
-from qev.workflow_facts import auxiliary_targets
-from qev.workflow_learning import SHARES, annotate, selection_key, summarize_logits
+from qev_runtime.constants import QUESTION_TYPES
+from qev_runtime.data import read_records
+from qev_runtime.option_model import OptionModel
+from qev_runtime.proper_learning import distribution_losses, retention_losses
+from qev_runtime.workflow_facts import auxiliary_targets
+from qev_runtime.workflow_learning import SHARES, annotate, selection_key, summarize_logits
 
 
 def read(path):
@@ -165,10 +165,10 @@ def main():
                 Path(__file__),
                 Path("scripts/workflow_workspace_supervision.py"),
                 Path("scripts/train_workflow_backbone.py"),
-                Path("src/qev/workflow_facts.py"),
-                Path("src/qev/workflow_learning.py"),
-                Path("src/qev/proper_learning.py"),
-                Path("src/qev/option_model.py"),
+                Path("src/qev_runtime/workflow_facts.py"),
+                Path("src/qev_runtime/workflow_learning.py"),
+                Path("src/qev_runtime/proper_learning.py"),
+                Path("src/qev_runtime/option_model.py"),
             )
         },
         "feature_cache": cache,

@@ -7,7 +7,7 @@ from pathlib import Path
 from compare_foundation_predictions import compare, summarize
 from evaluate_laya_reference import official_records
 
-from qev.decision_metrics import observation, report
+from qev_runtime.decision_metrics import observation, report
 
 
 def read(path):

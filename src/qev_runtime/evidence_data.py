@@ -12,9 +12,9 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw
 
-from qev.candidates import candidates_for
-from qev.data import TrainingRecord, read_records, write_records
-from qev.policy_data import COLORS, SHAPES
+from qev_runtime.candidates import candidates_for
+from qev_runtime.data import TrainingRecord, read_records, write_records
+from qev_runtime.policy_data import COLORS, SHAPES
 
 
 def policy_branches(record):

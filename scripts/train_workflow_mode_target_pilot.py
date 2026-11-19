@@ -14,10 +14,10 @@ from train_foundation_head import write
 from train_workflow_workspace import development_risk
 from workspace_development_diagnostics import diagnose
 
-from qev.data import read_records
-from qev.proper_learning import distribution_losses, grouped_batches, retention_losses
-from qev.transfer_learning import TransferReadout
-from qev.workflow_learning import SHARES, annotate, evaluate, selection_key
+from qev_runtime.data import read_records
+from qev_runtime.proper_learning import distribution_losses, grouped_batches, retention_losses
+from qev_runtime.transfer_learning import TransferReadout
+from qev_runtime.workflow_learning import SHARES, annotate, evaluate, selection_key
 
 
 def digest(path):
@@ -95,8 +95,8 @@ def main():
             for path in (
                 Path(__file__),
                 Path("scripts/workspace_development_diagnostics.py"),
-                Path("src/qev/workflow_learning.py"),
-                Path("src/qev/proper_learning.py"),
+                Path("src/qev_runtime/workflow_learning.py"),
+                Path("src/qev_runtime/proper_learning.py"),
             )
         },
         "training_teacher_mode_questions": int(teacher.sum()),

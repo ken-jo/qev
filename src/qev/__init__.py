@@ -18,11 +18,11 @@ def load(checkpoint=None, *, device="auto", cache_dir=None, offline=False):
 def __getattr__(name):
     # CLI help and packaging metadata do not need to initialize PyTorch.
     if name == "QEV":
-        from qev.option_model import OptionModel
+        from qev_runtime.option_model import OptionModel
 
         return OptionModel
     if name == "DecisionRequest":
-        from qev.schema import DecisionRequest
+        from qev_runtime.schema import DecisionRequest
 
         return DecisionRequest
     raise AttributeError(f"module {__name__!r} has no attribute {name!r}")

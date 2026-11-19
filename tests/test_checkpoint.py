@@ -3,10 +3,10 @@ import json
 import pytest
 import torch
 
-from qev.backbone import EncoderConfig
-from qev.checkpoint import load_head, save_checkpoint
-from qev.head import DecisionHead, HeadConfig
-from qev.probability import Calibration
+from qev_runtime.backbone import EncoderConfig
+from qev_runtime.checkpoint import load_head, save_checkpoint
+from qev_runtime.head import DecisionHead, HeadConfig
+from qev_runtime.probability import Calibration
 
 
 def test_round_trip_and_guard(tmp_path):

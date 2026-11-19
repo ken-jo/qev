@@ -2,7 +2,7 @@
 
 import torch
 
-from qev.option_model import LoRALinear, install_adapters
+from qev_runtime.option_model import LoRALinear, install_adapters
 
 
 def layer_number(name):

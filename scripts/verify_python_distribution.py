@@ -38,12 +38,18 @@ def main():
         entrypoints.read_string(archive.read(f"qev-{version}.dist-info/entry_points.txt").decode())
         if entrypoints["console_scripts"]["qev"] != "qev.cli:main":
             raise ValueError("Missing QEV command")
-        modules = sorted((root / "src/qev").glob("*.py"))
-        if len(modules) != 47:
+        modules = sorted((root / "src/qev_runtime").glob("*.py"))
+        if len(modules) != 42:
             raise ValueError("Unexpected runtime module count")
         for module in modules:
-            if archive.read("qev/" + module.name) != module.read_bytes():
+            if archive.read("qev_runtime/" + module.name) != module.read_bytes():
                 raise ValueError("Packaged runtime changed while packaging")
+        public = sorted((root / "src/qev").glob("*.py"))
+        if len(public) != 6:
+            raise ValueError("Unexpected public module count")
+        for module in public:
+            if archive.read("qev/" + module.name) != module.read_bytes():
+                raise ValueError("Public API changed while packaging")
         for asset in (root / "src/qev/playground").rglob("*"):
             if not asset.is_file() or "__pycache__" in asset.parts:
                 continue

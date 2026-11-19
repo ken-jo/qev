@@ -2,11 +2,11 @@ import pytest
 import torch
 from torch import nn
 
-from qev.constants import MODEL_ID, MODEL_REVISION
-from qev.model import DecisionModel
-from qev.option_model import OptionModel
-from qev.probability import Calibration
-from qev.schema import DecisionRequest
+from qev_runtime.constants import MODEL_ID, MODEL_REVISION
+from qev_runtime.model import DecisionModel
+from qev_runtime.option_model import OptionModel
+from qev_runtime.probability import Calibration
+from qev_runtime.schema import DecisionRequest
 
 
 @pytest.mark.parametrize("model_class", [DecisionModel, OptionModel])

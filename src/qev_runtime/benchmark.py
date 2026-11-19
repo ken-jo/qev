@@ -10,12 +10,12 @@ import numpy as np
 import torch
 from PIL import Image, ImageDraw
 
-from qev.backbone import EncoderConfig, QwenEncoder
-from qev.constants import MODEL_ID, MODEL_REVISION
-from qev.head import DecisionHead
-from qev.model import DecisionModel
-from qev.probability import typed_answer
-from qev.schema import DecisionRequest
+from qev_runtime.backbone import EncoderConfig, QwenEncoder
+from qev_runtime.constants import MODEL_ID, MODEL_REVISION
+from qev_runtime.head import DecisionHead
+from qev_runtime.model import DecisionModel
+from qev_runtime.probability import typed_answer
+from qev_runtime.schema import DecisionRequest
 
 
 def write_fixture(directory: Path) -> Path:

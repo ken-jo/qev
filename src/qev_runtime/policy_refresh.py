@@ -8,10 +8,10 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
-from qev.data import TrainingRecord, read_records, write_records
-from qev.image_inputs import fingerprint_context, pixel_fingerprints
-from qev.packing import pack_request
-from qev.policy_data import DOMAINS, LABELS, build_policy_data
+from qev_runtime.data import TrainingRecord, read_records, write_records
+from qev_runtime.image_inputs import fingerprint_context, pixel_fingerprints
+from qev_runtime.packing import pack_request
+from qev_runtime.policy_data import DOMAINS, LABELS, build_policy_data
 
 SEEDS = (20261004, 20261005, 20261006, 20261007)
 DOMAINS_V8 = {

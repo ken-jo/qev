@@ -2,9 +2,9 @@
 
 import torch
 
-from qev.candidates import candidates_for
-from qev.option_model import option_prompt
-from qev.transfer_learning import transfer_metrics
+from qev_runtime.candidates import candidates_for
+from qev_runtime.option_model import option_prompt
+from qev_runtime.transfer_learning import transfer_metrics
 
 SHARES = {
     "workflow_known": 0.30,

@@ -243,7 +243,7 @@ def load_bundle(directory, block, config, device):
     import torch
     from transformers import AutoProcessor, Qwen3_5Config, Qwen3_5Model
 
-    from qev.backbone import QwenEncoder
+    from qev_runtime.backbone import QwenEncoder
 
     root = verify_bundle(directory, block)
     if device.startswith("cuda") and not torch.cuda.is_available():

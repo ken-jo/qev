@@ -11,15 +11,15 @@ from pathlib import Path
 import torch
 from safetensors.torch import load_file, save_file
 
-from qev.probability import Calibration
-from qev.proper_learning import (
+from qev_runtime.probability import Calibration
+from qev_runtime.proper_learning import (
     distribution_losses,
     foundation_selection,
     grouped_batches,
     retention_losses,
     transport_losses,
 )
-from qev.transfer_learning import TransferReadout, transfer_metrics
+from qev_runtime.transfer_learning import TransferReadout, transfer_metrics
 
 SHARES = {
     "text_nli": 0.20,
@@ -132,8 +132,8 @@ def main():
             str(p): digest(p)
             for p in [
                 Path(__file__),
-                Path("src/qev/proper_learning.py"),
-                Path("src/qev/transfer_learning.py"),
+                Path("src/qev_runtime/proper_learning.py"),
+                Path("src/qev_runtime/transfer_learning.py"),
             ]
         },
         "calibration_or_final_used": False,

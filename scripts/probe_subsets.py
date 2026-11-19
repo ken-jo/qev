@@ -4,9 +4,9 @@ import argparse
 import json
 from pathlib import Path
 
-from qev.data import read_records
-from qev.model import DecisionModel
-from qev.schema import DecisionRequest
+from qev_runtime.data import read_records
+from qev_runtime.model import DecisionModel
+from qev_runtime.schema import DecisionRequest
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--checkpoint", required=True)

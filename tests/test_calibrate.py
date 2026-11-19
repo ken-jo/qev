@@ -1,9 +1,9 @@
 import torch
 from test_training import sample
 
-from qev.calibrate import fit_abstention, fit_temperature
-from qev.probability import Calibration, typed_answer
-from qev.schema import NoulQuestion
+from qev_runtime.calibrate import fit_abstention, fit_temperature
+from qev_runtime.probability import Calibration, typed_answer
+from qev_runtime.schema import NoulQuestion
 
 
 def test_overconfident_errors_increase_temperature():

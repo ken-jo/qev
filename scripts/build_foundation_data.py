@@ -13,8 +13,8 @@ from zipfile import ZipFile
 import numpy as np
 from PIL import Image, ImageOps
 
-from qev.data import Source, TrainingRecord, audit_records, read_records
-from qev.schema import DecisionRequest
+from qev_runtime.data import Source, TrainingRecord, audit_records, read_records
+from qev_runtime.schema import DecisionRequest
 
 LABELS = ["cardboard", "glass", "metal", "paper", "plastic", "trash"]
 RELATIONS = [

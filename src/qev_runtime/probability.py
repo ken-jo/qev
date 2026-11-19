@@ -8,9 +8,9 @@ from math import isfinite
 import torch
 from torch import Tensor
 
-from qev.candidates import candidates_for
-from qev.constants import QUESTION_TYPES
-from qev.schema import ChoiceQuestion, NoulQuestion, Question
+from qev_runtime.candidates import candidates_for
+from qev_runtime.constants import QUESTION_TYPES
+from qev_runtime.schema import ChoiceQuestion, NoulQuestion, Question
 
 
 @dataclass(frozen=True)

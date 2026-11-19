@@ -9,11 +9,11 @@ from pathlib import Path
 import torch
 from torch import Tensor, nn
 
-from qev.candidates import SYSTEM_PROMPT, type_index
-from qev.constants import MODEL_ID, MODEL_REVISION
-from qev.image_inputs import image_content, open_images
-from qev.packing import CANDIDATE_MARKER, QUESTION_MARKER, marker_positions, pack_request
-from qev.schema import DecisionRequest
+from qev_runtime.candidates import SYSTEM_PROMPT, type_index
+from qev_runtime.constants import MODEL_ID, MODEL_REVISION
+from qev_runtime.image_inputs import image_content, open_images
+from qev_runtime.packing import CANDIDATE_MARKER, QUESTION_MARKER, marker_positions, pack_request
+from qev_runtime.schema import DecisionRequest
 
 
 @dataclass(frozen=True)

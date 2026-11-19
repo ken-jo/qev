@@ -2,8 +2,10 @@
 
 ## Unreleased
 
-- The research runtime package `veyra` is merged into the `qev` package and the legacy
-  `veyra` command is retired. Trained prompt markers (`[VEYRA_CANDIDATE]`,
+- The research runtime package `veyra` is rebranded as the companion package `qev_runtime`
+  (a sibling of `qev` and `qev_decision_index`); the legacy `veyra` command is retired.
+  The public `qev` package keeps only the SDK surface: CLI, download, playground and serve.
+  Trained prompt markers (`[VEYRA_CANDIDATE]`,
   `[VEYRA_QUESTION]`, `VeyraResult:`), published corpus generator identifiers and
   historical checkpoint, evidence and report names keep their original spellings; they are
   frozen inputs or recorded outputs of the runs that produced the published artifacts.

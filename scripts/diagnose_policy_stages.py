@@ -12,10 +12,10 @@ from pathlib import Path
 
 import torch
 
-from qev.data import read_records
-from qev.evidence_data import policy_branches
-from qev.option_model import OptionModel
-from qev.schema import DecisionRequest
+from qev_runtime.data import read_records
+from qev_runtime.evidence_data import policy_branches
+from qev_runtime.option_model import OptionModel
+from qev_runtime.schema import DecisionRequest
 
 
 def truth(expression, values):

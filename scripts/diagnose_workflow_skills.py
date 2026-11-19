@@ -10,8 +10,8 @@ from safetensors.torch import save_file
 from train_foundation_head import write
 from workflow_skill_common import assess_skills
 
-from qev.data import read_records
-from qev.option_model import OptionModel
+from qev_runtime.data import read_records
+from qev_runtime.option_model import OptionModel
 
 
 def digest(path):
@@ -54,7 +54,7 @@ def main():
                     Path(__file__),
                     Path("scripts/workflow_skill_common.py"),
                     Path("scripts/train_workflow_backbone.py"),
-                    Path("src/qev/option_model.py"),
+                    Path("src/qev_runtime/option_model.py"),
                 )
             },
             "scope": (

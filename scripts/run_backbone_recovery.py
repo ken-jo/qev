@@ -18,10 +18,10 @@ from train_workflow_backbone import forward
 from train_workflow_workspace import development_risk
 from workflow_depth_common import layer_number, training_mode
 
-from qev.data import read_records
-from qev.option_model import OptionModel
-from qev.transfer_learning import transfer_metrics
-from qev.workflow_learning import summarize_logits
+from qev_runtime.data import read_records
+from qev_runtime.option_model import OptionModel
+from qev_runtime.transfer_learning import transfer_metrics
+from qev_runtime.workflow_learning import summarize_logits
 
 
 def digest(path):

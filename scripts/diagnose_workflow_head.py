@@ -8,8 +8,8 @@ import torch
 from safetensors.torch import load_file
 from train_foundation_head import write
 
-from qev.constants import QUESTION_TYPES
-from qev.transfer_learning import TransferReadout
+from qev_runtime.constants import QUESTION_TYPES
+from qev_runtime.transfer_learning import TransferReadout
 
 
 def digest(path):

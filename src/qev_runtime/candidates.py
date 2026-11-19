@@ -5,8 +5,8 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass
 
-from qev.constants import QUESTION_TYPES
-from qev.schema import ChoiceQuestion, NoulQuestion, Question, ScoreQuestion, State
+from qev_runtime.constants import QUESTION_TYPES
+from qev_runtime.schema import ChoiceQuestion, NoulQuestion, Question, ScoreQuestion, State
 
 SYSTEM_PROMPT = (
     "Evaluate the supplied candidate against the question using the provided evidence. "

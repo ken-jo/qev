@@ -8,8 +8,8 @@ import random
 import shutil
 from pathlib import Path
 
-from qev.build_data import diagram_records, text_records
-from qev.data import TrainingRecord, read_records, write_records
+from qev_runtime.build_data import diagram_records, text_records
+from qev_runtime.data import TrainingRecord, read_records, write_records
 
 
 def paraphrase(question: dict, rng: random.Random, held_out: bool = False) -> dict:

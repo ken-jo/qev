@@ -2,7 +2,7 @@ import pytest
 import torch
 from test_training import sample
 
-from qev.training import summarize_predictions
+from qev_runtime.training import summarize_predictions
 
 
 def test_uniform_probability_metrics_and_soft_labels():

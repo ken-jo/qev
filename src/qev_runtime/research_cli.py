@@ -4,7 +4,7 @@ import argparse
 import json
 from pathlib import Path
 
-from qev.constants import MODEL_ID, MODEL_REVISION
+from qev_runtime.constants import MODEL_ID, MODEL_REVISION
 
 
 def main() -> None:
@@ -85,7 +85,7 @@ def main() -> None:
             flush=True,
         )
     elif args.command == "profile":
-        from qev.benchmark import profile, write_fixture
+        from qev_runtime.benchmark import profile, write_fixture
 
         request = args.request or write_fixture(Path("data/profile"))
         profile(
@@ -98,24 +98,24 @@ def main() -> None:
             iterations=args.iterations,
         )
     elif args.command == "augment-data":
-        from qev.augment_data import augment_dataset
+        from qev_runtime.augment_data import augment_dataset
 
         print(json.dumps(augment_dataset(args.records, args.output, args.seed), indent=2))
     elif args.command == "evaluate":
-        from qev.evaluate import evaluate_checkpoint
+        from qev_runtime.evaluate import evaluate_checkpoint
 
         evaluate_checkpoint(
             args.records, args.features, args.checkpoint, args.output, args.split, args.device
         )
     elif args.command == "calibrate":
-        from qev.calibrate import calibrate_checkpoint
+        from qev_runtime.calibrate import calibrate_checkpoint
 
         result = calibrate_checkpoint(
             args.records, args.features, args.checkpoint, args.output, args.device, args.max_error
         )
         print(json.dumps(result["calibration"], indent=2))
     elif args.command == "train":
-        from qev.training import train_head
+        from qev_runtime.training import train_head
 
         train_head(
             args.records,
@@ -128,7 +128,7 @@ def main() -> None:
             args.seed,
         )
     elif args.command == "extract":
-        from qev.features import extract_features
+        from qev_runtime.features import extract_features
 
         print(
             json.dumps(
@@ -136,7 +136,7 @@ def main() -> None:
             )
         )
     elif args.command == "build-data":
-        from qev.build_data import build_dataset
+        from qev_runtime.build_data import build_dataset
 
         print(
             json.dumps(
@@ -152,8 +152,8 @@ def main() -> None:
             )
         )
     elif args.command in {"predict", "serve"}:
-        from qev.model import DecisionModel
-        from qev.schema import DecisionRequest
+        from qev_runtime.model import DecisionModel
+        from qev_runtime.schema import DecisionRequest
 
         model = DecisionModel.load(args.checkpoint, args.device, args.cache_dir)
         if args.command == "predict":
@@ -162,7 +162,7 @@ def main() -> None:
         else:
             import uvicorn
 
-            from qev.server import create_app
+            from qev_runtime.server import create_app
 
             uvicorn.run(create_app(model, args.image_root), host=args.host, port=args.port)
 

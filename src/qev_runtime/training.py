@@ -11,11 +11,11 @@ from pathlib import Path
 import torch
 from torch import Tensor
 
-from qev.backbone import EncoderConfig
-from qev.checkpoint import save_checkpoint
-from qev.features import FeatureSample, collate, load_features
-from qev.head import DecisionHead, HeadConfig
-from qev.probability import Calibration
+from qev_runtime.backbone import EncoderConfig
+from qev_runtime.checkpoint import save_checkpoint
+from qev_runtime.features import FeatureSample, collate, load_features
+from qev_runtime.head import DecisionHead, HeadConfig
+from qev_runtime.probability import Calibration
 
 
 def distribution_loss(logits: Tensor, targets: Tensor, valid: Tensor, types: Tensor) -> Tensor:

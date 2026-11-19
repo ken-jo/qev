@@ -5,8 +5,8 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass
 
-from qev.candidates import Candidate, candidates_for
-from qev.schema import ChoiceQuestion, DecisionRequest, Question
+from qev_runtime.candidates import Candidate, candidates_for
+from qev_runtime.schema import ChoiceQuestion, DecisionRequest, Question
 
 # Trained wire markers: the learned backbone was fit with these exact strings, so
 # renaming them changes model inputs. The historical spelling is intentional.

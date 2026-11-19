@@ -10,10 +10,10 @@ import torch
 from train_foundation_head import write
 from transformers import AutoTokenizer
 
-from qev.constants import MODEL_ID, MODEL_REVISION
-from qev.data import read_records
-from qev.option_model import option_prompt
-from qev.reasoning_workspace import RESULT_MARKER, condition_positions, workspace_suffix
+from qev_runtime.constants import MODEL_ID, MODEL_REVISION
+from qev_runtime.data import read_records
+from qev_runtime.option_model import option_prompt
+from qev_runtime.reasoning_workspace import RESULT_MARKER, condition_positions, workspace_suffix
 
 
 def digest(path):
@@ -98,8 +98,8 @@ def main():
                 Path(__file__),
                 Path("scripts/train_workflow_workspace.py"),
                 Path("scripts/workflow_workspace_supervision.py"),
-                Path("src/qev/option_model.py"),
-                Path("src/qev/reasoning_workspace.py"),
+                Path("src/qev_runtime/option_model.py"),
+                Path("src/qev_runtime/reasoning_workspace.py"),
             )
         },
         "calibration_or_final_used": False,

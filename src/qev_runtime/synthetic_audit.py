@@ -8,7 +8,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageColor
 
-from qev.policy_data import COLORS, SHAPES
+from qev_runtime.policy_data import COLORS, SHAPES
 
 
 def diagram_objects(path: Path) -> list[tuple[str, str]]:

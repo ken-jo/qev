@@ -1,5 +1,5 @@
-from qev.data import TrainingRecord
-from qev.policy_refresh import LABELS_V8, WRAPPERS_V8, remap_record
+from qev_runtime.data import TrainingRecord
+from qev_runtime.policy_refresh import LABELS_V8, WRAPPERS_V8, remap_record
 
 
 def test_fresh_final_remaps_fields_outcomes_and_proposition_without_changing_targets():

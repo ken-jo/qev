@@ -8,7 +8,7 @@ import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
 
-from qev.workflow_release_gate import require_release_acceptance
+from qev_runtime.workflow_release_gate import require_release_acceptance
 
 ROOT = Path("runs/backbone-recovery-release-v13")
 PACKAGE = Path("dist/huggingface/veyra-workflow-recovery-v13")

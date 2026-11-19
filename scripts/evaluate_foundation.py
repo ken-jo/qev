@@ -10,14 +10,14 @@ from pathlib import Path
 import torch
 from train_foundation_head import write
 
-from qev.calibrate import fit_abstention, fit_temperature
-from qev.candidates import candidates_for
-from qev.constants import QUESTION_TYPES
-from qev.data import read_records
-from qev.decision_metrics import observation, report
-from qev.features import FeatureSample
-from qev.option_model import OptionModel
-from qev.probability import Calibration, typed_answer
+from qev_runtime.calibrate import fit_abstention, fit_temperature
+from qev_runtime.candidates import candidates_for
+from qev_runtime.constants import QUESTION_TYPES
+from qev_runtime.data import read_records
+from qev_runtime.decision_metrics import observation, report
+from qev_runtime.features import FeatureSample
+from qev_runtime.option_model import OptionModel
+from qev_runtime.probability import Calibration, typed_answer
 
 
 def digest(path):
@@ -50,10 +50,10 @@ def main():
         "dependency_source_sha256": {
             str(path): digest(path)
             for path in (
-                Path("src/qev/decision_metrics.py"),
-                Path("src/qev/probability.py"),
-                Path("src/qev/option_model.py"),
-                Path("src/qev/calibrate.py"),
+                Path("src/qev_runtime/decision_metrics.py"),
+                Path("src/qev_runtime/probability.py"),
+                Path("src/qev_runtime/option_model.py"),
+                Path("src/qev_runtime/calibrate.py"),
             )
         },
         "subset_sha256": hashlib.sha256(

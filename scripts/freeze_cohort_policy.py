@@ -9,7 +9,7 @@ import torch
 from cohort_policy_checks import DESIGN_PATH, collect_cohort_study
 from depth_policy_checks import digest, read, require
 
-from qev.constants import QUESTION_TYPES
+from qev_runtime.constants import QUESTION_TYPES
 
 
 def main():

@@ -14,11 +14,11 @@ from torch import nn
 from torch.nn import functional as F
 from train_foundation_head import write
 
-from qev.constants import QUESTION_TYPES
-from qev.data import read_records
-from qev.proper_learning import distribution_losses, grouped_batches, retention_losses
-from qev.transfer_learning import TransferReadout
-from qev.workflow_learning import SHARES, annotate
+from qev_runtime.constants import QUESTION_TYPES
+from qev_runtime.data import read_records
+from qev_runtime.proper_learning import distribution_losses, grouped_batches, retention_losses
+from qev_runtime.transfer_learning import TransferReadout
+from qev_runtime.workflow_learning import SHARES, annotate
 
 
 def read(path):
@@ -163,9 +163,9 @@ def main():
             str(path): digest(path)
             for path in (
                 Path(__file__),
-                Path("src/qev/proper_learning.py"),
-                Path("src/qev/transfer_learning.py"),
-                Path("src/qev/workflow_learning.py"),
+                Path("src/qev_runtime/proper_learning.py"),
+                Path("src/qev_runtime/transfer_learning.py"),
+                Path("src/qev_runtime/workflow_learning.py"),
             )
         },
         "feature_cache": cache,

@@ -7,7 +7,7 @@ from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
 
-from qev.constants import MAX_IMAGES, MODEL_ID
+from qev_runtime.constants import MAX_IMAGES, MODEL_ID
 
 Text = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=8000)]
 Identifier = Annotated[

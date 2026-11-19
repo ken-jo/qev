@@ -11,11 +11,11 @@ import torch
 from safetensors.torch import load_file, save_file
 from train_foundation_head import write
 
-from qev.data import read_records
-from qev.proper_learning import distribution_losses, grouped_batches, retention_losses
-from qev.transfer_learning import TransferReadout
-from qev.workflow_facts import auxiliary_targets
-from qev.workflow_learning import SHARES, annotate, evaluate, selection_key
+from qev_runtime.data import read_records
+from qev_runtime.proper_learning import distribution_losses, grouped_batches, retention_losses
+from qev_runtime.transfer_learning import TransferReadout
+from qev_runtime.workflow_facts import auxiliary_targets
+from qev_runtime.workflow_learning import SHARES, annotate, evaluate, selection_key
 
 
 def digest(path):
@@ -92,9 +92,9 @@ def main():
             str(path): digest(path)
             for path in (
                 Path(__file__),
-                Path("src/qev/workflow_facts.py"),
-                Path("src/qev/workflow_learning.py"),
-                Path("src/qev/proper_learning.py"),
+                Path("src/qev_runtime/workflow_facts.py"),
+                Path("src/qev_runtime/workflow_learning.py"),
+                Path("src/qev_runtime/proper_learning.py"),
             )
         },
         "auxiliary_questions": {

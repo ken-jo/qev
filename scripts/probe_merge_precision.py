@@ -8,8 +8,8 @@ from pathlib import Path
 import torch
 from train_option import evaluate
 
-from qev.data import read_records
-from qev.option_model import OptionModel
+from qev_runtime.data import read_records
+from qev_runtime.option_model import OptionModel
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--checkpoint", type=Path, required=True)

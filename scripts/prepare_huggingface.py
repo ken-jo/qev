@@ -10,7 +10,7 @@ from pathlib import Path
 
 from safetensors.torch import load_file
 
-from qev.workflow_release_gate import require_release_acceptance
+from qev_runtime.workflow_release_gate import require_release_acceptance
 
 
 def digest(path):
@@ -215,8 +215,8 @@ def main():
 import argparse
 import json
 from pathlib import Path
-from qev.option_model import OptionModel
-from qev.schema import DecisionRequest
+from qev_runtime.option_model import OptionModel
+from qev_runtime.schema import DecisionRequest
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--request", type=Path, required=True)

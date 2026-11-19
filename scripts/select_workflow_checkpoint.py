@@ -11,9 +11,9 @@ from safetensors.torch import load_file
 from train_foundation_head import write
 from train_workflow_backbone import assess
 
-from qev.data import read_records
-from qev.option_model import OptionModel
-from qev.workflow_learning import annotate, selection_key
+from qev_runtime.data import read_records
+from qev_runtime.option_model import OptionModel
+from qev_runtime.workflow_learning import annotate, selection_key
 
 
 def digest(path):

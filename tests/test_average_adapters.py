@@ -1,7 +1,7 @@
 import pytest
 import torch
 
-from qev.average_adapters import average_states
+from qev_runtime.average_adapters import average_states
 
 
 def state(rank):

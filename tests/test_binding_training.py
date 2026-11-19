@@ -4,7 +4,7 @@ from pathlib import Path
 
 import torch
 
-from qev.binding_head import ConditionedReadout
+from qev_runtime.binding_head import ConditionedReadout
 
 scripts = Path(__file__).resolve().parents[1] / "scripts"
 evaluate = runpy.run_path(str(scripts / "train_binding_head.py"))["evaluate"]

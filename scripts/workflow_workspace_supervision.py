@@ -6,7 +6,7 @@ import torch
 from torch import nn
 from torch.nn import functional as F
 
-from qev.reasoning_workspace import RESULT_MARKER, condition_positions
+from qev_runtime.reasoning_workspace import RESULT_MARKER, condition_positions
 
 
 class WorkspaceSupervisor:

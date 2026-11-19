@@ -13,7 +13,7 @@ from pathlib import Path
 
 from safetensors.torch import load_file
 
-from qev.workflow_release_gate import require_release_acceptance
+from qev_runtime.workflow_release_gate import require_release_acceptance
 
 
 def digest(path):

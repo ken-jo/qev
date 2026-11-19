@@ -9,7 +9,7 @@ from zipfile import ZipFile
 
 from PIL import Image, ImageDraw
 
-from qev.data import TrainingRecord, write_records
+from qev_runtime.data import TrainingRecord, write_records
 
 BEANS_ID = "AI-Lab-Makerere/beans"
 BEANS_REVISION = "27aa014ce09b193e1a6f58112d4a66e0eddb69c5"

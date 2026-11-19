@@ -375,9 +375,10 @@ packaging does not retroactively alter a stage's provenance.
 QEV was previously developed as Veyra, and this checkpoint as Veyra Workflow Recovery v13.
 The public rename did not change the weights. The trained prompt marker `VeyraResult:`
 keeps its original name because the learned model depends on it. Releases through 0.2.1
-bundled the evaluated runtime as a separate `veyra` package; it is now merged into `qev`,
-while published corpus identifiers and historical evidence names keep their original
-spellings. Model ID `Qwen/Qwen3.5-2B` in the request contract identifies the actual base.
+bundled the evaluated runtime as a separate `veyra` package; it now ships as the companion
+`qev_runtime` package, while published corpus identifiers and historical evidence names
+keep their original spellings. Model ID `Qwen/Qwen3.5-2B` in the request contract
+identifies the actual base.
 
 ## Citation
 

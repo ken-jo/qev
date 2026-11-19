@@ -1,5 +1,5 @@
-from qev.build_data import build_dataset
-from qev.data import read_records
+from qev_runtime.build_data import build_dataset
+from qev_runtime.data import read_records
 
 
 def test_original_generator_is_grounded_and_reproducible(tmp_path):

@@ -4,8 +4,8 @@ from pathlib import Path
 
 import pytest
 
-from qev.build_data import make_record
-from qev.policy_data import typed_decision
+from qev_runtime.build_data import make_record
+from qev_runtime.policy_data import typed_decision
 
 development_conditions = runpy.run_path(
     str(Path(__file__).resolve().parents[1] / "scripts" / "evaluate_workspace_conditions.py")

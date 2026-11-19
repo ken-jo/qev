@@ -10,8 +10,8 @@ from pathlib import Path
 import numpy as np
 from depth_release_checks import collect_depth_study
 
-from qev.constants import QUESTION_TYPES
-from qev.data import read_records
+from qev_runtime.constants import QUESTION_TYPES
+from qev_runtime.data import read_records
 
 DESIGN_PATH = Path("configs/workflow-depth-policy-v12.json")
 

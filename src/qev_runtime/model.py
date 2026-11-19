@@ -9,12 +9,12 @@ from pathlib import Path
 import torch
 from torch import nn
 
-from qev.backbone import QwenEncoder
-from qev.checkpoint import load_head
-from qev.constants import DECISION_MODEL_ID, MODEL_ID, MODEL_REVISION
-from qev.head import DecisionHead
-from qev.probability import Calibration, typed_answer
-from qev.schema import DecisionRequest
+from qev_runtime.backbone import QwenEncoder
+from qev_runtime.checkpoint import load_head
+from qev_runtime.constants import DECISION_MODEL_ID, MODEL_ID, MODEL_REVISION
+from qev_runtime.head import DecisionHead
+from qev_runtime.probability import Calibration, typed_answer
+from qev_runtime.schema import DecisionRequest
 
 
 class DecisionModel(nn.Module):
@@ -42,7 +42,7 @@ class DecisionModel(nn.Module):
     ) -> DecisionModel:
         manifest = json.loads((Path(checkpoint) / "manifest.json").read_text(encoding="utf-8"))
         if manifest.get("architecture") == "option_readout":
-            from qev.option_model import OptionModel
+            from qev_runtime.option_model import OptionModel
 
             return OptionModel.load(checkpoint, device, cache_dir, local_files_only)
         head, config, calibration, _ = load_head(checkpoint)

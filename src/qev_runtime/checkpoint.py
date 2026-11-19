@@ -9,10 +9,10 @@ from pathlib import Path
 
 from safetensors.torch import load_file, save_file
 
-from qev.backbone import EncoderConfig
-from qev.constants import MODEL_ID, MODEL_REVISION
-from qev.head import DecisionHead, HeadConfig
-from qev.probability import Calibration
+from qev_runtime.backbone import EncoderConfig
+from qev_runtime.constants import MODEL_ID, MODEL_REVISION
+from qev_runtime.head import DecisionHead, HeadConfig
+from qev_runtime.probability import Calibration
 
 
 def sha256_file(path: Path) -> str:

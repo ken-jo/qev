@@ -11,9 +11,9 @@ from depth_training_checks import audit_training
 from safetensors.torch import load_file
 from train_workflow_workspace import development_risk
 
-from qev.constants import QUESTION_TYPES
-from qev.data import TrainingRecord, read_records
-from qev.workflow_learning import annotate, selection_key, summarize_logits
+from qev_runtime.constants import QUESTION_TYPES
+from qev_runtime.data import TrainingRecord, read_records
+from qev_runtime.workflow_learning import annotate, selection_key, summarize_logits
 
 
 def digest(path):

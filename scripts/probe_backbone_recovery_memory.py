@@ -9,8 +9,8 @@ from train_foundation_head import write
 from train_workflow_backbone import forward
 from workflow_depth_common import layer_number, training_mode
 
-from qev.data import read_records
-from qev.option_model import OptionModel
+from qev_runtime.data import read_records
+from qev_runtime.option_model import OptionModel
 
 
 def main():

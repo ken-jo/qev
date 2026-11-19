@@ -13,9 +13,9 @@ from torch.nn import functional as F
 from train_foundation_head import write
 from workflow_workspace_supervision import WorkspaceSupervisor
 
-from qev.data import TrainingRecord
-from qev.option_model import OptionModel
-from qev.workflow_facts import stated_probabilities
+from qev_runtime.data import TrainingRecord
+from qev_runtime.option_model import OptionModel
+from qev_runtime.workflow_facts import stated_probabilities
 
 
 def read(path):
@@ -131,8 +131,8 @@ def main():
             for path in (
                 Path(__file__),
                 Path("scripts/workflow_workspace_supervision.py"),
-                Path("src/qev/workflow_facts.py"),
-                Path("src/qev/option_model.py"),
+                Path("src/qev_runtime/workflow_facts.py"),
+                Path("src/qev_runtime/option_model.py"),
             )
         },
         "candidates": [

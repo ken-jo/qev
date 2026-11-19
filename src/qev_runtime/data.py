@@ -10,8 +10,8 @@ from typing import Literal
 
 from pydantic import Field, model_validator
 
-from qev.candidates import candidates_for
-from qev.schema import DecisionRequest, Identifier, StrictModel
+from qev_runtime.candidates import candidates_for
+from qev_runtime.schema import DecisionRequest, Identifier, StrictModel
 
 
 class Source(StrictModel):

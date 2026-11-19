@@ -1,7 +1,7 @@
 # Architecture and compatibility
 
 QEV 0.1.1 freezes the Qwen-based research line. Base identity and revision are fixed
-in `src/qev/constants.py`. We use Qwen's vision encoder and language model, merged learned
+in `src/qev_runtime/constants.py`. We use Qwen's vision encoder and language model, merged learned
 language LoRA, a pretrained-letter-initialized 16-position readout and a learned conditioned
 binding residual. Four internal positions support condition supervision.
 
@@ -17,9 +17,9 @@ The distribution and command are `qev`; `qev` exposes `QEV` and
 `DecisionRequest`. Published SDK 0.2.1 retains the evaluated inference modules.
 `VeyraResult:` is a trained input marker and must not be renamed.
 Releases through 0.2.1 bundled the evaluated runtime as a separate `veyra` package with a
-legacy `veyra` command; the runtime now ships inside `qev` and that command is retired.
-Checkpoint field names and historical evidence identifiers remain for compatibility.
-These internal names do not denote a separate running model.
+legacy `veyra` command; the runtime now ships as the companion `qev_runtime` package and
+that command is retired. Checkpoint field names and historical evidence identifiers remain
+for compatibility. These internal names do not denote a separate running model.
 
 ## Ordered multi-image source extension
 

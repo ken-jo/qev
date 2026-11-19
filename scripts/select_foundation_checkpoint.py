@@ -8,7 +8,7 @@ from pathlib import Path
 
 from train_foundation_head import digest, write
 
-from qev.proper_learning import foundation_selection
+from qev_runtime.proper_learning import foundation_selection
 
 
 def main():

@@ -69,8 +69,8 @@ def main():
     import torch
 
     import qev
-    from qev.data import Source, TrainingRecord
-    from qev.decision_metrics import report
+    from qev_runtime.data import Source, TrainingRecord
+    from qev_runtime.decision_metrics import report
 
     items = [
         json.loads(line)
@@ -185,7 +185,7 @@ def main():
                         "legacy_regression" if suite == "typed_decisions" else "zero_shot",
                     ],
                 )
-                from qev.decision_metrics import observation
+                from qev_runtime.decision_metrics import observation
 
                 row = observation(
                     record, name, probabilities, abstained=answer.get("abstained", False)

@@ -8,10 +8,10 @@ from pathlib import Path
 
 import torch
 
-from qev.candidates import candidates_for
-from qev.data import read_records
-from qev.evidence_data import original_branch
-from qev.option_model import OptionModel
+from qev_runtime.candidates import candidates_for
+from qev_runtime.data import read_records
+from qev_runtime.evidence_data import original_branch
+from qev_runtime.option_model import OptionModel
 
 
 def development_conditions(records):

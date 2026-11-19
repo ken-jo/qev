@@ -10,8 +10,8 @@ from pathlib import Path
 
 from train_foundation_head import write
 
-from qev.data import TrainingRecord, audit_records
-from qev.workflow_facts import stated_probabilities
+from qev_runtime.data import TrainingRecord, audit_records
+from qev_runtime.workflow_facts import stated_probabilities
 
 SOURCE = Path("data/workflow-v12/records.jsonl")
 SOURCE_SHA = "145e01a41ed73f9c02524e5bf9a8a0efa8b73300eb9871b30ab0173b29ab5571"
@@ -180,7 +180,7 @@ def main():
         "seed": SEED,
         "source_sha256": {
             str(p): digest(p)
-            for p in (SOURCE, EXECUTION, Path(__file__), Path("src/qev/workflow_facts.py"))
+            for p in (SOURCE, EXECUTION, Path(__file__), Path("src/qev_runtime/workflow_facts.py"))
         },
         "scope": (
             "Prospective train/development prerequisite questions; no model training "

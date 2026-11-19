@@ -1,7 +1,7 @@
 import pytest
 
-from qev.packing import marker_positions, pack_request
-from qev.schema import DecisionRequest
+from qev_runtime.packing import marker_positions, pack_request
+from qev_runtime.schema import DecisionRequest
 
 
 def make_request(criteria):
