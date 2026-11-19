@@ -24,13 +24,15 @@ the released runtime batches them into one backbone forward. Compare the output 
 
 | Type | Recorded interpretation |
 | --- | --- |
-| `choice` | `c4` means plastic in this request; its probability is 0.936123. |
-| `score` | Band 0 means glass/plastic, band 1 metal/trash, band 2 cardboard/paper. The expected zero-based level is 0.425389; the most likely band is 0 with probability 0.697841. |
-| `noul` | The proposition is membership in glass, paper or plastic. Probability true is 0.790313. |
+| `choice` | `c4` means plastic in this request; its probability is 0.933315. |
+| `score` | Band 0 means glass/plastic, band 1 metal/trash, band 2 cardboard/paper. The expected zero-based level is 0.435543; the most likely band is 0 with probability 0.690324. |
+| `noul` | The proposition is membership in glass, paper or plastic. Probability true is 0.786114. |
 
 All three returned `abstained: false`. The full response retains every candidate
-probability and the legacy internal model identifier. QEV's package branding does not
-change these verified inference outputs.
+probability; its `model` field is `qev`. These values were recorded by the SDK 0.2.2
+package verification on Linux (`release/model-inference.json` in the source repository).
+The earlier SDK 0.2.1 record, made on Windows, differs by at most 0.0076 per probability;
+in the same Linux environment the SDK 0.2.1 wheel returns identical values.
 
 ## Source and integrity
 

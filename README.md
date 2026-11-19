@@ -162,9 +162,9 @@ candidates, a three-level handling policy, and a true/false proposition.
 
 | Type | Recorded output |
 | --- | --- |
-| `choice` | Plastic: **0.9361** probability |
-| `score` | Expected policy level: **0.4254** on a 0-2 scale |
-| `noul` | Glass, paper or plastic: **0.7903** probability true |
+| `choice` | Plastic: **0.9333** probability |
+| `score` | Expected policy level: **0.4355** on a 0-2 scale |
+| `noul` | Glass, paper or plastic: **0.7861** probability true |
 
 One batched forward, zero generated answer tokens. These are actual outputs on a previously
 inspected verification fixture, not an independent accuracy estimate. Photo: TrashNet,
