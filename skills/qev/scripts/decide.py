@@ -14,6 +14,8 @@ from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 # Decision-model name returned by SDK 0.2.1 servers; accepted on read only.
 LEGACY_SDK_MODEL_NAME = "veyra-qwen3.5-2b"
+# Client marker that playground servers from before the rename still require.
+LEGACY_PLAYGROUND_HEADER = "X-Veyra-Playground"
 
 
 class NoRedirect(HTTPRedirectHandler):
@@ -140,6 +142,7 @@ def http_predict(endpoint, payload, timeout):
             "Accept": "application/json",
             # The QEV playground requires this explicit API-client marker.
             "X-QEV-Playground": "1",
+            LEGACY_PLAYGROUND_HEADER: "1",
         },
         method="POST",
     )

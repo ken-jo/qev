@@ -9,7 +9,7 @@ The original `prepare_foundation_text.py` and `build_foundation_data.py` embed
 their own source hashes in their outputs. Consequently a formatting-only change
 changes those metadata hashes even though the generated examples are equivalent.
 For exact historical reproduction, run these `.py.txt` files with Python, or copy
-their bytes to a `.py` filename. Run from the repository root with QEV installed.
+their bytes to a `.py` filename. Run from the repository root with Veyra installed.
 The text selection tool used `pyarrow==25.0.1`; training did not require pyarrow.
 
 The original feature specification also records source paths, so its protocol

@@ -5,13 +5,13 @@
 - The research runtime moves into this repository as the companion package `qev_runtime`
   (a sibling of `qev` and `qev_decision_index`); its separate console command is retired.
   The public `qev` package keeps only the SDK surface: CLI, download, playground and
-  serve. The package version is the QEV version (`qev.__version__`). Code, scripts, docs and apps use QEV names only; corpus
+  serve. The package version is the QEV version (`qev.__version__`). Code, scripts, docs and apps use QEV names; corpus
   generators, the playground headers (`X-QEV-Playground`, `X-QEV-Inference-Ms`) and the
   status app id (`qev-playground`) now write QEV names. Trained prompt markers, record-ID
   salts and names inside already published bundles cannot change without changing model
-  inputs or recorded data; they live in `qev_runtime/frozen_identifiers.py`. Frozen
-  evidence under `reports/` and `release/` and hash-pinned configs and scripts are
-  unchanged.
+  inputs or recorded data; they live in `qev_runtime/frozen_identifiers.py`. The former
+  name remains only there, in frozen evidence under `reports/` and `release/`, in configs
+  and scripts whose sha256 is recorded elsewhere, and in release scripts marked frozen.
 - Packaging: the research CLI is installed as `qev-research` (it already used that program
   name), and `qev`, `qev_runtime` and `qev_decision_index` ship PEP 561 `py.typed` markers.
 - `qev_decision_index:QEVEngine`: Decision Index vision engine for the released QEV-0.8B and

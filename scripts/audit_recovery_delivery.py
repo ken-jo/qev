@@ -1,6 +1,6 @@
-# Frozen release reproducer. It builds, installs or audits the 0.3.0a runtime wheels and
-# Hugging Face bundles under the file names they were published with, so it cannot run
-# against this tree and keeps those historical names. Kept for provenance only.
+# Frozen release script. It builds, installs or audits artifacts published before the
+# rename (runtime wheels, Hugging Face bundles, evaluation files) under their published
+# file names, so it keeps those names and only reproduces or checks those releases.
 """Recheck completed v13 delivery without new inference or changes to frozen criteria."""
 
 import argparse
