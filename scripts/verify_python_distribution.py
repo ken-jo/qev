@@ -39,7 +39,7 @@ def main():
         if entrypoints["console_scripts"]["qev"] != "qev.cli:main":
             raise ValueError("Missing QEV command")
         modules = sorted((root / "src/qev_runtime").glob("*.py"))
-        if len(modules) != 42:
+        if len(modules) != 43:
             raise ValueError("Unexpected runtime module count")
         for module in modules:
             if archive.read("qev_runtime/" + module.name) != module.read_bytes():
