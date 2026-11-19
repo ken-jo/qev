@@ -4,9 +4,10 @@ For the final same-input QEV/LAYA comparison and the separate task-held-out eval
 see [LAYA comparison](LAYA_COMPARISON.md). Benchmark adaptation, unseen task families,
 and zero-shot task transfer are reported separately.
 
-The release preserves the v13 weights and calibrated manifest. Full numerical evidence:
-[fresh final](../reports/workflow-v13/final-evaluation/README.md) and
-[acceptance](../reports/workflow-v13/final-evaluation/release-acceptance.json).
+The release preserves the v13 weights and calibrated manifest. Full numerical evidence,
+archived at the `archive/pre-qev` tag:
+[fresh final](https://github.com/ken-jo/qev/blob/archive/pre-qev/reports/workflow-v13/final-evaluation/README.md) and
+[acceptance](https://github.com/ken-jo/qev/blob/archive/pre-qev/reports/workflow-v13/final-evaluation/release-acceptance.json).
 
 The [model card](../MODEL_CARD.md) presents the main results. Accuracy is higher-is-better.
 NLL, Brier/squared distribution error, ECE and ordinal MAE are lower-is-better. Their scales

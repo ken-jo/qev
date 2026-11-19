@@ -48,9 +48,9 @@ def test_duplicate_choice_descriptions_rejected():
         make_request({"x": "same", "y": "same"})
 
 
-def test_trained_markers_keep_their_exact_bytes():
-    # Every published checkpoint was trained on these exact marker strings.
+def test_markers_keep_their_exact_bytes():
+    # RESULT_MARKER is the trained read position of every published checkpoint.
     joined = "\n".join((CANDIDATE_MARKER, QUESTION_MARKER, RESULT_MARKER)).encode()
     assert hashlib.sha256(joined).hexdigest() == (
-        "772247417e12aea7e601a4e4b2ace7d35da2ddafead30761c5d29ccaa176bda9"
+        "240cb5c163c12020e98008deea6f92bfed4b870a8971d6b9fa9f1bd879d01a54"
     )

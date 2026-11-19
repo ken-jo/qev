@@ -7,11 +7,16 @@
   The public `qev` package keeps only the SDK surface: CLI, download, playground and
   serve. The package version is the QEV version (`qev.__version__`). Code, scripts, docs and apps use QEV names; corpus
   generators, the playground headers (`X-QEV-Playground`, `X-QEV-Inference-Ms`) and the
-  status app id (`qev-playground`) now write QEV names. Trained prompt markers, record-ID
-  salts and names inside already published bundles cannot change without changing model
-  inputs or recorded data; they live in `qev_runtime/frozen_identifiers.py`. The former
-  name remains only there, in frozen evidence under `reports/` and `release/`, in configs
-  and scripts whose sha256 is recorded elsewhere, and in release scripts marked frozen.
+  status app id (`qev-playground`) now write QEV names. The trained result marker keeps its
+  original bytes in `qev_runtime/frozen_identifiers.py`; the packed-prompt markers are now
+  `[QEV_CANDIDATE]` and `[QEV_QUESTION]` (the published option-readout checkpoints do not
+  use them).
+- Removed the pre-QEV research history: the Foundation v11, Workflow v12/v13 and
+  release-comparison evidence, `release/history`, the 2026-10-08 handoff record, the 15
+  frozen release scripts and the other scripts and configurations that only produced or
+  audited that evidence, the corpus record-ID salts, and the pre-rename compatibility names (the SDK 0.2.1
+  response model name and the old playground header in the skill and the legacy playground,
+  and the old bundle loader name). The `archive/pre-qev` tag keeps them.
 - Removed the 2048 game: the playground engine and its `/2048` and `/api/2048/*` routes, the
   text/visual 2048 run, comparison, audit and readout scripts, their test, and the
   `reports/text2048` and `reports/visual2048` studies. The docs no longer cite 2048 results.
@@ -100,7 +105,8 @@
 - Documented measured tensor dtypes, stored adaptation size and exact backbone counts.
 - Cancelled public Space creation; retained the existing local playground source.
 - Preserved the trained weights, calibration, 38 inference modules and dataset records.
-- Preserved prior publication evidence under `release/history/0.1.0/`.
+- Preserved prior publication evidence under `release/history/0.1.0/` (now archived at the
+  `archive/pre-qev` tag).
 
 ## 0.1.0 — Qwen3.5 Classification research release
 

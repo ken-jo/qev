@@ -140,7 +140,7 @@ flowchart LR
 | News topic, 400 examples | 95.00% | 95.25% | 82.50% |
 | Emotion, 400 examples | 58.75% | 60.00% | 50.25% |
 
-![Measured accuracy with 95% intervals](https://raw.githubusercontent.com/ken-jo/qev/main/reports/release-comparison/accuracy.png)
+![Measured accuracy with 95% intervals](https://github.com/ken-jo/qev/blob/archive/pre-qev/reports/release-comparison/accuracy.png?raw=true)
 
 Typed-decisions is an adapted benchmark for QEV and the specialist. Their one-question
 accuracy difference does not establish an advantage (paired 95% interval: -1.85 to +1.95

@@ -17,7 +17,7 @@ Three prospective checkpoints were evaluated. The selected half-pass consumed 4,
 questions / 567 optimizer steps, with seed 271, gradient accumulation 8, adapter LR 1e-5
 and readout LR 1e-6. Only language adapter layers 18-23 and the readout/binding heads
 updated. Supervised soft cross-entropy and parent-distribution KL replay were used.
-See [the original design](../configs/workflow-backbone-recovery-v13.json).
+See [the original design](https://github.com/ken-jo/qev/blob/archive/pre-qev/configs/workflow-backbone-recovery-v13.json) (archived).
 
 An earlier head-stage comparison evaluated CE, direct proper-score objectives, differentiable
 noise, RLOO and cross-question probability consistency under a shared budget. CE was
@@ -28,7 +28,8 @@ selected. The evidence does not establish superiority over reinforcement learnin
 - Inference with the exact adaptation tensors and calibrated manifest.
 - Schema, calibration, scoring and serving code, with a branded facade over the preserved runtime.
 - Licensed corpus snapshots with original IDs, splits, image bytes, source revisions and hashes.
-- Training/evaluation/generator scripts, fixed protocol configurations and numerical reports.
+- The earlier training, evaluation and generator scripts, protocol configurations and
+  numerical reports, archived at the `archive/pre-qev` tag.
 
 Historical scripts use their recorded `data/`, `runs/` and `checkpoints/` paths. Extract a
 corpus ZIP into `data/` to restore its expected layout. Eligible record bytes are preserved;

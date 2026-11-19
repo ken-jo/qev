@@ -1,7 +1,0 @@
-{
-  "role": "validation-1",
-  "stage": "sources",
-  "status": "failed",
-  "release_allowed": false,
-  "exit_code": 1
-}

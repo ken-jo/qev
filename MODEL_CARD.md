@@ -279,7 +279,7 @@ truncation counts are zero. These measurements do not establish parity with LAYA
 multilingual router or a live JEV service.
 
 [Full comparison, source revisions and zero-shot definitions](https://github.com/ken-jo/qev/blob/main/docs/LAYA_COMPARISON.md)
-· [Machine-readable evidence](https://github.com/ken-jo/qev/tree/main/reports/release-comparison)
+· [Machine-readable evidence](https://github.com/ken-jo/qev/tree/archive/pre-qev/reports/release-comparison) (archived)
 
 ## Accuracy and the decisions accepted
 

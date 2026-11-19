@@ -3,9 +3,10 @@
 Measured on 2026-10-01. All three frozen models answered the **same 2,800 English
 questions** on one RTX 4060 Ti 8 GB. No weights, temperatures or prompts were tuned
 after inspecting these results. Raw prediction hashes, source revisions, input audits
-and aggregate results are in [the evidence directory](https://github.com/ken-jo/qev/blob/main/reports/release-comparison/README.md).
+and aggregate results are in [the evidence directory](https://github.com/ken-jo/qev/blob/archive/pre-qev/reports/release-comparison/README.md)
+(archived at the `archive/pre-qev` tag).
 
-![Accuracy on identical inputs](https://raw.githubusercontent.com/ken-jo/qev/main/reports/release-comparison/accuracy.png)
+![Accuracy on identical inputs](https://github.com/ken-jo/qev/blob/archive/pre-qev/reports/release-comparison/accuracy.png?raw=true)
 
 ## Accuracy: higher is better
 

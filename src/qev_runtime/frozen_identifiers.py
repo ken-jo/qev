@@ -1,24 +1,13 @@
-"""Identifiers that keep the project's former name because published artifacts need them.
+"""Prompt markers of the QEV decision prompt.
 
-Each value is a model input that the published weights were trained on, a salt that fixes
-recorded record IDs and splits, or a name inside artifacts published before the rename.
-Renaming any of them changes model outputs or stops published artifacts from being read.
-Everything new writes QEV names; these constants are only read or reproduced.
+`TRAINED_RESULT_MARKER` is the trained read position of every published checkpoint: the
+decision state is read at its final ":". Changing its bytes changes model outputs.
+The packed-prompt markers are used only by `packing.pack_request`, which the published
+option-readout checkpoints do not use.
 """
 
-# Trained prompt markers: inputs of every published checkpoint. Do not rename.
-TRAINED_CANDIDATE_MARKER = "[VEYRA_CANDIDATE]"
-TRAINED_QUESTION_MARKER = "[VEYRA_QUESTION]"
+# Packed-prompt markers (`packing.pack_request`).
+TRAINED_CANDIDATE_MARKER = "[QEV_CANDIDATE]"
+TRAINED_QUESTION_MARKER = "[QEV_QUESTION]"
+# Trained read position of every published checkpoint. Do not change these bytes.
 TRAINED_RESULT_MARKER = "VeyraResult:"
-
-# Record-ID salts of the published Foundation v11, Workflow v12 and workspace-calibration
-# corpora. Changing them changes every record ID and split assignment.
-FOUNDATION_V11_ID_SALT = "veyra-foundation-v11-83"
-WORKFLOW_V12_ID_SALT = "veyra-workflow-v12-131"
-WORKSPACE_CALIBRATION_ID_SALT = "veyra-workspace-calibration-157"
-
-# Loader file name inside Hugging Face bundles published before the rename (read only).
-LEGACY_BUNDLE_LOADER = "load_veyra.py"
-
-# Request header sent by playground clients published before the rename (read only).
-LEGACY_PLAYGROUND_HEADER = "X-Veyra-Playground"

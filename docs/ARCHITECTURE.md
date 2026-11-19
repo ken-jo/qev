@@ -15,10 +15,10 @@ levels. Noul is the probability of true under the supplied proposition criteria.
 
 The distribution and command are `qev`; `qev` exposes `QEV` and
 `DecisionRequest`. Published SDK 0.2.1 retains the evaluated inference modules.
-The prompt markers in `src/qev_runtime/frozen_identifiers.py` are trained inputs and must
-not be renamed. Releases through 0.2.1 bundled the evaluated runtime as a separate package
+The result marker in `src/qev_runtime/frozen_identifiers.py` is the trained read position
+and must not change. Releases through 0.2.1 bundled the evaluated runtime as a separate package
 with its own command; the runtime now ships as the companion `qev_runtime` package and
-that command is retired. Checkpoint field names and historical evidence identifiers remain
+that command is retired. Checkpoint field names remain
 for compatibility. These internal names do not denote a separate running model.
 
 ## Ordered multi-image source extension

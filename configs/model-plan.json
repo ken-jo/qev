@@ -46,6 +46,6 @@
   "head_trained": true,
   "calibration_fitted": true,
   "measured_gpu_fit": true,
-  "measurement_scope": "reports/integration-starter-v2.json; trained head; resident serial inference and local HTTP",
+  "measurement_scope": "archive/pre-qev:reports/integration-starter-v2.json; trained head; resident serial inference and local HTTP",
   "quality_status": "research_alpha; fresh policy accuracy 55.69%; confident OOD errors remain"
 }

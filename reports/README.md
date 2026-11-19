@@ -1,17 +1,15 @@
 # Research evidence
 
 These reports preserve the original experiment names, timestamps, source hashes and
-results. Veyra is the former name of Vision QEV. Historical statements such as "not
-published" describe their time of creation; current publication status is in the release.
+results of earlier option-head studies. Historical statements such as "not published"
+describe their time of creation; current publication status is in the release.
 Historical filesystem references and intermediate caches are provenance, not promised
 downloadable artifacts. Personal notes are not included in the public history.
 
-- [Fresh recovery final](workflow-v13/final-evaluation/README.md)
-- [Exact-model acceptance](workflow-v13/final-evaluation/release-acceptance.json)
-- [Recovery policy validation](workflow-v13/policy-validation/README.md)
-- [Final uncertainty diagnosis](workflow-v13/uncertainty-diagnosis/recovery-final.md)
+The Foundation v11, Workflow v12/v13 and release-comparison evidence, with the scripts and
+configurations that produced or audited it, is archived at the
+[`archive/pre-qev`](https://github.com/ken-jo/qev/tree/archive/pre-qev/reports) tag.
+
 - [Publication model card](../MODEL_CARD.md)
 
 Rejected candidates and unfavorable results remain in their original JSON reports.
-The clean public Git history represents a release snapshot, not a rewritten narrative
-that all prior experiments succeeded.

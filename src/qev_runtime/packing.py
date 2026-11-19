@@ -9,7 +9,7 @@ from qev_runtime.candidates import Candidate, candidates_for
 from qev_runtime.frozen_identifiers import TRAINED_CANDIDATE_MARKER, TRAINED_QUESTION_MARKER
 from qev_runtime.schema import ChoiceQuestion, DecisionRequest, Question
 
-# Trained wire markers: the learned backbone was fit with these exact strings.
+# Packed-prompt boundary markers; user input may not contain them.
 CANDIDATE_MARKER = TRAINED_CANDIDATE_MARKER
 QUESTION_MARKER = TRAINED_QUESTION_MARKER
 

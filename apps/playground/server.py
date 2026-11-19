@@ -30,7 +30,6 @@ from starlette.middleware.trustedhost import TrustedHostMiddleware
 ROOT = Path(__file__).resolve().parents[2]
 STATIC = Path(__file__).resolve().parent / "static"
 from qev import __version__  # noqa: E402
-from qev_runtime.frozen_identifiers import LEGACY_PLAYGROUND_HEADER  # noqa: E402
 from qev_runtime.schema import DecisionRequest  # noqa: E402
 
 LOG = logging.getLogger("qev.playground")
@@ -338,10 +337,7 @@ def create_playground(
                 return JSONResponse(
                     {"detail": "접속한 플레이그라운드와 같은 주소에서 요청하세요."}, status_code=403
                 )
-            if "1" not in (
-                request.headers.get("x-qev-playground"),
-                request.headers.get(LEGACY_PLAYGROUND_HEADER),
-            ):
+            if request.headers.get("x-qev-playground") != "1":
                 return JSONResponse(
                     {"detail": "X-QEV-Playground: 1 헤더가 필요합니다."}, status_code=403
                 )
