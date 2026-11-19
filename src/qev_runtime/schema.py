@@ -3,11 +3,25 @@
 from __future__ import annotations
 
 import json
-from typing import Annotated, Literal
+import sys
+from typing import Annotated, Any, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
+import numpy as np
+from pydantic import (
+    AfterValidator,
+    BaseModel,
+    ConfigDict,
+    Field,
+    PlainSerializer,
+    StringConstraints,
+    model_validator,
+)
+from pydantic.json_schema import SkipJsonSchema
 
 from qev_runtime.constants import MAX_IMAGES, MODEL_ID
+
+# Same limit as the file decode path in image_inputs.open_images.
+MAX_ARRAY_PIXELS = 40_000_000
 
 Text = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=8000)]
 Identifier = Annotated[
@@ -23,9 +37,44 @@ class ImageInput(StrictModel):
     path: Annotated[str, StringConstraints(min_length=1, max_length=4096)]
 
 
+def _uint8_rgb(value):
+    torch = sys.modules.get("torch")
+    if isinstance(value, np.ndarray):
+        dtype_ok = value.dtype == np.uint8
+    elif torch is not None and isinstance(value, torch.Tensor):
+        dtype_ok = value.dtype == torch.uint8
+    else:
+        raise ValueError("image pixels must be a numpy array or torch tensor")
+    if not dtype_ok or value.ndim != 3 or value.shape[2] != 3:
+        raise ValueError("image pixels must be uint8 with shape (height, width, 3) in RGB order")
+    height, width = int(value.shape[0]), int(value.shape[1])
+    if height < 1 or width < 1:
+        raise ValueError("image pixels must not be empty")
+    if height * width > MAX_ARRAY_PIXELS:
+        raise ValueError("source image exceeds the 40 megapixel decode limit")
+    return value
+
+
+def _describe_pixels(value) -> str:
+    return f"uint8[{value.shape[0]},{value.shape[1]},3]"
+
+
+class ArrayImageInput(StrictModel):
+    """In-process image evidence: an HWC RGB ``uint8`` numpy array or torch tensor.
+
+    It skips the file decode. It cannot be sent as JSON and is absent from the JSON schema;
+    serialising a request replaces it with a shape description.
+    """
+
+    model_config = ConfigDict(extra="forbid", strict=True, arbitrary_types_allowed=True)
+    pixels: Annotated[Any, AfterValidator(_uint8_rgb), PlainSerializer(_describe_pixels)]
+
+
 class State(StrictModel):
     text: Annotated[str, StringConstraints(max_length=100_000)] = ""
-    images: list[ImageInput] = Field(default_factory=list, max_length=MAX_IMAGES)
+    images: list[ImageInput | SkipJsonSchema[ArrayImageInput]] = Field(
+        default_factory=list, max_length=MAX_IMAGES
+    )
 
     @model_validator(mode="after")
     def has_content(self) -> State:

@@ -53,6 +53,14 @@
   text stack for single requests up to 768 tokens (right-padded to a length bucket); longer
   requests run eagerly. Off by default. Short text requests ran 1.6-2.4x faster on an RTX 4060 Ti;
   probabilities can differ from eager by bfloat16 rounding.
+- Opt-in fast image path, all off by default (outputs unchanged): requests may carry
+  in-memory HWC RGB `uint8` numpy arrays or torch tensors as `{"pixels": ...}` images (Python
+  only; not part of the JSON schema); `OptionModel.load(..., device_preprocess=True)` resizes
+  and normalises images on the GPU with the stock processor and grid; `vision_graph=True`
+  replays a per-grid CUDA graph of the vision tower (bitwise equal to eager; small LRU); and
+  `image_max_pixels`/`image_min_pixels` override the per-image budget after the serving
+  mode, including on bundled `accurate`-only checkpoints. Serving modes may also set
+  `image_min_pixels`. Without CUDA the flags fall back to the stock path.
 - Option head widths follow the backbone's text `hidden_size`, so hidden-1024
   (Qwen3.5-0.8B) and hidden-2048 backbones load; the released 2B head layout is unchanged.
 - Option manifests may name a pinned repository of merged full weights

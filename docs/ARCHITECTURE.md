@@ -48,6 +48,27 @@ decoded pixels and outputs as before.
   40 megapixel limit is checked on the original size first, other formats are unaffected,
   and audit fingerprints still hash the full-resolution decode. Decoded pixels are close
   to, but not bit-identical with, a full decode followed by the processor resize.
+- **Fast image path (opt-in).** Each part is off by default and falls back to the stock path
+  without CUDA:
+  - *Array input.* In Python, an image may be `{"pixels": array}`, an HWC RGB `uint8` numpy
+    array or torch tensor (40 MP limit). It skips the file decode and is not part of the
+    JSON schema. On the stock path it is resized on the CPU exactly like a lossless file of
+    the same pixels, so decisions are bit-identical to that file.
+  - *Device preprocessing.* `OptionModel.load(..., device_preprocess=True)` (or
+    `"device_preprocess": true` in the manifest `encoder` block) passes `uint8` tensors on
+    the GPU to the same processor, which resizes and normalises there. The image grid is
+    the stock grid for every budget; bicubic pixels differ slightly from the CPU kernel, so
+    near-tie decisions can flip.
+  - *Vision graphs.* `vision_graph=True` (or the number of grids to keep, default 8)
+    replays a CUDA graph of the vision tower captured on first use of each pixel shape and
+    image grid, with grid metadata precomputed on the host. Output is bitwise identical to
+    eager; each new grid costs a one-off capture, and least recently used grids are evicted.
+    It is separate from `cuda_graph`, so the exact vision graph can be used without the
+    bucketed text-stack graphs, and `cuda_graph=True` keeps its memory and capture cost.
+  - *Pixel budget overrides.* `image_max_pixels=` and `image_min_pixels=` (1,024 <= min <=
+    max <= 1,638,400) replace the budget after the serving mode, including on bundled
+    checkpoints that only offer `accurate`; a small minimum keeps a small budget from being
+    enlarged back to 65,536 pixels. Such models are inference-only.
 - **Backbone-sized heads and merged backbones.** The readout, condition readout,
   binding head and exit head take their width from the backbone text configuration's
   `hidden_size` (1024 for Qwen3.5-0.8B, 2048 for Qwen3.5-2B); the released 2B head layout
@@ -73,8 +94,9 @@ decoded pixels and outputs as before.
 - **Serving modes.** One checkpoint can offer named presets, for example
   `"modes": {"accurate": {"image_max_pixels": 1638400}, "fast": {"image_max_pixels":
   262144, "early_exit": true}}` with an optional `"default_mode": "accurate"`. A mode may
-  only set `image_max_pixels` (between the encoder's `image_min_pixels` and 1,638,400) and
-  `early_exit` (which requires the manifest `early_exit` block).
+  only set `image_max_pixels` and `image_min_pixels` (1,024 <= min <= max <= 1,638,400;
+  unset values come from the encoder) and `early_exit` (which requires the manifest
+  `early_exit` block).
   `OptionModel.load(..., mode="fast")` selects a preset; `mode=None` uses `default_mode`
   when present and otherwise the manifest encoder settings. An explicit `early_exit=`
   argument must agree with the selected mode. Predictions from a checkpoint with modes
