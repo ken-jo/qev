@@ -1,4 +1,8 @@
-# QEV SDK 0.2.2 (prepared; not yet published)
+# QEV SDK 0.2.2
+
+Published on Hugging Face at `ken-jo/qev` revision
+`659caf9417216580a24006281c97d059aa5be89a` (verified anonymously in
+`release/hf-download-verification.json`).
 
 SDK runtime now ships as `qev_runtime`; legacy runtime modules removed; no model weight
 change. The Hugging Face model package adds `runtime/qev-0.2.2-py3-none-any.whl` and

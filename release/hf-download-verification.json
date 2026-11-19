@@ -1,8 +1,8 @@
 {
   "passed": true,
-  "sdk_version": "0.2.1",
+  "sdk_version": "0.2.2",
   "repo": "ken-jo/qev",
-  "revision": "1b801c0a596d931a2fa2f587bf5e5eb70f096fea",
+  "revision": "659caf9417216580a24006281c97d059aa5be89a",
   "public": true,
   "language": [
     "multilingual"
@@ -10,24 +10,24 @@
   "anonymous_file_downloads": [
     {
       "file": "README.md",
-      "sha256": "97ca455a2014bde4aefe8380cb65a9f690ad09f2dbd91c25580f988ab443037f"
+      "sha256": "da570e1497f088a0cfc849fc6a4e65e22be7db681eae9d56cfa016426dfdb000"
     },
     {
       "file": "publication.json",
-      "sha256": "b1452a1e57cbc6cdfcc6a7095552cb6c6f25b734eb1e96e442c260218bca60c9"
+      "sha256": "68195fb70f1575899e4edae7e241f6c2b1858d85c6cdee0bf6d414e8757a40b7"
     },
     {
       "file": "checksums.json",
-      "sha256": "7ad3cc9239bb92e5e743ae225b8baff0c35718fe17e9625dfe7d20d05f699d61"
+      "sha256": "5404b9b07e6e3a3c04437baf4e29149a74633012ee7ff15562491e40692d5d1b"
     },
     {
       "file": "docs/PLAYGROUND.md",
-      "sha256": "68ecd6b468f47c2dd5d51be6b46444229c0ee2843d86d0592320fbd43aae805d"
+      "sha256": "93b7fa55a46380f313233125422a793fc201eaa2d95bb3325d3c37804de1e9a2"
     },
     {
-      "file": "runtime/qev-0.2.1-py3-none-any.whl",
-      "sha256": "d5270e05a748d9e965c8e2a2a7e54fae83abad6c4da4e76127d7c503a2543c81"
+      "file": "runtime/qev-0.2.2-py3-none-any.whl",
+      "sha256": "489ff7f73ed52944b8e602aa300c53d16754fda37391ff6f1fed51e9187bf43f"
     }
   ],
-  "checked_at_utc": "2026-10-01T16:57:09.544787+00:00"
+  "checked_at_utc": "2026-11-19T15:14:06.003006+00:00"
 }
