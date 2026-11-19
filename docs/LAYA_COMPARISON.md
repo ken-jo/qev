@@ -101,9 +101,8 @@ and FP32 readouts. Optional kernel acceleration was not added to either installa
 The tested LAYA checkpoints accept text. QEV also accepts an image with textual criteria.
 Its separately measured CIFAR-10 guard accuracy is 95.83% on 600 questions, and resident
 local-photo HTTP p95 is 114.94 ms on the same GPU class. Those are **separate image
-evaluations**, not evidence of superiority over a text-only model. The negative visual
-results remain relevant: 0/72 exploratory 2048 wins and 5/28 balanced image board-cell
-decisions. See [evaluation limits](https://github.com/ken-jo/qev/blob/main/docs/EVALUATION.md).
+evaluations**, not evidence of superiority over a text-only model. See
+[evaluation limits](https://github.com/ken-jo/qev/blob/main/docs/EVALUATION.md).
 
 LAYA's English models are reported as 421M parameters. QEV's merged inference model
 has 2,213,418,880 parameters, about 5.3 times as many. Its 32 MB adaptation file is not

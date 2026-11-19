@@ -240,7 +240,7 @@ pixels and 32-pixel alignment. This budget does not establish a minimum reliable
 for small text, tiny objects or spatial tasks.
 
 Returns probabilities, selected label/expected score/probability true, and abstention.
-Probabilities are estimates; a direction probability in a game is not a game-win probability.
+Probabilities are estimates for the stated decision, not for its downstream outcome.
 
 ## QEV and LAYA: matched text evaluation
 
@@ -330,10 +330,6 @@ or accuracy comparison was run.
 - Final overall ECE is 12.58%, worse than Foundation v11's 6.80%.
 - Final overall accepted expected error is 20.49% at 88.99% coverage. For uncertain
   requests it is 45.57% at 52.50% coverage. Fitted abstention is not a shifted-domain guarantee.
-- 72 exploratory 2048 games produced no 2048 wins. Engine-assisted variants supplied legal
-  directions or deterministic next boards; their results must not be credited to pure vision.
-- A balanced seven-choice board-cell diagnostic scored image 5/28 (17.86%) and text
-  21/28 (75%). This measures narrow digit/location binding, not general photograph accuracy.
 - Photographic transfer covers limited datasets. OCR, localization, object relations,
   temporal reasoning, safety-critical use and broad Korean task quality are not established.
 - Public benchmark overlap in Qwen pretraining cannot be ruled out. Near-duplicate grouping

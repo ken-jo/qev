@@ -95,8 +95,7 @@ interface. The Windows helper uses port 8765 by default for existing local bookm
 `qev playground` uses port 7860 by default. Both accept an explicit port.
 
 The earlier Korean server is retained for experimental API reproducibility. It is not
-the supported playground. The 2048 game has been removed from the playground; its
-recorded evaluation results remain in the research reports. See the
+the supported playground. See the
 [Windows launcher instructions](../apps/playground/README.md).
 
 [GitHub: ken-jo/qev](https://github.com/ken-jo/qev)

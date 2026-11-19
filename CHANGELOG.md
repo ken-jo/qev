@@ -12,6 +12,9 @@
   inputs or recorded data; they live in `qev_runtime/frozen_identifiers.py`. The former
   name remains only there, in frozen evidence under `reports/` and `release/`, in configs
   and scripts whose sha256 is recorded elsewhere, and in release scripts marked frozen.
+- Removed the 2048 game: the playground engine and its `/2048` and `/api/2048/*` routes, the
+  text/visual 2048 run, comparison, audit and readout scripts, their test, and the
+  `reports/text2048` and `reports/visual2048` studies. The docs no longer cite 2048 results.
 - Packaging: the research CLI is installed as `qev-research` (it already used that program
   name), and `qev`, `qev_runtime` and `qev_decision_index` ship PEP 561 `py.typed` markers.
 - `qev_decision_index:QEVEngine`: Decision Index vision engine for the released QEV-0.8B and

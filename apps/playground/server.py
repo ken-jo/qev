@@ -20,7 +20,7 @@ from urllib.parse import urlsplit
 
 import uvicorn
 from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import FileResponse, JSONResponse, Response
+from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from PIL import Image, ImageOps, UnidentifiedImageError
 from pydantic import ValidationError
@@ -32,11 +32,6 @@ STATIC = Path(__file__).resolve().parent / "static"
 from qev import __version__  # noqa: E402
 from qev_runtime.frozen_identifiers import LEGACY_PLAYGROUND_HEADER  # noqa: E402
 from qev_runtime.schema import DecisionRequest  # noqa: E402
-
-if __package__:
-    from .game2048 import MAX_EVENTS, Game2048, GameConfig, MoveInput, StepInput, image_digest
-else:
-    from game2048 import MAX_EVENTS, Game2048, GameConfig, MoveInput, StepInput, image_digest
 
 LOG = logging.getLogger("qev.playground")
 IMAGE_BYTES = 20 * 1024 * 1024
@@ -238,31 +233,8 @@ def create_playground(
     images: dict[str, dict] = {}
     variants: dict[tuple[str, int], str] = {}
     image_lock = asyncio.Lock()
-    games: dict[str, Game2048] = {}
 
-    def get_game(game_id: str):
-        game = games.get(game_id)
-        if game is None:
-            raise HTTPException(404, "게임 세션이 만료되었습니다. 새 게임을 시작하세요.")
-        game.touched = time.monotonic()
-        return game
-
-    async def game_command(request: Request, schema):
-        raw = await bounded_body(request, 32768 if schema is StepInput else 4096)
-        try:
-            return schema.model_validate_json(raw)
-        except ValidationError as exc:
-            raise HTTPException(422, json.loads(exc.json(include_input=False))) from exc
-
-    def check_game_move(game, revision):
-        if game.busy or game.revision != revision:
-            raise HTTPException(
-                409, "보드가 변경되었거나 판단 중입니다. 현재 보드를 다시 불러오세요."
-            )
-        if game.over or game.won or len(game.events) >= MAX_EVENTS:
-            raise HTTPException(409, "이 게임은 종료되었습니다. 새 게임을 시작하세요.")
-
-    async def execute_prediction(payload, transient=None):
+    async def execute_prediction(payload):
         if runtime.phase != "ready":
             raise HTTPException(503, runtime.error or "모델을 메모리에 준비하고 있습니다.")
         if runtime.busy:
@@ -270,13 +242,7 @@ def create_playground(
         runtime.busy = True
 
         def infer():
-            try:
-                if transient:
-                    transient[0].write_bytes(transient[1])
-                return runtime.predict(payload, image_root)
-            finally:
-                if transient:
-                    transient[0].unlink(missing_ok=True)
+            return runtime.predict(payload, image_root)
 
         try:
             future = asyncio.get_running_loop().run_in_executor(runtime.executor, infer)
@@ -394,10 +360,6 @@ def create_playground(
     async def index():
         return FileResponse(STATIC / "index.html")
 
-    @app.get("/2048")
-    async def game_page():
-        raise HTTPException(410, "The 2048 playground has been retired. Use the QEV decision playground.")
-
     @app.get("/api/status")
     async def status():
         return {
@@ -427,96 +389,6 @@ def create_playground(
         runtime.phase = "stopping"
         app.state.server.should_exit = True
         return {"status": "stopping"}
-
-    @app.post("/api/2048/games")
-    async def game_create(request: Request):
-        config = await game_command(request, GameConfig)
-        expired = [
-            key
-            for key, game in games.items()
-            if not game.busy and time.monotonic() - game.touched > 7200
-        ]
-        for key in expired:
-            del games[key]
-        if len(games) >= 16:
-            raise HTTPException(429, "게임 세션이 가득 찼습니다. 사용하지 않는 게임을 닫아주세요.")
-        game = Game2048(config)
-        games[game.id] = game
-        return game.state()
-
-    @app.get("/api/2048/games/{game_id}")
-    async def game_state(game_id: str):
-        return get_game(game_id).state()
-
-    @app.delete("/api/2048/games/{game_id}")
-    async def game_delete(game_id: str):
-        game = get_game(game_id)
-        if game.busy:
-            raise HTTPException(409, "진행 중인 판단이 끝난 뒤 게임을 닫아주세요.")
-        del games[game_id]
-        return {"deleted": True}
-
-    @app.get("/api/2048/games/{game_id}/frame")
-    async def game_frame(game_id: str, revision: int | None = None):
-        game = get_game(game_id)
-        try:
-            raw = game.image(revision)
-        except ValueError as exc:
-            raise HTTPException(404, str(exc)) from exc
-        return Response(raw, media_type="image/png")
-
-    @app.get("/api/2048/games/{game_id}/report")
-    async def game_report(game_id: str):
-        return get_game(game_id).report(checkpoint.name)
-
-    @app.post("/api/2048/games/{game_id}/move")
-    async def game_move(game_id: str, request: Request):
-        command = await game_command(request, MoveInput)
-        game = get_game(game_id)
-        check_game_move(game, command.revision)
-        game.record(command.direction, "manual")
-        return game.state()
-
-    @app.post("/api/2048/games/{game_id}/step")
-    async def game_step(game_id: str, request: Request):
-        started = time.perf_counter()
-        command = await game_command(request, StepInput)
-        game = get_game(game_id)
-        check_game_move(game, command.revision)
-        game.busy = True
-        try:
-            png = game.image()
-            name = f"{uuid.uuid4().hex}.png"
-            request_data = game.model_request(name)
-            if command.instructions is not None:
-                request_data["questions"]["move"]["instructions"] = command.instructions
-            payload = DecisionRequest.model_validate(request_data)
-            result, elapsed = await execute_prediction(payload, (image_root / name, png))
-            answer = result["answers"]["move"]
-            direction = answer.get("choice")
-            probabilities = answer.get("probabilities", {})
-            abstained = bool(answer.get("abstained", False))
-            if direction is None and abstained and probabilities:
-                direction = max(probabilities, key=probabilities.get)
-            if direction not in ("up", "down", "left", "right"):
-                raise HTTPException(
-                    502, "모델 응답에 유효한 방향이 없습니다. 보드를 그대로 유지합니다."
-                )
-            event = game.record(
-                direction,
-                "model",
-                execute=not (abstained and command.respect_abstention),
-                abstained=abstained,
-                respect_abstention=command.respect_abstention,
-                inference_ms=elapsed,
-                image_sha256=image_digest(png),
-                request=request_data,
-                response=result,
-            )
-            event["server_step_ms"] = round((time.perf_counter() - started) * 1000, 2)
-        finally:
-            game.busy = False
-        return game.state()
 
     @app.post("/api/images")
     async def upload(request: Request):
@@ -600,7 +472,7 @@ def create_playground(
             raise HTTPException(422, json.loads(exc.json(include_input=False))) from exc
         except (ValueError, UnicodeError) as exc:
             raise HTTPException(422, str(exc)) from exc
-        # The same single worker serializes playground and game requests, even on disconnect.
+        # The single worker serializes playground requests, even on disconnect.
         result, elapsed = await execute_prediction(payload)
         return JSONResponse(
             result,

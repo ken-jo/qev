@@ -185,9 +185,8 @@ The timing excludes loading, WAN transport and concurrency. It is not a general 
 On the shifted final population, accepted uncertain requests had **45.57% expected error**;
 overall ECE was **12.58%**. Calibration does not guarantee correctness.
 
-**Visual reasoning remains limited:** 0 of 72 exploratory 2048 games reached 2048.
-A narrow balanced board-cell diagnostic scored 5/28 for images and 21/28 for text.
-These failures are published alongside the successful measurements. Read the
+**Visual reasoning remains limited:** OCR, fine spatial reasoning and small objects are
+weak. These limits are published alongside the successful measurements. Read the
 [model card](https://github.com/ken-jo/qev/blob/main/MODEL_CARD.md) and [evaluation report](https://github.com/ken-jo/qev/blob/main/docs/EVALUATION.md) before using it.
 
 ## What you download
@@ -227,8 +226,7 @@ The playground serializes model requests. Send API requests one at a time.
 These are local interfaces; they do not provide a public multi-tenant service.
 
 The supported playground is the English interface included in the package. The Windows
-helpers in `apps/playground/` launch the same interface. The retired 2048 experiments remain
-research records and are not part of the playground.
+helpers in `apps/playground/` launch the same interface.
 
 ## Agent skill
 

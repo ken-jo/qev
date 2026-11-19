@@ -10,7 +10,6 @@ downloadable artifacts. Personal notes are not included in the public history.
 - [Exact-model acceptance](workflow-v13/final-evaluation/release-acceptance.json)
 - [Recovery policy validation](workflow-v13/policy-validation/README.md)
 - [Final uncertainty diagnosis](workflow-v13/uncertainty-diagnosis/recovery-final.md)
-- [2048 failures and readout diagnostic](text2048/assistance-study-v1/README.md)
 - [Publication model card](../MODEL_CARD.md)
 
 Rejected candidates and unfavorable results remain in their original JSON reports.

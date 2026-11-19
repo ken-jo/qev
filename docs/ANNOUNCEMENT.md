@@ -11,8 +11,7 @@ local HTTP p95**. A local playground includes sample photos and resolution compa
 LAYA inspired the typed decision interface; Qwen provides the multimodal backbone.
 The release includes code, adaptation weights, documented training data and evaluation
 evidence. It is a research milestone: fresh procedural-workflow accuracy is 69.38%, while
-OCR/spatial reasoning and uncertainty handling remain limited. The failed 2048 experiments
-are documented openly.
+OCR/spatial reasoning and uncertainty handling remain limited.
 
 In a matched 2,000-question text evaluation, QEV scored 77.00% and LAYA's specialist
 76.95%, with no demonstrated accuracy advantage. On two tasks absent from QEV's audited
