@@ -21,10 +21,11 @@ from qev_runtime.candidates import candidates_for
 from qev_runtime.constants import DECISION_MODEL_ID, MODEL_ID, MODEL_REVISION
 from qev_runtime.cuda_graph import enable_short_input_graphs
 from qev_runtime.exit_head import ExitHead, parse_early_exit, truncate_text_stack
-from qev_runtime.image_inputs import image_content, open_images
+from qev_runtime.image_inputs import device_images, image_content, open_images
 from qev_runtime.probability import Calibration, typed_answer
 from qev_runtime.reasoning_workspace import RESULT_MARKER, condition_positions, workspace_suffix
 from qev_runtime.schema import DecisionRequest
+from qev_runtime.vision_graph import DEFAULT_VISION_GRAPHS, enable_vision_graphs
 
 DEFAULT_BACKBONE = {"model_id": MODEL_ID, "revision": MODEL_REVISION}
 
@@ -64,14 +65,15 @@ def backbone_identity(block):
 MAX_IMAGE_PIXELS = 1638400
 
 
-MODE_SETTINGS = {"image_max_pixels", "early_exit"}
+MODE_SETTINGS = {"image_max_pixels", "image_min_pixels", "early_exit"}
 
 
 def parse_modes(manifest, config):
     """Validate optional serving presets; returns ({name: settings}, default name or None).
 
-    Each mode may set ``image_max_pixels`` (within the encoder's minimum and
-    ``MAX_IMAGE_PIXELS``) and ``early_exit`` (which needs the manifest ``early_exit`` block).
+    Each mode may set ``image_max_pixels`` and ``image_min_pixels`` (1,024 <= minimum <=
+    maximum <= ``MAX_IMAGE_PIXELS``; an unset value comes from the encoder) and
+    ``early_exit`` (which needs the manifest ``early_exit`` block).
     """
     modes, default = manifest.get("modes"), manifest.get("default_mode")
     if modes is None:
@@ -82,9 +84,16 @@ def parse_modes(manifest, config):
         raise ValueError("modes must be a non-empty object of named presets")
     for name, settings in modes.items():
         if not name.strip() or not isinstance(settings, dict) or set(settings) - MODE_SETTINGS:
-            raise ValueError(f"mode {name!r} may only set image_max_pixels and early_exit")
+            raise ValueError(
+                f"mode {name!r} may only set image_max_pixels, image_min_pixels and early_exit"
+            )
         pixels = settings.get("image_max_pixels", config.image_max_pixels)
-        if type(pixels) is not int or not config.image_min_pixels <= pixels <= MAX_IMAGE_PIXELS:
+        minimum = settings.get("image_min_pixels", config.image_min_pixels)
+        if (
+            type(pixels) is not int
+            or type(minimum) is not int
+            or not 1024 <= minimum <= pixels <= MAX_IMAGE_PIXELS
+        ):
             raise ValueError(f"mode {name!r} image_max_pixels is outside the allowed budget")
         exit_enabled = settings.get("early_exit", False)
         if type(exit_enabled) is not bool:
@@ -104,20 +113,24 @@ class OptionConfig:
     encoding: str = "option-v1"
     # Opt-in DCT-domain JPEG downscale; off keeps decoded pixels identical to earlier releases.
     fast_jpeg_decode: bool = False
+    # Opt-in resize and normalisation on the CUDA device; off keeps CPU preprocessing.
+    device_preprocess: bool = False
 
     def __post_init__(self):
         if self.encoding != "option-v1" or not 1 <= self.max_total_tokens <= 8192:
             raise ValueError("invalid option encoder configuration")
         if not 1024 <= self.image_min_pixels <= self.image_max_pixels <= MAX_IMAGE_PIXELS:
             raise ValueError("invalid image pixel budget")
-        if type(self.fast_jpeg_decode) is not bool:
-            raise ValueError("fast_jpeg_decode must be a boolean")
+        for flag in ("fast_jpeg_decode", "device_preprocess"):
+            if type(getattr(self, flag)) is not bool:
+                raise ValueError(f"{flag} must be a boolean")
 
     def to_dict(self):
-        # Omit the opt-in flag while off, so existing manifests and hashes stay identical.
+        # Omit opt-in flags while off, so existing manifests and hashes stay identical.
         values = asdict(self)
-        if not self.fast_jpeg_decode:
-            del values["fast_jpeg_decode"]
+        for flag in ("fast_jpeg_decode", "device_preprocess"):
+            if not values[flag]:
+                del values[flag]
         return values
 
 
@@ -247,6 +260,8 @@ class OptionModel(nn.Module):
         self.early_exit_layer = None
         self.serving_modes = None
         self.serving_mode = None
+        self.vision_graphs = None
+        self.budget_override = False
         self._request_lock = threading.RLock()
         self.adaptation = {"layers": layers, "rank": rank, "alpha": alpha}
         self.adapter_names = install_adapters(encoder.model, layers, rank, alpha)
@@ -283,6 +298,14 @@ class OptionModel(nn.Module):
         encoder = QwenEncoder.load(OptionConfig(), device, cache_dir, local_files_only=True)
         return cls(encoder, layers=layers, rank=rank, reasoning_slots=reasoning_slots)
 
+    @property
+    def device_preprocess(self):
+        """Whether images are resized and normalised on the GPU (opt-in, CUDA only)."""
+        return bool(
+            getattr(self.encoder.config, "device_preprocess", False)
+            and self.encoder.device.type == "cuda"
+        )
+
     def encode(
         self, request: DecisionRequest, image_root: Path | None = None, capture_condition=False
     ):
@@ -291,7 +314,17 @@ class OptionModel(nn.Module):
         budget = None
         if getattr(self.encoder.config, "fast_jpeg_decode", False):
             budget = self.encoder.processor.image_processor.size["longest_edge"]
-        with open_images(request.state.images, image_root, max_pixels=budget) as images:
+        device_path = self.device_preprocess
+        with contextlib.ExitStack() as stack:
+            if device_path:
+                # Same processor and resize geometry, run on the GPU from uint8 tensors.
+                images = device_images(
+                    request.state.images, image_root, self.encoder.device, max_pixels=budget
+                )
+            else:
+                images = stack.enter_context(
+                    open_images(request.state.images, image_root, max_pixels=budget)
+                )
             variants = []
             views = getattr(self, "decision_views", 1)
             for name, question in request.questions.items():
@@ -329,6 +362,7 @@ class OptionModel(nn.Module):
                 return_tensors="pt",
                 padding=True,
                 truncation=False,
+                **({"device": str(self.encoder.device)} if device_path and images else {}),
             )
         lengths = inputs["attention_mask"].sum(-1)
         tokens = int(lengths.sum())
@@ -476,6 +510,8 @@ class OptionModel(nn.Module):
             raise ValueError("early-exit models are truncated for inference only")
         if getattr(self, "serving_mode", None) is not None:
             raise ValueError("models loaded in a serving mode are for inference only")
+        if getattr(self, "budget_override", False):
+            raise ValueError("models loaded with a pixel budget override are for inference only")
         if self.adaptation["layers"] and not self.adapter_names:
             raise ValueError("save unmerged adapters; merged models are for inference only")
         if directory.exists() and any(directory.iterdir()):
@@ -515,17 +551,36 @@ class OptionModel(nn.Module):
         early_exit=None,
         mode=None,
         cuda_graph=False,
+        *,
+        device_preprocess=None,
+        vision_graph=False,
+        image_max_pixels=None,
+        image_min_pixels=None,
     ):
         """Load a checkpoint, optionally in one of its manifest serving ``modes``.
 
         Format 3 bundles a dense backbone under ``backbone/``; its complete SHA-256
-        inventory is verified before offline loading. It supports only ``accurate``.
+        inventory is verified before offline loading. It supports only ``accurate``, whose
+        pixel budget the overrides below may still change.
 
         ``mode=None`` selects the manifest ``default_mode`` when present. A mode sets the
         per-image pixel budget and whether the manifest ``early_exit`` head is used.
         ``early_exit=True`` opts into that head directly; it must agree with the mode.
         ``cuda_graph=True`` replays captured CUDA graphs for short single requests (up to
         768 tokens); probabilities can differ from eager by bfloat16 rounding.
+
+        Opt-in image speedups, all off by default and ignored without CUDA:
+
+        - ``device_preprocess=True`` resizes and normalises images on the GPU with the same
+          processor and grid; pixels differ slightly from CPU bicubic resizing, so
+          near-tie decisions can flip. ``None`` keeps the manifest encoder setting.
+        - ``vision_graph=True`` (or a positive int: how many image grids to keep) replays a
+          CUDA graph of the vision tower captured once per image grid. Its output is
+          bitwise identical to eager; each new grid pays a one-off capture.
+        - ``image_max_pixels`` / ``image_min_pixels`` override the per-image budget after
+          the mode (1,024 <= min <= max <= 1,638,400), e.g. small screenshots for a guard.
+          A small minimum stops tiny budgets being enlarged back to 65,536 pixels.
+          Such models are for inference only.
         """
         directory = Path(directory)
         manifest = json.loads((directory / "manifest.json").read_text(encoding="utf-8"))
@@ -560,9 +615,31 @@ class OptionModel(nn.Module):
             if early_exit is not None and early_exit != settings.get("early_exit", False):
                 raise ValueError(f"early_exit={early_exit} conflicts with serving mode {mode!r}")
             early_exit = settings.get("early_exit", False)
-            if "image_max_pixels" in settings:
-                values = config.to_dict() | {"image_max_pixels": settings["image_max_pixels"]}
-                config = OptionConfig(**values)
+            budget = {
+                key: settings[key]
+                for key in ("image_max_pixels", "image_min_pixels")
+                if key in settings
+            }
+            if budget:
+                config = OptionConfig(**(config.to_dict() | budget))
+        overrides = {
+            key: value
+            for key, value in (
+                ("image_max_pixels", image_max_pixels),
+                ("image_min_pixels", image_min_pixels),
+                ("device_preprocess", device_preprocess),
+            )
+            if value is not None
+        }
+        if overrides:
+            for key in ("image_max_pixels", "image_min_pixels"):
+                if key in overrides and type(overrides[key]) is not int:
+                    raise ValueError(f"{key} must be an integer")
+            config = OptionConfig(**(config.to_dict() | overrides))
+        if type(vision_graph) is bool:
+            vision_graph = DEFAULT_VISION_GRAPHS if vision_graph else 0
+        if type(vision_graph) is not int or vision_graph < 0:
+            raise ValueError("vision_graph must be a boolean or a number of image grids")
         backbone = backbone_identity(manifest["backbone"])
         # Absent or empty adaptation: no LoRA, e.g. when it is merged into the backbone.
         adaptation = manifest.get("adaptation") or {}
@@ -630,6 +707,9 @@ class OptionModel(nn.Module):
         if cuda_graph:
             # After early exit, so the graphs capture the truncated stack.
             enable_short_input_graphs(encoder.model.language_model)
+        if vision_graph and encoder.device.type == "cuda":
+            model.vision_graphs = enable_vision_graphs(encoder.model.visual, vision_graph)
+        model.budget_override = "image_max_pixels" in overrides or "image_min_pixels" in overrides
         model.serving_modes, model.serving_mode = modes, mode
         model.trained = True
         return model.eval()

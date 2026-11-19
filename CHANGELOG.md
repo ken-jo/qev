@@ -1,5 +1,16 @@
 # Release history
 
+## Unreleased
+
+- Opt-in fast image path, all off by default (outputs unchanged): requests may carry
+  in-memory HWC RGB `uint8` numpy arrays or torch tensors as `{"pixels": ...}` images (Python
+  only; not part of the JSON schema); `OptionModel.load(..., device_preprocess=True)` resizes
+  and normalises images on the GPU with the stock processor and grid; `vision_graph=True`
+  replays a per-grid CUDA graph of the vision tower (bitwise equal to eager; small LRU); and
+  `image_max_pixels`/`image_min_pixels` override the per-image budget after the serving
+  mode, including on bundled `accurate`-only checkpoints. Serving modes may also set
+  `image_min_pixels`. Without CUDA the flags fall back to the stock path.
+
 ## 0.2.2 — SDK runtime as qev_runtime
 
 - SDK runtime now ships as qev_runtime; legacy veyra modules removed; no model weight change.
