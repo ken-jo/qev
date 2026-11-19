@@ -2,12 +2,12 @@
 
 SDK runtime now ships as `qev_runtime`; legacy runtime modules removed; no model weight
 change. The Hugging Face model package adds `runtime/qev-0.2.2-py3-none-any.whl` and
-updates the card and documentation. `head.safetensors`, `manifest.json`, the licenses and
-the release comparison are copied byte-for-byte from the 0.2.1 package; the comparison
-README now points at the archived LAYA reports. The historical `evidence/` folder, the
-earlier wheels (0.1.1, 0.2.0, 0.2.1), `release-readiness.json`, `release-protocol.json`
-and the three comparison reports that carry the legacy runtime name are removed from the
-package and stay at Hugging Face revision `1b801c0a596d931a2fa2f587bf5e5eb70f096fea`. The
+updates the card and documentation. `head.safetensors`, `manifest.json`, the licenses,
+the remaining evidence and the release comparison are copied byte-for-byte from the 0.2.1
+package; the comparison README now points at the archived LAYA reports. The earlier wheels
+(0.1.1, 0.2.0, 0.2.1) and every evidence or release file whose path or content names the
+legacy runtime (119 files, including `release-readiness.json`, `release-protocol.json` and
+three comparison reports) are removed from the package and stay at Hugging Face revision `1b801c0a596d931a2fa2f587bf5e5eb70f096fea`. The
 pinned `manifest.json` keeps its recorded legacy source names. Install commands that use
 `resolve/main/runtime/qev-0.2.1-py3-none-any.whl`, including the released 0.2.1 agent
 skill ZIP, stop working; use the 0.2.2 wheel, PyPI 0.2.1 or that revision. PyPI and the

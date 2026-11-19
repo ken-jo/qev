@@ -1,9 +1,9 @@
 """Build the Hugging Face SDK package from the previous package and a freshly built wheel.
 
-Weights, manifest, licenses and the release comparison are copied byte-for-byte from the
-previous package; the card, docs, example, reproducibility files and the new runtime wheel
-come from this checkout. The historical evidence folder, earlier wheels and every other file
-carrying the legacy runtime name are dropped; they stay at ARCHIVE_REVISION. The pinned
+Weights, manifest, licenses, evidence and the release comparison are copied byte-for-byte
+from the previous package; the card, docs, example, reproducibility files and the new runtime
+wheel come from this checkout. The earlier wheels and every carried file whose path or content
+names the legacy runtime are dropped; they stay at ARCHIVE_REVISION. The pinned
 manifest is the one exception, and in the new wheel only the trained result marker may
 carry the legacy spelling.
 """
@@ -52,7 +52,7 @@ FROM_CHECKOUT = {
 }
 GENERATED = {"checksums.json", "publication.json"}
 ARCHIVE_REVISION = "1b801c0a596d931a2fa2f587bf5e5eb70f096fea"
-DROPPED_PREFIXES = ("evidence/", "runtime/")
+DROPPED_PREFIXES = ("runtime/",)
 LEGACY = re.compile(rb"veyra", re.IGNORECASE)
 LEGACY_EXEMPT = {"manifest.json"}
 WHEEL_MARKER = ("qev_runtime/frozen_identifiers.py", b'TRAINED_RESULT_MARKER = "VeyraResult:"')

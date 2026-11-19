@@ -140,7 +140,7 @@ qev playground
 
 A wheel for SDK 0.2.2 is attached to this model repository under `runtime/`; it ships the
 runtime as the `qev_runtime` package. PyPI currently provides SDK 0.2.1. Earlier wheels
-(0.1.1, 0.2.0, 0.2.1) and the historical training evidence remain available at
+(0.1.1, 0.2.0, 0.2.1) and the complete historical training evidence remain available at
 [revision 1b801c0a](https://huggingface.co/ken-jo/qev/tree/1b801c0a596d931a2fa2f587bf5e5eb70f096fea)
 of this repository.
 
@@ -208,6 +208,7 @@ the Jev service, images remain local paths, and the response is QEV's own.
 | `head.safetensors`, `manifest.json` | Adaptation, readout heads, and the calibrated abstention policy (hashes below) |
 | `runtime/qev-0.2.2-py3-none-any.whl` | Runtime (`qev_runtime`), SDK, server and English playground |
 | `examples/` | Photograph request, recorded response and provenance |
+| `evidence/`, `release-comparison/` | Historical training and comparison records; files that name the legacy runtime were removed and remain at [revision 1b801c0a](https://huggingface.co/ken-jo/qev/tree/1b801c0a596d931a2fa2f587bf5e5eb70f096fea), so some kept records cite files that are only there |
 
 The SDK includes the English playground and six sample photographs. `qev playground`
 opens a local server at http://127.0.0.1:7860. First use downloads about 4.6 GB of model
@@ -380,8 +381,9 @@ QEV was previously developed under an earlier project name, and this checkpoint 
 Workflow Recovery v13. The public rename did not change the weights. The trained prompt
 markers keep their original spelling because the learned model depends on them. Releases
 through 0.2.1 bundled the evaluated runtime as a separate package; it now ships as the
-companion `qev_runtime` package. From SDK 0.2.2 the historical evidence is no longer
-packaged here; the unchanged manifest keeps its recorded source names. Model ID `Qwen/Qwen3.5-2B` in the request contract
+companion `qev_runtime` package. From SDK 0.2.2, packaged historical evidence that names
+the legacy runtime is kept only at revision 1b801c0a; the unchanged manifest keeps its
+recorded source names. Model ID `Qwen/Qwen3.5-2B` in the request contract
 identifies the actual base.
 
 ## Citation
