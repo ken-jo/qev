@@ -53,7 +53,7 @@ def test_row_to_item_maps_answers_options_and_relative_images():
     assert item["options"] == ["3", "2", "1"]
     assert item["source"] == "cvbench2d"
     assert item["subtask"] == "2d-count"
-    assert item["images"] == ["img/2d/photo_0.png"]
+    assert item["images"] == ["img/2d/count/photo_0.png"]
     assert item["id"] == "cvb-2d-count-photo_0"
 
 

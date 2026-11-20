@@ -57,7 +57,7 @@ def row_to_item(row, kind):
         "id": f"cvb-{kind}-{row['task'].lower()}-{Path(row['filename']).stem}",
         "source": f"cvbench{kind}",
         "subtask": f"{kind}-{row['task'].lower()}",
-        "images": [f"img/{kind}/{Path(row['filename']).name}"],
+        "images": [f"img/{kind}/{row['task'].lower()}/{Path(row['filename']).name}"],
         "question": row["question"],
         "options": row["choices"],
         "gold": row["answer"].strip("()"),
@@ -70,7 +70,7 @@ def download(kind, name):
 
 def build_sample(work_dir, quotas):
     """Materialize the sampled items (and images) under work_dir once, then reuse."""
-    stamp = {"quotas": quotas, "files": {k: v for k, v in FILES.items()}}
+    stamp = {"quotas": quotas, "files": {k: v for k, v in FILES.items()}, "layout": 2}
     stamp_path = work_dir / "sample.json"
     items_path = work_dir / "items.jsonl"
     if stamp_path.exists() and json.loads(stamp_path.read_text()) == stamp and items_path.exists():
@@ -86,7 +86,7 @@ def build_sample(work_dir, quotas):
             blob = row["image"]
             images[row["filename"]] = blob["bytes"] if isinstance(blob, dict) else blob
         for row in chosen:
-            rel = f"img/{kind}/{Path(row['filename']).name}"
+            rel = f"img/{kind}/{row['task'].lower()}/{Path(row['filename']).name}"
             dest = work_dir / rel
             dest.parent.mkdir(parents=True, exist_ok=True)
             dest.write_bytes(images[row["filename"]])
