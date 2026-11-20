@@ -47,7 +47,7 @@ Model = "https://huggingface.co/ken-jo/qev"
 Dataset = "https://huggingface.co/datasets/ken-jo/qev-data"
 
 [dependency-groups]
-dev = ["pytest==9.1.1", "httpx>=0.28,<1", "ruff>=0.15,<1"]
+dev = ["pytest==9.1.1", "httpx>=0.28,<1", "pyarrow==26.0.1", "ruff>=0.15,<1"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/qev", "src/qev_decision_index", "src/qev_runtime"]
