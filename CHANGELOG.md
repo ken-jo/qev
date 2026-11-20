@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Added `scripts/probe_transfer_cvbench.py`: a paired out-of-distribution transfer probe
+  that scores the base checkpoint and candidate deltas on a deterministic CV-Bench
+  sample (`nyu-visionx/CV-Bench`, Apache-2.0) in one process; near-tie questions flip
+  between MPS runs, so read paired deltas, not cross-run absolutes. `pyarrow` joined the
+  dev dependency group for the parquet image extraction.
 - Opt-in fast image path, all off by default (outputs unchanged): requests may carry
   in-memory HWC RGB `uint8` numpy arrays or torch tensors as `{"pixels": ...}` images (Python
   only; not part of the JSON schema); `OptionModel.load(..., device_preprocess=True)` resizes
