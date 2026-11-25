@@ -1,6 +1,7 @@
 """Real tiny Qwen3.5 checkpoint loading, integrity failures and legacy regression."""
 
 import hashlib
+import importlib.util
 import json
 import shutil
 import struct
@@ -12,7 +13,7 @@ import pytest
 import torch
 
 from qev_runtime.backbone import QwenEncoder
-from qev_runtime.bundled_backbone import verify_bundle
+from qev_runtime.bundled_backbone import PACKAGE_FILES, verify_bundle
 from qev_runtime.option_model import OptionConfig, OptionModel
 from qev_runtime.schema import DecisionRequest
 
@@ -126,6 +127,161 @@ def root_bundled(bundled):
     manifest["backbone"]["layout"] = "root"
     write_manifest(path, manifest)
     return path, manifest, model
+
+
+@pytest.fixture
+def flatten_helper():
+    script = Path(__file__).resolve().parents[1] / "scripts/flatten_bundled_checkpoint.py"
+    spec = importlib.util.spec_from_file_location("flatten_bundled_checkpoint", script)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+@pytest.mark.parametrize(
+    "name",
+    [
+        ".git/extra",
+        ".git",
+        ".cache/huggingface/extra",
+        ".cache/huggingface",
+        *sorted(PACKAGE_FILES - {"head.safetensors"}),
+        *(name + "/extra" for name in sorted(PACKAGE_FILES)),
+    ],
+)
+def test_flatten_rejects_incompatible_root_paths_before_copying(
+    bundled, flatten_helper, monkeypatch, name
+):
+    path, manifest, _ = bundled
+    extra = path / "backbone" / name
+    extra.parent.mkdir(parents=True, exist_ok=True)
+    extra.write_text("backbone bytes")
+    rehash(path, manifest, name)
+    assert verify_bundle(path, manifest["backbone"]) == path / "backbone"
+    destination = path.with_name(path.name + "-flat")
+    before = set(path.parent.iterdir())
+    monkeypatch.setattr(
+        flatten_helper.shutil, "copyfile", lambda *_a, **_k: pytest.fail("copied rejected source")
+    )
+    with pytest.raises(ValueError, match="collides with"):
+        flatten_helper.flatten(path, destination)
+    assert not destination.exists()
+    assert set(path.parent.iterdir()) == before
+
+
+def test_flatten_copy_failure_cleans_up_and_retry_matches_clean_run(
+    bundled, flatten_helper, monkeypatch
+):
+    path, manifest, _ = bundled
+    destination = path.with_name(path.name + "-flat")
+    before = set(path.parent.iterdir())
+    copyfile = flatten_helper.shutil.copyfile
+    copied = []
+
+    def interrupted_copy(source, target):
+        if copied:
+            raise OSError("interrupted copy")
+        result = copyfile(source, target)
+        copied.append(Path(target))
+        assert Path(target).is_file()
+        assert Path(target).parent.parent == destination.parent
+        assert not destination.exists()
+        return result
+
+    with monkeypatch.context() as patch:
+        patch.setattr(flatten_helper.shutil, "copyfile", interrupted_copy)
+        with pytest.raises(OSError, match="interrupted copy"):
+            flatten_helper.flatten(path, destination)
+    assert len(copied) == 1
+    assert not destination.exists()
+    assert set(path.parent.iterdir()) == before
+
+    retry = flatten_helper.flatten(path, destination)
+    clean = path.with_name(path.name + "-clean")
+    assert flatten_helper.flatten(path, clean) == retry
+
+    def hashes(root):
+        return {p.relative_to(root).as_posix(): sha(p) for p in root.rglob("*") if p.is_file()}
+
+    assert hashes(destination) == hashes(clean)
+    assert all(
+        sha(destination / name) == digest
+        for name, digest in manifest["backbone"]["files"].items()
+    )
+    assert sha(destination / "head.safetensors") == manifest["weights_sha256"]
+    assert set(path.parent.iterdir()) == before | {destination, clean}
+
+
+@pytest.mark.parametrize("fault", ["backbone", "head", "manifest"])
+def test_flatten_verification_failure_cleans_up(bundled, flatten_helper, monkeypatch, fault):
+    path, _, _ = bundled
+    destination = path.with_name(path.name + "-flat")
+    before = set(path.parent.iterdir())
+    copyfile = flatten_helper.shutil.copyfile
+    write_text = Path.write_text
+
+    def corrupt_copy(source, target):
+        result = copyfile(source, target)
+        if Path(target).name == ("head.safetensors" if fault == "head" else "tokenizer.json"):
+            with Path(target).open("ab") as stream:
+                stream.write(b"corrupted")
+        return result
+
+    def corrupt_manifest(target, text, **kwargs):
+        return write_text(target, "{}\n", **kwargs)
+
+    if fault == "manifest":
+        monkeypatch.setattr(Path, "write_text", corrupt_manifest)
+    else:
+        monkeypatch.setattr(flatten_helper.shutil, "copyfile", corrupt_copy)
+    with pytest.raises(ValueError, match="checksum mismatch|manifest mismatch"):
+        flatten_helper.flatten(path, destination)
+    assert not destination.exists()
+    assert set(path.parent.iterdir()) == before
+
+
+@pytest.mark.parametrize("kind", ["file", "empty-directory", "directory", "symlink"])
+@pytest.mark.parametrize("during_copy", [False, True])
+def test_flatten_never_overwrites_destination(
+    bundled, flatten_helper, monkeypatch, kind, during_copy
+):
+    path, _, _ = bundled
+    destination = path.with_name(path.name + "-flat")
+    before = set(path.parent.iterdir())
+
+    def create_destination():
+        if kind == "file":
+            destination.write_text("keep me")
+        elif kind == "symlink":
+            destination.symlink_to(path / "absent")
+        else:
+            destination.mkdir()
+            if kind == "directory":
+                (destination / "keep").write_text("keep me")
+
+    if during_copy:
+        copyfile = flatten_helper.shutil.copyfile
+
+        def racing_copy(source, target):
+            if not destination.exists() and not destination.is_symlink():
+                create_destination()
+            return copyfile(source, target)
+
+        monkeypatch.setattr(flatten_helper.shutil, "copyfile", racing_copy)
+    else:
+        create_destination()
+    with pytest.raises(FileExistsError):
+        flatten_helper.flatten(path, destination)
+    if kind == "file":
+        assert destination.read_text() == "keep me"
+    elif kind == "symlink":
+        assert destination.is_symlink() and destination.readlink() == path / "absent"
+    elif kind == "directory":
+        assert list(destination.iterdir()) == [destination / "keep"]
+        assert (destination / "keep").read_text() == "keep me"
+    else:
+        assert destination.is_dir() and not list(destination.iterdir())
+    assert set(path.parent.iterdir()) == before | {destination}
 
 
 def test_flatten_cli_preserves_hashes_and_bit_identical_probabilities(bundled):

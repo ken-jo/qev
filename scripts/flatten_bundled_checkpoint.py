@@ -1,17 +1,50 @@
 """Copy a verified subdir bundled checkpoint to the recommended root layout, offline."""
 
 import argparse
+import ctypes
 import hashlib
 import json
+import os
 import shutil
+import sys
+import tempfile
 from pathlib import Path
 
-from qev_runtime.bundled_backbone import PACKAGE_FILES, verify_bundle
+from qev_runtime.bundled_backbone import _LOCAL_METADATA, PACKAGE_FILES, verify_bundle
 
 
 def digest(path):
     with path.open("rb") as stream:
         return hashlib.file_digest(stream, "sha256").hexdigest()
+
+
+def _rename_no_replace(source, destination):
+    """Publish atomically, including when another process creates an empty DST."""
+    if sys.platform == "win32":
+        os.rename(source, destination)  # Windows rename already refuses existing paths.
+        return
+    libc = ctypes.CDLL(None, use_errno=True)
+    if sys.platform == "darwin":
+        rename = libc.renamex_np
+        rename.argtypes = [ctypes.c_char_p, ctypes.c_char_p, ctypes.c_uint]
+        arguments = (os.fsencode(source), os.fsencode(destination), 4)  # RENAME_EXCL
+    else:
+        rename = getattr(libc, "renameat2", None)
+        if rename is None:
+            raise NotImplementedError("atomic rename without replacement is unavailable")
+        rename.argtypes = [
+            ctypes.c_int,
+            ctypes.c_char_p,
+            ctypes.c_int,
+            ctypes.c_char_p,
+            ctypes.c_uint,
+        ]
+        # AT_FDCWD and RENAME_NOREPLACE; staging and DST share a filesystem.
+        arguments = (-100, os.fsencode(source), -100, os.fsencode(destination), 1)
+    rename.restype = ctypes.c_int
+    if rename(*arguments) != 0:
+        error = ctypes.get_errno()
+        raise OSError(error, os.strerror(error), str(destination))
 
 
 def flatten(source, destination):
@@ -31,29 +64,40 @@ def flatten(source, destination):
     root = verify_bundle(source, block)
     if digest(source / "head.safetensors") != manifest["weights_sha256"]:
         raise ValueError("checkpoint weight checksum mismatch")
-    # A subdir inventory must not collide with root package files after flattening.
-    if PACKAGE_FILES.intersection(block["files"]):
+    # A subdir inventory must not enter reserved or ignored root locations.
+    if any(name.split("/", 1)[0] in PACKAGE_FILES for name in block["files"]):
         raise ValueError("backbone inventory collides with a reserved package file")
+    if any(
+        name == metadata or name.startswith(metadata + "/")
+        for name in block["files"]
+        for metadata in _LOCAL_METADATA
+    ):
+        raise ValueError("backbone inventory collides with an ignored root metadata path")
     converted = manifest | {"backbone": block | {"layout": "root"}}
-    destination.mkdir(parents=True, exist_ok=False)
-    for name in sorted(block["files"]):
-        target = destination / name
-        target.parent.mkdir(parents=True, exist_ok=True)
-        # Materialize Hub file symlinks so the new package is self-contained.
-        shutil.copyfile(root / name, target)
-    for name in sorted(PACKAGE_FILES - {"manifest.json"}):
-        if (source / name).is_file():
-            shutil.copyfile(source / name, destination / name)
-    (destination / "manifest.json").write_text(
-        json.dumps(converted, indent=2) + "\n", encoding="utf-8"
-    )
-    written = json.loads((destination / "manifest.json").read_text(encoding="utf-8"))
-    if written != converted:
-        raise ValueError("repackaged manifest mismatch")
-    verify_bundle(destination, written["backbone"])
-    for name in PACKAGE_FILES - {"manifest.json"}:
-        if (source / name).is_file() and digest(source / name) != digest(destination / name):
-            raise ValueError(f"repackaged file checksum mismatch: {name}")
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(
+        prefix=f".{destination.name}-staging-", dir=destination.parent
+    ) as temporary:
+        staging = Path(temporary)
+        for name in sorted(block["files"]):
+            target = staging / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            # Materialize Hub file symlinks so the new package is self-contained.
+            shutil.copyfile(root / name, target)
+        for name in sorted(PACKAGE_FILES - {"manifest.json"}):
+            if (source / name).is_file():
+                shutil.copyfile(source / name, staging / name)
+        (staging / "manifest.json").write_text(
+            json.dumps(converted, indent=2) + "\n", encoding="utf-8"
+        )
+        written = json.loads((staging / "manifest.json").read_text(encoding="utf-8"))
+        if written != converted:
+            raise ValueError("repackaged manifest mismatch")
+        verify_bundle(staging, written["backbone"])
+        for name in PACKAGE_FILES - {"manifest.json"}:
+            if (source / name).is_file() and digest(source / name) != digest(staging / name):
+                raise ValueError(f"repackaged file checksum mismatch: {name}")
+        _rename_no_replace(staging, destination)
     return {"backbone_files": len(block["files"]), "hashes_identical": True, "head_identical": True}
 
 
