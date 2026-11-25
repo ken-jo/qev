@@ -1,14 +1,21 @@
 """Real tiny Qwen3.5 checkpoint loading, integrity failures and legacy regression."""
 
 import hashlib
+import importlib.util
 import json
+import os
+import shutil
+import stat
 import struct
+import subprocess
+import sys
+from pathlib import Path
 
 import pytest
 import torch
 
 from qev_runtime.backbone import QwenEncoder
-from qev_runtime.bundled_backbone import verify_bundle
+from qev_runtime.bundled_backbone import PACKAGE_FILES, verify_bundle
 from qev_runtime.option_model import OptionConfig, OptionModel
 from qev_runtime.schema import DecisionRequest
 
@@ -22,7 +29,8 @@ def write_manifest(path, manifest):
 
 
 def rehash(path, manifest, name):
-    manifest["backbone"]["files"][name] = sha(path / "backbone" / name)
+    root = path if manifest["backbone"].get("layout") == "root" else path / "backbone"
+    manifest["backbone"]["files"][name] = sha(root / name)
     write_manifest(path, manifest)
 
 
@@ -93,6 +101,7 @@ def bundled(tmp_path):
     model = OptionModel(QwenEncoder(backbone, processor, OptionConfig()), reasoning_slots=4)
     manifest = model.save(tmp_path / "head", {"completed": True, "optimizer_steps": 1})
     (tmp_path / "head/head.safetensors").replace(tmp_path / "head.safetensors")
+    shutil.rmtree(tmp_path / "head")
     manifest.update(
         format_version=3,
         adaptation={},
@@ -109,6 +118,397 @@ def bundled(tmp_path):
     )
     write_manifest(tmp_path, manifest)
     return tmp_path, manifest, model
+
+
+@pytest.fixture
+def root_bundled(bundled):
+    path, manifest, model = bundled
+    for source in (path / "backbone").iterdir():
+        source.replace(path / source.name)
+    (path / "backbone").rmdir()
+    manifest["backbone"]["layout"] = "root"
+    write_manifest(path, manifest)
+    return path, manifest, model
+
+
+@pytest.fixture
+def flatten_helper():
+    script = Path(__file__).resolve().parents[1] / "scripts/flatten_bundled_checkpoint.py"
+    spec = importlib.util.spec_from_file_location("flatten_bundled_checkpoint", script)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+@pytest.mark.skipif(os.name != "posix", reason="POSIX directory permissions")
+@pytest.mark.parametrize("umask", [0o022, 0o027])
+def test_flatten_published_directory_uses_mkdir_permissions(bundled, flatten_helper, umask):
+    path, _, _ = bundled
+    destination = path.with_name(path.name + "-flat")
+    sibling = path.with_name(path.name + "-mkdir")
+    previous_umask = os.umask(umask)
+    try:
+        sibling.mkdir()
+        flatten_helper.flatten(path, destination)
+        assert stat.S_IMODE(destination.stat().st_mode) == stat.S_IMODE(
+            sibling.stat().st_mode
+        ) == (0o777 & ~umask)
+    finally:
+        os.umask(previous_umask)
+
+
+@pytest.mark.parametrize(
+    "name",
+    [
+        ".git/extra",
+        ".git",
+        ".cache/huggingface/extra",
+        ".cache/huggingface",
+        *sorted(PACKAGE_FILES - {"head.safetensors"}),
+        *(name + "/extra" for name in sorted(PACKAGE_FILES)),
+    ],
+)
+def test_flatten_rejects_incompatible_root_paths_before_copying(
+    bundled, flatten_helper, monkeypatch, name
+):
+    path, manifest, _ = bundled
+    extra = path / "backbone" / name
+    extra.parent.mkdir(parents=True, exist_ok=True)
+    extra.write_text("backbone bytes")
+    rehash(path, manifest, name)
+    assert verify_bundle(path, manifest["backbone"]) == path / "backbone"
+    destination = path.with_name(path.name + "-flat")
+    before = set(path.parent.iterdir())
+    monkeypatch.setattr(
+        flatten_helper.shutil, "copyfile", lambda *_a, **_k: pytest.fail("copied rejected source")
+    )
+    with pytest.raises(ValueError, match="collides with"):
+        flatten_helper.flatten(path, destination)
+    assert not destination.exists()
+    assert set(path.parent.iterdir()) == before
+
+
+def test_flatten_copy_failure_cleans_up_and_retry_matches_clean_run(
+    bundled, flatten_helper, monkeypatch
+):
+    path, manifest, _ = bundled
+    destination = path.with_name(path.name + "-flat")
+    before = set(path.parent.iterdir())
+    copyfile = flatten_helper.shutil.copyfile
+    copied = []
+
+    def interrupted_copy(source, target):
+        if copied:
+            raise OSError("interrupted copy")
+        result = copyfile(source, target)
+        copied.append(Path(target))
+        assert Path(target).is_file()
+        assert Path(target).parent.parent == destination.parent
+        assert not destination.exists()
+        return result
+
+    with monkeypatch.context() as patch:
+        patch.setattr(flatten_helper.shutil, "copyfile", interrupted_copy)
+        with pytest.raises(OSError, match="interrupted copy"):
+            flatten_helper.flatten(path, destination)
+    assert len(copied) == 1
+    assert not destination.exists()
+    assert set(path.parent.iterdir()) == before
+
+    retry = flatten_helper.flatten(path, destination)
+    clean = path.with_name(path.name + "-clean")
+    assert flatten_helper.flatten(path, clean) == retry
+
+    def hashes(root):
+        return {p.relative_to(root).as_posix(): sha(p) for p in root.rglob("*") if p.is_file()}
+
+    assert hashes(destination) == hashes(clean)
+    assert all(
+        sha(destination / name) == digest
+        for name, digest in manifest["backbone"]["files"].items()
+    )
+    assert sha(destination / "head.safetensors") == manifest["weights_sha256"]
+    assert set(path.parent.iterdir()) == before | {destination, clean}
+
+
+@pytest.mark.parametrize("fault", ["backbone", "head", "manifest"])
+def test_flatten_verification_failure_cleans_up(bundled, flatten_helper, monkeypatch, fault):
+    path, _, _ = bundled
+    destination = path.with_name(path.name + "-flat")
+    before = set(path.parent.iterdir())
+    copyfile = flatten_helper.shutil.copyfile
+    write_text = Path.write_text
+
+    def corrupt_copy(source, target):
+        result = copyfile(source, target)
+        if Path(target).name == ("head.safetensors" if fault == "head" else "tokenizer.json"):
+            with Path(target).open("ab") as stream:
+                stream.write(b"corrupted")
+        return result
+
+    def corrupt_manifest(target, text, **kwargs):
+        return write_text(target, "{}\n", **kwargs)
+
+    if fault == "manifest":
+        monkeypatch.setattr(Path, "write_text", corrupt_manifest)
+    else:
+        monkeypatch.setattr(flatten_helper.shutil, "copyfile", corrupt_copy)
+    with pytest.raises(ValueError, match="checksum mismatch|manifest mismatch"):
+        flatten_helper.flatten(path, destination)
+    assert not destination.exists()
+    assert set(path.parent.iterdir()) == before
+
+
+@pytest.mark.parametrize("kind", ["file", "empty-directory", "directory", "symlink"])
+@pytest.mark.parametrize("during_copy", [False, True])
+def test_flatten_never_overwrites_destination(
+    bundled, flatten_helper, monkeypatch, kind, during_copy
+):
+    path, _, _ = bundled
+    destination = path.with_name(path.name + "-flat")
+    before = set(path.parent.iterdir())
+
+    def create_destination():
+        if kind == "file":
+            destination.write_text("keep me")
+        elif kind == "symlink":
+            destination.symlink_to(path / "absent")
+        else:
+            destination.mkdir()
+            if kind == "directory":
+                (destination / "keep").write_text("keep me")
+
+    if during_copy:
+        copyfile = flatten_helper.shutil.copyfile
+
+        def racing_copy(source, target):
+            if not destination.exists() and not destination.is_symlink():
+                create_destination()
+            return copyfile(source, target)
+
+        monkeypatch.setattr(flatten_helper.shutil, "copyfile", racing_copy)
+    else:
+        create_destination()
+    with pytest.raises(FileExistsError):
+        flatten_helper.flatten(path, destination)
+    if kind == "file":
+        assert destination.read_text() == "keep me"
+    elif kind == "symlink":
+        assert destination.is_symlink() and destination.readlink() == path / "absent"
+    elif kind == "directory":
+        assert list(destination.iterdir()) == [destination / "keep"]
+        assert (destination / "keep").read_text() == "keep me"
+    else:
+        assert destination.is_dir() and not list(destination.iterdir())
+    assert set(path.parent.iterdir()) == before | {destination}
+
+
+def test_flatten_cli_preserves_hashes_and_bit_identical_probabilities(bundled):
+    path, manifest, _ = bundled
+    destination = path.with_name(path.name + "-flat")
+    for name in ("README.md", "LICENSE", ".gitattributes"):
+        (path / name).write_text("package metadata\n")
+    before = {p.relative_to(path).as_posix(): sha(p) for p in path.rglob("*") if p.is_file()}
+    script = Path(__file__).resolve().parents[1] / "scripts/flatten_bundled_checkpoint.py"
+    result = subprocess.run(
+        [sys.executable, str(script), str(path), str(destination), "--compare", "3"],
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    report = json.loads(result.stdout.splitlines()[-1])
+    assert report == {
+        "backbone_files": len(manifest["backbone"]["files"]),
+        "hashes_identical": True,
+        "head_identical": True,
+        "comparison": {"requests": 3, "max_abs_probability_difference": 0.0},
+    }
+    converted = json.loads((destination / "manifest.json").read_text())
+    serialized = json.loads((path / "manifest.json").read_text())
+    assert converted == serialized | {"backbone": serialized["backbone"] | {"layout": "root"}}
+    assert not (destination / "backbone").exists()
+    for name, digest in manifest["backbone"]["files"].items():
+        assert sha(destination / name) == digest
+    for name in ("head.safetensors", "README.md", "LICENSE", ".gitattributes"):
+        assert sha(destination / name) == before[name]
+    assert before == {
+        p.relative_to(path).as_posix(): sha(p) for p in path.rglob("*") if p.is_file()
+    }
+    retry = subprocess.run(
+        [sys.executable, str(script), str(path), str(destination)],
+        capture_output=True,
+        text=True,
+    )
+    assert retry.returncode != 0 and "destination already exists" in retry.stderr
+
+
+def test_flatten_default_verification_materializes_snapshot_and_omits_metadata(bundled):
+    path, manifest, _ = bundled
+    manifest["backbone"]["layout"] = "subdir"
+    write_manifest(path, manifest)
+    source = path / "backbone/tokenizer.json"
+    blob = path.with_name(path.name + "-blob")
+    source.replace(blob)
+    source.symlink_to(blob)
+    for name in (".git/objects/local", ".cache/huggingface/download/x.metadata"):
+        target = path / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text("metadata")
+    destination = path.with_name(path.name + "-flat")
+    script = Path(__file__).resolve().parents[1] / "scripts/flatten_bundled_checkpoint.py"
+    result = subprocess.run(
+        [sys.executable, str(script), str(path), str(destination)],
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    assert json.loads(result.stdout)["hashes_identical"] is True
+    assert not (destination / "tokenizer.json").is_symlink()
+    blob.unlink()
+    assert OptionModel.load(destination, device="cpu").serving_mode == "accurate"
+    assert not (destination / ".git").exists()
+    assert not (destination / ".cache").exists()
+
+
+@pytest.mark.parametrize("layout", ["subdir", "root"])
+def test_explicit_layout_and_exact_local_metadata_exclusions(bundled, layout):
+    path, manifest, _ = bundled
+    if layout == "root":
+        for source in (path / "backbone").iterdir():
+            source.replace(path / source.name)
+        (path / "backbone").rmdir()
+    manifest["backbone"]["layout"] = layout
+    write_manifest(path, manifest)
+    for name in (".cache/huggingface/download/x.metadata", ".git/objects/local"):
+        target = path / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text("not backbone bytes")
+    for name in ("README.md", "LICENSE", ".gitattributes"):
+        (path / name).write_text("package metadata")
+    assert OptionModel.load(path, device="cpu").serving_mode == "accurate"
+
+
+@pytest.mark.parametrize(
+    "fault,match",
+    [
+        ("extra", "inventory mismatch"),
+        ("nested", "inventory mismatch"),
+        ("missing", "inventory mismatch"),
+        ("modified", "checksum mismatch"),
+        ("adapter", "without adapters or code"),
+        ("code", "without adapters or code"),
+        ("directory_symlink", "directory symlinks"),
+        ("mixed", "mixed bundled layouts"),
+    ],
+)
+def test_root_layout_rejects_unverified_files_before_loading(
+    root_bundled, monkeypatch, fault, match
+):
+    path, manifest, _ = root_bundled
+    if fault == "extra":
+        (path / "extra.json").write_text("{}")
+    elif fault == "nested":
+        (path / "nested").mkdir()
+        (path / "nested/extra.json").write_text("{}")
+    elif fault == "missing":
+        (path / "tokenizer.json").unlink()
+    elif fault == "modified":
+        with (path / "model.safetensors").open("ab") as stream:
+            stream.write(b"bad")
+    elif fault in ("adapter", "code"):
+        name = "adapter_config.json" if fault == "adapter" else "custom.py"
+        (path / name).write_text("{}")
+        rehash(path, manifest, name)
+    elif fault == "directory_symlink":
+        (path / "linked").symlink_to(path, target_is_directory=True)
+    elif fault == "mixed":
+        (path / "backbone").mkdir()
+    monkeypatch.setattr(
+        "transformers.AutoProcessor.from_pretrained",
+        lambda *_a, **_k: pytest.fail("loaded unverified root files"),
+    )
+    with pytest.raises(ValueError, match=match):
+        OptionModel.load(path, device="cpu")
+
+
+@pytest.mark.parametrize(
+    "name", ["manifest.json", "head.safetensors", "README.md", "LICENSE", ".gitattributes"]
+)
+def test_root_inventory_rejects_reserved_package_names(root_bundled, name):
+    path, manifest, _ = root_bundled
+    manifest["backbone"]["files"][name] = "0" * 64
+    write_manifest(path, manifest)
+    with pytest.raises(ValueError, match="reserved package file"):
+        OptionModel.load(path, device="cpu")
+
+
+@pytest.mark.parametrize("layout", ["unknown", "", None, True, ["root"]])
+def test_unknown_bundled_layout_is_rejected(bundled, layout):
+    path, manifest, _ = bundled
+    manifest["backbone"]["layout"] = layout
+    write_manifest(path, manifest)
+    with pytest.raises(ValueError, match="invalid bundled backbone identity"):
+        OptionModel.load(path, device="cpu")
+
+
+def test_subdir_layout_rejects_stray_root_backbone_file(bundled):
+    path, manifest, _ = bundled
+    shutil.copyfile(path / "backbone/config.json", path / "config.json")
+    with pytest.raises(ValueError, match="stray package root file"):
+        verify_bundle(path, manifest["backbone"])
+
+
+@pytest.mark.parametrize("layout", ["subdir", "root"])
+@pytest.mark.parametrize("name", [".cache/other", ".cache", ".git"])
+def test_local_metadata_exclusions_do_not_ignore_other_files(bundled, layout, name):
+    path, manifest, _ = bundled
+    if layout == "root":
+        for source in (path / "backbone").iterdir():
+            source.replace(path / source.name)
+        (path / "backbone").rmdir()
+    manifest["backbone"]["layout"] = layout
+    (path / name).parent.mkdir(parents=True, exist_ok=True)
+    (path / name).write_text("unlisted")
+    with pytest.raises(ValueError, match="inventory mismatch"):
+        verify_bundle(path, manifest["backbone"])
+
+
+@pytest.mark.parametrize("layout", ["subdir", "root"])
+@pytest.mark.parametrize("name", [".git", ".cache", ".cache/huggingface"])
+def test_metadata_directory_symlinks_are_never_ignored(bundled, layout, name):
+    path, manifest, _ = bundled
+    if layout == "root":
+        for source in (path / "backbone").iterdir():
+            source.replace(path / source.name)
+        (path / "backbone").rmdir()
+    manifest["backbone"]["layout"] = layout
+    (path / name).parent.mkdir(parents=True, exist_ok=True)
+    (path / name).symlink_to(path, target_is_directory=True)
+    with pytest.raises(ValueError, match="directory symlinks"):
+        verify_bundle(path, manifest["backbone"])
+
+
+def test_root_snapshot_file_symlink_hashes_target_bytes(root_bundled):
+    path, manifest, _ = root_bundled
+    source = path / "tokenizer.json"
+    blob = path.with_name(path.name + "-blob")
+    source.replace(blob)
+    source.symlink_to(blob)
+    assert OptionModel.load(path, device="cpu").serving_mode == "accurate"
+    blob.write_bytes(blob.read_bytes() + b" ")
+    with pytest.raises(ValueError, match="checksum mismatch"):
+        verify_bundle(path, manifest["backbone"])
+
+
+@pytest.mark.parametrize("name", ["tokenizer_config.json", "processor_config.json"])
+def test_root_config_references_stay_inside_inventory(root_bundled, name):
+    path, manifest, _ = root_bundled
+    values = json.loads((path / name).read_text())
+    values["vocab_file"] = "head.safetensors"
+    (path / name).write_text(json.dumps(values))
+    rehash(path, manifest, name)
+    with pytest.raises(ValueError, match="bundled file reference"):
+        OptionModel.load(path, device="cpu")
 
 
 def test_real_bundled_roundtrip_is_offline_and_predicts(bundled, monkeypatch):
@@ -251,7 +651,7 @@ def test_bundled_fast_is_a_clear_error(bundled):
 def test_hub_snapshot_symlink_files_are_verified(bundled, tmp_path):
     path, manifest, _ = bundled
     source = path / "backbone/tokenizer.json"
-    blob = tmp_path / "blob"
+    blob = tmp_path.with_name(tmp_path.name + "-blob")
     source.replace(blob)
     source.symlink_to(blob)
     assert verify_bundle(path, manifest["backbone"]) == path / "backbone"
@@ -450,7 +850,7 @@ def test_verified_versioned_tokenizer_symlink_loads_and_hashes_target(bundled, t
     path, manifest, _ = bundled
     root = path / "backbone"
     name = "tokenizer.5.0.0.json"
-    blob = tmp_path / "tokenizer-blob"
+    blob = tmp_path.with_name(tmp_path.name + "-tokenizer-blob")
     blob.write_bytes((root / "tokenizer.json").read_bytes() + b"\n")
     (root / name).symlink_to(blob)
     rehash(path, manifest, name)

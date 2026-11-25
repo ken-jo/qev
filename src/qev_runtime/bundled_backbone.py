@@ -8,6 +8,12 @@ import re
 import struct
 from pathlib import Path, PurePosixPath
 
+# Only these package files are outside the backbone's SHA-256 inventory.
+PACKAGE_FILES = frozenset(
+    {"manifest.json", "head.safetensors", "README.md", "LICENSE", ".gitattributes"}
+)
+_LOCAL_METADATA = (".git", ".cache/huggingface")
+
 # The pinned Qwen3.5 model and processor use these IDs for multimodal placeholders
 # and boundaries. Other token metadata, such as sep_token_id, is textual.
 _MULTIMODAL_FIELDS = (
@@ -149,7 +155,8 @@ def bundled_identity(block):
     fields = {"bundled", "model_id", "revision", "depth", "vocabulary", "files"}
     if (
         not isinstance(block, dict)
-        or set(block) != fields
+        or set(block) - {"layout"} != fields
+        or block.get("layout", "subdir") not in ("subdir", "root")
         or block.get("bundled") is not True
         or not isinstance(block.get("model_id"), str)
         or not re.fullmatch(r"[\w.-]+/[\w.-]+", block["model_id"])
@@ -170,7 +177,28 @@ def bundled_identity(block):
             or not re.fullmatch(r"[0-9a-f]{64}", digest)
         ):
             raise ValueError("invalid bundled file name or SHA-256")
+    if block.get("layout", "subdir") == "root" and PACKAGE_FILES.intersection(block["files"]):
+        raise ValueError("root bundled inventory lists a reserved package file")
     return dict(block)
+
+
+def _file_inventory(root, ignored_directories=()):
+    """Walk without following directory symlinks, pruning only exact real directories."""
+    files = set()
+
+    def walk(directory):
+        for path in directory.iterdir():
+            name = path.relative_to(root).as_posix()
+            if path.is_dir():
+                if path.is_symlink():
+                    raise ValueError("bundled directory symlinks are forbidden")
+                if name not in ignored_directories:
+                    walk(path)
+            else:
+                files.add(name)
+
+    walk(root)
+    return files
 
 
 def verify_bundle(directory, block):
@@ -180,13 +208,20 @@ def verify_bundle(directory, block):
     Directory symlinks and unlisted files are rejected. The manifest is the trust root.
     """
     block = bundled_identity(block)
-    root = Path(directory) / "backbone"
+    directory = Path(directory)
+    layout = block.get("layout", "subdir")
+    root = directory if layout == "root" else directory / "backbone"
     if not root.is_dir() or root.is_symlink():
         raise ValueError("missing bundled backbone directory")
-    paths = list(root.rglob("*"))
-    if any(p.is_symlink() and p.is_dir() for p in paths):
-        raise ValueError("bundled directory symlinks are forbidden")
-    actual = {p.relative_to(root).as_posix() for p in paths if not p.is_dir()}
+    if layout == "root":
+        if (directory / "backbone").is_dir():
+            raise ValueError("mixed bundled layouts: root package contains backbone directory")
+        actual = _file_inventory(root, _LOCAL_METADATA) - PACKAGE_FILES
+    else:
+        package_files = _file_inventory(directory, (*_LOCAL_METADATA, "backbone"))
+        if package_files - PACKAGE_FILES:
+            raise ValueError("bundled file inventory mismatch (stray package root file)")
+        actual = _file_inventory(root)
     if actual != set(block["files"]):
         raise ValueError("bundled file inventory mismatch (missing or unlisted file)")
     required = {"config.json", "tokenizer.json", "tokenizer_config.json", "processor_config.json"}
