@@ -97,6 +97,11 @@ def flatten(source, destination):
         for name in PACKAGE_FILES - {"manifest.json"}:
             if (source / name).is_file() and digest(source / name) != digest(staging / name):
                 raise ValueError(f"repackaged file checksum mismatch: {name}")
+        if os.name == "posix":
+            # TemporaryDirectory starts at 0700; publish with normal mkdir permissions.
+            umask = os.umask(0)
+            os.umask(umask)
+            staging.chmod(0o777 & ~umask)
         _rename_no_replace(staging, destination)
     return {"backbone_files": len(block["files"]), "hashes_identical": True, "head_identical": True}
 

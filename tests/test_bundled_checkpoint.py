@@ -3,7 +3,9 @@
 import hashlib
 import importlib.util
 import json
+import os
 import shutil
+import stat
 import struct
 import subprocess
 import sys
@@ -136,6 +138,23 @@ def flatten_helper():
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
+
+
+@pytest.mark.skipif(os.name != "posix", reason="POSIX directory permissions")
+@pytest.mark.parametrize("umask", [0o022, 0o027])
+def test_flatten_published_directory_uses_mkdir_permissions(bundled, flatten_helper, umask):
+    path, _, _ = bundled
+    destination = path.with_name(path.name + "-flat")
+    sibling = path.with_name(path.name + "-mkdir")
+    previous_umask = os.umask(umask)
+    try:
+        sibling.mkdir()
+        flatten_helper.flatten(path, destination)
+        assert stat.S_IMODE(destination.stat().st_mode) == stat.S_IMODE(
+            sibling.stat().st_mode
+        ) == (0o777 & ~umask)
+    finally:
+        os.umask(previous_umask)
 
 
 @pytest.mark.parametrize(
