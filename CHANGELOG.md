@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- Bundled format-3 checkpoints support `backbone.layout: "root"`, recommended for
+  new Hub releases so root `config.json` follows Hub conventions and enables download
+  counting. Existing manifests default to `"subdir"`. Both layouts verify exact
+  inventories and hashes, excluding only fixed package files and real local Git/Hub
+  metadata directories. Added an offline flattening helper with optional exact CPU
+  output comparison; format 2 is unchanged.
+
 - Opt-in fast image path, all off by default (outputs unchanged): requests may carry
   in-memory HWC RGB `uint8` numpy arrays or torch tensors as `{"pixels": ...}` images (Python
   only; not part of the JSON schema); `OptionModel.load(..., device_preprocess=True)` resizes

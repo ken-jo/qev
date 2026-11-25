@@ -559,7 +559,7 @@ class OptionModel(nn.Module):
     ):
         """Load a checkpoint, optionally in one of its manifest serving ``modes``.
 
-        Format 3 bundles a dense backbone under ``backbone/``; its complete SHA-256
+        Format 3 bundles a dense backbone at the root or under ``backbone/``; its SHA-256
         inventory is verified before offline loading. It supports only ``accurate``, whose
         pixel budget the overrides below may still change.
 
