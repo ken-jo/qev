@@ -8,6 +8,9 @@
   inventories and hashes, excluding only fixed package files and real local Git/Hub
   metadata directories. Added an offline flattening helper with optional exact CPU
   output comparison; format 2 is unchanged.
+  The Hub repositories `ken-jo/QEV-1.3B` (`05840fa3`) and `ken-jo/QEV-0.5B` (`3f95903b`)
+  use the root layout and need this version; their public vision index is unchanged
+  (62.15 and 52.52).
 
 - Opt-in fast image path, all off by default (outputs unchanged): requests may carry
   in-memory HWC RGB `uint8` numpy arrays or torch tensors as `{"pixels": ...}` images (Python

@@ -16,6 +16,8 @@ and processor files live:
   `"subdir"`, so existing manifests and pinned releases keep loading unchanged.
 
 Unknown layout values and packages mixing both layouts are rejected.
+Root-layout packages need `qev` at or after
+`9f3379cbcca6a63d43bd9cb9092f93d9e8e6371c`; earlier versions load only `"subdir"`.
 The manifest retains the usual encoder, readout, calibration and completed-training
 fields and declares:
 
